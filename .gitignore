@@ -1,1 +1,9 @@
 .worktrees/
+node_modules/
+.next/
+playwright-report/
+test-results/
+tsconfig.tsbuildinfo
+.env
+.env.local
+.env.*.local

@@ -18,6 +18,53 @@ describe("expandSeasonLabelToQuarters", () => {
 });
 
 describe("buildQuarterlyTariffMatrix", () => {
+  test("sorts time ranges chronologically and pushes catch-all entries to the end", () => {
+    const matrix = buildQuarterlyTariffMatrix({
+      bands: [
+        { key: "NT", label: "Niedrigtarif", valueCtPerKwh: "1.00" },
+        { key: "ST", label: "Standardtarif", valueCtPerKwh: "5.00" },
+        { key: "HT", label: "Hochtarif", valueCtPerKwh: "8.00" }
+      ],
+      timeWindows: [
+        {
+          bandKey: "ST",
+          label: "Standardtarif",
+          seasonLabel: "Q1 2026",
+          timeRangeLabel: "22:00-24:00",
+          sourceQuote: "ST 22:00-24:00"
+        },
+        {
+          bandKey: "ST",
+          label: "Standardtarif",
+          seasonLabel: "Q1 2026",
+          timeRangeLabel: "Alle anderen Zeiten",
+          sourceQuote: "ST alle anderen Zeiten"
+        },
+        {
+          bandKey: "ST",
+          label: "Standardtarif",
+          seasonLabel: "Q1 2026",
+          timeRangeLabel: "07:00-10:00",
+          sourceQuote: "ST 07:00-10:00"
+        },
+        {
+          bandKey: "ST",
+          label: "Standardtarif",
+          seasonLabel: "Q1 2026",
+          timeRangeLabel: "00:00-07:00",
+          sourceQuote: "ST 00:00-07:00"
+        }
+      ]
+    });
+
+    expect(matrix.find((quarter) => quarter.key === "Q1")?.groups).toEqual([
+      expect.objectContaining({
+        bandKey: "ST",
+        timeRanges: ["00:00-07:00", "07:00-10:00", "22:00-24:00", "Alle anderen Zeiten"]
+      })
+    ]);
+  });
+
   test("renders Stadtwerke Schwäbisch Hall quarter logic from the official 2026 PDF", () => {
     const operator = getSeedPublishedOperators().find(
       (entry) => entry.slug === "stadtwerke-schwaebisch-hall"
@@ -57,6 +104,13 @@ describe("buildQuarterlyTariffMatrix", () => {
           valueCtPerKwh: "5.53",
           timeRanges: ["00:00-24:00"]
         })
+      ],
+      timelineEntries: [
+        expect.objectContaining({
+          bandKey: "ST",
+          valueCtPerKwh: "5.53",
+          timeRange: "00:00-24:00"
+        })
       ]
     });
   });
@@ -66,6 +120,11 @@ describe("buildQuarterlyTariffMatrix", () => {
     const schwaebischHall = rows.find((row) => row.operatorSlug === "stadtwerke-schwaebisch-hall");
 
     expect(schwaebischHall?.quarterMatrix).toHaveLength(4);
+    expect(schwaebischHall?.currentBandBadges).toEqual([
+      { key: "NT", valueCtPerKwh: "1.11" },
+      { key: "ST", valueCtPerKwh: "5.53" },
+      { key: "HT", valueCtPerKwh: "8.14" }
+    ]);
     expect(
       schwaebischHall?.quarterMatrix.find((quarter) => quarter.key === "Q3")?.summaryLabel
     ).toBe("Nur Standardtarif");

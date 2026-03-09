@@ -8,11 +8,19 @@ export type TariffQuarterGroup = {
   sourceQuotes: string[];
 };
 
+export type TariffQuarterEntry = {
+  bandKey: "NT" | "ST" | "HT";
+  label: string;
+  valueCtPerKwh: string;
+  timeRange: string;
+};
+
 export type TariffQuarter = {
   key: TariffQuarterKey;
   label: TariffQuarterKey;
   summaryLabel: string;
   groups: TariffQuarterGroup[];
+  timelineEntries: TariffQuarterEntry[];
 };
 
 export type QuarterlyTariffInput = {
@@ -85,6 +93,66 @@ function getQuarterSummaryLabel(groups: TariffQuarterGroup[]) {
   return groups.length > 0 ? `${groups.length} Tarifgruppen` : "Keine Tariffenster";
 }
 
+function getCatchAllRank(timeRange: string) {
+  const normalized = timeRange.toLocaleLowerCase("de-DE");
+
+  if (
+    normalized.includes("alle anderen zeiten") ||
+    normalized.includes("alle restlichen zeiten") ||
+    normalized.includes("alle restzeiten")
+  ) {
+    return 1;
+  }
+
+  return 0;
+}
+
+function parseMinutes(value: string) {
+  const match = value.match(/^(\d{2}):(\d{2})$/);
+
+  if (!match) {
+    return Number.POSITIVE_INFINITY;
+  }
+
+  return Number.parseInt(match[1]!, 10) * 60 + Number.parseInt(match[2]!, 10);
+}
+
+function compareTimeRanges(left: string, right: string) {
+  const catchAllRank = getCatchAllRank(left) - getCatchAllRank(right);
+
+  if (catchAllRank !== 0) {
+    return catchAllRank;
+  }
+
+  const leftMatch = left.match(/(\d{2}:\d{2})-(\d{2}:\d{2})/);
+  const rightMatch = right.match(/(\d{2}:\d{2})-(\d{2}:\d{2})/);
+
+  if (!leftMatch || !rightMatch) {
+    return left.localeCompare(right, "de-DE");
+  }
+
+  const startDifference = parseMinutes(leftMatch[1]!) - parseMinutes(rightMatch[1]!);
+
+  if (startDifference !== 0) {
+    return startDifference;
+  }
+
+  return parseMinutes(leftMatch[2]!) - parseMinutes(rightMatch[2]!);
+}
+
+function buildQuarterTimelineEntries(groups: TariffQuarterGroup[]): TariffQuarterEntry[] {
+  return groups
+    .flatMap((group) =>
+      group.timeRanges.map((timeRange) => ({
+        bandKey: group.bandKey,
+        label: group.label,
+        valueCtPerKwh: group.valueCtPerKwh,
+        timeRange
+      }))
+    )
+    .sort((left, right) => compareTimeRanges(left.timeRange, right.timeRange));
+}
+
 export function buildQuarterlyTariffMatrix(input: QuarterlyTariffInput): TariffQuarter[] {
   const bandValueMap = getBandValueMap(input);
   const groupsByQuarter = new Map<
@@ -106,6 +174,7 @@ export function buildQuarterlyTariffMatrix(input: QuarterlyTariffInput): TariffQ
       if (existing) {
         if (!existing.timeRanges.includes(window.timeRangeLabel)) {
           existing.timeRanges.push(window.timeRangeLabel);
+          existing.timeRanges.sort(compareTimeRanges);
         }
         if (!existing.sourceQuotes.includes(window.sourceQuote)) {
           existing.sourceQuotes.push(window.sourceQuote);
@@ -124,7 +193,7 @@ export function buildQuarterlyTariffMatrix(input: QuarterlyTariffInput): TariffQ
   }
 
   return QUARTER_ORDER.map((quarter) => {
-    const groups = [...(groupsByQuarter.get(quarter)?.values() ?? [])].sort(
+      const groups = [...(groupsByQuarter.get(quarter)?.values() ?? [])].sort(
       (left, right) => BAND_DISPLAY_ORDER[left.bandKey] - BAND_DISPLAY_ORDER[right.bandKey]
     );
 
@@ -132,8 +201,8 @@ export function buildQuarterlyTariffMatrix(input: QuarterlyTariffInput): TariffQ
       key: quarter,
       label: quarter,
       summaryLabel: getQuarterSummaryLabel(groups),
-      groups
+      groups,
+      timelineEntries: buildQuarterTimelineEntries(groups)
     };
   });
 }
-

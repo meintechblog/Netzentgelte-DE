@@ -4,6 +4,17 @@ type TariffTableProps = {
   rows: TariffTableRow[];
 };
 
+function getBandBadges(row: TariffTableRow) {
+  if (row.currentBandBadges?.length) {
+    return row.currentBandBadges;
+  }
+
+  return [...row.currentBandsSummary.matchAll(/\b(NT|ST|HT)\s+(\d+(?:\.\d+)?)/g)].map((match) => ({
+    key: match[1] as "NT" | "ST" | "HT",
+    valueCtPerKwh: match[2]!
+  }));
+}
+
 function getBandAccentClass(bandKey: "NT" | "ST" | "HT") {
   if (bandKey === "HT") {
     return "tariff-quarter-band--high";
@@ -14,18 +25,6 @@ function getBandAccentClass(bandKey: "NT" | "ST" | "HT") {
   }
 
   return "tariff-quarter-band--standard";
-}
-
-function getBandDisplayLabel(bandKey: "NT" | "ST" | "HT") {
-  if (bandKey === "HT") {
-    return "Hochtarif";
-  }
-
-  if (bandKey === "NT") {
-    return "Niedrigtarif";
-  }
-
-  return "Standardtarif";
 }
 
 export function TariffTable({ rows }: TariffTableProps) {
@@ -58,7 +57,14 @@ export function TariffTable({ rows }: TariffTableProps) {
                   <strong>{row.operatorName}</strong>
                   <span className="table-muted">{row.regionLabel}</span>
                   <span className="table-muted">{row.operatorSlug}</span>
-                  <div className="table-value">{row.currentBandsSummary}</div>
+                  <div aria-label="Arbeitspreise in ct/kWh" className="tariff-band-badges">
+                    {getBandBadges(row).map((band) => (
+                      <span className={`tariff-band-badge tariff-band-badge--${band.key.toLowerCase()}`} key={band.key}>
+                        <span className="tariff-band-badge__key">{band.key}</span>
+                        <span className="tariff-band-badge__value">{band.valueCtPerKwh}</span>
+                      </span>
+                    ))}
+                  </div>
                   <span className="table-muted">{`Gültig ab ${row.validFrom}`}</span>
                   <a
                     className="source-link"
@@ -90,34 +96,21 @@ export function TariffTable({ rows }: TariffTableProps) {
                   >
                     <div className="tariff-quarter-card__header tariff-quarter-card__header--compact">
                       <span className="table-muted">{quarter.summaryLabel}</span>
+                      <span className="tariff-quarter-card__unit">ct/kWh</span>
                     </div>
-                    {quarter.groups.length > 0 ? (
-                      <div className="tariff-quarter-band-list">
-                        {quarter.groups.map((group) => (
-                          <article
-                            className={`tariff-quarter-band ${getBandAccentClass(group.bandKey)}`}
-                            key={`${row.operatorSlug}-${quarter.key}-${group.bandKey}`}
+                    {quarter.timelineEntries.length > 0 ? (
+                      <ol className="tariff-quarter-timeline">
+                        {quarter.timelineEntries.map((entry) => (
+                          <li
+                            className={`tariff-quarter-entry ${getBandAccentClass(entry.bandKey)}`}
+                            key={`${row.operatorSlug}-${quarter.key}-${entry.bandKey}-${entry.timeRange}`}
                           >
-                            <div className="tariff-quarter-band__header">
-                              <div className="tariff-quarter-band__title">
-                                <span className="tariff-window-chip">{getBandDisplayLabel(group.bandKey)}</span>
-                                <span className="tariff-quarter-band__source-label">{group.label}</span>
-                              </div>
-                              <strong className="tariff-quarter-band__price">{`${group.valueCtPerKwh} ct/kWh`}</strong>
-                            </div>
-                            <ul className="tariff-quarter-band__times">
-                              {group.timeRanges.map((timeRange) => (
-                                <li
-                                  className="tariff-window-time"
-                                  key={`${row.operatorSlug}-${quarter.key}-${group.bandKey}-${timeRange}`}
-                                >
-                                  {timeRange}
-                                </li>
-                              ))}
-                            </ul>
-                          </article>
+                            <span className="tariff-window-time">{entry.timeRange}</span>
+                            <span className="tariff-window-chip">{entry.bandKey}</span>
+                            <strong className="tariff-quarter-entry__price">{entry.valueCtPerKwh}</strong>
+                          </li>
                         ))}
-                      </div>
+                      </ol>
                     ) : (
                       <p className="tariff-window-empty">Keine Tariffenster erfasst.</p>
                     )}

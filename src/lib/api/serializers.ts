@@ -76,17 +76,20 @@ export function serializeRegistryOperatorGeo(entries: PublishedOperator[]) {
         coverageKind: entry.coverageKind,
         geometryPrecision: entry.geometryPrecision,
         geometrySourceLabel: entry.geometrySourceLabel,
+        geometrySourceUrl: entry.geometrySourceUrl ?? null,
         sourcePageUrl: entry.sourcePageUrl,
         documentUrl: entry.documentUrl,
         summary: entry.currentBandsSummary,
+        mapDisplayMode: entry.mapDisplayMode ?? "anchor",
         anchor: {
           longitude: entry.anchors[0]?.longitude ?? 10.4515,
           latitude: entry.anchors[0]?.latitude ?? 51.1657
         },
         anchors: entry.anchors,
-        stateHints: entry.stateHints
+        stateHints: entry.stateHints,
+        coverageUnits: entry.coverageUnits ?? []
       },
-      geometry: null
+      geometry: entry.geometry ?? null
     }))
   };
 }

@@ -94,7 +94,7 @@ describe("OperatorExplorer", () => {
     });
 
     expect(screen.getByText("Kein Netzbetreiber passt zur aktuellen Suche.")).toBeInTheDocument();
-    expect(screen.getByText("Kein Netzbetreiber passt zur Suche")).toBeInTheDocument();
+    expect(screen.getByText("Keine belegte Netzfläche passt zur Suche")).toBeInTheDocument();
     expect(screen.getByText("0 Treffer")).toBeInTheDocument();
   });
 });

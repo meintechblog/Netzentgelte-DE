@@ -20,7 +20,10 @@ function getPrecisionLabel(feature: ProjectedGermanyMapScene["operators"][number
 }
 
 function getCoverageLabel(feature: ProjectedGermanyMapScene["operators"][number]) {
-  return `Kartenzuordnung: ${feature.coverageKind}`;
+  const coverageLabel =
+    feature.coverageKind === "municipality-union" ? "belegte Gemeinden" : feature.coverageKind;
+
+  return `Kartenzuordnung: ${coverageLabel}`;
 }
 
 function getStateHintLabel(feature: ProjectedGermanyMapScene["operators"][number]) {
@@ -31,12 +34,30 @@ function getStateHintLabel(feature: ProjectedGermanyMapScene["operators"][number
   return `Bundesländer: ${feature.stateHints.map(getGermanyStateName).join(", ")}`;
 }
 
+function getCoverageUnitsLabel(feature: ProjectedGermanyMapScene["operators"][number]) {
+  if (!feature.coverageUnits || feature.coverageUnits.length === 0) {
+    return "Gebietszuordnung: noch kein belastbarer Flächenschnitt";
+  }
+
+  if (feature.coverageUnits.length <= 4) {
+    return `Gebietszuordnung: ${feature.coverageUnits.map((unit) => unit.name).join(", ")}`;
+  }
+
+  const head = feature.coverageUnits
+    .slice(0, 4)
+    .map((unit) => unit.name)
+    .join(", ");
+
+  return `Gebietszuordnung: ${head} +${feature.coverageUnits.length - 4} weitere`;
+}
+
 export function OperatorMap({ scene }: OperatorMapProps) {
-  const [hoveredFeatureId, setHoveredFeatureId] = useState<string | null>(scene.operators[0]?.id ?? null);
+  const visibleFeatures = scene.operators.filter((feature) => feature.mapDisplayMode !== "hidden");
+  const [hoveredFeatureId, setHoveredFeatureId] = useState<string | null>(visibleFeatures[0]?.id ?? null);
   const [lockedFeatureId, setLockedFeatureId] = useState<string | null>(null);
 
   useEffect(() => {
-    if (scene.operators.length === 0) {
+    if (visibleFeatures.length === 0) {
       setHoveredFeatureId(null);
       setLockedFeatureId(null);
       return;
@@ -44,7 +65,7 @@ export function OperatorMap({ scene }: OperatorMapProps) {
 
     setLockedFeatureId((current) => {
       const currentFeature = current
-        ? scene.operators.find((feature) => feature.id === current)
+        ? visibleFeatures.find((feature) => feature.id === current)
         : null;
 
       if (!currentFeature || !currentFeature.searchMatch) {
@@ -56,9 +77,9 @@ export function OperatorMap({ scene }: OperatorMapProps) {
 
     setHoveredFeatureId((current) => {
       const currentFeature = current
-        ? scene.operators.find((feature) => feature.id === current)
+        ? visibleFeatures.find((feature) => feature.id === current)
         : null;
-      const firstMatchingFeature = scene.operators.find((feature) => feature.searchMatch);
+      const firstMatchingFeature = visibleFeatures.find((feature) => feature.searchMatch);
 
       if (!firstMatchingFeature) {
         return null;
@@ -70,15 +91,15 @@ export function OperatorMap({ scene }: OperatorMapProps) {
 
       return firstMatchingFeature.id;
     });
-  }, [scene]);
+  }, [visibleFeatures]);
 
   const lockedFeature = lockedFeatureId
-    ? scene.operators.find((feature) => feature.id === lockedFeatureId) ?? null
+    ? visibleFeatures.find((feature) => feature.id === lockedFeatureId) ?? null
     : null;
   const hoveredFeature = hoveredFeatureId
-    ? scene.operators.find((feature) => feature.id === hoveredFeatureId) ?? null
+    ? visibleFeatures.find((feature) => feature.id === hoveredFeatureId) ?? null
     : null;
-  const fallbackFeature = scene.operators.find((feature) => feature.searchMatch) ?? null;
+  const fallbackFeature = visibleFeatures.find((feature) => feature.searchMatch) ?? null;
   const activeFeature = lockedFeature ?? hoveredFeature ?? fallbackFeature;
 
   const activateFeature = (featureId: string) => {
@@ -92,7 +113,7 @@ export function OperatorMap({ scene }: OperatorMapProps) {
 
   const unlockFeature = () => {
     setLockedFeatureId(null);
-    setHoveredFeatureId(scene.operators.find((feature) => feature.searchMatch)?.id ?? null);
+    setHoveredFeatureId(visibleFeatures.find((feature) => feature.searchMatch)?.id ?? null);
   };
 
   if (scene.operators.length === 0) {
@@ -165,7 +186,7 @@ export function OperatorMap({ scene }: OperatorMapProps) {
             ))}
           </g>
 
-          {scene.operators.map((feature) => {
+          {visibleFeatures.map((feature) => {
             const isActive = activeFeature?.id === feature.id;
             const isDimmed = !feature.searchMatch;
 
@@ -181,18 +202,18 @@ export function OperatorMap({ scene }: OperatorMapProps) {
                   }
                 }}
               >
-                {feature.projectedOverlays.map((overlay, index) => (
+                {feature.mapDisplayMode === "polygon" && feature.projectedGeometryPath ? (
                   <path
                     aria-hidden="true"
                     className={[
                       "operator-map-region__shape",
+                      "operator-map-region__shape--polygon",
                       isActive ? "is-active" : "",
                       isDimmed ? "is-dimmed" : ""
                     ]
                       .filter(Boolean)
                       .join(" ")}
-                    d={overlay.path}
-                    key={`${feature.id}-${index}`}
+                    d={feature.projectedGeometryPath}
                     onClick={() => lockFeature(feature.id)}
                     onMouseEnter={() => {
                       if (!lockedFeature) {
@@ -200,33 +221,59 @@ export function OperatorMap({ scene }: OperatorMapProps) {
                       }
                     }}
                   />
-                ))}
-                <circle
-                  aria-hidden="true"
-                  className={[
-                    "operator-map-region__pulse",
-                    isActive ? "is-active" : "",
-                    isDimmed ? "is-dimmed" : ""
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                  cx={feature.projectedFocusPoint.x}
-                  cy={feature.projectedFocusPoint.y}
-                  r={isActive ? 18 : 12}
-                />
-                <circle
-                  aria-hidden="true"
-                  className={[
-                    "operator-map-region__dot",
-                    isActive ? "is-active" : "",
-                    isDimmed ? "is-dimmed" : ""
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                  cx={feature.projectedFocusPoint.x}
-                  cy={feature.projectedFocusPoint.y}
-                  r={isActive ? 6 : 4.5}
-                />
+                ) : null}
+                {feature.mapDisplayMode !== "polygon"
+                  ? feature.projectedOverlays.map((overlay, index) => (
+                      <path
+                        aria-hidden="true"
+                        className={[
+                          "operator-map-region__shape",
+                          isActive ? "is-active" : "",
+                          isDimmed ? "is-dimmed" : ""
+                        ]
+                          .filter(Boolean)
+                          .join(" ")}
+                        d={overlay.path}
+                        key={`${feature.id}-${index}`}
+                        onClick={() => lockFeature(feature.id)}
+                        onMouseEnter={() => {
+                          if (!lockedFeature) {
+                            activateFeature(feature.id);
+                          }
+                        }}
+                      />
+                    ))
+                  : null}
+                {feature.mapDisplayMode !== "polygon" ? (
+                  <>
+                    <circle
+                      aria-hidden="true"
+                      className={[
+                        "operator-map-region__pulse",
+                        isActive ? "is-active" : "",
+                        isDimmed ? "is-dimmed" : ""
+                      ]
+                        .filter(Boolean)
+                        .join(" ")}
+                      cx={feature.projectedFocusPoint.x}
+                      cy={feature.projectedFocusPoint.y}
+                      r={isActive ? 18 : 12}
+                    />
+                    <circle
+                      aria-hidden="true"
+                      className={[
+                        "operator-map-region__dot",
+                        isActive ? "is-active" : "",
+                        isDimmed ? "is-dimmed" : ""
+                      ]
+                        .filter(Boolean)
+                        .join(" ")}
+                      cx={feature.projectedFocusPoint.x}
+                      cy={feature.projectedFocusPoint.y}
+                      r={isActive ? 6 : 4.5}
+                    />
+                  </>
+                ) : null}
                 <circle
                   aria-label={getFeatureAriaLabel(feature)}
                   className="operator-map-region__focus-target"
@@ -276,10 +323,21 @@ export function OperatorMap({ scene }: OperatorMapProps) {
               <span className="table-muted">Region: {activeFeature.regionLabel}</span>
               <span className="table-muted">{getPrecisionLabel(activeFeature)}</span>
               <span className="table-muted">{getCoverageLabel(activeFeature)}</span>
+              <span className="table-muted">{getCoverageUnitsLabel(activeFeature)}</span>
               <span className="table-muted">{getStateHintLabel(activeFeature)}</span>
               <span className="table-muted">{activeFeature.geometrySourceLabel}</span>
             </div>
             <div className="table-operator">
+              {activeFeature.geometrySourceUrl ? (
+                <a
+                  className="source-link"
+                  href={activeFeature.geometrySourceUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Flächennachweis
+                </a>
+              ) : null}
               <a
                 className="source-link"
                 href={activeFeature.sourcePageUrl}
@@ -300,8 +358,11 @@ export function OperatorMap({ scene }: OperatorMapProps) {
           </>
         ) : (
           <>
-            <h3>Kein Netzbetreiber passt zur Suche</h3>
-            <p>Die Deutschlandkarte bleibt sichtbar, aber alle Betreiberzonen sind aktuell gedimmt.</p>
+            <h3>Keine belegte Netzfläche passt zur Suche</h3>
+            <p>
+              Die Deutschlandkarte bleibt sichtbar, zeigt aktuell aber nur Betreiber mit
+              belastbarer Flächengeometrie.
+            </p>
           </>
         )}
         <p className="map-stage__attribution">{scene.attribution}</p>

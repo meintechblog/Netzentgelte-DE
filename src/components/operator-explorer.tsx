@@ -81,13 +81,14 @@ export function OperatorExplorer({ rows, mapScene }: OperatorExplorerProps) {
             <span className="section-eyebrow">Hero-Karte</span>
             <h2 id="kartenstufe">Deutschlandkarte im Fokus</h2>
             <p>
-              Echte Deutschland- und Ländergeometrie, projizierte Betreiberzonen und
+              Amtliche Deutschland- und Gemeindegeometrie, belegte Netzgebiete und
               Tarifkontext auf einer gemeinsamen Kartenbühne.
             </p>
           </div>
           <div className="panel-actions">
             <span className="surface-chip">GeoJSON · WGS84</span>
             <span className="surface-chip">{getResultLabel(filteredRows.length)}</span>
+            <span className="surface-chip">{mapScene.mappedOperatorCount} Flächen belegt</span>
             <span className="surface-chip">Live während des Tippens</span>
           </div>
         </div>
@@ -112,7 +113,8 @@ export function OperatorExplorer({ rows, mapScene }: OperatorExplorerProps) {
             ) : null}
           </div>
           <p className="operator-search__hint">
-            Filtert Tarifmatrix direkt und dimmt die Deutschlandkarte nach Betreibername,
+            Filtert Tarifmatrix direkt. Die Karte zeigt aktuell nur Betreiber mit
+            belastbar belegter Flächengeometrie und dimmt diese nach Betreibername,
             Slug oder Region.
           </p>
         </div>

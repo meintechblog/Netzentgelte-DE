@@ -1,0 +1,81 @@
+[
+  {
+    "slug": "stromnetz-berlin",
+    "mapRank": 15,
+    "coverageKind": "municipality-union",
+    "coveragePrecision": "exact",
+    "geometrySourceLabel": "Amtliche Gemeindepolygone des BKG, gemappt auf das Berliner Stromverteilungsnetz",
+    "geometrySourceUrl": "https://www.stromnetz.berlin/technik-und-innovationen/aufbau-und-funktionsweise-stromnetz/",
+    "stateHints": ["11"],
+    "coverageUnits": [{ "ags": "11000000", "name": "Berlin", "kind": "Stadt" }]
+  },
+  {
+    "slug": "swm-infrastruktur",
+    "mapRank": 16,
+    "coverageKind": "municipality-union",
+    "coveragePrecision": "exact",
+    "geometrySourceLabel": "Amtliche Gemeindepolygone des BKG, gemappt auf die 2026 ausgewiesenen Konzessionsgebiete der SWM Infrastruktur",
+    "geometrySourceUrl": "https://www.swm-infrastruktur.de/dam/swm-infrastruktur/dokumente/strom/netzzugang-netznutzungsentgelte/preisblaetter-2026/strom-preisblatt-2026.pdf",
+    "stateHints": ["09"],
+    "coverageUnits": [
+      { "ags": "09162000", "name": "München", "kind": "Stadt" },
+      { "ags": "09184112", "name": "Aschheim", "kind": "Gemeinde" },
+      { "ags": "09184118", "name": "Feldkirchen", "kind": "Gemeinde" },
+      { "ags": "09184119", "name": "Garching b.München", "kind": "Stadt" },
+      { "ags": "09184131", "name": "Kirchheim b.München", "kind": "Gemeinde" },
+      { "ags": "09184136", "name": "Ottobrunn", "kind": "Gemeinde" },
+      { "ags": "09178143", "name": "Moosburg a.d.Isar", "kind": "Stadt" },
+      { "ags": "09177112", "name": "Berglern", "kind": "Gemeinde" },
+      { "ags": "09274194", "name": "Bruckberg", "kind": "Gemeinde" },
+      { "ags": "09177116", "name": "Eitting", "kind": "Gemeinde" },
+      { "ags": "09178125", "name": "Gammelsdorf", "kind": "Gemeinde" },
+      { "ags": "09178138", "name": "Langenbach", "kind": "Gemeinde" },
+      { "ags": "09178142", "name": "Mauern", "kind": "Gemeinde" },
+      { "ags": "09178155", "name": "Wang", "kind": "Gemeinde" }
+    ]
+  },
+  {
+    "slug": "wesernetz-bremen",
+    "mapRank": 17,
+    "coverageKind": "municipality-union",
+    "coveragePrecision": "exact",
+    "geometrySourceLabel": "Amtliche Gemeindepolygone des BKG, gemappt auf das Stromnetz Bremen von wesernetz",
+    "geometrySourceUrl": "https://www.wesernetz.de/fuer-die-region/wesernetz/netzbeschreibung/stromnetz",
+    "stateHints": ["04"],
+    "coverageUnits": [{ "ags": "04011000", "name": "Bremen", "kind": "Stadt" }]
+  },
+  {
+    "slug": "wesernetz-bremerhaven",
+    "mapRank": 18,
+    "coverageKind": "municipality-union",
+    "coveragePrecision": "exact",
+    "geometrySourceLabel": "Amtliche Gemeindepolygone des BKG, gemappt auf das Stromnetz Bremerhaven von wesernetz",
+    "geometrySourceUrl": "https://www.wesernetz.de/fuer-die-region/wesernetz/netzbeschreibung/stromnetz",
+    "stateHints": ["04"],
+    "coverageUnits": [{ "ags": "04012000", "name": "Bremerhaven", "kind": "Stadt" }]
+  },
+  {
+    "slug": "stadtwerke-schwaebisch-hall",
+    "mapRank": 19,
+    "coverageKind": "municipality-union",
+    "coveragePrecision": "exact",
+    "geometrySourceLabel": "Amtliche Gemeindepolygone des BKG, gemappt auf die offiziell genannten Grundversorgungsgebiete der Stadtwerke Schwäbisch Hall",
+    "geometrySourceUrl": "https://stadtwerke-hall.de/ueber-uns/aktuelles/news/artikel/ab-2025-wir-werden-grundversorger-in-michelbach",
+    "stateHints": ["08"],
+    "coverageUnits": [
+      { "ags": "08127076", "name": "Schwäbisch Hall", "kind": "Stadt" },
+      { "ags": "08127100", "name": "Rosengarten", "kind": "Gemeinde" },
+      { "ags": "08127056", "name": "Michelbach an der Bilz", "kind": "Gemeinde" }
+    ]
+  },
+  {
+    "slug": "stadtwerke-ingolstadt-netze",
+    "mapRank": 22,
+    "coverageKind": "municipality-union",
+    "coveragePrecision": "exact",
+    "geometrySourceLabel": "Amtliche Gemeindepolygone des BKG, gemappt auf das Konzessionsgebiet der Stadt Ingolstadt",
+    "geometrySourceUrl": "https://swi-netze.de/grundversorger/",
+    "stateHints": ["09"],
+    "coverageUnits": [{ "ags": "09161000", "name": "Ingolstadt", "kind": "Stadt" }]
+  }
+]

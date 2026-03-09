@@ -4,6 +4,26 @@ type TariffTableProps = {
   rows: TariffTableRow[];
 };
 
+function getGroupedTimeWindows(row: TariffTableRow) {
+  const groups = new Map<string, TariffTableRow["timeWindows"]>();
+
+  for (const window of row.timeWindows) {
+    const existing = groups.get(window.seasonLabel);
+
+    if (existing) {
+      existing.push(window);
+      continue;
+    }
+
+    groups.set(window.seasonLabel, [window]);
+  }
+
+  return [...groups.entries()].map(([seasonLabel, windows]) => ({
+    seasonLabel,
+    windows
+  }));
+}
+
 function getTimeWindowMeta(row: TariffTableRow) {
   if (row.timeWindows.length === 0) {
     return "Zeitfenster noch nicht strukturiert";
@@ -43,19 +63,30 @@ export function TariffTable({ rows }: TariffTableProps) {
                       <span className="table-muted">{getTimeWindowMeta(row)}</span>
                     </div>
                     {row.timeWindows.length > 0 ? (
-                      <div className="tariff-window-list">
-                        {row.timeWindows.map((window) => (
-                          <article className="tariff-window-card" key={window.id}>
-                            <div className="tariff-window-card__topline">
-                              <span className="tariff-window-chip">{window.label}</span>
-                              <span className="tariff-window-time">{window.timeRangeLabel}</span>
+                      <div className="tariff-window-groups">
+                        {getGroupedTimeWindows(row).map((group) => (
+                          <section className="tariff-window-group" key={`${row.operatorSlug}-${group.seasonLabel}`}>
+                            <div className="tariff-window-group__header">
+                              <h3>{group.seasonLabel}</h3>
+                              <span className="table-muted">
+                                {group.windows.length} Zeitfenster
+                              </span>
                             </div>
-                            <div className="tariff-window-card__meta">
-                              <span>{window.seasonLabel}</span>
-                              <span>{window.dayLabel}</span>
+                            <div className="tariff-window-list">
+                              {group.windows.map((window) => (
+                                <article className="tariff-window-card" key={window.id}>
+                                  <div className="tariff-window-card__topline">
+                                    <span className="tariff-window-chip">{window.label}</span>
+                                    <span className="tariff-window-time">{window.timeRangeLabel}</span>
+                                  </div>
+                                  <div className="tariff-window-card__meta">
+                                    <span>{window.dayLabel}</span>
+                                  </div>
+                                  <p>{window.sourceQuote}</p>
+                                </article>
+                              ))}
                             </div>
-                            <p>{window.sourceQuote}</p>
-                          </article>
+                          </section>
                         ))}
                       </div>
                     ) : (

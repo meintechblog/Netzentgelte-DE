@@ -9,4 +9,6 @@ test("renders project shell", async () => {
   expect(screen.getAllByText(/Stromnetz Berlin/).length).toBeGreaterThan(0);
   expect(screen.getByRole("heading", { name: "Quellenpruefung" })).toBeInTheDocument();
   expect(screen.getByText("Zeitfenster")).toBeInTheDocument();
+  expect(screen.getAllByRole("heading", { name: "Q1-Q4 2026" }).length).toBeGreaterThan(0);
+  expect(screen.getAllByText("17:00-22:00").length).toBeGreaterThan(0);
 });

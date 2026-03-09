@@ -4,7 +4,7 @@ import { describe, expect, test } from "vitest";
 import { TariffTable } from "./tariff-table";
 
 describe("TariffTable", () => {
-  test("renders operator rows with source page and manual review fallback", () => {
+  test("renders grouped schedule headings when tariff windows span multiple seasons", () => {
     render(
       <TariffTable
         rows={[
@@ -27,6 +27,15 @@ describe("TariffTable", () => {
                 dayLabel: "Alle Tage",
                 timeRangeLabel: "18:00-21:00",
                 sourceQuote: "Hochtarif 11,77 ct/kWh, 18:00-21:00"
+              },
+              {
+                id: "demo-standard-summer",
+                bandKey: "ST",
+                label: "Standardtarif",
+                seasonLabel: "Sommer 2026",
+                dayLabel: "Alle Tage",
+                timeRangeLabel: "00:00-10:00",
+                sourceQuote: "Standardtarif 4,72 ct/kWh, 00:00-10:00"
               }
             ]
           }
@@ -42,7 +51,8 @@ describe("TariffTable", () => {
     );
     expect(screen.getByText(/Zuletzt geprueft 2026-03-09/)).toBeInTheDocument();
     expect(screen.getByText(/Quelle demo-netz-example-com-preise-pdf/)).toBeInTheDocument();
-    expect(screen.getByText("Winter 2026")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Winter 2026" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Sommer 2026" })).toBeInTheDocument();
     expect(screen.getByText("18:00-21:00")).toBeInTheDocument();
   });
 });

@@ -131,6 +131,11 @@ describe("buildPublishedOperators", () => {
 describe("getSeedPublishedOperators", () => {
   test("keeps the current seed-backed published view available for tests", () => {
     const published = getSeedPublishedOperators();
+    const netzeBw = published.find((entry) => entry.slug === "netze-bw");
+    const bayernwerk = published.find((entry) => entry.slug === "bayernwerk-netz");
+    const westnetz = published.find((entry) => entry.slug === "westnetz");
+    const wesernetzBremen = published.find((entry) => entry.slug === "wesernetz-bremen");
+    const wesernetzBremerhaven = published.find((entry) => entry.slug === "wesernetz-bremerhaven");
     const eDisNetz = published.find((entry) => entry.slug === "e-dis-netz");
     const lewVerteilnetz = published.find((entry) => entry.slug === "lew-verteilnetz");
     const mainzerNetze = published.find((entry) => entry.slug === "mainzer-netze");
@@ -151,6 +156,56 @@ describe("getSeedPublishedOperators", () => {
           bandKey: "HT",
           seasonLabel: "Q1-Q4 2026",
           timeRangeLabel: "18:00-21:00"
+        })
+      ])
+    );
+    expect(netzeBw?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q1-Q4 2026",
+          bandKey: "HT",
+          timeRangeLabel: "17:00-22:00"
+        })
+      ])
+    );
+    expect(bayernwerk?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q1 2026 (01.01.-31.03.)",
+          bandKey: "ST",
+          timeRangeLabel: "00:00-24:00"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q2 2026 (01.04.-30.06.)",
+          bandKey: "HT",
+          timeRangeLabel: "17:00-22:00"
+        })
+      ])
+    );
+    expect(westnetz?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Ganzjaehrig 2026",
+          bandKey: "NT",
+          timeRangeLabel: "00:00-07:00"
+        })
+      ])
+    );
+    expect(wesernetzBremen?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Ganzjaehrig 2026",
+          bandKey: "HT",
+          timeRangeLabel: "17:00-19:30"
+        })
+      ])
+    );
+    expect(wesernetzBremerhaven?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Ganzjaehrig 2026",
+          bandKey: "HT",
+          timeRangeLabel: "16:30-19:30"
         })
       ])
     );

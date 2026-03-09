@@ -78,6 +78,111 @@
     ]
   },
   {
+    "id": "netze-bw-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Netze BW GmbH",
+    "title": "Neuregelung §14a EnWG / Netzentgelte Strom 2026",
+    "url": "https://www.netze-bw.de/neuregelung-14a-enwg",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite fuer die §14a-EnWG-Neuregelung.",
+      "Das 2026er PDF ist als endgueltige Preisdatei veroeffentlicht und fuehrt Modul-3-Zeitfenster in einer Quartalsmatrix.",
+      "Fuer Refreshes sollten die Quartalsspalten auf identische oder geaenderte Uhrzeiten geprueft werden."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quarter matrix",
+      "time-window quote snippets"
+    ]
+  },
+  {
+    "id": "bayernwerk-netz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Bayernwerk Netz GmbH",
+    "title": "Netzentgelte fuer unser Stromnetz 2026",
+    "url": "https://mir.bayernwerk-netz.de/de/bayernwerk-netz-gmbh/netzinformation/netzentgelte/netzentgelte-strom/netzentgelte-fuer-unser-stromnetz.html",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite fuer Netzentgelte Strom.",
+      "Das 2026er Preisblatt zeigt Modul 3 mit saisonaler Differenz zwischen Q1/Q4 und Q2/Q3.",
+      "Fuer Refreshes sollten insbesondere die Volltag-ST-Phasen in Q1 und Q4 gegen die Sommerquartale verglichen werden."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quarter matrix",
+      "time-window quote snippets"
+    ]
+  },
+  {
+    "id": "westnetz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Westnetz GmbH",
+    "title": "Netzentgelte Strom / Preisblaetter 01.01.2026",
+    "url": "https://www.westnetz.de/de/ueber-westnetz/unser-netz/netzentgelte-strom.html",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite fuer Netzentgelte Strom.",
+      "Das PDF formuliert die Modul-3-Zeitfenster direkt als taegliche Uhrzeiten fuer NT, ST und HT.",
+      "Fuer Refreshes reicht ein gezielter Vergleich der Preisblatt-6-Zeilen fuer die taeglichen Zeitfenster."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "preisblatt 6 modul-3 lines",
+      "time-window quote snippets"
+    ]
+  },
+  {
+    "id": "wesernetz-bremen-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "wesernetz Bremen GmbH",
+    "title": "Preisblatt Strom §14a EnWG Bremen 2026",
+    "url": "https://www.wesernetz.de/fuer-partner/energielieferanten/stromnetz/entgelte-hb-bhv",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Entgeltseite mit direktem Dokumentlink fuer Bremen.",
+      "Das Preisblatt nennt nur zwei explizite Zeitfenster und fasst den Rest als Standardtarif zusammen.",
+      "Fuer Refreshes muss geprueft werden, ob aus 'alle restlichen Zeiten' spaeter explizite Uhrzeiten werden."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "time-window quote snippets",
+      "human review note for residual standard window"
+    ]
+  },
+  {
+    "id": "wesernetz-bremerhaven-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "wesernetz Bremerhaven GmbH",
+    "title": "Preisblatt Strom §14a EnWG Bremerhaven 2026",
+    "url": "https://www.wesernetz.de/fuer-partner/energielieferanten/stromnetz/entgelte-hb-bhv",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Entgeltseite mit separatem 2026er Dokument fuer Bremerhaven.",
+      "Wie in Bremen nennt das Preisblatt zwei explizite Zeitfenster und einen Restblock fuer Standardtarif.",
+      "Fuer Refreshes muss der HT-Block gegen Bremen separat kontrolliert werden, da die Uhrzeit abweicht."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "time-window quote snippets",
+      "human review note for residual standard window"
+    ]
+  },
+  {
     "id": "avacon-netz-14a-2026",
     "scope": "operator-tariffs",
     "kind": "operator-source-candidate",

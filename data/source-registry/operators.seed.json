@@ -47,6 +47,53 @@
           "valueCtPerKwh": "11.06",
           "sourceQuote": "Hochtarifstufe 11,06 ct/kWh"
         }
+      ],
+      "timeWindows": [
+        {
+          "id": "netze-bw-2026-standard-overnight",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-10:00",
+          "sourceQuote": "Standardtarif 00:00-10:00 Uhr"
+        },
+        {
+          "id": "netze-bw-2026-low-midday",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "10:00-15:00",
+          "sourceQuote": "Niedrigtarif 10:00-15:00 Uhr"
+        },
+        {
+          "id": "netze-bw-2026-standard-afternoon",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "15:00-17:00",
+          "sourceQuote": "Standardtarif 15:00-17:00 Uhr"
+        },
+        {
+          "id": "netze-bw-2026-high-peak",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-22:00",
+          "sourceQuote": "Hochtarif 17:00-22:00 Uhr"
+        },
+        {
+          "id": "netze-bw-2026-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "22:00-24:00",
+          "sourceQuote": "Standardtarif 22:00-24:00 Uhr"
+        }
       ]
     }
   },
@@ -97,6 +144,116 @@
           "label": "Hochtarifstufe",
           "valueCtPerKwh": "9.03",
           "sourceQuote": "Hochtarifstufe 9,03 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "bayernwerk-netz-2026-q1-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 2026 (01.01.-31.03.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Standardtarifstufe Q1 00:00-24:00 Uhr"
+        },
+        {
+          "id": "bayernwerk-netz-2026-q2-standard-overnight",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2 2026 (01.04.-30.06.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-10:00",
+          "sourceQuote": "Standardtarifstufe Q2 00:00-10:00 Uhr"
+        },
+        {
+          "id": "bayernwerk-netz-2026-q2-low-midday",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q2 2026 (01.04.-30.06.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "10:00-15:00",
+          "sourceQuote": "Niedrigtarifstufe Q2 10:00-15:00 Uhr"
+        },
+        {
+          "id": "bayernwerk-netz-2026-q2-standard-afternoon",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2 2026 (01.04.-30.06.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "15:00-17:00",
+          "sourceQuote": "Standardtarifstufe Q2 15:00-17:00 Uhr"
+        },
+        {
+          "id": "bayernwerk-netz-2026-q2-high-peak",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q2 2026 (01.04.-30.06.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-22:00",
+          "sourceQuote": "Hochtarifstufe Q2 17:00-22:00 Uhr"
+        },
+        {
+          "id": "bayernwerk-netz-2026-q2-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2 2026 (01.04.-30.06.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "22:00-24:00",
+          "sourceQuote": "Standardtarifstufe Q2 22:00-24:00 Uhr"
+        },
+        {
+          "id": "bayernwerk-netz-2026-q3-standard-overnight",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q3 2026 (01.07.-30.09.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-10:00",
+          "sourceQuote": "Standardtarifstufe Q3 00:00-10:00 Uhr"
+        },
+        {
+          "id": "bayernwerk-netz-2026-q3-low-midday",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q3 2026 (01.07.-30.09.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "10:00-15:00",
+          "sourceQuote": "Niedrigtarifstufe Q3 10:00-15:00 Uhr"
+        },
+        {
+          "id": "bayernwerk-netz-2026-q3-standard-afternoon",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q3 2026 (01.07.-30.09.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "15:00-17:00",
+          "sourceQuote": "Standardtarifstufe Q3 15:00-17:00 Uhr"
+        },
+        {
+          "id": "bayernwerk-netz-2026-q3-high-peak",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q3 2026 (01.07.-30.09.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-22:00",
+          "sourceQuote": "Hochtarifstufe Q3 17:00-22:00 Uhr"
+        },
+        {
+          "id": "bayernwerk-netz-2026-q3-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q3 2026 (01.07.-30.09.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "22:00-24:00",
+          "sourceQuote": "Standardtarifstufe Q3 22:00-24:00 Uhr"
+        },
+        {
+          "id": "bayernwerk-netz-2026-q4-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q4 2026 (01.10.-31.12.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Standardtarifstufe Q4 00:00-24:00 Uhr"
         }
       ]
     }
@@ -149,6 +306,44 @@
           "valueCtPerKwh": "15.65",
           "sourceQuote": "Hochtarifstufe 15,65 ct/kWh"
         }
+      ],
+      "timeWindows": [
+        {
+          "id": "westnetz-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Ganzjaehrig 2026",
+          "dayLabel": "Taeglich",
+          "timeRangeLabel": "00:00-07:00",
+          "sourceQuote": "Modul 3 - taeglich 0 bis 7 Uhr (Niedriglasttarifstufe)"
+        },
+        {
+          "id": "westnetz-2026-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Ganzjaehrig 2026",
+          "dayLabel": "Taeglich",
+          "timeRangeLabel": "07:00-15:00",
+          "sourceQuote": "Modul 3 - taeglich 7 bis 15 Uhr (Standardlasttarifstufe)"
+        },
+        {
+          "id": "westnetz-2026-high-peak",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Ganzjaehrig 2026",
+          "dayLabel": "Taeglich",
+          "timeRangeLabel": "15:00-20:00",
+          "sourceQuote": "Modul 3 - taeglich 15 bis 20 Uhr (Hochlasttarifstufe)"
+        },
+        {
+          "id": "westnetz-2026-standard-evening",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Ganzjaehrig 2026",
+          "dayLabel": "Taeglich",
+          "timeRangeLabel": "20:00-24:00",
+          "sourceQuote": "Modul 3 - taeglich 20 bis 24 Uhr (Standardlasttarifstufe)"
+        }
       ]
     }
   },
@@ -200,6 +395,35 @@
           "valueCtPerKwh": "7.65",
           "sourceQuote": "Hochtarifstufe 7,65 ct/kWh"
         }
+      ],
+      "timeWindows": [
+        {
+          "id": "wesernetz-bremen-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Ganzjaehrig 2026",
+          "dayLabel": "Im Preisblatt nicht spezifiziert",
+          "timeRangeLabel": "01:00-05:00",
+          "sourceQuote": "Zeitfenster 01:00-05:00 Uhr (NT)"
+        },
+        {
+          "id": "wesernetz-bremen-2026-high-peak",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Ganzjaehrig 2026",
+          "dayLabel": "Im Preisblatt nicht spezifiziert",
+          "timeRangeLabel": "17:00-19:30",
+          "sourceQuote": "Zeitfenster 17:00-19:30 Uhr (HT)"
+        },
+        {
+          "id": "wesernetz-bremen-2026-standard-rest",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Ganzjaehrig 2026",
+          "dayLabel": "Im Preisblatt nicht spezifiziert",
+          "timeRangeLabel": "Alle restlichen Zeiten",
+          "sourceQuote": "Standardtarif fuer alle restlichen Zeiten"
+        }
       ]
     }
   },
@@ -250,6 +474,35 @@
           "label": "Hochtarifstufe",
           "valueCtPerKwh": "7.29",
           "sourceQuote": "Hochtarifstufe 7,29 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "wesernetz-bremerhaven-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Ganzjaehrig 2026",
+          "dayLabel": "Im Preisblatt nicht spezifiziert",
+          "timeRangeLabel": "01:00-05:00",
+          "sourceQuote": "Zeitfenster 01:00-05:00 Uhr (NT)"
+        },
+        {
+          "id": "wesernetz-bremerhaven-2026-high-peak",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Ganzjaehrig 2026",
+          "dayLabel": "Im Preisblatt nicht spezifiziert",
+          "timeRangeLabel": "16:30-19:30",
+          "sourceQuote": "Zeitfenster 16:30-19:30 Uhr (HT)"
+        },
+        {
+          "id": "wesernetz-bremerhaven-2026-standard-rest",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Ganzjaehrig 2026",
+          "dayLabel": "Im Preisblatt nicht spezifiziert",
+          "timeRangeLabel": "Alle restlichen Zeiten",
+          "sourceQuote": "Standardtarif fuer alle restlichen Zeiten"
         }
       ]
     }

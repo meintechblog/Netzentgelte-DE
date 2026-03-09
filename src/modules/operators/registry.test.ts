@@ -64,6 +64,80 @@ describe("getOperatorRegistry", () => {
     );
   });
 
+  test("backfills official time windows for the previously unstructured operator slice", () => {
+    const registry = getOperatorRegistry();
+
+    expect(registry).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          slug: "netze-bw",
+          currentTariff: expect.objectContaining({
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q1-Q4 2026",
+                bandKey: "HT",
+                timeRangeLabel: "17:00-22:00"
+              })
+            ])
+          })
+        }),
+        expect.objectContaining({
+          slug: "bayernwerk-netz",
+          currentTariff: expect.objectContaining({
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q2 2026 (01.04.-30.06.)",
+                bandKey: "HT",
+                timeRangeLabel: "17:00-22:00"
+              }),
+              expect.objectContaining({
+                seasonLabel: "Q1 2026 (01.01.-31.03.)",
+                bandKey: "ST",
+                timeRangeLabel: "00:00-24:00"
+              })
+            ])
+          })
+        }),
+        expect.objectContaining({
+          slug: "westnetz",
+          currentTariff: expect.objectContaining({
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Ganzjaehrig 2026",
+                bandKey: "HT",
+                timeRangeLabel: "15:00-20:00"
+              })
+            ])
+          })
+        }),
+        expect.objectContaining({
+          slug: "wesernetz-bremen",
+          currentTariff: expect.objectContaining({
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Ganzjaehrig 2026",
+                bandKey: "HT",
+                timeRangeLabel: "17:00-19:30"
+              })
+            ])
+          })
+        }),
+        expect.objectContaining({
+          slug: "wesernetz-bremerhaven",
+          currentTariff: expect.objectContaining({
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Ganzjaehrig 2026",
+                bandKey: "HT",
+                timeRangeLabel: "16:30-19:30"
+              })
+            ])
+          })
+        })
+      ])
+    );
+  });
+
   test("keeps modul-3 band values attached to the source quote when manually curated", () => {
     const registry = getOperatorRegistry();
     const netzeBw = registry.find((entry) => entry.slug === "netze-bw");

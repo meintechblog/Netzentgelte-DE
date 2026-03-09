@@ -199,6 +199,100 @@ describe("buildQuarterlyTariffMatrix", () => {
     );
   });
 
+  test("keeps wrap-around night windows after midnight instead of truncating them at 24:00", () => {
+    const matrix = buildQuarterlyTariffMatrix({
+      bands: [
+        { key: "NT", label: "Niedrigtarif", valueCtPerKwh: "1.01" },
+        { key: "ST", label: "Standardtarif", valueCtPerKwh: "6.72" },
+        { key: "HT", label: "Hochtarif", valueCtPerKwh: "7.86" }
+      ],
+      timeWindows: [
+        {
+          bandKey: "ST",
+          label: "Standardtarif",
+          seasonLabel: "Q1 und Q4 2026",
+          timeRangeLabel: "06:00-16:45",
+          sourceQuote: "ST 06:00-16:45"
+        },
+        {
+          bandKey: "HT",
+          label: "Hochtarif",
+          seasonLabel: "Q1 und Q4 2026",
+          timeRangeLabel: "16:45-20:00",
+          sourceQuote: "HT 16:45-20:00"
+        },
+        {
+          bandKey: "ST",
+          label: "Standardtarif",
+          seasonLabel: "Q1 und Q4 2026",
+          timeRangeLabel: "20:00-22:00",
+          sourceQuote: "ST 20:00-22:00"
+        },
+        {
+          bandKey: "NT",
+          label: "Niedrigtarif",
+          seasonLabel: "Q1 und Q4 2026",
+          timeRangeLabel: "22:00-06:00",
+          sourceQuote: "NT 22:00-06:00"
+        },
+        {
+          bandKey: "ST",
+          label: "Standardtarif",
+          seasonLabel: "Q2-Q3 2026",
+          timeRangeLabel: "00:00-24:00",
+          sourceQuote: "Q2/Q3 ST 00:00-24:00"
+        }
+      ]
+    });
+
+    const q1 = matrix.find((quarter) => quarter.key === "Q1");
+    const q2 = matrix.find((quarter) => quarter.key === "Q2");
+
+    expect(q1?.slots[0]).toEqual(
+      expect.objectContaining({
+        timeLabel: "00:00-00:15",
+        bandKey: "NT",
+        valueCtPerKwh: "1.01"
+      })
+    );
+    expect(q1?.slots[23]).toEqual(
+      expect.objectContaining({
+        timeLabel: "05:45-06:00",
+        bandKey: "NT",
+        valueCtPerKwh: "1.01"
+      })
+    );
+    expect(q1?.slots[24]).toEqual(
+      expect.objectContaining({
+        timeLabel: "06:00-06:15",
+        bandKey: "ST",
+        valueCtPerKwh: "6.72"
+      })
+    );
+    expect(q1?.slots[88]).toEqual(
+      expect.objectContaining({
+        timeLabel: "22:00-22:15",
+        bandKey: "NT",
+        valueCtPerKwh: "1.01"
+      })
+    );
+    expect(q2?.summaryLabel).toBe("Nur Standardtarif");
+    expect(q2?.slots[0]).toEqual(
+      expect.objectContaining({
+        timeLabel: "00:00-00:15",
+        bandKey: "ST",
+        valueCtPerKwh: "6.72"
+      })
+    );
+    expect(q2?.slots[95]).toEqual(
+      expect.objectContaining({
+        timeLabel: "23:45-24:00",
+        bandKey: "ST",
+        valueCtPerKwh: "6.72"
+      })
+    );
+  });
+
   test("attaches a quarter matrix to published tariff rows", () => {
     const rows = getRegistryTariffRows(getSeedPublishedOperators());
     const schwaebischHall = rows.find((row) => row.operatorSlug === "stadtwerke-schwaebisch-hall");

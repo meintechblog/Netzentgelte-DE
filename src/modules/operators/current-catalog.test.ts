@@ -246,6 +246,20 @@ describe("getSeedPublishedOperators", () => {
     expect(mainzerNetze).toMatchObject({
       reviewStatus: "verified"
     });
+    expect(mainzerNetze?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q1 und Q4 2026",
+          bandKey: "NT",
+          timeRangeLabel: "22:00-06:00"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q2-Q3 2026",
+          bandKey: "ST",
+          timeRangeLabel: "00:00-24:00"
+        })
+      ])
+    );
     expect(schwaebischHall).toMatchObject({
       sourcePageUrl: "https://stadtwerke-hall.de/tarife-angebote/service/downloadcenter/netze",
       documentUrl:

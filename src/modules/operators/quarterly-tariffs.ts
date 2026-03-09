@@ -191,20 +191,31 @@ function parseTimeRangeToSlotBounds(timeRange: string) {
   }
 
   const startMinutes = parseMinutes(match[1]!);
-  let endMinutes = parseMinutes(match[2]!);
+  const endMinutes = parseMinutes(match[2]!);
 
   if (!Number.isFinite(startMinutes) || !Number.isFinite(endMinutes)) {
     return null;
   }
 
   if (endMinutes <= startMinutes) {
-    endMinutes += 24 * 60;
+    return [
+      {
+        startIndex: Math.max(0, Math.floor(startMinutes / SLOT_MINUTES)),
+        endIndex: SLOTS_PER_DAY
+      },
+      {
+        startIndex: 0,
+        endIndex: Math.min(SLOTS_PER_DAY, Math.ceil(endMinutes / SLOT_MINUTES))
+      }
+    ];
   }
 
-  return {
-    startIndex: Math.max(0, Math.floor(startMinutes / SLOT_MINUTES)),
-    endIndex: Math.min(SLOTS_PER_DAY, Math.ceil(endMinutes / SLOT_MINUTES))
-  };
+  return [
+    {
+      startIndex: Math.max(0, Math.floor(startMinutes / SLOT_MINUTES)),
+      endIndex: Math.min(SLOTS_PER_DAY, Math.ceil(endMinutes / SLOT_MINUTES))
+    }
+  ];
 }
 
 function applyTimeRangeToSlots(
@@ -219,23 +230,25 @@ function applyTimeRangeToSlots(
     return;
   }
 
-  for (let slotIndex = slotBounds.startIndex; slotIndex < slotBounds.endIndex; slotIndex += 1) {
-    if (onlyEmpty && slots[slotIndex]?.bandKey) {
-      continue;
+  for (const bounds of slotBounds) {
+    for (let slotIndex = bounds.startIndex; slotIndex < bounds.endIndex; slotIndex += 1) {
+      if (onlyEmpty && slots[slotIndex]?.bandKey) {
+        continue;
+      }
+
+      const slot = slots[slotIndex];
+
+      if (!slot) {
+        continue;
+      }
+
+      slots[slotIndex] = {
+        ...slot,
+        bandKey: group.bandKey,
+        bandLabel: group.label,
+        valueCtPerKwh: group.valueCtPerKwh
+      };
     }
-
-    const slot = slots[slotIndex];
-
-    if (!slot) {
-      continue;
-    }
-
-    slots[slotIndex] = {
-      ...slot,
-      bandKey: group.bandKey,
-      bandLabel: group.label,
-      valueCtPerKwh: group.valueCtPerKwh
-    };
   }
 }
 

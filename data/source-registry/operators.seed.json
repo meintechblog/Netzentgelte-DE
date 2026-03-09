@@ -1085,7 +1085,8 @@
         "notes": [
           "Offizielle Betreiberseite fuer Netzentgelte Strom.",
           "Das 2026er Preisblatt fuehrt Modul-3-Werte auf Seite 2 und Zeitfenster auf Seite 5.",
-          "Dokumentstand laut PDF: 12/2025."
+          "Dokumentstand laut PDF: 12/2025.",
+          "Preisblatt 3.2.3 listet nur Quartal 1 und Quartal 4 mit HT-/NT-Zeitfenstern; Q2/Q3 werden fuer die UI-Normalisierung als durchgehender Standardtarif 00:00-24:00 gefuehrt."
         ]
       }
     ],
@@ -1152,6 +1153,15 @@
           "dayLabel": "Alle Tage",
           "timeRangeLabel": "22:00-06:00",
           "sourceQuote": "NT 22:00-06:00"
+        },
+        {
+          "id": "mainzer-netze-2026-standard-q2-q3",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2-Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Preisblatt 3.2.3 nennt nur Quartal 1 und Quartal 4; Q2/Q3 fuer die Quartalsmatrix als durchgehender Standardtarif normalisiert."
         }
       ]
     }

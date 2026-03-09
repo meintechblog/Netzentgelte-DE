@@ -5,6 +5,7 @@ import {
 import { getRegistryMapFeatures } from "../maps/geojson";
 import type { HistoricalTariff } from "../../modules/operators/history-catalog";
 import type { CurrentSource } from "../../modules/sources/current-sources";
+import type { OperatorShell } from "../../modules/operators/shell-catalog";
 
 export function serializeCurrentRegistryTariffs(entries: PublishedOperator[]) {
   return {
@@ -57,6 +58,38 @@ export function serializeRegistryOperators(entries: PublishedOperator[]) {
       reviewStatus: entry.reviewStatus,
       sourceDocumentCount: 1,
       latestValidFrom: entry.validFrom
+    }))
+  };
+}
+
+export function serializeOperatorShells(input: {
+  items: OperatorShell[];
+  summary: {
+    operatorCount: number;
+    verifiedCount: number;
+    exactCoverageCount: number;
+    sourceFoundCount: number;
+  };
+}) {
+  return {
+    summary: input.summary,
+    items: input.items.map((entry) => ({
+      slug: entry.slug,
+      operatorName: entry.operatorName,
+      legalName: entry.legalName ?? null,
+      countryCode: entry.countryCode,
+      websiteUrl: entry.websiteUrl,
+      regionLabel: entry.regionLabel,
+      shellStatus: entry.shellStatus,
+      coverageStatus: entry.coverageStatus,
+      sourceStatus: entry.sourceStatus,
+      tariffStatus: entry.tariffStatus,
+      reviewStatus: entry.reviewStatus,
+      mastrId: entry.mastrId ?? null,
+      sourcePageUrl: entry.sourcePageUrl ?? null,
+      documentUrl: entry.documentUrl ?? null,
+      notes: entry.notes ?? null,
+      lastCheckedAt: entry.lastCheckedAt
     }))
   };
 }

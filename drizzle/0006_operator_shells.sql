@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS "operator_shells" (
+  "id" uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  "slug" text NOT NULL UNIQUE,
+  "operator_name" text NOT NULL,
+  "legal_name" text,
+  "country_code" varchar(2) NOT NULL DEFAULT 'DE',
+  "website_url" text,
+  "region_label" text,
+  "shell_status" text NOT NULL DEFAULT 'shell',
+  "coverage_status" text NOT NULL DEFAULT 'unknown',
+  "source_status" text NOT NULL DEFAULT 'missing',
+  "tariff_status" text NOT NULL DEFAULT 'missing',
+  "review_status" text NOT NULL DEFAULT 'pending',
+  "mastr_id" text,
+  "source_page_url" text,
+  "document_url" text,
+  "notes" text,
+  "last_checked_at" timestamp with time zone,
+  "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+  "updated_at" timestamp with time zone NOT NULL DEFAULT now()
+);

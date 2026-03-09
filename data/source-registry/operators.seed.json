@@ -622,6 +622,321 @@
     }
   },
   {
+    "slug": "lew-verteilnetz",
+    "name": "LEW Verteilnetz GmbH",
+    "regionLabel": "Augsburg / Bayerisch-Schwaben",
+    "websiteUrl": "https://www.lew-verteilnetz.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "lew-verteilnetz-14a-2026",
+        "title": "LEW Verteilnetz Preisblaetter Strom ab 01.01.2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.lew-verteilnetz.de/lew-verteilnetz/fuer-netzkunden/steuerbare-verbrauchseinrichtungen",
+        "documentUrl": "https://www.lew-verteilnetz.de/media/eoammapv/20251006_lvn_netzentgelte-strom-ab-01012026.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Betreiberseite fuer steuerbare Verbrauchseinrichtungen nach §14a EnWG.",
+          "Das Preisblatt ist offiziell als Preisstand gueltig ab 01.01.2026 veroeffentlicht.",
+          "Modul-3-Werte und Tarifzeiten stehen auf Seite 18 des PDFs."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "lew-verteilnetz-14a-2026",
+      "sourcePageUrl": "https://www.lew-verteilnetz.de/lew-verteilnetz/fuer-netzkunden/steuerbare-verbrauchseinrichtungen",
+      "documentUrl": "https://www.lew-verteilnetz.de/media/eoammapv/20251006_lvn_netzentgelte-strom-ab-01012026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "0.41",
+          "sourceQuote": "NT 0,41 ct/kWh netto"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "4.09",
+          "sourceQuote": "ST 4,09 ct/kWh netto"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "8.09",
+          "sourceQuote": "HT 8,09 ct/kWh netto"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "lew-verteilnetz-2026-standard-night",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-10:00",
+          "sourceQuote": "ST 00:00-10:00"
+        },
+        {
+          "id": "lew-verteilnetz-2026-standard-afternoon",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "15:00-17:00",
+          "sourceQuote": "ST 15:00-17:00"
+        },
+        {
+          "id": "lew-verteilnetz-2026-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "21:00-24:00",
+          "sourceQuote": "ST 21:00-24:00"
+        },
+        {
+          "id": "lew-verteilnetz-2026-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-21:00",
+          "sourceQuote": "HT 17:00-21:00"
+        },
+        {
+          "id": "lew-verteilnetz-2026-low-midday",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "10:00-15:00",
+          "sourceQuote": "NT 10:00-15:00"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "e-dis-netz",
+    "name": "E.DIS Netz GmbH",
+    "regionLabel": "Brandenburg / Mecklenburg-Vorpommern",
+    "websiteUrl": "https://www.e-dis-netz.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "e-dis-netz-14a-2026",
+        "title": "Preisblaetter Netzentgelte Strom 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.e-dis-netz.de/de/energie-anschliessen/netznutzung-strom/netzentgelte.html",
+        "documentUrl": "https://www.e-dis-netz.de/content/dam/revu-global/e-dis-netz/dokumente/Preisblaetter_Netzentgelte_Strom_20260101.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Betreiberseite fuer Netzentgelte Strom.",
+          "Das PDF ist als 'Endgueltige Netzentgelte 2026' gekennzeichnet, Stand 10.12.2025.",
+          "Modul-3-Werte und Zeitfenster stehen auf den Seiten 13 und 14."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "e-dis-netz-14a-2026",
+      "sourcePageUrl": "https://www.e-dis-netz.de/de/energie-anschliessen/netznutzung-strom/netzentgelte.html",
+      "documentUrl": "https://www.e-dis-netz.de/content/dam/revu-global/e-dis-netz/dokumente/Preisblaetter_Netzentgelte_Strom_20260101.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "0.55",
+          "sourceQuote": "Modul 3 NT 0,55 ct/kWh netto"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "5.47",
+          "sourceQuote": "Modul 3 ST 5,47 ct/kWh netto"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "8.80",
+          "sourceQuote": "Modul 3 HT 8,80 ct/kWh netto"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "e-dis-netz-2026-q1q4-standard-morning",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "05:00-10:15",
+          "sourceQuote": "ST 05:00-10:15"
+        },
+        {
+          "id": "e-dis-netz-2026-q1q4-standard-midday",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "12:00-16:45",
+          "sourceQuote": "ST 12:00-16:45"
+        },
+        {
+          "id": "e-dis-netz-2026-q1q4-standard-evening",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "20:15-23:30",
+          "sourceQuote": "ST 20:15-23:30"
+        },
+        {
+          "id": "e-dis-netz-2026-q1q4-high-late-morning",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "10:15-12:00",
+          "sourceQuote": "HT 10:15-12:00"
+        },
+        {
+          "id": "e-dis-netz-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "16:45-20:15",
+          "sourceQuote": "HT 16:45-20:15"
+        },
+        {
+          "id": "e-dis-netz-2026-q1q4-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-05:00",
+          "sourceQuote": "NT 00:00-05:00"
+        },
+        {
+          "id": "e-dis-netz-2026-q1q4-low-late",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "23:30-24:00",
+          "sourceQuote": "NT 23:30-24:00"
+        },
+        {
+          "id": "e-dis-netz-2026-q2q3-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Q2/Q3 ST 00:00-24:00"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "mainzer-netze",
+    "name": "Mainzer Netze GmbH",
+    "regionLabel": "Mainz",
+    "websiteUrl": "https://www.mainzer-netze.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "mainzer-netze-14a-2026",
+        "title": "Mainzer Netze Preisblatt Strom 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.mainzer-netze.de/strom/netzzugang/netzentgelte",
+        "documentUrl": "https://www.mainzer-netze.de/-/media/project/mainzer-stadtwerke/websites-mainzer-netze/mainzer-netze/dateien/ordnerstruktur-clean/g_s_w_preise-netzentgelte/strom/s_preisblatt_2026.pdf?rev=0b246c97be4b493188d844c94c08eb1f",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Betreiberseite fuer Netzentgelte Strom.",
+          "Das 2026er Preisblatt fuehrt Modul-3-Werte auf Seite 2 und Zeitfenster auf Seite 5.",
+          "Dokumentstand laut PDF: 12/2025."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "mainzer-netze-14a-2026",
+      "sourcePageUrl": "https://www.mainzer-netze.de/strom/netzzugang/netzentgelte",
+      "documentUrl": "https://www.mainzer-netze.de/-/media/project/mainzer-stadtwerke/websites-mainzer-netze/mainzer-netze/dateien/ordnerstruktur-clean/g_s_w_preise-netzentgelte/strom/s_preisblatt_2026.pdf?rev=0b246c97be4b493188d844c94c08eb1f",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "1.01",
+          "sourceQuote": "NT 1,01 ct/kWh netto"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "6.72",
+          "sourceQuote": "ST 6,72 ct/kWh netto"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "7.86",
+          "sourceQuote": "HT 7,86 ct/kWh netto"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "mainzer-netze-2026-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:00-16:45",
+          "sourceQuote": "ST 06:00-16:45"
+        },
+        {
+          "id": "mainzer-netze-2026-standard-evening",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "20:00-22:00",
+          "sourceQuote": "ST 20:00-22:00"
+        },
+        {
+          "id": "mainzer-netze-2026-high-peak",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "16:45-20:00",
+          "sourceQuote": "HT 16:45-20:00"
+        },
+        {
+          "id": "mainzer-netze-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "22:00-06:00",
+          "sourceQuote": "NT 22:00-06:00"
+        }
+      ]
+    }
+  },
+  {
     "slug": "n-ergie-netz",
     "name": "N-ERGIE Netz GmbH",
     "regionLabel": "Nuernberg / Franken",

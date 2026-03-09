@@ -6,7 +6,7 @@ describe("getOperatorRegistry", () => {
   test("loads curated operators with provenance rich source records", () => {
     const registry = getOperatorRegistry();
 
-    expect(registry.length).toBeGreaterThanOrEqual(10);
+    expect(registry.length).toBeGreaterThanOrEqual(13);
     expect(registry[0]).toMatchObject({
       slug: expect.any(String),
       sourceDocuments: expect.arrayContaining([
@@ -18,56 +18,44 @@ describe("getOperatorRegistry", () => {
     });
   });
 
-  test("includes the next official operator slice for Avacon, Stromnetz Berlin, MVV and SWM", () => {
+  test("includes the next official operator slice for LEW, E.DIS and Mainzer Netze", () => {
     const registry = getOperatorRegistry();
 
     expect(registry).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          slug: "avacon-netz",
-          currentTariff: expect.objectContaining({
-            reviewStatus: "pending",
-            timeWindows: expect.arrayContaining([
-              expect.objectContaining({
-                bandKey: "HT",
-                timeRangeLabel: "17:00-19:00"
-              })
-            ])
-          })
-        }),
-        expect.objectContaining({
-          slug: "stromnetz-berlin",
+          slug: "lew-verteilnetz",
           currentTariff: expect.objectContaining({
             reviewStatus: "verified",
             timeWindows: expect.arrayContaining([
               expect.objectContaining({
                 bandKey: "HT",
-                timeRangeLabel: "17:15-20:15"
+                timeRangeLabel: "17:00-21:00"
               })
             ])
           })
         }),
         expect.objectContaining({
-          slug: "mvv-netze",
+          slug: "e-dis-netz",
           currentTariff: expect.objectContaining({
-            reviewStatus: "pending",
+            reviewStatus: "verified",
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                bandKey: "HT",
+                timeRangeLabel: "16:45-20:15"
+              })
+            ])
+          })
+        }),
+        expect.objectContaining({
+          slug: "mainzer-netze",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "verified",
             timeWindows: expect.arrayContaining([
               expect.objectContaining({
                 bandKey: "HT",
                 seasonLabel: "Q1 und Q4 2026",
-                timeRangeLabel: "17:00-20:00"
-              })
-            ])
-          })
-        }),
-        expect.objectContaining({
-          slug: "swm-infrastruktur",
-          currentTariff: expect.objectContaining({
-            reviewStatus: "verified",
-            timeWindows: expect.arrayContaining([
-              expect.objectContaining({
-                bandKey: "HT",
-                timeRangeLabel: "16:00-20:00"
+                timeRangeLabel: "16:45-20:00"
               })
             ])
           })

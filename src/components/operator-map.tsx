@@ -8,6 +8,26 @@ type OperatorMapProps = {
   features: OperatorMapFeature[];
 };
 
+const MAP_NODE_POSITIONS = [
+  { top: "12%", left: "48%" },
+  { top: "22%", left: "28%" },
+  { top: "22%", left: "68%" },
+  { top: "36%", left: "18%" },
+  { top: "38%", left: "48%" },
+  { top: "38%", left: "78%" },
+  { top: "52%", left: "28%" },
+  { top: "54%", left: "62%" },
+  { top: "66%", left: "16%" },
+  { top: "68%", left: "46%" },
+  { top: "68%", left: "76%" },
+  { top: "82%", left: "30%" },
+  { top: "82%", left: "58%" }
+] as const;
+
+function getMapNodePosition(index: number) {
+  return MAP_NODE_POSITIONS[index] ?? MAP_NODE_POSITIONS[index % MAP_NODE_POSITIONS.length];
+}
+
 export function OperatorMap({ features }: OperatorMapProps) {
   const [activeFeature, setActiveFeature] = useState(features[0] ?? null);
 
@@ -27,9 +47,10 @@ export function OperatorMap({ features }: OperatorMapProps) {
         {features.map((feature, index) => (
           <button
             key={feature.id}
-            className={`map-node map-node--${index + 1}`}
+            className="map-node"
             onFocus={() => setActiveFeature(feature)}
             onMouseEnter={() => setActiveFeature(feature)}
+            style={getMapNodePosition(index)}
             type="button"
           >
             <span>{feature.regionLabel}</span>

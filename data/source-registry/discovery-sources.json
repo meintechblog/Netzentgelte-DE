@@ -176,5 +176,65 @@
       "pdf hash",
       "modul-3 raw lines"
     ]
+  },
+  {
+    "id": "lew-verteilnetz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "LEW Verteilnetz GmbH",
+    "title": "Steuerbare Verbrauchseinrichtungen / Preisblaetter 2026",
+    "url": "https://www.lew-verteilnetz.de/lew-verteilnetz/fuer-netzkunden/steuerbare-verbrauchseinrichtungen",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite fuer steuerbare Verbrauchseinrichtungen nach §14a EnWG.",
+      "Das offizielle 2026er Preisblatt ist ueber die Netzentgelt-Uebersicht verlinkt und fuehrt Modul-3-Werte auf Seite 18.",
+      "Quelle ist in den kuratierten Registry-Slice uebernommen; die PDF ist offiziell veroeffentlicht, aber nicht explizit als 'endgueltig' etikettiert."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quote snippets"
+    ]
+  },
+  {
+    "id": "e-dis-netz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "E.DIS Netz GmbH",
+    "title": "Netzentgelte Strom 2026",
+    "url": "https://www.e-dis-netz.de/de/energie-anschliessen/netznutzung-strom/netzentgelte.html",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite fuer Netzentgelte Strom.",
+      "Das PDF 'Preisblaetter_Netzentgelte_Strom_20260101.pdf' ist als 'Endgueltige Netzentgelte 2026' gekennzeichnet und fuehrt Modul 3 auf Seite 13.",
+      "Quelle ist in den kuratierten Registry-Slice uebernommen und als verifiziert markiert."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quote snippets"
+    ]
+  },
+  {
+    "id": "mainzer-netze-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Mainzer Netze GmbH",
+    "title": "Netzentgelte Strom 2026",
+    "url": "https://www.mainzer-netze.de/strom/netzzugang/netzentgelte",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite fuer Netzentgelte Strom.",
+      "Das offizielle Preisblatt 2026 fuehrt Modul-3-Werte auf Seite 2 und Zeitfenster auf Seite 5.",
+      "Quelle ist in den kuratierten Registry-Slice uebernommen und als verifiziert markiert."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 raw lines"
+    ]
   }
 ]

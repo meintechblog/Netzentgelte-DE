@@ -131,8 +131,9 @@ describe("buildPublishedOperators", () => {
 describe("getSeedPublishedOperators", () => {
   test("keeps the current seed-backed published view available for tests", () => {
     const published = getSeedPublishedOperators();
-    const stromnetzBerlin = published.find((entry) => entry.slug === "stromnetz-berlin");
-    const mvvNetze = published.find((entry) => entry.slug === "mvv-netze");
+    const eDisNetz = published.find((entry) => entry.slug === "e-dis-netz");
+    const lewVerteilnetz = published.find((entry) => entry.slug === "lew-verteilnetz");
+    const mainzerNetze = published.find((entry) => entry.slug === "mainzer-netze");
     const nErgie = published.find((entry) => entry.slug === "n-ergie-netz");
 
     expect(published[0]).toMatchObject({
@@ -153,16 +154,24 @@ describe("getSeedPublishedOperators", () => {
         })
       ])
     );
-    expect(stromnetzBerlin?.timeWindows).toEqual(
+    expect(eDisNetz?.timeWindows).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
           bandKey: "HT",
-          timeRangeLabel: "17:15-20:15"
+          timeRangeLabel: "16:45-20:15"
         })
       ])
     );
-    expect(mvvNetze).toMatchObject({
-      reviewStatus: "pending"
+    expect(lewVerteilnetz?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          bandKey: "HT",
+          timeRangeLabel: "17:00-21:00"
+        })
+      ])
+    );
+    expect(mainzerNetze).toMatchObject({
+      reviewStatus: "verified"
     });
   });
 });

@@ -32,16 +32,16 @@ describe("GET /api/tariffs/current", () => {
       ])
     });
 
-    const stromnetzBerlin = data.items.find(
-      (item: { operatorSlug: string }) => item.operatorSlug === "stromnetz-berlin"
+    const eDisNetz = data.items.find(
+      (item: { operatorSlug: string }) => item.operatorSlug === "e-dis-netz"
     );
 
-    expect(stromnetzBerlin).toMatchObject({
+    expect(eDisNetz).toMatchObject({
       reviewStatus: "verified",
       timeWindows: expect.arrayContaining([
         expect.objectContaining({
           bandKey: "HT",
-          timeRangeLabel: "17:15-20:15"
+          timeRangeLabel: "16:45-20:15"
         })
       ])
     });

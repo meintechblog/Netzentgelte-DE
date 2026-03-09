@@ -34,4 +34,27 @@ describe("OperatorMap", () => {
 
     expect(screen.getByText("Noch keine Netzgebiete geladen")).toBeInTheDocument();
   });
+
+  test("keeps operator nodes positioned when the registry grows beyond ten regions", () => {
+    render(
+      <OperatorMap
+        features={Array.from({ length: 13 }, (_, index) => ({
+          id: `demo-${index + 1}`,
+          operatorName: `Demo Netz ${index + 1}`,
+          regionLabel: `Region ${index + 1}`,
+          currentBandsSummary: "NT 1.00 · ST 2.00 · HT 3.00",
+          geometry: null,
+          sourcePageUrl: "https://example.com/netzentgelte",
+          documentUrl: "https://example.com/preise.pdf"
+        }))}
+      />
+    );
+
+    const nodes = screen.getAllByRole("button");
+    expect(nodes).toHaveLength(13);
+    expect(nodes[12]).toHaveStyle({
+      top: "82%",
+      left: "58%"
+    });
+  });
 });

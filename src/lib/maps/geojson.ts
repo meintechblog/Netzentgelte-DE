@@ -1,4 +1,7 @@
-import { formatBandSummary, getOperatorRegistry } from "../../modules/operators/registry";
+import {
+  summarizePublishedOperatorBands,
+  type PublishedOperator
+} from "../../modules/operators/current-catalog";
 
 export type OperatorMapFeature = {
   id: string;
@@ -10,14 +13,14 @@ export type OperatorMapFeature = {
   geometry: Record<string, unknown> | null;
 };
 
-export function getRegistryMapFeatures(): OperatorMapFeature[] {
-  return getOperatorRegistry().map((entry) => ({
+export function getRegistryMapFeatures(operators: PublishedOperator[]): OperatorMapFeature[] {
+  return operators.map((entry) => ({
     id: entry.slug,
     operatorName: entry.name,
     regionLabel: entry.regionLabel,
-    currentBandsSummary: formatBandSummary(entry),
-    sourcePageUrl: entry.currentTariff.sourcePageUrl,
-    documentUrl: entry.currentTariff.documentUrl,
+    currentBandsSummary: summarizePublishedOperatorBands(entry),
+    sourcePageUrl: entry.sourcePageUrl,
+    documentUrl: entry.documentUrl,
     geometry: null
   }));
 }

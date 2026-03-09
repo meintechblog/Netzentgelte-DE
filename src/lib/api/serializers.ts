@@ -1,50 +1,53 @@
-import { formatBandSummary, type OperatorRegistryEntry } from "../../modules/operators/registry";
+import {
+  summarizePublishedOperatorBands,
+  type PublishedOperator
+} from "../../modules/operators/current-catalog";
 
-export function serializeCurrentRegistryTariffs(entries: OperatorRegistryEntry[]) {
+export function serializeCurrentRegistryTariffs(entries: PublishedOperator[]) {
   return {
     items: entries.map((entry) => ({
       operatorSlug: entry.slug,
       operatorName: entry.name,
-      modelKey: entry.currentTariff.modelKey,
-      validFrom: entry.currentTariff.validFrom,
-      reviewStatus: entry.currentTariff.reviewStatus,
-      sourcePageUrl: entry.currentTariff.sourcePageUrl,
-      documentUrl: entry.currentTariff.documentUrl,
-      bands: entry.currentTariff.bands,
-      summary: formatBandSummary(entry)
+      modelKey: "14a-model-3",
+      validFrom: entry.validFrom,
+      reviewStatus: entry.reviewStatus,
+      sourcePageUrl: entry.sourcePageUrl,
+      documentUrl: entry.documentUrl,
+      bands: entry.bands,
+      summary: summarizePublishedOperatorBands(entry)
     }))
   };
 }
 
-export function serializeRegistryTariffHistory(entries: OperatorRegistryEntry[]) {
+export function serializeRegistryTariffHistory(entries: PublishedOperator[]) {
   return {
     items: entries.map((entry) => ({
       operatorSlug: entry.slug,
       operatorName: entry.name,
-      modelKey: entry.currentTariff.modelKey,
-      validFrom: entry.currentTariff.validFrom,
-      reviewStatus: entry.currentTariff.reviewStatus,
-      sourcePageUrl: entry.currentTariff.sourcePageUrl,
-      documentUrl: entry.currentTariff.documentUrl,
-      bands: entry.currentTariff.bands
+      modelKey: "14a-model-3",
+      validFrom: entry.validFrom,
+      reviewStatus: entry.reviewStatus,
+      sourcePageUrl: entry.sourcePageUrl,
+      documentUrl: entry.documentUrl,
+      bands: entry.bands
     }))
   };
 }
 
-export function serializeRegistryOperators(entries: OperatorRegistryEntry[]) {
+export function serializeRegistryOperators(entries: PublishedOperator[]) {
   return {
     items: entries.map((entry) => ({
       slug: entry.slug,
       name: entry.name,
       regionLabel: entry.regionLabel,
-      reviewStatus: entry.currentTariff.reviewStatus,
-      sourceDocumentCount: entry.sourceDocuments.length,
-      latestValidFrom: entry.currentTariff.validFrom
+      reviewStatus: entry.reviewStatus,
+      sourceDocumentCount: 1,
+      latestValidFrom: entry.validFrom
     }))
   };
 }
 
-export function serializeRegistryOperatorGeo(entries: OperatorRegistryEntry[]) {
+export function serializeRegistryOperatorGeo(entries: PublishedOperator[]) {
   return {
     type: "FeatureCollection",
     features: entries.map((entry) => ({
@@ -54,10 +57,10 @@ export function serializeRegistryOperatorGeo(entries: OperatorRegistryEntry[]) {
         operatorSlug: entry.slug,
         operatorName: entry.name,
         regionLabel: entry.regionLabel,
-        reviewStatus: entry.currentTariff.reviewStatus,
-        sourcePageUrl: entry.currentTariff.sourcePageUrl,
-        documentUrl: entry.currentTariff.documentUrl,
-        summary: formatBandSummary(entry)
+        reviewStatus: entry.reviewStatus,
+        sourcePageUrl: entry.sourcePageUrl,
+        documentUrl: entry.documentUrl,
+        summary: summarizePublishedOperatorBands(entry)
       },
       geometry: null
     }))

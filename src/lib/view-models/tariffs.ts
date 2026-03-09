@@ -1,4 +1,7 @@
-import { formatBandSummary, getOperatorRegistry } from "../../modules/operators/registry";
+import {
+  summarizePublishedOperatorBands,
+  type PublishedOperator
+} from "../../modules/operators/current-catalog";
 
 export type TariffTableRow = {
   operatorName: string;
@@ -10,14 +13,14 @@ export type TariffTableRow = {
   reviewStatus: "pending" | "verified";
 };
 
-export function getRegistryTariffRows(): TariffTableRow[] {
-  return getOperatorRegistry().map((entry) => ({
+export function getRegistryTariffRows(operators: PublishedOperator[]): TariffTableRow[] {
+  return operators.map((entry) => ({
     operatorName: entry.name,
     operatorSlug: entry.slug,
-    currentBandsSummary: formatBandSummary(entry),
-    validFrom: entry.currentTariff.validFrom,
-    sourcePageUrl: entry.currentTariff.sourcePageUrl,
-    documentUrl: entry.currentTariff.documentUrl,
-    reviewStatus: entry.currentTariff.reviewStatus
+    currentBandsSummary: summarizePublishedOperatorBands(entry),
+    validFrom: entry.validFrom,
+    sourcePageUrl: entry.sourcePageUrl,
+    documentUrl: entry.documentUrl,
+    reviewStatus: entry.reviewStatus
   }));
 }

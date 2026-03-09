@@ -1,9 +1,9 @@
 import { serializeCurrentRegistryTariffs } from "../../../../lib/api/serializers";
-import { getOperatorRegistry } from "../../../../modules/operators/registry";
+import { loadPublishedOperators } from "../../../../modules/operators/current-catalog";
 
 export async function GET(request: Request) {
   void request;
-  const registry = getOperatorRegistry();
+  const registry = await loadPublishedOperators();
 
   return Response.json(serializeCurrentRegistryTariffs(registry));
 }

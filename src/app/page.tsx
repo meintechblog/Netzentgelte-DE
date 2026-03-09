@@ -2,13 +2,19 @@ import { OperatorMap } from "../components/operator-map";
 import { TariffTable } from "../components/tariff-table";
 import { getRegistryMapFeatures } from "../lib/maps/geojson";
 import { getRegistryTariffRows } from "../lib/view-models/tariffs";
-import { getOperatorRegistryStats } from "../modules/operators/registry";
+import {
+  getPublishedOperatorStats,
+  loadPublishedOperators
+} from "../modules/operators/current-catalog";
 
-const rows = getRegistryTariffRows();
-const mapFeatures = getRegistryMapFeatures();
-const stats = getOperatorRegistryStats();
+export const dynamic = "force-dynamic";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const operators = await loadPublishedOperators();
+  const rows = getRegistryTariffRows(operators);
+  const mapFeatures = getRegistryMapFeatures(operators);
+  const stats = getPublishedOperatorStats(operators);
+
   return (
     <main className="dashboard-shell">
       <section className="dashboard-hero">

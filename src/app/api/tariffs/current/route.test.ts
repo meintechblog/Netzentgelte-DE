@@ -9,8 +9,10 @@ describe("GET /api/tariffs/current", () => {
 
     expect(data.items[0]).toMatchObject({
       operatorSlug: expect.any(String),
+      sourceSlug: expect.any(String),
       sourcePageUrl: expect.any(String),
       documentUrl: expect.any(String),
+      checkedAt: expect.any(String),
       bands: expect.arrayContaining([
         expect.objectContaining({
           key: expect.any(String)

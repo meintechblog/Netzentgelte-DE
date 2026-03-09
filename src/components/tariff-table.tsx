@@ -46,6 +46,10 @@ export function TariffTable({ rows }: TariffTableProps) {
                   >
                     PDF / Dokument
                   </a>
+                  <span className="table-muted">
+                    {row.checkedAt ? `Zuletzt geprueft ${row.checkedAt}` : "Noch nicht geprueft"}
+                  </span>
+                  <span className="table-muted">{`Quelle ${row.sourceSlug}`}</span>
                 </div>
               </td>
               <td>

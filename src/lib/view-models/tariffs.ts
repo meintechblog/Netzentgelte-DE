@@ -10,6 +10,8 @@ export type TariffTableRow = {
   validFrom: string;
   sourcePageUrl: string;
   documentUrl: string;
+  sourceSlug: string;
+  checkedAt: string | null;
   reviewStatus: "pending" | "verified";
 };
 
@@ -21,6 +23,8 @@ export function getRegistryTariffRows(operators: PublishedOperator[]): TariffTab
     validFrom: entry.validFrom,
     sourcePageUrl: entry.sourcePageUrl,
     documentUrl: entry.documentUrl,
+    sourceSlug: entry.sourceSlug,
+    checkedAt: entry.checkedAt,
     reviewStatus: entry.reviewStatus
   }));
 }

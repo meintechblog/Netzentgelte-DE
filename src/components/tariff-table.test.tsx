@@ -15,6 +15,8 @@ describe("TariffTable", () => {
             validFrom: "2026-01-01",
             sourcePageUrl: "https://example.com/netzentgelte",
             documentUrl: "https://example.com/preise.pdf",
+            sourceSlug: "demo-netz-example-com-preise-pdf",
+            checkedAt: "2026-03-09",
             reviewStatus: "pending"
           }
         ]}
@@ -27,5 +29,7 @@ describe("TariffTable", () => {
       "href",
       "https://example.com/netzentgelte"
     );
+    expect(screen.getByText(/Zuletzt geprueft 2026-03-09/)).toBeInTheDocument();
+    expect(screen.getByText(/Quelle demo-netz-example-com-preise-pdf/)).toBeInTheDocument();
   });
 });

@@ -11,6 +11,8 @@ export function serializeCurrentRegistryTariffs(entries: PublishedOperator[]) {
       modelKey: "14a-model-3",
       validFrom: entry.validFrom,
       reviewStatus: entry.reviewStatus,
+      sourceSlug: entry.sourceSlug,
+      checkedAt: entry.checkedAt,
       sourcePageUrl: entry.sourcePageUrl,
       documentUrl: entry.documentUrl,
       bands: entry.bands,

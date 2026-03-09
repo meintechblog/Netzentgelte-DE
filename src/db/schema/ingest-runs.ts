@@ -9,7 +9,9 @@ export const ingestRuns = pgTable("ingest_runs", {
   sourceCatalogId: uuid("source_catalog_id").references(() => sourceCatalog.id, {
     onDelete: "set null"
   }),
+  runType: text("run_type").notNull().default("manual"),
   status: text("status").notNull(),
+  errorMessage: text("error_message"),
   startedAt: timestamp("started_at", { withTimezone: true }).notNull().defaultNow(),
   completedAt: timestamp("completed_at", { withTimezone: true }),
   summary: jsonb("summary").$type<Record<string, unknown>>().notNull().default({})

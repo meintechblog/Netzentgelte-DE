@@ -14,6 +14,7 @@ export const tariffVersions = pgTable("tariff_versions", {
   modelKey: text("model_key").notNull().default("14a-model-3"),
   validFrom: date("valid_from").notNull(),
   validUntil: date("valid_until"),
+  normalizationStatus: text("normalization_status").notNull().default("pending"),
   valueCtPerKwh: numeric("value_ct_per_kwh", { precision: 10, scale: 4 }).notNull(),
   unit: text("unit").notNull().default("ct/kWh"),
   currency: text("currency").notNull().default("EUR"),

@@ -1,4 +1,4 @@
-import { jsonb, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
+import { integer, jsonb, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 
 import { operators } from "./operators";
 
@@ -7,12 +7,16 @@ export const sourceCatalog = pgTable("source_catalog", {
   operatorId: uuid("operator_id")
     .notNull()
     .references(() => operators.id, { onDelete: "cascade" }),
+  sourceSlug: text("source_slug").notNull().unique(),
   sourceUrl: text("source_url").notNull(),
   documentType: text("document_type").notNull(),
+  providerHint: text("provider_hint"),
   updateStrategy: text("update_strategy").notNull(),
+  refreshWindowDays: integer("refresh_window_days").notNull().default(90),
   parserMode: text("parser_mode").notNull().default("pending"),
   reviewStatus: text("review_status").notNull().default("unverified"),
   notes: text("notes"),
+  lastCheckedAt: timestamp("last_checked_at", { withTimezone: true }),
   lastSuccessfulAt: timestamp("last_successful_at", { withTimezone: true }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow()
 });

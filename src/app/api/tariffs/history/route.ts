@@ -1,9 +1,10 @@
-import { serializeTariffHistory } from "../../../../lib/api/serializers";
-import { runIngest } from "../../../../modules/ingest/runner";
-
 export async function GET(request: Request) {
   void request;
-  const result = await runIngest("demo-operator");
-
-  return Response.json(serializeTariffHistory(result));
+  return Response.json(
+    {
+      error: "history_not_available",
+      message: "Historical tariff revisions are not published yet."
+    },
+    { status: 501 }
+  );
 }

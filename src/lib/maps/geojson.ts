@@ -1,37 +1,23 @@
+import { formatBandSummary, getOperatorRegistry } from "../../modules/operators/registry";
+
 export type OperatorMapFeature = {
   id: string;
   operatorName: string;
   regionLabel: string;
-  currentValue: string;
-  sourceUrl: string;
+  currentBandsSummary: string;
+  sourcePageUrl: string;
+  documentUrl: string;
   geometry: Record<string, unknown> | null;
 };
 
-export function getDemoMapFeatures(): OperatorMapFeature[] {
-  return [
-    {
-      id: "demo-nord",
-      operatorName: "Demo Netz Nord",
-      regionLabel: "Nord",
-      currentValue: "12.34 ct/kWh",
-      sourceUrl: "https://example.com/preise-nord.pdf",
-      geometry: null
-    },
-    {
-      id: "demo-west",
-      operatorName: "Demo Netz West",
-      regionLabel: "West",
-      currentValue: "13.08 ct/kWh",
-      sourceUrl: "https://example.com/preise-west.pdf",
-      geometry: null
-    },
-    {
-      id: "demo-sued",
-      operatorName: "Demo Netz Sued",
-      regionLabel: "Sued",
-      currentValue: "11.92 ct/kWh",
-      sourceUrl: "https://example.com/preise-sued.pdf",
-      geometry: null
-    }
-  ];
+export function getRegistryMapFeatures(): OperatorMapFeature[] {
+  return getOperatorRegistry().map((entry) => ({
+    id: entry.slug,
+    operatorName: entry.name,
+    regionLabel: entry.regionLabel,
+    currentBandsSummary: formatBandSummary(entry),
+    sourcePageUrl: entry.currentTariff.sourcePageUrl,
+    documentUrl: entry.currentTariff.documentUrl,
+    geometry: null
+  }));
 }

@@ -1,10 +1,12 @@
 import { OperatorMap } from "../components/operator-map";
 import { TariffTable } from "../components/tariff-table";
-import { getDemoMapFeatures } from "../lib/maps/geojson";
-import { getDemoTariffRows } from "../lib/view-models/tariffs";
+import { getRegistryMapFeatures } from "../lib/maps/geojson";
+import { getRegistryTariffRows } from "../lib/view-models/tariffs";
+import { getOperatorRegistryStats } from "../modules/operators/registry";
 
-const rows = getDemoTariffRows();
-const mapFeatures = getDemoMapFeatures();
+const rows = getRegistryTariffRows();
+const mapFeatures = getRegistryMapFeatures();
+const stats = getOperatorRegistryStats();
 
 export default function HomePage() {
   return (
@@ -30,18 +32,20 @@ export default function HomePage() {
         <section className="stats-grid" aria-label="Kennzahlen">
           <article className="stat-card">
             <div className="stat-label">Erfasste Betreiber</div>
-            <div className="stat-value">3</div>
-            <div className="stat-footnote">Demo-Slice fuer Pipeline, UI und API</div>
+            <div className="stat-value">{stats.operatorCount}</div>
+            <div className="stat-footnote">Kuratiertes Startregister aus offiziellen Betreiberquellen</div>
           </article>
           <article className="stat-card">
             <div className="stat-label">Nachweise</div>
-            <div className="stat-value">3 PDFs</div>
-            <div className="stat-footnote">Jeder Datensatz bleibt zur Quelle verlinkt</div>
+            <div className="stat-value">{stats.sourceDocumentCount} Dokumente</div>
+            <div className="stat-footnote">Quellseite und PDF werden getrennt dokumentiert</div>
           </article>
           <article className="stat-card">
             <div className="stat-label">Review Status</div>
-            <div className="stat-value">2/3</div>
-            <div className="stat-footnote">Gepruefte Werte sind im UI sichtbar markiert</div>
+            <div className="stat-value">
+              {stats.verifiedCount}/{stats.operatorCount}
+            </div>
+            <div className="stat-footnote">Reviewstatus und Quellenpfad bleiben pro Betreiber transparent</div>
           </article>
         </section>
 
@@ -49,10 +53,10 @@ export default function HomePage() {
           <div className="panel-header">
             <div>
               <span className="section-eyebrow">Darstellungsmodi</span>
-              <h2 id="darstellungsmodi">Tabelle zuerst, Karte direkt vorbereitet</h2>
+              <h2 id="darstellungsmodi">Tabelle und Karte auf demselben Quellenregister</h2>
               <p>
-                Die Kartenansicht folgt im naechsten Schritt auf derselben Datenbasis und
-                mit denselben Provenance-Feldern.
+                Die Weboberflaeche zeigt bereits reale Betreiber, offizielle Dokumentlinks
+                und den Review-Status pro Quelle.
               </p>
             </div>
           </div>
@@ -60,12 +64,12 @@ export default function HomePage() {
             <article className="toggle-card active">
               <span className="surface-chip">Aktiv</span>
               <h3>Tarifmatrix</h3>
-              <p>Data-dense Tabelle mit Quellenlink, Gueltigkeit und Review-Status.</p>
+              <p>Modul-3-Baender oder klarer Review-Fallback direkt neben Quellseite und PDF.</p>
             </article>
             <article className="toggle-card active">
               <span className="surface-chip">Interaktiv</span>
               <h3>Interaktive Karte</h3>
-              <p>Hover-Details fuer Netzgebiete mit direktem Link zu PDF und Rohwert.</p>
+              <p>Hover-Details fuer Betreiberregionen mit direktem Sprung zur Quellseite.</p>
             </article>
           </div>
         </section>
@@ -76,8 +80,8 @@ export default function HomePage() {
               <span className="section-eyebrow">Raumliche Lesart</span>
               <h2 id="kartenstufe">Interaktive Netzgebiets-Stufe</h2>
               <p>
-                Noch abstrakt, aber bereits mit Hover-Overlay, Review-Kontext und direkter
-                Quellenverlinkung.
+                Die Geometrie ist noch abstrakt, die Betreiber- und Quellenebene ist jetzt
+                jedoch bereits echt und reviewbar.
               </p>
             </div>
             <div className="panel-actions">
@@ -94,7 +98,8 @@ export default function HomePage() {
               <span className="section-eyebrow">Nachvollziehbare Daten</span>
               <h2>Aktuelle Tarifmatrix</h2>
               <p>
-                Jeder Tabellenwert bleibt mit Quell-PDF und Review-Markierung sichtbar.
+                Jeder Eintrag fuehrt zur Betreiberseite, zum Dokument und zeigt offen, ob die
+                Bandwerte bereits sauber kuratiert sind.
               </p>
             </div>
             <div className="panel-actions">

@@ -11,7 +11,7 @@ export function TariffTable({ rows }: TariffTableProps) {
         <thead>
           <tr>
             <th scope="col">Netzbetreiber</th>
-            <th scope="col">Aktueller Wert</th>
+            <th scope="col">Modul 3 aktuell</th>
             <th scope="col">Gueltig ab</th>
             <th scope="col">Quelle</th>
             <th scope="col">Review</th>
@@ -26,17 +26,27 @@ export function TariffTable({ rows }: TariffTableProps) {
                   <span className="table-muted">{row.operatorSlug}</span>
                 </div>
               </td>
-              <td className="table-value">{row.currentValue}</td>
+              <td className="table-value">{row.currentBandsSummary}</td>
               <td>{row.validFrom}</td>
               <td>
-                <a
-                  className="source-link"
-                  href={row.sourceUrl}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  PDF / Quelle
-                </a>
+                <div className="table-operator">
+                  <a
+                    className="source-link"
+                    href={row.sourcePageUrl}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Quellseite
+                  </a>
+                  <a
+                    className="source-link"
+                    href={row.documentUrl}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    PDF / Dokument
+                  </a>
+                </div>
               </td>
               <td>
                 <span className={`review-pill ${row.reviewStatus}`}>

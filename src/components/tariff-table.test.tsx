@@ -4,16 +4,17 @@ import { describe, expect, test } from "vitest";
 import { TariffTable } from "./tariff-table";
 
 describe("TariffTable", () => {
-  test("renders operator rows with current tariff value", () => {
+  test("renders operator rows with source page and manual review fallback", () => {
     render(
       <TariffTable
         rows={[
           {
             operatorName: "Demo Netz",
             operatorSlug: "demo-netz",
-            currentValue: "12.34 ct/kWh",
+            currentBandsSummary: "Manuelle Pruefung offen",
             validFrom: "2026-01-01",
-            sourceUrl: "https://example.com/preise.pdf",
+            sourcePageUrl: "https://example.com/netzentgelte",
+            documentUrl: "https://example.com/preise.pdf",
             reviewStatus: "pending"
           }
         ]}
@@ -21,6 +22,10 @@ describe("TariffTable", () => {
     );
 
     expect(screen.getByText("Demo Netz")).toBeInTheDocument();
-    expect(screen.getByText("12.34 ct/kWh")).toBeInTheDocument();
+    expect(screen.getByText("Manuelle Pruefung offen")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Quellseite" })).toHaveAttribute(
+      "href",
+      "https://example.com/netzentgelte"
+    );
   });
 });

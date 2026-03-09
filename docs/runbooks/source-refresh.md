@@ -28,6 +28,19 @@ Die aktuelle Startreihenfolge ist:
 2. VNBdigital fuer Betreiberprofile und Links auf die Betreiber-Webseiten.
 3. Betreiber-Webseiten und PDFs als eigentliche Preisquellen.
 
+Der aktuell kuratierte Start-Slice liegt in:
+
+- [operators.seed.json](/Users/hulki/projects/netzentgelte-de/.worktrees/bootstrap/data/source-registry/operators.seed.json)
+
+Jeder Seed-Eintrag fuehrt bereits:
+
+- `sourcePageUrl`
+- `documentUrl`
+- `checkedAt`
+- `validFrom`
+- `reviewStatus`
+- manuell kuratierte `NT` / `ST` / `HT`-Werte, falls sicher extrahiert
+
 ## Refresh Ablauf
 
 1. Aktuelle Betreiberliste gegen BNetzA/MaStR aktualisieren.

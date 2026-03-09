@@ -1,54 +1,63 @@
-import type { IngestResult } from "../../modules/ingest/contracts";
+import { formatBandSummary, type OperatorRegistryEntry } from "../../modules/operators/registry";
 
-export function serializeCurrentTariffs(result: IngestResult) {
+export function serializeCurrentRegistryTariffs(entries: OperatorRegistryEntry[]) {
   return {
-    items: result.tariffs.map((tariff) => ({
-      operatorSlug: result.operatorSlug,
-      modelKey: tariff.modelKey,
-      validFrom: tariff.validFrom,
-      valueCentsPerKwh: tariff.valueCentsPerKwh,
-      sourceUrl: tariff.sourceUrl,
-      fetchedAt: result.fetchedAt
+    items: entries.map((entry) => ({
+      operatorSlug: entry.slug,
+      operatorName: entry.name,
+      modelKey: entry.currentTariff.modelKey,
+      validFrom: entry.currentTariff.validFrom,
+      reviewStatus: entry.currentTariff.reviewStatus,
+      sourcePageUrl: entry.currentTariff.sourcePageUrl,
+      documentUrl: entry.currentTariff.documentUrl,
+      bands: entry.currentTariff.bands,
+      summary: formatBandSummary(entry)
     }))
   };
 }
 
-export function serializeTariffHistory(result: IngestResult) {
+export function serializeRegistryTariffHistory(entries: OperatorRegistryEntry[]) {
   return {
-    items: result.tariffs.map((tariff) => ({
-      operatorSlug: result.operatorSlug,
-      modelKey: tariff.modelKey,
-      validFrom: tariff.validFrom,
-      valueCentsPerKwh: tariff.valueCentsPerKwh,
-      sourceUrl: tariff.sourceUrl,
-      fetchedAt: result.fetchedAt
+    items: entries.map((entry) => ({
+      operatorSlug: entry.slug,
+      operatorName: entry.name,
+      modelKey: entry.currentTariff.modelKey,
+      validFrom: entry.currentTariff.validFrom,
+      reviewStatus: entry.currentTariff.reviewStatus,
+      sourcePageUrl: entry.currentTariff.sourcePageUrl,
+      documentUrl: entry.currentTariff.documentUrl,
+      bands: entry.currentTariff.bands
     }))
   };
 }
 
-export function serializeOperators(result: IngestResult) {
+export function serializeRegistryOperators(entries: OperatorRegistryEntry[]) {
   return {
-    items: [
-      {
-        slug: result.operatorSlug,
-        latestFetchedAt: result.fetchedAt,
-        tariffCount: result.tariffs.length
-      }
-    ]
+    items: entries.map((entry) => ({
+      slug: entry.slug,
+      name: entry.name,
+      regionLabel: entry.regionLabel,
+      reviewStatus: entry.currentTariff.reviewStatus,
+      sourceDocumentCount: entry.sourceDocuments.length,
+      latestValidFrom: entry.currentTariff.validFrom
+    }))
   };
 }
 
-export function serializeOperatorGeo(result: IngestResult) {
+export function serializeRegistryOperatorGeo(entries: OperatorRegistryEntry[]) {
   return {
     type: "FeatureCollection",
-    features: result.tariffs.map((tariff, index) => ({
+    features: entries.map((entry) => ({
       type: "Feature",
-      id: `${result.operatorSlug}-${index}`,
+      id: entry.slug,
       properties: {
-        operatorSlug: result.operatorSlug,
-        modelKey: tariff.modelKey,
-        valueCentsPerKwh: tariff.valueCentsPerKwh,
-        sourceUrl: tariff.sourceUrl
+        operatorSlug: entry.slug,
+        operatorName: entry.name,
+        regionLabel: entry.regionLabel,
+        reviewStatus: entry.currentTariff.reviewStatus,
+        sourcePageUrl: entry.currentTariff.sourcePageUrl,
+        documentUrl: entry.currentTariff.documentUrl,
+        summary: formatBandSummary(entry)
       },
       geometry: null
     }))

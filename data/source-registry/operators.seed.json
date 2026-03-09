@@ -1,0 +1,257 @@
+[
+  {
+    "slug": "netze-bw",
+    "name": "Netze BW GmbH",
+    "regionLabel": "Baden-Wuerttemberg",
+    "websiteUrl": "https://www.netze-bw.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "netze-bw-14a-2026",
+        "title": "Netzentgelte Strom Netze BW GmbH 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.netze-bw.de/neuregelung-14a-enwg",
+        "documentUrl": "https://assets.ctfassets.net/xytfb1vrn7of/7eQvxehZzn3ECbR9rALmyD/ecc795b9dcd666ce1f53d9d04362a321/netzentgelte-strom-netze-bw-gmbh-2026.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Betreiberseite fuer die §14a-EnWG-Neuregelung.",
+          "Das PDF nennt Stand 12.12.2025 und Gueltigkeit ab 01.01.2026."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "netze-bw-14a-2026",
+      "sourcePageUrl": "https://www.netze-bw.de/neuregelung-14a-enwg",
+      "documentUrl": "https://assets.ctfassets.net/xytfb1vrn7of/7eQvxehZzn3ECbR9rALmyD/ecc795b9dcd666ce1f53d9d04362a321/netzentgelte-strom-netze-bw-gmbh-2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedertarifstufe",
+          "valueCtPerKwh": "3.03",
+          "sourceQuote": "Niedertarifstufe 3,03 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "7.57",
+          "sourceQuote": "Standardtarifstufe 7,57 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "11.06",
+          "sourceQuote": "Hochtarifstufe 11,06 ct/kWh"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "bayernwerk-netz",
+    "name": "Bayernwerk Netz GmbH",
+    "regionLabel": "Bayern",
+    "websiteUrl": "https://www.bayernwerk-netz.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "bayernwerk-netz-14a-2026",
+        "title": "Bayernwerk Preisblatt Netzentgelte 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://mir.bayernwerk-netz.de/de/bayernwerk-netz-gmbh/netzinformation/netzentgelte/netzentgelte-strom/netzentgelte-fuer-unser-stromnetz.html",
+        "documentUrl": "https://www.bayernwerk-netz.de/content/dam/revu-global/bayernwerk-netz/files/netz/netzzugang/netzentgeltestrom/bayernwerk-preisblatt-netzentgelte-2026.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Betreiber-Landingpage fuer Netzentgelte Strom.",
+          "Die PDF ist die tarifrelevante Primaerquelle fuer 2026."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "bayernwerk-netz-14a-2026",
+      "sourcePageUrl": "https://mir.bayernwerk-netz.de/de/bayernwerk-netz-gmbh/netzinformation/netzentgelte/netzentgelte-strom/netzentgelte-fuer-unser-stromnetz.html",
+      "documentUrl": "https://www.bayernwerk-netz.de/content/dam/revu-global/bayernwerk-netz/files/netz/netzzugang/netzentgeltestrom/bayernwerk-preisblatt-netzentgelte-2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedertarifstufe",
+          "valueCtPerKwh": "0.47",
+          "sourceQuote": "Niedertarifstufe 0,47 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "4.72",
+          "sourceQuote": "Standardtarifstufe 4,72 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "9.03",
+          "sourceQuote": "Hochtarifstufe 9,03 ct/kWh"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "westnetz",
+    "name": "Westnetz GmbH",
+    "regionLabel": "Westdeutschland",
+    "websiteUrl": "https://www.westnetz.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "westnetz-14a-2026",
+        "title": "Preisblaetter Westnetz Strom 01.01.2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.westnetz.de/de/ueber-westnetz/unser-netz/netzentgelte-strom.html",
+        "documentUrl": "https://www.westnetz.de/content/dam/revu-global/westnetz/documents/ueber-westnetz/unser-netz/netzentgelte-strom/preisblaetter-westnetz-strom-01-01-2026.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Westnetz-Seite zu Netzentgelten Strom.",
+          "Preisgueltigkeit ab 01.01.2026."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "westnetz-14a-2026",
+      "sourcePageUrl": "https://www.westnetz.de/de/ueber-westnetz/unser-netz/netzentgelte-strom.html",
+      "documentUrl": "https://www.westnetz.de/content/dam/revu-global/westnetz/documents/ueber-westnetz/unser-netz/netzentgelte-strom/preisblaetter-westnetz-strom-01-01-2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedertarifstufe",
+          "valueCtPerKwh": "0.95",
+          "sourceQuote": "Niedertarifstufe 0,95 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "9.53",
+          "sourceQuote": "Standardtarifstufe 9,53 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "15.65",
+          "sourceQuote": "Hochtarifstufe 15,65 ct/kWh"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "wesernetz-bremen",
+    "name": "wesernetz Bremen GmbH",
+    "regionLabel": "Bremen",
+    "websiteUrl": "https://www.wesernetz.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "wesernetz-bremen-14a-2026",
+        "title": "Preisblatt Strom §14 a EnWG Bremen 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.wesernetz.de/fuer-partner/energielieferanten/stromnetz/entgelte-hb-bhv",
+        "documentUrl": "https://www.wesernetz.de/-/media/wesernetz/downloads-aktuell/fuer-partner/energielieferanten/stromnetz/stromentgelte/hb/nenu_hb_108_007_preisblatt_5_strom_paragraph_14a_enwg_web.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Entgeltseite mit direktem Downloadlink zum Preisblatt Strom §14a EnWG.",
+          "Dokument ist gueltig vom 01.01.2026 bis 31.12.2026."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "wesernetz-bremen-14a-2026",
+      "sourcePageUrl": "https://www.wesernetz.de/fuer-partner/energielieferanten/stromnetz/entgelte-hb-bhv",
+      "documentUrl": "https://www.wesernetz.de/-/media/wesernetz/downloads-aktuell/fuer-partner/energielieferanten/stromnetz/stromentgelte/hb/nenu_hb_108_007_preisblatt_5_strom_paragraph_14a_enwg_web.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedertarifstufe",
+          "valueCtPerKwh": "2.18",
+          "sourceQuote": "Niedertarifstufe 2,18 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "5.46",
+          "sourceQuote": "Standardtarifstufe 5,46 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "7.65",
+          "sourceQuote": "Hochtarifstufe 7,65 ct/kWh"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "wesernetz-bremerhaven",
+    "name": "wesernetz Bremerhaven GmbH",
+    "regionLabel": "Bremerhaven",
+    "websiteUrl": "https://www.wesernetz.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "wesernetz-bremerhaven-14a-2026",
+        "title": "Preisblatt Strom §14 a EnWG Bremerhaven 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.wesernetz.de/fuer-partner/energielieferanten/stromnetz/entgelte-hb-bhv",
+        "documentUrl": "https://www.wesernetz.de/-/media/wesernetz/downloads-aktuell/fuer-partner/energielieferanten/stromnetz/stromentgelte/bhv/nenu_bhv_108_007_preisblatt_5_strom_paragraph_14a_enwg_2026_web.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Entgeltseite mit separatem Dokument fuer Bremerhaven.",
+          "Dokument ist gueltig vom 01.01.2026 bis 31.12.2026."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "wesernetz-bremerhaven-14a-2026",
+      "sourcePageUrl": "https://www.wesernetz.de/fuer-partner/energielieferanten/stromnetz/entgelte-hb-bhv",
+      "documentUrl": "https://www.wesernetz.de/-/media/wesernetz/downloads-aktuell/fuer-partner/energielieferanten/stromnetz/stromentgelte/bhv/nenu_bhv_108_007_preisblatt_5_strom_paragraph_14a_enwg_2026_web.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedertarifstufe",
+          "valueCtPerKwh": "2.14",
+          "sourceQuote": "Niedertarifstufe 2,14 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "5.34",
+          "sourceQuote": "Standardtarifstufe 5,34 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "7.29",
+          "sourceQuote": "Hochtarifstufe 7,29 ct/kWh"
+        }
+      ]
+    }
+  }
+]

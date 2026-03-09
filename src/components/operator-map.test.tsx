@@ -33,6 +33,7 @@ describe("OperatorMap", () => {
     render(<OperatorMap features={[]} />);
 
     expect(screen.getByText("Noch keine Netzgebiete geladen")).toBeInTheDocument();
+    expect(screen.getByLabelText("Netzgebietsübersicht")).toBeInTheDocument();
   });
 
   test("keeps operator nodes positioned when the registry grows beyond ten regions", () => {

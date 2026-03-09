@@ -40,7 +40,7 @@ export function TariffTable({ rows }: TariffTableProps) {
           <tr>
             <th scope="col">Netzbetreiber</th>
             <th scope="col">Modul 3 aktuell</th>
-            <th scope="col">Gueltig ab</th>
+            <th scope="col">Gültig ab</th>
             <th scope="col">Quelle</th>
             <th scope="col">Review</th>
           </tr>
@@ -91,7 +91,7 @@ export function TariffTable({ rows }: TariffTableProps) {
                       </div>
                     ) : (
                       <p className="tariff-window-empty">
-                        Die Quelle ist bereits verknuepft, aber die saisonalen oder taeglichen
+                        Die Quelle ist bereits verknüpft, aber die saisonalen oder täglichen
                         Zeitfenster sind noch nicht strukturiert erfasst.
                       </p>
                     )}
@@ -118,14 +118,14 @@ export function TariffTable({ rows }: TariffTableProps) {
                     PDF / Dokument
                   </a>
                   <span className="table-muted">
-                    {row.checkedAt ? `Zuletzt geprueft ${row.checkedAt}` : "Noch nicht geprueft"}
+                    {row.checkedAt ? `Zuletzt geprüft ${row.checkedAt}` : "Noch nicht geprüft"}
                   </span>
                   <span className="table-muted">{`Quelle ${row.sourceSlug}`}</span>
                 </div>
               </td>
               <td>
                 <span className={`review-pill ${row.reviewStatus}`}>
-                  {row.reviewStatus === "verified" ? "Geprueft" : "Offen"}
+                  {row.reviewStatus === "verified" ? "Geprüft" : "Offen"}
                 </span>
               </td>
             </tr>

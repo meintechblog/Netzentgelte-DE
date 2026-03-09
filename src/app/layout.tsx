@@ -5,20 +5,20 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 const firaSans = Fira_Sans({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-body",
   weight: ["300", "400", "500", "600", "700"]
 });
 
 const firaCode = Fira_Code({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-heading",
   weight: ["400", "500", "600", "700"]
 });
 
 export const metadata: Metadata = {
   title: "Netzentgelte Deutschland",
-  description: "Datenplattform fuer §14a Modell 3 Netzentgelte in Deutschland."
+  description: "Datenplattform für §14a Modell 3 Netzentgelte in Deutschland."
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

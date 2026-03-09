@@ -2,7 +2,7 @@
   {
     "slug": "netze-bw",
     "name": "Netze BW GmbH",
-    "regionLabel": "Baden-Wuerttemberg",
+    "regionLabel": "Baden-Württemberg",
     "websiteUrl": "https://www.netze-bw.de/",
     "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
     "sourceDocuments": [
@@ -315,7 +315,7 @@
           "seasonLabel": "Ganzjaehrig 2026",
           "dayLabel": "Taeglich",
           "timeRangeLabel": "00:00-07:00",
-          "sourceQuote": "Modul 3 - taeglich 0 bis 7 Uhr (Niedriglasttarifstufe)"
+          "sourceQuote": "Modul 3 - täglich 0 bis 7 Uhr (Niedriglasttarifstufe)"
         },
         {
           "id": "westnetz-2026-standard-day",
@@ -324,7 +324,7 @@
           "seasonLabel": "Ganzjaehrig 2026",
           "dayLabel": "Taeglich",
           "timeRangeLabel": "07:00-15:00",
-          "sourceQuote": "Modul 3 - taeglich 7 bis 15 Uhr (Standardlasttarifstufe)"
+          "sourceQuote": "Modul 3 - täglich 7 bis 15 Uhr (Standardlasttarifstufe)"
         },
         {
           "id": "westnetz-2026-high-peak",
@@ -333,7 +333,7 @@
           "seasonLabel": "Ganzjaehrig 2026",
           "dayLabel": "Taeglich",
           "timeRangeLabel": "15:00-20:00",
-          "sourceQuote": "Modul 3 - taeglich 15 bis 20 Uhr (Hochlasttarifstufe)"
+          "sourceQuote": "Modul 3 - täglich 15 bis 20 Uhr (Hochlasttarifstufe)"
         },
         {
           "id": "westnetz-2026-standard-evening",
@@ -342,7 +342,7 @@
           "seasonLabel": "Ganzjaehrig 2026",
           "dayLabel": "Taeglich",
           "timeRangeLabel": "20:00-24:00",
-          "sourceQuote": "Modul 3 - taeglich 20 bis 24 Uhr (Standardlasttarifstufe)"
+          "sourceQuote": "Modul 3 - täglich 20 bis 24 Uhr (Standardlasttarifstufe)"
         }
       ]
     }
@@ -422,7 +422,7 @@
           "seasonLabel": "Ganzjaehrig 2026",
           "dayLabel": "Im Preisblatt nicht spezifiziert",
           "timeRangeLabel": "Alle restlichen Zeiten",
-          "sourceQuote": "Standardtarif fuer alle restlichen Zeiten"
+          "sourceQuote": "Standardtarif für alle restlichen Zeiten"
         }
       ]
     }
@@ -502,7 +502,7 @@
           "seasonLabel": "Ganzjaehrig 2026",
           "dayLabel": "Im Preisblatt nicht spezifiziert",
           "timeRangeLabel": "Alle restlichen Zeiten",
-          "sourceQuote": "Standardtarif fuer alle restlichen Zeiten"
+          "sourceQuote": "Standardtarif für alle restlichen Zeiten"
         }
       ]
     }
@@ -791,7 +791,7 @@
   {
     "slug": "swm-infrastruktur",
     "name": "SWM Infrastruktur GmbH & Co. KG",
-    "regionLabel": "Muenchen",
+    "regionLabel": "München",
     "websiteUrl": "https://www.swm-infrastruktur.de/",
     "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
     "sourceDocuments": [

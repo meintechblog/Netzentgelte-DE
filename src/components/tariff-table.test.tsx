@@ -11,7 +11,7 @@ describe("TariffTable", () => {
           {
             operatorName: "Demo Netz",
             operatorSlug: "demo-netz",
-            currentBandsSummary: "Manuelle Pruefung offen",
+            currentBandsSummary: "Manuelle Prüfung offen",
             validFrom: "2026-01-01",
             sourcePageUrl: "https://example.com/netzentgelte",
             documentUrl: "https://example.com/preise.pdf",
@@ -44,15 +44,16 @@ describe("TariffTable", () => {
     );
 
     expect(screen.getByText("Demo Netz")).toBeInTheDocument();
-    expect(screen.getByText("Manuelle Pruefung offen")).toBeInTheDocument();
+    expect(screen.getByText("Manuelle Prüfung offen")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Quellseite" })).toHaveAttribute(
       "href",
       "https://example.com/netzentgelte"
     );
-    expect(screen.getByText(/Zuletzt geprueft 2026-03-09/)).toBeInTheDocument();
+    expect(screen.getByText(/Zuletzt geprüft 2026-03-09/)).toBeInTheDocument();
     expect(screen.getByText(/Quelle demo-netz-example-com-preise-pdf/)).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Winter 2026" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Sommer 2026" })).toBeInTheDocument();
+    expect(screen.getByRole("columnheader", { name: "Gültig ab" })).toBeInTheDocument();
     expect(screen.getByText("18:00-21:00")).toBeInTheDocument();
   });
 });

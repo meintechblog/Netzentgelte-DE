@@ -10,7 +10,7 @@ describe("buildRegistryImportPayload", () => {
     expect(payload.operators[0]).toMatchObject({
       slug: "netze-bw",
       name: "Netze BW GmbH",
-      regionLabel: "Baden-Wuerttemberg",
+      regionLabel: "Baden-Württemberg",
       websiteUrl: "https://www.netze-bw.de/"
     });
 

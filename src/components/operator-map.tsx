@@ -33,7 +33,7 @@ export function OperatorMap({ features }: OperatorMapProps) {
 
   if (!activeFeature) {
     return (
-      <section className="map-stage" aria-label="Netzgebietsuebersicht">
+      <section className="map-stage" aria-label="Netzgebietsübersicht">
         <div className="map-stage__canvas" role="img" aria-label="Abstrakte Deutschlandkarte">
           <p className="table-muted">Noch keine Netzgebiete geladen</p>
         </div>
@@ -42,7 +42,7 @@ export function OperatorMap({ features }: OperatorMapProps) {
   }
 
   return (
-    <section className="map-stage" aria-label="Netzgebietsuebersicht">
+    <section className="map-stage" aria-label="Netzgebietsübersicht">
       <div className="map-stage__canvas" role="img" aria-label="Abstrakte Deutschlandkarte">
         {features.map((feature, index) => (
           <button

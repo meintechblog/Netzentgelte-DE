@@ -24,7 +24,7 @@ export function SourceReviewTable({ rows }: SourceReviewTableProps) {
       <table className="tariff-table">
         <thead>
           <tr>
-            <th scope="col">Quellenpruefung</th>
+            <th scope="col">Quellenprüfung</th>
             <th scope="col">Letzter Check</th>
             <th scope="col">Artefakt</th>
             <th scope="col">Review</th>
@@ -42,7 +42,7 @@ export function SourceReviewTable({ rows }: SourceReviewTableProps) {
               </td>
               <td>
                 <div className="table-operator">
-                  <span>{row.checkedAt ? `Zuletzt geprueft ${row.checkedAt}` : "Noch nicht geprueft"}</span>
+                  <span>{row.checkedAt ? `Zuletzt geprüft ${row.checkedAt}` : "Noch nicht geprüft"}</span>
                   <span className="table-muted">
                     {row.latestPageSnapshotFetchedAt
                       ? `Seite ${row.latestPageSnapshotFetchedAt.slice(0, 10)}`
@@ -96,7 +96,7 @@ export function SourceReviewTable({ rows }: SourceReviewTableProps) {
               </td>
               <td>
                 <span className={`review-pill ${row.reviewStatus}`}>
-                  {row.reviewStatus === "verified" ? "Geprueft" : "Offen"}
+                  {row.reviewStatus === "verified" ? "Geprüft" : "Offen"}
                 </span>
               </td>
             </tr>

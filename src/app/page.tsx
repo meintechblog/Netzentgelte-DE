@@ -25,14 +25,14 @@ export default async function HomePage() {
         <h1>Netzentgelte Deutschland</h1>
         <p>
           Vergleichbare Netzentgelte, nachvollziehbare Quellen und ein klarer
-          Human-in-the-loop-Pruefpfad fuer jede gezeigte Zahl.
+          Human-in-the-loop-Prüfpfad für jede gezeigte Zahl.
         </p>
         <div className="hero-actions">
           <a className="hero-button" href="#tarifmatrix">
-            Tarifmatrix oeffnen
+            Tarifmatrix öffnen
           </a>
           <a className="hero-button-secondary" href="/api/tariffs/current">
-            API pruefen
+            API prüfen
           </a>
         </div>
       </section>
@@ -64,7 +64,7 @@ export default async function HomePage() {
               <span className="section-eyebrow">Darstellungsmodi</span>
               <h2 id="darstellungsmodi">Tabelle und Karte auf demselben Quellenregister</h2>
               <p>
-                Die Weboberflaeche zeigt bereits reale Betreiber, offizielle Dokumentlinks
+                Die Weboberfläche zeigt bereits reale Betreiber, offizielle Dokumentlinks
                 und den Review-Status pro Quelle.
               </p>
             </div>
@@ -73,12 +73,12 @@ export default async function HomePage() {
             <article className="toggle-card active">
               <span className="surface-chip">Aktiv</span>
               <h3>Tarifmatrix</h3>
-              <p>Modul-3-Baender oder klarer Review-Fallback direkt neben Quellseite und PDF.</p>
+              <p>Modul-3-Bänder oder klarer Review-Fallback direkt neben Quellseite und PDF.</p>
             </article>
             <article className="toggle-card active">
               <span className="surface-chip">Interaktiv</span>
               <h3>Interaktive Karte</h3>
-              <p>Hover-Details fuer Betreiberregionen mit direktem Sprung zur Quellseite.</p>
+              <p>Hover-Details für Betreiberregionen mit direktem Sprung zur Quellseite.</p>
             </article>
           </div>
         </section>
@@ -107,13 +107,13 @@ export default async function HomePage() {
               <span className="section-eyebrow">Nachvollziehbare Daten</span>
               <h2>Aktuelle Tarifmatrix</h2>
               <p>
-                Jeder Eintrag fuehrt zur Betreiberseite, zum Dokument und zeigt offen, ob die
+                Jeder Eintrag führt zur Betreiberseite, zum Dokument und zeigt offen, ob die
                 Bandwerte bereits sauber kuratiert sind.
               </p>
             </div>
             <div className="panel-actions">
               <span className="surface-chip">Zeitfenster</span>
-              <span className="surface-chip">Light mode · WCAG AA</span>
+              <span className="surface-chip">Dark mode · WCAG AA</span>
               <span className="surface-chip">Blue / Amber Dashboard</span>
             </div>
           </div>
@@ -124,7 +124,7 @@ export default async function HomePage() {
           <div className="panel-header">
             <div>
               <span className="section-eyebrow">Human In The Loop</span>
-              <h2 id="quellenpruefung">Quellenpruefung</h2>
+              <h2 id="quellenpruefung">Quellenprüfung</h2>
               <p>
                 Gespeicherte Artefakte, Snapshot-Zeitpunkte und Hashes bleiben pro Quelle
                 direkt aus der Datenbasis nachvollziehbar.

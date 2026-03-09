@@ -40,5 +40,6 @@ describe("SourceReviewTable", () => {
     );
     expect(screen.getByText(/Seite Hash page123/)).toBeInTheDocument();
     expect(screen.getByText(/Dokument Hash doc123/)).toBeInTheDocument();
+    expect(screen.getByRole("columnheader", { name: "Quellenprüfung" })).toBeInTheDocument();
   });
 });

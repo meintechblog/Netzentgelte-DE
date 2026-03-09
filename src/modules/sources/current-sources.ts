@@ -1,6 +1,7 @@
 import { desc, eq, inArray, sql } from "drizzle-orm";
 
 import { getOperatorRegistry } from "../operators/registry";
+import { buildSourceHealthReport, type SourceHealthReport } from "./source-health";
 
 export type CurrentSource = {
   sourceCatalogId: string;
@@ -20,20 +21,32 @@ export type CurrentSource = {
   latestDocumentSnapshotHash: string | null;
   latestDocumentSnapshotStoragePath: string | null;
   documentArtifactApiUrl: string | null;
+  healthReport: SourceHealthReport;
 };
 
-export type CurrentSourceRow = Omit<CurrentSource, "pageArtifactApiUrl" | "documentArtifactApiUrl">;
+export type CurrentSourceRow = Omit<
+  CurrentSource,
+  "pageArtifactApiUrl" | "documentArtifactApiUrl" | "healthReport"
+>;
 
 export function buildCurrentSources(rows: CurrentSourceRow[]): CurrentSource[] {
   return rows.map((row) => ({
     ...row,
     pageArtifactApiUrl: buildArtifactApiUrl(row.latestPageSnapshotStoragePath),
-    documentArtifactApiUrl: buildArtifactApiUrl(row.latestDocumentSnapshotStoragePath)
+    documentArtifactApiUrl: buildArtifactApiUrl(row.latestDocumentSnapshotStoragePath),
+    healthReport: buildSourceHealthReport({
+      reviewStatus: row.reviewStatus,
+      pageUrl: row.pageUrl,
+      documentUrl: row.documentUrl,
+      checkedAt: row.checkedAt,
+      latestPageSnapshotStoragePath: row.latestPageSnapshotStoragePath,
+      latestDocumentSnapshotStoragePath: row.latestDocumentSnapshotStoragePath
+    })
   }));
 }
 
 export function getSeedCurrentSources(): CurrentSource[] {
-  return getOperatorRegistry().map((entry) => {
+  return getOperatorRegistry().map<CurrentSource>((entry) => {
     const sourceDocument = entry.sourceDocuments.find(
       (document) => document.id === entry.currentTariff.sourceDocumentId
     );
@@ -59,7 +72,15 @@ export function getSeedCurrentSources(): CurrentSource[] {
       latestDocumentSnapshotFetchedAt: null,
       latestDocumentSnapshotHash: null,
       latestDocumentSnapshotStoragePath: null,
-      documentArtifactApiUrl: null
+      documentArtifactApiUrl: null,
+      healthReport: buildSourceHealthReport({
+        reviewStatus: sourceDocument.reviewStatus,
+        pageUrl: sourceDocument.sourcePageUrl,
+        documentUrl: sourceDocument.documentUrl,
+        checkedAt: sourceDocument.checkedAt,
+        summaryFallback: entry.currentTariff.summaryFallback ?? null,
+        sourceNotes: sourceDocument.notes
+      })
     };
   });
 }

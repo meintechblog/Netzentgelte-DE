@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 
 import { getSeedPublishedOperators } from "../modules/operators/current-catalog";
@@ -40,7 +40,13 @@ describe("TariffTable", () => {
     expect(screen.getByText("Q2")).toBeInTheDocument();
     expect(screen.getByText("Q3")).toBeInTheDocument();
     expect(screen.getByText("Q4")).toBeInTheDocument();
-    expect(screen.getByText("Endkunden · Niederspannung")).toBeInTheDocument();
+    const endcustomerToggle = screen.getByRole("button", {
+      name: "Endkunden · Niederspannung verifiziertes Niederspannungsprodukt Bereich aufklappen"
+    });
+    expect(endcustomerToggle).toHaveAttribute("aria-expanded", "false");
+    expect(screen.queryByText("Modul 1")).not.toBeInTheDocument();
+    fireEvent.click(endcustomerToggle);
+    expect(endcustomerToggle).toHaveAttribute("aria-expanded", "true");
     expect(screen.getByText("Modul 1")).toBeInTheDocument();
     expect(screen.getByText("Modul 2")).toBeInTheDocument();
     expect(screen.getByText("Modul 3")).toBeInTheDocument();
@@ -111,7 +117,7 @@ describe("TariffTable", () => {
 
     expect(screen.queryByRole("button", { name: "Quelle & Prüfstatus anzeigen" })).not.toBeInTheDocument();
     expect(screen.getByText("Prüfstatus: Geprüft")).toBeInTheDocument();
-    expect(screen.getByText("Quellenstatus: Quelle erneut prüfen")).toBeInTheDocument();
+    expect(screen.queryByText(/Quellenstatus:/)).not.toBeInTheDocument();
     expect(screen.getByText("Seiten-Snapshot 2026-03-09")).toBeInTheDocument();
     expect(screen.getByText("Dokumenten-Snapshot 2026-03-09")).toBeInTheDocument();
     expect(screen.getByText("Seite Hash page-hash-123")).toBeInTheDocument();
@@ -126,6 +132,7 @@ describe("TariffTable", () => {
     );
     expect(screen.getAllByRole("link", { name: "Quellseite" })).toHaveLength(1);
     expect(screen.getAllByRole("link", { name: "PDF / Dokument" })).toHaveLength(1);
+    expect(screen.queryByText("Die Quelle wurde geprüft, aber es liegt noch kein Snapshot-Artefakt vor.")).not.toBeInTheDocument();
   });
 
   test("renders assumed ST quarters without inline time text and with explicit assumption messaging", () => {
@@ -138,10 +145,10 @@ describe("TariffTable", () => {
 
     const q2Section = screen.getByLabelText("MVV Netze GmbH Q2");
 
-    expect(within(q2Section).getByText("ST-Annahme · Quelle ohne Zeitfenster")).toBeInTheDocument();
+    expect(within(q2Section).getByText("Quelle ohne Zeitfenster")).toBeInTheDocument();
     expect(
       within(q2Section).getByLabelText(
-        "Q2 00:00-24:00 · ST · 4.32 ct/kWh · Verifizierte ST-Annahme, da im Originaldokument fuer dieses Quartal keine Zeitfenster veroeffentlicht sind"
+        "Q2 00:00-24:00 · ST · 4.32 ct/kWh · Verifizierte ST-Annahme, da im Originaldokument für dieses Quartal keine Zeitfenster veröffentlicht sind"
       )
     ).toHaveClass("tariff-quarter-segment--st-assumed");
     expect(q2Section.querySelector(".tariff-quarter-segment__time")).toBeNull();

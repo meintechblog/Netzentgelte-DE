@@ -160,7 +160,7 @@ describe("getOperatorRegistry", () => {
           slug: "heidelberg-netze",
           currentTariff: expect.objectContaining({
             reviewStatus: "pending",
-            summaryFallback: "Finale 2026-Quelle erfasst, aber Modul 3 ist nur fuer Q3/Q4 explizit publiziert",
+            summaryFallback: "Finale 2026-Quelle erfasst, aber Modul 3 ist nur für Q3/Q4 explizit publiziert",
             bands: [],
             timeWindows: []
           })
@@ -169,7 +169,7 @@ describe("getOperatorRegistry", () => {
           slug: "ewr-netz",
           currentTariff: expect.objectContaining({
             reviewStatus: "pending",
-            summaryFallback: "Finale 2026-Quelle erfasst, aber Modul 3 ist nur fuer Q1/Q4 explizit publiziert",
+            summaryFallback: "Finale 2026-Quelle erfasst, aber Modul 3 ist nur für Q1/Q4 explizit publiziert",
             bands: [],
             timeWindows: []
           })
@@ -178,7 +178,7 @@ describe("getOperatorRegistry", () => {
           slug: "geranetz",
           currentTariff: expect.objectContaining({
             reviewStatus: "pending",
-            summaryFallback: "Finale 2026-Quelle erfasst, aber Modul 3 ist nur fuer Winterquartale explizit publiziert",
+            summaryFallback: "Finale 2026-Quelle erfasst, aber Modul 3 ist nur für Winterquartale explizit publiziert",
             bands: [],
             timeWindows: []
           })
@@ -199,7 +199,7 @@ describe("getOperatorRegistry", () => {
           slug: "e-netz-suedhessen",
           currentTariff: expect.objectContaining({
             reviewStatus: "pending",
-            summaryFallback: "Aktuelle 2026-Quelle erfasst, aber Modul 3 ist nur fuer Q1/Q4 explizit publiziert",
+            summaryFallback: "Aktuelle 2026-Quelle erfasst, aber Modul 3 ist nur für Q1/Q4 explizit publiziert",
             bands: [],
             timeWindows: []
           })
@@ -683,7 +683,7 @@ describe("getOperatorRegistry", () => {
           slug: "e-netz-suedhessen",
           currentTariff: expect.objectContaining({
             reviewStatus: "pending",
-            summaryFallback: "Aktuelle 2026-Quelle erfasst, aber Modul 3 ist nur fuer Q1/Q4 explizit publiziert",
+            summaryFallback: "Aktuelle 2026-Quelle erfasst, aber Modul 3 ist nur für Q1/Q4 explizit publiziert",
             bands: [],
             timeWindows: []
           }),
@@ -710,7 +710,7 @@ describe("getOperatorRegistry", () => {
           currentTariff: expect.objectContaining({
             reviewStatus: "pending",
             summaryFallback:
-              "Offizielle 2026-Quelle technisch blockiert; manuelle Evidenz fuer Modul 3 erforderlich",
+              "Offizielle 2026-Quelle technisch blockiert; manuelle Evidenz für Modul 3 erforderlich",
             bands: [],
             timeWindows: []
           }),
@@ -934,8 +934,8 @@ describe("getOperatorRegistry", () => {
     });
     const avaconNotes = avaconSourceDocument?.notes.join("\n") ?? "";
 
-    expect(avaconNotes).toContain("endgueltige Netzentgelte Strom");
-    expect(avaconNotes).toContain("Bestandteil des Netznutzungsverhaeltnisses");
+    expect(avaconNotes).toContain("endgültige Netzentgelte Strom");
+    expect(avaconNotes).toContain("Bestandteil des Netznutzungsverhältnisses");
 
     expect(mvv).toMatchObject({
       currentTariff: expect.objectContaining({
@@ -946,10 +946,10 @@ describe("getOperatorRegistry", () => {
       sourceDocuments: expect.arrayContaining([
         expect.objectContaining({
           id: "mvv-netze-14a-2026",
-          title: "Finale Preisblaetter Strom 2026 Mannheim",
+          title: "Finale Preisblätter Strom 2026 Mannheim",
           reviewStatus: "verified",
           notes: expect.arrayContaining([
-            expect.stringContaining("endgueltigen Preisblaetter"),
+            expect.stringContaining("endgültigen Preisblätter"),
             expect.stringContaining("18.12.2025")
           ])
         })

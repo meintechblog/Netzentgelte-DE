@@ -1,6 +1,6 @@
 "use client";
 
-import { type CSSProperties } from "react";
+import { type CSSProperties, useState } from "react";
 
 import type { EndcustomerDisplayProduct, TariffTableRow } from "../lib/view-models/tariffs";
 
@@ -54,7 +54,7 @@ function getQuarterSlotLabel(
   }
 
   if (slot.coverageStatus === "assumed-st") {
-    return `${quarterLabel} ${slot.timeLabel} · ${slot.bandKey} · ${slot.valueCtPerKwh} ct/kWh · Verifizierte ST-Annahme, da im Originaldokument fuer dieses Quartal keine Zeitfenster veroeffentlicht sind`;
+    return `${quarterLabel} ${slot.timeLabel} · ${slot.bandKey} · ${slot.valueCtPerKwh} ct/kWh · Verifizierte ST-Annahme, da im Originaldokument für dieses Quartal keine Zeitfenster veröffentlicht sind`;
   }
 
   return `${quarterLabel} ${slot.timeLabel} · ${slot.bandKey} · ${slot.valueCtPerKwh} ct/kWh`;
@@ -95,24 +95,26 @@ function getEndcustomerProductAccent(productKey: EndcustomerDisplayProduct["key"
 }
 
 export function TariffTable({ rows }: TariffTableProps) {
+  const [openEndcustomerOperators, setOpenEndcustomerOperators] = useState<Set<string>>(
+    () => new Set()
+  );
+
   function getReviewStatusLabel(row: TariffTableRow) {
     return row.reviewStatus === "verified" ? "Geprüft" : "Offen";
   }
 
-  function getSourceHealthLabel(row: TariffTableRow) {
-    if (!row.sourceHealthReport) {
-      return null;
-    }
+  function toggleEndcustomer(operatorSlug: string) {
+    setOpenEndcustomerOperators((current) => {
+      const next = new Set(current);
 
-    if (row.sourceHealthReport.status === "ok") {
-      return "Quelle stabil";
-    }
+      if (next.has(operatorSlug)) {
+        next.delete(operatorSlug);
+      } else {
+        next.add(operatorSlug);
+      }
 
-    if (row.sourceHealthReport.status === "blocked") {
-      return "Quelle blockiert";
-    }
-
-    return "Quelle erneut prüfen";
+      return next;
+    });
   }
 
   return (
@@ -141,9 +143,13 @@ export function TariffTable({ rows }: TariffTableProps) {
           </tr>
         </thead>
         <tbody>
-          {rows.map((row) => (
-            <tr key={row.operatorSlug}>
-              <td>
+          {rows.map((row) => {
+            const isEndcustomerOpen = openEndcustomerOperators.has(row.operatorSlug);
+            const endcustomerPanelId = `${row.operatorSlug}-endcustomer-panel`;
+
+            return (
+              <tr key={row.operatorSlug}>
+                <td>
                 <div className="table-operator tariff-operator-meta">
                   <strong>{row.operatorName}</strong>
                   <span className="table-muted">{row.regionLabel}</span>
@@ -181,9 +187,6 @@ export function TariffTable({ rows }: TariffTableProps) {
                     <span className={`review-pill ${row.reviewStatus}`}>
                       {`Prüfstatus: ${getReviewStatusLabel(row)}`}
                     </span>
-                    {getSourceHealthLabel(row) ? (
-                      <span className="table-muted">{`Quellenstatus: ${getSourceHealthLabel(row)}`}</span>
-                    ) : null}
                     {row.latestPageSnapshotFetchedAt ? (
                       <span className="table-muted">
                         {`Seiten-Snapshot ${row.latestPageSnapshotFetchedAt.slice(0, 10)}`}
@@ -220,102 +223,109 @@ export function TariffTable({ rows }: TariffTableProps) {
                         Gespeichertes Dokument
                       </a>
                     ) : null}
-                    {row.sourceHealthReport?.issues.length ? (
-                      <ul className="source-health-issues">
-                        {row.sourceHealthReport.issues.map((issue) => (
-                          <li key={`${row.operatorSlug}-${issue.key}`}>{issue.message}</li>
-                        ))}
-                      </ul>
-                    ) : null}
                   </div>
                   {row.endcustomerDisplay ? (
-                    <section
-                      aria-label={`${row.operatorName} ${row.endcustomerDisplay.title}`}
-                      className="tariff-endcustomer-panel"
-                    >
-                      <div className="tariff-endcustomer-panel__header">
-                        <span className="section-eyebrow">{row.endcustomerDisplay.title}</span>
-                        <span className="table-muted">verifiziertes Niederspannungsprodukt</span>
-                      </div>
-                      <div className="tariff-endcustomer-grid">
-                        {row.endcustomerDisplay.products.map((product) => (
-                          <article
-                            className={`tariff-endcustomer-card ${getEndcustomerProductAccent(product.key)}`}
-                            key={`${row.operatorSlug}-${product.key}`}
-                          >
-                            <h3>{product.label}</h3>
-                            <dl className="tariff-endcustomer-metrics">
-                              {product.metrics.map((metric) => (
-                                <div key={`${row.operatorSlug}-${product.key}-${metric.label}`}>
-                                  <dt>{metric.label}</dt>
-                                  <dd>{metric.value}</dd>
-                                </div>
-                              ))}
-                            </dl>
-                            {product.requirementBadges.length > 0 ? (
-                              <div className="tariff-endcustomer-badges">
-                                {product.requirementBadges.map((badge) => (
-                                  <span
-                                    className="tariff-endcustomer-badge"
-                                    key={`${row.operatorSlug}-${product.key}-${badge}`}
-                                  >
-                                    {badge}
-                                  </span>
+                    <section className="tariff-endcustomer-panel">
+                      <button
+                        aria-controls={endcustomerPanelId}
+                        aria-expanded={isEndcustomerOpen}
+                        aria-label={`${row.endcustomerDisplay.title} verifiziertes Niederspannungsprodukt ${
+                          isEndcustomerOpen ? "Bereich zuklappen" : "Bereich aufklappen"
+                        }`}
+                        className="tariff-endcustomer-toggle"
+                        onClick={() => toggleEndcustomer(row.operatorSlug)}
+                        type="button"
+                      >
+                        <span className="tariff-endcustomer-toggle__copy">
+                          <span className="section-eyebrow">{row.endcustomerDisplay.title}</span>
+                          <span className="table-muted">verifiziertes Niederspannungsprodukt</span>
+                        </span>
+                        <span className="tariff-endcustomer-toggle__action" aria-hidden="true">
+                          {isEndcustomerOpen ? "Bereich zuklappen" : "Bereich aufklappen"}
+                        </span>
+                      </button>
+                      {isEndcustomerOpen ? (
+                        <div className="tariff-endcustomer-grid" id={endcustomerPanelId}>
+                          {row.endcustomerDisplay.products.map((product) => (
+                            <article
+                              className={`tariff-endcustomer-card ${getEndcustomerProductAccent(product.key)}`}
+                              key={`${row.operatorSlug}-${product.key}`}
+                            >
+                              <h3>{product.label}</h3>
+                              <dl className="tariff-endcustomer-metrics">
+                                {product.metrics.map((metric) => (
+                                  <div key={`${row.operatorSlug}-${product.key}-${metric.label}`}>
+                                    <dt>{metric.label}</dt>
+                                    <dd>{metric.value}</dd>
+                                  </div>
                                 ))}
-                              </div>
-                            ) : null}
-                          </article>
-                        ))}
-                      </div>
+                              </dl>
+                              {product.requirementBadges.length > 0 ? (
+                                <div className="tariff-endcustomer-badges">
+                                  {product.requirementBadges.map((badge) => (
+                                    <span
+                                      className="tariff-endcustomer-badge"
+                                      key={`${row.operatorSlug}-${product.key}-${badge}`}
+                                    >
+                                      {badge}
+                                    </span>
+                                  ))}
+                                </div>
+                              ) : null}
+                            </article>
+                          ))}
+                        </div>
+                      ) : null}
                     </section>
                   ) : null}
                 </div>
-              </td>
-              {row.quarterMatrix.map((quarter) => (
-                <td key={`${row.operatorSlug}-${quarter.key}`}>
-                  <section
-                    aria-label={`${row.operatorName} ${quarter.label}`}
-                    className="tariff-quarter-card tariff-quarter-card--table"
-                  >
-                    <div className="tariff-quarter-card__header tariff-quarter-card__header--compact">
-                      <span className="table-muted">{quarter.summaryLabel}</span>
-                      <span className="tariff-quarter-card__unit">Blockansicht · 15 Min</span>
-                    </div>
-                    {quarter.segments.some((segment) => segment.bandKey) ? (
-                      <div className="tariff-quarter-blocks">
-                        <div aria-hidden="true" className="tariff-quarter-axis">
-                          {QUARTER_AXIS_MARKS.map((mark) => (
-                            <span
-                              className={`tariff-quarter-axis__mark${
-                                mark.minutes === 24 * 60 ? " tariff-quarter-axis__mark--end" : ""
-                              }`}
-                              key={`${quarter.key}-${mark.label}`}
-                              style={{ top: `${(mark.minutes / (24 * 60)) * 100}%` }}
-                            >
-                              {mark.label}
-                            </span>
-                          ))}
-                        </div>
-                        <div className="tariff-quarter-rail">
-                          {quarter.segments.map((segment) => (
-                            <span
-                              aria-label={getQuarterSlotLabel(quarter.label, segment)}
-                              className={getQuarterSlotClass(segment)}
-                              key={`${row.operatorSlug}-${quarter.key}-${segment.startSlotIndex}`}
-                              style={getQuarterSegmentStyle(segment)}
-                              title={getQuarterSlotLabel(quarter.label, segment)}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    ) : (
-                      <p className="tariff-window-empty">Keine Tariffenster erfasst.</p>
-                    )}
-                  </section>
                 </td>
-              ))}
-            </tr>
-          ))}
+                {row.quarterMatrix.map((quarter) => (
+                  <td key={`${row.operatorSlug}-${quarter.key}`}>
+                    <section
+                      aria-label={`${row.operatorName} ${quarter.label}`}
+                      className="tariff-quarter-card tariff-quarter-card--table"
+                    >
+                      <div className="tariff-quarter-card__header tariff-quarter-card__header--compact">
+                        <span className="table-muted">{quarter.summaryLabel}</span>
+                        <span className="tariff-quarter-card__unit">Blockansicht · 15 Min</span>
+                      </div>
+                      {quarter.segments.some((segment) => segment.bandKey) ? (
+                        <div className="tariff-quarter-blocks">
+                          <div aria-hidden="true" className="tariff-quarter-axis">
+                            {QUARTER_AXIS_MARKS.map((mark) => (
+                              <span
+                                className={`tariff-quarter-axis__mark${
+                                  mark.minutes === 24 * 60 ? " tariff-quarter-axis__mark--end" : ""
+                                }`}
+                                key={`${quarter.key}-${mark.label}`}
+                                style={{ top: `${(mark.minutes / (24 * 60)) * 100}%` }}
+                              >
+                                {mark.label}
+                              </span>
+                            ))}
+                          </div>
+                          <div className="tariff-quarter-rail">
+                            {quarter.segments.map((segment) => (
+                              <span
+                                aria-label={getQuarterSlotLabel(quarter.label, segment)}
+                                className={getQuarterSlotClass(segment)}
+                                key={`${row.operatorSlug}-${quarter.key}-${segment.startSlotIndex}`}
+                                style={getQuarterSegmentStyle(segment)}
+                                title={getQuarterSlotLabel(quarter.label, segment)}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        <p className="tariff-window-empty">Keine Zeitfenster erfasst.</p>
+                      )}
+                    </section>
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

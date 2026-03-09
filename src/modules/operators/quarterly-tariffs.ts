@@ -111,7 +111,7 @@ function getQuarterSummaryLabel(
   coverageStatus: TariffQuarter["coverageStatus"]
 ) {
   if (coverageStatus === "assumed-st") {
-    return "ST-Annahme · Quelle ohne Zeitfenster";
+    return "Quelle ohne Zeitfenster";
   }
 
   if (
@@ -127,7 +127,7 @@ function getQuarterSummaryLabel(
     return "Tarifstufen aktiv";
   }
 
-  return groups.length > 0 ? `${groups.length} Tarifgruppen` : "Keine Tariffenster";
+  return groups.length > 0 ? `${groups.length} Tarifgruppen` : "Keine Zeitfenster";
 }
 
 function getCatchAllRank(timeRange: string) {
@@ -386,7 +386,7 @@ function buildAssumedStandardGroup(
       valueCtPerKwh: standardBand.valueCtPerKwh,
       timeRanges: ["00:00-24:00"],
       sourceQuotes: [
-        "Verifizierte ST-Annahme: Fuer dieses Quartal sind im Originaldokument keine Zeitfenster veroeffentlicht."
+        "Verifizierte ST-Annahme: Für dieses Quartal sind im Originaldokument keine Zeitfenster veröffentlicht."
       ],
       coverageStatus: "assumed-st"
     }

@@ -29,9 +29,9 @@ describe("buildSourceHealthReport", () => {
         documentUrl:
           "https://www.syna.de/content/dam/revu-global/syna/documents/netze/netzentgelte-strom-netzentgelte-und-abgaben/2026/finales-preisblatt-netzentgelte-strom-2026.pdf",
         checkedAt: "2026-03-09",
-        summaryFallback: "Offizielle 2026-Quelle technisch blockiert; manuelle Evidenz fuer Modul 3 erforderlich",
+        summaryFallback: "Offizielle 2026-Quelle technisch blockiert; manuelle Evidenz für Modul 3 erforderlich",
         sourceNotes: [
-          "Der offizielle Seiten- und PDF-Pfad fuer 2026 ist bekannt, im aktuellen Audit aber durch Cloudflare-Challenges technisch blockiert."
+          "Der offizielle Seiten- und PDF-Pfad für 2026 ist bekannt, im aktuellen Audit aber durch Cloudflare-Challenges technisch blockiert."
         ]
       })
     ).toMatchObject({

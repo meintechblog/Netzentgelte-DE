@@ -25,14 +25,13 @@ test("renders the page shell around a dominant germany map hero", async () => {
   expect(screen.queryByRole("heading", { name: "Quellenprüfung" })).not.toBeInTheDocument();
   expect(screen.getByText("Zeitfenster")).toBeInTheDocument();
   expect(screen.getAllByText("Hero-Karte").length).toBeGreaterThan(0);
-  expect(screen.getAllByText("Endkunden · Niederspannung").length).toBeGreaterThan(0);
-  expect(screen.getAllByText("Modul 1").length).toBeGreaterThan(0);
-  expect(screen.getAllByText("Modul 2").length).toBeGreaterThan(0);
-  expect(screen.getAllByText("Modul 3").length).toBeGreaterThan(0);
-  expect(screen.getAllByText("Messung").length).toBeGreaterThan(0);
-  expect(screen.getByText("61,00 €/a")).toBeInTheDocument();
-  expect(screen.getByText("108,70 €/a")).toBeInTheDocument();
-  expect(screen.getByText("9,50 €/a")).toBeInTheDocument();
+  expect(
+    screen.getAllByRole("button", { name: /Endkunden · Niederspannung .* Bereich aufklappen/i }).length
+  ).toBeGreaterThan(0);
+  expect(screen.queryByText("Modul 1")).not.toBeInTheDocument();
+  expect(screen.queryByText("Modul 2")).not.toBeInTheDocument();
+  expect(screen.queryByText("Modul 3")).not.toBeInTheDocument();
+  expect(screen.queryByText("Messung")).not.toBeInTheDocument();
   expect(
     screen.getByText(/Öffentlich erscheinen nur verifizierte und integritätsgeprüfte Betreiber/i)
   ).toBeInTheDocument();

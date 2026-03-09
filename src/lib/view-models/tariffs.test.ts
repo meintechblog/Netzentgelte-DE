@@ -363,7 +363,7 @@ describe("buildQuarterlyTariffMatrix", () => {
 
     expect(q2).toEqual(
       expect.objectContaining({
-        summaryLabel: "ST-Annahme · Quelle ohne Zeitfenster",
+        summaryLabel: "Quelle ohne Zeitfenster",
         coverageStatus: "assumed-st"
       })
     );
@@ -377,7 +377,7 @@ describe("buildQuarterlyTariffMatrix", () => {
     ]);
     expect(q3).toEqual(
       expect.objectContaining({
-        summaryLabel: "ST-Annahme · Quelle ohne Zeitfenster",
+        summaryLabel: "Quelle ohne Zeitfenster",
         coverageStatus: "assumed-st"
       })
     );

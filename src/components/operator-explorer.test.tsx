@@ -28,7 +28,7 @@ const rows: TariffTableRow[] = [
       issues: [
         {
           key: "snapshot_missing",
-          message: "Die Quelle wurde geprueft, aber es liegt noch kein Snapshot-Artefakt vor."
+          message: "Die Quelle wurde geprüft, aber es liegt noch kein Snapshot-Artefakt vor."
         }
       ]
     },

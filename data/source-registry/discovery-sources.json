@@ -86,9 +86,9 @@
     "url": "https://www.netze-bw.de/neuregelung-14a-enwg",
     "refreshStrategy": "monthly-review",
     "notes": [
-      "Offizielle Betreiberseite fuer die §14a-EnWG-Neuregelung.",
-      "Das 2026er PDF ist als endgueltige Preisdatei veroeffentlicht und fuehrt Modul-3-Zeitfenster in einer Quartalsmatrix.",
-      "Fuer Refreshes sollten die Quartalsspalten auf identische oder geaenderte Uhrzeiten geprueft werden."
+      "Offizielle Betreiberseite für die §14a-EnWG-Neuregelung.",
+      "Das 2026er PDF ist als endgültige Preisdatei veröffentlicht und führt Modul-3-Zeitfenster in einer Quartalsmatrix.",
+      "Für Refreshes sollten die Quartalsspalten auf identische oder geänderte Uhrzeiten geprüft werden."
     ],
     "artifactsToStore": [
       "source page html",
@@ -103,13 +103,13 @@
     "scope": "operator-tariffs",
     "kind": "operator-source-candidate",
     "authority": "Bayernwerk Netz GmbH",
-    "title": "Netzentgelte fuer unser Stromnetz 2026",
+    "title": "Netzentgelte für unser Stromnetz 2026",
     "url": "https://mir.bayernwerk-netz.de/de/bayernwerk-netz-gmbh/netzinformation/netzentgelte/netzentgelte-strom/netzentgelte-fuer-unser-stromnetz.html",
     "refreshStrategy": "monthly-review",
     "notes": [
-      "Offizielle Betreiberseite fuer Netzentgelte Strom.",
+      "Offizielle Betreiberseite für Netzentgelte Strom.",
       "Das 2026er Preisblatt zeigt Modul 3 mit saisonaler Differenz zwischen Q1/Q4 und Q2/Q3.",
-      "Fuer Refreshes sollten insbesondere die Volltag-ST-Phasen in Q1 und Q4 gegen die Sommerquartale verglichen werden."
+      "Für Refreshes sollten insbesondere die Volltag-ST-Phasen in Q1 und Q4 gegen die Sommerquartale verglichen werden."
     ],
     "artifactsToStore": [
       "source page html",
@@ -124,13 +124,13 @@
     "scope": "operator-tariffs",
     "kind": "operator-source-candidate",
     "authority": "Westnetz GmbH",
-    "title": "Netzentgelte Strom / Preisblaetter 01.01.2026",
+    "title": "Netzentgelte Strom / Preisblätter 01.01.2026",
     "url": "https://www.westnetz.de/de/ueber-westnetz/unser-netz/netzentgelte-strom.html",
     "refreshStrategy": "monthly-review",
     "notes": [
-      "Offizielle Betreiberseite fuer Netzentgelte Strom.",
-      "Das PDF formuliert die Modul-3-Zeitfenster direkt als taegliche Uhrzeiten fuer NT, ST und HT.",
-      "Fuer Refreshes reicht ein gezielter Vergleich der Preisblatt-6-Zeilen fuer die taeglichen Zeitfenster."
+      "Offizielle Betreiberseite für Netzentgelte Strom.",
+      "Das PDF formuliert die Modul-3-Zeitfenster direkt als tägliche Uhrzeiten für NT, ST und HT.",
+      "Für Refreshes reicht ein gezielter Vergleich der Preisblatt-6-Zeilen für die täglichen Zeitfenster."
     ],
     "artifactsToStore": [
       "source page html",
@@ -149,9 +149,9 @@
     "url": "https://www.wesernetz.de/fuer-partner/energielieferanten/stromnetz/entgelte-hb-bhv",
     "refreshStrategy": "monthly-review",
     "notes": [
-      "Offizielle Entgeltseite mit direktem Dokumentlink fuer Bremen.",
+      "Offizielle Entgeltseite mit direktem Dokumentlink für Bremen.",
       "Das Preisblatt nennt nur zwei explizite Zeitfenster und fasst den Rest als Standardtarif zusammen.",
-      "Fuer Refreshes muss geprueft werden, ob aus 'alle restlichen Zeiten' spaeter explizite Uhrzeiten werden."
+      "Für Refreshes muss geprüft werden, ob aus 'alle restlichen Zeiten' später explizite Uhrzeiten werden."
     ],
     "artifactsToStore": [
       "source page html",
@@ -170,9 +170,9 @@
     "url": "https://www.wesernetz.de/fuer-partner/energielieferanten/stromnetz/entgelte-hb-bhv",
     "refreshStrategy": "monthly-review",
     "notes": [
-      "Offizielle Entgeltseite mit separatem 2026er Dokument fuer Bremerhaven.",
-      "Wie in Bremen nennt das Preisblatt zwei explizite Zeitfenster und einen Restblock fuer Standardtarif.",
-      "Fuer Refreshes muss der HT-Block gegen Bremen separat kontrolliert werden, da die Uhrzeit abweicht."
+      "Offizielle Entgeltseite mit separatem 2026er Dokument für Bremerhaven.",
+      "Wie in Bremen nennt das Preisblatt zwei explizite Zeitfenster und einen Restblock für Standardtarif.",
+      "Für Refreshes muss der HT-Block gegen Bremen separat kontrolliert werden, da die Uhrzeit abweicht."
     ],
     "artifactsToStore": [
       "source page html",
@@ -187,15 +187,15 @@
     "scope": "operator-tariffs",
     "kind": "operator-source-candidate",
     "authority": "Avacon Netz GmbH",
-    "title": "Netzentgelte Strom 2026 / Preisblaetter",
+    "title": "Netzentgelte Strom 2026 / Preisblätter",
     "url": "https://www.avacon-netz.de/de/avacon-netz/netzinformation/netzentgelte/netzentgelte-strom.html",
     "refreshStrategy": "monthly-review",
     "notes": [
-      "Offizielle Betreiberseite fuer Netzentgelte Strom.",
-      "Das PDF 'Preisblaetter_AVANG_Strom_01.01.2026.pdf' enthaelt das Preisblatt fuer steuerbare Verbrauchseinrichtungen mit Modul-3-Werten.",
-      "Die Betreiberseite veroeffentlicht die endgueltigen Netzentgelte 2026 mit Stand 10.12.2025.",
-      "Der aktuell gespeicherte Quellbeleg ist aber weiter nur das PDF mit Vorbehaltslogik; deshalb bleibt Avacon bis zum Mitspeichern des page-level Finalitaetsbelegs pending.",
-      "Fuer einen spaeteren Upgrade auf verified muessen HTML-Snapshot oder expliziter Seitenquote gemeinsam mit dem PDF persistiert werden."
+      "Offizielle Betreiberseite für Netzentgelte Strom.",
+      "Das PDF 'Preisblaetter_AVANG_Strom_01.01.2026.pdf' enthält das Preisblatt für steuerbare Verbrauchseinrichtungen mit Modul-3-Werten.",
+      "Die Betreiberseite veröffentlicht die endgültigen Netzentgelte 2026 mit Stand 10.12.2025.",
+      "Der aktuell gespeicherte Quellbeleg ist aber weiter nur das PDF mit Vorbehaltslogik; deshalb bleibt Avacon bis zum Mitspeichern des page-level Finalitätsbelegs pending.",
+      "Für einen späteren Upgrade auf verified muessen HTML-Snapshot oder expliziter Seitenquote gemeinsam mit dem PDF persistiert werden."
     ],
     "artifactsToStore": [
       "source page html",
@@ -213,7 +213,7 @@
     "url": "https://www.n-ergie-netz.de/n-ergie-netz/veroeffentlichungen/netznutzung/netznutzung-strom",
     "refreshStrategy": "monthly-review",
     "notes": [
-      "Offizielle Betreiberseite fuer Netznutzung Strom.",
+      "Offizielle Betreiberseite für Netznutzung Strom.",
       "Das PDF 'N_Preisblatt6a_steuerbare_Verbrauchseinrichtung_ab2024_end_Neu.pdf' ist besonders parserfreundlich, weil Modul 1/2/3 direkt separat dargestellt werden.",
       "Stand laut Recherche: 16.12.2025."
     ],
@@ -233,9 +233,9 @@
     "url": "https://www.stromnetz.berlin/netz-nutzen/entgelte/",
     "refreshStrategy": "monthly-review",
     "notes": [
-      "Offizielle Betreiberseite fuer Entgelte.",
+      "Offizielle Betreiberseite für Entgelte.",
       "Aktuell sichtbar ist ein offizielles voraussichtliches 2026-PDF mit Modul-3-Werten und Zeitfenstern.",
-      "Die Version 18.12.2025 ist in den kuratierten Registry-Slice uebernommen und aktuell als verifiziert markiert."
+      "Die Version 18.12.2025 ist in den kuratierten Registry-Slice übernommen und aktuell als verifiziert markiert."
     ],
     "artifactsToStore": [
       "source page html",
@@ -253,10 +253,10 @@
     "url": "https://www.mvv-netze.de/ich-beziehe-energie/netzentgelte/preisblatt-strom",
     "refreshStrategy": "monthly-review",
     "notes": [
-      "Offizielle Betreiberseite fuer Preisblaetter Strom.",
-      "Das finale 2026-PDF enthaelt Modul-3-Werte und Zeitfenster fuer das Mannheim-Netzgebiet.",
-      "Die Betreiberseite veroeffentlicht die endgueltigen Preisblaetter fuer 01.01.2026 bis 31.12.2026 mit Stand 18.12.2025.",
-      "Fuer Refresh-Runs sollte geprueft werden, ob spaetere endgueltige Preisblaetter vom 18.12.2025 abweichen oder nur den Snapshot wiederholen."
+      "Offizielle Betreiberseite für Preisblätter Strom.",
+      "Das finale 2026-PDF enthält Modul-3-Werte und Zeitfenster für das Mannheim-Netzgebiet.",
+      "Die Betreiberseite veröffentlicht die endgültigen Preisblätter für 01.01.2026 bis 31.12.2026 mit Stand 18.12.2025.",
+      "Für Refresh-Runs sollte geprüft werden, ob spätere endgültige Preisblätter vom 18.12.2025 abweichen oder nur den Snapshot wiederholen."
     ],
     "artifactsToStore": [
       "source page html",
@@ -274,9 +274,9 @@
     "url": "https://www.swm-infrastruktur.de/strom/netzzugang/netznutzungsentgelte",
     "refreshStrategy": "monthly-review",
     "notes": [
-      "Offizielle Betreiberseite fuer Netznutzungsentgelte Strom.",
-      "Das 2026-PDF fuehrt reduzierte Netzentgelte und Modul-3-Zeitfenster fuer das Muenchner Netzgebiet.",
-      "Quelle ist in den kuratierten Registry-Slice uebernommen und als verifiziert markiert."
+      "Offizielle Betreiberseite für Netznutzungsentgelte Strom.",
+      "Das 2026-PDF führt reduzierte Netzentgelte und Modul-3-Zeitfenster für das Münchner Netzgebiet.",
+      "Quelle ist in den kuratierten Registry-Slice übernommen und als verifiziert markiert."
     ],
     "artifactsToStore": [
       "source page html",
@@ -290,13 +290,13 @@
     "scope": "operator-tariffs",
     "kind": "operator-source-candidate",
     "authority": "LEW Verteilnetz GmbH",
-    "title": "Steuerbare Verbrauchseinrichtungen / Preisblaetter 2026",
+    "title": "Steuerbare Verbrauchseinrichtungen / Preisblätter 2026",
     "url": "https://www.lew-verteilnetz.de/lew-verteilnetz/fuer-netzkunden/steuerbare-verbrauchseinrichtungen",
     "refreshStrategy": "monthly-review",
     "notes": [
-      "Offizielle Betreiberseite fuer steuerbare Verbrauchseinrichtungen nach §14a EnWG.",
-      "Das offizielle 2026er Preisblatt ist ueber die Netzentgelt-Uebersicht verlinkt und fuehrt Modul-3-Werte auf Seite 18.",
-      "Quelle ist in den kuratierten Registry-Slice uebernommen; die PDF ist offiziell veroeffentlicht, aber nicht explizit als 'endgueltig' etikettiert."
+      "Offizielle Betreiberseite für steuerbare Verbrauchseinrichtungen nach §14a EnWG.",
+      "Das offizielle 2026er Preisblatt ist über die Netzentgelt-Uebersicht verlinkt und führt Modul-3-Werte auf Seite 18.",
+      "Quelle ist in den kuratierten Registry-Slice übernommen; die PDF ist offiziell veröffentlicht, aber nicht explizit als 'endgültig' etikettiert."
     ],
     "artifactsToStore": [
       "source page html",
@@ -314,9 +314,9 @@
     "url": "https://www.e-dis-netz.de/de/energie-anschliessen/netznutzung-strom/netzentgelte.html",
     "refreshStrategy": "monthly-review",
     "notes": [
-      "Offizielle Betreiberseite fuer Netzentgelte Strom.",
-      "Das PDF 'Preisblaetter_Netzentgelte_Strom_20260101.pdf' ist als 'Endgueltige Netzentgelte 2026' gekennzeichnet und fuehrt Modul 3 auf Seite 13.",
-      "Quelle ist in den kuratierten Registry-Slice uebernommen und als verifiziert markiert."
+      "Offizielle Betreiberseite für Netzentgelte Strom.",
+      "Das PDF 'Preisblaetter_Netzentgelte_Strom_20260101.pdf' ist als 'Endgültige Netzentgelte 2026' gekennzeichnet und führt Modul 3 auf Seite 13.",
+      "Quelle ist in den kuratierten Registry-Slice übernommen und als verifiziert markiert."
     ],
     "artifactsToStore": [
       "source page html",
@@ -334,9 +334,9 @@
     "url": "https://www.mainzer-netze.de/strom/netzzugang/netzentgelte",
     "refreshStrategy": "monthly-review",
     "notes": [
-      "Offizielle Betreiberseite fuer Netzentgelte Strom.",
-      "Das offizielle Preisblatt 2026 fuehrt Modul-3-Werte auf Seite 2 und Zeitfenster auf Seite 5.",
-      "Quelle ist in den kuratierten Registry-Slice uebernommen und als verifiziert markiert."
+      "Offizielle Betreiberseite für Netzentgelte Strom.",
+      "Das offizielle Preisblatt 2026 führt Modul-3-Werte auf Seite 2 und Zeitfenster auf Seite 5.",
+      "Quelle ist in den kuratierten Registry-Slice übernommen und als verifiziert markiert."
     ],
     "artifactsToStore": [
       "source page html",

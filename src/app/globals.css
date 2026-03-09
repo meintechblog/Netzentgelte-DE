@@ -755,19 +755,46 @@ input:focus-visible {
 
 .tariff-endcustomer-panel {
   display: grid;
-  gap: 0.75rem;
+  gap: 0.65rem;
   margin-top: 0.55rem;
-  padding: 0.85rem 0.9rem;
+  padding: 0.5rem 0.55rem;
   border: 1px solid rgba(94, 234, 212, 0.14);
   border-radius: 1rem;
   background: linear-gradient(180deg, rgba(9, 18, 34, 0.92), rgba(6, 13, 24, 0.96));
 }
 
-.tariff-endcustomer-panel__header {
+.tariff-endcustomer-toggle {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem 0.7rem;
-  align-items: baseline;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.55rem 0.9rem;
+  width: 100%;
+  padding: 0.35rem 0.45rem;
+  border: 0;
+  border-radius: 0.8rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tariff-endcustomer-toggle:hover {
+  background: rgba(20, 40, 70, 0.24);
+}
+
+.tariff-endcustomer-toggle__copy {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.tariff-endcustomer-toggle__action {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  font-size: 0.76rem;
+  font-weight: 700;
 }
 
 .tariff-endcustomer-grid {

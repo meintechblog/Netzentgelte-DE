@@ -12,11 +12,15 @@ describe("GET /api/operators", () => {
       name: expect.any(String),
       sourceDocumentCount: expect.any(Number)
     });
-    expect(data.items).toHaveLength(13);
+    expect(data.items).toHaveLength(23);
     expect(data.items).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
           slug: "lew-verteilnetz",
+          reviewStatus: "verified"
+        }),
+        expect.objectContaining({
+          slug: "stadtwerke-schwaebisch-hall",
           reviewStatus: "verified"
         }),
         expect.objectContaining({

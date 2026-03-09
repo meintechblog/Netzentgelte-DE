@@ -140,6 +140,10 @@ describe("getSeedPublishedOperators", () => {
     const lewVerteilnetz = published.find((entry) => entry.slug === "lew-verteilnetz");
     const mainzerNetze = published.find((entry) => entry.slug === "mainzer-netze");
     const nErgie = published.find((entry) => entry.slug === "n-ergie-netz");
+    const schwaebischHall = published.find((entry) => entry.slug === "stadtwerke-schwaebisch-hall");
+    const mittelhessenNetz = published.find((entry) => entry.slug === "mittelhessen-netz");
+    const ingolstadtNetze = published.find((entry) => entry.slug === "stadtwerke-ingolstadt-netze");
+    const ewrNetz = published.find((entry) => entry.slug === "ewr-netz");
 
     expect(published[0]).toMatchObject({
       slug: "netze-bw",
@@ -229,6 +233,40 @@ describe("getSeedPublishedOperators", () => {
     expect(mainzerNetze).toMatchObject({
       reviewStatus: "verified"
     });
+    expect(schwaebischHall?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          bandKey: "HT",
+          seasonLabel: "Ganzjährig 2026",
+          timeRangeLabel: "17:00-22:00"
+        })
+      ])
+    );
+    expect(mittelhessenNetz?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q1 2026",
+          bandKey: "ST",
+          timeRangeLabel: "00:00-24:00"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q2-Q3 2026",
+          bandKey: "NT",
+          timeRangeLabel: "10:00-15:00"
+        })
+      ])
+    );
+    expect(ingolstadtNetze).toMatchObject({
+      validFrom: "2026-02-01"
+    });
+    expect(ewrNetz?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          bandKey: "HT",
+          timeRangeLabel: "17:00-20:30"
+        })
+      ])
+    );
   });
 });
 

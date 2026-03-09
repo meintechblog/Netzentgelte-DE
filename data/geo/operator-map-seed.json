@@ -124,5 +124,95 @@
     "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
     "stateHints": ["04"],
     "anchors": [{ "longitude": 8.5809, "latitude": 53.5396, "radiusKm": 12 }]
+  },
+  {
+    "slug": "stadtwerke-schwaebisch-hall",
+    "mapRank": 19,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["08"],
+    "anchors": [{ "longitude": 9.739, "latitude": 49.112, "radiusKm": 28 }]
+  },
+  {
+    "slug": "mittelhessen-netz",
+    "mapRank": 20,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["06"],
+    "anchors": [{ "longitude": 8.67, "latitude": 50.58, "radiusKm": 45 }]
+  },
+  {
+    "slug": "netze-odr",
+    "mapRank": 21,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["08"],
+    "anchors": [{ "longitude": 10.09, "latitude": 48.84, "radiusKm": 40 }]
+  },
+  {
+    "slug": "stadtwerke-ingolstadt-netze",
+    "mapRank": 22,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["09"],
+    "anchors": [{ "longitude": 11.43, "latitude": 48.77, "radiusKm": 25 }]
+  },
+  {
+    "slug": "nordnetz",
+    "mapRank": 23,
+    "coverageKind": "state-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["01"],
+    "anchors": [{ "longitude": 9.43, "latitude": 54.78, "radiusKm": 70 }]
+  },
+  {
+    "slug": "heidelberg-netze",
+    "mapRank": 24,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["08"],
+    "anchors": [{ "longitude": 8.69, "latitude": 49.4, "radiusKm": 22 }]
+  },
+  {
+    "slug": "ewr-netz",
+    "mapRank": 25,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["07"],
+    "anchors": [{ "longitude": 8.36, "latitude": 49.63, "radiusKm": 35 }]
+  },
+  {
+    "slug": "geranetz",
+    "mapRank": 26,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["16"],
+    "anchors": [{ "longitude": 12.08, "latitude": 50.88, "radiusKm": 25 }]
+  },
+  {
+    "slug": "allgaeunetz",
+    "mapRank": 27,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["09"],
+    "anchors": [{ "longitude": 10.18, "latitude": 47.73, "radiusKm": 30 }]
+  },
+  {
+    "slug": "e-netz-suedhessen",
+    "mapRank": 28,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["06"],
+    "anchors": [{ "longitude": 8.65, "latitude": 49.87, "radiusKm": 30 }]
   }
 ]

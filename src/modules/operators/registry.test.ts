@@ -6,7 +6,7 @@ describe("getOperatorRegistry", () => {
   test("loads curated operators with provenance rich source records", () => {
     const registry = getOperatorRegistry();
 
-    expect(registry.length).toBeGreaterThanOrEqual(13);
+    expect(registry.length).toBeGreaterThanOrEqual(23);
     expect(registry[0]).toMatchObject({
       slug: expect.any(String),
       sourceDocuments: expect.arrayContaining([
@@ -56,6 +56,142 @@ describe("getOperatorRegistry", () => {
                 bandKey: "HT",
                 seasonLabel: "Q1 und Q4 2026",
                 timeRangeLabel: "16:45-20:00"
+              })
+            ])
+          })
+        })
+      ])
+    );
+  });
+
+  test("adds the next verified operator batch including Stadtwerke Schwaebisch Hall and nine additional official sources", () => {
+    const registry = getOperatorRegistry();
+
+    expect(registry).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          slug: "stadtwerke-schwaebisch-hall",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "verified",
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                bandKey: "HT",
+                seasonLabel: "Ganzjährig 2026",
+                timeRangeLabel: "17:00-22:00"
+              })
+            ])
+          })
+        }),
+        expect.objectContaining({
+          slug: "mittelhessen-netz",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "verified",
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q2-Q3 2026",
+                bandKey: "HT",
+                timeRangeLabel: "17:00-22:00"
+              })
+            ])
+          })
+        }),
+        expect.objectContaining({
+          slug: "netze-odr",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "verified",
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q2-Q3 2026",
+                bandKey: "NT",
+                timeRangeLabel: "10:00-15:00"
+              })
+            ])
+          })
+        }),
+        expect.objectContaining({
+          slug: "stadtwerke-ingolstadt-netze",
+          currentTariff: expect.objectContaining({
+            validFrom: "2026-02-01",
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                bandKey: "HT",
+                timeRangeLabel: "17:00-22:00"
+              })
+            ])
+          })
+        }),
+        expect.objectContaining({
+          slug: "nordnetz",
+          currentTariff: expect.objectContaining({
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q1 und Q4 2026",
+                bandKey: "HT",
+                timeRangeLabel: "18:00-20:00"
+              }),
+              expect.objectContaining({
+                seasonLabel: "Q2-Q3 2026",
+                bandKey: "ST",
+                timeRangeLabel: "00:00-24:00"
+              })
+            ])
+          })
+        }),
+        expect.objectContaining({
+          slug: "heidelberg-netze",
+          currentTariff: expect.objectContaining({
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q3 2026",
+                bandKey: "HT",
+                timeRangeLabel: "17:00-21:00"
+              })
+            ])
+          })
+        }),
+        expect.objectContaining({
+          slug: "ewr-netz",
+          currentTariff: expect.objectContaining({
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                bandKey: "HT",
+                timeRangeLabel: "17:00-20:30"
+              })
+            ])
+          })
+        }),
+        expect.objectContaining({
+          slug: "geranetz",
+          currentTariff: expect.objectContaining({
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q2-Q3 2026",
+                bandKey: "HT",
+                timeRangeLabel: "17:00-22:00"
+              })
+            ])
+          })
+        }),
+        expect.objectContaining({
+          slug: "allgaeunetz",
+          currentTariff: expect.objectContaining({
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q1 und Q4 2026",
+                bandKey: "ST",
+                timeRangeLabel: "00:00-24:00"
+              })
+            ])
+          })
+        }),
+        expect.objectContaining({
+          slug: "e-netz-suedhessen",
+          currentTariff: expect.objectContaining({
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q2-Q3 2026",
+                bandKey: "HT",
+                timeRangeLabel: "17:00-22:00"
               })
             ])
           })

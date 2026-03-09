@@ -2,7 +2,7 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
-**Goal:** Promote the curated Avacon and MVV source entries to the latest official 2026 publication state.
+**Goal:** Align the curated Avacon and MVV source entries with the latest official 2026 publication state without overstating provenance certainty.
 
 **Architecture:** Keep the existing seed-backed registry model and update only the provenance layer. The change is intentionally narrow: tests define the new review status and source URLs, then the seed/discovery files are brought into alignment.
 
@@ -17,7 +17,7 @@
 
 **Step 1: Write the failing test**
 
-Assert that `avacon-netz` and `mvv-netze` expose `reviewStatus: "verified"` and that `MVV` points to the final 18.12.2025 PDF.
+Assert that `mvv-netze` exposes `reviewStatus: "verified"` with the final 18.12.2025 PDF, while `avacon-netz` stays `pending` until page-level finality evidence is stored alongside the PDF.
 
 **Step 2: Run test to verify it fails**
 
@@ -32,7 +32,7 @@ Expected: FAIL because the current seed still marks both operators as `pending`.
 
 **Step 1: Update Avacon**
 
-Keep the official operator page and 2026 PDF, move review status to `verified`, and rewrite notes to explain that the page publishes the final 2026 net charges while the usual adaptation reservation remains relevant for future refreshes.
+Keep the official operator page and 2026 PDF, but leave review status at `pending`. Rewrite notes to explain that the page publishes final 2026 net charges while the currently stored PDF still carries the reservation logic and therefore cannot, on its own, justify `verified`.
 
 **Step 2: Update MVV**
 

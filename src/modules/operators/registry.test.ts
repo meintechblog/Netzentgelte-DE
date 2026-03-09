@@ -179,23 +179,23 @@ describe("getOperatorRegistry", () => {
     });
   });
 
-  test("tracks the latest final 2026 source state for Avacon and MVV", () => {
+  test("keeps Avacon pending until page-level finality evidence is stored alongside the PDF while MVV is final", () => {
     const registry = getOperatorRegistry();
     const avacon = registry.find((entry) => entry.slug === "avacon-netz");
     const mvv = registry.find((entry) => entry.slug === "mvv-netze");
 
     expect(avacon).toMatchObject({
       currentTariff: expect.objectContaining({
-        reviewStatus: "verified",
+        reviewStatus: "pending",
         documentUrl: "https://www.avacon-netz.de/content/dam/revu-global/avacon-netz/documents/netzentgelte-strom/2026/Preisbl%C3%A4tter_AVANG_Strom_01.01.2026.pdf"
       }),
       sourceDocuments: expect.arrayContaining([
         expect.objectContaining({
           id: "avacon-netz-14a-2026",
-          reviewStatus: "verified",
+          reviewStatus: "pending",
           notes: expect.arrayContaining([
-            expect.stringContaining("endgueltigen Netzentgelte 2026"),
-            expect.stringContaining("Anpassung")
+            expect.stringContaining("Finalitaetsbeleg"),
+            expect.stringContaining("Vorbehalt")
           ])
         })
       ])

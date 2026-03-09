@@ -20,7 +20,7 @@ Nicht sinnvoll fuer diesen Slice. Das Modell kennt heute nur `pending` und `veri
 
 ## Decision
 
-Ansatz 2. `MVV` wird auf die finale 18.12.2025-Quelle umgestellt und `verified`. `Avacon` wird ebenfalls `verified`, weil die offizielle Betreiberseite die endgueltigen 2026er Netzentgelte veroeffentlicht; der verbleibende Hinweis auf moegliche Anpassungen wird als Review- und Refresh-Notiz konserviert.
+Ansatz 2, aber mit einem wichtigen Provenance-Limit: `MVV` wird auf die finale 18.12.2025-Quelle umgestellt und `verified`. `Avacon` bleibt trotz page-level Finalitaetshinweis `pending`, weil derzeit nur die PDF als gespeicherter reviewbarer Quellbeleg im System liegt und diese PDF selbst mit Vorbehaltslogik veroeffentlicht ist. Ein spaeterer Upgrade auf `verified` setzt ein zusaetzlich gespeichertes HTML-/Seitensnapshot-Artefakt oder einen expliziten Seitenquote-Beleg voraus.
 
 ## Scope
 

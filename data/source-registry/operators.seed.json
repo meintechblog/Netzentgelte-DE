@@ -522,11 +522,12 @@
         "documentUrl": "https://www.avacon-netz.de/content/dam/revu-global/avacon-netz/documents/netzentgelte-strom/2026/Preisbl%C3%A4tter_AVANG_Strom_01.01.2026.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
-        "reviewStatus": "verified",
+        "reviewStatus": "pending",
         "notes": [
-          "Offizielle Betreiberseite fuer die endgueltigen Netzentgelte 2026.",
-          "Die Seite veroeffentlicht die Entgelte ab 01.01.2026 mit Stand 10.12.2025.",
-          "Der verbleibende Hinweis auf moegliche Anpassungen vorgelagerter Netzentgelte bleibt als Refresh-Hinweis dokumentiert.",
+          "Offizielle Betreiberseite fuer Netzentgelte Strom 2026.",
+          "Die Betreiberseite spricht von den endgueltigen Netzentgelten 2026, aber die gespeicherte Primaer-PDF bleibt mit Vorbehaltslogik veroeffentlicht.",
+          "Bis ein page-level Finalitaetsbeleg selbst als reviewbares Artefakt gespeichert wird, bleibt der Review-Status bewusst pending.",
+          "Der Vorbehalt zu moeglichen Anpassungen vorgelagerter Netzentgelte bleibt als Refresh-Hinweis dokumentiert.",
           "Modul-3-Werte und Tarifzeiten sind im Preisblatt auf Seite 12 dokumentiert."
         ]
       }
@@ -534,7 +535,7 @@
     "currentTariff": {
       "modelKey": "14a-model-3",
       "validFrom": "2026-01-01",
-      "reviewStatus": "verified",
+      "reviewStatus": "pending",
       "sourceDocumentId": "avacon-netz-14a-2026",
       "sourcePageUrl": "https://www.avacon-netz.de/de/avacon-netz/netzinformation/netzentgelte/netzentgelte-strom.html",
       "documentUrl": "https://www.avacon-netz.de/content/dam/revu-global/avacon-netz/documents/netzentgelte-strom/2026/Preisbl%C3%A4tter_AVANG_Strom_01.01.2026.pdf",

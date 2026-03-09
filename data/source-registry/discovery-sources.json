@@ -194,7 +194,8 @@
       "Offizielle Betreiberseite fuer Netzentgelte Strom.",
       "Das PDF 'Preisblaetter_AVANG_Strom_01.01.2026.pdf' enthaelt das Preisblatt fuer steuerbare Verbrauchseinrichtungen mit Modul-3-Werten.",
       "Die Betreiberseite veroeffentlicht die endgueltigen Netzentgelte 2026 mit Stand 10.12.2025.",
-      "Der Hinweis auf moegliche Anpassungen vorgelagerter Netzentgelte bleibt fuer spaetere Refresh-Runs relevant, blockiert aber nicht mehr den verified-Status."
+      "Der aktuell gespeicherte Quellbeleg ist aber weiter nur das PDF mit Vorbehaltslogik; deshalb bleibt Avacon bis zum Mitspeichern des page-level Finalitaetsbelegs pending.",
+      "Fuer einen spaeteren Upgrade auf verified muessen HTML-Snapshot oder expliziter Seitenquote gemeinsam mit dem PDF persistiert werden."
     ],
     "artifactsToStore": [
       "source page html",

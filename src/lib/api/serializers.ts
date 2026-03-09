@@ -17,6 +17,7 @@ export function serializeCurrentRegistryTariffs(entries: PublishedOperator[]) {
       sourcePageUrl: entry.sourcePageUrl,
       documentUrl: entry.documentUrl,
       bands: entry.bands,
+      timeWindows: entry.timeWindows,
       summary: summarizePublishedOperatorBands(entry)
     }))
   };
@@ -30,9 +31,12 @@ export function serializeRegistryTariffHistory(entries: PublishedOperator[]) {
       modelKey: "14a-model-3",
       validFrom: entry.validFrom,
       reviewStatus: entry.reviewStatus,
+      sourceSlug: entry.sourceSlug,
+      checkedAt: entry.checkedAt,
       sourcePageUrl: entry.sourcePageUrl,
       documentUrl: entry.documentUrl,
-      bands: entry.bands
+      bands: entry.bands,
+      timeWindows: entry.timeWindows
     }))
   };
 }

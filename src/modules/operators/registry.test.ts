@@ -37,6 +37,28 @@ describe("getOperatorRegistry", () => {
     });
   });
 
+  test("supports explicit seasonal and hourly tariff windows when the source provides them", () => {
+    const registry = getOperatorRegistry();
+    const nErgie = registry.find((entry) => entry.slug === "n-ergie-netz");
+
+    expect(nErgie).toMatchObject({
+      currentTariff: expect.objectContaining({
+        timeWindows: expect.arrayContaining([
+          expect.objectContaining({
+            bandKey: "HT",
+            seasonLabel: "Q1-Q4 2026",
+            dayLabel: "Alle Tage",
+            timeRangeLabel: "18:00-21:00"
+          }),
+          expect.objectContaining({
+            bandKey: "NT",
+            timeRangeLabel: "23:00-06:00"
+          })
+        ])
+      })
+    });
+  });
+
   test("rejects tariffs that reference an unknown source document", () => {
     expect(() =>
       parseOperatorRegistry([

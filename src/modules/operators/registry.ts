@@ -11,6 +11,16 @@ const operatorBandSchema = z.object({
   sourceQuote: z.string()
 });
 
+const operatorTimeWindowSchema = z.object({
+  id: z.string(),
+  bandKey: z.union([z.literal("NT"), z.literal("ST"), z.literal("HT")]),
+  label: z.string(),
+  seasonLabel: z.string(),
+  dayLabel: z.string(),
+  timeRangeLabel: z.string(),
+  sourceQuote: z.string()
+});
+
 const sourceDocumentSchema = z.object({
   id: z.string(),
   title: z.string(),
@@ -31,7 +41,8 @@ const currentTariffSchema = z.object({
   sourcePageUrl: z.string().url(),
   documentUrl: z.string().url(),
   summaryFallback: z.string().optional(),
-  bands: z.array(operatorBandSchema)
+  bands: z.array(operatorBandSchema),
+  timeWindows: z.array(operatorTimeWindowSchema).default([])
 });
 
 const operatorRegistryEntrySchema = z.object({
@@ -76,6 +87,7 @@ const operatorRegistryEntrySchema = z.object({
 const operatorRegistrySchema = z.array(operatorRegistryEntrySchema);
 
 export type OperatorBand = z.infer<typeof operatorBandSchema>;
+export type OperatorTimeWindow = z.infer<typeof operatorTimeWindowSchema>;
 export type OperatorSourceDocument = z.infer<typeof sourceDocumentSchema>;
 export type OperatorRegistryEntry = z.infer<typeof operatorRegistryEntrySchema>;
 

@@ -112,6 +112,7 @@ export default async function HomePage() {
               </p>
             </div>
             <div className="panel-actions">
+              <span className="surface-chip">Zeitfenster</span>
               <span className="surface-chip">Light mode · WCAG AA</span>
               <span className="surface-chip">Blue / Amber Dashboard</span>
             </div>

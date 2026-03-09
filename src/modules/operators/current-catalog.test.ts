@@ -58,6 +58,7 @@ describe("buildPublishedOperators", () => {
           "https://assets.ctfassets.net/xytfb1vrn7of/7eQvxehZzn3ECbR9rALmyD/ecc795b9dcd666ce1f53d9d04362a321/netzentgelte-strom-netze-bw-gmbh-2026.pdf",
         sourceSlug: "netze-bw-netze-bw-14a-2026",
         checkedAt: "2026-03-09",
+        timeWindows: [],
         bands: [
           {
             key: "NT",
@@ -130,6 +131,7 @@ describe("buildPublishedOperators", () => {
 describe("getSeedPublishedOperators", () => {
   test("keeps the current seed-backed published view available for tests", () => {
     const published = getSeedPublishedOperators();
+    const nErgie = published.find((entry) => entry.slug === "n-ergie-netz");
 
     expect(published[0]).toMatchObject({
       slug: "netze-bw",
@@ -140,6 +142,15 @@ describe("getSeedPublishedOperators", () => {
         })
       ])
     });
+    expect(nErgie?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          bandKey: "HT",
+          seasonLabel: "Q1-Q4 2026",
+          timeRangeLabel: "18:00-21:00"
+        })
+      ])
+    );
   });
 });
 

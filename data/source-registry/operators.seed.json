@@ -303,6 +303,44 @@
           "valueCtPerKwh": "11.77",
           "sourceQuote": "Hochtarifstufe 11,77 ct/kWh"
         }
+      ],
+      "timeWindows": [
+        {
+          "id": "n-ergie-netz-2026-standard-all-times",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "Alle anderen Zeiten",
+          "sourceQuote": "Standardtarif 5,96 ct/kWh, alle anderen Zeiten"
+        },
+        {
+          "id": "n-ergie-netz-2026-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "18:00-21:00",
+          "sourceQuote": "Hochtarif 11,77 ct/kWh, 18:00-21:00"
+        },
+        {
+          "id": "n-ergie-netz-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "23:00-06:00",
+          "sourceQuote": "Niedrigtarif 2,38 ct/kWh, 23:00-06:00"
+        },
+        {
+          "id": "n-ergie-netz-2026-low-midday",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "12:00-14:15",
+          "sourceQuote": "Niedrigtarif 2,38 ct/kWh, 12:00-14:15"
+        }
       ]
     }
   }

@@ -1,4 +1,4 @@
-import { getOperatorRegistry } from "./registry";
+import { getOperatorRegistry, type OperatorTimeWindow } from "./registry";
 
 export type PublishedOperatorBand = {
   key: "NT" | "ST" | "HT";
@@ -19,6 +19,7 @@ export type PublishedOperator = {
   sourceSlug: string;
   checkedAt: string | null;
   bands: PublishedOperatorBand[];
+  timeWindows: OperatorTimeWindow[];
 };
 
 export type PublishedOperatorRow = {
@@ -82,7 +83,8 @@ export function getSeedPublishedOperators(): PublishedOperator[] {
     checkedAt:
       entry.sourceDocuments.find((document) => document.id === entry.currentTariff.sourceDocumentId)
         ?.checkedAt ?? null,
-    bands: [...entry.currentTariff.bands].sort((left, right) => BAND_ORDER[left.key] - BAND_ORDER[right.key])
+    bands: [...entry.currentTariff.bands].sort((left, right) => BAND_ORDER[left.key] - BAND_ORDER[right.key]),
+    timeWindows: entry.currentTariff.timeWindows ?? []
   }));
 }
 
@@ -104,6 +106,7 @@ export function buildPublishedOperators(rows: PublishedOperatorRow[]): Published
         documentUrl: row.documentUrl,
         sourceSlug: row.sourceSlug,
         checkedAt: row.checkedAt,
+        timeWindows: [],
         bands: [
           {
             key: row.bandKey,
@@ -167,7 +170,7 @@ export async function loadPublishedOperators() {
   const { operators, sourceCatalog, tariffVersions } = await import("../../db/schema");
   const { and, asc, eq, sql } = await import("drizzle-orm");
 
-  const rows = await db
+const rows = await db
     .select({
       operatorSlug: operators.slug,
       operatorName: operators.name,
@@ -190,5 +193,14 @@ export async function loadPublishedOperators() {
     .where(and(eq(tariffVersions.modelKey, "14a-model-3")))
     .orderBy(asc(operators.slug), asc(tariffVersions.validFrom), asc(tariffVersions.bandKey));
 
-  return buildPublishedOperators(rows.filter((row) => row.bandKey !== null) as PublishedOperatorRow[]);
+  const seedTimeWindowsBySlug = new Map(
+    getOperatorRegistry().map((entry) => [entry.slug, entry.currentTariff.timeWindows ?? []] as const)
+  );
+
+  return buildPublishedOperators(rows.filter((row) => row.bandKey !== null) as PublishedOperatorRow[]).map(
+    (entry) => ({
+      ...entry,
+      timeWindows: seedTimeWindowsBySlug.get(entry.slug) ?? []
+    })
+  );
 }

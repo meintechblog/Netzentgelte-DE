@@ -4,6 +4,14 @@ type TariffTableProps = {
   rows: TariffTableRow[];
 };
 
+function getTimeWindowMeta(row: TariffTableRow) {
+  if (row.timeWindows.length === 0) {
+    return "Zeitfenster noch nicht strukturiert";
+  }
+
+  return `${row.timeWindows.length} strukturierte Zeitfenster`;
+}
+
 export function TariffTable({ rows }: TariffTableProps) {
   return (
     <div className="tariff-table-wrap">
@@ -26,7 +34,39 @@ export function TariffTable({ rows }: TariffTableProps) {
                   <span className="table-muted">{row.operatorSlug}</span>
                 </div>
               </td>
-              <td className="table-value">{row.currentBandsSummary}</td>
+              <td>
+                <div className="tariff-breakdown">
+                  <div className="table-value">{row.currentBandsSummary}</div>
+                  <div className="tariff-windows">
+                    <div className="tariff-windows__header">
+                      <span className="tariff-windows__title">Tariffenster</span>
+                      <span className="table-muted">{getTimeWindowMeta(row)}</span>
+                    </div>
+                    {row.timeWindows.length > 0 ? (
+                      <div className="tariff-window-list">
+                        {row.timeWindows.map((window) => (
+                          <article className="tariff-window-card" key={window.id}>
+                            <div className="tariff-window-card__topline">
+                              <span className="tariff-window-chip">{window.label}</span>
+                              <span className="tariff-window-time">{window.timeRangeLabel}</span>
+                            </div>
+                            <div className="tariff-window-card__meta">
+                              <span>{window.seasonLabel}</span>
+                              <span>{window.dayLabel}</span>
+                            </div>
+                            <p>{window.sourceQuote}</p>
+                          </article>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="tariff-window-empty">
+                        Die Quelle ist bereits verknuepft, aber die saisonalen oder taeglichen
+                        Zeitfenster sind noch nicht strukturiert erfasst.
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </td>
               <td>{row.validFrom}</td>
               <td>
                 <div className="table-operator">

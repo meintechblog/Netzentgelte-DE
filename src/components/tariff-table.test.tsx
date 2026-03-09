@@ -17,7 +17,18 @@ describe("TariffTable", () => {
             documentUrl: "https://example.com/preise.pdf",
             sourceSlug: "demo-netz-example-com-preise-pdf",
             checkedAt: "2026-03-09",
-            reviewStatus: "pending"
+            reviewStatus: "pending",
+            timeWindows: [
+              {
+                id: "demo-high-evening",
+                bandKey: "HT",
+                label: "Hochtarif",
+                seasonLabel: "Winter 2026",
+                dayLabel: "Alle Tage",
+                timeRangeLabel: "18:00-21:00",
+                sourceQuote: "Hochtarif 11,77 ct/kWh, 18:00-21:00"
+              }
+            ]
           }
         ]}
       />
@@ -31,5 +42,7 @@ describe("TariffTable", () => {
     );
     expect(screen.getByText(/Zuletzt geprueft 2026-03-09/)).toBeInTheDocument();
     expect(screen.getByText(/Quelle demo-netz-example-com-preise-pdf/)).toBeInTheDocument();
+    expect(screen.getByText("Winter 2026")).toBeInTheDocument();
+    expect(screen.getByText("18:00-21:00")).toBeInTheDocument();
   });
 });

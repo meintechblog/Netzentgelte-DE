@@ -8,4 +8,5 @@ test("renders project shell", async () => {
   expect(screen.getByText("Netzentgelte Deutschland")).toBeInTheDocument();
   expect(screen.getAllByText(/Netze BW/).length).toBeGreaterThan(0);
   expect(screen.getByRole("heading", { name: "Quellenpruefung" })).toBeInTheDocument();
+  expect(screen.getByText("Zeitfenster")).toBeInTheDocument();
 });

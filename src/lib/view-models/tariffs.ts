@@ -13,6 +13,7 @@ export type TariffTableRow = {
   sourceSlug: string;
   checkedAt: string | null;
   reviewStatus: "pending" | "verified";
+  timeWindows: PublishedOperator["timeWindows"];
 };
 
 export function getRegistryTariffRows(operators: PublishedOperator[]): TariffTableRow[] {
@@ -25,6 +26,7 @@ export function getRegistryTariffRows(operators: PublishedOperator[]): TariffTab
     documentUrl: entry.documentUrl,
     sourceSlug: entry.sourceSlug,
     checkedAt: entry.checkedAt,
-    reviewStatus: entry.reviewStatus
+    reviewStatus: entry.reviewStatus,
+    timeWindows: entry.timeWindows
   }));
 }

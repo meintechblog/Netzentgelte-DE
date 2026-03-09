@@ -17,6 +17,18 @@ describe("GET /api/tariffs/current", () => {
         expect.objectContaining({
           key: expect.any(String)
         })
+      ]),
+      timeWindows: expect.any(Array)
+    });
+
+    const nErgie = data.items.find((item: { operatorSlug: string }) => item.operatorSlug === "n-ergie-netz");
+
+    expect(nErgie).toMatchObject({
+      timeWindows: expect.arrayContaining([
+        expect.objectContaining({
+          bandKey: "HT",
+          timeRangeLabel: "18:00-21:00"
+        })
       ])
     });
   });

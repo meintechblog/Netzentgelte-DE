@@ -741,6 +741,15 @@ input:focus-visible {
   color: var(--color-success);
 }
 
+.source-review-inline {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 0.85rem;
+  background: rgba(8, 18, 34, 0.72);
+}
+
 .tariff-endcustomer-panel {
   display: grid;
   gap: 0.75rem;

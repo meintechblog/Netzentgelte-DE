@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 
 import { getSeedPublishedOperators } from "../modules/operators/current-catalog";
@@ -32,7 +32,9 @@ describe("TariffTable", () => {
       "https://stadtwerke-hall.de/tarife-angebote/service/downloadcenter/netze"
     );
     expect(screen.getByText(/Zuletzt geprüft 2026-03-09/)).toBeInTheDocument();
-    expect(screen.getByText("Quelle & Prüfstatus anzeigen")).toBeInTheDocument();
+    expect(screen.queryByText("Quelle & Prüfstatus anzeigen")).not.toBeInTheDocument();
+    expect(screen.getByText("Prüfstatus: Geprüft")).toBeInTheDocument();
+    expect(screen.queryByText(/Quellenstatus:/)).not.toBeInTheDocument();
     expect(screen.queryByText("Gespeicherte Quellseite")).not.toBeInTheDocument();
     expect(screen.getByText("Q1")).toBeInTheDocument();
     expect(screen.getByText("Q2")).toBeInTheDocument();
@@ -53,7 +55,7 @@ describe("TariffTable", () => {
     expect(screen.getByRole("columnheader", { name: "Q2" })).toBeInTheDocument();
     expect(screen.getByRole("columnheader", { name: "Q3" })).toBeInTheDocument();
     expect(screen.getByRole("columnheader", { name: "Q4" })).toBeInTheDocument();
-    expect(screen.getByRole("columnheader", { name: "Review" })).toBeInTheDocument();
+    expect(screen.queryByRole("columnheader", { name: "Review" })).not.toBeInTheDocument();
     expect(screen.queryByRole("columnheader", { name: "Quelle" })).not.toBeInTheDocument();
     expect(screen.queryByRole("columnheader", { name: "Gültig ab" })).not.toBeInTheDocument();
     expect(screen.getByText("Nur Standardtarif")).toBeInTheDocument();
@@ -82,7 +84,7 @@ describe("TariffTable", () => {
     ).toBeInTheDocument();
   });
 
-  test("shows exact snapshot and artifact details when the source panel is expanded", () => {
+  test("renders source review details inline without duplicating primary links", () => {
     const schwaebischHall = {
       ...mergeTariffRowsWithEndcustomerCatalog(
         getRegistryTariffRows(getSeedPublishedOperators()),
@@ -107,8 +109,9 @@ describe("TariffTable", () => {
 
     render(<TariffTable rows={[schwaebischHall]} />);
 
-    fireEvent.click(screen.getByRole("button", { name: "Quelle & Prüfstatus anzeigen" }));
-
+    expect(screen.queryByRole("button", { name: "Quelle & Prüfstatus anzeigen" })).not.toBeInTheDocument();
+    expect(screen.getByText("Prüfstatus: Geprüft")).toBeInTheDocument();
+    expect(screen.getByText("Quellenstatus: Quelle erneut prüfen")).toBeInTheDocument();
     expect(screen.getByText("Seiten-Snapshot 2026-03-09")).toBeInTheDocument();
     expect(screen.getByText("Dokumenten-Snapshot 2026-03-09")).toBeInTheDocument();
     expect(screen.getByText("Seite Hash page-hash-123")).toBeInTheDocument();
@@ -121,5 +124,7 @@ describe("TariffTable", () => {
       "href",
       "/api/artifacts/doc.pdf"
     );
+    expect(screen.getAllByRole("link", { name: "Quellseite" })).toHaveLength(1);
+    expect(screen.getAllByRole("link", { name: "PDF / Dokument" })).toHaveLength(1);
   });
 });

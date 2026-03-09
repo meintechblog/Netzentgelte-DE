@@ -1,6 +1,6 @@
 "use client";
 
-import { type CSSProperties, useState } from "react";
+import { type CSSProperties } from "react";
 
 import type { EndcustomerDisplayProduct, TariffTableRow } from "../lib/view-models/tariffs";
 
@@ -87,13 +87,24 @@ function getEndcustomerProductAccent(productKey: EndcustomerDisplayProduct["key"
 }
 
 export function TariffTable({ rows }: TariffTableProps) {
-  const [expandedSourceSlugs, setExpandedSourceSlugs] = useState<Record<string, boolean>>({});
+  function getReviewStatusLabel(row: TariffTableRow) {
+    return row.reviewStatus === "verified" ? "Geprüft" : "Offen";
+  }
 
-  function toggleSourceDetails(operatorSlug: string) {
-    setExpandedSourceSlugs((current) => ({
-      ...current,
-      [operatorSlug]: !current[operatorSlug]
-    }));
+  function getSourceHealthLabel(row: TariffTableRow) {
+    if (!row.sourceHealthReport) {
+      return null;
+    }
+
+    if (row.sourceHealthReport.status === "ok") {
+      return "Quelle stabil";
+    }
+
+    if (row.sourceHealthReport.status === "blocked") {
+      return "Quelle blockiert";
+    }
+
+    return "Quelle erneut prüfen";
   }
 
   return (
@@ -111,7 +122,6 @@ export function TariffTable({ rows }: TariffTableProps) {
           <col className="tariff-table__col-quarter" />
           <col className="tariff-table__col-quarter" />
           <col className="tariff-table__col-quarter" />
-          <col className="tariff-table__col-review" />
         </colgroup>
         <thead>
           <tr>
@@ -120,7 +130,6 @@ export function TariffTable({ rows }: TariffTableProps) {
             <th scope="col">Q2</th>
             <th scope="col">Q3</th>
             <th scope="col">Q4</th>
-            <th scope="col">Review</th>
           </tr>
         </thead>
         <tbody>
@@ -160,6 +169,57 @@ export function TariffTable({ rows }: TariffTableProps) {
                     {row.checkedAt ? `Zuletzt geprüft ${row.checkedAt}` : "Noch nicht geprüft"}
                   </span>
                   <span className="table-muted">{`Quelle ${row.sourceSlug}`}</span>
+                  <div className="source-review-inline">
+                    <span className={`review-pill ${row.reviewStatus}`}>
+                      {`Prüfstatus: ${getReviewStatusLabel(row)}`}
+                    </span>
+                    {getSourceHealthLabel(row) ? (
+                      <span className="table-muted">{`Quellenstatus: ${getSourceHealthLabel(row)}`}</span>
+                    ) : null}
+                    {row.latestPageSnapshotFetchedAt ? (
+                      <span className="table-muted">
+                        {`Seiten-Snapshot ${row.latestPageSnapshotFetchedAt.slice(0, 10)}`}
+                      </span>
+                    ) : null}
+                    {row.latestDocumentSnapshotFetchedAt ? (
+                      <span className="table-muted">
+                        {`Dokumenten-Snapshot ${row.latestDocumentSnapshotFetchedAt.slice(0, 10)}`}
+                      </span>
+                    ) : null}
+                    {row.latestPageSnapshotHash ? (
+                      <span className="table-muted">{`Seite Hash ${row.latestPageSnapshotHash}`}</span>
+                    ) : null}
+                    {row.latestDocumentSnapshotHash ? (
+                      <span className="table-muted">{`Dokument Hash ${row.latestDocumentSnapshotHash}`}</span>
+                    ) : null}
+                    {row.pageArtifactApiUrl ? (
+                      <a
+                        className="source-link"
+                        href={row.pageArtifactApiUrl}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        Gespeicherte Quellseite
+                      </a>
+                    ) : null}
+                    {row.documentArtifactApiUrl ? (
+                      <a
+                        className="source-link"
+                        href={row.documentArtifactApiUrl}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        Gespeichertes Dokument
+                      </a>
+                    ) : null}
+                    {row.sourceHealthReport?.issues.length ? (
+                      <ul className="source-health-issues">
+                        {row.sourceHealthReport.issues.map((issue) => (
+                          <li key={`${row.operatorSlug}-${issue.key}`}>{issue.message}</li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </div>
                   {row.endcustomerDisplay ? (
                     <section
                       aria-label={`${row.operatorName} ${row.endcustomerDisplay.title}`}
@@ -199,103 +259,6 @@ export function TariffTable({ rows }: TariffTableProps) {
                           </article>
                         ))}
                       </div>
-                    </section>
-                  ) : null}
-                  <button
-                    aria-controls={`source-details-${row.operatorSlug}`}
-                    aria-expanded={expandedSourceSlugs[row.operatorSlug] ? "true" : "false"}
-                    className="source-details-toggle"
-                    onClick={() => toggleSourceDetails(row.operatorSlug)}
-                    type="button"
-                  >
-                    {expandedSourceSlugs[row.operatorSlug]
-                      ? "Quelle & Prüfstatus ausblenden"
-                      : "Quelle & Prüfstatus anzeigen"}
-                  </button>
-                  {expandedSourceSlugs[row.operatorSlug] ? (
-                    <section
-                      className="source-details-panel"
-                      id={`source-details-${row.operatorSlug}`}
-                    >
-                      <div className="source-details-panel__header">
-                        <span className={`review-pill ${row.reviewStatus}`}>
-                          {row.reviewStatus === "verified" ? "Geprüft" : "Offen"}
-                        </span>
-                        {row.sourceHealthReport ? (
-                          <span
-                            className={`surface-chip source-health-chip source-health-chip--${row.sourceHealthReport.status}`}
-                          >
-                            {row.sourceHealthReport.status === "ok"
-                              ? "Quelle stabil"
-                              : row.sourceHealthReport.status === "blocked"
-                                ? "Quelle blockiert"
-                                : "Quelle prüfen"}
-                          </span>
-                        ) : null}
-                      </div>
-                      <div className="source-details-grid">
-                        <span className="table-muted">
-                          {row.latestPageSnapshotFetchedAt
-                            ? `Seiten-Snapshot ${row.latestPageSnapshotFetchedAt.slice(0, 10)}`
-                            : "Seiten-Snapshot ausstehend"}
-                        </span>
-                        <span className="table-muted">
-                          {row.latestDocumentSnapshotFetchedAt
-                            ? `Dokumenten-Snapshot ${row.latestDocumentSnapshotFetchedAt.slice(0, 10)}`
-                            : "Dokumenten-Snapshot ausstehend"}
-                        </span>
-                        {row.latestPageSnapshotHash ? (
-                          <span className="table-muted">{`Seite Hash ${row.latestPageSnapshotHash}`}</span>
-                        ) : null}
-                        {row.latestDocumentSnapshotHash ? (
-                          <span className="table-muted">{`Dokument Hash ${row.latestDocumentSnapshotHash}`}</span>
-                        ) : null}
-                      </div>
-                      <div className="source-details-links">
-                        <a
-                          className="source-link"
-                          href={row.sourcePageUrl}
-                          rel="noreferrer"
-                          target="_blank"
-                        >
-                          Quellseite
-                        </a>
-                        <a
-                          className="source-link"
-                          href={row.documentUrl}
-                          rel="noreferrer"
-                          target="_blank"
-                        >
-                          Originaldokument
-                        </a>
-                        {row.pageArtifactApiUrl ? (
-                          <a
-                            className="source-link"
-                            href={row.pageArtifactApiUrl}
-                            rel="noreferrer"
-                            target="_blank"
-                          >
-                            Gespeicherte Quellseite
-                          </a>
-                        ) : null}
-                        {row.documentArtifactApiUrl ? (
-                          <a
-                            className="source-link"
-                            href={row.documentArtifactApiUrl}
-                            rel="noreferrer"
-                            target="_blank"
-                          >
-                            Gespeichertes Dokument
-                          </a>
-                        ) : null}
-                      </div>
-                      {row.sourceHealthReport?.issues.length ? (
-                        <ul className="source-health-issues">
-                          {row.sourceHealthReport.issues.map((issue) => (
-                            <li key={`${row.operatorSlug}-${issue.key}`}>{issue.message}</li>
-                          ))}
-                        </ul>
-                      ) : null}
                     </section>
                   ) : null}
                 </div>
@@ -347,11 +310,6 @@ export function TariffTable({ rows }: TariffTableProps) {
                   </section>
                 </td>
               ))}
-              <td>
-                <span className={`review-pill ${row.reviewStatus}`}>
-                  {row.reviewStatus === "verified" ? "Geprüft" : "Offen"}
-                </span>
-              </td>
             </tr>
           ))}
         </tbody>

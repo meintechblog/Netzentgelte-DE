@@ -37,7 +37,5 @@ test("renders the page shell around a dominant germany map hero", async () => {
     screen.getByText(/Öffentlich erscheinen nur verifizierte und integritätsgeprüfte Betreiber/i)
   ).toBeInTheDocument();
   expect(screen.getByText("Dark mode · WCAG AA")).toBeInTheDocument();
-  expect(
-    screen.getAllByRole("button", { name: "Quelle & Prüfstatus anzeigen" }).length
-  ).toBeGreaterThan(0);
+  expect(screen.getAllByText(/Prüfstatus:/).length).toBeGreaterThan(0);
 });

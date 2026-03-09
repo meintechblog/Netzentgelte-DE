@@ -2,6 +2,7 @@ import {
   summarizePublishedOperatorBands,
   type PublishedOperator
 } from "../../modules/operators/current-catalog";
+import type { HistoricalTariff } from "../../modules/operators/history-catalog";
 import type { CurrentSource } from "../../modules/sources/current-sources";
 
 export function serializeCurrentRegistryTariffs(entries: PublishedOperator[]) {
@@ -23,16 +24,21 @@ export function serializeCurrentRegistryTariffs(entries: PublishedOperator[]) {
   };
 }
 
-export function serializeRegistryTariffHistory(entries: PublishedOperator[]) {
+export function serializeRegistryTariffHistory(entries: HistoricalTariff[]) {
   return {
     items: entries.map((entry) => ({
       operatorSlug: entry.slug,
       operatorName: entry.name,
       modelKey: "14a-model-3",
       validFrom: entry.validFrom,
+      validUntil: entry.validUntil,
       reviewStatus: entry.reviewStatus,
       sourceSlug: entry.sourceSlug,
       checkedAt: entry.checkedAt,
+      latestSnapshotFetchedAt: entry.latestSnapshotFetchedAt,
+      latestSnapshotHash: entry.latestSnapshotHash,
+      latestSnapshotStoragePath: entry.latestSnapshotStoragePath,
+      artifactApiUrl: entry.artifactApiUrl,
       sourcePageUrl: entry.sourcePageUrl,
       documentUrl: entry.documentUrl,
       bands: entry.bands,

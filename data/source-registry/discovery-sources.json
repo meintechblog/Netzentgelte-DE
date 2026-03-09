@@ -350,13 +350,13 @@
     "scope": "operator-tariffs",
     "kind": "operator-source-candidate",
     "authority": "Stadtwerke Schwäbisch Hall GmbH",
-    "title": "Preisblatt 6a - Steuerbare Verbrauchseinrichtungen nach §14a EnWG 2026",
-    "url": "https://www.stadtwerke-hall.de/netzdaten-und-bedingungen/netznutzungsentgelte",
+    "title": "Netzentgelte Strom 2026",
+    "url": "https://stadtwerke-hall.de/tarife-angebote/service/downloadcenter/netze",
     "refreshStrategy": "monthly-review",
     "notes": [
-      "Offizielle Betreiberseite für Netznutzungsentgelte Strom.",
-      "Das separate Preisblatt 6a führt die Modul-3-Werte und eine vollständige Tagesmatrix direkt auf.",
-      "Quelle ist in den kuratierten Registry-Slice übernommen und als verifiziert markiert."
+      "Offizielles Downloadcenter der Stadtwerke Schwäbisch Hall Netze.",
+      "Das veröffentlichte 2026er Strompreisblatt enthält die Modul-3-Werte und die vollständige Tagesmatrix direkt im Hauptdokument.",
+      "Der bisherige 14a-Speziallink war veraltet und wurde am 09.03.2026 auf die aktuelle Veröffentlichung korrigiert."
     ],
     "artifactsToStore": [
       "source page html",
@@ -393,7 +393,7 @@
     "kind": "operator-source-candidate",
     "authority": "Netze ODR GmbH",
     "title": "Preisblatt 6a Steuerbare Verbrauchseinrichtungen nach §14a EnWG 2026",
-    "url": "https://www.netze-odr.de/sixcms/detail.php?id=117813",
+    "url": "https://www.netze-odr.de/veroeffentlichungen/strom",
     "refreshStrategy": "monthly-review",
     "notes": [
       "Offizielle Betreiberseite für Netzentgelte Strom.",
@@ -414,7 +414,7 @@
     "kind": "operator-source-candidate",
     "authority": "Stadtwerke Ingolstadt Netze GmbH",
     "title": "Preisblatt 6a §14a EnWG 2026",
-    "url": "https://www.stadtwerke-ingolstadt-netze.de/netznutzung-strom/entgelte",
+    "url": "https://www.swi-netze.de/entgelte/",
     "refreshStrategy": "monthly-review",
     "notes": [
       "Offizielle Entgeltseite der Stadtwerke Ingolstadt Netze.",
@@ -435,7 +435,7 @@
     "kind": "operator-source-candidate",
     "authority": "NORDNetz GmbH",
     "title": "Preisblatt 6a Steuerbare Verbrauchseinrichtungen nach §14a EnWG 2026 Version 1.0",
-    "url": "https://www.nordnetz.de/",
+    "url": "https://nordnetz.com/de/strom/netzzugang-strom/netzentgelte",
     "refreshStrategy": "monthly-review",
     "notes": [
       "Offizielles Preisblatt 6a von NORDNetz.",
@@ -456,7 +456,7 @@
     "kind": "operator-source-candidate",
     "authority": "Heidelberg Netze GmbH",
     "title": "Netznutzungsentgelte Strom 2026",
-    "url": "https://www.swhd.de/netze/netznutzung/netzentgelte",
+    "url": "https://www.netze-heidelberg.de/veroeffentlichung-strom-gas",
     "refreshStrategy": "monthly-review",
     "notes": [
       "Offizielle Entgeltseite der Stadtwerke Heidelberg Netze.",
@@ -477,7 +477,7 @@
     "kind": "operator-source-candidate",
     "authority": "EWR Netz GmbH",
     "title": "Endgültiges Preisblatt Netznutzungsentgelte Strom 2026 der EWR Netz GmbH mit Anlagen",
-    "url": "https://www.ewr-netz.de/netz/netzentgelte",
+    "url": "https://www.ewr-netz.de/kunden/lieferanten/netzkosten/",
     "refreshStrategy": "monthly-review",
     "notes": [
       "Offizielle Betreiberseite für Netzentgelte Strom.",
@@ -498,7 +498,7 @@
     "kind": "operator-source-candidate",
     "authority": "GeraNetz GmbH",
     "title": "Preisblatt 2a Steuerbare Verbrauchseinrichtungen nach §14a EnWG 2026",
-    "url": "https://www.gera-netz.de/strom/netzzugang/netzentgelte",
+    "url": "https://www.geranetz.de/strom/netznutzungsvertrag-lieferantletztverbraucher/preisblaetter.html",
     "refreshStrategy": "monthly-review",
     "notes": [
       "Offizielle Betreiberseite für Netzentgelte Strom.",
@@ -519,7 +519,7 @@
     "kind": "operator-source-candidate",
     "authority": "AllgäuNetz GmbH & Co. KG",
     "title": "Anlage 6a - Preisblatt für steuerbare Verbrauchseinrichtungen ab 01.01.2026",
-    "url": "https://www.allgaeunetz.de/netze/strom/netznutzung/netzentgelte",
+    "url": "https://www.allgaeunetz.com/netznutzungsentgelte.html",
     "refreshStrategy": "monthly-review",
     "notes": [
       "Offizielle Betreiberseite für Netzentgelte Strom.",
@@ -540,7 +540,7 @@
     "kind": "operator-source-candidate",
     "authority": "e-netz Südhessen AG",
     "title": "Anlage 6a - Preisblatt für steuerbare Verbrauchseinrichtungen nach §14a EnWG ab 01.01.2026 - Version 1.0",
-    "url": "https://www.e-netz-suedhessen.de/netzzugang-strom/netzentgelte-strom",
+    "url": "https://www.e-netz-suedhessen.de/kontakt-service/pflichtveroeffentlichungen",
     "refreshStrategy": "monthly-review",
     "notes": [
       "Offizielle Betreiberseite für Netzentgelte Strom.",

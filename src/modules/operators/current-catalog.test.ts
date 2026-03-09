@@ -233,12 +233,41 @@ describe("getSeedPublishedOperators", () => {
     expect(mainzerNetze).toMatchObject({
       reviewStatus: "verified"
     });
+    expect(schwaebischHall).toMatchObject({
+      sourcePageUrl: "https://stadtwerke-hall.de/tarife-angebote/service/downloadcenter/netze",
+      documentUrl:
+        "https://stadtwerke-hall.de/fileadmin/files/Downloads/Netzdaten_Strom/4_Netzentgelte/4NNE_STW-SHA_ab_01.01.2026.pdf",
+      bands: expect.arrayContaining([
+        expect.objectContaining({
+          key: "NT",
+          valueCtPerKwh: "1.11"
+        }),
+        expect.objectContaining({
+          key: "ST",
+          valueCtPerKwh: "5.53"
+        }),
+        expect.objectContaining({
+          key: "HT",
+          valueCtPerKwh: "8.14"
+        })
+      ])
+    });
     expect(schwaebischHall?.timeWindows).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
           bandKey: "HT",
           seasonLabel: "Ganzjährig 2026",
-          timeRangeLabel: "17:00-22:00"
+          timeRangeLabel: "17:00-21:00"
+        }),
+        expect.objectContaining({
+          bandKey: "HT",
+          seasonLabel: "Ganzjährig 2026",
+          timeRangeLabel: "06:00-10:00"
+        }),
+        expect.objectContaining({
+          bandKey: "NT",
+          seasonLabel: "Ganzjährig 2026",
+          timeRangeLabel: "13:00-15:00"
         })
       ])
     );

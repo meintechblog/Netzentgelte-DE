@@ -800,7 +800,7 @@
         "title": "Netznutzungsentgelte Strom 2026",
         "documentType": "pdf",
         "sourcePageUrl": "https://www.swm-infrastruktur.de/strom/netzzugang/netznutzungsentgelte",
-        "documentUrl": "https://www.swm-infrastruktur.de/dam/jcr:bb1201d1-d178-4314-a017-cdd9410f04b5/2026_Netznutzungsentgelte%20Strom.pdf",
+        "documentUrl": "https://www.swm-infrastruktur.de/dam/swm-infrastruktur/dokumente/strom/netzzugang-netznutzungsentgelte/preisblaetter-2026/strom-preisblatt-2026.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
         "reviewStatus": "verified",
@@ -816,7 +816,7 @@
       "reviewStatus": "verified",
       "sourceDocumentId": "swm-infrastruktur-14a-2026",
       "sourcePageUrl": "https://www.swm-infrastruktur.de/strom/netzzugang/netznutzungsentgelte",
-      "documentUrl": "https://www.swm-infrastruktur.de/dam/jcr:bb1201d1-d178-4314-a017-cdd9410f04b5/2026_Netznutzungsentgelte%20Strom.pdf",
+      "documentUrl": "https://www.swm-infrastruktur.de/dam/swm-infrastruktur/dokumente/strom/netzzugang-netznutzungsentgelte/preisblaetter-2026/strom-preisblatt-2026.pdf",
       "bands": [
         {
           "key": "NT",
@@ -1286,7 +1286,7 @@
     "slug": "stadtwerke-schwaebisch-hall",
     "name": "Stadtwerke Schwäbisch Hall GmbH",
     "regionLabel": "Schwäbisch Hall",
-    "websiteUrl": "https://www.stadtwerke-hall.de/",
+    "websiteUrl": "https://stadtwerke-hall.de/",
     "registrySourceIds": [
       "bnetza-mastr-netzbetreiber-overview",
       "vnbdigital-portal"
@@ -1294,17 +1294,17 @@
     "sourceDocuments": [
       {
         "id": "stadtwerke-schwaebisch-hall-14a-2026",
-        "title": "Preisblatt 6a - Steuerbare Verbrauchseinrichtungen nach §14a EnWG 2026",
+        "title": "Netzentgelte Strom 2026",
         "documentType": "pdf",
-        "sourcePageUrl": "https://www.stadtwerke-hall.de/netzdaten-und-bedingungen/netznutzungsentgelte",
-        "documentUrl": "https://www.stadtwerke-hall.de/fileadmin/user_upload/netzdaten/Entgelte_Strom/Preisblatt_6a_-_Steuerbare_Verbrauchseinrichtungen_nach___14a_EnWG_2026.pdf",
+        "sourcePageUrl": "https://stadtwerke-hall.de/tarife-angebote/service/downloadcenter/netze",
+        "documentUrl": "https://stadtwerke-hall.de/fileadmin/files/Downloads/Netzdaten_Strom/4_Netzentgelte/4NNE_STW-SHA_ab_01.01.2026.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
         "reviewStatus": "verified",
         "notes": [
-          "Offizielle Betreiberseite für Netznutzungsentgelte Strom.",
-          "Das Preisblatt 6a nennt Modul-3-Werte und die zugehörigen Zeitfenster direkt in einer Tagesmatrix.",
-          "Stand laut Kuratierung: gültig ab 01.01.2026."
+          "Offizielles Downloadcenter der Stadtwerke Schwäbisch Hall Netze.",
+          "Das veröffentlichte Netzentgelt-PDF 2026 führt Modul 3 inklusive Tagesmatrix direkt im Strompreisblatt auf.",
+          "Der bisherige 14a-Speziallink war veraltet; ab 09.03.2026 ist der Eintrag auf das live erreichbare 2026er Hauptdokument korrigiert."
         ]
       }
     ],
@@ -1313,46 +1313,64 @@
       "validFrom": "2026-01-01",
       "reviewStatus": "verified",
       "sourceDocumentId": "stadtwerke-schwaebisch-hall-14a-2026",
-      "sourcePageUrl": "https://www.stadtwerke-hall.de/netzdaten-und-bedingungen/netznutzungsentgelte",
-      "documentUrl": "https://www.stadtwerke-hall.de/fileadmin/user_upload/netzdaten/Entgelte_Strom/Preisblatt_6a_-_Steuerbare_Verbrauchseinrichtungen_nach___14a_EnWG_2026.pdf",
+      "sourcePageUrl": "https://stadtwerke-hall.de/tarife-angebote/service/downloadcenter/netze",
+      "documentUrl": "https://stadtwerke-hall.de/fileadmin/files/Downloads/Netzdaten_Strom/4_Netzentgelte/4NNE_STW-SHA_ab_01.01.2026.pdf",
       "bands": [
         {
           "key": "NT",
           "label": "Niedrigtarifstufe",
-          "valueCtPerKwh": "0.89",
-          "sourceQuote": "NT 0,89 ct/kWh"
+          "valueCtPerKwh": "1.11",
+          "sourceQuote": "NT 1,11 ct/kWh"
         },
         {
           "key": "ST",
           "label": "Standardtarifstufe",
-          "valueCtPerKwh": "6.12",
-          "sourceQuote": "ST 6,12 ct/kWh"
+          "valueCtPerKwh": "5.53",
+          "sourceQuote": "ST 5,53 ct/kWh"
         },
         {
           "key": "HT",
           "label": "Hochtarifstufe",
-          "valueCtPerKwh": "11.26",
-          "sourceQuote": "HT 11,26 ct/kWh"
+          "valueCtPerKwh": "8.14",
+          "sourceQuote": "HT 8,14 ct/kWh"
         }
       ],
       "timeWindows": [
         {
-          "id": "stadtwerke-schwaebisch-hall-2026-standard-night",
+          "id": "stadtwerke-schwaebisch-hall-2026-standard-overnight",
           "bandKey": "ST",
           "label": "Standardtarif",
           "seasonLabel": "Ganzjährig 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-10:00",
-          "sourceQuote": "ST 00:00-10:00"
+          "timeRangeLabel": "00:00-06:00",
+          "sourceQuote": "ST 00:00-06:00"
         },
         {
-          "id": "stadtwerke-schwaebisch-hall-2026-low-midday",
+          "id": "stadtwerke-schwaebisch-hall-2026-high-morning",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Ganzjährig 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:00-10:00",
+          "sourceQuote": "HT 06:00-10:00"
+        },
+        {
+          "id": "stadtwerke-schwaebisch-hall-2026-standard-midday",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Ganzjährig 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "10:00-13:00",
+          "sourceQuote": "ST 10:00-13:00"
+        },
+        {
+          "id": "stadtwerke-schwaebisch-hall-2026-low-afternoon",
           "bandKey": "NT",
           "label": "Niedrigtarif",
           "seasonLabel": "Ganzjährig 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "10:00-15:00",
-          "sourceQuote": "NT 10:00-15:00"
+          "timeRangeLabel": "13:00-15:00",
+          "sourceQuote": "NT 13:00-15:00"
         },
         {
           "id": "stadtwerke-schwaebisch-hall-2026-standard-afternoon",
@@ -1369,8 +1387,8 @@
           "label": "Hochtarif",
           "seasonLabel": "Ganzjährig 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "17:00-22:00",
-          "sourceQuote": "HT 17:00-22:00"
+          "timeRangeLabel": "17:00-21:00",
+          "sourceQuote": "HT 17:00-21:00"
         },
         {
           "id": "stadtwerke-schwaebisch-hall-2026-standard-late",
@@ -1378,8 +1396,8 @@
           "label": "Standardtarif",
           "seasonLabel": "Ganzjährig 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "22:00-24:00",
-          "sourceQuote": "ST 22:00-24:00"
+          "timeRangeLabel": "21:00-24:00",
+          "sourceQuote": "ST 21:00-24:00"
         }
       ]
     }
@@ -1518,8 +1536,8 @@
         "id": "netze-odr-14a-2026",
         "title": "Preisblatt 6a Steuerbare Verbrauchseinrichtungen nach §14a EnWG 2026",
         "documentType": "pdf",
-        "sourcePageUrl": "https://www.netze-odr.de/sixcms/detail.php?id=117813",
-        "documentUrl": "https://www.netze-odr.de/media/eon-com/odr-netz-gmbh-uebergreifend/preisblatt_6a_steuerbare_verbrauchseinrichtungen_nach__14a_enwg_2026.pdf",
+        "sourcePageUrl": "https://www.netze-odr.de/veroeffentlichungen/strom",
+        "documentUrl": "https://www.netze-odr.de/fileadmin/Netze-ODR/Dokumente/Unternehmen/Veroeffentlichungen/Netzentgelte/Netzentgelte_Strom_2026.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
         "reviewStatus": "verified",
@@ -1535,8 +1553,8 @@
       "validFrom": "2026-01-01",
       "reviewStatus": "verified",
       "sourceDocumentId": "netze-odr-14a-2026",
-      "sourcePageUrl": "https://www.netze-odr.de/sixcms/detail.php?id=117813",
-      "documentUrl": "https://www.netze-odr.de/media/eon-com/odr-netz-gmbh-uebergreifend/preisblatt_6a_steuerbare_verbrauchseinrichtungen_nach__14a_enwg_2026.pdf",
+      "sourcePageUrl": "https://www.netze-odr.de/veroeffentlichungen/strom",
+      "documentUrl": "https://www.netze-odr.de/fileadmin/Netze-ODR/Dokumente/Unternehmen/Veroeffentlichungen/Netzentgelte/Netzentgelte_Strom_2026.pdf",
       "bands": [
         {
           "key": "NT",
@@ -1619,7 +1637,7 @@
     "slug": "stadtwerke-ingolstadt-netze",
     "name": "Stadtwerke Ingolstadt Netze GmbH",
     "regionLabel": "Ingolstadt",
-    "websiteUrl": "https://www.stadtwerke-ingolstadt-netze.de/",
+    "websiteUrl": "https://www.swi-netze.de/",
     "registrySourceIds": [
       "bnetza-mastr-netzbetreiber-overview",
       "vnbdigital-portal"
@@ -1629,8 +1647,8 @@
         "id": "stadtwerke-ingolstadt-netze-14a-2026",
         "title": "Preisblatt 6a §14a EnWG 2026",
         "documentType": "pdf",
-        "sourcePageUrl": "https://www.stadtwerke-ingolstadt-netze.de/netznutzung-strom/entgelte",
-        "documentUrl": "https://www.stadtwerke-ingolstadt-netze.de/fileadmin/netze-strom/dokumente/Preisblatt_6a_14a_2026_01.02.2026.pdf",
+        "sourcePageUrl": "https://www.swi-netze.de/entgelte/",
+        "documentUrl": "https://www.swi-netze.de/fileadmin/media/04_Netze/C_Netze_Downloads/PDFs/01_Strom/Entgelte/2026_01_01_Preisblatt_SWI_Strom_2026.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-02-01",
         "reviewStatus": "verified",
@@ -1646,8 +1664,8 @@
       "validFrom": "2026-02-01",
       "reviewStatus": "verified",
       "sourceDocumentId": "stadtwerke-ingolstadt-netze-14a-2026",
-      "sourcePageUrl": "https://www.stadtwerke-ingolstadt-netze.de/netznutzung-strom/entgelte",
-      "documentUrl": "https://www.stadtwerke-ingolstadt-netze.de/fileadmin/netze-strom/dokumente/Preisblatt_6a_14a_2026_01.02.2026.pdf",
+      "sourcePageUrl": "https://www.swi-netze.de/entgelte/",
+      "documentUrl": "https://www.swi-netze.de/fileadmin/media/04_Netze/C_Netze_Downloads/PDFs/01_Strom/Entgelte/2026_01_01_Preisblatt_SWI_Strom_2026.pdf",
       "bands": [
         {
           "key": "NT",
@@ -1721,7 +1739,7 @@
     "slug": "nordnetz",
     "name": "NORDNetz GmbH",
     "regionLabel": "Schleswig-Holstein",
-    "websiteUrl": "https://www.nordnetz.de/",
+    "websiteUrl": "https://nordnetz.com/",
     "registrySourceIds": [
       "bnetza-mastr-netzbetreiber-overview",
       "vnbdigital-portal"
@@ -1731,8 +1749,8 @@
         "id": "nordnetz-14a-2026",
         "title": "Preisblatt 6a Steuerbare Verbrauchseinrichtungen nach §14a EnWG 2026 Version 1.0",
         "documentType": "pdf",
-        "sourcePageUrl": "https://www.nordnetz.de/",
-        "documentUrl": "https://www.nordnetz.de/content/dam/revu-global/nordnetz/documents/strom/netznutzung/netzentgelte_strom/preisblatt6a_steuerbare_verbrauchseinrichtung_nach___14a_enwg_2026_vers1.0.pdf",
+        "sourcePageUrl": "https://nordnetz.com/de/strom/netzzugang-strom/netzentgelte",
+        "documentUrl": "https://nordnetz.com/resource/blob/149336/fcd578ca870cff42b8da562f789ee3e9/preisblatt6a-14a-enwg-modul3-2026-data.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
         "reviewStatus": "pending",
@@ -1748,8 +1766,8 @@
       "validFrom": "2026-01-01",
       "reviewStatus": "pending",
       "sourceDocumentId": "nordnetz-14a-2026",
-      "sourcePageUrl": "https://www.nordnetz.de/",
-      "documentUrl": "https://www.nordnetz.de/content/dam/revu-global/nordnetz/documents/strom/netznutzung/netzentgelte_strom/preisblatt6a_steuerbare_verbrauchseinrichtung_nach___14a_enwg_2026_vers1.0.pdf",
+      "sourcePageUrl": "https://nordnetz.com/de/strom/netzzugang-strom/netzentgelte",
+      "documentUrl": "https://nordnetz.com/resource/blob/149336/fcd578ca870cff42b8da562f789ee3e9/preisblatt6a-14a-enwg-modul3-2026-data.pdf",
       "bands": [
         {
           "key": "NT",
@@ -1841,7 +1859,7 @@
     "slug": "heidelberg-netze",
     "name": "Heidelberg Netze GmbH",
     "regionLabel": "Heidelberg",
-    "websiteUrl": "https://www.swhd.de/",
+    "websiteUrl": "https://www.netze-heidelberg.de/",
     "registrySourceIds": [
       "bnetza-mastr-netzbetreiber-overview",
       "vnbdigital-portal"
@@ -1851,8 +1869,8 @@
         "id": "heidelberg-netze-14a-2026",
         "title": "Netznutzungsentgelte Strom 2026",
         "documentType": "pdf",
-        "sourcePageUrl": "https://www.swhd.de/netze/netznutzung/netzentgelte",
-        "documentUrl": "https://www.swhd.de/media/user_upload/Netze/Netzentgelte/Netznutzungsentgelte_Strom_2026.pdf",
+        "sourcePageUrl": "https://www.netze-heidelberg.de/veroeffentlichung-strom-gas",
+        "documentUrl": "https://www.netze-heidelberg.de/de/Veroeffentlichungspflichten/Stromnetz/Preisblatt-Netznutzung-Strom-2026.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
         "reviewStatus": "pending",
@@ -1868,8 +1886,8 @@
       "validFrom": "2026-01-01",
       "reviewStatus": "pending",
       "sourceDocumentId": "heidelberg-netze-14a-2026",
-      "sourcePageUrl": "https://www.swhd.de/netze/netznutzung/netzentgelte",
-      "documentUrl": "https://www.swhd.de/media/user_upload/Netze/Netzentgelte/Netznutzungsentgelte_Strom_2026.pdf",
+      "sourcePageUrl": "https://www.netze-heidelberg.de/veroeffentlichung-strom-gas",
+      "documentUrl": "https://www.netze-heidelberg.de/de/Veroeffentlichungspflichten/Stromnetz/Preisblatt-Netznutzung-Strom-2026.pdf",
       "bands": [
         {
           "key": "NT",
@@ -1962,8 +1980,8 @@
         "id": "ewr-netz-14a-2026",
         "title": "Endgültiges Preisblatt Netznutzungsentgelte Strom 2026 der EWR Netz GmbH mit Anlagen",
         "documentType": "pdf",
-        "sourcePageUrl": "https://www.ewr-netz.de/netz/netzentgelte",
-        "documentUrl": "https://www.ewr-netz.de/media/wysiwyg/downloads/Endgueltiges_Preisblatt_Netznutzungsentgelte_Strom_2026_der_EWR_Netz_GmbH_mit_Anlagen.pdf",
+        "sourcePageUrl": "https://www.ewr-netz.de/kunden/lieferanten/netzkosten/",
+        "documentUrl": "https://www.ewr-netz.de/fileadmin/data/downloads/Unternehmen/Veroeffentlichungspflichten/Netzkosten/Preisblaetter/Strom/2026/EWR_Netz_GmbH_Preisblatt_NE-Strom_26_end%C3%BCltig_20251219.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
         "reviewStatus": "verified",
@@ -1979,8 +1997,8 @@
       "validFrom": "2026-01-01",
       "reviewStatus": "verified",
       "sourceDocumentId": "ewr-netz-14a-2026",
-      "sourcePageUrl": "https://www.ewr-netz.de/netz/netzentgelte",
-      "documentUrl": "https://www.ewr-netz.de/media/wysiwyg/downloads/Endgueltiges_Preisblatt_Netznutzungsentgelte_Strom_2026_der_EWR_Netz_GmbH_mit_Anlagen.pdf",
+      "sourcePageUrl": "https://www.ewr-netz.de/kunden/lieferanten/netzkosten/",
+      "documentUrl": "https://www.ewr-netz.de/fileadmin/data/downloads/Unternehmen/Veroeffentlichungspflichten/Netzkosten/Preisblaetter/Strom/2026/EWR_Netz_GmbH_Preisblatt_NE-Strom_26_end%C3%BCltig_20251219.pdf",
       "bands": [
         {
           "key": "NT",
@@ -2054,7 +2072,7 @@
     "slug": "geranetz",
     "name": "GeraNetz GmbH",
     "regionLabel": "Gera",
-    "websiteUrl": "https://www.gera-netz.de/",
+    "websiteUrl": "https://www.geranetz.de/",
     "registrySourceIds": [
       "bnetza-mastr-netzbetreiber-overview",
       "vnbdigital-portal"
@@ -2064,8 +2082,8 @@
         "id": "geranetz-14a-2026",
         "title": "Preisblatt 2a Steuerbare Verbrauchseinrichtungen nach §14a EnWG 2026",
         "documentType": "pdf",
-        "sourcePageUrl": "https://www.gera-netz.de/strom/netzzugang/netzentgelte",
-        "documentUrl": "https://www.gera-netz.de/de/media/dokumente_geranetz_1/netznutzung_strom/preisblaetter_3/preisblatt_2a_steuerbare_verbrauchseinrichtungen_nach__14a_enwg_2026.pdf",
+        "sourcePageUrl": "https://www.geranetz.de/strom/netznutzungsvertrag-lieferantletztverbraucher/preisblaetter.html",
+        "documentUrl": "https://www.geranetz.de/fileadmin/user_upload/strom/Netznutzung-Lieferant-Letztverbraucher/Preisblaetter/2026/Preisblatt_2a_Entnahme_fuer_steuerbare_Verbrauchseinrichtungen_Stand_01.01.26.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
         "reviewStatus": "verified",
@@ -2081,8 +2099,8 @@
       "validFrom": "2026-01-01",
       "reviewStatus": "verified",
       "sourceDocumentId": "geranetz-14a-2026",
-      "sourcePageUrl": "https://www.gera-netz.de/strom/netzzugang/netzentgelte",
-      "documentUrl": "https://www.gera-netz.de/de/media/dokumente_geranetz_1/netznutzung_strom/preisblaetter_3/preisblatt_2a_steuerbare_verbrauchseinrichtungen_nach__14a_enwg_2026.pdf",
+      "sourcePageUrl": "https://www.geranetz.de/strom/netznutzungsvertrag-lieferantletztverbraucher/preisblaetter.html",
+      "documentUrl": "https://www.geranetz.de/fileadmin/user_upload/strom/Netznutzung-Lieferant-Letztverbraucher/Preisblaetter/2026/Preisblatt_2a_Entnahme_fuer_steuerbare_Verbrauchseinrichtungen_Stand_01.01.26.pdf",
       "bands": [
         {
           "key": "NT",
@@ -2165,7 +2183,7 @@
     "slug": "allgaeunetz",
     "name": "AllgäuNetz GmbH & Co. KG",
     "regionLabel": "Allgäu",
-    "websiteUrl": "https://www.allgaeunetz.de/",
+    "websiteUrl": "https://www.allgaeunetz.com/",
     "registrySourceIds": [
       "bnetza-mastr-netzbetreiber-overview",
       "vnbdigital-portal"
@@ -2175,8 +2193,8 @@
         "id": "allgaeunetz-14a-2026",
         "title": "Anlage 6a - Preisblatt für steuerbare Verbrauchseinrichtungen ab 01.01.2026",
         "documentType": "pdf",
-        "sourcePageUrl": "https://www.allgaeunetz.de/netze/strom/netznutzung/netzentgelte",
-        "documentUrl": "https://www.allgaeunetz.de/fileadmin/user_upload/Dokumente/Strom/Netznutzung/Netzentgelte/Anlage_6a_-_Preisblatt_fuer_steuerbare_Verbrauchseinrichtungen_ab_01.01.2026.pdf",
+        "sourcePageUrl": "https://www.allgaeunetz.com/netznutzungsentgelte.html",
+        "documentUrl": "https://www.allgaeunetz.com/download/2025_12_22_preisblatt_nne_2026_endg.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
         "reviewStatus": "verified",
@@ -2192,8 +2210,8 @@
       "validFrom": "2026-01-01",
       "reviewStatus": "verified",
       "sourceDocumentId": "allgaeunetz-14a-2026",
-      "sourcePageUrl": "https://www.allgaeunetz.de/netze/strom/netznutzung/netzentgelte",
-      "documentUrl": "https://www.allgaeunetz.de/fileadmin/user_upload/Dokumente/Strom/Netznutzung/Netzentgelte/Anlage_6a_-_Preisblatt_fuer_steuerbare_Verbrauchseinrichtungen_ab_01.01.2026.pdf",
+      "sourcePageUrl": "https://www.allgaeunetz.com/netznutzungsentgelte.html",
+      "documentUrl": "https://www.allgaeunetz.com/download/2025_12_22_preisblatt_nne_2026_endg.pdf",
       "bands": [
         {
           "key": "NT",
@@ -2286,8 +2304,8 @@
         "id": "e-netz-suedhessen-14a-2026",
         "title": "Anlage 6a - Preisblatt für steuerbare Verbrauchseinrichtungen nach §14a EnWG ab 01.01.2026 - Version 1.0",
         "documentType": "pdf",
-        "sourcePageUrl": "https://www.e-netz-suedhessen.de/netzzugang-strom/netzentgelte-strom",
-        "documentUrl": "https://www.e-netz-suedhessen.de/fileadmin/user_upload/e-netz_suedhessen/netzentgelte_strom/Anlage_6a_-_Preisblatt_fuer_steuerbare_Verbrauchseinrichtungen_nach__14a_EnWG_ab_01.01.2026_-_Version_1.0.pdf",
+        "sourcePageUrl": "https://www.e-netz-suedhessen.de/kontakt-service/pflichtveroeffentlichungen",
+        "documentUrl": "https://www.e-netz-suedhessen.de/fileadmin/download/preisblatt_strom.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
         "reviewStatus": "verified",
@@ -2303,8 +2321,8 @@
       "validFrom": "2026-01-01",
       "reviewStatus": "verified",
       "sourceDocumentId": "e-netz-suedhessen-14a-2026",
-      "sourcePageUrl": "https://www.e-netz-suedhessen.de/netzzugang-strom/netzentgelte-strom",
-      "documentUrl": "https://www.e-netz-suedhessen.de/fileadmin/user_upload/e-netz_suedhessen/netzentgelte_strom/Anlage_6a_-_Preisblatt_fuer_steuerbare_Verbrauchseinrichtungen_nach__14a_EnWG_ab_01.01.2026_-_Version_1.0.pdf",
+      "sourcePageUrl": "https://www.e-netz-suedhessen.de/kontakt-service/pflichtveroeffentlichungen",
+      "documentUrl": "https://www.e-netz-suedhessen.de/fileadmin/download/preisblatt_strom.pdf",
       "bands": [
         {
           "key": "NT",

@@ -1,14 +1,24 @@
+import { getTableName } from "drizzle-orm";
+
+import { ingestRuns } from "./ingest-runs";
+import { operatorGeometries } from "./geometries";
+import { operators } from "./operators";
+import { sourceCatalog, sourceSnapshots } from "./sources";
+import { tariffVersions } from "./tariffs";
+
 export { ingestRuns } from "./ingest-runs";
 export { operatorGeometries } from "./geometries";
 export { operators } from "./operators";
 export { sourceCatalog, sourceSnapshots } from "./sources";
 export { tariffVersions } from "./tariffs";
 
-export const tables = [
-  "operators",
-  "source_catalog",
-  "source_snapshots",
-  "tariff_versions",
-  "operator_geometries",
-  "ingest_runs"
+export const schemaTables = [
+  operators,
+  sourceCatalog,
+  sourceSnapshots,
+  tariffVersions,
+  operatorGeometries,
+  ingestRuns
 ];
+
+export const tables = schemaTables.map((table) => getTableName(table));

@@ -71,22 +71,23 @@ export function OperatorExplorer({ rows, mapFeatures }: OperatorExplorerProps) {
 
   return (
     <>
-      <section className="content-panel" aria-labelledby="betreibersuche">
-        <div className="panel-header search-panel">
+      <section className="content-panel map-hero-panel" aria-labelledby="kartenstufe">
+        <div className="panel-header map-hero-panel__header">
           <div>
-            <span className="section-eyebrow">Live-Filter</span>
-            <h2 id="betreibersuche">Netzbetreiber suchen</h2>
+            <span className="section-eyebrow">Hero-Karte</span>
+            <h2 id="kartenstufe">Deutschlandkarte im Fokus</h2>
             <p>
-              Filtert Karte und Tarifmatrix direkt beim Tippen nach Betreibername, Kürzel
-              oder Region.
+              Kuratierte Betreiberflächen, Review-Status und Tarifkontext auf einer
+              gemeinsamen Deutschlandkarte.
             </p>
           </div>
           <div className="panel-actions">
+            <span className="surface-chip">Hero-Karte</span>
             <span className="surface-chip">{getResultLabel(filteredRows.length)}</span>
             <span className="surface-chip">Live während des Tippens</span>
           </div>
         </div>
-        <div className="operator-search">
+        <div className="operator-search operator-search--hero">
           <label className="operator-search__label" htmlFor={searchId}>
             Suchbegriff
           </label>
@@ -106,23 +107,10 @@ export function OperatorExplorer({ rows, mapFeatures }: OperatorExplorerProps) {
               </button>
             ) : null}
           </div>
-        </div>
-      </section>
-
-      <section className="content-panel" aria-labelledby="kartenstufe">
-        <div className="panel-header">
-          <div>
-            <span className="section-eyebrow">Räumliche Lesart</span>
-            <h2 id="kartenstufe">Interaktive Netzgebiets-Stufe</h2>
-            <p>
-              Die Geometrie ist noch abstrakt, die Betreiber- und Quellenebene ist jetzt
-              jedoch bereits echt und reviewbar.
-            </p>
-          </div>
-          <div className="panel-actions">
-            <span className="surface-chip">Map hover</span>
-            <span className="surface-chip">Source trace</span>
-          </div>
+          <p className="operator-search__hint">
+            Filtert Karte, Detailpanel und Tarifmatrix direkt nach Betreibername, Kürzel
+            oder Region.
+          </p>
         </div>
         <OperatorMap features={filteredMapFeatures} />
       </section>

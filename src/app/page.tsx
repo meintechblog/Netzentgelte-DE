@@ -37,6 +37,8 @@ export default async function HomePage() {
       </section>
 
       <div className="dashboard-grid">
+        <OperatorExplorer mapFeatures={mapFeatures} rows={rows} />
+
         <section className="stats-grid" aria-label="Kennzahlen">
           <article className="stat-card">
             <div className="stat-label">Erfasste Betreiber</div>
@@ -81,8 +83,6 @@ export default async function HomePage() {
             </article>
           </div>
         </section>
-
-        <OperatorExplorer mapFeatures={mapFeatures} rows={rows} />
 
         <section className="content-panel" aria-labelledby="quellenpruefung">
           <div className="panel-header">

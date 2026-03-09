@@ -11,8 +11,11 @@ describe("GET /api/geo/operators", () => {
       id: expect.any(String),
       properties: expect.objectContaining({
         operatorSlug: expect.any(String),
-        sourcePageUrl: expect.any(String)
-      })
+        sourcePageUrl: expect.any(String),
+        geometryPrecision: expect.any(String),
+        svgPath: expect.any(String)
+      }),
+      geometry: null
     });
   });
 });

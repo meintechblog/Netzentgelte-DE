@@ -2,6 +2,7 @@ import {
   summarizePublishedOperatorBands,
   type PublishedOperator
 } from "../../modules/operators/current-catalog";
+import { getRegistryMapFeatures } from "../maps/geojson";
 import type { HistoricalTariff } from "../../modules/operators/history-catalog";
 import type { CurrentSource } from "../../modules/sources/current-sources";
 
@@ -61,19 +62,27 @@ export function serializeRegistryOperators(entries: PublishedOperator[]) {
 }
 
 export function serializeRegistryOperatorGeo(entries: PublishedOperator[]) {
+  const features = getRegistryMapFeatures(entries);
+
   return {
     type: "FeatureCollection",
-    features: entries.map((entry) => ({
+    features: features.map((entry) => ({
       type: "Feature",
-      id: entry.slug,
+      id: entry.id,
       properties: {
-        operatorSlug: entry.slug,
-        operatorName: entry.name,
+        operatorSlug: entry.id,
+        operatorName: entry.operatorName,
         regionLabel: entry.regionLabel,
-        reviewStatus: entry.reviewStatus,
+        mapLabel: entry.mapLabel,
+        coverageType: entry.coverageType,
+        geometryPrecision: entry.geometryPrecision,
+        geometrySourceLabel: entry.geometrySourceLabel,
         sourcePageUrl: entry.sourcePageUrl,
         documentUrl: entry.documentUrl,
-        summary: summarizePublishedOperatorBands(entry)
+        summary: entry.currentBandsSummary,
+        svgPath: entry.geometry.path,
+        centroid: entry.centroid,
+        labelAnchor: entry.labelAnchor
       },
       geometry: null
     }))

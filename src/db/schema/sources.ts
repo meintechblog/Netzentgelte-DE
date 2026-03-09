@@ -27,6 +27,10 @@ export const sourceSnapshots = pgTable("source_snapshots", {
     .notNull()
     .references(() => sourceCatalog.id, { onDelete: "cascade" }),
   fetchedAt: timestamp("fetched_at", { withTimezone: true }).notNull().defaultNow(),
+  pageUrl: text("page_url"),
+  fileUrl: text("file_url"),
+  fileName: text("file_name"),
+  mimeType: text("mime_type"),
   contentHash: text("content_hash").notNull(),
   storagePath: text("storage_path"),
   parserStatus: text("parser_status").notNull().default("pending"),

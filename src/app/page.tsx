@@ -1,6 +1,6 @@
 import { OperatorExplorer } from "../components/operator-explorer";
 import { SourceReviewTable } from "../components/source-review-table";
-import { getRegistryMapFeatures } from "../lib/maps/geojson";
+import { getRegistryMapFeatures, projectGermanyMap } from "../lib/maps/geojson";
 import { getRegistryTariffRows } from "../lib/view-models/tariffs";
 import {
   getPublishedOperatorStats,
@@ -14,7 +14,7 @@ export default async function HomePage() {
   const operators = await loadPublishedOperators();
   const currentSources = await loadCurrentSources();
   const rows = getRegistryTariffRows(operators);
-  const mapFeatures = getRegistryMapFeatures(operators);
+  const mapScene = projectGermanyMap(getRegistryMapFeatures(operators));
   const stats = getPublishedOperatorStats(operators);
 
   return (
@@ -37,7 +37,7 @@ export default async function HomePage() {
       </section>
 
       <div className="dashboard-grid">
-        <OperatorExplorer mapFeatures={mapFeatures} rows={rows} />
+        <OperatorExplorer mapScene={mapScene} rows={rows} />
 
         <section className="stats-grid" aria-label="Kennzahlen">
           <article className="stat-card">

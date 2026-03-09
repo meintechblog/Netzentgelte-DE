@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 
-import type { OperatorMapFeature } from "../lib/maps/geojson";
+import { projectGermanyMap, type OperatorMapFeature } from "../lib/maps/geojson";
 import type { TariffTableRow } from "../lib/view-models/tariffs";
 import { OperatorExplorer } from "./operator-explorer";
 
@@ -39,45 +39,37 @@ const mapFeatures: OperatorMapFeature[] = [
     id: "stadtwerke-schwaebisch-hall",
     operatorName: "Stadtwerke Schwäbisch Hall",
     regionLabel: "Schwäbisch Hall / Hohenlohe",
-    mapLabel: "SHA",
     mapRank: 1,
-    coverageType: "metro",
+    coverageKind: "metro-zone",
     geometryPrecision: "approximate",
     geometrySourceLabel: "Testgeometrie",
-    centroid: { x: 390, y: 250 },
-    labelAnchor: { x: 390, y: 250 },
+    anchors: [{ longitude: 9.739, latitude: 49.112, radiusKm: 28 }],
+    stateHints: ["08"],
     currentBandsSummary: "NT 1.00 ct/kWh · ST 2.00 ct/kWh · HT 3.00 ct/kWh",
     sourcePageUrl: "https://example.com/swh/netzentgelte",
-    documentUrl: "https://example.com/swh/preisblatt-2026.pdf",
-    geometry: {
-      kind: "svg-path",
-      path: "M 370 230 L 410 230 L 410 270 L 370 270 Z"
-    }
+    documentUrl: "https://example.com/swh/preisblatt-2026.pdf"
   },
   {
     id: "stromnetz-berlin",
     operatorName: "Stromnetz Berlin",
     regionLabel: "Berlin",
-    mapLabel: "BER",
     mapRank: 2,
-    coverageType: "metro",
+    coverageKind: "metro-zone",
     geometryPrecision: "approximate",
     geometrySourceLabel: "Testgeometrie",
-    centroid: { x: 530, y: 156 },
-    labelAnchor: { x: 530, y: 156 },
+    anchors: [{ longitude: 13.405, latitude: 52.52, radiusKm: 24 }],
+    stateHints: ["11"],
     currentBandsSummary: "NT 4.00 ct/kWh · ST 5.00 ct/kWh · HT 6.00 ct/kWh",
     sourcePageUrl: "https://example.com/berlin/netzentgelte",
-    documentUrl: "https://example.com/berlin/preisblatt-2026.pdf",
-    geometry: {
-      kind: "svg-path",
-      path: "M 520 140 L 548 140 L 548 168 L 520 168 Z"
-    }
+    documentUrl: "https://example.com/berlin/preisblatt-2026.pdf"
   }
 ];
 
 describe("OperatorExplorer", () => {
-  test("keeps the hero map detail panel and visible regions in sync while filtering", () => {
-    const { container } = render(<OperatorExplorer rows={rows} mapFeatures={mapFeatures} />);
+  test("keeps the hero map detail panel in sync while dimming non-matching map regions", () => {
+    const { container } = render(
+      <OperatorExplorer rows={rows} mapScene={projectGermanyMap(mapFeatures)} />
+    );
 
     fireEvent.change(screen.getByRole("searchbox", { name: "Suchbegriff" }), {
       target: { value: "berlin" }
@@ -87,21 +79,20 @@ describe("OperatorExplorer", () => {
     expect(screen.getAllByText("Stromnetz Berlin").length).toBeGreaterThan(0);
     expect(screen.queryByText("Stadtwerke Schwäbisch Hall")).not.toBeInTheDocument();
     expect(screen.getByText("1 Treffer")).toBeInTheDocument();
-    expect(screen.getByText("BER")).toBeInTheDocument();
     expect(screen.getByText("Geometrie: approximate")).toBeInTheDocument();
-    expect(container.querySelectorAll("[data-operator-region]").length).toBe(1);
-    expect(screen.queryByText("SHA")).not.toBeInTheDocument();
+    expect(container.querySelectorAll("[data-operator-region]").length).toBe(2);
+    expect(container.querySelectorAll("[data-operator-region][data-filter-match='false']").length).toBe(1);
   });
 
-  test("shows a clear empty state when no operator matches the current query", () => {
-    render(<OperatorExplorer rows={rows} mapFeatures={mapFeatures} />);
+  test("shows a dimmed map state when no operator matches the current query", () => {
+    render(<OperatorExplorer rows={rows} mapScene={projectGermanyMap(mapFeatures)} />);
 
     fireEvent.change(screen.getByRole("searchbox", { name: "Suchbegriff" }), {
       target: { value: "hamburg" }
     });
 
     expect(screen.getByText("Kein Netzbetreiber passt zur aktuellen Suche.")).toBeInTheDocument();
-    expect(screen.getByText("Noch keine Netzgebiete geladen")).toBeInTheDocument();
+    expect(screen.getByText("Kein Netzbetreiber passt zur Suche")).toBeInTheDocument();
     expect(screen.getByText("0 Treffer")).toBeInTheDocument();
   });
 });

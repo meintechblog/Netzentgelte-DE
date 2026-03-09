@@ -1,184 +1,128 @@
 [
   {
-    "slug": "avacon-netz",
-    "mapLabel": "AVA",
-    "mapRank": 8,
-    "coverageType": "state",
-    "geometryPrecision": "regional",
-    "geometrySourceLabel": "Kuratiertes Deutschland-Slice 2026-03-09",
-    "centroid": { "x": 340, "y": 228 },
-    "labelAnchor": { "x": 340, "y": 228 },
-    "geometry": {
-      "kind": "svg-path",
-      "path": "M 230 120 L 370 108 L 450 198 L 430 310 L 332 362 L 240 280 Z"
-    }
-  },
-  {
-    "slug": "bayernwerk-netz",
-    "mapLabel": "BAY",
-    "mapRank": 9,
-    "coverageType": "state",
-    "geometryPrecision": "regional",
-    "geometrySourceLabel": "Kuratiertes Deutschland-Slice 2026-03-09",
-    "centroid": { "x": 470, "y": 648 },
-    "labelAnchor": { "x": 470, "y": 648 },
-    "geometry": {
-      "kind": "svg-path",
-      "path": "M 340 500 L 500 438 L 610 520 L 612 760 L 470 860 L 340 760 Z"
-    }
+    "slug": "westnetz",
+    "mapRank": 6,
+    "coverageKind": "multi-zone",
+    "coveragePrecision": "regional",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["05", "07"],
+    "anchors": [
+      { "longitude": 6.776, "latitude": 51.227, "radiusKm": 105 },
+      { "longitude": 6.638, "latitude": 49.756, "radiusKm": 55 }
+    ]
   },
   {
     "slug": "e-dis-netz",
-    "mapLabel": "EDS",
     "mapRank": 7,
-    "coverageType": "state",
-    "geometryPrecision": "regional",
-    "geometrySourceLabel": "Kuratiertes Deutschland-Slice 2026-03-09",
-    "centroid": { "x": 525, "y": 228 },
-    "labelAnchor": { "x": 525, "y": 228 },
-    "geometry": {
-      "kind": "svg-path",
-      "path": "M 432 118 L 572 120 L 620 220 L 600 360 L 500 350 L 430 260 Z"
-    }
+    "coverageKind": "multi-zone",
+    "coveragePrecision": "regional",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["12", "13"],
+    "anchors": [
+      { "longitude": 13.064, "latitude": 52.4, "radiusKm": 85 },
+      { "longitude": 13.261, "latitude": 53.557, "radiusKm": 80 }
+    ]
   },
   {
-    "slug": "lew-verteilnetz",
-    "mapLabel": "LEW",
-    "mapRank": 12,
-    "coverageType": "metro",
-    "geometryPrecision": "approximate",
-    "geometrySourceLabel": "Kuratiertes Deutschland-Slice 2026-03-09",
-    "centroid": { "x": 414, "y": 676 },
-    "labelAnchor": { "x": 414, "y": 676 },
-    "geometry": {
-      "kind": "svg-path",
-      "path": "M 386 650 L 436 640 L 456 690 L 410 712 L 376 690 Z"
-    }
+    "slug": "avacon-netz",
+    "mapRank": 8,
+    "coverageKind": "multi-zone",
+    "coveragePrecision": "regional",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["03", "15"],
+    "anchors": [
+      { "longitude": 10.526, "latitude": 52.267, "radiusKm": 95 },
+      { "longitude": 11.629, "latitude": 52.121, "radiusKm": 70 }
+    ]
   },
   {
-    "slug": "mainzer-netze",
-    "mapLabel": "MNZ",
-    "mapRank": 13,
-    "coverageType": "metro",
-    "geometryPrecision": "approximate",
-    "geometrySourceLabel": "Kuratiertes Deutschland-Slice 2026-03-09",
-    "centroid": { "x": 252, "y": 520 },
-    "labelAnchor": { "x": 252, "y": 520 },
-    "geometry": {
-      "kind": "svg-path",
-      "path": "M 234 504 L 260 498 L 270 530 L 246 542 Z"
-    }
-  },
-  {
-    "slug": "mvv-netze",
-    "mapLabel": "MVV",
-    "mapRank": 14,
-    "coverageType": "metro",
-    "geometryPrecision": "approximate",
-    "geometrySourceLabel": "Kuratiertes Deutschland-Slice 2026-03-09",
-    "centroid": { "x": 302, "y": 572 },
-    "labelAnchor": { "x": 302, "y": 572 },
-    "geometry": {
-      "kind": "svg-path",
-      "path": "M 280 560 L 315 548 L 326 586 L 290 600 Z"
-    }
-  },
-  {
-    "slug": "n-ergie-netz",
-    "mapLabel": "N",
-    "mapRank": 11,
-    "coverageType": "metro",
-    "geometryPrecision": "approximate",
-    "geometrySourceLabel": "Kuratiertes Deutschland-Slice 2026-03-09",
-    "centroid": { "x": 450, "y": 626 },
-    "labelAnchor": { "x": 450, "y": 626 },
-    "geometry": {
-      "kind": "svg-path",
-      "path": "M 420 600 L 470 590 L 490 640 L 450 666 L 410 640 Z"
-    }
+    "slug": "bayernwerk-netz",
+    "mapRank": 9,
+    "coverageKind": "state-zone",
+    "coveragePrecision": "regional",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["09"],
+    "anchors": [{ "longitude": 12.101, "latitude": 49.016, "radiusKm": 145 }]
   },
   {
     "slug": "netze-bw",
-    "mapLabel": "NBW",
     "mapRank": 10,
-    "coverageType": "state",
-    "geometryPrecision": "regional",
-    "geometrySourceLabel": "Kuratiertes Deutschland-Slice 2026-03-09",
-    "centroid": { "x": 286, "y": 592 },
-    "labelAnchor": { "x": 286, "y": 592 },
-    "geometry": {
-      "kind": "svg-path",
-      "path": "M 220 520 L 300 480 L 340 520 L 350 620 L 290 700 L 220 670 Z"
-    }
+    "coverageKind": "state-zone",
+    "coveragePrecision": "regional",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["08"],
+    "anchors": [{ "longitude": 9.182, "latitude": 48.775, "radiusKm": 140 }]
+  },
+  {
+    "slug": "n-ergie-netz",
+    "mapRank": 11,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["09"],
+    "anchors": [{ "longitude": 11.078, "latitude": 49.452, "radiusKm": 52 }]
+  },
+  {
+    "slug": "lew-verteilnetz",
+    "mapRank": 12,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["09"],
+    "anchors": [{ "longitude": 10.898, "latitude": 48.371, "radiusKm": 46 }]
+  },
+  {
+    "slug": "mainzer-netze",
+    "mapRank": 13,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["07", "06"],
+    "anchors": [{ "longitude": 8.247, "latitude": 49.992, "radiusKm": 28 }]
+  },
+  {
+    "slug": "mvv-netze",
+    "mapRank": 14,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["08"],
+    "anchors": [{ "longitude": 8.467, "latitude": 49.489, "radiusKm": 26 }]
   },
   {
     "slug": "stromnetz-berlin",
-    "mapLabel": "BER",
     "mapRank": 15,
-    "coverageType": "metro",
-    "geometryPrecision": "approximate",
-    "geometrySourceLabel": "Kuratiertes Deutschland-Slice 2026-03-09",
-    "centroid": { "x": 528, "y": 260 },
-    "labelAnchor": { "x": 528, "y": 260 },
-    "geometry": {
-      "kind": "svg-path",
-      "path": "M 510 240 L 548 236 L 556 274 L 518 286 Z"
-    }
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["11"],
+    "anchors": [{ "longitude": 13.405, "latitude": 52.52, "radiusKm": 24 }]
   },
   {
     "slug": "swm-infrastruktur",
-    "mapLabel": "SWM",
     "mapRank": 16,
-    "coverageType": "metro",
-    "geometryPrecision": "approximate",
-    "geometrySourceLabel": "Kuratiertes Deutschland-Slice 2026-03-09",
-    "centroid": { "x": 482, "y": 742 },
-    "labelAnchor": { "x": 482, "y": 742 },
-    "geometry": {
-      "kind": "svg-path",
-      "path": "M 456 720 L 500 714 L 510 760 L 466 772 Z"
-    }
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["09"],
+    "anchors": [{ "longitude": 11.582, "latitude": 48.135, "radiusKm": 24 }]
   },
   {
     "slug": "wesernetz-bremen",
-    "mapLabel": "HB",
     "mapRank": 17,
-    "coverageType": "metro",
-    "geometryPrecision": "approximate",
-    "geometrySourceLabel": "Kuratiertes Deutschland-Slice 2026-03-09",
-    "centroid": { "x": 196, "y": 190 },
-    "labelAnchor": { "x": 196, "y": 190 },
-    "geometry": {
-      "kind": "svg-path",
-      "path": "M 186 178 L 205 176 L 210 196 L 190 205 Z"
-    }
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["04"],
+    "anchors": [{ "longitude": 8.8017, "latitude": 53.0793, "radiusKm": 15 }]
   },
   {
     "slug": "wesernetz-bremerhaven",
-    "mapLabel": "BHV",
     "mapRank": 18,
-    "coverageType": "metro",
-    "geometryPrecision": "approximate",
-    "geometrySourceLabel": "Kuratiertes Deutschland-Slice 2026-03-09",
-    "centroid": { "x": 186, "y": 160 },
-    "labelAnchor": { "x": 186, "y": 160 },
-    "geometry": {
-      "kind": "svg-path",
-      "path": "M 176 148 L 196 146 L 200 166 L 180 174 Z"
-    }
-  },
-  {
-    "slug": "westnetz",
-    "mapLabel": "WN",
-    "mapRank": 6,
-    "coverageType": "state",
-    "geometryPrecision": "approximate",
-    "geometrySourceLabel": "Kuratiertes Deutschland-Slice 2026-03-09",
-    "centroid": { "x": 202, "y": 404 },
-    "labelAnchor": { "x": 202, "y": 404 },
-    "geometry": {
-      "kind": "svg-path",
-      "path": "M 120 280 L 252 260 L 300 380 L 242 520 L 150 580 L 100 430 Z"
-    }
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["04"],
+    "anchors": [{ "longitude": 8.5809, "latitude": 53.5396, "radiusKm": 12 }]
   }
 ]

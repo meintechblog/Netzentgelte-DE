@@ -73,16 +73,18 @@ export function serializeRegistryOperatorGeo(entries: PublishedOperator[]) {
         operatorSlug: entry.id,
         operatorName: entry.operatorName,
         regionLabel: entry.regionLabel,
-        mapLabel: entry.mapLabel,
-        coverageType: entry.coverageType,
+        coverageKind: entry.coverageKind,
         geometryPrecision: entry.geometryPrecision,
         geometrySourceLabel: entry.geometrySourceLabel,
         sourcePageUrl: entry.sourcePageUrl,
         documentUrl: entry.documentUrl,
         summary: entry.currentBandsSummary,
-        svgPath: entry.geometry.path,
-        centroid: entry.centroid,
-        labelAnchor: entry.labelAnchor
+        anchor: {
+          longitude: entry.anchors[0]?.longitude ?? 10.4515,
+          latitude: entry.anchors[0]?.latitude ?? 51.1657
+        },
+        anchors: entry.anchors,
+        stateHints: entry.stateHints
       },
       geometry: null
     }))

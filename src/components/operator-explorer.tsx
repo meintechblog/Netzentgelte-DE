@@ -2,14 +2,14 @@
 
 import { useDeferredValue, useId, useState } from "react";
 
-import type { OperatorMapFeature } from "../lib/maps/geojson";
+import type { ProjectedGermanyMapScene } from "../lib/maps/geojson";
 import type { TariffTableRow } from "../lib/view-models/tariffs";
 import { OperatorMap } from "./operator-map";
 import { TariffTable } from "./tariff-table";
 
 type OperatorExplorerProps = {
   rows: TariffTableRow[];
-  mapFeatures: OperatorMapFeature[];
+  mapScene: ProjectedGermanyMapScene;
 };
 
 function normalizeSearchValue(value: string) {
@@ -44,7 +44,7 @@ function getResultLabel(count: number) {
   return count === 1 ? "1 Treffer" : `${count} Treffer`;
 }
 
-export function OperatorExplorer({ rows, mapFeatures }: OperatorExplorerProps) {
+export function OperatorExplorer({ rows, mapScene }: OperatorExplorerProps) {
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query.trim());
   const searchId = useId();
@@ -59,15 +59,19 @@ export function OperatorExplorer({ rows, mapFeatures }: OperatorExplorerProps) {
           )
         );
 
-  const filteredMapFeatures =
-    deferredQuery.length === 0
-      ? mapFeatures
-      : mapFeatures.filter((feature) =>
-          matchesSearch(
-            buildSearchIndex([feature.operatorName, feature.id, feature.regionLabel]),
-            deferredQuery
-          )
-        );
+  const filteredMapScene = {
+    ...mapScene,
+    operators: mapScene.operators.map((feature) => ({
+      ...feature,
+      searchMatch:
+        deferredQuery.length === 0
+          ? true
+          : matchesSearch(
+              buildSearchIndex([feature.operatorName, feature.id, feature.regionLabel]),
+              deferredQuery
+            )
+    }))
+  };
 
   return (
     <>
@@ -77,12 +81,12 @@ export function OperatorExplorer({ rows, mapFeatures }: OperatorExplorerProps) {
             <span className="section-eyebrow">Hero-Karte</span>
             <h2 id="kartenstufe">Deutschlandkarte im Fokus</h2>
             <p>
-              Kuratierte Betreiberflächen, Review-Status und Tarifkontext auf einer
-              gemeinsamen Deutschlandkarte.
+              Echte Deutschland- und Ländergeometrie, projizierte Betreiberzonen und
+              Tarifkontext auf einer gemeinsamen Kartenbühne.
             </p>
           </div>
           <div className="panel-actions">
-            <span className="surface-chip">Hero-Karte</span>
+            <span className="surface-chip">GeoJSON · WGS84</span>
             <span className="surface-chip">{getResultLabel(filteredRows.length)}</span>
             <span className="surface-chip">Live während des Tippens</span>
           </div>
@@ -108,11 +112,11 @@ export function OperatorExplorer({ rows, mapFeatures }: OperatorExplorerProps) {
             ) : null}
           </div>
           <p className="operator-search__hint">
-            Filtert Karte, Detailpanel und Tarifmatrix direkt nach Betreibername, Kürzel
-            oder Region.
+            Filtert Tarifmatrix direkt und dimmt die Deutschlandkarte nach Betreibername,
+            Slug oder Region.
           </p>
         </div>
-        <OperatorMap features={filteredMapFeatures} />
+        <OperatorMap scene={filteredMapScene} />
       </section>
 
       <section className="content-panel" aria-labelledby="tarifmatrix" id="tarifmatrix">

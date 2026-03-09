@@ -544,8 +544,9 @@ input:focus-visible {
 .map-hero-panel {
   padding: 1.5rem;
   background:
-    radial-gradient(circle at top right, rgba(251, 191, 36, 0.12), transparent 22%),
-    linear-gradient(180deg, rgba(10, 24, 45, 0.98), rgba(6, 14, 27, 0.98));
+    radial-gradient(circle at top right, rgba(56, 189, 248, 0.18), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(34, 197, 94, 0.1), transparent 22%),
+    linear-gradient(180deg, rgba(7, 17, 30, 0.99), rgba(3, 10, 20, 0.98));
 }
 
 .map-hero-panel__header {
@@ -563,12 +564,25 @@ input:focus-visible {
   min-height: 340px;
   overflow: hidden;
   border-radius: 1rem;
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  background: linear-gradient(180deg, rgba(7, 18, 33, 0.96), rgba(5, 12, 24, 0.98));
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background:
+    radial-gradient(circle at 30% 18%, rgba(56, 189, 248, 0.12), transparent 22%),
+    radial-gradient(circle at 74% 82%, rgba(34, 197, 94, 0.08), transparent 24%),
+    linear-gradient(180deg, rgba(7, 18, 33, 0.98), rgba(2, 8, 16, 0.99));
 }
 
 .map-stage__canvas--hero {
   min-height: 600px;
+}
+
+.map-stage__canvas::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 16%, transparent 84%, rgba(255, 255, 255, 0.02)),
+    radial-gradient(circle at center, transparent 0 58%, rgba(5, 12, 24, 0.18) 100%);
 }
 
 .map-stage__empty {
@@ -587,51 +601,104 @@ input:focus-visible {
   display: block;
 }
 
-.operator-map-svg__base {
-  fill: rgba(20, 40, 70, 0.9);
-  stroke: rgba(140, 199, 255, 0.18);
-  stroke-width: 10;
-  stroke-linejoin: round;
+.operator-map-svg__state-fill {
+  fill: rgba(15, 23, 42, 0.92);
+}
+
+.operator-map-svg__state-boundary {
+  fill: none;
+  stroke: rgba(148, 163, 184, 0.28);
+  stroke-width: 0.9;
+  vector-effect: non-scaling-stroke;
+}
+
+.operator-map-svg__state-highlight {
+  fill: rgba(56, 189, 248, 0.12);
+  stroke: rgba(125, 211, 252, 0.44);
+  stroke-width: 1.1;
+  vector-effect: non-scaling-stroke;
 }
 
 .operator-map-region__shape {
-  fill: rgba(56, 189, 248, 0.24);
-  stroke: rgba(140, 199, 255, 0.55);
-  stroke-width: 5;
+  fill: rgba(34, 197, 94, 0.12);
+  stroke: rgba(74, 222, 128, 0.4);
+  stroke-width: 1.6;
+  vector-effect: non-scaling-stroke;
   cursor: pointer;
-  transition: fill 180ms ease, stroke 180ms ease, filter 180ms ease;
+  transition:
+    fill 180ms ease,
+    stroke 180ms ease,
+    opacity 180ms ease,
+    filter 180ms ease,
+    transform 180ms ease;
 }
 
-.operator-map-region__shape:hover,
-.operator-map-region__shape:focus-visible,
 .operator-map-region__shape.is-active {
-  fill: rgba(251, 191, 36, 0.24);
-  stroke: rgba(251, 191, 36, 0.84);
-  filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.22));
+  fill: rgba(34, 197, 94, 0.24);
+  stroke: rgba(110, 231, 183, 0.78);
+  filter: drop-shadow(0 0 18px rgba(52, 211, 153, 0.24));
+}
+
+.operator-map-region__shape.is-dimmed {
+  fill: rgba(71, 85, 105, 0.06);
+  stroke: rgba(71, 85, 105, 0.2);
+  opacity: 0.42;
+}
+
+.operator-map-region__pulse {
+  fill: rgba(34, 197, 94, 0.14);
+  stroke: rgba(74, 222, 128, 0.2);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+  transition: opacity 180ms ease, transform 180ms ease, stroke 180ms ease;
+}
+
+.operator-map-region__pulse.is-active {
+  fill: rgba(34, 197, 94, 0.24);
+  stroke: rgba(167, 243, 208, 0.4);
+}
+
+.operator-map-region__pulse.is-dimmed {
+  opacity: 0.36;
+}
+
+.operator-map-region__dot {
+  fill: #86efac;
+  stroke: rgba(5, 12, 24, 0.95);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  transition: fill 180ms ease, opacity 180ms ease, transform 180ms ease;
+}
+
+.operator-map-region__dot.is-active {
+  fill: #ecfccb;
+}
+
+.operator-map-region__dot.is-dimmed {
+  fill: rgba(148, 163, 184, 0.5);
+}
+
+.operator-map-region__focus-target {
+  fill: transparent;
   outline: none;
 }
 
-.operator-map-region__label {
-  fill: var(--color-text);
-  font-family: var(--font-heading), monospace;
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-anchor: middle;
-  pointer-events: none;
-}
-
-.operator-map-region__label.is-active {
-  fill: #fde68a;
+.operator-map-region__focus-target:focus-visible {
+  stroke: rgba(253, 224, 71, 0.9);
+  stroke-width: 2.5;
+  vector-effect: non-scaling-stroke;
 }
 
 .map-stage__detail {
   display: grid;
-  gap: 0.6rem;
-  padding: 1.2rem;
+  align-content: start;
+  gap: 0.75rem;
+  padding: 1.25rem;
   border-radius: 1rem;
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  background: linear-gradient(180deg, rgba(10, 20, 37, 0.94), rgba(7, 16, 31, 0.96));
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background:
+    linear-gradient(180deg, rgba(7, 18, 33, 0.96), rgba(3, 10, 20, 0.98)),
+    rgba(6, 14, 27, 0.96);
 }
 
 .map-stage__detail h3,
@@ -641,7 +708,13 @@ input:focus-visible {
 
 .map-stage__detail--hero h3 {
   font-family: var(--font-heading), monospace;
-  font-size: 1.35rem;
+  font-size: 1.45rem;
+}
+
+.map-stage__attribution {
+  margin-top: auto;
+  color: rgba(148, 163, 184, 0.78);
+  font-size: 0.82rem;
 }
 
 @media (max-width: 767px) {
@@ -689,7 +762,7 @@ input:focus-visible {
 
 @media (min-width: 1024px) {
   .map-stage {
-    grid-template-columns: 1.35fr 0.65fr;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.72fr);
   }
 }
 

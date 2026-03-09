@@ -13,6 +13,7 @@ COPYFILE_DISABLE=1 tar \
   --exclude='.git' \
   --exclude='node_modules' \
   --exclude='.next' \
+  --exclude='.playwright-cli' \
   --exclude='data/artifacts' \
   -C /Users/hulki/projects/netzentgelte-de/.worktrees/bootstrap \
   -czf - . \

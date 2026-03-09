@@ -29,10 +29,20 @@ describe("TariffTable", () => {
     expect(screen.getByText("Q2")).toBeInTheDocument();
     expect(screen.getByText("Q3")).toBeInTheDocument();
     expect(screen.getByText("Q4")).toBeInTheDocument();
-    expect(screen.getByRole("columnheader", { name: "Gültig ab" })).toBeInTheDocument();
+    expect(screen.getByRole("columnheader", { name: "Netzbetreiber" })).toBeInTheDocument();
+    expect(screen.getByRole("columnheader", { name: "Q1" })).toBeInTheDocument();
+    expect(screen.getByRole("columnheader", { name: "Q2" })).toBeInTheDocument();
+    expect(screen.getByRole("columnheader", { name: "Q3" })).toBeInTheDocument();
+    expect(screen.getByRole("columnheader", { name: "Q4" })).toBeInTheDocument();
+    expect(screen.getByRole("columnheader", { name: "Review" })).toBeInTheDocument();
+    expect(screen.queryByRole("columnheader", { name: "Quelle" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("columnheader", { name: "Gültig ab" })).not.toBeInTheDocument();
     expect(screen.getByText("Nur Standardtarif")).toBeInTheDocument();
     expect(screen.getByText("00:00-24:00")).toBeInTheDocument();
     expect(screen.getAllByText("10:00-14:00")).toHaveLength(3);
     expect(screen.getAllByText("22:00-00:00")).toHaveLength(3);
+    expect(
+      screen.getByText(/Quelle stadtwerke-schwaebisch-hall-stadtwerke-schwaebisch-hall-14a-2026/)
+    ).toBeInTheDocument();
   });
 });

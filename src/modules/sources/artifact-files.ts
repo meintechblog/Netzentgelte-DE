@@ -39,6 +39,9 @@ export function getArtifactContentType(filePath: string) {
   const extension = path.extname(filePath).toLowerCase();
 
   switch (extension) {
+    case ".htm":
+    case ".html":
+      return "text/html; charset=utf-8";
     case ".pdf":
       return "application/pdf";
     case ".json":

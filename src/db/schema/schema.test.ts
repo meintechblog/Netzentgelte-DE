@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 
 import { operators } from "./operators";
-import { sourceCatalog } from "./sources";
+import { sourceCatalog, sourceSnapshots } from "./sources";
 import { tariffVersions } from "./tariffs";
 import { tables } from "./index";
 
@@ -30,5 +30,9 @@ describe("database schema bootstrap", () => {
 
   test("stores a first-class source page url for refresh and audit flows", () => {
     expect(sourceCatalog.pageUrl).toBeDefined();
+  });
+
+  test("stores the artifact role for each source snapshot", () => {
+    expect(sourceSnapshots.artifactKind).toBeDefined();
   });
 });

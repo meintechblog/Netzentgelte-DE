@@ -12,18 +12,23 @@ export type CurrentSource = {
   reviewStatus: string;
   checkedAt: string | null;
   lastSuccessfulAt: string | null;
-  latestSnapshotFetchedAt: string | null;
-  latestSnapshotHash: string | null;
-  latestSnapshotStoragePath: string | null;
-  artifactApiUrl: string | null;
+  latestPageSnapshotFetchedAt: string | null;
+  latestPageSnapshotHash: string | null;
+  latestPageSnapshotStoragePath: string | null;
+  pageArtifactApiUrl: string | null;
+  latestDocumentSnapshotFetchedAt: string | null;
+  latestDocumentSnapshotHash: string | null;
+  latestDocumentSnapshotStoragePath: string | null;
+  documentArtifactApiUrl: string | null;
 };
 
-export type CurrentSourceRow = Omit<CurrentSource, "artifactApiUrl">;
+export type CurrentSourceRow = Omit<CurrentSource, "pageArtifactApiUrl" | "documentArtifactApiUrl">;
 
 export function buildCurrentSources(rows: CurrentSourceRow[]): CurrentSource[] {
   return rows.map((row) => ({
     ...row,
-    artifactApiUrl: buildArtifactApiUrl(row.latestSnapshotStoragePath)
+    pageArtifactApiUrl: buildArtifactApiUrl(row.latestPageSnapshotStoragePath),
+    documentArtifactApiUrl: buildArtifactApiUrl(row.latestDocumentSnapshotStoragePath)
   }));
 }
 
@@ -47,10 +52,14 @@ export function getSeedCurrentSources(): CurrentSource[] {
       reviewStatus: sourceDocument.reviewStatus,
       checkedAt: sourceDocument.checkedAt,
       lastSuccessfulAt: sourceDocument.checkedAt,
-      latestSnapshotFetchedAt: null,
-      latestSnapshotHash: null,
-      latestSnapshotStoragePath: null,
-      artifactApiUrl: null
+      latestPageSnapshotFetchedAt: null,
+      latestPageSnapshotHash: null,
+      latestPageSnapshotStoragePath: null,
+      pageArtifactApiUrl: null,
+      latestDocumentSnapshotFetchedAt: null,
+      latestDocumentSnapshotHash: null,
+      latestDocumentSnapshotStoragePath: null,
+      documentArtifactApiUrl: null
     };
   });
 }
@@ -99,6 +108,7 @@ export async function loadCurrentSources() {
       : await db
           .select({
             sourceCatalogId: sourceSnapshots.sourceCatalogId,
+            artifactKind: sourceSnapshots.artifactKind,
             fetchedAt: sourceSnapshots.fetchedAt,
             contentHash: sourceSnapshots.contentHash,
             storagePath: sourceSnapshots.storagePath
@@ -107,26 +117,39 @@ export async function loadCurrentSources() {
           .where(inArray(sourceSnapshots.sourceCatalogId, sourceIds))
           .orderBy(sourceSnapshots.sourceCatalogId, desc(sourceSnapshots.fetchedAt));
 
-  const latestSnapshotBySourceCatalogId = new Map<
+  const latestSnapshotsBySourceCatalogId = new Map<
     string,
     {
-      fetchedAt: Date | null;
-      contentHash: string;
-      storagePath: string | null;
+      page?: {
+        fetchedAt: Date | null;
+        contentHash: string;
+        storagePath: string | null;
+      };
+      document?: {
+        fetchedAt: Date | null;
+        contentHash: string;
+        storagePath: string | null;
+      };
     }
   >();
 
   for (const snapshot of snapshotRows) {
-    if (latestSnapshotBySourceCatalogId.has(snapshot.sourceCatalogId)) {
-      continue;
+    const existing = latestSnapshotsBySourceCatalogId.get(snapshot.sourceCatalogId) ?? {};
+
+    if (snapshot.artifactKind === "page") {
+      if (!existing.page) {
+        existing.page = snapshot;
+      }
+    } else if (!existing.document) {
+      existing.document = snapshot;
     }
 
-    latestSnapshotBySourceCatalogId.set(snapshot.sourceCatalogId, snapshot);
+    latestSnapshotsBySourceCatalogId.set(snapshot.sourceCatalogId, existing);
   }
 
   return buildCurrentSources(
     sourceRows.map((row) => {
-      const latestSnapshot = latestSnapshotBySourceCatalogId.get(row.sourceCatalogId);
+      const latestSnapshots = latestSnapshotsBySourceCatalogId.get(row.sourceCatalogId);
 
       return {
         sourceCatalogId: row.sourceCatalogId,
@@ -138,9 +161,12 @@ export async function loadCurrentSources() {
         reviewStatus: row.reviewStatus,
         checkedAt: row.checkedAt ? row.checkedAt.toISOString().slice(0, 10) : null,
         lastSuccessfulAt: row.lastSuccessfulAt ? row.lastSuccessfulAt.toISOString().slice(0, 10) : null,
-        latestSnapshotFetchedAt: latestSnapshot?.fetchedAt?.toISOString() ?? null,
-        latestSnapshotHash: latestSnapshot?.contentHash ?? null,
-        latestSnapshotStoragePath: latestSnapshot?.storagePath ?? null
+        latestPageSnapshotFetchedAt: latestSnapshots?.page?.fetchedAt?.toISOString() ?? null,
+        latestPageSnapshotHash: latestSnapshots?.page?.contentHash ?? null,
+        latestPageSnapshotStoragePath: latestSnapshots?.page?.storagePath ?? null,
+        latestDocumentSnapshotFetchedAt: latestSnapshots?.document?.fetchedAt?.toISOString() ?? null,
+        latestDocumentSnapshotHash: latestSnapshots?.document?.contentHash ?? null,
+        latestDocumentSnapshotStoragePath: latestSnapshots?.document?.storagePath ?? null
       };
     })
   );

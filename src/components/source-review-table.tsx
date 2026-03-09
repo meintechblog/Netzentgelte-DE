@@ -3,11 +3,14 @@ type SourceReviewRow = {
   operatorName: string;
   operatorSlug: string;
   checkedAt: string | null;
-  latestSnapshotFetchedAt: string | null;
-  latestSnapshotHash: string | null;
+  latestPageSnapshotFetchedAt: string | null;
+  latestPageSnapshotHash: string | null;
+  latestDocumentSnapshotFetchedAt: string | null;
+  latestDocumentSnapshotHash: string | null;
   pageUrl: string;
   documentUrl: string;
-  artifactApiUrl: string | null;
+  pageArtifactApiUrl: string | null;
+  documentArtifactApiUrl: string | null;
   reviewStatus: string;
 };
 
@@ -41,12 +44,24 @@ export function SourceReviewTable({ rows }: SourceReviewTableProps) {
                 <div className="table-operator">
                   <span>{row.checkedAt ? `Zuletzt geprueft ${row.checkedAt}` : "Noch nicht geprueft"}</span>
                   <span className="table-muted">
-                    {row.latestSnapshotFetchedAt
-                      ? `Snapshot ${row.latestSnapshotFetchedAt.slice(0, 10)}`
-                      : "Noch kein Snapshot"}
+                    {row.latestPageSnapshotFetchedAt
+                      ? `Seite ${row.latestPageSnapshotFetchedAt.slice(0, 10)}`
+                      : "Seiten-Snapshot ausstehend"}
                   </span>
                   <span className="table-muted">
-                    {row.latestSnapshotHash ? `Hash ${row.latestSnapshotHash}` : "Hash ausstehend"}
+                    {row.latestPageSnapshotHash
+                      ? `Seite Hash ${row.latestPageSnapshotHash}`
+                      : "Seiten-Hash ausstehend"}
+                  </span>
+                  <span className="table-muted">
+                    {row.latestDocumentSnapshotFetchedAt
+                      ? `Dokument ${row.latestDocumentSnapshotFetchedAt.slice(0, 10)}`
+                      : "Dokumenten-Snapshot ausstehend"}
+                  </span>
+                  <span className="table-muted">
+                    {row.latestDocumentSnapshotHash
+                      ? `Dokument Hash ${row.latestDocumentSnapshotHash}`
+                      : "Dokumenten-Hash ausstehend"}
                   </span>
                 </div>
               </td>
@@ -58,12 +73,24 @@ export function SourceReviewTable({ rows }: SourceReviewTableProps) {
                   <a className="source-link" href={row.documentUrl} rel="noreferrer" target="_blank">
                     Originaldokument
                   </a>
-                  {row.artifactApiUrl ? (
-                    <a className="source-link" href={row.artifactApiUrl} rel="noreferrer" target="_blank">
-                      Gespeichertes Artefakt
+                  {row.pageArtifactApiUrl ? (
+                    <a className="source-link" href={row.pageArtifactApiUrl} rel="noreferrer" target="_blank">
+                      Gespeicherte Quellseite
                     </a>
                   ) : (
-                    <span className="table-muted">Noch kein gespeichertes Artefakt</span>
+                    <span className="table-muted">Noch kein gespeicherter Seitenbeleg</span>
+                  )}
+                  {row.documentArtifactApiUrl ? (
+                    <a
+                      className="source-link"
+                      href={row.documentArtifactApiUrl}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Gespeichertes Dokument
+                    </a>
+                  ) : (
+                    <span className="table-muted">Noch kein gespeichertes Dokument</span>
                   )}
                 </div>
               </td>

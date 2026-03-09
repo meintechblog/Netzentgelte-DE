@@ -92,10 +92,14 @@ export function serializeCurrentSources(entries: CurrentSource[]) {
       reviewStatus: entry.reviewStatus,
       checkedAt: entry.checkedAt,
       lastSuccessfulAt: entry.lastSuccessfulAt,
-      latestSnapshotFetchedAt: entry.latestSnapshotFetchedAt,
-      latestSnapshotHash: entry.latestSnapshotHash,
-      latestSnapshotStoragePath: entry.latestSnapshotStoragePath,
-      artifactApiUrl: entry.artifactApiUrl
+      latestPageSnapshotFetchedAt: entry.latestPageSnapshotFetchedAt,
+      latestPageSnapshotHash: entry.latestPageSnapshotHash,
+      latestPageSnapshotStoragePath: entry.latestPageSnapshotStoragePath,
+      pageArtifactApiUrl: entry.pageArtifactApiUrl,
+      latestDocumentSnapshotFetchedAt: entry.latestDocumentSnapshotFetchedAt,
+      latestDocumentSnapshotHash: entry.latestDocumentSnapshotHash,
+      latestDocumentSnapshotStoragePath: entry.latestDocumentSnapshotStoragePath,
+      documentArtifactApiUrl: entry.documentArtifactApiUrl
     }))
   };
 }

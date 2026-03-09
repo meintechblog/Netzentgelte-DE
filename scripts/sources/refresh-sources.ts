@@ -69,6 +69,7 @@ const summary = await runSourceRefresh({
     refreshSources({
       sources,
       artifactRootDir,
+      fetchPage: async (source) => fetch(source.pageUrl),
       fetchDocument: async (source) => fetch(source.documentUrl),
       gateway: {
         insertSnapshot: async (snapshot) => {

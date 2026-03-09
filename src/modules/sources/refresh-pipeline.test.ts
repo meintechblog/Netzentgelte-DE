@@ -15,10 +15,11 @@ afterEach(async () => {
 });
 
 describe("refreshSources", () => {
-  test("downloads artifacts, persists source snapshots and records refresh bookkeeping", async () => {
+  test("downloads page and document artifacts, persists both snapshots and records refresh bookkeeping", async () => {
     const artifactRootDir = await mkdtemp(path.join(tmpdir(), "netzentgelte-refresh-"));
     temporaryDirectories.push(artifactRootDir);
 
+    const pageBody = Buffer.from("<html>Quelle</html>");
     const documentBody = Buffer.from("preisblatt 2026");
     const gateway = {
       insertSnapshot: vi.fn(async (snapshot) => ({
@@ -41,6 +42,13 @@ describe("refreshSources", () => {
       ],
       artifactRootDir,
       fetchedAt: new Date("2026-03-10T00:00:00.000Z"),
+      fetchPage: vi.fn(async () =>
+        new Response(pageBody, {
+          headers: {
+            "content-type": "text/html; charset=utf-8"
+          }
+        })
+      ),
       fetchDocument: vi.fn(async () =>
         new Response(documentBody, {
           headers: {
@@ -51,15 +59,36 @@ describe("refreshSources", () => {
       gateway
     });
 
+    const persistedPagePath = path.join(
+      artifactRootDir,
+      "artifacts/netze-bw-netze-bw-14a-2026/2026-03-10/source-page.html"
+    );
     const persistedPath = path.join(
       artifactRootDir,
       "artifacts/netze-bw-netze-bw-14a-2026/2026-03-10/netzentgelte-strom-netze-bw-gmbh-2026.pdf"
     );
 
+    await expect(readFile(persistedPagePath)).resolves.toEqual(pageBody);
     await expect(readFile(persistedPath)).resolves.toEqual(documentBody);
-    expect(gateway.insertSnapshot).toHaveBeenCalledWith(
+    expect(gateway.insertSnapshot).toHaveBeenNthCalledWith(
+      1,
       expect.objectContaining({
         sourceCatalogId: "source-1",
+        artifactKind: "page",
+        pageUrl: "https://www.netze-bw.de/neuregelung-14a-enwg",
+        fileUrl: "https://www.netze-bw.de/neuregelung-14a-enwg",
+        storagePath: "artifacts/netze-bw-netze-bw-14a-2026/2026-03-10/source-page.html",
+        mimeType: "text/html; charset=utf-8",
+        metadata: expect.objectContaining({
+          byteLength: pageBody.byteLength
+        })
+      })
+    );
+    expect(gateway.insertSnapshot).toHaveBeenNthCalledWith(
+      2,
+      expect.objectContaining({
+        sourceCatalogId: "source-1",
+        artifactKind: "document",
         pageUrl: "https://www.netze-bw.de/neuregelung-14a-enwg",
         fileUrl:
           "https://assets.ctfassets.net/xytfb1vrn7of/7eQvxehZzn3ECbR9rALmyD/ecc795b9dcd666ce1f53d9d04362a321/netzentgelte-strom-netze-bw-gmbh-2026.pdf",
@@ -82,12 +111,12 @@ describe("refreshSources", () => {
       status: "success",
       summary: {
         fetchedCount: 1,
-        snapshotCount: 1
+        snapshotCount: 2
       }
     });
     expect(result).toEqual({
       fetchedCount: 1,
-      snapshotCount: 1
+      snapshotCount: 2
     });
   });
 });

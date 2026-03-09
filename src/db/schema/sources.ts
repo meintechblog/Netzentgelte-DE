@@ -27,6 +27,7 @@ export const sourceSnapshots = pgTable("source_snapshots", {
   sourceCatalogId: uuid("source_catalog_id")
     .notNull()
     .references(() => sourceCatalog.id, { onDelete: "cascade" }),
+  artifactKind: text("artifact_kind").notNull().default("document"),
   fetchedAt: timestamp("fetched_at", { withTimezone: true }).notNull().defaultNow(),
   pageUrl: text("page_url"),
   fileUrl: text("file_url"),

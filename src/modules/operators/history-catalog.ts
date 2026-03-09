@@ -1,4 +1,4 @@
-import { desc, eq, inArray, sql } from "drizzle-orm";
+import { and, desc, eq, inArray, sql } from "drizzle-orm";
 
 import { getOperatorRegistry, type OperatorTimeWindow } from "./registry";
 
@@ -244,7 +244,9 @@ export async function loadHistoricalTariffs() {
           })
           .from(sourceSnapshots)
           .innerJoin(sourceCatalog, eq(sourceSnapshots.sourceCatalogId, sourceCatalog.id))
-          .where(inArray(sourceCatalog.sourceSlug, sourceSlugs))
+          .where(
+            and(inArray(sourceCatalog.sourceSlug, sourceSlugs), eq(sourceSnapshots.artifactKind, "document"))
+          )
           .orderBy(sourceCatalog.sourceSlug, desc(sourceSnapshots.fetchedAt));
 
   const latestSnapshotBySourceSlug = new Map<

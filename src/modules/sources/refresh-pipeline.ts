@@ -32,6 +32,7 @@ export async function refreshSources(input: {
   sources: RefreshableSource[];
   artifactRootDir: string;
   fetchedAt?: Date;
+  fetchPage: (source: RefreshableSource) => Promise<Response>;
   fetchDocument: (source: RefreshableSource) => Promise<Response>;
   gateway: SourceRefreshGateway;
 }) {
@@ -39,24 +40,39 @@ export async function refreshSources(input: {
   let snapshotCount = 0;
 
   for (const source of input.sources) {
-    const snapshot = await createSourceSnapshotFromFetch({
+    const pageSnapshot = await createSourceSnapshotFromFetch({
       sourceCatalogId: source.sourceCatalogId,
       sourceSlug: source.sourceSlug,
       pageUrl: source.pageUrl,
-      documentUrl: source.documentUrl,
-      fetchDocument: () => input.fetchDocument(source),
+      artifactKind: "page",
+      artifactUrl: source.pageUrl,
+      fetchArtifact: () => input.fetchPage(source),
+      fetchedAt: input.fetchedAt
+    });
+    const documentSnapshot = await createSourceSnapshotFromFetch({
+      sourceCatalogId: source.sourceCatalogId,
+      sourceSlug: source.sourceSlug,
+      pageUrl: source.pageUrl,
+      artifactKind: "document",
+      artifactUrl: source.documentUrl,
+      fetchArtifact: () => input.fetchDocument(source),
       fetchedAt: input.fetchedAt
     });
 
-    const artifactPath = path.join(input.artifactRootDir, snapshot.storagePath);
-
-    await mkdir(path.dirname(artifactPath), { recursive: true });
-    await writeFile(artifactPath, snapshot.documentBuffer);
-    await input.gateway.insertSnapshot(snapshot);
+    await persistSnapshotArtifact({
+      artifactRootDir: input.artifactRootDir,
+      gateway: input.gateway,
+      snapshot: pageSnapshot
+    });
+    await persistSnapshotArtifact({
+      artifactRootDir: input.artifactRootDir,
+      gateway: input.gateway,
+      snapshot: documentSnapshot
+    });
     await input.gateway.markSourceRefreshed({
       sourceCatalogId: source.sourceCatalogId,
-      checkedAt: snapshot.fetchedAt,
-      successfulAt: snapshot.fetchedAt
+      checkedAt: documentSnapshot.fetchedAt,
+      successfulAt: documentSnapshot.fetchedAt
     });
     await input.gateway.insertRun({
       sourceCatalogId: source.sourceCatalogId,
@@ -64,16 +80,28 @@ export async function refreshSources(input: {
       status: "success",
       summary: {
         fetchedCount: 1,
-        snapshotCount: 1
+        snapshotCount: 2
       }
     });
 
     fetchedCount += 1;
-    snapshotCount += 1;
+    snapshotCount += 2;
   }
 
   return {
     fetchedCount,
     snapshotCount
   };
+}
+
+async function persistSnapshotArtifact(input: {
+  artifactRootDir: string;
+  gateway: SourceRefreshGateway;
+  snapshot: Awaited<ReturnType<typeof createSourceSnapshotFromFetch>>;
+}) {
+  const artifactPath = path.join(input.artifactRootDir, input.snapshot.storagePath);
+
+  await mkdir(path.dirname(artifactPath), { recursive: true });
+  await writeFile(artifactPath, input.snapshot.documentBuffer);
+  await input.gateway.insertSnapshot(input.snapshot);
 }

@@ -3,7 +3,7 @@ import { describe, expect, test } from "vitest";
 import { buildCurrentSources, getSeedCurrentSources } from "./current-sources";
 
 describe("buildCurrentSources", () => {
-  test("maps source catalog rows and latest snapshots into reviewable source entries", () => {
+  test("maps separate page and document snapshots into reviewable source entries", () => {
     const sources = buildCurrentSources([
       {
         sourceCatalogId: "source-1",
@@ -16,9 +16,13 @@ describe("buildCurrentSources", () => {
         reviewStatus: "verified",
         checkedAt: "2026-03-09",
         lastSuccessfulAt: "2026-03-09",
-        latestSnapshotFetchedAt: "2026-03-09T01:23:00.000Z",
-        latestSnapshotHash: "abc123",
-        latestSnapshotStoragePath:
+        latestPageSnapshotFetchedAt: "2026-03-09T01:22:00.000Z",
+        latestPageSnapshotHash: "page123",
+        latestPageSnapshotStoragePath:
+          "artifacts/netze-bw-netze-bw-14a-2026/2026-03-09/source-page.html",
+        latestDocumentSnapshotFetchedAt: "2026-03-09T01:23:00.000Z",
+        latestDocumentSnapshotHash: "doc123",
+        latestDocumentSnapshotStoragePath:
           "artifacts/netze-bw-netze-bw-14a-2026/2026-03-09/netzentgelte-strom-netze-bw-gmbh-2026.pdf"
       }
     ]);
@@ -35,11 +39,16 @@ describe("buildCurrentSources", () => {
         reviewStatus: "verified",
         checkedAt: "2026-03-09",
         lastSuccessfulAt: "2026-03-09",
-        latestSnapshotFetchedAt: "2026-03-09T01:23:00.000Z",
-        latestSnapshotHash: "abc123",
-        latestSnapshotStoragePath:
+        latestPageSnapshotFetchedAt: "2026-03-09T01:22:00.000Z",
+        latestPageSnapshotHash: "page123",
+        latestPageSnapshotStoragePath:
+          "artifacts/netze-bw-netze-bw-14a-2026/2026-03-09/source-page.html",
+        pageArtifactApiUrl: "/api/artifacts/netze-bw-netze-bw-14a-2026/2026-03-09/source-page.html",
+        latestDocumentSnapshotFetchedAt: "2026-03-09T01:23:00.000Z",
+        latestDocumentSnapshotHash: "doc123",
+        latestDocumentSnapshotStoragePath:
           "artifacts/netze-bw-netze-bw-14a-2026/2026-03-09/netzentgelte-strom-netze-bw-gmbh-2026.pdf",
-        artifactApiUrl:
+        documentArtifactApiUrl:
           "/api/artifacts/netze-bw-netze-bw-14a-2026/2026-03-09/netzentgelte-strom-netze-bw-gmbh-2026.pdf"
       }
     ]);

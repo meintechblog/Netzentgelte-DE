@@ -62,18 +62,22 @@ describe("buildEndcustomerIntegrityAudit", () => {
     const hall = audit.find((item) => item.operatorSlug === "stadtwerke-schwaebisch-hall");
     const berlin = audit.find((item) => item.operatorSlug === "stromnetz-berlin");
 
+    const netzeBw = audit.find((item) => item.operatorSlug === "netze-bw");
+
     expect(hall).toMatchObject({
       status: "complete",
       currentValidFrom: "2026-01-01",
       issues: []
     });
+    expect(netzeBw).toMatchObject({
+      status: "complete",
+      currentValidFrom: "2026-01-01",
+      issues: []
+    });
     expect(berlin).toMatchObject({
-      status: "missing-entry",
-      issues: expect.arrayContaining([
-        expect.objectContaining({
-          key: "missing_entry"
-        })
-      ])
+      status: "complete",
+      currentValidFrom: "2026-01-01",
+      issues: []
     });
   });
 
@@ -85,9 +89,9 @@ describe("buildEndcustomerIntegrityAudit", () => {
 
     expect(getEndcustomerIntegrityAuditSummary(audit)).toMatchObject({
       operatorCount: expect.any(Number),
-      completeCount: expect.any(Number),
+      completeCount: 5,
       missingEntryCount: expect.any(Number),
-      incompleteCount: expect.any(Number)
+      incompleteCount: 0
     });
 
     expect(getNextEndcustomerBackfillTargets(audit, 3)).toHaveLength(3);

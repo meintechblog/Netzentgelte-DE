@@ -5,7 +5,7 @@ import type {
   EndcustomerRequirementKey,
   EndcustomerTariffComponentKey
 } from "./endcustomer-reference";
-import { getStadtwerkeSchwaebischHallEndcustomerReference } from "./endcustomer-reference";
+import { getSeedEndcustomerReferences } from "./endcustomer-reference";
 
 export type EndcustomerTariffCatalogComponent = {
   componentKey: EndcustomerTariffComponentKey;
@@ -65,7 +65,7 @@ export type EndcustomerTariffCatalogRow = {
 };
 
 export function getSeedEndcustomerTariffCatalog(): EndcustomerTariffCatalogEntry[] {
-  return [mapReferenceToCatalogEntry(getStadtwerkeSchwaebischHallEndcustomerReference())];
+  return getSeedEndcustomerReferences().map(mapReferenceToCatalogEntry);
 }
 
 export function shouldUseSeedEndcustomerTariffs(input: {
@@ -333,7 +333,7 @@ export async function loadEndcustomerTariffCatalog() {
 function mapReferenceToCatalogEntry(reference: EndcustomerOperatorReference): EndcustomerTariffCatalogEntry {
   return {
     operatorSlug: reference.operatorSlug,
-    operatorName: "Stadtwerke Schwäbisch Hall GmbH",
+    operatorName: reference.operatorName,
     products: reference.products.map((product) => ({
       moduleKey: product.moduleKey,
       networkLevel: product.networkLevel,

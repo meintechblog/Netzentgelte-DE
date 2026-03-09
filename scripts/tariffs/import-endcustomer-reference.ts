@@ -11,7 +11,7 @@ import {
   tariffRequirements,
   tariffTimeWindows
 } from "../../src/db/schema";
-import { getStadtwerkeSchwaebischHallEndcustomerReference } from "../../src/modules/tariffs/endcustomer-reference";
+import { getSeedEndcustomerReferences } from "../../src/modules/tariffs/endcustomer-reference";
 import {
   buildEndcustomerPersistencePayload,
   persistEndcustomerReference
@@ -19,131 +19,164 @@ import {
 
 async function main() {
   const { db, sql } = createCliDb();
-  const operatorSlug = "stadtwerke-schwaebisch-hall";
-  const reference = getStadtwerkeSchwaebischHallEndcustomerReference();
+  const requestedOperatorSlug = getRequestedOperatorSlug(process.argv.slice(2));
+  const references = getSeedEndcustomerReferences().filter(
+    (reference) => !requestedOperatorSlug || reference.operatorSlug === requestedOperatorSlug
+  );
+
+  if (references.length === 0) {
+    throw new Error(
+      requestedOperatorSlug
+        ? `No endcustomer reference found for ${requestedOperatorSlug}.`
+        : "No endcustomer references configured."
+    );
+  }
 
   try {
-    const operator = await db.query.operators.findFirst({
-      where: eq(operators.slug, operatorSlug)
-    });
+    const summaries = [];
 
-    if (!operator) {
-      throw new Error(`Operator ${operatorSlug} not found.`);
-    }
+    for (const reference of references) {
+      const operatorSlug = reference.operatorSlug;
+      const operator = await db.query.operators.findFirst({
+        where: eq(operators.slug, operatorSlug)
+      });
 
-    const source = await db.query.sourceCatalog.findFirst({
-      where: and(eq(sourceCatalog.operatorId, operator.id), eq(sourceCatalog.sourceUrl, reference.sourceDocumentUrl))
-    });
+      if (!operator) {
+        throw new Error(`Operator ${operatorSlug} not found.`);
+      }
 
-    const payload = buildEndcustomerPersistencePayload({
-      operatorSlug,
-      operatorId: operator.id,
-      sourceCatalogId: source?.id ?? null,
-      reference
-    });
+      const source = await db.query.sourceCatalog.findFirst({
+        where: and(eq(sourceCatalog.operatorId, operator.id), eq(sourceCatalog.sourceUrl, reference.sourceDocumentUrl))
+      });
 
-    const summary = await persistEndcustomerReference({
-      operatorSlug,
-      payload,
-      gateway: {
-        replaceOperatorProducts: async (_operatorSlug, persistencePayload) => {
-          await db.transaction(async (tx) => {
-            const existingProducts = await tx
-              .select({ id: tariffProducts.id })
-              .from(tariffProducts)
-              .where(eq(tariffProducts.operatorId, persistencePayload.operatorId));
+      const payload = buildEndcustomerPersistencePayload({
+        operatorSlug,
+        operatorId: operator.id,
+        sourceCatalogId: source?.id ?? null,
+        reference
+      });
 
-            const existingProductIds = existingProducts.map((product) => product.id);
+      const summary = await persistEndcustomerReference({
+        operatorSlug,
+        payload,
+        gateway: {
+          replaceOperatorProducts: async (_operatorSlug, persistencePayload) => {
+            await db.transaction(async (tx) => {
+              const existingProducts = await tx
+                .select({ id: tariffProducts.id })
+                .from(tariffProducts)
+                .where(eq(tariffProducts.operatorId, persistencePayload.operatorId));
 
-            if (existingProductIds.length > 0) {
-              await tx.delete(tariffComponents).where(inArray(tariffComponents.tariffProductId, existingProductIds));
+              const existingProductIds = existingProducts.map((product) => product.id);
+
+              if (existingProductIds.length > 0) {
+                await tx.delete(tariffComponents).where(inArray(tariffComponents.tariffProductId, existingProductIds));
+                await tx
+                  .delete(tariffRequirements)
+                  .where(inArray(tariffRequirements.tariffProductId, existingProductIds));
+                await tx
+                  .delete(tariffTimeWindows)
+                  .where(inArray(tariffTimeWindows.tariffProductId, existingProductIds));
+                await tx.delete(tariffProducts).where(eq(tariffProducts.operatorId, persistencePayload.operatorId));
+              }
+
               await tx
-                .delete(tariffRequirements)
-                .where(inArray(tariffRequirements.tariffProductId, existingProductIds));
-              await tx
-                .delete(tariffTimeWindows)
-                .where(inArray(tariffTimeWindows.tariffProductId, existingProductIds));
-              await tx.delete(tariffProducts).where(eq(tariffProducts.operatorId, persistencePayload.operatorId));
-            }
+                .delete(tariffMeteringPrices)
+                .where(eq(tariffMeteringPrices.operatorId, persistencePayload.operatorId));
 
-            await tx.delete(tariffMeteringPrices).where(eq(tariffMeteringPrices.operatorId, persistencePayload.operatorId));
+              const insertedProducts = await tx
+                .insert(tariffProducts)
+                .values(
+                  persistencePayload.products.map((product) => ({
+                    operatorId: persistencePayload.operatorId,
+                    sourceCatalogId: persistencePayload.sourceCatalogId,
+                    networkLevel: product.networkLevel,
+                    moduleKey: product.moduleKey,
+                    meteringMode: product.meteringMode,
+                    validFrom: product.validFrom,
+                    humanReviewStatus: product.humanReviewStatus,
+                    sourceQuote: product.sourceDocumentUrl
+                  }))
+                )
+                .returning({
+                  id: tariffProducts.id,
+                  moduleKey: tariffProducts.moduleKey
+                });
 
-            const insertedProducts = await tx
-              .insert(tariffProducts)
-              .values(
-                persistencePayload.products.map((product) => ({
-                  operatorId: persistencePayload.operatorId,
-                  sourceCatalogId: persistencePayload.sourceCatalogId,
-                  networkLevel: product.networkLevel,
-                  moduleKey: product.moduleKey,
-                  meteringMode: product.meteringMode,
-                  validFrom: product.validFrom,
-                  humanReviewStatus: product.humanReviewStatus,
-                  sourceQuote: product.sourceDocumentUrl
-                }))
-              )
-              .returning({
-                id: tariffProducts.id,
-                moduleKey: tariffProducts.moduleKey
-              });
+              const productIdsByModuleKey = new Map(insertedProducts.map((product) => [product.moduleKey, product.id]));
 
-            const productIdsByModuleKey = new Map(insertedProducts.map((product) => [product.moduleKey, product.id]));
-
-            await tx.insert(tariffComponents).values(
-              persistencePayload.components.map((component) => ({
-                tariffProductId: mustGetProductId(productIdsByModuleKey, component.moduleKey),
-                componentKey: component.componentKey,
-                valueNumeric: component.valueNumeric,
-                unit: component.unit
-              }))
-            );
-
-            await tx.insert(tariffRequirements).values(
-              persistencePayload.requirements.map((requirement) => ({
-                tariffProductId: mustGetProductId(productIdsByModuleKey, requirement.moduleKey),
-                requirementKey: requirement.requirementKey,
-                requirementValue: requirement.requirementValue
-              }))
-            );
-
-            await tx.insert(tariffTimeWindows).values(
-              persistencePayload.timeWindows.map((window) => ({
-                tariffProductId: mustGetProductId(productIdsByModuleKey, window.moduleKey),
-                quarterKey: window.quarterKey,
-                bandKey: window.bandKey,
-                startsAt: window.startsAt,
-                endsAt: window.endsAt
-              }))
-            );
-
-            if (persistencePayload.meteringPrices.length > 0) {
-              await tx.insert(tariffMeteringPrices).values(
-                persistencePayload.meteringPrices.map((price) => ({
-                  operatorId: persistencePayload.operatorId,
-                  sourceCatalogId: persistencePayload.sourceCatalogId,
-                  validFrom: price.validFrom,
-                  componentKey: price.componentKey,
-                  valueNumeric: price.valueNumeric,
-                  unit: price.unit
+              await tx.insert(tariffComponents).values(
+                persistencePayload.components.map((component) => ({
+                  tariffProductId: mustGetProductId(productIdsByModuleKey, component.moduleKey),
+                  componentKey: component.componentKey,
+                  valueNumeric: component.valueNumeric,
+                  unit: component.unit
                 }))
               );
-            }
-          });
-        },
-        insertRun: async ({ runType, status, summary: runSummary }) => {
-          await db.insert(ingestRuns).values({
-            runType,
-            status,
-            summary: runSummary
-          });
-        }
-      },
-    });
 
-    console.log(JSON.stringify(summary, null, 2));
+              await tx.insert(tariffRequirements).values(
+                persistencePayload.requirements.map((requirement) => ({
+                  tariffProductId: mustGetProductId(productIdsByModuleKey, requirement.moduleKey),
+                  requirementKey: requirement.requirementKey,
+                  requirementValue: requirement.requirementValue
+                }))
+              );
+
+              await tx.insert(tariffTimeWindows).values(
+                persistencePayload.timeWindows.map((window) => ({
+                  tariffProductId: mustGetProductId(productIdsByModuleKey, window.moduleKey),
+                  quarterKey: window.quarterKey,
+                  bandKey: window.bandKey,
+                  startsAt: window.startsAt,
+                  endsAt: window.endsAt
+                }))
+              );
+
+              if (persistencePayload.meteringPrices.length > 0) {
+                await tx.insert(tariffMeteringPrices).values(
+                  persistencePayload.meteringPrices.map((price) => ({
+                    operatorId: persistencePayload.operatorId,
+                    sourceCatalogId: persistencePayload.sourceCatalogId,
+                    validFrom: price.validFrom,
+                    componentKey: price.componentKey,
+                    valueNumeric: price.valueNumeric,
+                    unit: price.unit
+                  }))
+                );
+              }
+            });
+          },
+          insertRun: async ({ runType, status, summary: runSummary }) => {
+            await db.insert(ingestRuns).values({
+              runType,
+              status,
+              summary: runSummary
+            });
+          }
+        }
+      });
+
+      summaries.push(summary);
+    }
+
+    console.log(
+      JSON.stringify(
+        {
+          importedCount: summaries.length,
+          items: summaries
+        },
+        null,
+        2
+      )
+    );
   } finally {
     await sql.end();
   }
+}
+
+function getRequestedOperatorSlug(args: string[]) {
+  const operatorArg = args.find((arg) => arg.startsWith("--operator="));
+  return operatorArg ? operatorArg.slice("--operator=".length) : null;
 }
 
 function mustGetProductId(productIdsByModuleKey: Map<string, string>, moduleKey: string) {

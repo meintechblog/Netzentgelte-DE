@@ -1,6 +1,9 @@
 import { describe, expect, test } from "vitest";
 
-import { getStadtwerkeSchwaebischHallEndcustomerReference } from "./endcustomer-reference";
+import {
+  getSeedEndcustomerReferences,
+  getStadtwerkeSchwaebischHallEndcustomerReference
+} from "./endcustomer-reference";
 
 describe("getStadtwerkeSchwaebischHallEndcustomerReference", () => {
   test("captures modul 1, 2 and 3 for low-voltage endcustomer products", () => {
@@ -62,6 +65,20 @@ describe("getStadtwerkeSchwaebischHallEndcustomerReference", () => {
       expect.arrayContaining([
         expect.objectContaining({ componentKey: "single_register_meter_eur_per_year", valueNumeric: "9.50" }),
         expect.objectContaining({ componentKey: "dual_register_meter_eur_per_year", valueNumeric: "14.75" })
+      ])
+    );
+  });
+});
+
+describe("getSeedEndcustomerReferences", () => {
+  test("includes the first published multi-operator batch beyond Schwäbisch Hall", () => {
+    expect(getSeedEndcustomerReferences().map((reference) => reference.operatorSlug)).toEqual(
+      expect.arrayContaining([
+        "stadtwerke-schwaebisch-hall",
+        "netze-bw",
+        "stromnetz-berlin",
+        "netze-odr",
+        "mitnetz-strom"
       ])
     );
   });

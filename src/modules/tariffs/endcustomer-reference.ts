@@ -50,100 +50,343 @@ export type EndcustomerTariffProductReference = {
 
 export type EndcustomerOperatorReference = {
   operatorSlug: string;
+  operatorName: string;
   sourceDocumentUrl: string;
   products: EndcustomerTariffProductReference[];
   meteringPrices: EndcustomerTariffComponent[];
 };
 
+const VALID_FROM_2026 = "2026-01-01";
+
 const STADTWERKE_SCHWAEBISCH_HALL_SOURCE =
   "https://stadtwerke-hall.de/fileadmin/files/Downloads/Netzdaten_Strom/4_Netzentgelte/4NNE_STW-SHA_ab_01.01.2026.pdf";
+const NETZE_BW_SOURCE =
+  "https://assets.ctfassets.net/xytfb1vrn7of/7eQvxehZzn3ECbR9rALmyD/ecc795b9dcd666ce1f53d9d04362a321/netzentgelte-strom-netze-bw-gmbh-2026.pdf";
+const STROMNETZ_BERLIN_SOURCE =
+  "https://www.stromnetz.berlin/files/globalassets/dokumente/entgelte/zugang/entgelte-01-01-2026/nne-b-2026_20251218.pdf";
+const NETZE_ODR_SOURCE =
+  "https://www.netze-odr.de/fileadmin/Netze-ODR/Dokumente/Unternehmen/Veroeffentlichungen/Netzentgelte/Netzentgelte_Strom_2026.pdf";
+const MITNETZ_STROM_SOURCE =
+  "https://www.mitnetz-strom.de/Media/docs/default-source/datei-ablage/2026_mns_pb_endg%C3%BCltig_12-12-2025.pdf?sfvrsn=2aee4cf8_3";
+
+export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
+  return [
+    getStadtwerkeSchwaebischHallEndcustomerReference(),
+    getNetzeBwEndcustomerReference(),
+    getStromnetzBerlinEndcustomerReference(),
+    getNetzeOdrEndcustomerReference(),
+    getMitnetzStromEndcustomerReference()
+  ];
+}
 
 export function getStadtwerkeSchwaebischHallEndcustomerReference(): EndcustomerOperatorReference {
   return {
     operatorSlug: "stadtwerke-schwaebisch-hall",
+    operatorName: "Stadtwerke Schwäbisch Hall GmbH",
     sourceDocumentUrl: STADTWERKE_SCHWAEBISCH_HALL_SOURCE,
     products: [
       {
         moduleKey: "modul-1",
         networkLevel: "niederspannung",
         meteringMode: "slp",
-        validFrom: "2026-01-01",
+        validFrom: VALID_FROM_2026,
         sourceDocumentUrl: STADTWERKE_SCHWAEBISCH_HALL_SOURCE,
         components: [
           { componentKey: "base_price_eur_per_year", valueNumeric: "61.00", unit: "EUR/a" },
           { componentKey: "work_price_ct_per_kwh", valueNumeric: "5.53", unit: "ct/kWh" },
-          {
-            componentKey: "net_fee_reduction_eur_per_year",
-            valueNumeric: "108.70",
-            unit: "EUR/a"
-          }
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "108.70", unit: "EUR/a" }
         ],
-        requirements: [
-          { requirementKey: "default_if_no_choice", requirementValue: "true" },
-          { requirementKey: "zero_floor_applies", requirementValue: "true" }
-        ],
+        requirements: defaultModul1Requirements(),
         timeWindows: []
       },
       {
         moduleKey: "modul-2",
         networkLevel: "niederspannung",
         meteringMode: "slp",
-        validFrom: "2026-01-01",
+        validFrom: VALID_FROM_2026,
         sourceDocumentUrl: STADTWERKE_SCHWAEBISCH_HALL_SOURCE,
         components: [
           { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
           { componentKey: "work_price_ct_per_kwh", valueNumeric: "2.21", unit: "ct/kWh" }
         ],
-        requirements: [
-          { requirementKey: "separate_meter_required", requirementValue: "true" },
-          { requirementKey: "separate_market_location_required", requirementValue: "true" }
-        ],
+        requirements: defaultModul2Requirements(),
         timeWindows: []
       },
       {
         moduleKey: "modul-3",
         networkLevel: "niederspannung",
         meteringMode: "slp",
-        validFrom: "2026-01-01",
+        validFrom: VALID_FROM_2026,
         sourceDocumentUrl: STADTWERKE_SCHWAEBISCH_HALL_SOURCE,
-        components: [
-          { componentKey: "standard_work_price_ct_per_kwh", valueNumeric: "5.53", unit: "ct/kWh" },
-          { componentKey: "high_work_price_ct_per_kwh", valueNumeric: "8.14", unit: "ct/kWh" },
-          { componentKey: "low_work_price_ct_per_kwh", valueNumeric: "1.11", unit: "ct/kWh" }
-        ],
-        requirements: [
-          { requirementKey: "intelligent_meter_required", requirementValue: "true" },
-          { requirementKey: "must_be_combined_with_module_1", requirementValue: "true" }
-        ],
+        components: modul3Components("5.53", "8.14", "1.11"),
+        requirements: defaultModul3Requirements(),
         timeWindows: [
-          ...buildQuarterWindows("Q1"),
-          ...buildQuarterWindows("Q2"),
-          {
-            quarterKey: "Q3",
-            bandKey: "standard",
-            startsAt: "00:00",
-            endsAt: "24:00"
-          },
-          ...buildQuarterWindows("Q4")
+          ...buildHallQuarterWindows("Q1"),
+          ...buildHallQuarterWindows("Q2"),
+          { quarterKey: "Q3", bandKey: "standard", startsAt: "00:00", endsAt: "24:00" },
+          ...buildHallQuarterWindows("Q4")
         ]
       }
     ],
-    meteringPrices: [
-      {
-        componentKey: "single_register_meter_eur_per_year",
-        valueNumeric: "9.50",
-        unit: "EUR/a"
-      },
-      {
-        componentKey: "dual_register_meter_eur_per_year",
-        valueNumeric: "14.75",
-        unit: "EUR/a"
-      }
-    ]
+    meteringPrices: meteringPrices("9.50", "14.75")
   };
 }
 
-function buildQuarterWindows(quarterKey: "Q1" | "Q2" | "Q4"): EndcustomerTariffTimeWindow[] {
+export function getNetzeBwEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "netze-bw",
+    operatorName: "Netze BW GmbH",
+    sourceDocumentUrl: NETZE_BW_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: NETZE_BW_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "84.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "7.57", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "124.00", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: NETZE_BW_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "3.03", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: NETZE_BW_SOURCE,
+        components: modul3Components("7.57", "11.06", "3.03"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: buildFullYearWindows([
+          ["standard", ["00:00-10:00", "14:00-17:00", "22:00-24:00"]],
+          ["high", ["17:00-22:00"]],
+          ["low", ["10:00-14:00"]]
+        ])
+      }
+    ],
+    meteringPrices: meteringPrices("10.67", "21.10")
+  };
+}
+
+export function getStromnetzBerlinEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "stromnetz-berlin",
+    operatorName: "Stromnetz Berlin GmbH",
+    sourceDocumentUrl: STROMNETZ_BERLIN_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: STROMNETZ_BERLIN_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "33.36", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "7.46", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "123.18", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: STROMNETZ_BERLIN_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "2.98", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: STROMNETZ_BERLIN_SOURCE,
+        components: modul3Components("7.46", "13.94", "2.61"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: buildFullYearWindows([
+          ["standard", ["06:30-17:15", "20:15-22:15"]],
+          ["high", ["17:15-20:15"]],
+          ["low", ["00:00-06:30", "22:15-24:00"]]
+        ])
+      }
+    ],
+    meteringPrices: meteringPrices("9.95", "19.08")
+  };
+}
+
+export function getNetzeOdrEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "netze-odr",
+    operatorName: "Netze ODR GmbH",
+    sourceDocumentUrl: NETZE_ODR_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: NETZE_ODR_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "65.70", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "5.87", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "111.25", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: NETZE_ODR_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "2.35", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: NETZE_ODR_SOURCE,
+        components: modul3Components("5.87", "10.18", "2.35"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: [
+          ...buildQuarterRanges("Q1", "standard", ["00:00-24:00"]),
+          ...buildQuarterRanges("Q4", "standard", ["00:00-24:00"]),
+          ...buildQuarterRanges("Q2", "low", ["11:00-17:00"]),
+          ...buildQuarterRanges("Q2", "standard", ["00:00-05:00", "05:00-11:00", "17:00-22:00"]),
+          ...buildQuarterRanges("Q2", "high", ["22:00-24:00"]),
+          ...buildQuarterRanges("Q3", "low", ["11:00-17:00"]),
+          ...buildQuarterRanges("Q3", "standard", ["00:00-05:00", "05:00-11:00", "17:00-22:00"]),
+          ...buildQuarterRanges("Q3", "high", ["22:00-24:00"])
+        ]
+      }
+    ],
+    meteringPrices: meteringPrices("10.68", "18.12")
+  };
+}
+
+export function getMitnetzStromEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "mitnetz-strom",
+    operatorName: "Mitteldeutsche Netzgesellschaft Strom mbH",
+    sourceDocumentUrl: MITNETZ_STROM_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: MITNETZ_STROM_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "73.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "6.31", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "114.55", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: MITNETZ_STROM_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "2.52", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: MITNETZ_STROM_SOURCE,
+        components: modul3Components("6.31", "12.62", "0.69"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: [
+          ...buildQuarterRanges("Q1", "standard", ["03:00-08:00", "12:00-17:00"]),
+          ...buildQuarterRanges("Q1", "high", ["08:00-12:00", "17:00-19:00"]),
+          ...buildQuarterRanges("Q1", "low", ["00:00-03:00", "19:00-24:00"]),
+          ...buildQuarterRanges("Q2", "standard", ["00:00-24:00"]),
+          ...buildQuarterRanges("Q3", "standard", ["00:00-24:00"]),
+          ...buildQuarterRanges("Q4", "standard", ["03:00-08:00", "12:00-17:00"]),
+          ...buildQuarterRanges("Q4", "high", ["08:00-12:00", "17:00-19:00"]),
+          ...buildQuarterRanges("Q4", "low", ["00:00-03:00", "19:00-24:00"])
+        ]
+      }
+    ],
+    meteringPrices: meteringPrices("7.84", "7.84")
+  };
+}
+
+function defaultModul1Requirements(): EndcustomerTariffRequirement[] {
+  return [
+    { requirementKey: "default_if_no_choice", requirementValue: "true" },
+    { requirementKey: "zero_floor_applies", requirementValue: "true" }
+  ];
+}
+
+function defaultModul2Requirements(): EndcustomerTariffRequirement[] {
+  return [
+    { requirementKey: "separate_meter_required", requirementValue: "true" },
+    { requirementKey: "separate_market_location_required", requirementValue: "true" }
+  ];
+}
+
+function defaultModul3Requirements(): EndcustomerTariffRequirement[] {
+  return [
+    { requirementKey: "intelligent_meter_required", requirementValue: "true" },
+    { requirementKey: "must_be_combined_with_module_1", requirementValue: "true" }
+  ];
+}
+
+function modul3Components(standard: string, high: string, low: string): EndcustomerTariffComponent[] {
+  return [
+    { componentKey: "standard_work_price_ct_per_kwh", valueNumeric: standard, unit: "ct/kWh" },
+    { componentKey: "high_work_price_ct_per_kwh", valueNumeric: high, unit: "ct/kWh" },
+    { componentKey: "low_work_price_ct_per_kwh", valueNumeric: low, unit: "ct/kWh" }
+  ];
+}
+
+function meteringPrices(singleRegister: string, dualRegister: string): EndcustomerTariffComponent[] {
+  return [
+    { componentKey: "single_register_meter_eur_per_year", valueNumeric: singleRegister, unit: "EUR/a" },
+    { componentKey: "dual_register_meter_eur_per_year", valueNumeric: dualRegister, unit: "EUR/a" }
+  ];
+}
+
+function buildHallQuarterWindows(quarterKey: "Q1" | "Q2" | "Q4"): EndcustomerTariffTimeWindow[] {
   return [
     { quarterKey, bandKey: "low", startsAt: "00:00", endsAt: "07:00" },
     { quarterKey, bandKey: "standard", startsAt: "07:00", endsAt: "10:00" },
@@ -153,4 +396,29 @@ function buildQuarterWindows(quarterKey: "Q1" | "Q2" | "Q4"): EndcustomerTariffT
     { quarterKey, bandKey: "standard", startsAt: "20:00", endsAt: "22:00" },
     { quarterKey, bandKey: "low", startsAt: "22:00", endsAt: "24:00" }
   ];
+}
+
+function buildFullYearWindows(
+  bands: Array<[EndcustomerTariffTimeWindow["bandKey"], string[]]>
+): EndcustomerTariffTimeWindow[] {
+  return (["Q1", "Q2", "Q3", "Q4"] as const).flatMap((quarterKey) =>
+    bands.flatMap(([bandKey, ranges]) => buildQuarterRanges(quarterKey, bandKey, ranges))
+  );
+}
+
+function buildQuarterRanges(
+  quarterKey: EndcustomerTariffTimeWindow["quarterKey"],
+  bandKey: EndcustomerTariffTimeWindow["bandKey"],
+  ranges: string[]
+): EndcustomerTariffTimeWindow[] {
+  return ranges.map((range) => {
+    const [startsAt, endsAt] = range.split("-");
+
+    return {
+      quarterKey,
+      bandKey,
+      startsAt: startsAt ?? "00:00",
+      endsAt: endsAt === "00:00" ? "24:00" : endsAt ?? "24:00"
+    };
+  });
 }

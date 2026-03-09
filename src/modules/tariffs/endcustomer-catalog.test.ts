@@ -82,9 +82,13 @@ describe("buildEndcustomerTariffCatalog", () => {
 });
 
 describe("getSeedEndcustomerTariffCatalog", () => {
-  test("exposes the schwäbisch hall reference fixture as seed-backed catalog", () => {
+  test("exposes the first published operator batch as seed-backed catalog", () => {
     const catalog = getSeedEndcustomerTariffCatalog();
     const hall = catalog.find((entry) => entry.operatorSlug === "stadtwerke-schwaebisch-hall");
+    const netzeBw = catalog.find((entry) => entry.operatorSlug === "netze-bw");
+    const stromnetzBerlin = catalog.find((entry) => entry.operatorSlug === "stromnetz-berlin");
+    const netzeOdr = catalog.find((entry) => entry.operatorSlug === "netze-odr");
+    const mitnetz = catalog.find((entry) => entry.operatorSlug === "mitnetz-strom");
 
     expect(hall).toMatchObject({
       operatorSlug: "stadtwerke-schwaebisch-hall",
@@ -110,6 +114,32 @@ describe("getSeedEndcustomerTariffCatalog", () => {
         })
       ])
     });
+    expect(netzeBw?.products).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ moduleKey: "modul-1" }),
+        expect.objectContaining({ moduleKey: "modul-2" }),
+        expect.objectContaining({ moduleKey: "modul-3" })
+      ])
+    );
+    expect(stromnetzBerlin?.meteringPrices).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "single_register_meter_eur_per_year", valueNumeric: "9.95" }),
+        expect.objectContaining({ componentKey: "dual_register_meter_eur_per_year", valueNumeric: "19.08" })
+      ])
+    );
+    expect(netzeOdr?.products.find((product) => product.moduleKey === "modul-3")?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ quarterKey: "Q1", bandKey: "standard", startsAt: "00:00", endsAt: "24:00" }),
+        expect.objectContaining({ quarterKey: "Q2", bandKey: "high", startsAt: "22:00", endsAt: "24:00" })
+      ])
+    );
+    expect(mitnetz?.products.find((product) => product.moduleKey === "modul-1")?.components).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "base_price_eur_per_year", valueNumeric: "73.00" }),
+        expect.objectContaining({ componentKey: "work_price_ct_per_kwh", valueNumeric: "6.31" }),
+        expect.objectContaining({ componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "114.55" })
+      ])
+    );
   });
 });
 

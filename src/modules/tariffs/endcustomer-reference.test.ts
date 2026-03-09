@@ -80,18 +80,22 @@ describe("getSeedEndcustomerReferences", () => {
         "netze-odr",
         "mitnetz-strom",
         "allgaeunetz",
-        "mainzer-netze"
+        "mainzer-netze",
+        "enercity-netz",
+        "tws-netz"
       ])
     );
   });
 
-  test("captures endcustomer module data for AllgaeuNetz and Mainzer Netze", () => {
+  test("captures endcustomer module data for AllgaeuNetz, Mainzer Netze, enercity Netz and TWS Netz", () => {
     const references = new Map(
       getSeedEndcustomerReferences().map((reference) => [reference.operatorSlug, reference] as const)
     );
 
     const allgaeu = references.get("allgaeunetz");
     const mainzer = references.get("mainzer-netze");
+    const enercity = references.get("enercity-netz");
+    const tws = references.get("tws-netz");
 
     expect(allgaeu?.products.find((product) => product.moduleKey === "modul-1")?.components).toEqual(
       expect.arrayContaining([
@@ -126,6 +130,48 @@ describe("getSeedEndcustomerReferences", () => {
       expect.arrayContaining([
         expect.objectContaining({ componentKey: "single_register_meter_eur_per_year", valueNumeric: "15.90" }),
         expect.objectContaining({ componentKey: "dual_register_meter_eur_per_year", valueNumeric: "19.90" })
+      ])
+    );
+
+    expect(enercity?.products.find((product) => product.moduleKey === "modul-2")?.components).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "base_price_eur_per_year", valueNumeric: "0.00" }),
+        expect.objectContaining({ componentKey: "work_price_ct_per_kwh", valueNumeric: "3.42" })
+      ])
+    );
+    expect(enercity?.products.find((product) => product.moduleKey === "modul-3")?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ quarterKey: "Q1", bandKey: "low", startsAt: "00:00", endsAt: "06:00" }),
+        expect.objectContaining({ quarterKey: "Q4", bandKey: "high", startsAt: "16:30", endsAt: "20:15" })
+      ])
+    );
+    expect(enercity?.meteringPrices).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "single_register_meter_eur_per_year", valueNumeric: "12.34" }),
+        expect.objectContaining({ componentKey: "dual_register_meter_eur_per_year", valueNumeric: "25.33" })
+      ])
+    );
+
+    expect(tws?.products.find((product) => product.moduleKey === "modul-1")?.components).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "base_price_eur_per_year", valueNumeric: "74.00" }),
+        expect.objectContaining({ componentKey: "work_price_ct_per_kwh", valueNumeric: "9.74" }),
+        expect.objectContaining({
+          componentKey: "net_fee_reduction_eur_per_year",
+          valueNumeric: "140.28"
+        })
+      ])
+    );
+    expect(tws?.products.find((product) => product.moduleKey === "modul-2")?.components).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "base_price_eur_per_year", valueNumeric: "0.00" }),
+        expect.objectContaining({ componentKey: "work_price_ct_per_kwh", valueNumeric: "3.90" })
+      ])
+    );
+    expect(tws?.meteringPrices).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "single_register_meter_eur_per_year", valueNumeric: "13.70" }),
+        expect.objectContaining({ componentKey: "dual_register_meter_eur_per_year", valueNumeric: "21.32" })
       ])
     );
   });

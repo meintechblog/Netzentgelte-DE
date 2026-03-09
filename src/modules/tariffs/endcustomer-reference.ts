@@ -72,6 +72,10 @@ const ALLGAEUNETZ_SOURCE =
   "https://www.allgaeunetz.com/download/2025_12_22_preisblatt_nne_2026_endg.pdf";
 const MAINZER_NETZE_SOURCE =
   "https://www.mainzer-netze.de/-/media/project/mainzer-stadtwerke/websites-mainzer-netze/mainzer-netze/dateien/ordnerstruktur-clean/g_s_w_preise-netzentgelte/strom/s_preisblatt_2026.pdf?rev=0b246c97be4b493188d844c94c08eb1f";
+const ENERCITY_NETZ_SOURCE =
+  "https://www.enercity-netz.de/assets/cms/eng/marktpartner/pdfs/netzentgelte-strom/preisblatt-netznutzung-strom-2026-jahr.pdf";
+const TWS_NETZ_SOURCE =
+  "https://www.tws-netz.de/de/Unsere-Netze/Netze-neu/Stromnetz/Netzzugang-Entgelte/5-132-TWS-Netz-Preisblatt-2026-final.pdf";
 
 export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
   return [
@@ -81,7 +85,9 @@ export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
     getNetzeOdrEndcustomerReference(),
     getMitnetzStromEndcustomerReference(),
     getAllgaeuNetzEndcustomerReference(),
-    getMainzerNetzeEndcustomerReference()
+    getMainzerNetzeEndcustomerReference(),
+    getEnercityNetzEndcustomerReference(),
+    getTwsNetzEndcustomerReference()
   ];
 }
 
@@ -467,6 +473,110 @@ export function getMainzerNetzeEndcustomerReference(): EndcustomerOperatorRefere
       }
     ],
     meteringPrices: meteringPrices("15.90", "19.90")
+  };
+}
+
+export function getEnercityNetzEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "enercity-netz",
+    operatorName: "enercity Netz GmbH",
+    sourceDocumentUrl: ENERCITY_NETZ_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: ENERCITY_NETZ_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "53.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "8.54", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "131.28", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: ENERCITY_NETZ_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "3.42", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: ENERCITY_NETZ_SOURCE,
+        components: modul3Components("8.54", "13.35", "0.86"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: buildFullYearWindows([
+          ["low", ["00:00-06:00"]],
+          ["standard", ["06:00-16:30", "20:15-24:00"]],
+          ["high", ["16:30-20:15"]]
+        ])
+      }
+    ],
+    meteringPrices: meteringPrices("12.34", "25.33")
+  };
+}
+
+export function getTwsNetzEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "tws-netz",
+    operatorName: "TWS Netz GmbH",
+    sourceDocumentUrl: TWS_NETZ_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: TWS_NETZ_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "74.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "9.74", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "140.28", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: TWS_NETZ_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "3.90", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: TWS_NETZ_SOURCE,
+        components: modul3Components("9.74", "12.26", "3.21"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: buildFullYearWindows([
+          ["low", ["00:00-06:00"]],
+          ["standard", ["06:00-17:00", "22:00-24:00"]],
+          ["high", ["17:00-22:00"]]
+        ])
+      }
+    ],
+    meteringPrices: meteringPrices("13.70", "21.32")
   };
 }
 

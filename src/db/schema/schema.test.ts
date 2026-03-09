@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vitest";
 
 import { operators } from "./operators";
+import { sourceCatalog } from "./sources";
 import { tariffVersions } from "./tariffs";
 import { tables } from "./index";
 
@@ -25,5 +26,9 @@ describe("database schema bootstrap", () => {
 
   test("stores an explicit modul-3 band key per tariff row", () => {
     expect(tariffVersions.bandKey).toBeDefined();
+  });
+
+  test("stores a first-class source page url for refresh and audit flows", () => {
+    expect(sourceCatalog.pageUrl).toBeDefined();
   });
 });

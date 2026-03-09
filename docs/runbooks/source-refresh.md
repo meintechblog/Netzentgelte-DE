@@ -53,6 +53,27 @@ Jeder Seed-Eintrag fuehrt bereits:
 8. Im UI Rohwert, PDF, Quellseite und Vergleich zum letzten Stand pruefen.
 9. Nach Sichtpruefung auf `verified` setzen.
 
+## Operativer CLI-Pfad
+
+Refresh aller currently catalogued sources:
+
+```bash
+pnpm sources:refresh
+```
+
+Refresh einer konkreten Quelle:
+
+```bash
+pnpm sources:refresh --source-slug netze-bw-netze-bw-14a-2026
+```
+
+Erwartetes Ergebnis:
+
+- neues Artefakt unter `data/artifacts/<source-slug>/<date>/...`
+- neuer Datensatz in `source_snapshots`
+- `last_checked_at` und `last_successful_at` in `source_catalog` aktualisiert
+- Audit-Eintrag in `ingest_runs`
+
 ## Human In The Loop
 
 Die Weboberflaeche muss fuer jeden Wert mindestens anzeigen:

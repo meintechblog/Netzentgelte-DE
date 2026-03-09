@@ -68,6 +68,7 @@ const gateway: RegistryPersistenceGateway = {
         rows.map((row) => ({
           operatorId: requireOperatorId(operatorMap, row.operatorSlug),
           sourceSlug: row.sourceSlug,
+          pageUrl: row.pageUrl,
           sourceUrl: row.sourceUrl,
           documentType: row.documentType,
           providerHint: row.providerHint,
@@ -82,6 +83,7 @@ const gateway: RegistryPersistenceGateway = {
       .onConflictDoUpdate({
         target: sourceCatalog.sourceSlug,
         set: {
+          pageUrl: sql.raw(`excluded.${sourceCatalog.pageUrl.name}`),
           sourceUrl: sql.raw(`excluded.${sourceCatalog.sourceUrl.name}`),
           documentType: sql.raw(`excluded.${sourceCatalog.documentType.name}`),
           providerHint: sql.raw(`excluded.${sourceCatalog.providerHint.name}`),

@@ -11,6 +11,7 @@ type RegistryOperatorRow = {
 type RegistrySourceRow = {
   operatorSlug: string;
   sourceSlug: string;
+  pageUrl: string;
   sourceUrl: string;
   documentType: "pdf" | "html" | "csv" | "json";
   providerHint: string;
@@ -66,6 +67,7 @@ export function buildRegistryImportPayload(registry: OperatorRegistryEntry[]): R
     return {
       operatorSlug: entry.slug,
       sourceSlug: buildSourceSlug(entry.slug, sourceDocument.id),
+      pageUrl: sourceDocument.sourcePageUrl,
       sourceUrl: sourceDocument.documentUrl,
       documentType: sourceDocument.documentType,
       providerHint: new URL(sourceDocument.documentUrl).hostname.replace(/^www\./, ""),

@@ -17,6 +17,7 @@ describe("buildRegistryImportPayload", () => {
     expect(payload.sources[0]).toMatchObject({
       operatorSlug: "netze-bw",
       sourceSlug: "netze-bw-netze-bw-14a-2026",
+      pageUrl: "https://www.netze-bw.de/neuregelung-14a-enwg",
       sourceUrl: "https://assets.ctfassets.net/xytfb1vrn7of/7eQvxehZzn3ECbR9rALmyD/ecc795b9dcd666ce1f53d9d04362a321/netzentgelte-strom-netze-bw-gmbh-2026.pdf",
       reviewStatus: "verified"
     });

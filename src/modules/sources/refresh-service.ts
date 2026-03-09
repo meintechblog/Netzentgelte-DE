@@ -24,6 +24,7 @@ export async function createSourceSnapshotFromFetch(input: CreateSourceSnapshotF
   ].join("/");
 
   return {
+    documentBuffer,
     sourceCatalogId: input.sourceCatalogId,
     fetchedAt,
     pageUrl: input.pageUrl,

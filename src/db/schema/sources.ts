@@ -8,6 +8,7 @@ export const sourceCatalog = pgTable("source_catalog", {
     .notNull()
     .references(() => operators.id, { onDelete: "cascade" }),
   sourceSlug: text("source_slug").notNull().unique(),
+  pageUrl: text("page_url"),
   sourceUrl: text("source_url").notNull(),
   documentType: text("document_type").notNull(),
   providerHint: text("provider_hint"),

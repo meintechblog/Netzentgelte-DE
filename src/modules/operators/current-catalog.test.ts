@@ -148,7 +148,7 @@ describe("getSeedPublishedOperators", () => {
     const nordnetz = published.find((entry) => entry.slug === "nordnetz");
     const heidelbergNetze = published.find((entry) => entry.slug === "heidelberg-netze");
 
-    expect(published).toHaveLength(20);
+    expect(published).toHaveLength(25);
     expect(avacon).toBeUndefined();
     expect(nordnetz).toBeUndefined();
     expect(heidelbergNetze).toBeUndefined();

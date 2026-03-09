@@ -6,7 +6,7 @@ describe("getOperatorRegistry", () => {
   test("loads curated operators with provenance rich source records", () => {
     const registry = getOperatorRegistry();
 
-    expect(registry.length).toBeGreaterThanOrEqual(23);
+    expect(registry.length).toBeGreaterThanOrEqual(33);
     expect(registry[0]).toMatchObject({
       slug: expect.any(String),
       sourceDocuments: expect.arrayContaining([
@@ -197,6 +197,284 @@ describe("getOperatorRegistry", () => {
                 seasonLabel: "Q2-Q3 2026",
                 bandKey: "HT",
                 timeRangeLabel: "17:00-22:00"
+              })
+            ])
+          })
+        })
+      ])
+    );
+  });
+
+  test("adds the next documented ten-operator intake batch as pending official sources", () => {
+    const registry = getOperatorRegistry();
+
+    expect(registry).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          slug: "syna",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "pending",
+            bands: [],
+            timeWindows: []
+          }),
+          sourceDocuments: expect.arrayContaining([
+            expect.objectContaining({
+              sourcePageUrl: "https://www.syna.de/corp/ueber-syna/unser-netz/netzentgelte-strom",
+              documentUrl:
+                "https://www.syna.de/corp/ueber-syna/unser-netz/netzentgelte-strom-netzentgelte-und-abgaben/-/media/project/evu/syna/corp-dokumente/netze/netzentgelte-strom/preisblatt_6_14a_enwg_modul_3_2026.pdf"
+            })
+          ])
+        }),
+        expect.objectContaining({
+          slug: "netz-duesseldorf",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "pending",
+            bands: [],
+            timeWindows: []
+          }),
+          sourceDocuments: expect.arrayContaining([
+            expect.objectContaining({
+              sourcePageUrl: "https://www.netz-duesseldorf.de/unsere-infrastruktur/strom/preisblaetter",
+              documentUrl:
+                "https://a.storyblok.com/f/274773/x/dc3a61c884/2025-12-12_finales-preisblatt-nne-strom-2026.pdf"
+            })
+          ])
+        }),
+        expect.objectContaining({
+          slug: "nrm-netzdienste",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "pending",
+            bands: [],
+            timeWindows: []
+          }),
+          sourceDocuments: expect.arrayContaining([
+            expect.objectContaining({
+              sourcePageUrl: "https://www.nrm-netzdienste.de/de/netzzugang/netzzugang-strom",
+              documentUrl:
+                "https://www.nrm-netzdienste.de/resource/blob/162824/8ff6844b3354affd58f10727ac636687/preisblatt-strom-pb02-gueltig-ab-01-01-2026-mit-nrm-logo-data.pdf"
+            })
+          ])
+        }),
+        expect.objectContaining({
+          slug: "thueringer-energienetze",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "pending",
+            bands: [],
+            timeWindows: []
+          }),
+          sourceDocuments: expect.arrayContaining([
+            expect.objectContaining({
+              sourcePageUrl:
+                "https://www.thueringer-energienetze.com/Energiepartner/Netzkunden_und_Lieferanten_Stromnetz/Netzentgelte_und_Umlagen",
+              documentUrl:
+                "https://www.thueringer-energienetze.com/Content/Documents/Energiepartner/TEN_NNE_Strom_2026.pdf"
+            })
+          ])
+        }),
+        expect.objectContaining({
+          slug: "swe-netz",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "pending",
+            bands: [],
+            timeWindows: []
+          }),
+          sourceDocuments: expect.arrayContaining([
+            expect.objectContaining({
+              sourcePageUrl: "https://www.swe-netz.de/pb/netz/netzentgelte_Strom",
+              documentUrl:
+                "https://www.swe-netz.de/pb/site/netz/get/documents_E-1923782843/netz/documents/stromnetz/netzentgelte_strom/ab_2026/Strom_Preisblatt_2026_vorlaeufig.pdf"
+            })
+          ])
+        })
+      ])
+    );
+  });
+
+  test("promotes MITNETZ Strom when the official 2026 Preisblatt spells out all Modul-3 prices and quarter windows", () => {
+    const registry = getOperatorRegistry();
+
+    expect(registry).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          slug: "mitnetz-strom",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "verified",
+            bands: expect.arrayContaining([
+              expect.objectContaining({
+                key: "NT",
+                valueCtPerKwh: "0.69"
+              }),
+              expect.objectContaining({
+                key: "ST",
+                valueCtPerKwh: "6.31"
+              }),
+              expect.objectContaining({
+                key: "HT",
+                valueCtPerKwh: "12.62"
+              })
+            ]),
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q1 und Q4 2026",
+                bandKey: "HT",
+                timeRangeLabel: "17:00-19:00"
+              }),
+              expect.objectContaining({
+                seasonLabel: "Q2-Q3 2026",
+                bandKey: "ST",
+                timeRangeLabel: "00:00-24:00"
+              })
+            ])
+          })
+        })
+      ])
+    );
+  });
+
+  test("promotes Schleswig-Holstein Netz when the official 2026 publication exposes all three tariff bands and quarter windows", () => {
+    const registry = getOperatorRegistry();
+    const operator = registry.find((entry) => entry.slug === "schleswig-holstein-netz");
+
+    expect(operator).toMatchObject({
+      slug: "schleswig-holstein-netz",
+      currentTariff: expect.objectContaining({
+        reviewStatus: "verified",
+        bands: expect.arrayContaining([
+          expect.objectContaining({
+            key: "NT",
+            valueCtPerKwh: "0.64"
+          }),
+          expect.objectContaining({
+            key: "ST",
+            valueCtPerKwh: "6.40"
+          }),
+          expect.objectContaining({
+            key: "HT",
+            valueCtPerKwh: "8.32"
+          })
+        ]),
+        timeWindows: expect.arrayContaining([
+          expect.objectContaining({
+            seasonLabel: "Q1 und Q4 2026",
+            bandKey: "HT",
+            timeRangeLabel: "17:00-21:00"
+          }),
+          expect.objectContaining({
+            seasonLabel: "Q2-Q3 2026",
+            bandKey: "ST",
+            timeRangeLabel: "00:00-24:00"
+          })
+        ])
+      })
+    });
+  });
+
+  test("promotes enercity Netz to a fully structured verified Modell-3 source when the official PDF exposes all tariff bands", () => {
+    const registry = getOperatorRegistry();
+
+    expect(registry).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          slug: "enercity-netz",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "verified",
+            bands: expect.arrayContaining([
+              expect.objectContaining({
+                key: "NT",
+                valueCtPerKwh: "0.86"
+              }),
+              expect.objectContaining({
+                key: "ST",
+                valueCtPerKwh: "8.54"
+              }),
+              expect.objectContaining({
+                key: "HT",
+                valueCtPerKwh: "13.35"
+              })
+            ]),
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q1-Q4 2026",
+                bandKey: "NT",
+                timeRangeLabel: "00:00-06:00"
+              }),
+              expect.objectContaining({
+                seasonLabel: "Q1-Q4 2026",
+                bandKey: "HT",
+                timeRangeLabel: "16:30-20:15"
+              })
+            ])
+          })
+        })
+      ])
+    );
+  });
+
+  test("promotes FairNetz and Stadtwerke Bamberg when the source tables expose complete Modell-3 values and seasonal windows", () => {
+    const registry = getOperatorRegistry();
+
+    expect(registry).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          slug: "fairnetz",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "verified",
+            bands: expect.arrayContaining([
+              expect.objectContaining({
+                key: "NT",
+                valueCtPerKwh: "2.04"
+              }),
+              expect.objectContaining({
+                key: "ST",
+                valueCtPerKwh: "8.16"
+              }),
+              expect.objectContaining({
+                key: "HT",
+                valueCtPerKwh: "11.87"
+              })
+            ]),
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q1-Q4 2026",
+                bandKey: "HT",
+                timeRangeLabel: "17:00-22:00"
+              }),
+              expect.objectContaining({
+                seasonLabel: "Q1-Q4 2026",
+                bandKey: "NT",
+                timeRangeLabel: "00:00-04:00"
+              })
+            ])
+          })
+        }),
+        expect.objectContaining({
+          slug: "stadtwerke-bamberg",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "verified",
+            bands: expect.arrayContaining([
+              expect.objectContaining({
+                key: "NT",
+                valueCtPerKwh: "2.28"
+              }),
+              expect.objectContaining({
+                key: "ST",
+                valueCtPerKwh: "5.71"
+              }),
+              expect.objectContaining({
+                key: "HT",
+                valueCtPerKwh: "6.63"
+              })
+            ]),
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q2-Q3 2026",
+                bandKey: "ST",
+                timeRangeLabel: "00:00-24:00"
+              }),
+              expect.objectContaining({
+                seasonLabel: "Q1 und Q4 2026",
+                bandKey: "HT",
+                timeRangeLabel: "18:00-20:00"
               })
             ])
           })

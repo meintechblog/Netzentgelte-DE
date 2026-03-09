@@ -2409,5 +2409,733 @@
         }
       ]
     }
+  },
+  {
+    "slug": "schleswig-holstein-netz",
+    "name": "Schleswig-Holstein Netz AG",
+    "regionLabel": "Schleswig-Holstein",
+    "websiteUrl": "https://www.sh-netz.com/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "schleswig-holstein-netz-14a-2026",
+        "title": "Finale Netzentgelte Strom ab 01.01.2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.sh-netz.com/de/schleswig-holstein-netz/netzinformation/netzentgelte/entgelte-strom.html",
+        "documentUrl": "https://www.sh-netz.com/content/dam/revu-global/sh-netz/Documents/Schleswig-Holstein-Netz/Netzentgelte/Strom/Allgemeine-Netzentgelte/2026/finale_netzentgelte_strom_ab_20260101.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Betreiberseite fuer Netzentgelte Strom 2026.",
+          "Die finale 2026-PDF weist die Modell-3-Arbeitspreise und Tarifzeiten fuer alle Quartale aus.",
+          "Q1 und Q4 sind mit expliziten NT/ST/HT-Zeitfenstern dargestellt; Q2 und Q3 sind als reine Standardtarifphase ausgewiesen."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "schleswig-holstein-netz-14a-2026",
+      "sourcePageUrl": "https://www.sh-netz.com/de/schleswig-holstein-netz/netzinformation/netzentgelte/entgelte-strom.html",
+      "documentUrl": "https://www.sh-netz.com/content/dam/revu-global/sh-netz/Documents/Schleswig-Holstein-Netz/Netzentgelte/Strom/Allgemeine-Netzentgelte/2026/finale_netzentgelte_strom_ab_20260101.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "0.64",
+          "sourceQuote": "Niedrigtarifstufe 0,64 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "6.40",
+          "sourceQuote": "Standardtarifstufe 6,40 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "8.32",
+          "sourceQuote": "Hochtarifstufe 8,32 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "schleswig-holstein-netz-2026-q1q4-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-05:00",
+          "sourceQuote": "Q1/Q4 NT 00:00-05:00 Uhr"
+        },
+        {
+          "id": "schleswig-holstein-netz-2026-q1q4-standard-morning",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "05:00-09:00",
+          "sourceQuote": "Q1/Q4 ST 05:00-09:00 Uhr"
+        },
+        {
+          "id": "schleswig-holstein-netz-2026-q1q4-high-midday",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "09:00-14:00",
+          "sourceQuote": "Q1/Q4 HT 09:00-14:00 Uhr"
+        },
+        {
+          "id": "schleswig-holstein-netz-2026-q1q4-standard-afternoon",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "14:00-17:00",
+          "sourceQuote": "Q1/Q4 ST 14:00-17:00 Uhr"
+        },
+        {
+          "id": "schleswig-holstein-netz-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-21:00",
+          "sourceQuote": "Q1/Q4 HT 17:00-21:00 Uhr"
+        },
+        {
+          "id": "schleswig-holstein-netz-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "21:00-22:00",
+          "sourceQuote": "Q1/Q4 ST 21:00-22:00 Uhr"
+        },
+        {
+          "id": "schleswig-holstein-netz-2026-q1q4-low-late",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "22:00-24:00",
+          "sourceQuote": "Q1/Q4 NT 22:00-00:00 Uhr"
+        },
+        {
+          "id": "schleswig-holstein-netz-2026-q2q3-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2-Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Q2/Q3 ST 00:00-24:00 Uhr"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "mitnetz-strom",
+    "name": "Mitteldeutsche Netzgesellschaft Strom mbH",
+    "regionLabel": "Sachsen / Sachsen-Anhalt / Brandenburg",
+    "websiteUrl": "https://www.mitnetz-strom.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "mitnetz-strom-14a-2026",
+        "title": "Entgelte fuer Netznutzung MITNETZ STROM 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.mitnetz-strom.de/energie-beziehen/netznutzung/entgelte-f%C3%BCr-netznutzung",
+        "documentUrl": "https://www.mitnetz-strom.de/Media/docs/default-source/datei-ablage/2026_mns_pb_endg%C3%BCltig_12-12-2025.pdf?sfvrsn=2aee4cf8_3",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Betreiberseite fuer Netznutzungsentgelte Strom.",
+          "Das finale 2026-Preisblatt wurde als Primaerquelle verlinkt.",
+          "Das Preisblatt sVE fuer Modul 3 weist ST-, HT- und NT-Arbeitspreise fuer Niederspannung explizit aus.",
+          "Q2 und Q3 sind als reine Standardtarifphase ausgewiesen, Q1 und Q4 mit detaillierten Zeitfenstern."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "mitnetz-strom-14a-2026",
+      "sourcePageUrl": "https://www.mitnetz-strom.de/energie-beziehen/netznutzung/entgelte-f%C3%BCr-netznutzung",
+      "documentUrl": "https://www.mitnetz-strom.de/Media/docs/default-source/datei-ablage/2026_mns_pb_endg%C3%BCltig_12-12-2025.pdf?sfvrsn=2aee4cf8_3",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedertarifstufe",
+          "valueCtPerKwh": "0.69",
+          "sourceQuote": "Niederspannung 6,31 12,62 0,69"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "6.31",
+          "sourceQuote": "Niederspannung 6,31 12,62 0,69"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "12.62",
+          "sourceQuote": "Niederspannung 6,31 12,62 0,69"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "mitnetz-strom-2026-q1q4-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tariftage",
+          "timeRangeLabel": "00:00-03:00",
+          "sourceQuote": "Q1/Q4 NT 00:00-03:00 Uhr"
+        },
+        {
+          "id": "mitnetz-strom-2026-q1q4-standard-morning",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tariftage",
+          "timeRangeLabel": "03:00-08:00",
+          "sourceQuote": "Q1/Q4 ST 03:00-08:00 Uhr"
+        },
+        {
+          "id": "mitnetz-strom-2026-q1q4-high-midday",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tariftage",
+          "timeRangeLabel": "08:00-12:00",
+          "sourceQuote": "Q1/Q4 HT 08:00-12:00 Uhr"
+        },
+        {
+          "id": "mitnetz-strom-2026-q1q4-standard-afternoon",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tariftage",
+          "timeRangeLabel": "12:00-17:00",
+          "sourceQuote": "Q1/Q4 ST 12:00-17:00 Uhr"
+        },
+        {
+          "id": "mitnetz-strom-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tariftage",
+          "timeRangeLabel": "17:00-19:00",
+          "sourceQuote": "Q1/Q4 HT 17:00-19:00 Uhr"
+        },
+        {
+          "id": "mitnetz-strom-2026-q1q4-low-late",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tariftage",
+          "timeRangeLabel": "19:00-24:00",
+          "sourceQuote": "Q1/Q4 NT 19:00-00:00 Uhr"
+        },
+        {
+          "id": "mitnetz-strom-2026-q2q3-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2-Q3 2026",
+          "dayLabel": "Alle Tariftage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Q2/Q3 ST 00:00-24:00 Uhr"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "syna",
+    "name": "Syna GmbH",
+    "regionLabel": "Hessen / Rheinland-Pfalz",
+    "websiteUrl": "https://www.syna.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "syna-14a-2026",
+        "title": "Preisblatt 6 §14a EnWG Modul 3 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.syna.de/corp/ueber-syna/unser-netz/netzentgelte-strom",
+        "documentUrl": "https://www.syna.de/corp/ueber-syna/unser-netz/netzentgelte-strom-netzentgelte-und-abgaben/-/media/project/evu/syna/corp-dokumente/netze/netzentgelte-strom/preisblatt_6_14a_enwg_modul_3_2026.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Syna-Seite fuer Netzentgelte Strom.",
+          "Das separate Preisblatt 6 fuer §14a EnWG Modul 3 ist als Primaerquelle dokumentiert.",
+          "Bandwerte und Zeitfenster werden in einem separaten Validierungsschritt strukturiert."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "syna-14a-2026",
+      "sourcePageUrl": "https://www.syna.de/corp/ueber-syna/unser-netz/netzentgelte-strom",
+      "documentUrl": "https://www.syna.de/corp/ueber-syna/unser-netz/netzentgelte-strom-netzentgelte-und-abgaben/-/media/project/evu/syna/corp-dokumente/netze/netzentgelte-strom/preisblatt_6_14a_enwg_modul_3_2026.pdf",
+      "summaryFallback": "Offizielle 2026-Quelle erfasst, Modul-3-Parsing ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "fairnetz",
+    "name": "FairNetz GmbH",
+    "regionLabel": "Reutlingen",
+    "websiteUrl": "https://www.fairnetzgmbh.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "fairnetz-14a-2026",
+        "title": "Preisblatt Strom NN 01.2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.fairnetzgmbh.de/de/veroeffentlichungen",
+        "documentUrl": "https://www.fairnetzgmbh.de/Downloads/PDF/Strom/Preise-Preisbl%C3%A4tter/2026/Preisblatt%20Strom%20NN_01.2026.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Veroeffentlichungsseite der FairNetz GmbH.",
+          "Das Strom-Preisblatt 2026 ist als Primaerquelle fuer den Betreiber erfasst.",
+          "Die Modell-3-Tabelle nennt explizit die drei Arbeitspreise ST, NT und HT.",
+          "Die Zeitfenster gelten laut Tabelle fuer alle Quartale 2026 und sind damit vollstaendig verifizierbar."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "fairnetz-14a-2026",
+      "sourcePageUrl": "https://www.fairnetzgmbh.de/de/veroeffentlichungen",
+      "documentUrl": "https://www.fairnetzgmbh.de/Downloads/PDF/Strom/Preise-Preisbl%C3%A4tter/2026/Preisblatt%20Strom%20NN_01.2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedertarifstufe",
+          "valueCtPerKwh": "2.04",
+          "sourceQuote": "Niedertarif (NT) Arbeitspreis 2,04 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "8.16",
+          "sourceQuote": "Standardtarif (ST) Arbeitspreis 8,16 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "11.87",
+          "sourceQuote": "Hochtarif (HT) Arbeitspreis 11,87 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "fairnetz-2026-standard-afternoon",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Im PDF nicht separat spezifiziert",
+          "timeRangeLabel": "14:00-17:00",
+          "sourceQuote": "Standardtarif (ST) 14:00-17:00"
+        },
+        {
+          "id": "fairnetz-2026-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Im PDF nicht separat spezifiziert",
+          "timeRangeLabel": "22:00-24:00",
+          "sourceQuote": "Standardtarif (ST) 22:00-00:00"
+        },
+        {
+          "id": "fairnetz-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Im PDF nicht separat spezifiziert",
+          "timeRangeLabel": "00:00-04:00",
+          "sourceQuote": "Niedertarif (NT) 00:00-04:00"
+        },
+        {
+          "id": "fairnetz-2026-low-midday",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Im PDF nicht separat spezifiziert",
+          "timeRangeLabel": "10:00-14:00",
+          "sourceQuote": "Niedertarif (NT) 10:00-14:00"
+        },
+        {
+          "id": "fairnetz-2026-high-morning",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Im PDF nicht separat spezifiziert",
+          "timeRangeLabel": "04:00-10:00",
+          "sourceQuote": "Hochtarif (HT) 04:00-10:00"
+        },
+        {
+          "id": "fairnetz-2026-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Im PDF nicht separat spezifiziert",
+          "timeRangeLabel": "17:00-22:00",
+          "sourceQuote": "Hochtarif (HT) 17:00-22:00"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "stadtwerke-bamberg",
+    "name": "Stadtwerke Bamberg",
+    "regionLabel": "Bamberg",
+    "websiteUrl": "https://www.stadtwerke-bamberg.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "stadtwerke-bamberg-14a-2026",
+        "title": "Preisblatt Stromnetz ab 01.01.2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.stadtwerke-bamberg.de/netz/stromnetz",
+        "documentUrl": "https://www.stadtwerke-bamberg.de/fileadmin/user_upload/Dokumente/Netze/Stromnetz/Preisblaetter/Preisblatt_Stromnetz_ab_01012026.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Stromnetz-Seite der Stadtwerke Bamberg.",
+          "Das 2026-Preisblatt ist fuer den Betreiber als Primaerquelle gespeichert.",
+          "Die Modell-3-Tabelle ist fuer alle Quartale 2026 im Preisblatt direkt enthalten.",
+          "Quartal 2 und 3 sind explizit als reine Standardtarifphase ausgewiesen."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "stadtwerke-bamberg-14a-2026",
+      "sourcePageUrl": "https://www.stadtwerke-bamberg.de/netz/stromnetz",
+      "documentUrl": "https://www.stadtwerke-bamberg.de/fileadmin/user_upload/Dokumente/Netze/Stromnetz/Preisblaetter/Preisblatt_Stromnetz_ab_01012026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedriglasttarifstufe",
+          "valueCtPerKwh": "2.28",
+          "sourceQuote": "AP Niedriglasttarifstufe 2,28 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "5.71",
+          "sourceQuote": "AP Standarttarifstufe 5,71 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochlasttarifstufe",
+          "valueCtPerKwh": "6.63",
+          "sourceQuote": "AP Hochlasttarifstufe 6,63 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "stadtwerke-bamberg-2026-q1q4-standard-night",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Im PDF nicht separat spezifiziert",
+          "timeRangeLabel": "00:00-03:00",
+          "sourceQuote": "Quartal 1/4 ST 00:00-03:00 Uhr"
+        },
+        {
+          "id": "stadtwerke-bamberg-2026-q1q4-low-early",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Im PDF nicht separat spezifiziert",
+          "timeRangeLabel": "03:00-04:00",
+          "sourceQuote": "Quartal 1/4 NT 03:00-04:00 Uhr"
+        },
+        {
+          "id": "stadtwerke-bamberg-2026-q1q4-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Im PDF nicht separat spezifiziert",
+          "timeRangeLabel": "04:00-18:00",
+          "sourceQuote": "Quartal 1/4 ST 04:00-18:00 Uhr"
+        },
+        {
+          "id": "stadtwerke-bamberg-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Im PDF nicht separat spezifiziert",
+          "timeRangeLabel": "18:00-20:00",
+          "sourceQuote": "Quartal 1/4 HT 18:00-20:00 Uhr"
+        },
+        {
+          "id": "stadtwerke-bamberg-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Im PDF nicht separat spezifiziert",
+          "timeRangeLabel": "20:00-24:00",
+          "sourceQuote": "Quartal 1/4 ST 20:00-24:00 Uhr"
+        },
+        {
+          "id": "stadtwerke-bamberg-2026-q2q3-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2-Q3 2026",
+          "dayLabel": "Im PDF nicht separat spezifiziert",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Quartal 2/3 ST 00:00-24:00 Uhr"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "enercity-netz",
+    "name": "enercity Netz GmbH",
+    "regionLabel": "Hannover",
+    "websiteUrl": "https://www.enercity-netz.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "enercity-netz-14a-2026",
+        "title": "Preisblatt Netznutzung Strom 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.enercity-netz.de/marktpartner/netznutzungskunden",
+        "documentUrl": "https://www.enercity-netz.de/assets/cms/eng/marktpartner/pdfs/netzentgelte-strom/preisblatt-netznutzung-strom-2026-jahr.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Marktpartner-Seite fuer Netznutzungskunden.",
+          "Das Jahres-Preisblatt Strom 2026 wurde als Primaerquelle aufgenommen.",
+          "Preisblatt 2 Abschnitt 3 nennt fuer Modell 3 explizit Standard-, Hoch- und Niedriglasttarif.",
+          "Das Zeitfenster-Schema gilt fuer alle Quartale 2026 und ist damit vollstaendig strukturiert erfassbar."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "enercity-netz-14a-2026",
+      "sourcePageUrl": "https://www.enercity-netz.de/marktpartner/netznutzungskunden",
+      "documentUrl": "https://www.enercity-netz.de/assets/cms/eng/marktpartner/pdfs/netzentgelte-strom/preisblatt-netznutzung-strom-2026-jahr.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedriglasttarifstufe",
+          "valueCtPerKwh": "0.86",
+          "sourceQuote": "Niedriglasttarif in ct/kWh Niederspannung 0,86"
+        },
+        {
+          "key": "ST",
+          "label": "Standardlasttarifstufe",
+          "valueCtPerKwh": "8.54",
+          "sourceQuote": "Preise Standardlasttarif in ct/kWh Niederspannung 8,54"
+        },
+        {
+          "key": "HT",
+          "label": "Hochlasttarifstufe",
+          "valueCtPerKwh": "13.35",
+          "sourceQuote": "Hochlasttarif in ct/kWh Niederspannung 13,35"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "enercity-netz-2026-standard-day",
+          "bandKey": "ST",
+          "label": "Standardlasttarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:00-16:30",
+          "sourceQuote": "Alle Quartale 06:00-16:30 Uhr"
+        },
+        {
+          "id": "enercity-netz-2026-high-evening",
+          "bandKey": "HT",
+          "label": "Hochlasttarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "16:30-20:15",
+          "sourceQuote": "Alle Quartale 16:30-20:15 Uhr"
+        },
+        {
+          "id": "enercity-netz-2026-standard-late",
+          "bandKey": "ST",
+          "label": "Standardlasttarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "20:15-24:00",
+          "sourceQuote": "Alle Quartale 20:15-00:00 Uhr"
+        },
+        {
+          "id": "enercity-netz-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedriglasttarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-06:00",
+          "sourceQuote": "Alle Quartale 00:00-06:00 Uhr"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "netz-duesseldorf",
+    "name": "Netzgesellschaft Duesseldorf mbH",
+    "regionLabel": "Duesseldorf",
+    "websiteUrl": "https://www.netz-duesseldorf.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "netz-duesseldorf-14a-2026",
+        "title": "Finales Preisblatt NNE Strom 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.netz-duesseldorf.de/unsere-infrastruktur/strom/preisblaetter",
+        "documentUrl": "https://a.storyblok.com/f/274773/x/dc3a61c884/2025-12-12_finales-preisblatt-nne-strom-2026.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Preisblatt-Seite fuer das Stromnetz der Netzgesellschaft Duesseldorf.",
+          "Das finale Strom-Preisblatt 2026 ist als Primaerquelle dokumentiert.",
+          "Die §14a-Modell-3-Extraktion folgt in einem separaten Review-Batch."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "netz-duesseldorf-14a-2026",
+      "sourcePageUrl": "https://www.netz-duesseldorf.de/unsere-infrastruktur/strom/preisblaetter",
+      "documentUrl": "https://a.storyblok.com/f/274773/x/dc3a61c884/2025-12-12_finales-preisblatt-nne-strom-2026.pdf",
+      "summaryFallback": "Offizielle 2026-Quelle erfasst, Modul-3-Parsing ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "nrm-netzdienste",
+    "name": "NRM Netzdienste Rhein-Main GmbH",
+    "regionLabel": "Frankfurt am Main",
+    "websiteUrl": "https://www.nrm-netzdienste.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "nrm-netzdienste-14a-2026",
+        "title": "Preisblatt Strom PB02 gueltig ab 01.01.2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.nrm-netzdienste.de/de/netzzugang/netzzugang-strom",
+        "documentUrl": "https://www.nrm-netzdienste.de/resource/blob/162824/8ff6844b3354affd58f10727ac636687/preisblatt-strom-pb02-gueltig-ab-01-01-2026-mit-nrm-logo-data.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Netzzugang-Seite fuer Strom der NRM Netzdienste Rhein-Main.",
+          "Das Preisblatt Strom PB02 ab 01.01.2026 ist als Primaerquelle hinterlegt.",
+          "Die Modell-3-Daten werden spaeter manuell aus dem Preisblatt extrahiert."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "nrm-netzdienste-14a-2026",
+      "sourcePageUrl": "https://www.nrm-netzdienste.de/de/netzzugang/netzzugang-strom",
+      "documentUrl": "https://www.nrm-netzdienste.de/resource/blob/162824/8ff6844b3354affd58f10727ac636687/preisblatt-strom-pb02-gueltig-ab-01-01-2026-mit-nrm-logo-data.pdf",
+      "summaryFallback": "Offizielle 2026-Quelle erfasst, Modul-3-Parsing ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "thueringer-energienetze",
+    "name": "TEN Thueringer Energienetze GmbH & Co. KG",
+    "regionLabel": "Thueringen",
+    "websiteUrl": "https://www.thueringer-energienetze.com/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "thueringer-energienetze-14a-2026",
+        "title": "TEN NNE Strom 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.thueringer-energienetze.com/Energiepartner/Netzkunden_und_Lieferanten_Stromnetz/Netzentgelte_und_Umlagen",
+        "documentUrl": "https://www.thueringer-energienetze.com/Content/Documents/Energiepartner/TEN_NNE_Strom_2026.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Netzentgelt- und Umlagenseite fuer das Stromnetz der TEN.",
+          "Das TEN-Strom-Preisblatt 2026 wurde als Primaerquelle aufgenommen.",
+          "Die manuelle Modell-3-Auswertung ist fuer einen spaeteren Batch vorgesehen."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "thueringer-energienetze-14a-2026",
+      "sourcePageUrl": "https://www.thueringer-energienetze.com/Energiepartner/Netzkunden_und_Lieferanten_Stromnetz/Netzentgelte_und_Umlagen",
+      "documentUrl": "https://www.thueringer-energienetze.com/Content/Documents/Energiepartner/TEN_NNE_Strom_2026.pdf",
+      "summaryFallback": "Offizielle 2026-Quelle erfasst, Modul-3-Parsing ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "swe-netz",
+    "name": "SWE Netz GmbH",
+    "regionLabel": "Erfurt / Thueringen",
+    "websiteUrl": "https://www.swe-netz.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "swe-netz-14a-2026",
+        "title": "Strom Preisblatt 2026 vorlaeufig",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.swe-netz.de/pb/netz/netzentgelte_Strom",
+        "documentUrl": "https://www.swe-netz.de/pb/site/netz/get/documents_E-1923782843/netz/documents/stromnetz/netzentgelte_strom/ab_2026/Strom_Preisblatt_2026_vorlaeufig.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle SWE-Netz-Seite fuer Netzentgelte Strom.",
+          "Das vorlaeufige Strom-Preisblatt 2026 ist als aktuelle Betreiberquelle erfasst.",
+          "Modell-3-Bandwerte und Zeitfenster bleiben bis zur manuellen Pruefung pending."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "swe-netz-14a-2026",
+      "sourcePageUrl": "https://www.swe-netz.de/pb/netz/netzentgelte_Strom",
+      "documentUrl": "https://www.swe-netz.de/pb/site/netz/get/documents_E-1923782843/netz/documents/stromnetz/netzentgelte_strom/ab_2026/Strom_Preisblatt_2026_vorlaeufig.pdf",
+      "summaryFallback": "Offizielle 2026-Quelle erfasst, Modul-3-Parsing ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
   }
 ]

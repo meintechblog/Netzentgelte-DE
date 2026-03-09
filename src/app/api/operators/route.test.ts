@@ -12,7 +12,7 @@ describe("GET /api/operators", () => {
       name: expect.any(String),
       sourceDocumentCount: expect.any(Number)
     });
-    expect(data.items).toHaveLength(20);
+    expect(data.items).toHaveLength(25);
     expect(data.items).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -25,6 +25,26 @@ describe("GET /api/operators", () => {
         }),
         expect.objectContaining({
           slug: "mainzer-netze",
+          reviewStatus: "verified"
+        }),
+        expect.objectContaining({
+          slug: "enercity-netz",
+          reviewStatus: "verified"
+        }),
+        expect.objectContaining({
+          slug: "fairnetz",
+          reviewStatus: "verified"
+        }),
+        expect.objectContaining({
+          slug: "stadtwerke-bamberg",
+          reviewStatus: "verified"
+        }),
+        expect.objectContaining({
+          slug: "schleswig-holstein-netz",
+          reviewStatus: "verified"
+        }),
+        expect.objectContaining({
+          slug: "mitnetz-strom",
           reviewStatus: "verified"
         })
       ])

@@ -35,8 +35,13 @@ describe("buildRegistryImportPayload", () => {
   test("expands modul-3 bands into individual tariff rows", () => {
     const payload = buildRegistryImportPayload(getOperatorRegistry());
 
-    expect(payload.tariffs).toHaveLength(69);
+    expect(payload.tariffs).toHaveLength(84);
     expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "westnetz")).toHaveLength(3);
+    expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "enercity-netz")).toHaveLength(3);
+    expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "fairnetz")).toHaveLength(3);
+    expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "stadtwerke-bamberg")).toHaveLength(3);
+    expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "schleswig-holstein-netz")).toHaveLength(3);
+    expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "mitnetz-strom")).toHaveLength(3);
   });
 });
 
@@ -45,9 +50,9 @@ describe("summarizeRegistryImport", () => {
     const summary = summarizeRegistryImport(buildRegistryImportPayload(getOperatorRegistry()));
 
     expect(summary).toEqual({
-      operatorCount: 23,
-      sourceCount: 23,
-      tariffCount: 69
+      operatorCount: 33,
+      sourceCount: 33,
+      tariffCount: 84
     });
   });
 });

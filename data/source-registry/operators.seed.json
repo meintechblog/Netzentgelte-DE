@@ -253,5 +253,57 @@
         }
       ]
     }
+  },
+  {
+    "slug": "n-ergie-netz",
+    "name": "N-ERGIE Netz GmbH",
+    "regionLabel": "Nuernberg / Franken",
+    "websiteUrl": "https://www.n-ergie-netz.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "n-ergie-netz-14a-2026",
+        "title": "Preisblatt 6a steuerbare Verbrauchseinrichtung ab 2024 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.n-ergie-netz.de/n-ergie-netz/veroeffentlichungen/netznutzung/netznutzung-strom",
+        "documentUrl": "https://www.n-ergie-netz.de/public/remotemedien/media/nng/produkte_und_dienstleistungen_2/netzentgelte_1/netzentgelte_strom/ne_strom_2026_end/N_Preisblatt6a_steuerbare_Verbrauchseinrichtung_ab2024_end_Neu.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Betreiberseite fuer Netznutzung Strom.",
+          "Das Preisblatt 6a stellt Modul 1, 2 und 3 explizit dar und ist dadurch besonders parserfreundlich.",
+          "Stand laut Dokument: 16.12.2025, gueltig ab 01.01.2026."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "n-ergie-netz-14a-2026",
+      "sourcePageUrl": "https://www.n-ergie-netz.de/n-ergie-netz/veroeffentlichungen/netznutzung/netznutzung-strom",
+      "documentUrl": "https://www.n-ergie-netz.de/public/remotemedien/media/nng/produkte_und_dienstleistungen_2/netzentgelte_1/netzentgelte_strom/ne_strom_2026_end/N_Preisblatt6a_steuerbare_Verbrauchseinrichtung_ab2024_end_Neu.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "2.38",
+          "sourceQuote": "Niedrigtarifstufe 2,38 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "5.96",
+          "sourceQuote": "Standardtarifstufe 5,96 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "11.77",
+          "sourceQuote": "Hochtarifstufe 11,77 ct/kWh"
+        }
+      ]
+    }
   }
 ]

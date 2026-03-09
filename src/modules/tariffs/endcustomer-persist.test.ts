@@ -30,6 +30,14 @@ describe("buildEndcustomerPersistencePayload", () => {
         })
       ])
     );
+    expect(payload.meteringPrices).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          componentKey: "single_register_meter_eur_per_year",
+          valueNumeric: "9.50"
+        })
+      ])
+    );
     expect(payload.requirements).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -89,6 +97,7 @@ describe("persistEndcustomerReference", () => {
       operatorSlug: "stadtwerke-schwaebisch-hall",
       productCount: 3,
       componentCount: 8,
+      meteringPriceCount: 2,
       requirementCount: 6,
       timeWindowCount: 22
     });

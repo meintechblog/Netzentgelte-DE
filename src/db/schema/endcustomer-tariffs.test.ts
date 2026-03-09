@@ -3,6 +3,7 @@ import { describe, expect, test } from "vitest";
 
 import {
   tariffComponents,
+  tariffMeteringPrices,
   tariffProducts,
   tariffRequirements,
   tariffTimeWindows
@@ -37,5 +38,15 @@ describe("endcustomer tariff schema", () => {
     expect(tariffTimeWindows.bandKey).toBeDefined();
     expect(tariffTimeWindows.startsAt).toBeDefined();
     expect(tariffTimeWindows.endsAt).toBeDefined();
+  });
+
+  test("defines a separate metering-price table for annual endcustomer meter charges", () => {
+    expect(getTableName(tariffMeteringPrices)).toBe("tariff_metering_prices");
+    expect(tariffMeteringPrices.operatorId).toBeDefined();
+    expect(tariffMeteringPrices.sourceCatalogId).toBeDefined();
+    expect(tariffMeteringPrices.componentKey).toBeDefined();
+    expect(tariffMeteringPrices.valueNumeric).toBeDefined();
+    expect(tariffMeteringPrices.unit).toBeDefined();
+    expect(tariffMeteringPrices.validFrom).toBeDefined();
   });
 });

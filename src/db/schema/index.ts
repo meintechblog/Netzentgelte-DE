@@ -2,6 +2,7 @@ import { getTableName } from "drizzle-orm";
 
 import {
   tariffComponents,
+  tariffMeteringPrices,
   tariffProducts,
   tariffRequirements,
   tariffTimeWindows
@@ -20,6 +21,7 @@ export { operators } from "./operators";
 export { sourceCatalog, sourceSnapshots } from "./sources";
 export {
   tariffComponents,
+  tariffMeteringPrices,
   tariffProducts,
   tariffRequirements,
   tariffTimeWindows
@@ -34,6 +36,7 @@ export const schemaTables = [
   tariffVersions,
   tariffProducts,
   tariffComponents,
+  tariffMeteringPrices,
   tariffRequirements,
   tariffTimeWindows,
   operatorGeometries,

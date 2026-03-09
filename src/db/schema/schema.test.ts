@@ -2,6 +2,7 @@ import { describe, expect, test } from "vitest";
 
 import {
   tariffComponents,
+  tariffMeteringPrices,
   tariffProducts,
   tariffRequirements,
   tariffTimeWindows
@@ -21,6 +22,7 @@ describe("database schema bootstrap", () => {
         "tariff_versions",
         "tariff_products",
         "tariff_components",
+        "tariff_metering_prices",
         "tariff_requirements",
         "tariff_time_windows",
         "operator_geometries",
@@ -49,6 +51,7 @@ describe("database schema bootstrap", () => {
   test("registers the endcustomer product model tables", () => {
     expect(tariffProducts.moduleKey).toBeDefined();
     expect(tariffComponents.componentKey).toBeDefined();
+    expect(tariffMeteringPrices.componentKey).toBeDefined();
     expect(tariffRequirements.requirementKey).toBeDefined();
     expect(tariffTimeWindows.quarterKey).toBeDefined();
   });

@@ -13,6 +13,12 @@ describe("GET /api/tariffs/endcustomer/current", () => {
 
     expect(hall).toMatchObject({
       operatorSlug: "stadtwerke-schwaebisch-hall",
+      meteringPrices: expect.arrayContaining([
+        expect.objectContaining({
+          componentKey: "single_register_meter_eur_per_year",
+          valueNumeric: "9.50"
+        })
+      ]),
       products: expect.arrayContaining([
         expect.objectContaining({
           moduleKey: "modul-1",

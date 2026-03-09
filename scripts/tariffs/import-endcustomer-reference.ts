@@ -6,6 +6,7 @@ import {
   operators,
   sourceCatalog,
   tariffComponents,
+  tariffMeteringPrices,
   tariffProducts,
   tariffRequirements,
   tariffTimeWindows
@@ -65,6 +66,8 @@ async function main() {
               await tx.delete(tariffProducts).where(eq(tariffProducts.operatorId, persistencePayload.operatorId));
             }
 
+            await tx.delete(tariffMeteringPrices).where(eq(tariffMeteringPrices.operatorId, persistencePayload.operatorId));
+
             const insertedProducts = await tx
               .insert(tariffProducts)
               .values(
@@ -112,6 +115,19 @@ async function main() {
                 endsAt: window.endsAt
               }))
             );
+
+            if (persistencePayload.meteringPrices.length > 0) {
+              await tx.insert(tariffMeteringPrices).values(
+                persistencePayload.meteringPrices.map((price) => ({
+                  operatorId: persistencePayload.operatorId,
+                  sourceCatalogId: persistencePayload.sourceCatalogId,
+                  validFrom: price.validFrom,
+                  componentKey: price.componentKey,
+                  valueNumeric: price.valueNumeric,
+                  unit: price.unit
+                }))
+              );
+            }
           });
         },
         insertRun: async ({ runType, status, summary: runSummary }) => {

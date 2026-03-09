@@ -17,6 +17,12 @@ export type EndcustomerPersistencePayload = {
     valueNumeric: string;
     unit: string;
   }>;
+  meteringPrices: Array<{
+    componentKey: string;
+    valueNumeric: string;
+    unit: string;
+    validFrom: string;
+  }>;
   requirements: Array<{
     moduleKey: string;
     requirementKey: string;
@@ -35,6 +41,7 @@ export type EndcustomerPersistenceSummary = {
   operatorSlug: string;
   productCount: number;
   componentCount: number;
+  meteringPriceCount: number;
   requirementCount: number;
   timeWindowCount: number;
 };
@@ -73,6 +80,12 @@ export function buildEndcustomerPersistencePayload(input: {
         unit: component.unit
       }))
     ),
+    meteringPrices: input.reference.meteringPrices.map((component) => ({
+      componentKey: component.componentKey,
+      valueNumeric: component.valueNumeric,
+      unit: component.unit,
+      validFrom: input.reference.products[0]?.validFrom ?? "2026-01-01"
+    })),
     requirements: input.reference.products.flatMap((product) =>
       product.requirements.map((requirement) => ({
         moduleKey: product.moduleKey,
@@ -101,6 +114,7 @@ export async function persistEndcustomerReference(input: {
     operatorSlug: input.operatorSlug,
     productCount: input.payload.products.length,
     componentCount: input.payload.components.length,
+    meteringPriceCount: input.payload.meteringPrices.length,
     requirementCount: input.payload.requirements.length,
     timeWindowCount: input.payload.timeWindows.length
   };

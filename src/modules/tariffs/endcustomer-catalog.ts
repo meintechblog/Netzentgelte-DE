@@ -183,7 +183,15 @@ export async function loadEndcustomerTariffCatalog() {
   }
 
   const { db } = await import("../../db/client");
-  const { operators, sourceCatalog, tariffComponents, tariffProducts, tariffRequirements, tariffTimeWindows } =
+  const {
+    operators,
+    sourceCatalog,
+    tariffComponents,
+    tariffMeteringPrices,
+    tariffProducts,
+    tariffRequirements,
+    tariffTimeWindows
+  } =
     await import("../../db/schema");
 
   const products = await db
@@ -209,7 +217,7 @@ export async function loadEndcustomerTariffCatalog() {
 
   const productIds = products.map((product) => product.productId);
 
-  const [components, requirements, timeWindows] = await Promise.all([
+  const [components, requirements, timeWindows, meteringPrices] = await Promise.all([
     db
       .select({
         tariffProductId: tariffComponents.tariffProductId,
@@ -236,7 +244,16 @@ export async function loadEndcustomerTariffCatalog() {
         endsAt: tariffTimeWindows.endsAt
       })
       .from(tariffTimeWindows)
-      .where(inArray(tariffTimeWindows.tariffProductId, productIds))
+      .where(inArray(tariffTimeWindows.tariffProductId, productIds)),
+    db
+      .select({
+        operatorSlug: operators.slug,
+        componentKey: tariffMeteringPrices.componentKey,
+        valueNumeric: sql<string>`${tariffMeteringPrices.valueNumeric}::text`,
+        unit: tariffMeteringPrices.unit
+      })
+      .from(tariffMeteringPrices)
+      .innerJoin(operators, eq(tariffMeteringPrices.operatorId, operators.id))
   ]);
 
   const componentsByProductId = new Map<string, typeof components>();
@@ -260,7 +277,7 @@ export async function loadEndcustomerTariffCatalog() {
     timeWindowsByProductId.set(window.tariffProductId, current);
   }
 
-  return buildEndcustomerTariffCatalog(
+  const catalog = buildEndcustomerTariffCatalog(
     products.flatMap((product) => {
       const productComponents = componentsByProductId.get(product.productId) ?? [null];
       const productRequirements = requirementsByProductId.get(product.productId) ?? [null];
@@ -295,6 +312,22 @@ export async function loadEndcustomerTariffCatalog() {
       });
     })
   );
+
+  const meteringPricesByOperatorSlug = new Map<string, EndcustomerTariffCatalogComponent[]>();
+  for (const price of meteringPrices) {
+    const current = meteringPricesByOperatorSlug.get(price.operatorSlug) ?? [];
+    current.push({
+      componentKey: price.componentKey as EndcustomerTariffCatalogComponent["componentKey"],
+      valueNumeric: normalizeNumericValue(price.valueNumeric),
+      unit: price.unit
+    });
+    meteringPricesByOperatorSlug.set(price.operatorSlug, current);
+  }
+
+  return catalog.map((entry) => ({
+    ...entry,
+    meteringPrices: meteringPricesByOperatorSlug.get(entry.operatorSlug) ?? entry.meteringPrices
+  }));
 }
 
 function mapReferenceToCatalogEntry(reference: EndcustomerOperatorReference): EndcustomerTariffCatalogEntry {

@@ -192,6 +192,95 @@ function toMultiPolygonCoordinates(geometry: Polygon | MultiPolygon) {
   return geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
 }
 
+function getSignedRingArea(ring: number[][]) {
+  let area = 0;
+
+  for (let index = 0; index < ring.length - 1; index += 1) {
+    const [x1, y1] = ring[index] ?? [0, 0];
+    const [x2, y2] = ring[index + 1] ?? [0, 0];
+
+    area += x1 * y2 - x2 * y1;
+  }
+
+  return area / 2;
+}
+
+function normalizeRingOrientation(ring: number[][], clockwise: boolean) {
+  const isClockwise = getSignedRingArea(ring) < 0;
+
+  return isClockwise === clockwise ? ring : [...ring].reverse();
+}
+
+function rewindGeometryForProjection(
+  geometry: Polygon | MultiPolygon,
+  options?: {
+    outerClockwise?: boolean;
+  }
+): Polygon | MultiPolygon {
+  const outerClockwise = options?.outerClockwise ?? true;
+  const normalizePolygon = (polygon: number[][][]) =>
+    polygon.map((ring, index) =>
+      normalizeRingOrientation(ring, index === 0 ? outerClockwise : !outerClockwise)
+    );
+
+  if (geometry.type === "Polygon") {
+    return {
+      type: "Polygon",
+      coordinates: normalizePolygon(geometry.coordinates as number[][][])
+    };
+  }
+
+  return {
+    type: "MultiPolygon",
+    coordinates: geometry.coordinates.map((polygon) => normalizePolygon(polygon as number[][][]))
+  };
+}
+
+function scoreProjectedBounds(
+  bounds: [[number, number], [number, number]],
+  width: number,
+  height: number
+) {
+  const [[x0, y0], [x1, y1]] = bounds;
+  const overflow =
+    Math.max(0, -x0) +
+    Math.max(0, -y0) +
+    Math.max(0, x1 - width) +
+    Math.max(0, y1 - height);
+  const boundedWidth = Math.max(0, x1 - x0);
+  const boundedHeight = Math.max(0, y1 - y0);
+
+  return overflow * 1_000 + boundedWidth * boundedHeight;
+}
+
+function normalizeGeometryForProjection(
+  geometry: Polygon | MultiPolygon,
+  pathBuilder: ReturnType<typeof geoPath>,
+  width: number,
+  height: number
+) {
+  const candidates = [geometry, rewindGeometryForProjection(geometry)];
+  let bestCandidate = candidates[0];
+  let bestScore = Number.POSITIVE_INFINITY;
+
+  for (const candidate of candidates) {
+    const bounds = pathBuilder.bounds({
+      type: "Feature",
+      geometry: candidate,
+      properties: {}
+    });
+
+    const score = scoreProjectedBounds(bounds, width, height);
+
+    if (score < bestScore) {
+      bestCandidate = candidate;
+      bestScore = score;
+    }
+  }
+
+  return bestCandidate;
+}
+
 function combineCoverageGeometry(coverageUnits: OperatorCoverageUnit[]) {
   const geometries = coverageUnits
     .map((unit) => municipalityFeaturesByAgs.get(unit.ags)?.geometry ?? null)
@@ -342,7 +431,9 @@ export function projectGermanyMap(
   const statesByCode = new Map(states.map((feature) => [feature.code, feature] as const));
 
   const operators = features.map((feature) => {
-    const geometry = feature.geometry ?? null;
+    const geometry = feature.geometry
+      ? normalizeGeometryForProjection(feature.geometry, pathBuilder, width, height)
+      : null;
     const projectedGeometryPath = geometry ? pathBuilder(geometry) ?? null : null;
     const primaryAnchor = feature.anchors[0];
     const projectedAnchorFromGeometry = geometry

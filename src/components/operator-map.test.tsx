@@ -5,6 +5,48 @@ import { projectGermanyMap, type OperatorMapFeature } from "../lib/maps/geojson"
 import { OperatorMap } from "./operator-map";
 
 describe("OperatorMap", () => {
+  test("surfaces a coverage legend and dedicated polygon hitareas for exact regions", () => {
+    const { container } = render(
+      <OperatorMap
+        scene={projectGermanyMap([
+          {
+            id: "berlin",
+            operatorName: "Stromnetz Berlin",
+            regionLabel: "Berlin",
+            mapRank: 1,
+            coverageKind: "municipality-union",
+            geometryPrecision: "exact",
+            geometrySourceLabel: "Offizielles Netzgebiet",
+            geometrySourceUrl: "https://example.com/berlin-gebiet",
+            coverageUnits: [{ ags: "11000000", name: "Berlin", kind: "Stadtstaat" }],
+            anchors: [{ longitude: 13.405, latitude: 52.52, radiusKm: 24 }],
+            stateHints: ["11"],
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [13.05, 52.35],
+                  [13.85, 52.35],
+                  [13.85, 52.75],
+                  [13.05, 52.75],
+                  [13.05, 52.35]
+                ]
+              ]
+            },
+            currentBandsSummary: "NT 2.00 · ST 5.00 · HT 8.00",
+            sourcePageUrl: "https://example.com/berlin",
+            documentUrl: "https://example.com/berlin.pdf"
+          }
+        ] satisfies OperatorMapFeature[])}
+      />
+    );
+
+    expect(screen.getByText("Belegte Netzgebiete")).toBeInTheDocument();
+    expect(screen.getByText("1 exakt verankert")).toBeInTheDocument();
+    expect(screen.getByText("Klick fixiert, freie Fläche löst")).toBeInTheDocument();
+    expect(container.querySelector('[data-testid="operator-map-hitarea-berlin"]')).not.toBeNull();
+  });
+
   test("renders a projected germany stage with state boundaries and no visible map labels", () => {
     const { container } = render(
       <OperatorMap

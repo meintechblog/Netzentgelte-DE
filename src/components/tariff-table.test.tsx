@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 
 import { getSeedPublishedOperators } from "../modules/operators/current-catalog";
@@ -74,5 +74,46 @@ describe("TariffTable", () => {
     expect(
       screen.getByText(/Quelle stadtwerke-schwaebisch-hall-stadtwerke-schwaebisch-hall-14a-2026/)
     ).toBeInTheDocument();
+  });
+
+  test("shows exact snapshot and artifact details when the source panel is expanded", () => {
+    const schwaebischHall = {
+      ...mergeTariffRowsWithEndcustomerCatalog(
+        getRegistryTariffRows(getSeedPublishedOperators()),
+        getSeedEndcustomerTariffCatalog()
+      ).find((row) => row.operatorSlug === "stadtwerke-schwaebisch-hall")!,
+      latestPageSnapshotFetchedAt: "2026-03-09T11:00:00.000Z",
+      latestPageSnapshotHash: "page-hash-123",
+      pageArtifactApiUrl: "/api/artifacts/page.html",
+      latestDocumentSnapshotFetchedAt: "2026-03-09T12:00:00.000Z",
+      latestDocumentSnapshotHash: "doc-hash-456",
+      documentArtifactApiUrl: "/api/artifacts/doc.pdf",
+      sourceHealthReport: {
+        status: "warning" as const,
+        issues: [
+          {
+            key: "snapshot_missing" as const,
+            message: "Die Quelle wurde geprüft, aber es liegt noch kein Snapshot-Artefakt vor."
+          }
+        ]
+      }
+    };
+
+    render(<TariffTable rows={[schwaebischHall]} />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Quelle & Prüfstatus anzeigen" }));
+
+    expect(screen.getByText("Seiten-Snapshot 2026-03-09")).toBeInTheDocument();
+    expect(screen.getByText("Dokumenten-Snapshot 2026-03-09")).toBeInTheDocument();
+    expect(screen.getByText("Seite Hash page-hash-123")).toBeInTheDocument();
+    expect(screen.getByText("Dokument Hash doc-hash-456")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Gespeicherte Quellseite" })).toHaveAttribute(
+      "href",
+      "/api/artifacts/page.html"
+    );
+    expect(screen.getByRole("link", { name: "Gespeichertes Dokument" })).toHaveAttribute(
+      "href",
+      "/api/artifacts/doc.pdf"
+    );
   });
 });

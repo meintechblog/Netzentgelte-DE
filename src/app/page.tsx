@@ -1,6 +1,10 @@
 import { OperatorExplorer } from "../components/operator-explorer";
 import { getRegistryMapFeatures, projectGermanyMap } from "../lib/maps/geojson";
-import { getRegistryTariffRows, mergeTariffRowsWithEndcustomerCatalog } from "../lib/view-models/tariffs";
+import {
+  getRegistryTariffRows,
+  mergeTariffRowsWithCurrentSources,
+  mergeTariffRowsWithEndcustomerCatalog
+} from "../lib/view-models/tariffs";
 import {
   getPublishedOperatorSnapshotStats,
   loadPublishedOperatorSnapshot
@@ -20,21 +24,7 @@ export default async function HomePage() {
   const mapScene = projectGermanyMap(getRegistryMapFeatures(operators));
   const stats = getPublishedOperatorSnapshotStats(operatorSnapshot);
   const publicSources = currentSources.filter((row) => publishedOperatorSlugs.has(row.operatorSlug));
-  const sourceByOperatorSlug = new Map(publicSources.map((row) => [row.operatorSlug, row] as const));
-  const mergedRows = rows.map((row) => {
-    const source = sourceByOperatorSlug.get(row.operatorSlug);
-
-    return {
-      ...row,
-      latestPageSnapshotFetchedAt: source?.latestPageSnapshotFetchedAt ?? null,
-      latestPageSnapshotHash: source?.latestPageSnapshotHash ?? null,
-      pageArtifactApiUrl: source?.pageArtifactApiUrl ?? null,
-      latestDocumentSnapshotFetchedAt: source?.latestDocumentSnapshotFetchedAt ?? null,
-      latestDocumentSnapshotHash: source?.latestDocumentSnapshotHash ?? null,
-      documentArtifactApiUrl: source?.documentArtifactApiUrl ?? null,
-      sourceHealthReport: source?.healthReport ?? null
-    };
-  });
+  const mergedRows = mergeTariffRowsWithCurrentSources(rows, publicSources);
 
   return (
     <main className="dashboard-shell">

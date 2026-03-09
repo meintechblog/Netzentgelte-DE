@@ -2,6 +2,7 @@ import {
   summarizePublishedOperatorBands,
   type PublishedOperator
 } from "../../modules/operators/current-catalog";
+import type { CurrentSource } from "../../modules/sources/current-sources";
 import type {
   EndcustomerTariffCatalogComponent,
   EndcustomerTariffCatalogEntry,
@@ -103,21 +104,45 @@ export function mergeTariffRowsWithEndcustomerCatalog(
   }));
 }
 
+export function mergeTariffRowsWithCurrentSources(rows: TariffTableRow[], sources: CurrentSource[]) {
+  const sourceBySlug = new Map(sources.map((source) => [source.sourceSlug, source] as const));
+
+  return rows.map((row) => {
+    const source = sourceBySlug.get(row.sourceSlug);
+
+    if (!source) {
+      return row;
+    }
+
+    return {
+      ...row,
+      latestPageSnapshotFetchedAt: source.latestPageSnapshotFetchedAt,
+      latestPageSnapshotHash: source.latestPageSnapshotHash,
+      pageArtifactApiUrl: source.pageArtifactApiUrl,
+      latestDocumentSnapshotFetchedAt: source.latestDocumentSnapshotFetchedAt,
+      latestDocumentSnapshotHash: source.latestDocumentSnapshotHash,
+      documentArtifactApiUrl: source.documentArtifactApiUrl,
+      sourceHealthReport: source.healthReport
+    };
+  });
+}
+
 function buildEndcustomerDisplay(entry: EndcustomerTariffCatalogEntry | undefined): EndcustomerDisplay | null {
   if (!entry) {
     return null;
   }
 
-  const products: EndcustomerDisplayProduct[] = [
-    buildProductDisplay(entry.products.find((product) => product.moduleKey === "modul-1")),
-    buildProductDisplay(entry.products.find((product) => product.moduleKey === "modul-2")),
-    buildProductDisplay(entry.products.find((product) => product.moduleKey === "modul-3")),
-    buildMeteringDisplay(entry.meteringPrices)
-  ].filter((product): product is EndcustomerDisplayProduct => product !== null);
-
-  if (products.length === 0) {
+  const selectedProducts = selectCurrentVerifiedProducts(entry.products);
+  if (!selectedProducts || !hasCompleteMeteringSet(entry.meteringPrices)) {
     return null;
   }
+
+  const products: EndcustomerDisplayProduct[] = [
+    buildProductDisplay(selectedProducts.modul1),
+    buildProductDisplay(selectedProducts.modul2),
+    buildProductDisplay(selectedProducts.modul3),
+    buildMeteringDisplay(entry.meteringPrices)
+  ].filter((product): product is EndcustomerDisplayProduct => product !== null);
 
   return {
     title: "Endkunden · Niederspannung",
@@ -130,6 +155,62 @@ function buildEndcustomerDisplay(entry: EndcustomerTariffCatalogEntry | undefine
       ])
       .join(" ")
   };
+}
+
+function selectCurrentVerifiedProducts(products: EndcustomerTariffCatalogProduct[]) {
+  const verifiedProducts = products.filter((product) => product.humanReviewStatus === "verified");
+  const validFroms = [...new Set(verifiedProducts.map((product) => product.validFrom))].sort((left, right) =>
+    right.localeCompare(left, "de")
+  );
+
+  for (const validFrom of validFroms) {
+    const productsForDate = verifiedProducts.filter((product) => product.validFrom === validFrom);
+    const modul1 = productsForDate.find((product) => product.moduleKey === "modul-1");
+    const modul2 = productsForDate.find((product) => product.moduleKey === "modul-2");
+    const modul3 = productsForDate.find((product) => product.moduleKey === "modul-3");
+
+    if (
+      modul1 &&
+      modul2 &&
+      modul3 &&
+      isCompleteProduct(modul1) &&
+      isCompleteProduct(modul2) &&
+      isCompleteProduct(modul3)
+    ) {
+      return { modul1, modul2, modul3 };
+    }
+  }
+
+  return null;
+}
+
+function isCompleteProduct(product: EndcustomerTariffCatalogProduct) {
+  if (product.moduleKey === "modul-1") {
+    return hasComponent(product.components, "base_price_eur_per_year") &&
+      hasComponent(product.components, "work_price_ct_per_kwh") &&
+      hasComponent(product.components, "net_fee_reduction_eur_per_year");
+  }
+
+  if (product.moduleKey === "modul-2") {
+    return hasComponent(product.components, "base_price_eur_per_year") &&
+      hasComponent(product.components, "work_price_ct_per_kwh");
+  }
+
+  return hasComponent(product.components, "low_work_price_ct_per_kwh") &&
+    hasComponent(product.components, "standard_work_price_ct_per_kwh") &&
+    hasComponent(product.components, "high_work_price_ct_per_kwh");
+}
+
+function hasCompleteMeteringSet(components: EndcustomerTariffCatalogComponent[]) {
+  return hasComponent(components, "single_register_meter_eur_per_year") &&
+    hasComponent(components, "dual_register_meter_eur_per_year");
+}
+
+function hasComponent(
+  components: EndcustomerTariffCatalogComponent[],
+  key: EndcustomerTariffCatalogComponent["componentKey"]
+) {
+  return components.some((component) => component.componentKey === key && component.valueNumeric.length > 0);
 }
 
 function buildProductDisplay(

@@ -1,10 +1,14 @@
 import { describe, expect, test } from "vitest";
 
 import { getSeedPublishedOperators } from "../../modules/operators/current-catalog";
+import type { CurrentSource } from "../../modules/sources/current-sources";
+import { getSeedEndcustomerTariffCatalog } from "../../modules/tariffs/endcustomer-catalog";
 import {
   buildQuarterlyTariffMatrix,
   expandSeasonLabelToQuarters,
-  getRegistryTariffRows
+  getRegistryTariffRows,
+  mergeTariffRowsWithCurrentSources,
+  mergeTariffRowsWithEndcustomerCatalog
 } from "./tariffs";
 
 describe("expandSeasonLabelToQuarters", () => {
@@ -128,5 +132,99 @@ describe("buildQuarterlyTariffMatrix", () => {
     expect(
       schwaebischHall?.quarterMatrix.find((quarter) => quarter.key === "Q3")?.summaryLabel
     ).toBe("Nur Standardtarif");
+  });
+
+  test("merges current source metadata by exact source slug instead of operator slug", () => {
+    const row = getRegistryTariffRows(getSeedPublishedOperators()).find(
+      (entry) => entry.operatorSlug === "stadtwerke-schwaebisch-hall"
+    );
+
+    const sources: CurrentSource[] = [
+      {
+        sourceCatalogId: "wrong-source",
+        sourceSlug: "stadtwerke-schwaebisch-hall-other-source",
+        operatorSlug: "stadtwerke-schwaebisch-hall",
+        operatorName: "Stadtwerke Schwäbisch Hall GmbH",
+        pageUrl: "https://example.com/wrong-page",
+        documentUrl: "https://example.com/wrong.pdf",
+        reviewStatus: "verified",
+        checkedAt: "2026-03-09",
+        lastSuccessfulAt: "2026-03-09",
+        latestPageSnapshotFetchedAt: "2026-03-09T10:00:00.000Z",
+        latestPageSnapshotHash: "wrong-page-hash",
+        latestPageSnapshotStoragePath: "artifacts/wrong-page.html",
+        pageArtifactApiUrl: "/api/artifacts/wrong-page.html",
+        latestDocumentSnapshotFetchedAt: "2026-03-09T10:10:00.000Z",
+        latestDocumentSnapshotHash: "wrong-doc-hash",
+        latestDocumentSnapshotStoragePath: "artifacts/wrong-doc.pdf",
+        documentArtifactApiUrl: "/api/artifacts/wrong-doc.pdf",
+        healthReport: {
+          status: "warning",
+          issues: [{ key: "snapshot_missing", message: "wrong source" }]
+        }
+      },
+      {
+        sourceCatalogId: "correct-source",
+        sourceSlug: row!.sourceSlug,
+        operatorSlug: "stadtwerke-schwaebisch-hall",
+        operatorName: "Stadtwerke Schwäbisch Hall GmbH",
+        pageUrl: row!.sourcePageUrl,
+        documentUrl: row!.documentUrl,
+        reviewStatus: "verified",
+        checkedAt: "2026-03-09",
+        lastSuccessfulAt: "2026-03-09",
+        latestPageSnapshotFetchedAt: "2026-03-09T11:00:00.000Z",
+        latestPageSnapshotHash: "correct-page-hash",
+        latestPageSnapshotStoragePath: "artifacts/correct-page.html",
+        pageArtifactApiUrl: "/api/artifacts/correct-page.html",
+        latestDocumentSnapshotFetchedAt: "2026-03-09T11:10:00.000Z",
+        latestDocumentSnapshotHash: "correct-doc-hash",
+        latestDocumentSnapshotStoragePath: "artifacts/correct-doc.pdf",
+        documentArtifactApiUrl: "/api/artifacts/correct-doc.pdf",
+        healthReport: {
+          status: "ok",
+          issues: []
+        }
+      }
+    ];
+
+    const merged = mergeTariffRowsWithCurrentSources([row!], sources)[0];
+
+    expect(merged.latestPageSnapshotHash).toBe("correct-page-hash");
+    expect(merged.latestDocumentSnapshotHash).toBe("correct-doc-hash");
+    expect(merged.pageArtifactApiUrl).toBe("/api/artifacts/correct-page.html");
+    expect(merged.documentArtifactApiUrl).toBe("/api/artifacts/correct-doc.pdf");
+    expect(merged.sourceHealthReport?.status).toBe("ok");
+  });
+
+  test("does not render an endcustomer display for incomplete or unverified product sets", () => {
+    const row = getRegistryTariffRows(getSeedPublishedOperators()).find(
+      (entry) => entry.operatorSlug === "stadtwerke-schwaebisch-hall"
+    );
+    const reference = getSeedEndcustomerTariffCatalog()[0]!;
+
+    const incompleteCatalog = [
+      {
+        ...reference,
+        products: reference.products.map((product) =>
+          product.moduleKey === "modul-2"
+            ? { ...product, components: product.components.filter((component) => component.componentKey !== "work_price_ct_per_kwh") }
+            : product
+        )
+      }
+    ];
+
+    const unverifiedCatalog = [
+      {
+        ...reference,
+        products: reference.products.map((product) => ({
+          ...product,
+          humanReviewStatus: "pending"
+        }))
+      }
+    ];
+
+    expect(mergeTariffRowsWithEndcustomerCatalog([row!], incompleteCatalog)[0]?.endcustomerDisplay).toBeNull();
+    expect(mergeTariffRowsWithEndcustomerCatalog([row!], unverifiedCatalog)[0]?.endcustomerDisplay).toBeNull();
   });
 });

@@ -76,5 +76,105 @@
       "operator names in pdf",
       "planungsregion mapping"
     ]
+  },
+  {
+    "id": "avacon-netz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Avacon Netz GmbH",
+    "title": "Netzentgelte Strom 2026 / Preisblaetter",
+    "url": "https://www.avacon-netz.de/de/avacon-netz/netzinformation/netzentgelte/netzentgelte-strom.html",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite fuer Netzentgelte Strom.",
+      "Das PDF 'Preisblaetter_AVANG_Strom_01.01.2026.pdf' enthaelt das Preisblatt fuer steuerbare Verbrauchseinrichtungen mit Modul-3-Werten.",
+      "Quelle ist als guter Kandidat fuer den naechsten Registry-Slice vorgemerkt."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quote snippets"
+    ]
+  },
+  {
+    "id": "n-ergie-netz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "N-ERGIE Netz GmbH",
+    "title": "Netznutzung Strom / Preisblatt 6a 2026",
+    "url": "https://www.n-ergie-netz.de/n-ergie-netz/veroeffentlichungen/netznutzung/netznutzung-strom",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite fuer Netznutzung Strom.",
+      "Das PDF 'N_Preisblatt6a_steuerbare_Verbrauchseinrichtung_ab2024_end_Neu.pdf' ist besonders parserfreundlich, weil Modul 1/2/3 direkt separat dargestellt werden.",
+      "Stand laut Recherche: 16.12.2025."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "preisblatt 6a pdf",
+      "pdf hash",
+      "modul-3 raw lines"
+    ]
+  },
+  {
+    "id": "stromnetz-berlin-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Stromnetz Berlin GmbH",
+    "title": "Entgelte 2026",
+    "url": "https://www.stromnetz.berlin/netz-nutzen/entgelte/",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite fuer Entgelte.",
+      "Aktuell sichtbar ist ein offizielles voraussichtliches 2026-PDF mit Modul-3-Werten und Zeitfenstern.",
+      "Beim Import zunaechst als vorlaeufig markieren, bis eine klar finale Fassung vorliegt."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "status note preliminary/final"
+    ]
+  },
+  {
+    "id": "mvv-netze-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "MVV Netze GmbH",
+    "title": "Preisblatt Strom 2026",
+    "url": "https://www.mvv-netze.de/ich-beziehe-energie/netzentgelte/preisblatt-strom",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite fuer Preisblaetter Strom.",
+      "Das finale 2026-PDF enthaelt Modul-3-Werte und Zeitfenster fuer das Mannheim-Netzgebiet.",
+      "Guter Kandidat fuer einen weiteren finalen Betreiber-Import."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quote snippets"
+    ]
+  },
+  {
+    "id": "swm-infrastruktur-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "SWM Infrastruktur GmbH & Co. KG",
+    "title": "Netznutzungsentgelte Strom 2026",
+    "url": "https://www.swm-infrastruktur.de/strom/netzzugang/netznutzungsentgelte",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite fuer Netznutzungsentgelte Strom.",
+      "Das 2026-PDF fuehrt reduzierte Netzentgelte und Modul-3-Zeitfenster fuer das Muenchner Netzgebiet.",
+      "Eintrag fuer den naechsten Registry-Ausbauschritt dokumentiert."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 raw lines"
+    ]
   }
 ]

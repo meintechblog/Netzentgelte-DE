@@ -1,4 +1,5 @@
 import { OperatorMap } from "../components/operator-map";
+import { SourceReviewTable } from "../components/source-review-table";
 import { TariffTable } from "../components/tariff-table";
 import { getRegistryMapFeatures } from "../lib/maps/geojson";
 import { getRegistryTariffRows } from "../lib/view-models/tariffs";
@@ -6,11 +7,13 @@ import {
   getPublishedOperatorStats,
   loadPublishedOperators
 } from "../modules/operators/current-catalog";
+import { loadCurrentSources } from "../modules/sources/current-sources";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const operators = await loadPublishedOperators();
+  const currentSources = await loadCurrentSources();
   const rows = getRegistryTariffRows(operators);
   const mapFeatures = getRegistryMapFeatures(operators);
   const stats = getPublishedOperatorStats(operators);
@@ -114,6 +117,24 @@ export default async function HomePage() {
             </div>
           </div>
           <TariffTable rows={rows} />
+        </section>
+
+        <section className="content-panel" aria-labelledby="quellenpruefung">
+          <div className="panel-header">
+            <div>
+              <span className="section-eyebrow">Human In The Loop</span>
+              <h2 id="quellenpruefung">Quellenpruefung</h2>
+              <p>
+                Gespeicherte Artefakte, Snapshot-Zeitpunkte und Hashes bleiben pro Quelle
+                direkt aus der Datenbasis nachvollziehbar.
+              </p>
+            </div>
+            <div className="panel-actions">
+              <span className="surface-chip">Snapshot trail</span>
+              <span className="surface-chip">Artifact access</span>
+            </div>
+          </div>
+          <SourceReviewTable rows={currentSources} />
         </section>
       </div>
     </main>

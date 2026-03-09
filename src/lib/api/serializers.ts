@@ -2,6 +2,7 @@ import {
   summarizePublishedOperatorBands,
   type PublishedOperator
 } from "../../modules/operators/current-catalog";
+import type { CurrentSource } from "../../modules/sources/current-sources";
 
 export function serializeCurrentRegistryTariffs(entries: PublishedOperator[]) {
   return {
@@ -65,6 +66,26 @@ export function serializeRegistryOperatorGeo(entries: PublishedOperator[]) {
         summary: summarizePublishedOperatorBands(entry)
       },
       geometry: null
+    }))
+  };
+}
+
+export function serializeCurrentSources(entries: CurrentSource[]) {
+  return {
+    items: entries.map((entry) => ({
+      sourceCatalogId: entry.sourceCatalogId,
+      sourceSlug: entry.sourceSlug,
+      operatorSlug: entry.operatorSlug,
+      operatorName: entry.operatorName,
+      pageUrl: entry.pageUrl,
+      documentUrl: entry.documentUrl,
+      reviewStatus: entry.reviewStatus,
+      checkedAt: entry.checkedAt,
+      lastSuccessfulAt: entry.lastSuccessfulAt,
+      latestSnapshotFetchedAt: entry.latestSnapshotFetchedAt,
+      latestSnapshotHash: entry.latestSnapshotHash,
+      latestSnapshotStoragePath: entry.latestSnapshotStoragePath,
+      artifactApiUrl: entry.artifactApiUrl
     }))
   };
 }

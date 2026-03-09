@@ -6,6 +6,7 @@ import HomePage from "./page";
 test("renders project shell", async () => {
   render(await HomePage());
   expect(screen.getByText("Netzentgelte Deutschland")).toBeInTheDocument();
+  expect(screen.getByRole("searchbox", { name: "Suchbegriff" })).toBeInTheDocument();
   expect(screen.getAllByText(/Stromnetz Berlin/).length).toBeGreaterThan(0);
   expect(screen.getByRole("heading", { name: "Quellenprüfung" })).toBeInTheDocument();
   expect(screen.getByText("Zeitfenster")).toBeInTheDocument();

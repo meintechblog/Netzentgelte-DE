@@ -36,6 +36,29 @@ describe("OperatorMap", () => {
     expect(screen.getByLabelText("Netzgebietsübersicht")).toBeInTheDocument();
   });
 
+  test("resets to the safe empty state when filtered features disappear", () => {
+    const { rerender } = render(
+      <OperatorMap
+        features={[
+          {
+            id: "demo",
+            operatorName: "Demo Netz",
+            regionLabel: "Nord",
+            currentBandsSummary: "NT 1.00 · ST 2.00 · HT 3.00",
+            geometry: null,
+            sourcePageUrl: "https://example.com/netzentgelte",
+            documentUrl: "https://example.com/preise.pdf"
+          }
+        ]}
+      />
+    );
+
+    rerender(<OperatorMap features={[]} />);
+
+    expect(screen.getByText("Noch keine Netzgebiete geladen")).toBeInTheDocument();
+    expect(screen.queryByText("Demo Netz")).not.toBeInTheDocument();
+  });
+
   test("keeps operator nodes positioned when the registry grows beyond ten regions", () => {
     render(
       <OperatorMap

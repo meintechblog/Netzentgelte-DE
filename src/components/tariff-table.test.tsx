@@ -11,6 +11,7 @@ describe("TariffTable", () => {
           {
             operatorName: "Demo Netz",
             operatorSlug: "demo-netz",
+            regionLabel: "Nord",
             currentBandsSummary: "Manuelle Prüfung offen",
             validFrom: "2026-01-01",
             sourcePageUrl: "https://example.com/netzentgelte",
@@ -44,6 +45,7 @@ describe("TariffTable", () => {
     );
 
     expect(screen.getByText("Demo Netz")).toBeInTheDocument();
+    expect(screen.getByText("Nord")).toBeInTheDocument();
     expect(screen.getByText("Manuelle Prüfung offen")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Quellseite" })).toHaveAttribute(
       "href",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { OperatorMapFeature } from "../lib/maps/geojson";
 
@@ -29,7 +29,22 @@ function getMapNodePosition(index: number) {
 }
 
 export function OperatorMap({ features }: OperatorMapProps) {
-  const [activeFeature, setActiveFeature] = useState(features[0] ?? null);
+  const [activeFeature, setActiveFeature] = useState<OperatorMapFeature | null>(features[0] ?? null);
+
+  useEffect(() => {
+    if (features.length === 0) {
+      setActiveFeature(null);
+      return;
+    }
+
+    setActiveFeature((current) => {
+      if (current && features.some((feature) => feature.id === current.id)) {
+        return current;
+      }
+
+      return features[0];
+    });
+  }, [features]);
 
   if (!activeFeature) {
     return (

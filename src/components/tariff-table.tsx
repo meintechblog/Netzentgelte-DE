@@ -51,6 +51,7 @@ export function TariffTable({ rows }: TariffTableProps) {
               <td>
                 <div className="table-operator">
                   <strong>{row.operatorName}</strong>
+                  <span className="table-muted">{row.regionLabel}</span>
                   <span className="table-muted">{row.operatorSlug}</span>
                 </div>
               </td>

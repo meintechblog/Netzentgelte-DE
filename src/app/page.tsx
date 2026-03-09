@@ -1,6 +1,5 @@
-import { OperatorMap } from "../components/operator-map";
+import { OperatorExplorer } from "../components/operator-explorer";
 import { SourceReviewTable } from "../components/source-review-table";
-import { TariffTable } from "../components/tariff-table";
 import { getRegistryMapFeatures } from "../lib/maps/geojson";
 import { getRegistryTariffRows } from "../lib/view-models/tariffs";
 import {
@@ -83,42 +82,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <section className="content-panel" aria-labelledby="kartenstufe">
-          <div className="panel-header">
-            <div>
-              <span className="section-eyebrow">Raumliche Lesart</span>
-              <h2 id="kartenstufe">Interaktive Netzgebiets-Stufe</h2>
-              <p>
-                Die Geometrie ist noch abstrakt, die Betreiber- und Quellenebene ist jetzt
-                jedoch bereits echt und reviewbar.
-              </p>
-            </div>
-            <div className="panel-actions">
-              <span className="surface-chip">Map hover</span>
-              <span className="surface-chip">Source trace</span>
-            </div>
-          </div>
-          <OperatorMap features={mapFeatures} />
-        </section>
-
-        <section className="content-panel" aria-labelledby="tarifmatrix" id="tarifmatrix">
-          <div className="panel-header">
-            <div>
-              <span className="section-eyebrow">Nachvollziehbare Daten</span>
-              <h2>Aktuelle Tarifmatrix</h2>
-              <p>
-                Jeder Eintrag führt zur Betreiberseite, zum Dokument und zeigt offen, ob die
-                Bandwerte bereits sauber kuratiert sind.
-              </p>
-            </div>
-            <div className="panel-actions">
-              <span className="surface-chip">Zeitfenster</span>
-              <span className="surface-chip">Dark mode · WCAG AA</span>
-              <span className="surface-chip">Blue / Amber Dashboard</span>
-            </div>
-          </div>
-          <TariffTable rows={rows} />
-        </section>
+        <OperatorExplorer mapFeatures={mapFeatures} rows={rows} />
 
         <section className="content-panel" aria-labelledby="quellenpruefung">
           <div className="panel-header">

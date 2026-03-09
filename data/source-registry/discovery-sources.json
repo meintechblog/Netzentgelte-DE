@@ -344,5 +344,27 @@
       "pdf hash",
       "modul-3 raw lines"
     ]
+  },
+  {
+    "id": "stadtwerke-schwaebisch-hall-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Stadtwerke Schwäbisch Hall GmbH",
+    "title": "Netzentgelte 2026 / Downloadcenter Stromnetz",
+    "url": "https://www.stadtwerke-hall.de/stromnetz/netzentgelte-stromnetz",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite fuer Netzentgelte im Stromnetz Schwäbisch Hall.",
+      "Die Seite verlinkt ein offizielles PDF 'Stromnetzentgelte 2026' mit Stand 16.12.2025 und einer separaten Variante ohne ÜNB-Zuschuss.",
+      "Laut Recherche fuehrt das Preisblatt die Modul-3-Werte und Zeitfenster auf Seite 4; Q3 ist dabei als durchgehender Standardtarif ausgewiesen.",
+      "Beim naechsten Batch-Run sollen Quellseite, PDF und die Zeitfensterlogik gemeinsam gespeichert werden."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 raw lines",
+      "time-window quote snippets"
+    ]
   }
 ]

@@ -6,6 +6,7 @@ import {
 export type TariffTableRow = {
   operatorName: string;
   operatorSlug: string;
+  regionLabel: string;
   currentBandsSummary: string;
   validFrom: string;
   sourcePageUrl: string;
@@ -20,6 +21,7 @@ export function getRegistryTariffRows(operators: PublishedOperator[]): TariffTab
   return operators.map((entry) => ({
     operatorName: entry.name,
     operatorSlug: entry.slug,
+    regionLabel: entry.regionLabel,
     currentBandsSummary: summarizePublishedOperatorBands(entry),
     validFrom: entry.validFrom,
     sourcePageUrl: entry.sourcePageUrl,

@@ -3,19 +3,22 @@ import { SourceReviewTable } from "../components/source-review-table";
 import { getRegistryMapFeatures, projectGermanyMap } from "../lib/maps/geojson";
 import { getRegistryTariffRows } from "../lib/view-models/tariffs";
 import {
-  getPublishedOperatorStats,
-  loadPublishedOperators
+  getPublishedOperatorSnapshotStats,
+  loadPublishedOperatorSnapshot
 } from "../modules/operators/current-catalog";
 import { loadCurrentSources } from "../modules/sources/current-sources";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const operators = await loadPublishedOperators();
+  const operatorSnapshot = await loadPublishedOperatorSnapshot();
+  const operators = operatorSnapshot.operators;
   const currentSources = await loadCurrentSources();
+  const publishedOperatorSlugs = new Set(operators.map((entry) => entry.slug));
   const rows = getRegistryTariffRows(operators);
   const mapScene = projectGermanyMap(getRegistryMapFeatures(operators));
-  const stats = getPublishedOperatorStats(operators);
+  const stats = getPublishedOperatorSnapshotStats(operatorSnapshot);
+  const publicSources = currentSources.filter((row) => publishedOperatorSlugs.has(row.operatorSlug));
 
   return (
     <main className="dashboard-shell">
@@ -24,7 +27,8 @@ export default async function HomePage() {
         <h1>Netzentgelte Deutschland</h1>
         <p>
           Vergleichbare Netzentgelte, nachvollziehbare Quellen und ein klarer
-          Human-in-the-loop-Prüfpfad für jede gezeigte Zahl.
+          Human-in-the-loop-Prüfpfad. Öffentlich erscheinen nur verifizierte und
+          integritätsgeprüfte Betreiber.
         </p>
         <div className="hero-actions">
           <a className="hero-button" href="#tarifmatrix">
@@ -48,14 +52,18 @@ export default async function HomePage() {
           <article className="stat-card">
             <div className="stat-label">Nachweise</div>
             <div className="stat-value">{stats.sourceDocumentCount} Dokumente</div>
-            <div className="stat-footnote">Quellseite und PDF werden getrennt dokumentiert</div>
+            <div className="stat-footnote">Nur veröffentlichte Betreiber mit belastbarem Prüfpfad</div>
           </article>
           <article className="stat-card">
             <div className="stat-label">Review Status</div>
             <div className="stat-value">
               {stats.verifiedCount}/{stats.operatorCount}
             </div>
-            <div className="stat-footnote">Reviewstatus und Quellenpfad bleiben pro Betreiber transparent</div>
+            <div className="stat-footnote">
+              {stats.withheldCount > 0
+                ? `${stats.withheldCount} Betreiber bleiben bis zur Vollprüfung verborgen`
+                : "Alle sichtbaren Betreiber bestehen die Public-Gates"}
+            </div>
           </article>
         </section>
 
@@ -65,8 +73,8 @@ export default async function HomePage() {
               <span className="section-eyebrow">Darstellungsmodi</span>
               <h2 id="darstellungsmodi">Tabelle und Karte auf demselben Quellenregister</h2>
               <p>
-                Die Weboberfläche zeigt bereits reale Betreiber, offizielle Dokumentlinks
-                und den Review-Status pro Quelle.
+                Die Weboberfläche zeigt nur verifizierte und integritätsgeprüfte Betreiber
+                mit offiziellen Dokumentlinks und Reviewpfad.
               </p>
             </div>
           </div>
@@ -99,7 +107,7 @@ export default async function HomePage() {
               <span className="surface-chip">Artifact access</span>
             </div>
           </div>
-          <SourceReviewTable rows={currentSources} />
+          <SourceReviewTable rows={publicSources} />
         </section>
       </div>
     </main>

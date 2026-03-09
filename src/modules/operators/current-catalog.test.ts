@@ -144,6 +144,14 @@ describe("getSeedPublishedOperators", () => {
     const mittelhessenNetz = published.find((entry) => entry.slug === "mittelhessen-netz");
     const ingolstadtNetze = published.find((entry) => entry.slug === "stadtwerke-ingolstadt-netze");
     const ewrNetz = published.find((entry) => entry.slug === "ewr-netz");
+    const avacon = published.find((entry) => entry.slug === "avacon-netz");
+    const nordnetz = published.find((entry) => entry.slug === "nordnetz");
+    const heidelbergNetze = published.find((entry) => entry.slug === "heidelberg-netze");
+
+    expect(published).toHaveLength(20);
+    expect(avacon).toBeUndefined();
+    expect(nordnetz).toBeUndefined();
+    expect(heidelbergNetze).toBeUndefined();
 
     expect(published[0]).toMatchObject({
       slug: "netze-bw",
@@ -255,19 +263,19 @@ describe("getSeedPublishedOperators", () => {
     expect(schwaebischHall?.timeWindows).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          bandKey: "HT",
-          seasonLabel: "Ganzjährig 2026",
-          timeRangeLabel: "17:00-21:00"
+          bandKey: "ST",
+          seasonLabel: "Q1/Q2/Q4 2026",
+          timeRangeLabel: "07:00-10:00"
         }),
         expect.objectContaining({
           bandKey: "HT",
-          seasonLabel: "Ganzjährig 2026",
-          timeRangeLabel: "06:00-10:00"
+          seasonLabel: "Q1/Q2/Q4 2026",
+          timeRangeLabel: "10:00-14:00"
         }),
         expect.objectContaining({
-          bandKey: "NT",
-          seasonLabel: "Ganzjährig 2026",
-          timeRangeLabel: "13:00-15:00"
+          bandKey: "ST",
+          seasonLabel: "Q3 2026",
+          timeRangeLabel: "00:00-24:00"
         })
       ])
     );

@@ -1337,67 +1337,76 @@
       ],
       "timeWindows": [
         {
-          "id": "stadtwerke-schwaebisch-hall-2026-standard-overnight",
+          "id": "stadtwerke-schwaebisch-hall-2026-q124-standard-morning",
           "bandKey": "ST",
           "label": "Standardtarif",
-          "seasonLabel": "Ganzjährig 2026",
+          "seasonLabel": "Q1/Q2/Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-06:00",
-          "sourceQuote": "ST 00:00-06:00"
+          "timeRangeLabel": "07:00-10:00",
+          "sourceQuote": "Standardtarif 5,53 ct/kWh, Q1/Q2/Q4 07:00-10:00"
         },
         {
-          "id": "stadtwerke-schwaebisch-hall-2026-high-morning",
+          "id": "stadtwerke-schwaebisch-hall-2026-q124-high-midday",
           "bandKey": "HT",
           "label": "Hochtarif",
-          "seasonLabel": "Ganzjährig 2026",
+          "seasonLabel": "Q1/Q2/Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "06:00-10:00",
-          "sourceQuote": "HT 06:00-10:00"
+          "timeRangeLabel": "10:00-14:00",
+          "sourceQuote": "Hochtarif 8,14 ct/kWh, Q1/Q2/Q4 10:00-14:00"
         },
         {
-          "id": "stadtwerke-schwaebisch-hall-2026-standard-midday",
+          "id": "stadtwerke-schwaebisch-hall-2026-q124-standard-afternoon",
           "bandKey": "ST",
           "label": "Standardtarif",
-          "seasonLabel": "Ganzjährig 2026",
+          "seasonLabel": "Q1/Q2/Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "10:00-13:00",
-          "sourceQuote": "ST 10:00-13:00"
+          "timeRangeLabel": "14:00-18:00",
+          "sourceQuote": "Standardtarif 5,53 ct/kWh, Q1/Q2/Q4 14:00-18:00"
         },
         {
-          "id": "stadtwerke-schwaebisch-hall-2026-low-afternoon",
+          "id": "stadtwerke-schwaebisch-hall-2026-q124-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1/Q2/Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "18:00-20:00",
+          "sourceQuote": "Hochtarif 8,14 ct/kWh, Q1/Q2/Q4 18:00-20:00"
+        },
+        {
+          "id": "stadtwerke-schwaebisch-hall-2026-q124-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1/Q2/Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "20:00-22:00",
+          "sourceQuote": "Standardtarif 5,53 ct/kWh, Q1/Q2/Q4 20:00-22:00"
+        },
+        {
+          "id": "stadtwerke-schwaebisch-hall-2026-q124-low-night",
           "bandKey": "NT",
           "label": "Niedrigtarif",
-          "seasonLabel": "Ganzjährig 2026",
+          "seasonLabel": "Q1/Q2/Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "13:00-15:00",
-          "sourceQuote": "NT 13:00-15:00"
+          "timeRangeLabel": "00:00-07:00",
+          "sourceQuote": "Niedrigtarif 1,11 ct/kWh, Q1/Q2/Q4 00:00-07:00"
         },
         {
-          "id": "stadtwerke-schwaebisch-hall-2026-standard-afternoon",
+          "id": "stadtwerke-schwaebisch-hall-2026-q124-low-late",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1/Q2/Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "22:00-00:00",
+          "sourceQuote": "Niedrigtarif 1,11 ct/kWh, Q1/Q2/Q4 22:00-00:00"
+        },
+        {
+          "id": "stadtwerke-schwaebisch-hall-2026-q3-standard",
           "bandKey": "ST",
           "label": "Standardtarif",
-          "seasonLabel": "Ganzjährig 2026",
+          "seasonLabel": "Q3 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "15:00-17:00",
-          "sourceQuote": "ST 15:00-17:00"
-        },
-        {
-          "id": "stadtwerke-schwaebisch-hall-2026-high-evening",
-          "bandKey": "HT",
-          "label": "Hochtarif",
-          "seasonLabel": "Ganzjährig 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "17:00-21:00",
-          "sourceQuote": "HT 17:00-21:00"
-        },
-        {
-          "id": "stadtwerke-schwaebisch-hall-2026-standard-late",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Ganzjährig 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "21:00-24:00",
-          "sourceQuote": "ST 21:00-24:00"
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Im 3. Quartal erfolgt die Abrechnung zum Standardtarif 00:00-24:00"
         }
       ]
     }

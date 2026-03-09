@@ -76,13 +76,13 @@ describe("getOperatorRegistry", () => {
             timeWindows: expect.arrayContaining([
               expect.objectContaining({
                 bandKey: "HT",
-                seasonLabel: "Ganzjährig 2026",
-                timeRangeLabel: "06:00-10:00"
+                seasonLabel: "Q1/Q2/Q4 2026",
+                timeRangeLabel: "10:00-14:00"
               }),
               expect.objectContaining({
-                bandKey: "HT",
-                seasonLabel: "Ganzjährig 2026",
-                timeRangeLabel: "17:00-21:00"
+                bandKey: "ST",
+                seasonLabel: "Q3 2026",
+                timeRangeLabel: "00:00-24:00"
               })
             ])
           })

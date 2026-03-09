@@ -21,9 +21,12 @@ test("renders the page shell around a dominant germany map hero", async () => {
     ) & Node.DOCUMENT_POSITION_FOLLOWING
   ).toBeTruthy();
   expect(screen.getAllByText(/Stromnetz Berlin/).length).toBeGreaterThan(0);
+  expect(screen.queryByText("Avacon Netz GmbH")).not.toBeInTheDocument();
   expect(screen.getByRole("heading", { name: "Quellenprüfung" })).toBeInTheDocument();
   expect(screen.getByText("Zeitfenster")).toBeInTheDocument();
   expect(screen.getAllByText("Hero-Karte").length).toBeGreaterThan(0);
-  expect(screen.getAllByText("17:00-22:00").length).toBeGreaterThan(0);
+  expect(
+    screen.getByText(/Öffentlich erscheinen nur verifizierte und integritätsgeprüfte Betreiber/i)
+  ).toBeInTheDocument();
   expect(screen.getByText("Dark mode · WCAG AA")).toBeInTheDocument();
 });

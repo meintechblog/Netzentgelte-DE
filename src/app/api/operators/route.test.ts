@@ -12,7 +12,7 @@ describe("GET /api/operators", () => {
       name: expect.any(String),
       sourceDocumentCount: expect.any(Number)
     });
-    expect(data.items).toHaveLength(23);
+    expect(data.items).toHaveLength(20);
     expect(data.items).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -29,5 +29,14 @@ describe("GET /api/operators", () => {
         })
       ])
     );
+    expect(
+      data.items.find((item: { slug: string }) => item.slug === "avacon-netz")
+    ).toBeUndefined();
+    expect(
+      data.items.find((item: { slug: string }) => item.slug === "nordnetz")
+    ).toBeUndefined();
+    expect(
+      data.items.find((item: { slug: string }) => item.slug === "heidelberg-netze")
+    ).toBeUndefined();
   });
 });

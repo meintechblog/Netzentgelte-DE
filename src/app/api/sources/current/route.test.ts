@@ -16,5 +16,9 @@ describe("GET /api/sources/current", () => {
     });
     expect(data.items[0]).toHaveProperty("pageArtifactApiUrl");
     expect(data.items[0]).toHaveProperty("documentArtifactApiUrl");
+    expect(data.items).toHaveLength(20);
+    expect(
+      data.items.find((item: { operatorSlug: string }) => item.operatorSlug === "avacon-netz")
+    ).toBeUndefined();
   });
 });

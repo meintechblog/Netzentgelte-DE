@@ -35,6 +35,9 @@ describe("GET /api/tariffs/current", () => {
     const eDisNetz = data.items.find(
       (item: { operatorSlug: string }) => item.operatorSlug === "e-dis-netz"
     );
+    const schwaebischHall = data.items.find(
+      (item: { operatorSlug: string }) => item.operatorSlug === "stadtwerke-schwaebisch-hall"
+    );
 
     expect(eDisNetz).toMatchObject({
       reviewStatus: "verified",
@@ -42,6 +45,19 @@ describe("GET /api/tariffs/current", () => {
         expect.objectContaining({
           bandKey: "HT",
           timeRangeLabel: "16:45-20:15"
+        })
+      ])
+    });
+    expect(
+      data.items.find((item: { operatorSlug: string }) => item.operatorSlug === "avacon-netz")
+    ).toBeUndefined();
+    expect(schwaebischHall).toMatchObject({
+      reviewStatus: "verified",
+      timeWindows: expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q3 2026",
+          bandKey: "ST",
+          timeRangeLabel: "00:00-24:00"
         })
       ])
     });

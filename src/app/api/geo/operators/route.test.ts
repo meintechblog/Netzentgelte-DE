@@ -22,5 +22,12 @@ describe("GET /api/geo/operators", () => {
       geometry: null
     });
     expect(data.features[0].properties.svgPath).toBeUndefined();
+    expect(data.features).toHaveLength(20);
+    expect(
+      data.features.find(
+        (feature: { properties: { operatorSlug: string } }) =>
+          feature.properties.operatorSlug === "avacon-netz"
+      )
+    ).toBeUndefined();
   });
 });

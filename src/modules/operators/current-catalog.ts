@@ -1,4 +1,9 @@
 import { getOperatorRegistry, type OperatorTimeWindow } from "./registry";
+import {
+  filterPublishableOperators,
+  getPublicationIntegrityReports,
+  type PublicationIntegrityReport
+} from "./publication-integrity";
 
 export type PublishedOperatorBand = {
   key: "NT" | "ST" | "HT";
@@ -20,6 +25,13 @@ export type PublishedOperator = {
   checkedAt: string | null;
   bands: PublishedOperatorBand[];
   timeWindows: OperatorTimeWindow[];
+};
+
+export type PublishedOperatorSnapshot = {
+  operators: PublishedOperator[];
+  integrityReports: PublicationIntegrityReport[];
+  totalOperatorCount: number;
+  withheldCount: number;
 };
 
 export type PublishedOperatorRow = {
@@ -70,6 +82,36 @@ function normalizeTariffValue(valueCtPerKwh: string) {
 }
 
 export function getSeedPublishedOperators(): PublishedOperator[] {
+  return buildPublishedOperatorSnapshot(getSeedOperatorBase()).operators;
+}
+
+export function buildPublishedOperatorSnapshot(operators: PublishedOperator[]): PublishedOperatorSnapshot {
+  const integrityReports = getPublicationIntegrityReports(operators);
+  const publishableOperators = filterPublishableOperators(operators);
+
+  return {
+    operators: publishableOperators,
+    integrityReports,
+    totalOperatorCount: operators.length,
+    withheldCount: operators.length - publishableOperators.length
+  };
+}
+
+export function getPublishedOperatorSnapshotStats(snapshot: PublishedOperatorSnapshot) {
+  const verifiedCount = snapshot.operators.filter(
+    (operator) => operator.reviewStatus === "verified"
+  ).length;
+
+  return {
+    operatorCount: snapshot.operators.length,
+    sourceDocumentCount: snapshot.operators.length,
+    verifiedCount,
+    totalOperatorCount: snapshot.totalOperatorCount,
+    withheldCount: snapshot.withheldCount
+  };
+}
+
+function getSeedOperatorBase(): PublishedOperator[] {
   return getOperatorRegistry().map((entry) => ({
     slug: entry.slug,
     name: entry.name,
@@ -146,24 +188,18 @@ export function shouldUseSeedPublishedOperators(input: {
   return input.nodeEnv === "test" || !input.databaseUrl;
 }
 
-export function getPublishedOperatorStats(operators: PublishedOperator[]) {
-  const verifiedCount = operators.filter((operator) => operator.reviewStatus === "verified").length;
-
-  return {
-    operatorCount: operators.length,
-    sourceDocumentCount: operators.length,
-    verifiedCount
-  };
+export async function loadPublishedOperators() {
+  return (await loadPublishedOperatorSnapshot()).operators;
 }
 
-export async function loadPublishedOperators() {
+export async function loadPublishedOperatorSnapshot() {
   if (
     shouldUseSeedPublishedOperators({
       nodeEnv: process.env.NODE_ENV,
       databaseUrl: process.env.DATABASE_URL
     })
   ) {
-    return getSeedPublishedOperators();
+    return buildPublishedOperatorSnapshot(getSeedOperatorBase());
   }
 
   const { db } = await import("../../db/client");
@@ -197,10 +233,12 @@ const rows = await db
     getOperatorRegistry().map((entry) => [entry.slug, entry.currentTariff.timeWindows ?? []] as const)
   );
 
-  return buildPublishedOperators(rows.filter((row) => row.bandKey !== null) as PublishedOperatorRow[]).map(
-    (entry) => ({
-      ...entry,
-      timeWindows: seedTimeWindowsBySlug.get(entry.slug) ?? []
-    })
+  return buildPublishedOperatorSnapshot(
+    buildPublishedOperators(rows.filter((row) => row.bandKey !== null) as PublishedOperatorRow[]).map(
+      (entry) => ({
+        ...entry,
+        timeWindows: seedTimeWindowsBySlug.get(entry.slug) ?? []
+      })
+    )
   );
 }

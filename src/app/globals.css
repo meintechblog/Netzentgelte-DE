@@ -528,8 +528,10 @@ input:focus-visible {
 }
 
 .tariff-quarter-grid {
+  --tariff-quarter-slot-height: 0.09rem;
+  --tariff-quarter-row-gap: 0.03rem;
   display: grid;
-  gap: 0.07rem;
+  gap: var(--tariff-quarter-row-gap);
   align-items: stretch;
 }
 
@@ -538,17 +540,18 @@ input:focus-visible {
   grid-template-columns: 2.8rem minmax(0, 1fr);
   column-gap: 0.4rem;
   align-items: stretch;
+  min-height: var(--tariff-quarter-slot-height);
 }
 
 .tariff-quarter-grid__hour {
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
-  min-height: 0.18rem;
+  min-height: var(--tariff-quarter-slot-height);
   color: rgba(203, 213, 225, 0.86);
   font-family: var(--font-heading), monospace;
-  font-size: 0.58rem;
-  line-height: 1;
+  font-size: 0.46rem;
+  line-height: 0.85;
 }
 
 .tariff-quarter-grid__hour--spacer {
@@ -557,7 +560,7 @@ input:focus-visible {
 
 .tariff-quarter-grid__cell {
   display: block;
-  min-height: 0.18rem;
+  min-height: var(--tariff-quarter-slot-height);
   border-radius: 0.3rem;
   border: 1px solid rgba(148, 163, 184, 0.1);
   background: rgba(15, 23, 42, 0.88);

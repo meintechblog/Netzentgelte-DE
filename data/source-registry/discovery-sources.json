@@ -193,7 +193,8 @@
     "notes": [
       "Offizielle Betreiberseite fuer Netzentgelte Strom.",
       "Das PDF 'Preisblaetter_AVANG_Strom_01.01.2026.pdf' enthaelt das Preisblatt fuer steuerbare Verbrauchseinrichtungen mit Modul-3-Werten.",
-      "Quelle ist in den kuratierten Registry-Slice uebernommen; wegen Vorbehaltsvermerk bleibt der Review-Status vorerst pending."
+      "Die Betreiberseite veroeffentlicht die endgueltigen Netzentgelte 2026 mit Stand 10.12.2025.",
+      "Der Hinweis auf moegliche Anpassungen vorgelagerter Netzentgelte bleibt fuer spaetere Refresh-Runs relevant, blockiert aber nicht mehr den verified-Status."
     ],
     "artifactsToStore": [
       "source page html",
@@ -253,7 +254,8 @@
     "notes": [
       "Offizielle Betreiberseite fuer Preisblaetter Strom.",
       "Das finale 2026-PDF enthaelt Modul-3-Werte und Zeitfenster fuer das Mannheim-Netzgebiet.",
-      "Die aktuell abrufbare 2026-Datei ist vorlaeufig und wurde deshalb mit pending-Review in den kuratierten Registry-Slice uebernommen."
+      "Die Betreiberseite veroeffentlicht die endgueltigen Preisblaetter fuer 01.01.2026 bis 31.12.2026 mit Stand 18.12.2025.",
+      "Fuer Refresh-Runs sollte geprueft werden, ob spaetere endgueltige Preisblaetter vom 18.12.2025 abweichen oder nur den Snapshot wiederholen."
     ],
     "artifactsToStore": [
       "source page html",

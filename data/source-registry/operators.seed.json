@@ -522,10 +522,11 @@
         "documentUrl": "https://www.avacon-netz.de/content/dam/revu-global/avacon-netz/documents/netzentgelte-strom/2026/Preisbl%C3%A4tter_AVANG_Strom_01.01.2026.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
-        "reviewStatus": "pending",
+        "reviewStatus": "verified",
         "notes": [
-          "Offizielle Betreiberseite fuer Netzentgelte Strom 2026.",
-          "Die Seite weist darauf hin, dass die Entgelte ab 01.01.2026 unter Vorbehalt veroeffentlicht werden.",
+          "Offizielle Betreiberseite fuer die endgueltigen Netzentgelte 2026.",
+          "Die Seite veroeffentlicht die Entgelte ab 01.01.2026 mit Stand 10.12.2025.",
+          "Der verbleibende Hinweis auf moegliche Anpassungen vorgelagerter Netzentgelte bleibt als Refresh-Hinweis dokumentiert.",
           "Modul-3-Werte und Tarifzeiten sind im Preisblatt auf Seite 12 dokumentiert."
         ]
       }
@@ -533,7 +534,7 @@
     "currentTariff": {
       "modelKey": "14a-model-3",
       "validFrom": "2026-01-01",
-      "reviewStatus": "pending",
+      "reviewStatus": "verified",
       "sourceDocumentId": "avacon-netz-14a-2026",
       "sourcePageUrl": "https://www.avacon-netz.de/de/avacon-netz/netzinformation/netzentgelte/netzentgelte-strom.html",
       "documentUrl": "https://www.avacon-netz.de/content/dam/revu-global/avacon-netz/documents/netzentgelte-strom/2026/Preisbl%C3%A4tter_AVANG_Strom_01.01.2026.pdf",
@@ -695,27 +696,28 @@
     "sourceDocuments": [
       {
         "id": "mvv-netze-14a-2026",
-        "title": "Vorlaeufige Preisblaetter Strom 2026 Mannheim",
+        "title": "Finale Preisblaetter Strom 2026 Mannheim",
         "documentType": "pdf",
         "sourcePageUrl": "https://www.mvv-netze.de/ich-beziehe-energie/netzentgelte/preisblatt-strom",
-        "documentUrl": "https://www.mvv-netze.de/fileadmin/user_upload_mvv-netze/Dokumente/energie_beziehen/netzentgelte/strom/251010_MVV_Netze_vorlaeufige_Preisblaetter_Strom_2026_Ma.pdf",
+        "documentUrl": "https://www.mvv-netze.de/fileadmin/user_upload_mvv-netze/Dokumente/energie_beziehen/netzentgelte/strom/251218_MVV_Netze_finale_Preisblaetter_Strom_2026_Ma_ohneUmlagen.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
-        "reviewStatus": "pending",
+        "reviewStatus": "verified",
         "notes": [
           "Offizielle Betreiberseite fuer Preisblatt Strom Mannheim.",
-          "Das PDF ist explizit als vorlaeufiges Preisblatt gekennzeichnet, Stand 10.10.2025.",
-          "Modul-3-Zeitfenster sind auf Seite 6 fuer Q1 und Q4 beschrieben."
+          "Die Betreiberseite veroeffentlicht die endgueltigen Preisblaetter fuer 01.01.2026 bis 31.12.2026 mit Stand 18.12.2025.",
+          "Laut Betreiberseite entsprechen die endgueltigen Preisblaetter in ihrer Hoehe den zuvor veroeffentlichten vorlaeufigen Preisblaettern.",
+          "Modul-3-Zeitfenster sind im finalen Preisblatt auf Seite 6 fuer Q1 und Q4 beschrieben."
         ]
       }
     ],
     "currentTariff": {
       "modelKey": "14a-model-3",
       "validFrom": "2026-01-01",
-      "reviewStatus": "pending",
+      "reviewStatus": "verified",
       "sourceDocumentId": "mvv-netze-14a-2026",
       "sourcePageUrl": "https://www.mvv-netze.de/ich-beziehe-energie/netzentgelte/preisblatt-strom",
-      "documentUrl": "https://www.mvv-netze.de/fileadmin/user_upload_mvv-netze/Dokumente/energie_beziehen/netzentgelte/strom/251010_MVV_Netze_vorlaeufige_Preisblaetter_Strom_2026_Ma.pdf",
+      "documentUrl": "https://www.mvv-netze.de/fileadmin/user_upload_mvv-netze/Dokumente/energie_beziehen/netzentgelte/strom/251218_MVV_Netze_finale_Preisblaetter_Strom_2026_Ma_ohneUmlagen.pdf",
       "bands": [
         {
           "key": "NT",

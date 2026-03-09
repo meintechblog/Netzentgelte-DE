@@ -179,6 +179,48 @@ describe("getOperatorRegistry", () => {
     });
   });
 
+  test("tracks the latest final 2026 source state for Avacon and MVV", () => {
+    const registry = getOperatorRegistry();
+    const avacon = registry.find((entry) => entry.slug === "avacon-netz");
+    const mvv = registry.find((entry) => entry.slug === "mvv-netze");
+
+    expect(avacon).toMatchObject({
+      currentTariff: expect.objectContaining({
+        reviewStatus: "verified",
+        documentUrl: "https://www.avacon-netz.de/content/dam/revu-global/avacon-netz/documents/netzentgelte-strom/2026/Preisbl%C3%A4tter_AVANG_Strom_01.01.2026.pdf"
+      }),
+      sourceDocuments: expect.arrayContaining([
+        expect.objectContaining({
+          id: "avacon-netz-14a-2026",
+          reviewStatus: "verified",
+          notes: expect.arrayContaining([
+            expect.stringContaining("endgueltigen Netzentgelte 2026"),
+            expect.stringContaining("Anpassung")
+          ])
+        })
+      ])
+    });
+
+    expect(mvv).toMatchObject({
+      currentTariff: expect.objectContaining({
+        reviewStatus: "verified",
+        documentUrl:
+          "https://www.mvv-netze.de/fileadmin/user_upload_mvv-netze/Dokumente/energie_beziehen/netzentgelte/strom/251218_MVV_Netze_finale_Preisblaetter_Strom_2026_Ma_ohneUmlagen.pdf"
+      }),
+      sourceDocuments: expect.arrayContaining([
+        expect.objectContaining({
+          id: "mvv-netze-14a-2026",
+          title: "Finale Preisblaetter Strom 2026 Mannheim",
+          reviewStatus: "verified",
+          notes: expect.arrayContaining([
+            expect.stringContaining("endgueltigen Preisblaetter"),
+            expect.stringContaining("18.12.2025")
+          ])
+        })
+      ])
+    });
+  });
+
   test("rejects tariffs that reference an unknown source document", () => {
     expect(() =>
       parseOperatorRegistry([

@@ -35,7 +35,7 @@ describe("buildRegistryImportPayload", () => {
   test("expands modul-3 bands into individual tariff rows", () => {
     const payload = buildRegistryImportPayload(getOperatorRegistry());
 
-    expect(payload.tariffs).toHaveLength(18);
+    expect(payload.tariffs).toHaveLength(30);
     expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "westnetz")).toHaveLength(3);
   });
 });
@@ -45,9 +45,9 @@ describe("summarizeRegistryImport", () => {
     const summary = summarizeRegistryImport(buildRegistryImportPayload(getOperatorRegistry()));
 
     expect(summary).toEqual({
-      operatorCount: 6,
-      sourceCount: 6,
-      tariffCount: 18
+      operatorCount: 10,
+      sourceCount: 10,
+      tariffCount: 30
     });
   });
 });

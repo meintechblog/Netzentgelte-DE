@@ -88,7 +88,7 @@
     "notes": [
       "Offizielle Betreiberseite fuer Netzentgelte Strom.",
       "Das PDF 'Preisblaetter_AVANG_Strom_01.01.2026.pdf' enthaelt das Preisblatt fuer steuerbare Verbrauchseinrichtungen mit Modul-3-Werten.",
-      "Quelle ist als guter Kandidat fuer den naechsten Registry-Slice vorgemerkt."
+      "Quelle ist in den kuratierten Registry-Slice uebernommen; wegen Vorbehaltsvermerk bleibt der Review-Status vorerst pending."
     ],
     "artifactsToStore": [
       "source page html",
@@ -128,7 +128,7 @@
     "notes": [
       "Offizielle Betreiberseite fuer Entgelte.",
       "Aktuell sichtbar ist ein offizielles voraussichtliches 2026-PDF mit Modul-3-Werten und Zeitfenstern.",
-      "Beim Import zunaechst als vorlaeufig markieren, bis eine klar finale Fassung vorliegt."
+      "Die Version 18.12.2025 ist in den kuratierten Registry-Slice uebernommen und aktuell als verifiziert markiert."
     ],
     "artifactsToStore": [
       "source page html",
@@ -148,7 +148,7 @@
     "notes": [
       "Offizielle Betreiberseite fuer Preisblaetter Strom.",
       "Das finale 2026-PDF enthaelt Modul-3-Werte und Zeitfenster fuer das Mannheim-Netzgebiet.",
-      "Guter Kandidat fuer einen weiteren finalen Betreiber-Import."
+      "Die aktuell abrufbare 2026-Datei ist vorlaeufig und wurde deshalb mit pending-Review in den kuratierten Registry-Slice uebernommen."
     ],
     "artifactsToStore": [
       "source page html",
@@ -168,7 +168,7 @@
     "notes": [
       "Offizielle Betreiberseite fuer Netznutzungsentgelte Strom.",
       "Das 2026-PDF fuehrt reduzierte Netzentgelte und Modul-3-Zeitfenster fuer das Muenchner Netzgebiet.",
-      "Eintrag fuer den naechsten Registry-Ausbauschritt dokumentiert."
+      "Quelle ist in den kuratierten Registry-Slice uebernommen und als verifiziert markiert."
     ],
     "artifactsToStore": [
       "source page html",

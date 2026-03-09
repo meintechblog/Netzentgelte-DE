@@ -255,6 +255,373 @@
     }
   },
   {
+    "slug": "avacon-netz",
+    "name": "Avacon Netz GmbH",
+    "regionLabel": "Niedersachsen / Sachsen-Anhalt",
+    "websiteUrl": "https://www.avacon-netz.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "avacon-netz-14a-2026",
+        "title": "Preisblaetter AVANG Strom 01.01.2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.avacon-netz.de/de/avacon-netz/netzinformation/netzentgelte/netzentgelte-strom.html",
+        "documentUrl": "https://www.avacon-netz.de/content/dam/revu-global/avacon-netz/documents/netzentgelte-strom/2026/Preisbl%C3%A4tter_AVANG_Strom_01.01.2026.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite fuer Netzentgelte Strom 2026.",
+          "Die Seite weist darauf hin, dass die Entgelte ab 01.01.2026 unter Vorbehalt veroeffentlicht werden.",
+          "Modul-3-Werte und Tarifzeiten sind im Preisblatt auf Seite 12 dokumentiert."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "avacon-netz-14a-2026",
+      "sourcePageUrl": "https://www.avacon-netz.de/de/avacon-netz/netzinformation/netzentgelte/netzentgelte-strom.html",
+      "documentUrl": "https://www.avacon-netz.de/content/dam/revu-global/avacon-netz/documents/netzentgelte-strom/2026/Preisbl%C3%A4tter_AVANG_Strom_01.01.2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "3.01",
+          "sourceQuote": "Niedrigtarif 3,01 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "4.95",
+          "sourceQuote": "Standardtarif 4,95 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "11.53",
+          "sourceQuote": "Hochtarif 11,53 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "avacon-netz-2026-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-17:00",
+          "sourceQuote": "Standardtarif 4,95 ct/kWh, 00:00-17:00"
+        },
+        {
+          "id": "avacon-netz-2026-standard-evening",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "19:00-22:00",
+          "sourceQuote": "Standardtarif 4,95 ct/kWh, 19:00-22:00"
+        },
+        {
+          "id": "avacon-netz-2026-high-peak",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-19:00",
+          "sourceQuote": "Hochtarif 11,53 ct/kWh, 17:00-19:00"
+        },
+        {
+          "id": "avacon-netz-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "22:00-00:00",
+          "sourceQuote": "Niedrigtarif 3,01 ct/kWh, 22:00-00:00"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "stromnetz-berlin",
+    "name": "Stromnetz Berlin GmbH",
+    "regionLabel": "Berlin",
+    "websiteUrl": "https://www.stromnetz.berlin/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "stromnetz-berlin-14a-2026",
+        "title": "Entgelte 01.01.2026 Stromnetz Berlin",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.stromnetz.berlin/netz-nutzen/entgelte/",
+        "documentUrl": "https://www.stromnetz.berlin/files/globalassets/dokumente/entgelte/zugang/entgelte-01-01-2026/nne-b-2026_20251218.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Betreiberseite fuer Entgelte.",
+          "Das PDF ist Version 18.12.2025 und fuehrt Modul-3-Arbeitspreise auf Seite 3 sowie Tarifzeiten auf Seite 11 auf."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "stromnetz-berlin-14a-2026",
+      "sourcePageUrl": "https://www.stromnetz.berlin/netz-nutzen/entgelte/",
+      "documentUrl": "https://www.stromnetz.berlin/files/globalassets/dokumente/entgelte/zugang/entgelte-01-01-2026/nne-b-2026_20251218.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedriglasttarifzeit",
+          "valueCtPerKwh": "2.61",
+          "sourceQuote": "Arbeitspreis Niedriglasttarifzeit nach Modul 3 2,61 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardlasttarifzeit",
+          "valueCtPerKwh": "7.46",
+          "sourceQuote": "Arbeitspreis Standardlasttarifzeit nach Modul 3 7,46 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochlasttarifzeit",
+          "valueCtPerKwh": "13.94",
+          "sourceQuote": "Arbeitspreis Hochlasttarifzeit nach Modul 3 13,94 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "stromnetz-berlin-2026-standard-morning",
+          "bandKey": "ST",
+          "label": "Standardlasttarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:30-17:15",
+          "sourceQuote": "Standardlasttarifzeit 06:30-17:15 Uhr"
+        },
+        {
+          "id": "stromnetz-berlin-2026-standard-evening",
+          "bandKey": "ST",
+          "label": "Standardlasttarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "20:15-22:15",
+          "sourceQuote": "Standardlasttarifzeit 20:15-22:15 Uhr"
+        },
+        {
+          "id": "stromnetz-berlin-2026-high-peak",
+          "bandKey": "HT",
+          "label": "Hochlasttarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:15-20:15",
+          "sourceQuote": "Hochlasttarifzeit 17:15-20:15 Uhr"
+        },
+        {
+          "id": "stromnetz-berlin-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedriglasttarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "22:15-06:30",
+          "sourceQuote": "Niedriglasttarifzeit 22:15-06:30 Uhr"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "mvv-netze",
+    "name": "MVV Netze GmbH",
+    "regionLabel": "Mannheim",
+    "websiteUrl": "https://www.mvv-netze.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "mvv-netze-14a-2026",
+        "title": "Vorlaeufige Preisblaetter Strom 2026 Mannheim",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.mvv-netze.de/ich-beziehe-energie/netzentgelte/preisblatt-strom",
+        "documentUrl": "https://www.mvv-netze.de/fileadmin/user_upload_mvv-netze/Dokumente/energie_beziehen/netzentgelte/strom/251010_MVV_Netze_vorlaeufige_Preisblaetter_Strom_2026_Ma.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite fuer Preisblatt Strom Mannheim.",
+          "Das PDF ist explizit als vorlaeufiges Preisblatt gekennzeichnet, Stand 10.10.2025.",
+          "Modul-3-Zeitfenster sind auf Seite 6 fuer Q1 und Q4 beschrieben."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "mvv-netze-14a-2026",
+      "sourcePageUrl": "https://www.mvv-netze.de/ich-beziehe-energie/netzentgelte/preisblatt-strom",
+      "documentUrl": "https://www.mvv-netze.de/fileadmin/user_upload_mvv-netze/Dokumente/energie_beziehen/netzentgelte/strom/251010_MVV_Netze_vorlaeufige_Preisblaetter_Strom_2026_Ma.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "1.73",
+          "sourceQuote": "Niedrigtarif 1,73 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "4.32",
+          "sourceQuote": "Standardtarif 4,32 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "5.96",
+          "sourceQuote": "Hochtarif 5,96 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "mvv-netze-2026-standard-night",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-02:00",
+          "sourceQuote": "Standardtarif 4,32 ct/kWh, 00:00-02:00"
+        },
+        {
+          "id": "mvv-netze-2026-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:00-17:00",
+          "sourceQuote": "Standardtarif 4,32 ct/kWh, 06:00-17:00"
+        },
+        {
+          "id": "mvv-netze-2026-standard-late-evening",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "20:00-00:00",
+          "sourceQuote": "Standardtarif 4,32 ct/kWh, 20:00-00:00"
+        },
+        {
+          "id": "mvv-netze-2026-high-peak",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-20:00",
+          "sourceQuote": "Hochtarif 5,96 ct/kWh, 17:00-20:00"
+        },
+        {
+          "id": "mvv-netze-2026-low-morning",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "02:00-06:00",
+          "sourceQuote": "Niedrigtarif 1,73 ct/kWh, 02:00-06:00"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "swm-infrastruktur",
+    "name": "SWM Infrastruktur GmbH & Co. KG",
+    "regionLabel": "Muenchen",
+    "websiteUrl": "https://www.swm-infrastruktur.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "swm-infrastruktur-14a-2026",
+        "title": "Netznutzungsentgelte Strom 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.swm-infrastruktur.de/strom/netzzugang/netznutzungsentgelte",
+        "documentUrl": "https://www.swm-infrastruktur.de/dam/jcr:bb1201d1-d178-4314-a017-cdd9410f04b5/2026_Netznutzungsentgelte%20Strom.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Betreiberseite fuer Netznutzungsentgelte Strom.",
+          "Das PDF ist mit Stand 12.2025 veroeffentlicht und beschreibt Modul 3 auf Seite 3."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "swm-infrastruktur-14a-2026",
+      "sourcePageUrl": "https://www.swm-infrastruktur.de/strom/netzzugang/netznutzungsentgelte",
+      "documentUrl": "https://www.swm-infrastruktur.de/dam/jcr:bb1201d1-d178-4314-a017-cdd9410f04b5/2026_Netznutzungsentgelte%20Strom.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "2.79",
+          "sourceQuote": "Niedrigtarif 2,79 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "5.35",
+          "sourceQuote": "Standardtarif 5,35 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "10.32",
+          "sourceQuote": "Hochtarif 10,32 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "swm-infrastruktur-2026-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-16:00",
+          "sourceQuote": "Standardtarif 5,35 ct/kWh, 00:00-16:00"
+        },
+        {
+          "id": "swm-infrastruktur-2026-standard-evening",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "20:00-22:00",
+          "sourceQuote": "Standardtarif 5,35 ct/kWh, 20:00-22:00"
+        },
+        {
+          "id": "swm-infrastruktur-2026-high-peak",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "16:00-20:00",
+          "sourceQuote": "Hochtarif 10,32 ct/kWh, 16:00-20:00"
+        },
+        {
+          "id": "swm-infrastruktur-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "22:00-00:00",
+          "sourceQuote": "Niedrigtarif 2,79 ct/kWh, 22:00-00:00"
+        }
+      ]
+    }
+  },
+  {
     "slug": "n-ergie-netz",
     "name": "N-ERGIE Netz GmbH",
     "regionLabel": "Nuernberg / Franken",

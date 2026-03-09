@@ -12,5 +12,18 @@ describe("GET /api/operators", () => {
       name: expect.any(String),
       sourceDocumentCount: expect.any(Number)
     });
+    expect(data.items).toHaveLength(10);
+    expect(data.items).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          slug: "mvv-netze",
+          reviewStatus: "pending"
+        }),
+        expect.objectContaining({
+          slug: "swm-infrastruktur",
+          reviewStatus: "verified"
+        })
+      ])
+    );
   });
 });

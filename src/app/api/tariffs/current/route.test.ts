@@ -31,5 +31,19 @@ describe("GET /api/tariffs/current", () => {
         })
       ])
     });
+
+    const stromnetzBerlin = data.items.find(
+      (item: { operatorSlug: string }) => item.operatorSlug === "stromnetz-berlin"
+    );
+
+    expect(stromnetzBerlin).toMatchObject({
+      reviewStatus: "verified",
+      timeWindows: expect.arrayContaining([
+        expect.objectContaining({
+          bandKey: "HT",
+          timeRangeLabel: "17:15-20:15"
+        })
+      ])
+    });
   });
 });

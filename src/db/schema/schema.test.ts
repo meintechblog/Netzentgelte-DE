@@ -1,5 +1,11 @@
 import { describe, expect, test } from "vitest";
 
+import {
+  tariffComponents,
+  tariffProducts,
+  tariffRequirements,
+  tariffTimeWindows
+} from "./endcustomer-tariffs";
 import { operators } from "./operators";
 import { sourceCatalog, sourceSnapshots } from "./sources";
 import { tariffVersions } from "./tariffs";
@@ -13,6 +19,10 @@ describe("database schema bootstrap", () => {
         "source_catalog",
         "source_snapshots",
         "tariff_versions",
+        "tariff_products",
+        "tariff_components",
+        "tariff_requirements",
+        "tariff_time_windows",
         "operator_geometries",
         "ingest_runs"
       ])
@@ -34,5 +44,12 @@ describe("database schema bootstrap", () => {
 
   test("stores the artifact role for each source snapshot", () => {
     expect(sourceSnapshots.artifactKind).toBeDefined();
+  });
+
+  test("registers the endcustomer product model tables", () => {
+    expect(tariffProducts.moduleKey).toBeDefined();
+    expect(tariffComponents.componentKey).toBeDefined();
+    expect(tariffRequirements.requirementKey).toBeDefined();
+    expect(tariffTimeWindows.quarterKey).toBeDefined();
   });
 });

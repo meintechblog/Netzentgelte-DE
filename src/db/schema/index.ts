@@ -1,5 +1,11 @@
 import { getTableName } from "drizzle-orm";
 
+import {
+  tariffComponents,
+  tariffProducts,
+  tariffRequirements,
+  tariffTimeWindows
+} from "./endcustomer-tariffs";
 import { ingestRuns } from "./ingest-runs";
 import { operatorGeometries } from "./geometries";
 import { operatorShells } from "./operator-shells";
@@ -12,6 +18,12 @@ export { operatorGeometries } from "./geometries";
 export { operatorShells } from "./operator-shells";
 export { operators } from "./operators";
 export { sourceCatalog, sourceSnapshots } from "./sources";
+export {
+  tariffComponents,
+  tariffProducts,
+  tariffRequirements,
+  tariffTimeWindows
+} from "./endcustomer-tariffs";
 export { tariffVersions } from "./tariffs";
 
 export const schemaTables = [
@@ -20,6 +32,10 @@ export const schemaTables = [
   sourceCatalog,
   sourceSnapshots,
   tariffVersions,
+  tariffProducts,
+  tariffComponents,
+  tariffRequirements,
+  tariffTimeWindows,
   operatorGeometries,
   ingestRuns
 ];

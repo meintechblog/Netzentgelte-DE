@@ -382,7 +382,8 @@ export function getRegistryMapFeatures(operators: PublishedOperator[]): Operator
         };
       }
 
-      const seed = seedBySlug.get(entry.slug) ?? buildFallbackSeed(entry.slug, index);
+      const curatedMapSeed = seedBySlug.get(entry.slug);
+      const seed = curatedMapSeed ?? buildFallbackSeed(entry.slug, index);
 
       return {
         id: entry.slug,
@@ -397,7 +398,7 @@ export function getRegistryMapFeatures(operators: PublishedOperator[]): Operator
         stateHints: seed.stateHints,
         coverageUnits: [],
         geometry: null,
-        mapDisplayMode: "hidden" as const,
+        mapDisplayMode: curatedMapSeed ? ("anchor" as const) : ("hidden" as const),
         currentBandsSummary: entry.bands
           .map((band) => `${band.key} ${band.valueCtPerKwh} ct/kWh`)
           .join(" · "),

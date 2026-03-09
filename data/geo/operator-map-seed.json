@@ -214,5 +214,14 @@
     "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
     "stateHints": ["06"],
     "anchors": [{ "longitude": 8.65, "latitude": 49.87, "radiusKm": 30 }]
+  },
+  {
+    "slug": "tws-netz",
+    "mapRank": 29,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["08"],
+    "anchors": [{ "longitude": 9.61, "latitude": 47.78, "radiusKm": 24 }]
   }
 ]

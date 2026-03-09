@@ -8,6 +8,7 @@ import postgres from "postgres";
 
 import { resolveDatabaseUrl } from "../../src/db/connection-string";
 import { ingestRuns, sourceCatalog, sourceSnapshots } from "../../src/db/schema";
+import { auditLiveSources } from "../../src/modules/sources/source-live-audit";
 import { refreshSources } from "../../src/modules/sources/refresh-pipeline";
 import { runSourceRefresh } from "../../src/modules/sources/refresh-runner";
 
@@ -29,7 +30,9 @@ const db = drizzle(sqlClient, {
   }
 });
 
-const sourceSlugs = parseSourceSlugs(process.argv.slice(2));
+const cliArgs = process.argv.slice(2);
+const sourceSlugs = parseSourceSlugs(cliArgs);
+const mode = parseMode(cliArgs);
 const artifactRootDir = path.resolve(directoryName, "../../data");
 
 const summary = await runSourceRefresh({
@@ -66,7 +69,7 @@ const summary = await runSourceRefresh({
       }));
   },
   refreshBatch: async ({ sources }) =>
-    refreshSources({
+    (mode === "audit" ? auditLiveSources : refreshSources)({
       sources,
       artifactRootDir,
       fetchPage: async (source) => fetch(source.pageUrl),
@@ -104,6 +107,7 @@ console.log(
   JSON.stringify(
     {
       status: "ok",
+      mode,
       summary
     },
     null,
@@ -139,4 +143,28 @@ function parseSourceSlugs(argv: string[]) {
   }
 
   return result;
+}
+
+function parseMode(argv: string[]) {
+  for (let index = 0; index < argv.length; index += 1) {
+    const argument = argv[index];
+
+    if (!argument) {
+      continue;
+    }
+
+    if (argument.startsWith("--mode=")) {
+      return normalizeMode(argument.slice("--mode=".length));
+    }
+
+    if (argument === "--mode") {
+      return normalizeMode(argv[index + 1]);
+    }
+  }
+
+  return "refresh";
+}
+
+function normalizeMode(value: string | undefined) {
+  return value === "audit" ? "audit" : "refresh";
 }

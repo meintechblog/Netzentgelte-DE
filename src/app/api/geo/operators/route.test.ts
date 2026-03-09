@@ -26,9 +26,31 @@ describe("GET /api/geo/operators", () => {
     expect(data.features).toHaveLength(getSeedPublishedOperators().length);
     expect(
       data.features.find(
-        (feature: { properties: { operatorSlug: string; mapDisplayMode: string }; geometry: unknown }) =>
+        (feature: {
+          properties: {
+            operatorSlug: string;
+            mapDisplayMode: string;
+            anchor: { longitude: number; latitude: number };
+          };
+          geometry: unknown;
+        }) =>
           feature.properties.operatorSlug === "avacon-netz" &&
-          feature.properties.mapDisplayMode === "hidden" &&
+          feature.properties.mapDisplayMode === "anchor" &&
+          feature.geometry === null
+      )
+    ).toBeDefined();
+    expect(
+      data.features.find(
+        (feature: {
+          properties: {
+            operatorSlug: string;
+            mapDisplayMode: string;
+            anchor: { longitude: number; latitude: number };
+          };
+          geometry: unknown;
+        }) =>
+          feature.properties.operatorSlug === "tws-netz" &&
+          feature.properties.mapDisplayMode === "anchor" &&
           feature.geometry === null
       )
     ).toBeDefined();

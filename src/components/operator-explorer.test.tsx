@@ -17,6 +17,21 @@ const rows: TariffTableRow[] = [
     sourceSlug: "stadtwerke-schwaebisch-hall-2026",
     checkedAt: "2026-03-09",
     reviewStatus: "pending",
+    latestPageSnapshotFetchedAt: "2026-03-09T01:22:00.000Z",
+    latestPageSnapshotHash: "page123",
+    pageArtifactApiUrl: "/api/artifacts/swh-page.html",
+    latestDocumentSnapshotFetchedAt: "2026-03-09T01:23:00.000Z",
+    latestDocumentSnapshotHash: "doc123",
+    documentArtifactApiUrl: "/api/artifacts/swh-doc.pdf",
+    sourceHealthReport: {
+      status: "warning",
+      issues: [
+        {
+          key: "snapshot_missing",
+          message: "Die Quelle wurde geprueft, aber es liegt noch kein Snapshot-Artefakt vor."
+        }
+      ]
+    },
     timeWindows: [],
     quarterMatrix: []
   },
@@ -31,6 +46,16 @@ const rows: TariffTableRow[] = [
     sourceSlug: "stromnetz-berlin-2026",
     checkedAt: "2026-03-09",
     reviewStatus: "verified",
+    latestPageSnapshotFetchedAt: null,
+    latestPageSnapshotHash: null,
+    pageArtifactApiUrl: null,
+    latestDocumentSnapshotFetchedAt: null,
+    latestDocumentSnapshotHash: null,
+    documentArtifactApiUrl: null,
+    sourceHealthReport: {
+      status: "ok",
+      issues: []
+    },
     timeWindows: [],
     quarterMatrix: []
   }
@@ -96,5 +121,22 @@ describe("OperatorExplorer", () => {
     expect(screen.getByText("Kein Netzbetreiber passt zur aktuellen Suche.")).toBeInTheDocument();
     expect(screen.getByText("Keine belegte Netzfläche passt zur Suche")).toBeInTheDocument();
     expect(screen.getByText("0 Treffer")).toBeInTheDocument();
+  });
+
+  test("filters the merged operator list by integrated source fields and keeps source details collapsed by default", () => {
+    render(<OperatorExplorer rows={rows} mapScene={projectGermanyMap(mapFeatures)} />);
+
+    expect(screen.getByRole("heading", { name: "Netzbetreiber & Tarifdaten" })).toBeInTheDocument();
+    expect(
+      screen.getAllByRole("button", { name: "Quelle & Prüfstatus anzeigen" }).length
+    ).toBeGreaterThan(0);
+    expect(screen.queryByText("Gespeicherte Quellseite")).not.toBeInTheDocument();
+
+    fireEvent.change(screen.getByRole("searchbox", { name: "Suchbegriff" }), {
+      target: { value: "stromnetz-berlin-2026" }
+    });
+
+    expect(screen.getAllByText("Stromnetz Berlin").length).toBeGreaterThan(0);
+    expect(screen.queryByText("Stadtwerke Schwäbisch Hall")).not.toBeInTheDocument();
   });
 });

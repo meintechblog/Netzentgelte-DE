@@ -12,7 +12,7 @@ describe("GET /api/operators", () => {
       name: expect.any(String),
       sourceDocumentCount: expect.any(Number)
     });
-    expect(data.items).toHaveLength(25);
+    expect(data.items).toHaveLength(27);
     expect(data.items).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -46,17 +46,47 @@ describe("GET /api/operators", () => {
         expect.objectContaining({
           slug: "mitnetz-strom",
           reviewStatus: "verified"
+        }),
+        expect.objectContaining({
+          slug: "avacon-netz",
+          reviewStatus: "verified"
+        }),
+        expect.objectContaining({
+          slug: "netz-duesseldorf",
+          reviewStatus: "verified"
+        }),
+        expect.objectContaining({
+          slug: "nordnetz",
+          reviewStatus: "verified"
+        }),
+        expect.objectContaining({
+          slug: "nrm-netzdienste",
+          reviewStatus: "verified"
+        }),
+        expect.objectContaining({
+          slug: "thueringer-energienetze",
+          reviewStatus: "verified"
+        }),
+        expect.objectContaining({
+          slug: "tws-netz",
+          reviewStatus: "verified"
         })
       ])
     );
     expect(
-      data.items.find((item: { slug: string }) => item.slug === "avacon-netz")
-    ).toBeUndefined();
-    expect(
-      data.items.find((item: { slug: string }) => item.slug === "nordnetz")
-    ).toBeUndefined();
-    expect(
       data.items.find((item: { slug: string }) => item.slug === "heidelberg-netze")
+    ).toBeUndefined();
+    expect(
+      data.items.find((item: { slug: string }) => item.slug === "swm-infrastruktur")
+    ).toBeUndefined();
+    expect(
+      data.items.find((item: { slug: string }) => item.slug === "ewr-netz")
+    ).toBeUndefined();
+    expect(
+      data.items.find((item: { slug: string }) => item.slug === "geranetz")
+    ).toBeUndefined();
+    expect(
+      data.items.find((item: { slug: string }) => item.slug === "e-netz-suedhessen")
     ).toBeUndefined();
   });
 });

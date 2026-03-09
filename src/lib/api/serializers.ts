@@ -146,7 +146,8 @@ export function serializeCurrentSources(entries: CurrentSource[]) {
       latestDocumentSnapshotFetchedAt: entry.latestDocumentSnapshotFetchedAt,
       latestDocumentSnapshotHash: entry.latestDocumentSnapshotHash,
       latestDocumentSnapshotStoragePath: entry.latestDocumentSnapshotStoragePath,
-      documentArtifactApiUrl: entry.documentArtifactApiUrl
+      documentArtifactApiUrl: entry.documentArtifactApiUrl,
+      healthReport: entry.healthReport
     }))
   };
 }

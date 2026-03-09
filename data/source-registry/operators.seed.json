@@ -64,8 +64,8 @@
           "label": "Niedrigtarif",
           "seasonLabel": "Q1-Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "10:00-15:00",
-          "sourceQuote": "Niedrigtarif 10:00-15:00 Uhr"
+          "timeRangeLabel": "10:00-14:00",
+          "sourceQuote": "Niedrigtarif 10:00-14:00 Uhr"
         },
         {
           "id": "netze-bw-2026-standard-afternoon",
@@ -73,8 +73,8 @@
           "label": "Standardtarif",
           "seasonLabel": "Q1-Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "15:00-17:00",
-          "sourceQuote": "Standardtarif 15:00-17:00 Uhr"
+          "timeRangeLabel": "14:00-17:00",
+          "sourceQuote": "Standardtarif 14:00-17:00 Uhr"
         },
         {
           "id": "netze-bw-2026-high-peak",
@@ -519,82 +519,99 @@
         "title": "Preisblaetter AVANG Strom 01.01.2026",
         "documentType": "pdf",
         "sourcePageUrl": "https://www.avacon-netz.de/de/avacon-netz/netzinformation/netzentgelte/netzentgelte-strom.html",
-        "documentUrl": "https://www.avacon-netz.de/content/dam/revu-global/avacon-netz/documents/netzentgelte-strom/2026/Preisbl%C3%A4tter_AVANG_Strom_01.01.2026.pdf",
+        "documentUrl": "https://www.avacon-netz.de/content/dam/revu-global/avacon-netz/documents/netzentgelte-strom/2026/Preisbl%C3%A4tter_AVANG_Strom_01.01.2026%20%281%29.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
-        "reviewStatus": "pending",
+        "reviewStatus": "verified",
         "notes": [
           "Offizielle Betreiberseite fuer Netzentgelte Strom 2026.",
-          "Die Betreiberseite spricht von den endgueltigen Netzentgelten 2026, aber die gespeicherte Primaer-PDF bleibt mit Vorbehaltslogik veroeffentlicht.",
-          "Bis ein page-level Finalitaetsbeleg selbst als reviewbares Artefakt gespeichert wird, bleibt der Review-Status bewusst pending.",
-          "Der Vorbehalt zu moeglichen Anpassungen vorgelagerter Netzentgelte bleibt als Refresh-Hinweis dokumentiert.",
-          "Modul-3-Werte und Tarifzeiten sind im Preisblatt auf Seite 12 dokumentiert."
+          "Die offizielle Seite fuehrt die 2026-Datei als endgueltige Netzentgelte Strom und als Bestandteil des Netznutzungsverhaeltnisses.",
+          "Das Preisblatt sVE auf Seite 12 dokumentiert fuer Modul 3 alle drei Tarifstufen und die Quartalslogik fuer Q1 bis Q4.",
+          "Q2 und Q3 sind explizit als reine Standardtarifphase mit 00:00-24:00 Uhr ausgewiesen."
         ]
       }
     ],
     "currentTariff": {
       "modelKey": "14a-model-3",
       "validFrom": "2026-01-01",
-      "reviewStatus": "pending",
+      "reviewStatus": "verified",
       "sourceDocumentId": "avacon-netz-14a-2026",
       "sourcePageUrl": "https://www.avacon-netz.de/de/avacon-netz/netzinformation/netzentgelte/netzentgelte-strom.html",
-      "documentUrl": "https://www.avacon-netz.de/content/dam/revu-global/avacon-netz/documents/netzentgelte-strom/2026/Preisbl%C3%A4tter_AVANG_Strom_01.01.2026.pdf",
+      "documentUrl": "https://www.avacon-netz.de/content/dam/revu-global/avacon-netz/documents/netzentgelte-strom/2026/Preisbl%C3%A4tter_AVANG_Strom_01.01.2026%20%281%29.pdf",
       "bands": [
         {
           "key": "NT",
           "label": "Niedrigtarifstufe",
-          "valueCtPerKwh": "3.01",
-          "sourceQuote": "Niedrigtarif 3,01 ct/kWh"
+          "valueCtPerKwh": "0.60",
+          "sourceQuote": "Niedriglasttarifstufe Niederspannung Netto 0,60 ct/kWh"
         },
         {
           "key": "ST",
           "label": "Standardtarifstufe",
-          "valueCtPerKwh": "4.95",
-          "sourceQuote": "Standardtarif 4,95 ct/kWh"
+          "valueCtPerKwh": "6.04",
+          "sourceQuote": "Standardtarifstufe Niederspannung Netto 6,04 ct/kWh"
         },
         {
           "key": "HT",
           "label": "Hochtarifstufe",
-          "valueCtPerKwh": "11.53",
-          "sourceQuote": "Hochtarif 11,53 ct/kWh"
+          "valueCtPerKwh": "8.41",
+          "sourceQuote": "Hochlasttarifstufe Niederspannung Netto 8,41 ct/kWh"
         }
       ],
       "timeWindows": [
         {
-          "id": "avacon-netz-2026-standard-day",
+          "id": "avacon-netz-2026-q1q4-standard-day",
           "bandKey": "ST",
           "label": "Standardtarif",
           "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-17:00",
-          "sourceQuote": "Standardtarif 4,95 ct/kWh, 00:00-17:00"
+          "timeRangeLabel": "05:00-16:30",
+          "sourceQuote": "Quartal 1 und Quartal 4 Standardtarifstufe 05:00-16:30 Uhr"
         },
         {
-          "id": "avacon-netz-2026-standard-evening",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q1 und Q4 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "19:00-22:00",
-          "sourceQuote": "Standardtarif 4,95 ct/kWh, 19:00-22:00"
-        },
-        {
-          "id": "avacon-netz-2026-high-peak",
+          "id": "avacon-netz-2026-q1q4-high-evening",
           "bandKey": "HT",
           "label": "Hochtarif",
           "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "17:00-19:00",
-          "sourceQuote": "Hochtarif 11,53 ct/kWh, 17:00-19:00"
+          "timeRangeLabel": "16:30-21:00",
+          "sourceQuote": "Quartal 1 und Quartal 4 Hochlasttarifstufe 16:30-21:00 Uhr"
         },
         {
-          "id": "avacon-netz-2026-low-night",
+          "id": "avacon-netz-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "21:00-23:00",
+          "sourceQuote": "Quartal 1 und Quartal 4 Standardtarifstufe 21:00-23:00 Uhr"
+        },
+        {
+          "id": "avacon-netz-2026-q1q4-low-night",
           "bandKey": "NT",
           "label": "Niedrigtarif",
           "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "22:00-00:00",
-          "sourceQuote": "Niedrigtarif 3,01 ct/kWh, 22:00-00:00"
+          "timeRangeLabel": "00:15-05:00",
+          "sourceQuote": "Quartal 1 und Quartal 4 Niedriglasttarifstufe 00:15-05:00 Uhr"
+        },
+        {
+          "id": "avacon-netz-2026-q1q4-low-late",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "23:00-24:00",
+          "sourceQuote": "Quartal 1 und Quartal 4 Niedriglasttarifstufe 23:00-00:15 Uhr"
+        },
+        {
+          "id": "avacon-netz-2026-q2q3-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2-Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Quartal 2 und Quartal 3 Standardtarifstufe 00:00-24:00 Uhr"
         }
       ]
     }
@@ -799,82 +816,29 @@
         "id": "swm-infrastruktur-14a-2026",
         "title": "Netznutzungsentgelte Strom 2026",
         "documentType": "pdf",
-        "sourcePageUrl": "https://www.swm-infrastruktur.de/strom/netzzugang/netznutzungsentgelte",
+        "sourcePageUrl": "https://www.swm-infrastruktur.de/netzzugang/strom/netzentgelte",
         "documentUrl": "https://www.swm-infrastruktur.de/dam/swm-infrastruktur/dokumente/strom/netzzugang-netznutzungsentgelte/preisblaetter-2026/strom-preisblatt-2026.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
-        "reviewStatus": "verified",
+        "reviewStatus": "pending",
         "notes": [
-          "Offizielle Betreiberseite fuer Netznutzungsentgelte Strom.",
-          "Das PDF ist mit Stand 12.2025 veroeffentlicht und beschreibt Modul 3 auf Seite 3."
+          "Kanonische Betreiberseite fuer Netzentgelte Strom 2026.",
+          "Die finale 2026-PDF verweist fuer Modul 3 explizit auf Arbeitspreis HT 7,14 ct/kWh und Arbeitspreis NT 2,59 ct/kWh.",
+          "Der Wert 6,47 ct/kWh steht im Preisblatt nur als allgemeiner Arbeitspreis fuer Marktlokationen nach Modul 1 und/oder 3, nicht als explizit gelabelte Standardtarifstufe.",
+          "Explizit ausgewiesen sind nur Winter-Zeitfenster vom 01.01.-31.03. und 01.10.-31.12.2026; ohne belastbaren ST- und Q2/Q3-Beleg bleibt der Datensatz pending."
         ]
       }
     ],
     "currentTariff": {
       "modelKey": "14a-model-3",
       "validFrom": "2026-01-01",
-      "reviewStatus": "verified",
+      "reviewStatus": "pending",
       "sourceDocumentId": "swm-infrastruktur-14a-2026",
-      "sourcePageUrl": "https://www.swm-infrastruktur.de/strom/netzzugang/netznutzungsentgelte",
+      "sourcePageUrl": "https://www.swm-infrastruktur.de/netzzugang/strom/netzentgelte",
       "documentUrl": "https://www.swm-infrastruktur.de/dam/swm-infrastruktur/dokumente/strom/netzzugang-netznutzungsentgelte/preisblaetter-2026/strom-preisblatt-2026.pdf",
-      "bands": [
-        {
-          "key": "NT",
-          "label": "Niedrigtarifstufe",
-          "valueCtPerKwh": "2.79",
-          "sourceQuote": "Niedrigtarif 2,79 ct/kWh"
-        },
-        {
-          "key": "ST",
-          "label": "Standardtarifstufe",
-          "valueCtPerKwh": "5.35",
-          "sourceQuote": "Standardtarif 5,35 ct/kWh"
-        },
-        {
-          "key": "HT",
-          "label": "Hochtarifstufe",
-          "valueCtPerKwh": "10.32",
-          "sourceQuote": "Hochtarif 10,32 ct/kWh"
-        }
-      ],
-      "timeWindows": [
-        {
-          "id": "swm-infrastruktur-2026-standard-day",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q1 und Q4 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-16:00",
-          "sourceQuote": "Standardtarif 5,35 ct/kWh, 00:00-16:00"
-        },
-        {
-          "id": "swm-infrastruktur-2026-standard-evening",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q1 und Q4 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "20:00-22:00",
-          "sourceQuote": "Standardtarif 5,35 ct/kWh, 20:00-22:00"
-        },
-        {
-          "id": "swm-infrastruktur-2026-high-peak",
-          "bandKey": "HT",
-          "label": "Hochtarif",
-          "seasonLabel": "Q1 und Q4 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "16:00-20:00",
-          "sourceQuote": "Hochtarif 10,32 ct/kWh, 16:00-20:00"
-        },
-        {
-          "id": "swm-infrastruktur-2026-low-night",
-          "bandKey": "NT",
-          "label": "Niedrigtarif",
-          "seasonLabel": "Q1 und Q4 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "22:00-00:00",
-          "sourceQuote": "Niedrigtarif 2,79 ct/kWh, 22:00-00:00"
-        }
-      ]
+      "summaryFallback": "Finale 2026-Quelle erfasst, aber keine publizierbare Modul-3-Jahresmatrix",
+      "bands": [],
+      "timeWindows": []
     }
   },
   {
@@ -1413,9 +1377,9 @@
   },
   {
     "slug": "mittelhessen-netz",
-    "name": "MIT.N Mittelhessen Netz GmbH",
+    "name": "Mittelhessen Netz GmbH",
     "regionLabel": "Mittelhessen",
-    "websiteUrl": "https://www.mitn.de/",
+    "websiteUrl": "https://www.mit-n.de/",
     "registrySourceIds": [
       "bnetza-mastr-netzbetreiber-overview",
       "vnbdigital-portal"
@@ -1423,17 +1387,17 @@
     "sourceDocuments": [
       {
         "id": "mittelhessen-netz-14a-2026",
-        "title": "Anlage 6a Preisblatt für steuerbare Verbrauchseinrichtungen gem. §14a EnWG ab 01.01.2026",
+        "title": "MIT.N Preisblatt Strom 2026 ab 01.01.2026",
         "documentType": "pdf",
-        "sourcePageUrl": "https://www.mitn.de/",
-        "documentUrl": "https://www.mitn.de/wp-content/uploads/2025/12/Anlage-6a-Preisblatt-fuer-steuerbare-Verbrauchseinrichtungen-gem.-14a-EnWG-ab-01.01.2026.pdf",
+        "sourcePageUrl": "https://www.mit-n.de/marktpartner/strom",
+        "documentUrl": "https://www.mit-n.de/fileadmin/user_upload/Dateien/Marktpartner/Strom/Netzentgelte/MIT.N_Preisblatt_Strom_2026_01_01.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
         "reviewStatus": "verified",
         "notes": [
-          "Offizielles MIT.N-Dokument für steuerbare Verbrauchseinrichtungen ab 01.01.2026.",
-          "Das Preisblatt unterscheidet zwischen Volljahr-Q1/Q4 und einer detaillierten Q2/Q3-Tagesmatrix.",
-          "Für spätere Refreshes muss besonders geprüft werden, ob die Volltag-ST-Phasen im Winter beibehalten werden."
+          "Kanonische MIT.N-Marktpartnerseite fuer Strom mit aktuellem Preisblatt 2026.",
+          "Das Preisblatt weist Modul 3 ganzjaehrig als Q1 bis Q4 mit expliziten HT-, ST- und NT-Zeiten aus.",
+          "Die zuvor gespeicherten mitn.de-Links leiteten auf eine geparkte Domain und wurden ersetzt."
         ]
       }
     ],
@@ -1442,91 +1406,91 @@
       "validFrom": "2026-01-01",
       "reviewStatus": "verified",
       "sourceDocumentId": "mittelhessen-netz-14a-2026",
-      "sourcePageUrl": "https://www.mitn.de/",
-      "documentUrl": "https://www.mitn.de/wp-content/uploads/2025/12/Anlage-6a-Preisblatt-fuer-steuerbare-Verbrauchseinrichtungen-gem.-14a-EnWG-ab-01.01.2026.pdf",
+      "sourcePageUrl": "https://www.mit-n.de/marktpartner/strom",
+      "documentUrl": "https://www.mit-n.de/fileadmin/user_upload/Dateien/Marktpartner/Strom/Netzentgelte/MIT.N_Preisblatt_Strom_2026_01_01.pdf",
       "bands": [
         {
           "key": "NT",
           "label": "Niedrigtarifstufe",
-          "valueCtPerKwh": "0.70",
-          "sourceQuote": "NT 0,70 ct/kWh"
+          "valueCtPerKwh": "1.69",
+          "sourceQuote": "Arbeitspreis NT 1,69 Ct/kWh"
         },
         {
           "key": "ST",
           "label": "Standardtarifstufe",
-          "valueCtPerKwh": "6.00",
-          "sourceQuote": "ST 6,00 ct/kWh"
+          "valueCtPerKwh": "4.23",
+          "sourceQuote": "Arbeitspreis ST 4,23 Ct/kWh"
         },
         {
           "key": "HT",
           "label": "Hochtarifstufe",
-          "valueCtPerKwh": "12.30",
-          "sourceQuote": "HT 12,30 ct/kWh"
+          "valueCtPerKwh": "8.31",
+          "sourceQuote": "Arbeitspreis HT 8,31 Ct/kWh"
         }
       ],
       "timeWindows": [
         {
-          "id": "mittelhessen-netz-2026-q1-standard",
+          "id": "mittelhessen-netz-2026-standard-morning",
           "bandKey": "ST",
           "label": "Standardtarif",
-          "seasonLabel": "Q1 2026",
+          "seasonLabel": "Q1-Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-24:00",
-          "sourceQuote": "01.01.-31.03.2026 ST 00:00-24:00"
+          "timeRangeLabel": "06:00-11:00",
+          "sourceQuote": "ST-Zeiten: 06:00-11:00 Uhr"
         },
         {
-          "id": "mittelhessen-netz-2026-q2q3-standard-overnight",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q2-Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-10:00",
-          "sourceQuote": "01.04.-30.09.2026 ST 00:00-10:00"
-        },
-        {
-          "id": "mittelhessen-netz-2026-q2q3-low-midday",
+          "id": "mittelhessen-netz-2026-low-midday",
           "bandKey": "NT",
           "label": "Niedrigtarif",
-          "seasonLabel": "Q2-Q3 2026",
+          "seasonLabel": "Q1-Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "10:00-15:00",
-          "sourceQuote": "01.04.-30.09.2026 NT 10:00-15:00"
+          "timeRangeLabel": "11:00-15:00",
+          "sourceQuote": "NT-Zeiten: 11:00-15:00 Uhr"
         },
         {
-          "id": "mittelhessen-netz-2026-q2q3-standard-afternoon",
+          "id": "mittelhessen-netz-2026-standard-afternoon",
           "bandKey": "ST",
           "label": "Standardtarif",
-          "seasonLabel": "Q2-Q3 2026",
+          "seasonLabel": "Q1-Q4 2026",
           "dayLabel": "Alle Tage",
           "timeRangeLabel": "15:00-17:00",
-          "sourceQuote": "01.04.-30.09.2026 ST 15:00-17:00"
+          "sourceQuote": "ST-Zeiten: 15:00-17:00 Uhr"
         },
         {
-          "id": "mittelhessen-netz-2026-q2q3-high-evening",
+          "id": "mittelhessen-netz-2026-high-evening",
           "bandKey": "HT",
           "label": "Hochtarif",
-          "seasonLabel": "Q2-Q3 2026",
+          "seasonLabel": "Q1-Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "17:00-22:00",
-          "sourceQuote": "01.04.-30.09.2026 HT 17:00-22:00"
+          "timeRangeLabel": "17:00-20:00",
+          "sourceQuote": "HT-Zeiten: 17:00-20:00 Uhr"
         },
         {
-          "id": "mittelhessen-netz-2026-q2q3-standard-late",
+          "id": "mittelhessen-netz-2026-standard-evening",
           "bandKey": "ST",
           "label": "Standardtarif",
-          "seasonLabel": "Q2-Q3 2026",
+          "seasonLabel": "Q1-Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "22:00-24:00",
-          "sourceQuote": "01.04.-30.09.2026 ST 22:00-24:00"
+          "timeRangeLabel": "20:00-22:00",
+          "sourceQuote": "ST-Zeiten: 20:00-22:00 Uhr"
         },
         {
-          "id": "mittelhessen-netz-2026-q4-standard",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q4 2026",
+          "id": "mittelhessen-netz-2026-high-late",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-24:00",
-          "sourceQuote": "01.10.-31.12.2026 ST 00:00-24:00"
+          "timeRangeLabel": "22:00-23:00",
+          "sourceQuote": "HT-Zeiten: 22:00-23:00 Uhr"
+        },
+        {
+          "id": "mittelhessen-netz-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "23:00-06:00",
+          "sourceQuote": "NT-Zeiten: 23:00-06:00 Uhr"
         }
       ]
     }
@@ -1568,20 +1532,20 @@
         {
           "key": "NT",
           "label": "Niedrigtarifstufe",
-          "valueCtPerKwh": "0.50",
-          "sourceQuote": "NT 0,50 ct/kWh"
+          "valueCtPerKwh": "2.35",
+          "sourceQuote": "Niedrigtarif 2,35 ct/kWh"
         },
         {
           "key": "ST",
           "label": "Standardtarifstufe",
-          "valueCtPerKwh": "4.98",
-          "sourceQuote": "ST 4,98 ct/kWh"
+          "valueCtPerKwh": "5.87",
+          "sourceQuote": "Standardtarif 5,87 ct/kWh"
         },
         {
           "key": "HT",
           "label": "Hochtarifstufe",
-          "valueCtPerKwh": "11.53",
-          "sourceQuote": "HT 11,53 ct/kWh"
+          "valueCtPerKwh": "10.18",
+          "sourceQuote": "Hochtarif 10,18 ct/kWh"
         }
       ],
       "timeWindows": [
@@ -1595,13 +1559,22 @@
           "sourceQuote": "Q1/Q4 ST 00:00-24:00"
         },
         {
-          "id": "netze-odr-2026-q2q3-standard-overnight",
+          "id": "netze-odr-2026-q2q3-high-night",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q2-Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-05:00",
+          "sourceQuote": "Q2/Q3 Hochtarif 00:00-05:00"
+        },
+        {
+          "id": "netze-odr-2026-q2q3-standard-morning",
           "bandKey": "ST",
           "label": "Standardtarif",
           "seasonLabel": "Q2-Q3 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-10:00",
-          "sourceQuote": "Q2/Q3 ST 00:00-10:00"
+          "timeRangeLabel": "05:00-11:00",
+          "sourceQuote": "Q2/Q3 Standardtarif 05:00-11:00"
         },
         {
           "id": "netze-odr-2026-q2q3-low-midday",
@@ -1609,8 +1582,8 @@
           "label": "Niedrigtarif",
           "seasonLabel": "Q2-Q3 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "10:00-15:00",
-          "sourceQuote": "Q2/Q3 NT 10:00-15:00"
+          "timeRangeLabel": "11:00-17:00",
+          "sourceQuote": "Q2/Q3 Niedrigtarif 11:00-17:00"
         },
         {
           "id": "netze-odr-2026-q2q3-standard-afternoon",
@@ -1618,26 +1591,17 @@
           "label": "Standardtarif",
           "seasonLabel": "Q2-Q3 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "15:00-17:00",
-          "sourceQuote": "Q2/Q3 ST 15:00-17:00"
+          "timeRangeLabel": "17:00-22:00",
+          "sourceQuote": "Q2/Q3 Standardtarif 17:00-22:00"
         },
         {
-          "id": "netze-odr-2026-q2q3-high-evening",
+          "id": "netze-odr-2026-q2q3-high-late",
           "bandKey": "HT",
           "label": "Hochtarif",
           "seasonLabel": "Q2-Q3 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "17:00-22:00",
-          "sourceQuote": "Q2/Q3 HT 17:00-22:00"
-        },
-        {
-          "id": "netze-odr-2026-q2q3-standard-late",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q2-Q3 2026",
-          "dayLabel": "Alle Tage",
           "timeRangeLabel": "22:00-24:00",
-          "sourceQuote": "Q2/Q3 ST 22:00-24:00"
+          "sourceQuote": "Q2/Q3 Hochtarif 22:00-24:00"
         }
       ]
     }
@@ -1656,90 +1620,117 @@
         "id": "stadtwerke-ingolstadt-netze-14a-2026",
         "title": "Preisblatt 6a §14a EnWG 2026",
         "documentType": "pdf",
-        "sourcePageUrl": "https://www.swi-netze.de/entgelte/",
-        "documentUrl": "https://www.swi-netze.de/fileadmin/media/04_Netze/C_Netze_Downloads/PDFs/01_Strom/Entgelte/2026_01_01_Preisblatt_SWI_Strom_2026.pdf",
+        "sourcePageUrl": "https://swi-netze.de/entgelte/",
+        "documentUrl": "https://swi-netze.de/fileadmin/media/04_Netze/C_Netze_Downloads/PDFs/01_Strom/Entgelte/2026_01_01_Preisblatt_SWI_Strom_2026.pdf",
         "checkedAt": "2026-03-09",
-        "validFrom": "2026-02-01",
+        "validFrom": "2026-01-01",
         "reviewStatus": "verified",
         "notes": [
-          "Offizielle Entgeltseite der Stadtwerke Ingolstadt Netze.",
-          "Das Preisblatt 6a ist explizit ab 01.02.2026 datiert und ersetzt damit einen früheren Januar-Stand.",
-          "Für Refreshes ist insbesondere auf Folgeversionen nach dem 01.02.2026 zu achten."
+          "Kanonische Entgeltseite der Stadtwerke Ingolstadt Netze.",
+          "Das Preisblatt ist auf 01.01.2026 ausgestellt und fuehrt Modul 3 mit Quartalsmatrix direkt im Dokument.",
+          "Q2 und Q3 sind ohne HT- oder NT-Zeiten als reine Standardtarifphase ausgewiesen."
         ]
       }
     ],
     "currentTariff": {
       "modelKey": "14a-model-3",
-      "validFrom": "2026-02-01",
+      "validFrom": "2026-01-01",
       "reviewStatus": "verified",
       "sourceDocumentId": "stadtwerke-ingolstadt-netze-14a-2026",
-      "sourcePageUrl": "https://www.swi-netze.de/entgelte/",
-      "documentUrl": "https://www.swi-netze.de/fileadmin/media/04_Netze/C_Netze_Downloads/PDFs/01_Strom/Entgelte/2026_01_01_Preisblatt_SWI_Strom_2026.pdf",
+      "sourcePageUrl": "https://swi-netze.de/entgelte/",
+      "documentUrl": "https://swi-netze.de/fileadmin/media/04_Netze/C_Netze_Downloads/PDFs/01_Strom/Entgelte/2026_01_01_Preisblatt_SWI_Strom_2026.pdf",
       "bands": [
         {
           "key": "NT",
           "label": "Niedrigtarifstufe",
-          "valueCtPerKwh": "0.42",
-          "sourceQuote": "NT 0,42 ct/kWh"
+          "valueCtPerKwh": "2.39",
+          "sourceQuote": "NT 2,39 ct/kWh"
         },
         {
           "key": "ST",
           "label": "Standardtarifstufe",
-          "valueCtPerKwh": "5.67",
-          "sourceQuote": "ST 5,67 ct/kWh"
+          "valueCtPerKwh": "5.97",
+          "sourceQuote": "ST 5,97 ct/kWh"
         },
         {
           "key": "HT",
           "label": "Hochtarifstufe",
-          "valueCtPerKwh": "11.19",
-          "sourceQuote": "HT 11,19 ct/kWh"
+          "valueCtPerKwh": "6.82",
+          "sourceQuote": "HT 6,82 ct/kWh"
         }
       ],
       "timeWindows": [
         {
-          "id": "stadtwerke-ingolstadt-netze-2026-standard-overnight",
+          "id": "stadtwerke-ingolstadt-netze-2026-q1q4-standard-night",
           "bandKey": "ST",
           "label": "Standardtarif",
-          "seasonLabel": "Ganzjährig 2026",
+          "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-10:00",
-          "sourceQuote": "ST 00:00-10:00"
+          "timeRangeLabel": "00:00-01:00",
+          "sourceQuote": "Die uebrigen Zeiten sind ST-Zeiten"
         },
         {
-          "id": "stadtwerke-ingolstadt-netze-2026-low-midday",
+          "id": "stadtwerke-ingolstadt-netze-2026-q1q4-low-night",
           "bandKey": "NT",
           "label": "Niedrigtarif",
-          "seasonLabel": "Ganzjährig 2026",
+          "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "10:00-15:00",
-          "sourceQuote": "NT 10:00-15:00"
+          "timeRangeLabel": "01:00-05:00",
+          "sourceQuote": "NT 01:00 bis 05:00 Uhr"
         },
         {
-          "id": "stadtwerke-ingolstadt-netze-2026-standard-afternoon",
+          "id": "stadtwerke-ingolstadt-netze-2026-q1q4-standard-morning",
           "bandKey": "ST",
           "label": "Standardtarif",
-          "seasonLabel": "Ganzjährig 2026",
+          "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "15:00-17:00",
-          "sourceQuote": "ST 15:00-17:00"
+          "timeRangeLabel": "05:00-11:30",
+          "sourceQuote": "Die uebrigen Zeiten sind ST-Zeiten"
         },
         {
-          "id": "stadtwerke-ingolstadt-netze-2026-high-evening",
+          "id": "stadtwerke-ingolstadt-netze-2026-q1q4-high-midday",
           "bandKey": "HT",
           "label": "Hochtarif",
-          "seasonLabel": "Ganzjährig 2026",
+          "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "17:00-22:00",
-          "sourceQuote": "HT 17:00-22:00"
+          "timeRangeLabel": "11:30-13:30",
+          "sourceQuote": "HT 11:30 bis 13:30 Uhr"
         },
         {
-          "id": "stadtwerke-ingolstadt-netze-2026-standard-late",
+          "id": "stadtwerke-ingolstadt-netze-2026-q1q4-standard-afternoon",
           "bandKey": "ST",
           "label": "Standardtarif",
-          "seasonLabel": "Ganzjährig 2026",
+          "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "22:00-24:00",
-          "sourceQuote": "ST 22:00-24:00"
+          "timeRangeLabel": "13:30-16:30",
+          "sourceQuote": "Die uebrigen Zeiten sind ST-Zeiten"
+        },
+        {
+          "id": "stadtwerke-ingolstadt-netze-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "16:30-19:30",
+          "sourceQuote": "HT 16:30 bis 19:30 Uhr"
+        },
+        {
+          "id": "stadtwerke-ingolstadt-netze-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "19:30-24:00",
+          "sourceQuote": "Die uebrigen Zeiten sind ST-Zeiten"
+        },
+        {
+          "id": "stadtwerke-ingolstadt-netze-2026-q2q3-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2-Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Fuer das Modul 3 gelten folgende HT- und NT-Zeiten (die uebrigen Zeiten sind ST-Zeiten)"
         }
       ]
     }
@@ -1748,7 +1739,7 @@
     "slug": "nordnetz",
     "name": "NORDNetz GmbH",
     "regionLabel": "Schleswig-Holstein",
-    "websiteUrl": "https://nordnetz.com/",
+    "websiteUrl": "https://www.nordnetz.com/",
     "registrySourceIds": [
       "bnetza-mastr-netzbetreiber-overview",
       "vnbdigital-portal"
@@ -1756,45 +1747,45 @@
     "sourceDocuments": [
       {
         "id": "nordnetz-14a-2026",
-        "title": "Preisblatt 6a Steuerbare Verbrauchseinrichtungen nach §14a EnWG 2026 Version 1.0",
+        "title": "NordNetz finale Netzentgelte Strom ab 01.01.2026",
         "documentType": "pdf",
-        "sourcePageUrl": "https://nordnetz.com/de/strom/netzzugang-strom/netzentgelte",
-        "documentUrl": "https://nordnetz.com/resource/blob/149336/fcd578ca870cff42b8da562f789ee3e9/preisblatt6a-14a-enwg-modul3-2026-data.pdf",
+        "sourcePageUrl": "https://www.nordnetz.com/de/NordNetz/netzinformationen/netzentgelte_strom.html",
+        "documentUrl": "https://www.nordnetz.com/content/dam/revu-global/nordnetz/Dokumente/NordNetz/Netzinformationen/netzentgelte_strom/2026/nordnetz_finale_netzentgelte_strom_ab_20260101.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
-        "reviewStatus": "pending",
+        "reviewStatus": "verified",
         "notes": [
-          "Offizielles Preisblatt 6a von NORDNetz.",
-          "Die PDF-Extraktion ist vergleichsweise unruhig; der kuratierte Eintrag basiert auf manuell gegengeprüften Zeilen aus dem Dokument.",
-          "Bis ein sauberer HTML- oder Textsnapshot gespeichert ist, bleibt der Review-Status bewusst pending."
+          "Offizielle NordNetz-Seite fuer die finalen Netzentgelte Strom 2026.",
+          "Das finale Netzentgelte-PDF ab 01.01.2026 enthaelt auf Seite 14 das Preisblatt sVE Modul 3.",
+          "Q1 und Q4 nennen explizite ST-, HT- und NT-Zeitfenster; Q2 und Q3 sind explizit als Standardtarif 00:00-24:00 Uhr ausgewiesen."
         ]
       }
     ],
     "currentTariff": {
       "modelKey": "14a-model-3",
       "validFrom": "2026-01-01",
-      "reviewStatus": "pending",
+      "reviewStatus": "verified",
       "sourceDocumentId": "nordnetz-14a-2026",
-      "sourcePageUrl": "https://nordnetz.com/de/strom/netzzugang-strom/netzentgelte",
-      "documentUrl": "https://nordnetz.com/resource/blob/149336/fcd578ca870cff42b8da562f789ee3e9/preisblatt6a-14a-enwg-modul3-2026-data.pdf",
+      "sourcePageUrl": "https://www.nordnetz.com/de/NordNetz/netzinformationen/netzentgelte_strom.html",
+      "documentUrl": "https://www.nordnetz.com/content/dam/revu-global/nordnetz/Dokumente/NordNetz/Netzinformationen/netzentgelte_strom/2026/nordnetz_finale_netzentgelte_strom_ab_20260101.pdf",
       "bands": [
         {
           "key": "NT",
           "label": "Niedrigtarifstufe",
           "valueCtPerKwh": "0.42",
-          "sourceQuote": "NT 0,42 ct/kWh"
+          "sourceQuote": "Niedriglasttarifstufe Netto 0,42 ct/kWh"
         },
         {
           "key": "ST",
           "label": "Standardtarifstufe",
           "valueCtPerKwh": "4.20",
-          "sourceQuote": "ST 4,20 ct/kWh"
+          "sourceQuote": "Standardtarifstufe Netto 4,20 ct/kWh"
         },
         {
           "key": "HT",
           "label": "Hochtarifstufe",
-          "valueCtPerKwh": "6.20",
-          "sourceQuote": "HT 6,20 ct/kWh"
+          "valueCtPerKwh": "5.21",
+          "sourceQuote": "Hochlasttarifstufe Netto 5,21 ct/kWh"
         }
       ],
       "timeWindows": [
@@ -1805,7 +1796,7 @@
           "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
           "timeRangeLabel": "00:00-04:00",
-          "sourceQuote": "Q1/Q4 NT 00:00-04:00"
+          "sourceQuote": "Quartal 1 und Quartal 4 Niedriglasttarifstufe 00:00-04:00 Uhr"
         },
         {
           "id": "nordnetz-2026-q1q4-standard-morning",
@@ -1814,7 +1805,7 @@
           "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
           "timeRangeLabel": "04:00-10:00",
-          "sourceQuote": "Q1/Q4 ST 04:00-10:00"
+          "sourceQuote": "Quartal 1 und Quartal 4 Standardtarifstufe 04:00-10:00 Uhr"
         },
         {
           "id": "nordnetz-2026-q1q4-high-midday",
@@ -1823,7 +1814,7 @@
           "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
           "timeRangeLabel": "10:00-13:00",
-          "sourceQuote": "Q1/Q4 HT 10:00-13:00"
+          "sourceQuote": "Quartal 1 und Quartal 4 Hochlasttarifstufe 10:00-13:00 Uhr"
         },
         {
           "id": "nordnetz-2026-q1q4-standard-afternoon",
@@ -1832,7 +1823,7 @@
           "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
           "timeRangeLabel": "13:00-18:00",
-          "sourceQuote": "Q1/Q4 ST 13:00-18:00"
+          "sourceQuote": "Quartal 1 und Quartal 4 Standardtarifstufe 13:00-18:00 Uhr"
         },
         {
           "id": "nordnetz-2026-q1q4-high-evening",
@@ -1841,7 +1832,7 @@
           "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
           "timeRangeLabel": "18:00-20:00",
-          "sourceQuote": "Q1/Q4 HT 18:00-20:00"
+          "sourceQuote": "Quartal 1 und Quartal 4 Hochlasttarifstufe 18:00-20:00 Uhr"
         },
         {
           "id": "nordnetz-2026-q1q4-standard-late",
@@ -1850,16 +1841,16 @@
           "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
           "timeRangeLabel": "20:00-24:00",
-          "sourceQuote": "Q1/Q4 ST 20:00-24:00"
+          "sourceQuote": "Quartal 1 und Quartal 4 Standardtarifstufe 20:00-24:00 Uhr"
         },
         {
-          "id": "nordnetz-2026-q2q3-standard",
+          "id": "nordnetz-2026-q2q3-standard-all-day",
           "bandKey": "ST",
           "label": "Standardtarif",
           "seasonLabel": "Q2-Q3 2026",
           "dayLabel": "Alle Tage",
           "timeRangeLabel": "00:00-24:00",
-          "sourceQuote": "Q2/Q3 ST 00:00-24:00"
+          "sourceQuote": "Quartal 2 und Quartal 3 Standardtarifstufe 00:00-24:00 Uhr"
         }
       ]
     }
@@ -1885,8 +1876,9 @@
         "reviewStatus": "pending",
         "notes": [
           "Offizielle Entgeltseite der Stadtwerke Heidelberg Netze.",
-          "Die Modul-3-Werte sind klar sichtbar, die Zeitfenster wurden derzeit nur für die im PDF eindeutig lesbaren Quartale kuratiert.",
-          "Bis zur vollständigen Snapshot-basierenden Extraktion bleibt der Eintrag pending."
+          "Das offizielle Preisblatt 2026 nennt fuer Modul 3 explizit AP Standardtarifstufe 6,75 ct/kWh, AP Hochlasttarifstufe 8,88 ct/kWh und AP Niedriglasttarifstufe 2,70 ct/kWh.",
+          "Explizit ausgewiesen sind nur Q3- und Q4-Zeitfenster mit HT 09:00-11:00 Uhr und 17:00-19:00 Uhr sowie NT 01:00-05:00 Uhr.",
+          "Das PDF weist selbst darauf hin, dass die Abrechnung von Modul 3 auf einzelne Quartale begrenzt sein kann; ohne Q1/Q2-Jahresmatrix bleibt der Datensatz pending."
         ]
       }
     ],
@@ -1897,82 +1889,9 @@
       "sourceDocumentId": "heidelberg-netze-14a-2026",
       "sourcePageUrl": "https://www.netze-heidelberg.de/veroeffentlichung-strom-gas",
       "documentUrl": "https://www.netze-heidelberg.de/de/Veroeffentlichungspflichten/Stromnetz/Preisblatt-Netznutzung-Strom-2026.pdf",
-      "bands": [
-        {
-          "key": "NT",
-          "label": "Niedrigtarifstufe",
-          "valueCtPerKwh": "1.41",
-          "sourceQuote": "NT 1,41 ct/kWh"
-        },
-        {
-          "key": "ST",
-          "label": "Standardtarifstufe",
-          "valueCtPerKwh": "7.40",
-          "sourceQuote": "ST 7,40 ct/kWh"
-        },
-        {
-          "key": "HT",
-          "label": "Hochtarifstufe",
-          "valueCtPerKwh": "16.31",
-          "sourceQuote": "HT 16,31 ct/kWh"
-        }
-      ],
-      "timeWindows": [
-        {
-          "id": "heidelberg-netze-2026-q3-standard-night",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-11:00",
-          "sourceQuote": "Q3 ST 00:00-11:00"
-        },
-        {
-          "id": "heidelberg-netze-2026-q3-low-midday",
-          "bandKey": "NT",
-          "label": "Niedrigtarif",
-          "seasonLabel": "Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "11:00-14:00",
-          "sourceQuote": "Q3 NT 11:00-14:00"
-        },
-        {
-          "id": "heidelberg-netze-2026-q3-standard-afternoon",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "14:00-17:00",
-          "sourceQuote": "Q3 ST 14:00-17:00"
-        },
-        {
-          "id": "heidelberg-netze-2026-q3-high-evening",
-          "bandKey": "HT",
-          "label": "Hochtarif",
-          "seasonLabel": "Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "17:00-21:00",
-          "sourceQuote": "Q3 HT 17:00-21:00"
-        },
-        {
-          "id": "heidelberg-netze-2026-q3-standard-late",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "21:00-24:00",
-          "sourceQuote": "Q3 ST 21:00-24:00"
-        },
-        {
-          "id": "heidelberg-netze-2026-q4-standard",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q4 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-24:00",
-          "sourceQuote": "Q4 ST 00:00-24:00"
-        }
-      ]
+      "summaryFallback": "Finale 2026-Quelle erfasst, aber Modul 3 ist nur fuer Q3/Q4 explizit publiziert",
+      "bands": [],
+      "timeWindows": []
     }
   },
   {
@@ -1993,88 +1912,24 @@
         "documentUrl": "https://www.ewr-netz.de/fileadmin/data/downloads/Unternehmen/Veroeffentlichungspflichten/Netzkosten/Preisblaetter/Strom/2026/EWR_Netz_GmbH_Preisblatt_NE-Strom_26_end%C3%BCltig_20251219.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
-        "reviewStatus": "verified",
+        "reviewStatus": "pending",
         "notes": [
           "Offizielle Betreiberseite für Netzentgelte Strom.",
-          "Das Dokument ist als endgültiges Preisblatt 2026 veröffentlicht und enthält Modul 3 mit klarer Tageslogik.",
-          "Für spätere Refreshes muss nur geprüft werden, ob neue Anlagenversionen mit geänderten Uhrzeiten veröffentlicht werden."
+          "Das finale Preisblatt 2026 weist Modul 3 mit den Arbeitspreisen ST 8,46 ct/kWh, HT 16,91 ct/kWh und NT 3,38 ct/kWh aus.",
+          "Explizite Zeitfenster sind nur fuer Q1 und Q4 genannt; ohne belastbare Q2/Q3-Matrix bleibt der Datensatz pending."
         ]
       }
     ],
     "currentTariff": {
       "modelKey": "14a-model-3",
       "validFrom": "2026-01-01",
-      "reviewStatus": "verified",
+      "reviewStatus": "pending",
       "sourceDocumentId": "ewr-netz-14a-2026",
       "sourcePageUrl": "https://www.ewr-netz.de/kunden/lieferanten/netzkosten/",
       "documentUrl": "https://www.ewr-netz.de/fileadmin/data/downloads/Unternehmen/Veroeffentlichungspflichten/Netzkosten/Preisblaetter/Strom/2026/EWR_Netz_GmbH_Preisblatt_NE-Strom_26_end%C3%BCltig_20251219.pdf",
-      "bands": [
-        {
-          "key": "NT",
-          "label": "Niedrigtarifstufe",
-          "valueCtPerKwh": "1.75",
-          "sourceQuote": "NT 1,75 ct/kWh"
-        },
-        {
-          "key": "ST",
-          "label": "Standardtarifstufe",
-          "valueCtPerKwh": "5.84",
-          "sourceQuote": "ST 5,84 ct/kWh"
-        },
-        {
-          "key": "HT",
-          "label": "Hochtarifstufe",
-          "valueCtPerKwh": "7.31",
-          "sourceQuote": "HT 7,31 ct/kWh"
-        }
-      ],
-      "timeWindows": [
-        {
-          "id": "ewr-netz-2026-standard-night",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Ganzjährig 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-10:00",
-          "sourceQuote": "ST 00:00-10:00"
-        },
-        {
-          "id": "ewr-netz-2026-low-midday",
-          "bandKey": "NT",
-          "label": "Niedrigtarif",
-          "seasonLabel": "Ganzjährig 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "10:00-15:00",
-          "sourceQuote": "NT 10:00-15:00"
-        },
-        {
-          "id": "ewr-netz-2026-standard-afternoon",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Ganzjährig 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "15:00-17:00",
-          "sourceQuote": "ST 15:00-17:00"
-        },
-        {
-          "id": "ewr-netz-2026-high-evening",
-          "bandKey": "HT",
-          "label": "Hochtarif",
-          "seasonLabel": "Ganzjährig 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "17:00-20:30",
-          "sourceQuote": "HT 17:00-20:30"
-        },
-        {
-          "id": "ewr-netz-2026-standard-late",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Ganzjährig 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "20:30-24:00",
-          "sourceQuote": "ST 20:30-24:00"
-        }
-      ]
+      "summaryFallback": "Finale 2026-Quelle erfasst, aber Modul 3 ist nur fuer Q1/Q4 explizit publiziert",
+      "bands": [],
+      "timeWindows": []
     }
   },
   {
@@ -2095,97 +1950,25 @@
         "documentUrl": "https://www.geranetz.de/fileadmin/user_upload/strom/Netznutzung-Lieferant-Letztverbraucher/Preisblaetter/2026/Preisblatt_2a_Entnahme_fuer_steuerbare_Verbrauchseinrichtungen_Stand_01.01.26.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
-        "reviewStatus": "verified",
+        "reviewStatus": "pending",
         "notes": [
           "Offizielle Betreiberseite für Netzentgelte Strom.",
-          "Das Preisblatt nennt Q1/Q4 als Volltag-ST und eine Sommermatrix für Q2/Q3.",
-          "Die Werte wurden direkt gegen den offiziellen PDF-Link geprüft."
+          "Das Preisblatt nennt fuer den Gueltigkeitszeitraum 01.01.-31.03. und 01.10.-31.12.2026 die Arbeitspreise ST 5,98 ct/kWh, HT 7,25 ct/kWh und NT 2,39 ct/kWh.",
+          "Explizit veroeffentlicht sind nur die Winter-Tarifzeiten fuer den Zeitraum 01.01.-31.03. und 01.10.-31.12.2026.",
+          "Da das Dokument keine explizite Q2/Q3-Matrix ausweist, bleibt der Datensatz pending."
         ]
       }
     ],
     "currentTariff": {
       "modelKey": "14a-model-3",
       "validFrom": "2026-01-01",
-      "reviewStatus": "verified",
+      "reviewStatus": "pending",
       "sourceDocumentId": "geranetz-14a-2026",
       "sourcePageUrl": "https://www.geranetz.de/strom/netznutzungsvertrag-lieferantletztverbraucher/preisblaetter.html",
       "documentUrl": "https://www.geranetz.de/fileadmin/user_upload/strom/Netznutzung-Lieferant-Letztverbraucher/Preisblaetter/2026/Preisblatt_2a_Entnahme_fuer_steuerbare_Verbrauchseinrichtungen_Stand_01.01.26.pdf",
-      "bands": [
-        {
-          "key": "NT",
-          "label": "Niedrigtarifstufe",
-          "valueCtPerKwh": "0.42",
-          "sourceQuote": "NT 0,42 ct/kWh"
-        },
-        {
-          "key": "ST",
-          "label": "Standardtarifstufe",
-          "valueCtPerKwh": "5.55",
-          "sourceQuote": "ST 5,55 ct/kWh"
-        },
-        {
-          "key": "HT",
-          "label": "Hochtarifstufe",
-          "valueCtPerKwh": "12.22",
-          "sourceQuote": "HT 12,22 ct/kWh"
-        }
-      ],
-      "timeWindows": [
-        {
-          "id": "geranetz-2026-q1q4-standard",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q1 und Q4 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-24:00",
-          "sourceQuote": "Q1/Q4 ST 00:00-24:00"
-        },
-        {
-          "id": "geranetz-2026-q2q3-standard-overnight",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q2-Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-10:00",
-          "sourceQuote": "Q2/Q3 ST 00:00-10:00"
-        },
-        {
-          "id": "geranetz-2026-q2q3-low-midday",
-          "bandKey": "NT",
-          "label": "Niedrigtarif",
-          "seasonLabel": "Q2-Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "10:00-15:00",
-          "sourceQuote": "Q2/Q3 NT 10:00-15:00"
-        },
-        {
-          "id": "geranetz-2026-q2q3-standard-afternoon",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q2-Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "15:00-17:00",
-          "sourceQuote": "Q2/Q3 ST 15:00-17:00"
-        },
-        {
-          "id": "geranetz-2026-q2q3-high-evening",
-          "bandKey": "HT",
-          "label": "Hochtarif",
-          "seasonLabel": "Q2-Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "17:00-22:00",
-          "sourceQuote": "Q2/Q3 HT 17:00-22:00"
-        },
-        {
-          "id": "geranetz-2026-q2q3-standard-late",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q2-Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "22:00-24:00",
-          "sourceQuote": "Q2/Q3 ST 22:00-24:00"
-        }
-      ]
+      "summaryFallback": "Finale 2026-Quelle erfasst, aber Modul 3 ist nur fuer Winterquartale explizit publiziert",
+      "bands": [],
+      "timeWindows": []
     }
   },
   {
@@ -2210,7 +1993,7 @@
         "notes": [
           "Offizielle Betreiberseite für Netzentgelte Strom.",
           "Die Anlage 6a ist als separates Preisblatt für steuerbare Verbrauchseinrichtungen veröffentlicht.",
-          "Q1/Q4 sind Volltag-ST, Q2/Q3 nutzen die bekannte Sommermatrix."
+          "Nur in Q1 und Q4 sind HT- und NT-Zeiten ausgewiesen; fuer alle uebrigen Zeitraeume wird ST abgerechnet."
         ]
       }
     ],
@@ -2248,53 +2031,35 @@
           "label": "Standardtarif",
           "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-24:00",
-          "sourceQuote": "Q1/Q4 ST 00:00-24:00"
+          "timeRangeLabel": "Alle anderen Zeiten",
+          "sourceQuote": "In den restlichen Zeitraeumen kommt der Standardtarif (ST) zur Abrechnung"
         },
         {
-          "id": "allgaeunetz-2026-q2q3-standard-overnight",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q2-Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-10:00",
-          "sourceQuote": "Q2/Q3 ST 00:00-10:00"
-        },
-        {
-          "id": "allgaeunetz-2026-q2q3-low-midday",
+          "id": "allgaeunetz-2026-q1q4-low-night",
           "bandKey": "NT",
           "label": "Niedrigtarif",
-          "seasonLabel": "Q2-Q3 2026",
+          "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "10:00-15:00",
-          "sourceQuote": "Q2/Q3 NT 10:00-15:00"
+          "timeRangeLabel": "02:00-04:00",
+          "sourceQuote": "Zeiten Niederlasttarif (NT) 02:00-04:00"
         },
         {
-          "id": "allgaeunetz-2026-q2q3-standard-afternoon",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q2-Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "15:00-17:00",
-          "sourceQuote": "Q2/Q3 ST 15:00-17:00"
-        },
-        {
-          "id": "allgaeunetz-2026-q2q3-high-evening",
+          "id": "allgaeunetz-2026-q1q4-high-evening",
           "bandKey": "HT",
           "label": "Hochtarif",
-          "seasonLabel": "Q2-Q3 2026",
+          "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "17:00-22:00",
-          "sourceQuote": "Q2/Q3 HT 17:00-22:00"
+          "timeRangeLabel": "17:30-19:30",
+          "sourceQuote": "Zeiten Hochlasttarif (HT) 17:30-19:30"
         },
         {
-          "id": "allgaeunetz-2026-q2q3-standard-late",
+          "id": "allgaeunetz-2026-q2q3-standard-all-day",
           "bandKey": "ST",
           "label": "Standardtarif",
           "seasonLabel": "Q2-Q3 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "22:00-24:00",
-          "sourceQuote": "Q2/Q3 ST 22:00-24:00"
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "In den restlichen Zeitraeumen kommt der Standardtarif (ST) zur Abrechnung"
         }
       ]
     }
@@ -2313,106 +2078,33 @@
         "id": "e-netz-suedhessen-14a-2026",
         "title": "Anlage 6a - Preisblatt für steuerbare Verbrauchseinrichtungen nach §14a EnWG ab 01.01.2026 - Version 1.0",
         "documentType": "pdf",
-        "sourcePageUrl": "https://www.e-netz-suedhessen.de/kontakt-service/pflichtveroeffentlichungen",
+        "sourcePageUrl": "https://www.e-netz-suedhessen.de/bauen-anschliessen/regelungen-und-wissenswertes/neuregelung-14a-enwg",
         "documentUrl": "https://www.e-netz-suedhessen.de/fileadmin/download/preisblatt_strom.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
-        "reviewStatus": "verified",
+        "reviewStatus": "pending",
         "notes": [
-          "Offizielle Betreiberseite für Netzentgelte Strom.",
-          "Das Preisblatt 6a ist als Version 1.0 ab 01.01.2026 veröffentlicht.",
-          "Die Uhrzeiten folgen demselben Winter-/Sommermuster wie mehrere regionale Verteilnetze."
+          "Offizielle §14a-Seite der e-netz Suedhessen mit Verweis auf das aktuelle Preisblatt gueltig ab 01.01.2026.",
+          "Das Preisblatt 6a nennt fuer Modul 3 explizit APST 5,63 ct/kWh, APHT 7,38 ct/kWh und APNT 1,53 ct/kWh.",
+          "Explizit ausgewiesen sind nur Q1-/Q4-Zeitfenster mit HT 18:00-22:00 Uhr und NT 00:00-06:00 Uhr; ohne belastbare Q2/Q3-Matrix bleibt der Datensatz pending."
         ]
       }
     ],
     "currentTariff": {
       "modelKey": "14a-model-3",
       "validFrom": "2026-01-01",
-      "reviewStatus": "verified",
+      "reviewStatus": "pending",
       "sourceDocumentId": "e-netz-suedhessen-14a-2026",
-      "sourcePageUrl": "https://www.e-netz-suedhessen.de/kontakt-service/pflichtveroeffentlichungen",
+      "sourcePageUrl": "https://www.e-netz-suedhessen.de/bauen-anschliessen/regelungen-und-wissenswertes/neuregelung-14a-enwg",
       "documentUrl": "https://www.e-netz-suedhessen.de/fileadmin/download/preisblatt_strom.pdf",
-      "bands": [
-        {
-          "key": "NT",
-          "label": "Niedrigtarifstufe",
-          "valueCtPerKwh": "0.55",
-          "sourceQuote": "NT 0,55 ct/kWh"
-        },
-        {
-          "key": "ST",
-          "label": "Standardtarifstufe",
-          "valueCtPerKwh": "4.89",
-          "sourceQuote": "ST 4,89 ct/kWh"
-        },
-        {
-          "key": "HT",
-          "label": "Hochtarifstufe",
-          "valueCtPerKwh": "9.65",
-          "sourceQuote": "HT 9,65 ct/kWh"
-        }
-      ],
-      "timeWindows": [
-        {
-          "id": "e-netz-suedhessen-2026-q1q4-standard",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q1 und Q4 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-24:00",
-          "sourceQuote": "Q1/Q4 ST 00:00-24:00"
-        },
-        {
-          "id": "e-netz-suedhessen-2026-q2q3-standard-overnight",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q2-Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "00:00-10:00",
-          "sourceQuote": "Q2/Q3 ST 00:00-10:00"
-        },
-        {
-          "id": "e-netz-suedhessen-2026-q2q3-low-midday",
-          "bandKey": "NT",
-          "label": "Niedrigtarif",
-          "seasonLabel": "Q2-Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "10:00-15:00",
-          "sourceQuote": "Q2/Q3 NT 10:00-15:00"
-        },
-        {
-          "id": "e-netz-suedhessen-2026-q2q3-standard-afternoon",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q2-Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "15:00-17:00",
-          "sourceQuote": "Q2/Q3 ST 15:00-17:00"
-        },
-        {
-          "id": "e-netz-suedhessen-2026-q2q3-high-evening",
-          "bandKey": "HT",
-          "label": "Hochtarif",
-          "seasonLabel": "Q2-Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "17:00-22:00",
-          "sourceQuote": "Q2/Q3 HT 17:00-22:00"
-        },
-        {
-          "id": "e-netz-suedhessen-2026-q2q3-standard-late",
-          "bandKey": "ST",
-          "label": "Standardtarif",
-          "seasonLabel": "Q2-Q3 2026",
-          "dayLabel": "Alle Tage",
-          "timeRangeLabel": "22:00-24:00",
-          "sourceQuote": "Q2/Q3 ST 22:00-24:00"
-        }
-      ]
+      "summaryFallback": "Aktuelle 2026-Quelle erfasst, aber Modul 3 ist nur fuer Q1/Q4 explizit publiziert",
+      "bands": [],
+      "timeWindows": []
     }
   },
   {
     "slug": "schleswig-holstein-netz",
-    "name": "Schleswig-Holstein Netz AG",
+    "name": "Schleswig-Holstein Netz GmbH",
     "regionLabel": "Schleswig-Holstein",
     "websiteUrl": "https://www.sh-netz.com/",
     "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
@@ -2663,17 +2355,17 @@
     "sourceDocuments": [
       {
         "id": "syna-14a-2026",
-        "title": "Preisblatt 6 §14a EnWG Modul 3 2026",
+        "title": "Finales Preisblatt Netzentgelte Strom 2026",
         "documentType": "pdf",
-        "sourcePageUrl": "https://www.syna.de/corp/ueber-syna/unser-netz/netzentgelte-strom",
-        "documentUrl": "https://www.syna.de/corp/ueber-syna/unser-netz/netzentgelte-strom-netzentgelte-und-abgaben/-/media/project/evu/syna/corp-dokumente/netze/netzentgelte-strom/preisblatt_6_14a_enwg_modul_3_2026.pdf",
+        "sourcePageUrl": "https://www.syna.de/corp/ueber-syna/netz/netzentgelte",
+        "documentUrl": "https://www.syna.de/content/dam/revu-global/syna/documents/netze/netzentgelte-strom-netzentgelte-und-abgaben/2026/finales-preisblatt-netzentgelte-strom-2026.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
         "reviewStatus": "pending",
         "notes": [
-          "Offizielle Syna-Seite fuer Netzentgelte Strom.",
-          "Das separate Preisblatt 6 fuer §14a EnWG Modul 3 ist als Primaerquelle dokumentiert.",
-          "Bandwerte und Zeitfenster werden in einem separaten Validierungsschritt strukturiert."
+          "Aktuelle offizielle Netzentgelt-Seite der Syna fuer 2026.",
+          "Der offizielle Seiten- und PDF-Pfad fuer 2026 ist bekannt, im aktuellen Audit aber durch Cloudflare-Challenges technisch blockiert.",
+          "Ohne direkt lesbaren Primaerbeleg bleibt der Datensatz pending und gilt intern als manual-evidence-needed."
         ]
       }
     ],
@@ -2682,9 +2374,9 @@
       "validFrom": "2026-01-01",
       "reviewStatus": "pending",
       "sourceDocumentId": "syna-14a-2026",
-      "sourcePageUrl": "https://www.syna.de/corp/ueber-syna/unser-netz/netzentgelte-strom",
-      "documentUrl": "https://www.syna.de/corp/ueber-syna/unser-netz/netzentgelte-strom-netzentgelte-und-abgaben/-/media/project/evu/syna/corp-dokumente/netze/netzentgelte-strom/preisblatt_6_14a_enwg_modul_3_2026.pdf",
-      "summaryFallback": "Offizielle 2026-Quelle erfasst, Modul-3-Parsing ausstehend",
+      "sourcePageUrl": "https://www.syna.de/corp/ueber-syna/netz/netzentgelte",
+      "documentUrl": "https://www.syna.de/content/dam/revu-global/syna/documents/netze/netzentgelte-strom-netzentgelte-und-abgaben/2026/finales-preisblatt-netzentgelte-strom-2026.pdf",
+      "summaryFallback": "Offizielle 2026-Quelle technisch blockiert; manuelle Evidenz fuer Modul 3 erforderlich",
       "bands": [],
       "timeWindows": []
     }
@@ -3013,24 +2705,98 @@
         "documentUrl": "https://a.storyblok.com/f/274773/x/dc3a61c884/2025-12-12_finales-preisblatt-nne-strom-2026.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
-        "reviewStatus": "pending",
+        "reviewStatus": "verified",
         "notes": [
           "Offizielle Preisblatt-Seite fuer das Stromnetz der Netzgesellschaft Duesseldorf.",
           "Das finale Strom-Preisblatt 2026 ist als Primaerquelle dokumentiert.",
-          "Die §14a-Modell-3-Extraktion folgt in einem separaten Review-Batch."
+          "Modul 3 nennt ST 7,91 ct/kWh, HT 8,19 ct/kWh und NT 3,16 ct/kWh fuer Niederspannung ohne Leistungsmessung.",
+          "HT- und NT-Tarifstufen werden nur im ersten und vierten Quartal 2026 angewandt; Q2 und Q3 bleiben Standardtarif."
         ]
       }
     ],
     "currentTariff": {
       "modelKey": "14a-model-3",
       "validFrom": "2026-01-01",
-      "reviewStatus": "pending",
+      "reviewStatus": "verified",
       "sourceDocumentId": "netz-duesseldorf-14a-2026",
       "sourcePageUrl": "https://www.netz-duesseldorf.de/unsere-infrastruktur/strom/preisblaetter",
       "documentUrl": "https://a.storyblok.com/f/274773/x/dc3a61c884/2025-12-12_finales-preisblatt-nne-strom-2026.pdf",
-      "summaryFallback": "Offizielle 2026-Quelle erfasst, Modul-3-Parsing ausstehend",
-      "bands": [],
-      "timeWindows": []
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "3.16",
+          "sourceQuote": "Modul 3 Niedriglasttarifstufe 3,16 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "7.91",
+          "sourceQuote": "Modul 3 Standardlasttarifstufe 7,91 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "8.19",
+          "sourceQuote": "Modul 3 Hochlasttarifstufe 8,19 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "netz-duesseldorf-2026-q1q4-standard-night",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-04:30",
+          "sourceQuote": "Standardlasttarifstufe 00:00-4:30 Uhr"
+        },
+        {
+          "id": "netz-duesseldorf-2026-q1q4-low-early",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "04:30-05:00",
+          "sourceQuote": "Niedriglasttarifstufe 4:30-5:00 Uhr"
+        },
+        {
+          "id": "netz-duesseldorf-2026-q1q4-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "05:00-18:00",
+          "sourceQuote": "Standardlasttarifstufe 05:00-18:00 Uhr"
+        },
+        {
+          "id": "netz-duesseldorf-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "18:00-20:00",
+          "sourceQuote": "Hochlasttarifstufe 18:00-20:00 Uhr"
+        },
+        {
+          "id": "netz-duesseldorf-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "20:00-24:00",
+          "sourceQuote": "Standardlasttarifstufe 20:00-00:00 Uhr"
+        },
+        {
+          "id": "netz-duesseldorf-2026-q2q3-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2-Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Die Niedriglast- und Hochlasttarifstufen werden im ersten und vierten Quartal 2026 angewandt."
+        }
+      ]
     }
   },
   {
@@ -3042,30 +2808,95 @@
     "sourceDocuments": [
       {
         "id": "nrm-netzdienste-14a-2026",
-        "title": "Preisblatt Strom PB02 gueltig ab 01.01.2026",
-        "documentType": "pdf",
+        "title": "NRM PB 1 Strom ab 01.01.2026",
+        "documentType": "xlsx",
         "sourcePageUrl": "https://www.nrm-netzdienste.de/de/netzzugang/netzzugang-strom",
-        "documentUrl": "https://www.nrm-netzdienste.de/resource/blob/162824/8ff6844b3354affd58f10727ac636687/preisblatt-strom-pb02-gueltig-ab-01-01-2026-mit-nrm-logo-data.pdf",
+        "documentUrl": "https://www.nrm-netzdienste.de/resource/blob/162202/19a814ee3b72701e0d3e752dd10a83e1/20251212-nrm-pb-1-strom-ab-01-01-2026-el-8-0-s-1--data.xlsx",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
-        "reviewStatus": "pending",
+        "reviewStatus": "verified",
         "notes": [
-          "Offizielle Netzzugang-Seite fuer Strom der NRM Netzdienste Rhein-Main.",
-          "Das Preisblatt Strom PB02 ab 01.01.2026 ist als Primaerquelle hinterlegt.",
-          "Die Modell-3-Daten werden spaeter manuell aus dem Preisblatt extrahiert."
+          "Offizielle Netzzugang-Seite fuer Strom der NRM Netzdienste Rhein-Main mit direktem Verweis auf das finale PB1-XLSX fuer 2026.",
+          "Das PB1-XLSX nennt fuer §14a Modul 3 in Niederspannung explizit ST 9,23 ct/kWh, HT 13,45 ct/kWh und NT 3,69 ct/kWh.",
+          "Die Datei weist HT und NT nur fuer Q1 und Q4 mit festen Uhrzeiten aus; ST ist im Blatt als ausserhalb HT und NT beschrieben.",
+          "Q2 und Q3 werden deshalb als vollstaendige ST-Phase strukturiert erfasst und im Datensatz explizit dokumentiert."
         ]
       }
     ],
     "currentTariff": {
       "modelKey": "14a-model-3",
       "validFrom": "2026-01-01",
-      "reviewStatus": "pending",
+      "reviewStatus": "verified",
       "sourceDocumentId": "nrm-netzdienste-14a-2026",
       "sourcePageUrl": "https://www.nrm-netzdienste.de/de/netzzugang/netzzugang-strom",
-      "documentUrl": "https://www.nrm-netzdienste.de/resource/blob/162824/8ff6844b3354affd58f10727ac636687/preisblatt-strom-pb02-gueltig-ab-01-01-2026-mit-nrm-logo-data.pdf",
-      "summaryFallback": "Offizielle 2026-Quelle erfasst, Modul-3-Parsing ausstehend",
-      "bands": [],
-      "timeWindows": []
+      "documentUrl": "https://www.nrm-netzdienste.de/resource/blob/162202/19a814ee3b72701e0d3e752dd10a83e1/20251212-nrm-pb-1-strom-ab-01-01-2026-el-8-0-s-1--data.xlsx",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "3.69",
+          "sourceQuote": "Arbeitspreis NT (Modul 1 und Modul 3 taeglich 00:45-06:15 Uhr in Q1 und Q4) 3,69 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "9.23",
+          "sourceQuote": "Arbeitspreis ST (Modul 1 und Modul 3 ausserhalb HT und NT) 9,23 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "13.45",
+          "sourceQuote": "Arbeitspreis HT (Modul 1 und Modul 3 taeglich 16:45-20:00 Uhr in Q1 und Q4) 13,45 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "nrm-netzdienste-2026-q1q4-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Taeglich",
+          "timeRangeLabel": "00:45-06:15",
+          "sourceQuote": "Modul 3 taeglich 00:45-06:15 Uhr in Q1 und Q4"
+        },
+        {
+          "id": "nrm-netzdienste-2026-q1q4-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Taeglich",
+          "timeRangeLabel": "06:15-16:45",
+          "sourceQuote": "Arbeitspreis ST (Modul 1 und Modul 3 ausserhalb HT und NT)"
+        },
+        {
+          "id": "nrm-netzdienste-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Taeglich",
+          "timeRangeLabel": "16:45-20:00",
+          "sourceQuote": "Modul 3 taeglich 16:45-20:00 Uhr in Q1 und Q4"
+        },
+        {
+          "id": "nrm-netzdienste-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Taeglich",
+          "timeRangeLabel": "20:00-24:00",
+          "sourceQuote": "Arbeitspreis ST (Modul 1 und Modul 3 ausserhalb HT und NT)"
+        },
+        {
+          "id": "nrm-netzdienste-2026-q2q3-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2-Q3 2026",
+          "dayLabel": "Taeglich",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Arbeitspreis ST (Modul 1 und Modul 3 ausserhalb HT und NT)"
+        }
+      ]
     }
   },
   {
@@ -3083,24 +2914,224 @@
         "documentUrl": "https://www.thueringer-energienetze.com/Content/Documents/Energiepartner/TEN_NNE_Strom_2026.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
-        "reviewStatus": "pending",
+        "reviewStatus": "verified",
         "notes": [
           "Offizielle Netzentgelt- und Umlagenseite fuer das Stromnetz der TEN.",
-          "Das TEN-Strom-Preisblatt 2026 wurde als Primaerquelle aufgenommen.",
-          "Die manuelle Modell-3-Auswertung ist fuer einen spaeteren Batch vorgesehen."
+          "Das TEN-Strom-Preisblatt 2026 enthaelt ein separates Preisblatt STV fuer Modul 3.",
+          "Q1 und Q4 nennen explizite HT-, ST- und NT-Zeiten; alle anderen Zeitraeume werden als ST abgerechnet."
         ]
       }
     ],
     "currentTariff": {
       "modelKey": "14a-model-3",
       "validFrom": "2026-01-01",
-      "reviewStatus": "pending",
+      "reviewStatus": "verified",
       "sourceDocumentId": "thueringer-energienetze-14a-2026",
       "sourcePageUrl": "https://www.thueringer-energienetze.com/Energiepartner/Netzkunden_und_Lieferanten_Stromnetz/Netzentgelte_und_Umlagen",
       "documentUrl": "https://www.thueringer-energienetze.com/Content/Documents/Energiepartner/TEN_NNE_Strom_2026.pdf",
-      "summaryFallback": "Offizielle 2026-Quelle erfasst, Modul-3-Parsing ausstehend",
-      "bands": [],
-      "timeWindows": []
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "1.67",
+          "sourceQuote": "Niedriglasttarifstufe 1,67 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "5.56",
+          "sourceQuote": "Standardlasttarifstufe 5,56 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "8.62",
+          "sourceQuote": "Hochlasttarifstufe 8,62 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "thueringer-energienetze-2026-q1q4-standard",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:00-08:00",
+          "sourceQuote": "Standardlasttarifstufe 06:00-08:00"
+        },
+        {
+          "id": "thueringer-energienetze-2026-q1q4-high-morning",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "08:00-09:00",
+          "sourceQuote": "Hochlasttarifstufe 08:00-09:00"
+        },
+        {
+          "id": "thueringer-energienetze-2026-q1q4-standard-late-morning",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "09:00-10:30",
+          "sourceQuote": "Standardlasttarifstufe 09:00-10:30"
+        },
+        {
+          "id": "thueringer-energienetze-2026-q1q4-high-midday",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "10:30-12:00",
+          "sourceQuote": "Hochlasttarifstufe 10:30-12:00"
+        },
+        {
+          "id": "thueringer-energienetze-2026-q1q4-standard-afternoon",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "12:00-17:30",
+          "sourceQuote": "Standardlasttarifstufe 12:00-17:30"
+        },
+        {
+          "id": "thueringer-energienetze-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:30-19:00",
+          "sourceQuote": "Hochlasttarifstufe 17:30-19:00"
+        },
+        {
+          "id": "thueringer-energienetze-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "19:00-22:00",
+          "sourceQuote": "Standardlasttarifstufe 19:00-22:00"
+        },
+        {
+          "id": "thueringer-energienetze-2026-q1q4-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-06:00",
+          "sourceQuote": "Niedriglasttarifstufe 00:00-06:00"
+        },
+        {
+          "id": "thueringer-energienetze-2026-q1q4-low-late",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "22:00-24:00",
+          "sourceQuote": "Niedriglasttarifstufe 22:00-00:00"
+        },
+        {
+          "id": "thueringer-energienetze-2026-q2q3-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2-Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Alle anderen Zeitraeume werden als Standardlasttarifstufe abgerechnet."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "tws-netz",
+    "name": "TWS Netz GmbH",
+    "regionLabel": "Ravensburg",
+    "websiteUrl": "https://www.tws-netz.de/",
+    "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
+    "sourceDocuments": [
+      {
+        "id": "tws-netz-14a-2026",
+        "title": "Preisblatt zur Netznutzung Strom 01.01.2026 - 31.12.2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.tws-netz.de/de/Unsere-Netze/Stromnetz/",
+        "documentUrl": "https://www.tws-netz.de/de/Unsere-Netze/Netze-neu/Stromnetz/Netzzugang-Entgelte/5-132-TWS-Netz-Preisblatt-2026-final.pdf",
+        "checkedAt": "2026-03-09",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Stromnetz-Seite der TWS Netz mit veroeffentlichtem 2026-Preisblatt zur Netznutzung Strom.",
+          "Die separate §14a-Seite der TWS verweist fuer die aktuell geltenden Netzentgelte explizit auf diese Stromnetz-Seite.",
+          "Das 2026-Preisblatt nennt fuer Modul 3 explizit HT 12,26 ct/kWh, ST 9,74 ct/kWh und NT 3,21 ct/kWh.",
+          "Die Quartalsmatrix markiert Q1 bis Q4 2026 durchgaengig mit Ja; die Uhrzeiten gelten damit ganzjaehrig."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "tws-netz-14a-2026",
+      "sourcePageUrl": "https://www.tws-netz.de/de/Unsere-Netze/Stromnetz/",
+      "documentUrl": "https://www.tws-netz.de/de/Unsere-Netze/Netze-neu/Stromnetz/Netzzugang-Entgelte/5-132-TWS-Netz-Preisblatt-2026-final.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedertarifstufe",
+          "valueCtPerKwh": "3.21",
+          "sourceQuote": "Niedertarif (NT) 3,21 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "9.74",
+          "sourceQuote": "Standardtarif (ST) 9,74 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "12.26",
+          "sourceQuote": "Hochtarif (HT) 12,26 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "tws-netz-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-06:00",
+          "sourceQuote": "Niedertarif (NT) Beginn 00:00 Ende 06:00"
+        },
+        {
+          "id": "tws-netz-2026-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:00-17:00",
+          "sourceQuote": "Standardtarif (ST) Beginn 06:00 Ende 17:00"
+        },
+        {
+          "id": "tws-netz-2026-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-22:00",
+          "sourceQuote": "Hochtarif (HT) Beginn 17:00 Ende 22:00"
+        },
+        {
+          "id": "tws-netz-2026-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "22:00-24:00",
+          "sourceQuote": "Standardtarif (ST) Beginn 22:00 Ende 00:00"
+        }
+      ]
     }
   },
   {
@@ -3112,17 +3143,18 @@
     "sourceDocuments": [
       {
         "id": "swe-netz-14a-2026",
-        "title": "Strom Preisblatt 2026 vorlaeufig",
+        "title": "Strom Preisblatt 2026 endgueltig",
         "documentType": "pdf",
         "sourcePageUrl": "https://www.swe-netz.de/pb/netz/netzentgelte_Strom",
-        "documentUrl": "https://www.swe-netz.de/pb/site/netz/get/documents_E-1923782843/netz/documents/stromnetz/netzentgelte_strom/ab_2026/Strom_Preisblatt_2026_vorlaeufig.pdf",
+        "documentUrl": "https://www.swe-netz.de/pb/site/netz/get/documents_E-1362349375/netz/documents/stromnetz/netzentgelte_strom/ab_2026/Strom_Preisblatt_2026_endgueltig.pdf",
         "checkedAt": "2026-03-09",
         "validFrom": "2026-01-01",
         "reviewStatus": "pending",
         "notes": [
           "Offizielle SWE-Netz-Seite fuer Netzentgelte Strom.",
-          "Das vorlaeufige Strom-Preisblatt 2026 ist als aktuelle Betreiberquelle erfasst.",
-          "Modell-3-Bandwerte und Zeitfenster bleiben bis zur manuellen Pruefung pending."
+          "Die offizielle Seite verweist inzwischen auf das endgueltige Strom-Preisblatt 2026.",
+          "Die finale PDF nennt HT 9,41 ct/kWh, ST 6,90 ct/kWh und NT 2,73 ct/kWh, weist aber nur HT- und NT-Zeiten fuer Q1 und Q4 explizit aus.",
+          "Ohne belastbaren ST- oder Sommerbeleg bleibt der Datensatz pending."
         ]
       }
     ],
@@ -3132,8 +3164,8 @@
       "reviewStatus": "pending",
       "sourceDocumentId": "swe-netz-14a-2026",
       "sourcePageUrl": "https://www.swe-netz.de/pb/netz/netzentgelte_Strom",
-      "documentUrl": "https://www.swe-netz.de/pb/site/netz/get/documents_E-1923782843/netz/documents/stromnetz/netzentgelte_strom/ab_2026/Strom_Preisblatt_2026_vorlaeufig.pdf",
-      "summaryFallback": "Offizielle 2026-Quelle erfasst, Modul-3-Parsing ausstehend",
+      "documentUrl": "https://www.swe-netz.de/pb/site/netz/get/documents_E-1362349375/netz/documents/stromnetz/netzentgelte_strom/ab_2026/Strom_Preisblatt_2026_endgueltig.pdf",
+      "summaryFallback": "Finale 2026-Quelle erfasst, aber keine publizierbare Modul-3-Jahresmatrix",
       "bands": [],
       "timeWindows": []
     }

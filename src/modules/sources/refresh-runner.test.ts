@@ -20,7 +20,14 @@ describe("runSourceRefresh", () => {
     ]);
     const refreshBatch = vi.fn(async ({ sources }: { sources: Array<{ sourceSlug: string }> }) => ({
       fetchedCount: sources.length,
-      snapshotCount: sources.length
+      snapshotCount: sources.length,
+      results: sources.map((source) => ({
+        sourceSlug: source.sourceSlug,
+        status: (source.sourceSlug.includes("westnetz") ? "warning" : "ok") as
+          | "ok"
+          | "warning"
+          | "blocked"
+      }))
     }));
 
     const result = await runSourceRefresh({
@@ -40,7 +47,10 @@ describe("runSourceRefresh", () => {
       selectedSourceCount: 1,
       selectedSourceSlugs: ["westnetz-westnetz-14a-2026"],
       fetchedCount: 1,
-      snapshotCount: 1
+      snapshotCount: 1,
+      okCount: 0,
+      warningCount: 1,
+      blockedCount: 0
     });
   });
 });

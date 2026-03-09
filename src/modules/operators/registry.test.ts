@@ -64,7 +64,7 @@ describe("getOperatorRegistry", () => {
     );
   });
 
-  test("adds the next verified operator batch including Stadtwerke Schwaebisch Hall and nine additional official sources", () => {
+  test("audits the extended operator batch against the current official 2026 sources", () => {
     const registry = getOperatorRegistry();
 
     expect(registry).toEqual(
@@ -93,9 +93,9 @@ describe("getOperatorRegistry", () => {
             reviewStatus: "verified",
             timeWindows: expect.arrayContaining([
               expect.objectContaining({
-                seasonLabel: "Q2-Q3 2026",
+                seasonLabel: "Q1-Q4 2026",
                 bandKey: "HT",
-                timeRangeLabel: "17:00-22:00"
+                timeRangeLabel: "17:00-20:00"
               })
             ])
           })
@@ -104,11 +104,17 @@ describe("getOperatorRegistry", () => {
           slug: "netze-odr",
           currentTariff: expect.objectContaining({
             reviewStatus: "verified",
+            bands: expect.arrayContaining([
+              expect.objectContaining({
+                key: "NT",
+                valueCtPerKwh: "2.35"
+              })
+            ]),
             timeWindows: expect.arrayContaining([
               expect.objectContaining({
                 seasonLabel: "Q2-Q3 2026",
                 bandKey: "NT",
-                timeRangeLabel: "10:00-15:00"
+                timeRangeLabel: "11:00-17:00"
               })
             ])
           })
@@ -116,18 +122,26 @@ describe("getOperatorRegistry", () => {
         expect.objectContaining({
           slug: "stadtwerke-ingolstadt-netze",
           currentTariff: expect.objectContaining({
-            validFrom: "2026-02-01",
+            validFrom: "2026-01-01",
             timeWindows: expect.arrayContaining([
               expect.objectContaining({
                 bandKey: "HT",
-                timeRangeLabel: "17:00-22:00"
+                timeRangeLabel: "16:30-19:30"
               })
             ])
           })
         }),
         expect.objectContaining({
           slug: "nordnetz",
+          websiteUrl: "https://www.nordnetz.com/",
           currentTariff: expect.objectContaining({
+            reviewStatus: "verified",
+            bands: expect.arrayContaining([
+              expect.objectContaining({
+                key: "HT",
+                valueCtPerKwh: "5.21"
+              })
+            ]),
             timeWindows: expect.arrayContaining([
               expect.objectContaining({
                 seasonLabel: "Q1 und Q4 2026",
@@ -145,36 +159,28 @@ describe("getOperatorRegistry", () => {
         expect.objectContaining({
           slug: "heidelberg-netze",
           currentTariff: expect.objectContaining({
-            timeWindows: expect.arrayContaining([
-              expect.objectContaining({
-                seasonLabel: "Q3 2026",
-                bandKey: "HT",
-                timeRangeLabel: "17:00-21:00"
-              })
-            ])
+            reviewStatus: "pending",
+            summaryFallback: "Finale 2026-Quelle erfasst, aber Modul 3 ist nur fuer Q3/Q4 explizit publiziert",
+            bands: [],
+            timeWindows: []
           })
         }),
         expect.objectContaining({
           slug: "ewr-netz",
           currentTariff: expect.objectContaining({
-            timeWindows: expect.arrayContaining([
-              expect.objectContaining({
-                bandKey: "HT",
-                timeRangeLabel: "17:00-20:30"
-              })
-            ])
+            reviewStatus: "pending",
+            summaryFallback: "Finale 2026-Quelle erfasst, aber Modul 3 ist nur fuer Q1/Q4 explizit publiziert",
+            bands: [],
+            timeWindows: []
           })
         }),
         expect.objectContaining({
           slug: "geranetz",
           currentTariff: expect.objectContaining({
-            timeWindows: expect.arrayContaining([
-              expect.objectContaining({
-                seasonLabel: "Q2-Q3 2026",
-                bandKey: "HT",
-                timeRangeLabel: "17:00-22:00"
-              })
-            ])
+            reviewStatus: "pending",
+            summaryFallback: "Finale 2026-Quelle erfasst, aber Modul 3 ist nur fuer Winterquartale explizit publiziert",
+            bands: [],
+            timeWindows: []
           })
         }),
         expect.objectContaining({
@@ -182,7 +188,7 @@ describe("getOperatorRegistry", () => {
           currentTariff: expect.objectContaining({
             timeWindows: expect.arrayContaining([
               expect.objectContaining({
-                seasonLabel: "Q1 und Q4 2026",
+                seasonLabel: "Q2-Q3 2026",
                 bandKey: "ST",
                 timeRangeLabel: "00:00-24:00"
               })
@@ -192,24 +198,60 @@ describe("getOperatorRegistry", () => {
         expect.objectContaining({
           slug: "e-netz-suedhessen",
           currentTariff: expect.objectContaining({
-            timeWindows: expect.arrayContaining([
-              expect.objectContaining({
-                seasonLabel: "Q2-Q3 2026",
-                bandKey: "HT",
-                timeRangeLabel: "17:00-22:00"
-              })
-            ])
+            reviewStatus: "pending",
+            summaryFallback: "Aktuelle 2026-Quelle erfasst, aber Modul 3 ist nur fuer Q1/Q4 explizit publiziert",
+            bands: [],
+            timeWindows: []
           })
         })
       ])
     );
   });
 
-  test("adds the next documented ten-operator intake batch as pending official sources", () => {
+  test("keeps source-only operators pending unless the official 2026 evidence is fully publishable and promotes NRM once the PB1 XLSX is structured", () => {
     const registry = getOperatorRegistry();
 
     expect(registry).toEqual(
       expect.arrayContaining([
+        expect.objectContaining({
+          slug: "tws-netz",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "verified",
+            bands: expect.arrayContaining([
+              expect.objectContaining({
+                key: "NT",
+                valueCtPerKwh: "3.21"
+              }),
+              expect.objectContaining({
+                key: "ST",
+                valueCtPerKwh: "9.74"
+              }),
+              expect.objectContaining({
+                key: "HT",
+                valueCtPerKwh: "12.26"
+              })
+            ]),
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q1-Q4 2026",
+                bandKey: "HT",
+                timeRangeLabel: "17:00-22:00"
+              }),
+              expect.objectContaining({
+                seasonLabel: "Q1-Q4 2026",
+                bandKey: "ST",
+                timeRangeLabel: "22:00-24:00"
+              })
+            ])
+          }),
+          sourceDocuments: expect.arrayContaining([
+            expect.objectContaining({
+              sourcePageUrl: "https://www.tws-netz.de/de/Unsere-Netze/Stromnetz/",
+              documentUrl:
+                "https://www.tws-netz.de/de/Unsere-Netze/Netze-neu/Stromnetz/Netzzugang-Entgelte/5-132-TWS-Netz-Preisblatt-2026-final.pdf"
+            })
+          ])
+        }),
         expect.objectContaining({
           slug: "syna",
           currentTariff: expect.objectContaining({
@@ -219,18 +261,29 @@ describe("getOperatorRegistry", () => {
           }),
           sourceDocuments: expect.arrayContaining([
             expect.objectContaining({
-              sourcePageUrl: "https://www.syna.de/corp/ueber-syna/unser-netz/netzentgelte-strom",
+              sourcePageUrl: "https://www.syna.de/corp/ueber-syna/netz/netzentgelte",
               documentUrl:
-                "https://www.syna.de/corp/ueber-syna/unser-netz/netzentgelte-strom-netzentgelte-und-abgaben/-/media/project/evu/syna/corp-dokumente/netze/netzentgelte-strom/preisblatt_6_14a_enwg_modul_3_2026.pdf"
+                "https://www.syna.de/content/dam/revu-global/syna/documents/netze/netzentgelte-strom-netzentgelte-und-abgaben/2026/finales-preisblatt-netzentgelte-strom-2026.pdf"
             })
           ])
         }),
         expect.objectContaining({
           slug: "netz-duesseldorf",
           currentTariff: expect.objectContaining({
-            reviewStatus: "pending",
-            bands: [],
-            timeWindows: []
+            reviewStatus: "verified",
+            bands: expect.arrayContaining([
+              expect.objectContaining({
+                key: "HT",
+                valueCtPerKwh: "8.19"
+              })
+            ]),
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q2-Q3 2026",
+                bandKey: "ST",
+                timeRangeLabel: "00:00-24:00"
+              })
+            ])
           }),
           sourceDocuments: expect.arrayContaining([
             expect.objectContaining({
@@ -243,24 +296,59 @@ describe("getOperatorRegistry", () => {
         expect.objectContaining({
           slug: "nrm-netzdienste",
           currentTariff: expect.objectContaining({
-            reviewStatus: "pending",
-            bands: [],
-            timeWindows: []
+            reviewStatus: "verified",
+            bands: expect.arrayContaining([
+              expect.objectContaining({
+                key: "NT",
+                valueCtPerKwh: "3.69"
+              }),
+              expect.objectContaining({
+                key: "ST",
+                valueCtPerKwh: "9.23"
+              }),
+              expect.objectContaining({
+                key: "HT",
+                valueCtPerKwh: "13.45"
+              })
+            ]),
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q1 und Q4 2026",
+                bandKey: "HT",
+                timeRangeLabel: "16:45-20:00"
+              }),
+              expect.objectContaining({
+                seasonLabel: "Q2-Q3 2026",
+                bandKey: "ST",
+                timeRangeLabel: "00:00-24:00"
+              })
+            ])
           }),
           sourceDocuments: expect.arrayContaining([
             expect.objectContaining({
               sourcePageUrl: "https://www.nrm-netzdienste.de/de/netzzugang/netzzugang-strom",
               documentUrl:
-                "https://www.nrm-netzdienste.de/resource/blob/162824/8ff6844b3354affd58f10727ac636687/preisblatt-strom-pb02-gueltig-ab-01-01-2026-mit-nrm-logo-data.pdf"
+                "https://www.nrm-netzdienste.de/resource/blob/162202/19a814ee3b72701e0d3e752dd10a83e1/20251212-nrm-pb-1-strom-ab-01-01-2026-el-8-0-s-1--data.xlsx"
             })
           ])
         }),
         expect.objectContaining({
           slug: "thueringer-energienetze",
           currentTariff: expect.objectContaining({
-            reviewStatus: "pending",
-            bands: [],
-            timeWindows: []
+            reviewStatus: "verified",
+            bands: expect.arrayContaining([
+              expect.objectContaining({
+                key: "ST",
+                valueCtPerKwh: "5.56"
+              })
+            ]),
+            timeWindows: expect.arrayContaining([
+              expect.objectContaining({
+                seasonLabel: "Q2-Q3 2026",
+                bandKey: "ST",
+                timeRangeLabel: "00:00-24:00"
+              })
+            ])
           }),
           sourceDocuments: expect.arrayContaining([
             expect.objectContaining({
@@ -275,6 +363,7 @@ describe("getOperatorRegistry", () => {
           slug: "swe-netz",
           currentTariff: expect.objectContaining({
             reviewStatus: "pending",
+            summaryFallback: "Finale 2026-Quelle erfasst, aber keine publizierbare Modul-3-Jahresmatrix",
             bands: [],
             timeWindows: []
           }),
@@ -282,7 +371,7 @@ describe("getOperatorRegistry", () => {
             expect.objectContaining({
               sourcePageUrl: "https://www.swe-netz.de/pb/netz/netzentgelte_Strom",
               documentUrl:
-                "https://www.swe-netz.de/pb/site/netz/get/documents_E-1923782843/netz/documents/stromnetz/netzentgelte_strom/ab_2026/Strom_Preisblatt_2026_vorlaeufig.pdf"
+                "https://www.swe-netz.de/pb/site/netz/get/documents_E-1362349375/netz/documents/stromnetz/netzentgelte_strom/ab_2026/Strom_Preisblatt_2026_endgueltig.pdf"
             })
           ])
         })
@@ -490,9 +579,15 @@ describe("getOperatorRegistry", () => {
       expect.arrayContaining([
         expect.objectContaining({
           slug: "swm-infrastruktur",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "pending",
+            summaryFallback: "Finale 2026-Quelle erfasst, aber keine publizierbare Modul-3-Jahresmatrix",
+            bands: [],
+            timeWindows: []
+          }),
           sourceDocuments: expect.arrayContaining([
             expect.objectContaining({
-              sourcePageUrl: "https://www.swm-infrastruktur.de/strom/netzzugang/netznutzungsentgelte",
+              sourcePageUrl: "https://www.swm-infrastruktur.de/netzzugang/strom/netzentgelte",
               documentUrl:
                 "https://www.swm-infrastruktur.de/dam/swm-infrastruktur/dokumente/strom/netzzugang-netznutzungsentgelte/preisblaetter-2026/strom-preisblatt-2026.pdf"
             })
@@ -524,20 +619,21 @@ describe("getOperatorRegistry", () => {
           websiteUrl: "https://www.swi-netze.de/",
           sourceDocuments: expect.arrayContaining([
             expect.objectContaining({
-              sourcePageUrl: "https://www.swi-netze.de/entgelte/",
+              sourcePageUrl: "https://swi-netze.de/entgelte/",
               documentUrl:
-                "https://www.swi-netze.de/fileadmin/media/04_Netze/C_Netze_Downloads/PDFs/01_Strom/Entgelte/2026_01_01_Preisblatt_SWI_Strom_2026.pdf"
+                "https://swi-netze.de/fileadmin/media/04_Netze/C_Netze_Downloads/PDFs/01_Strom/Entgelte/2026_01_01_Preisblatt_SWI_Strom_2026.pdf"
             })
           ])
         }),
         expect.objectContaining({
           slug: "nordnetz",
-          websiteUrl: "https://nordnetz.com/",
+          websiteUrl: "https://www.nordnetz.com/",
           sourceDocuments: expect.arrayContaining([
             expect.objectContaining({
-              sourcePageUrl: "https://nordnetz.com/de/strom/netzzugang-strom/netzentgelte",
+              sourcePageUrl:
+                "https://www.nordnetz.com/de/NordNetz/netzinformationen/netzentgelte_strom.html",
               documentUrl:
-                "https://nordnetz.com/resource/blob/149336/fcd578ca870cff42b8da562f789ee3e9/preisblatt6a-14a-enwg-modul3-2026-data.pdf"
+                "https://www.nordnetz.com/content/dam/revu-global/nordnetz/Dokumente/NordNetz/Netzinformationen/netzentgelte_strom/2026/nordnetz_finale_netzentgelte_strom_ab_20260101.pdf"
             })
           ])
         }),
@@ -585,10 +681,70 @@ describe("getOperatorRegistry", () => {
         }),
         expect.objectContaining({
           slug: "e-netz-suedhessen",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "pending",
+            summaryFallback: "Aktuelle 2026-Quelle erfasst, aber Modul 3 ist nur fuer Q1/Q4 explizit publiziert",
+            bands: [],
+            timeWindows: []
+          }),
           sourceDocuments: expect.arrayContaining([
             expect.objectContaining({
-              sourcePageUrl: "https://www.e-netz-suedhessen.de/kontakt-service/pflichtveroeffentlichungen",
+              sourcePageUrl:
+                "https://www.e-netz-suedhessen.de/bauen-anschliessen/regelungen-und-wissenswertes/neuregelung-14a-enwg",
               documentUrl: "https://www.e-netz-suedhessen.de/fileadmin/download/preisblatt_strom.pdf"
+            })
+          ])
+        }),
+        expect.objectContaining({
+          slug: "mittelhessen-netz",
+          sourceDocuments: expect.arrayContaining([
+            expect.objectContaining({
+              sourcePageUrl: "https://www.mit-n.de/marktpartner/strom",
+              documentUrl:
+                "https://www.mit-n.de/fileadmin/user_upload/Dateien/Marktpartner/Strom/Netzentgelte/MIT.N_Preisblatt_Strom_2026_01_01.pdf"
+            })
+          ])
+        }),
+        expect.objectContaining({
+          slug: "syna",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "pending",
+            summaryFallback:
+              "Offizielle 2026-Quelle technisch blockiert; manuelle Evidenz fuer Modul 3 erforderlich",
+            bands: [],
+            timeWindows: []
+          }),
+          sourceDocuments: expect.arrayContaining([
+            expect.objectContaining({
+              sourcePageUrl: "https://www.syna.de/corp/ueber-syna/netz/netzentgelte",
+              documentUrl:
+                "https://www.syna.de/content/dam/revu-global/syna/documents/netze/netzentgelte-strom-netzentgelte-und-abgaben/2026/finales-preisblatt-netzentgelte-strom-2026.pdf"
+            })
+          ])
+        }),
+        expect.objectContaining({
+          slug: "nrm-netzdienste",
+          sourceDocuments: expect.arrayContaining([
+            expect.objectContaining({
+              sourcePageUrl: "https://www.nrm-netzdienste.de/de/netzzugang/netzzugang-strom",
+              documentUrl:
+                "https://www.nrm-netzdienste.de/resource/blob/162202/19a814ee3b72701e0d3e752dd10a83e1/20251212-nrm-pb-1-strom-ab-01-01-2026-el-8-0-s-1--data.xlsx"
+            })
+          ])
+        }),
+        expect.objectContaining({
+          slug: "swe-netz",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "pending",
+            summaryFallback: "Finale 2026-Quelle erfasst, aber keine publizierbare Modul-3-Jahresmatrix",
+            bands: [],
+            timeWindows: []
+          }),
+          sourceDocuments: expect.arrayContaining([
+            expect.objectContaining({
+              sourcePageUrl: "https://www.swe-netz.de/pb/netz/netzentgelte_Strom",
+              documentUrl:
+                "https://www.swe-netz.de/pb/site/netz/get/documents_E-1362349375/netz/documents/stromnetz/netzentgelte_strom/ab_2026/Strom_Preisblatt_2026_endgueltig.pdf"
             })
           ])
         })
@@ -608,6 +764,10 @@ describe("getOperatorRegistry", () => {
     expect(serializedRegistry).not.toContain("https://www.ewr-netz.de/netz/netzentgelte");
     expect(serializedRegistry).not.toContain("https://www.gera-netz.de/");
     expect(serializedRegistry).not.toContain("https://www.allgaeunetz.de/");
+    expect(serializedRegistry).not.toContain("https://www.mitn.de/");
+    expect(serializedRegistry).not.toContain(
+      "https://www.syna.de/corp/ueber-syna/unser-netz/netzentgelte-strom"
+    );
     expect(serializedRegistry).not.toContain(
       "https://www.swm-infrastruktur.de/dam/jcr:bb1201d1-d178-4314-a017-cdd9410f04b5/2026_Netznutzungsentgelte%20Strom.pdf"
     );
@@ -729,27 +889,53 @@ describe("getOperatorRegistry", () => {
     });
   });
 
-  test("keeps Avacon pending until page-level finality evidence is stored alongside the PDF while MVV is final", () => {
+  test("promotes Avacon once the official page states final 2026 publication status while MVV stays final", () => {
     const registry = getOperatorRegistry();
     const avacon = registry.find((entry) => entry.slug === "avacon-netz");
     const mvv = registry.find((entry) => entry.slug === "mvv-netze");
+    const avaconSourceDocument = avacon?.sourceDocuments.find(
+      (document) => document.id === "avacon-netz-14a-2026"
+    );
 
-    expect(avacon).toMatchObject({
-      currentTariff: expect.objectContaining({
-        reviewStatus: "pending",
-        documentUrl: "https://www.avacon-netz.de/content/dam/revu-global/avacon-netz/documents/netzentgelte-strom/2026/Preisbl%C3%A4tter_AVANG_Strom_01.01.2026.pdf"
-      }),
-      sourceDocuments: expect.arrayContaining([
+    expect(avacon?.currentTariff).toMatchObject({
+      reviewStatus: "verified",
+      documentUrl:
+        "https://www.avacon-netz.de/content/dam/revu-global/avacon-netz/documents/netzentgelte-strom/2026/Preisbl%C3%A4tter_AVANG_Strom_01.01.2026%20%281%29.pdf",
+      bands: expect.arrayContaining([
         expect.objectContaining({
-          id: "avacon-netz-14a-2026",
-          reviewStatus: "pending",
-          notes: expect.arrayContaining([
-            expect.stringContaining("Finalitaetsbeleg"),
-            expect.stringContaining("Vorbehalt")
-          ])
+          key: "ST",
+          valueCtPerKwh: "6.04"
+        }),
+        expect.objectContaining({
+          key: "HT",
+          valueCtPerKwh: "8.41"
+        }),
+        expect.objectContaining({
+          key: "NT",
+          valueCtPerKwh: "0.60"
+        })
+      ]),
+      timeWindows: expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q2-Q3 2026",
+          bandKey: "ST",
+          timeRangeLabel: "00:00-24:00"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q1 und Q4 2026",
+          bandKey: "HT",
+          timeRangeLabel: "16:30-21:00"
         })
       ])
     });
+    expect(avaconSourceDocument).toMatchObject({
+      id: "avacon-netz-14a-2026",
+      reviewStatus: "verified"
+    });
+    const avaconNotes = avaconSourceDocument?.notes.join("\n") ?? "";
+
+    expect(avaconNotes).toContain("endgueltige Netzentgelte Strom");
+    expect(avaconNotes).toContain("Bestandteil des Netznutzungsverhaeltnisses");
 
     expect(mvv).toMatchObject({
       currentTariff: expect.objectContaining({

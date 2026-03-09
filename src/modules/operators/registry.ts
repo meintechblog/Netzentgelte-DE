@@ -24,7 +24,13 @@ const operatorTimeWindowSchema = z.object({
 const sourceDocumentSchema = z.object({
   id: z.string(),
   title: z.string(),
-  documentType: z.union([z.literal("pdf"), z.literal("html"), z.literal("csv"), z.literal("json")]),
+  documentType: z.union([
+    z.literal("pdf"),
+    z.literal("html"),
+    z.literal("csv"),
+    z.literal("json"),
+    z.literal("xlsx")
+  ]),
   sourcePageUrl: z.string().url(),
   documentUrl: z.string().url(),
   checkedAt: z.string(),

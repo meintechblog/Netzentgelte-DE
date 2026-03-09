@@ -144,14 +144,19 @@ describe("getSeedPublishedOperators", () => {
     const mittelhessenNetz = published.find((entry) => entry.slug === "mittelhessen-netz");
     const ingolstadtNetze = published.find((entry) => entry.slug === "stadtwerke-ingolstadt-netze");
     const ewrNetz = published.find((entry) => entry.slug === "ewr-netz");
+    const netzDuesseldorf = published.find((entry) => entry.slug === "netz-duesseldorf");
+    const nrmNetzdienste = published.find((entry) => entry.slug === "nrm-netzdienste");
+    const thueringerEnergienetze = published.find(
+      (entry) => entry.slug === "thueringer-energienetze"
+    );
     const avacon = published.find((entry) => entry.slug === "avacon-netz");
     const nordnetz = published.find((entry) => entry.slug === "nordnetz");
+    const twsNetz = published.find((entry) => entry.slug === "tws-netz");
     const heidelbergNetze = published.find((entry) => entry.slug === "heidelberg-netze");
 
-    expect(published).toHaveLength(25);
-    expect(avacon).toBeUndefined();
-    expect(nordnetz).toBeUndefined();
+    expect(published).toHaveLength(27);
     expect(heidelbergNetze).toBeUndefined();
+    expect(ewrNetz).toBeUndefined();
 
     expect(published[0]).toMatchObject({
       slug: "netze-bw",
@@ -282,25 +287,162 @@ describe("getSeedPublishedOperators", () => {
     expect(mittelhessenNetz?.timeWindows).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          seasonLabel: "Q1 2026",
+          seasonLabel: "Q1-Q4 2026",
           bandKey: "ST",
-          timeRangeLabel: "00:00-24:00"
+          timeRangeLabel: "06:00-11:00"
         }),
         expect.objectContaining({
-          seasonLabel: "Q2-Q3 2026",
+          seasonLabel: "Q1-Q4 2026",
           bandKey: "NT",
-          timeRangeLabel: "10:00-15:00"
+          timeRangeLabel: "23:00-06:00"
         })
       ])
     );
     expect(ingolstadtNetze).toMatchObject({
-      validFrom: "2026-02-01"
+      validFrom: "2026-01-01"
     });
-    expect(ewrNetz?.timeWindows).toEqual(
+    expect(ingolstadtNetze?.timeWindows).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
           bandKey: "HT",
-          timeRangeLabel: "17:00-20:30"
+          timeRangeLabel: "16:30-19:30"
+        })
+      ])
+    );
+    expect(netzDuesseldorf).toMatchObject({
+      reviewStatus: "verified"
+    });
+    expect(netzDuesseldorf?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q2-Q3 2026",
+          bandKey: "ST",
+          timeRangeLabel: "00:00-24:00"
+        })
+      ])
+    );
+    expect(thueringerEnergienetze?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q1 und Q4 2026",
+          bandKey: "HT",
+          timeRangeLabel: "17:30-19:00"
+        })
+      ])
+    );
+    expect(nrmNetzdienste).toMatchObject({
+      reviewStatus: "verified",
+      documentUrl:
+        "https://www.nrm-netzdienste.de/resource/blob/162202/19a814ee3b72701e0d3e752dd10a83e1/20251212-nrm-pb-1-strom-ab-01-01-2026-el-8-0-s-1--data.xlsx",
+      bands: expect.arrayContaining([
+        expect.objectContaining({
+          key: "ST",
+          valueCtPerKwh: "9.23"
+        })
+      ])
+    });
+    expect(nrmNetzdienste?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q1 und Q4 2026",
+          bandKey: "HT",
+          timeRangeLabel: "16:45-20:00"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q2-Q3 2026",
+          bandKey: "ST",
+          timeRangeLabel: "00:00-24:00"
+        })
+      ])
+    );
+    expect(avacon).toMatchObject({
+      reviewStatus: "verified",
+      documentUrl:
+        "https://www.avacon-netz.de/content/dam/revu-global/avacon-netz/documents/netzentgelte-strom/2026/Preisbl%C3%A4tter_AVANG_Strom_01.01.2026%20%281%29.pdf",
+      bands: expect.arrayContaining([
+        expect.objectContaining({
+          key: "ST",
+          valueCtPerKwh: "6.04"
+        }),
+        expect.objectContaining({
+          key: "HT",
+          valueCtPerKwh: "8.41"
+        }),
+        expect.objectContaining({
+          key: "NT",
+          valueCtPerKwh: "0.60"
+        })
+      ])
+    });
+    expect(avacon?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q2-Q3 2026",
+          bandKey: "ST",
+          timeRangeLabel: "00:00-24:00"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q1 und Q4 2026",
+          bandKey: "HT",
+          timeRangeLabel: "16:30-21:00"
+        })
+      ])
+    );
+    expect(nordnetz).toMatchObject({
+      reviewStatus: "verified",
+      sourcePageUrl: "https://www.nordnetz.com/de/NordNetz/netzinformationen/netzentgelte_strom.html",
+      bands: expect.arrayContaining([
+        expect.objectContaining({
+          key: "HT",
+          valueCtPerKwh: "5.21"
+        })
+      ])
+    });
+    expect(nordnetz?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q2-Q3 2026",
+          bandKey: "ST",
+          timeRangeLabel: "00:00-24:00"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q1 und Q4 2026",
+          bandKey: "HT",
+          timeRangeLabel: "18:00-20:00"
+        })
+      ])
+    );
+    expect(twsNetz).toMatchObject({
+      reviewStatus: "verified",
+      sourcePageUrl: "https://www.tws-netz.de/de/Unsere-Netze/Stromnetz/",
+      documentUrl:
+        "https://www.tws-netz.de/de/Unsere-Netze/Netze-neu/Stromnetz/Netzzugang-Entgelte/5-132-TWS-Netz-Preisblatt-2026-final.pdf",
+      bands: expect.arrayContaining([
+        expect.objectContaining({
+          key: "NT",
+          valueCtPerKwh: "3.21"
+        }),
+        expect.objectContaining({
+          key: "ST",
+          valueCtPerKwh: "9.74"
+        }),
+        expect.objectContaining({
+          key: "HT",
+          valueCtPerKwh: "12.26"
+        })
+      ])
+    });
+    expect(twsNetz?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q1-Q4 2026",
+          bandKey: "NT",
+          timeRangeLabel: "00:00-06:00"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q1-Q4 2026",
+          bandKey: "HT",
+          timeRangeLabel: "17:00-22:00"
         })
       ])
     );

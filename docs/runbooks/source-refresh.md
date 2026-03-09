@@ -4,6 +4,10 @@
 
 Neue oder geaenderte Preisinformationen fuer `§14a Modell 3` nachvollziehbar nachziehen, ohne die Herkunft der Daten zu verlieren.
 
+Fuer das kuratierte Filling neuer oder unvollstaendiger Betreiber siehe auch:
+
+- [netzbetreiber-filling.md](/Users/hulki/projects/netzentgelte-de/.worktrees/bootstrap/docs/runbooks/netzbetreiber-filling.md)
+
 ## Core Rule
 
 Kein publizierter Wert ohne gespeicherte Herkunft.
@@ -61,10 +65,22 @@ Refresh aller currently catalogued sources:
 pnpm sources:refresh
 ```
 
+Live-Audit aller currently catalogued sources mit Statusdiagnosen und Snapshot-Persistenz bei Erfolg:
+
+```bash
+pnpm sources:audit
+```
+
 Refresh einer konkreten Quelle:
 
 ```bash
 pnpm sources:refresh --source-slug netze-bw-netze-bw-14a-2026
+```
+
+Live-Audit einer konkreten Quelle:
+
+```bash
+pnpm sources:audit --source-slug netze-bw-netze-bw-14a-2026
 ```
 
 Erwartetes Ergebnis:
@@ -73,6 +89,7 @@ Erwartetes Ergebnis:
 - neuer Datensatz in `source_snapshots`
 - `last_checked_at` und `last_successful_at` in `source_catalog` aktualisiert
 - Audit-Eintrag in `ingest_runs`
+- bei Audit-Läufen zusaetzlich Statuszaehler fuer `ok`, `warning` und `blocked`
 
 ## Human In The Loop
 

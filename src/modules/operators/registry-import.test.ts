@@ -35,13 +35,20 @@ describe("buildRegistryImportPayload", () => {
   test("expands modul-3 bands into individual tariff rows", () => {
     const payload = buildRegistryImportPayload(getOperatorRegistry());
 
-    expect(payload.tariffs).toHaveLength(84);
+    expect(payload.tariffs).toHaveLength(81);
     expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "westnetz")).toHaveLength(3);
     expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "enercity-netz")).toHaveLength(3);
     expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "fairnetz")).toHaveLength(3);
     expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "stadtwerke-bamberg")).toHaveLength(3);
     expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "schleswig-holstein-netz")).toHaveLength(3);
     expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "mitnetz-strom")).toHaveLength(3);
+    expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "nrm-netzdienste")).toHaveLength(3);
+    expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "tws-netz")).toHaveLength(3);
+    expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "swm-infrastruktur")).toHaveLength(0);
+    expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "heidelberg-netze")).toHaveLength(0);
+    expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "ewr-netz")).toHaveLength(0);
+    expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "geranetz")).toHaveLength(0);
+    expect(payload.tariffs.filter((tariff) => tariff.operatorSlug === "e-netz-suedhessen")).toHaveLength(0);
   });
 });
 
@@ -50,9 +57,9 @@ describe("summarizeRegistryImport", () => {
     const summary = summarizeRegistryImport(buildRegistryImportPayload(getOperatorRegistry()));
 
     expect(summary).toEqual({
-      operatorCount: 33,
-      sourceCount: 33,
-      tariffCount: 84
+      operatorCount: 34,
+      sourceCount: 34,
+      tariffCount: 81
     });
   });
 });

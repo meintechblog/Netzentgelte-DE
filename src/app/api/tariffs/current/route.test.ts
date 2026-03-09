@@ -50,7 +50,26 @@ describe("GET /api/tariffs/current", () => {
     });
     expect(
       data.items.find((item: { operatorSlug: string }) => item.operatorSlug === "avacon-netz")
-    ).toBeUndefined();
+    ).toMatchObject({
+      reviewStatus: "verified",
+      bands: expect.arrayContaining([
+        expect.objectContaining({
+          key: "HT",
+          valueCtPerKwh: "8.41"
+        })
+      ])
+    });
+    expect(
+      data.items.find((item: { operatorSlug: string }) => item.operatorSlug === "nordnetz")
+    ).toMatchObject({
+      reviewStatus: "verified",
+      bands: expect.arrayContaining([
+        expect.objectContaining({
+          key: "HT",
+          valueCtPerKwh: "5.21"
+        })
+      ])
+    });
     expect(schwaebischHall).toMatchObject({
       reviewStatus: "verified",
       timeWindows: expect.arrayContaining([

@@ -17,9 +17,23 @@ describe("GET /api/sources/current", () => {
     });
     expect(data.items[0]).toHaveProperty("pageArtifactApiUrl");
     expect(data.items[0]).toHaveProperty("documentArtifactApiUrl");
+    expect(data.items[0]).toHaveProperty("healthReport");
     expect(data.items).toHaveLength(getSeedPublishedOperators().length);
     expect(
       data.items.find((item: { operatorSlug: string }) => item.operatorSlug === "avacon-netz")
-    ).toBeUndefined();
+    ).toMatchObject({
+      operatorSlug: "avacon-netz",
+      healthReport: expect.objectContaining({
+        status: "warning"
+      })
+    });
+    expect(
+      data.items.find((item: { operatorSlug: string }) => item.operatorSlug === "nordnetz")
+    ).toMatchObject({
+      operatorSlug: "nordnetz",
+      healthReport: expect.objectContaining({
+        status: "warning"
+      })
+    });
   });
 });

@@ -49,7 +49,11 @@ describe("buildCurrentSources", () => {
         latestDocumentSnapshotStoragePath:
           "artifacts/netze-bw-netze-bw-14a-2026/2026-03-09/netzentgelte-strom-netze-bw-gmbh-2026.pdf",
         documentArtifactApiUrl:
-          "/api/artifacts/netze-bw-netze-bw-14a-2026/2026-03-09/netzentgelte-strom-netze-bw-gmbh-2026.pdf"
+          "/api/artifacts/netze-bw-netze-bw-14a-2026/2026-03-09/netzentgelte-strom-netze-bw-gmbh-2026.pdf",
+        healthReport: {
+          status: "ok",
+          issues: []
+        }
       }
     ]);
   });
@@ -58,12 +62,37 @@ describe("buildCurrentSources", () => {
 describe("getSeedCurrentSources", () => {
   test("keeps a seed-backed review list available when no database is configured", () => {
     const sources = getSeedCurrentSources();
+    const syna = sources.find((entry) => entry.operatorSlug === "syna");
+    const sweNetz = sources.find((entry) => entry.operatorSlug === "swe-netz");
 
     expect(sources[0]).toMatchObject({
       sourceSlug: expect.any(String),
       operatorSlug: expect.any(String),
       pageUrl: expect.stringContaining("https://"),
-      documentUrl: expect.stringContaining("https://")
+      documentUrl: expect.stringContaining("https://"),
+      healthReport: expect.objectContaining({
+        status: expect.any(String)
+      })
+    });
+    expect(syna).toMatchObject({
+      healthReport: expect.objectContaining({
+        status: "blocked",
+        issues: expect.arrayContaining([
+          expect.objectContaining({
+            key: "access_blocked"
+          })
+        ])
+      })
+    });
+    expect(sweNetz).toMatchObject({
+      healthReport: expect.objectContaining({
+        status: "warning",
+        issues: expect.arrayContaining([
+          expect.objectContaining({
+            key: "pending_source_only"
+          })
+        ])
+      })
     });
   });
 });

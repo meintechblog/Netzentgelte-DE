@@ -13,7 +13,7 @@ type RegistrySourceRow = {
   sourceSlug: string;
   pageUrl: string;
   sourceUrl: string;
-  documentType: "pdf" | "html" | "csv" | "json";
+  documentType: "pdf" | "html" | "csv" | "json" | "xlsx";
   providerHint: string;
   updateStrategy: string;
   refreshWindowDays: number;

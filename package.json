@@ -15,6 +15,7 @@
     "db:migrate": "node scripts/db/migrate.mjs",
     "ingest:run": "tsx scripts/ingest/run-ingest.ts",
     "registry:import": "tsx scripts/registry/import-registry.ts",
+    "build:shell-registry": "tsx scripts/registry/build-vnbdigital-shell-registry.ts",
     "shells:import": "tsx scripts/registry/import-shell-registry.ts",
     "sources:refresh": "tsx scripts/sources/refresh-sources.ts"
   },

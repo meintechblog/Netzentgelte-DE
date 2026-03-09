@@ -26,10 +26,12 @@ describe("GET /api/geo/operators", () => {
     expect(data.features).toHaveLength(getSeedPublishedOperators().length);
     expect(
       data.features.find(
-        (feature: { properties: { operatorSlug: string } }) =>
-          feature.properties.operatorSlug === "avacon-netz"
+        (feature: { properties: { operatorSlug: string; mapDisplayMode: string }; geometry: unknown }) =>
+          feature.properties.operatorSlug === "avacon-netz" &&
+          feature.properties.mapDisplayMode === "hidden" &&
+          feature.geometry === null
       )
-    ).toBeUndefined();
+    ).toBeDefined();
   });
 
   test("publishes exact municipality geometry for selected operators with evidence-backed coverage units", async () => {

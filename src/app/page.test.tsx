@@ -21,7 +21,7 @@ test("renders the page shell around a dominant germany map hero", async () => {
     ) & Node.DOCUMENT_POSITION_FOLLOWING
   ).toBeTruthy();
   expect(screen.getAllByText(/Stromnetz Berlin/).length).toBeGreaterThan(0);
-  expect(screen.queryByText("Avacon Netz GmbH")).not.toBeInTheDocument();
+  expect(screen.getAllByText("Avacon Netz GmbH").length).toBeGreaterThan(0);
   expect(screen.getByRole("heading", { name: "Quellenprüfung" })).toBeInTheDocument();
   expect(screen.getByText("Zeitfenster")).toBeInTheDocument();
   expect(screen.getAllByText("Hero-Karte").length).toBeGreaterThan(0);

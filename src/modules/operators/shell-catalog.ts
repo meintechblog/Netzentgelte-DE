@@ -50,7 +50,7 @@ export async function loadOperatorShells() {
       operatorName: operatorShells.operatorName,
       legalName: operatorShells.legalName,
       countryCode: operatorShells.countryCode,
-      websiteUrl: sql<string>`coalesce(${operatorShells.websiteUrl}, '')`,
+      websiteUrl: operatorShells.websiteUrl,
       regionLabel: sql<string>`coalesce(${operatorShells.regionLabel}, '')`,
       shellStatus: operatorShells.shellStatus,
       coverageStatus: operatorShells.coverageStatus,
@@ -69,6 +69,7 @@ export async function loadOperatorShells() {
   return rows.map((row) => ({
     ...row,
     legalName: row.legalName ?? undefined,
+    websiteUrl: row.websiteUrl ?? undefined,
     sourcePageUrl: row.sourcePageUrl ?? undefined,
     documentUrl: row.documentUrl ?? undefined,
     notes: row.notes ?? undefined

@@ -5,7 +5,7 @@ export type ShellImportRow = {
   operatorName: string;
   legalName: string | null;
   countryCode: "DE";
-  websiteUrl: string;
+  websiteUrl: string | null;
   regionLabel: string;
   shellStatus: OperatorShellRegistryEntry["shellStatus"];
   coverageStatus: OperatorShellRegistryEntry["coverageStatus"];
@@ -30,7 +30,7 @@ export function buildShellImportPayload(entries: OperatorShellRegistryEntry[]): 
       operatorName: entry.operatorName,
       legalName: entry.legalName ?? null,
       countryCode: "DE",
-      websiteUrl: entry.websiteUrl,
+      websiteUrl: entry.websiteUrl ?? null,
       regionLabel: entry.regionLabel,
       shellStatus: entry.shellStatus,
       coverageStatus: entry.coverageStatus,

@@ -39,7 +39,7 @@ const operatorShellRegistryEntrySchema = z.object({
   slug: z.string(),
   operatorName: z.string(),
   legalName: z.string().optional(),
-  websiteUrl: z.string().url(),
+  websiteUrl: z.string().url().optional(),
   regionLabel: z.string(),
   shellStatus: shellStatusSchema.default("shell"),
   coverageStatus: coverageStatusSchema.default("unknown"),

@@ -12,7 +12,7 @@ describe("GET /api/operators/shells", () => {
       verifiedCount: expect.any(Number),
       exactCoverageCount: expect.any(Number)
     });
-    expect(data.summary.operatorCount).toBeGreaterThan(24);
+    expect(data.summary.operatorCount).toBeGreaterThan(800);
     expect(data.items).toEqual(
       expect.arrayContaining([
         expect.objectContaining({

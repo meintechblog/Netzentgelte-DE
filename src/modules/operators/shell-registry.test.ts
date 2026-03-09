@@ -9,10 +9,26 @@ describe("operatorShellRegistry", () => {
     const stats = getOperatorShellRegistryStats();
     const publishedStats = getOperatorRegistryStats();
 
+    expect(registry.length).toBeGreaterThan(800);
     expect(registry.length).toBeGreaterThan(publishedStats.operatorCount);
     expect(stats.operatorCount).toBe(registry.length);
     expect(stats.sourceFoundCount).toBeGreaterThan(0);
     expect(stats.shellCount).toBeGreaterThan(0);
+  });
+
+  test("contains every currently published operator slug in the shell registry", () => {
+    const shellSlugs = new Set(getOperatorShellRegistry().map((entry) => entry.slug));
+
+    for (const slug of [
+      "netze-bw",
+      "bayernwerk-netz",
+      "stromnetz-berlin",
+      "stadtwerke-schwaebisch-hall",
+      "mittelhessen-netz",
+      "thueringer-energienetze"
+    ]) {
+      expect(shellSlugs.has(slug)).toBe(true);
+    }
   });
 
   test("rejects duplicate slugs", () => {

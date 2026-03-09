@@ -21,14 +21,35 @@ function getBandBadges(row: TariffTableRow) {
 
 function getBandAccentClass(bandKey: "NT" | "ST" | "HT") {
   if (bandKey === "HT") {
-    return "tariff-quarter-band--high";
+    return "ht";
   }
 
   if (bandKey === "NT") {
-    return "tariff-quarter-band--low";
+    return "nt";
   }
 
-  return "tariff-quarter-band--standard";
+  return "st";
+}
+
+function getQuarterSlotClass(
+  slot: TariffTableRow["quarterMatrix"][number]["slots"][number]
+) {
+  if (!slot.bandKey) {
+    return "tariff-quarter-grid__cell tariff-quarter-grid__cell--empty";
+  }
+
+  return `tariff-quarter-grid__cell tariff-quarter-grid__cell--${getBandAccentClass(slot.bandKey)}`;
+}
+
+function getQuarterSlotLabel(
+  quarterLabel: string,
+  slot: TariffTableRow["quarterMatrix"][number]["slots"][number]
+) {
+  if (!slot.bandKey || !slot.valueCtPerKwh) {
+    return `${quarterLabel} ${slot.timeLabel} · keine Zuordnung`;
+  }
+
+  return `${quarterLabel} ${slot.timeLabel} · ${slot.bandKey} · ${slot.valueCtPerKwh} ct/kWh`;
 }
 
 function getEndcustomerProductAccent(productKey: EndcustomerDisplayProduct["key"]) {
@@ -55,6 +76,12 @@ export function TariffTable({ rows }: TariffTableProps) {
 
   return (
     <div className="tariff-table-wrap">
+      <div aria-label="Tariffarben" className="tariff-matrix-legend">
+        <span className="tariff-matrix-legend__label">Legende</span>
+        <span className="tariff-matrix-legend__item tariff-matrix-legend__item--nt">NT</span>
+        <span className="tariff-matrix-legend__item tariff-matrix-legend__item--st">ST</span>
+        <span className="tariff-matrix-legend__item tariff-matrix-legend__item--ht">HT</span>
+      </div>
       <table className="tariff-table tariff-table--quarterly">
         <colgroup>
           <col className="tariff-table__col-operator" />
@@ -259,21 +286,32 @@ export function TariffTable({ rows }: TariffTableProps) {
                   >
                     <div className="tariff-quarter-card__header tariff-quarter-card__header--compact">
                       <span className="table-muted">{quarter.summaryLabel}</span>
-                      <span className="tariff-quarter-card__unit">ct/kWh</span>
+                      <span className="tariff-quarter-card__unit">15-Min Raster</span>
                     </div>
-                    {quarter.timelineEntries.length > 0 ? (
-                      <ol className="tariff-quarter-timeline">
-                        {quarter.timelineEntries.map((entry) => (
-                          <li
-                            className={`tariff-quarter-entry ${getBandAccentClass(entry.bandKey)}`}
-                            key={`${row.operatorSlug}-${quarter.key}-${entry.bandKey}-${entry.timeRange}`}
+                    {quarter.slots.some((slot) => slot.bandKey) ? (
+                      <div className="tariff-quarter-grid">
+                        {quarter.slots.map((slot) => (
+                          <div
+                            className="tariff-quarter-grid__row"
+                            key={`${row.operatorSlug}-${quarter.key}-${slot.slotIndex}`}
                           >
-                            <span className="tariff-window-time">{entry.timeRange}</span>
-                            <span className="tariff-window-chip">{entry.bandKey}</span>
-                            <strong className="tariff-quarter-entry__price">{entry.valueCtPerKwh}</strong>
-                          </li>
+                            <span
+                              className={
+                                slot.isHourStart
+                                  ? "tariff-quarter-grid__hour"
+                                  : "tariff-quarter-grid__hour tariff-quarter-grid__hour--spacer"
+                              }
+                            >
+                              {slot.startLabel}
+                            </span>
+                            <span
+                              aria-label={getQuarterSlotLabel(quarter.label, slot)}
+                              className={getQuarterSlotClass(slot)}
+                              title={getQuarterSlotLabel(quarter.label, slot)}
+                            />
+                          </div>
                         ))}
-                      </ol>
+                      </div>
                     ) : (
                       <p className="tariff-window-empty">Keine Tariffenster erfasst.</p>
                     )}

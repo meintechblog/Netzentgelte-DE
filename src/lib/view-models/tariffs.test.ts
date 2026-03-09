@@ -22,7 +22,7 @@ describe("expandSeasonLabelToQuarters", () => {
 });
 
 describe("buildQuarterlyTariffMatrix", () => {
-  test("sorts time ranges chronologically and pushes catch-all entries to the end", () => {
+  test("sorts time ranges chronologically, fills quarter slots, and uses catch-all windows only for gaps", () => {
     const matrix = buildQuarterlyTariffMatrix({
       bands: [
         { key: "NT", label: "Niedrigtarif", valueCtPerKwh: "1.00" },
@@ -31,11 +31,11 @@ describe("buildQuarterlyTariffMatrix", () => {
       ],
       timeWindows: [
         {
-          bandKey: "ST",
-          label: "Standardtarif",
+          bandKey: "HT",
+          label: "Hochtarif",
           seasonLabel: "Q1 2026",
           timeRangeLabel: "22:00-24:00",
-          sourceQuote: "ST 22:00-24:00"
+          sourceQuote: "HT 22:00-24:00"
         },
         {
           bandKey: "ST",
@@ -52,21 +52,70 @@ describe("buildQuarterlyTariffMatrix", () => {
           sourceQuote: "ST 07:00-10:00"
         },
         {
-          bandKey: "ST",
-          label: "Standardtarif",
+          bandKey: "NT",
+          label: "Niedrigtarif",
           seasonLabel: "Q1 2026",
           timeRangeLabel: "00:00-07:00",
-          sourceQuote: "ST 00:00-07:00"
+          sourceQuote: "NT 00:00-07:00"
         }
       ]
     });
 
-    expect(matrix.find((quarter) => quarter.key === "Q1")?.groups).toEqual([
+    const q1 = matrix.find((quarter) => quarter.key === "Q1");
+
+    expect(q1?.groups).toEqual([
       expect.objectContaining({
         bandKey: "ST",
-        timeRanges: ["00:00-07:00", "07:00-10:00", "22:00-24:00", "Alle anderen Zeiten"]
+        timeRanges: ["07:00-10:00", "Alle anderen Zeiten"]
+      }),
+      expect.objectContaining({
+        bandKey: "HT",
+        timeRanges: ["22:00-24:00"]
+      }),
+      expect.objectContaining({
+        bandKey: "NT",
+        timeRanges: ["00:00-07:00"]
       })
     ]);
+
+    expect(q1?.slots).toHaveLength(96);
+    expect(q1?.slots[0]).toEqual(
+      expect.objectContaining({
+        slotIndex: 0,
+        startLabel: "00:00",
+        endLabel: "00:15",
+        timeLabel: "00:00-00:15",
+        bandKey: "NT",
+        valueCtPerKwh: "1.00",
+        isHourStart: true
+      })
+    );
+    expect(q1?.slots[28]).toEqual(
+      expect.objectContaining({
+        startLabel: "07:00",
+        timeLabel: "07:00-07:15",
+        bandKey: "ST",
+        valueCtPerKwh: "5.00",
+        isHourStart: true
+      })
+    );
+    expect(q1?.slots[40]).toEqual(
+      expect.objectContaining({
+        startLabel: "10:00",
+        timeLabel: "10:00-10:15",
+        bandKey: "ST",
+        valueCtPerKwh: "5.00"
+      })
+    );
+    expect(q1?.slots[88]).toEqual(
+      expect.objectContaining({
+        startLabel: "22:00",
+        timeLabel: "22:00-22:15",
+        bandKey: "HT",
+        valueCtPerKwh: "8.00",
+        isHourStart: true
+      })
+    );
   });
 
   test("renders Stadtwerke Schwäbisch Hall quarter logic from the official 2026 PDF", () => {
@@ -115,8 +164,39 @@ describe("buildQuarterlyTariffMatrix", () => {
           valueCtPerKwh: "5.53",
           timeRange: "00:00-24:00"
         })
-      ]
+      ],
+      slots: expect.arrayContaining([
+        expect.objectContaining({
+          slotIndex: 0,
+          timeLabel: "00:00-00:15",
+          bandKey: "ST",
+          valueCtPerKwh: "5.53",
+          isHourStart: true
+        }),
+        expect.objectContaining({
+          slotIndex: 95,
+          timeLabel: "23:45-24:00",
+          bandKey: "ST",
+          valueCtPerKwh: "5.53",
+          isHourStart: false
+        })
+      ])
     });
+    expect(q3?.slots).toHaveLength(96);
+    expect(q1?.slots[40]).toEqual(
+      expect.objectContaining({
+        timeLabel: "10:00-10:15",
+        bandKey: "HT",
+        valueCtPerKwh: "8.14"
+      })
+    );
+    expect(q1?.slots[95]).toEqual(
+      expect.objectContaining({
+        timeLabel: "23:45-24:00",
+        bandKey: "NT",
+        valueCtPerKwh: "1.11"
+      })
+    );
   });
 
   test("attaches a quarter matrix to published tariff rows", () => {

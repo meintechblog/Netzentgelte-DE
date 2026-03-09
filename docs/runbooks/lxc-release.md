@@ -15,6 +15,7 @@ COPYFILE_DISABLE=1 tar \
   --exclude='.next' \
   --exclude='.playwright-cli' \
   --exclude='data/artifacts' \
+  --exclude='tmp' \
   -C /Users/hulki/projects/netzentgelte-de/.worktrees/bootstrap \
   -czf - . \
 | ssh root@192.168.3.178 '
@@ -81,4 +82,5 @@ curl -fsS http://192.168.3.178:3000/api/tariffs/current | rg 'timeWindows|18:00-
 
 - `COPYFILE_DISABLE=1` ist auf macOS Pflicht. Ohne diese Variable erzeugt `tar` zusaetzliche `._*`-Dateien, die Vitest als kaputte Testdateien einsammelt.
 - `data/artifacts` bleibt bewusst ausserhalb des Paket-Transfers und wird aus dem aktiven Verzeichnis in das Release kopiert.
+- `tmp/` muss aus dem Transfer ausgeschlossen bleiben. Der Ordner kann lokale Import- oder Extraktionsartefakte im GB-Bereich enthalten und blockiert sonst den Release-Upload.
 - Der Release-Check muss im Release-Verzeichnis selbst laufen, nicht nur lokal.

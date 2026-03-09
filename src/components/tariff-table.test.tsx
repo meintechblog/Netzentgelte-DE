@@ -21,9 +21,9 @@ describe("TariffTable", () => {
     expect(screen.getByText("Schwäbisch Hall")).toBeInTheDocument();
     expect(screen.queryByText("NT 1.11 ct/kWh · ST 5.53 ct/kWh · HT 8.14 ct/kWh")).not.toBeInTheDocument();
     const bandBadges = within(screen.getByLabelText("Arbeitspreise in ct/kWh"));
-    expect(bandBadges.getByText("NT")).toBeInTheDocument();
-    expect(bandBadges.getByText("ST")).toBeInTheDocument();
-    expect(bandBadges.getByText("HT")).toBeInTheDocument();
+    expect(bandBadges.getByText("NT").closest(".tariff-band-badge")).toHaveClass("tariff-band-badge--nt");
+    expect(bandBadges.getByText("ST").closest(".tariff-band-badge")).toHaveClass("tariff-band-badge--st");
+    expect(bandBadges.getByText("HT").closest(".tariff-band-badge")).toHaveClass("tariff-band-badge--ht");
     expect(bandBadges.getByText("1.11")).toBeInTheDocument();
     expect(bandBadges.getByText("5.53")).toBeInTheDocument();
     expect(bandBadges.getByText("8.14")).toBeInTheDocument();
@@ -57,20 +57,21 @@ describe("TariffTable", () => {
     expect(screen.queryByRole("columnheader", { name: "Quelle" })).not.toBeInTheDocument();
     expect(screen.queryByRole("columnheader", { name: "Gültig ab" })).not.toBeInTheDocument();
     expect(screen.getByText("Nur Standardtarif")).toBeInTheDocument();
-    expect(screen.getByText("00:00-24:00")).toBeInTheDocument();
-    expect(screen.getAllByText("10:00-14:00")).toHaveLength(3);
-    expect(screen.getAllByText("22:00-00:00")).toHaveLength(3);
     const q1Section = screen.getByLabelText("Stadtwerke Schwäbisch Hall GmbH Q1");
-    const q1Times = within(q1Section).getAllByRole("listitem").map((item) => item.textContent);
-    expect(q1Times).toEqual([
-      "00:00-07:00NT1.11",
-      "07:00-10:00ST5.53",
-      "10:00-14:00HT8.14",
-      "14:00-18:00ST5.53",
-      "18:00-20:00HT8.14",
-      "20:00-22:00ST5.53",
-      "22:00-00:00NT1.11"
-    ]);
+    const q3Section = screen.getByLabelText("Stadtwerke Schwäbisch Hall GmbH Q3");
+    expect(q1Section.querySelectorAll(".tariff-quarter-grid__cell")).toHaveLength(96);
+    expect(q3Section.querySelectorAll(".tariff-quarter-grid__cell")).toHaveLength(96);
+    expect(within(q1Section).getByText("00:00")).toBeInTheDocument();
+    expect(within(q1Section).getByText("12:00")).toBeInTheDocument();
+    expect(
+      within(q1Section).getByLabelText("Q1 10:00-10:15 · HT · 8.14 ct/kWh")
+    ).toHaveClass("tariff-quarter-grid__cell--ht");
+    expect(
+      within(q1Section).getByLabelText("Q1 23:45-24:00 · NT · 1.11 ct/kWh")
+    ).toHaveClass("tariff-quarter-grid__cell--nt");
+    expect(
+      within(q3Section).getByLabelText("Q3 14:00-14:15 · ST · 5.53 ct/kWh")
+    ).toHaveClass("tariff-quarter-grid__cell--st");
     expect(
       screen.getByText(/Quelle stadtwerke-schwaebisch-hall-stadtwerke-schwaebisch-hall-14a-2026/)
     ).toBeInTheDocument();

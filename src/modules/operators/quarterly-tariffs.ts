@@ -15,12 +15,24 @@ export type TariffQuarterEntry = {
   timeRange: string;
 };
 
+export type TariffQuarterSlot = {
+  slotIndex: number;
+  startLabel: string;
+  endLabel: string;
+  timeLabel: string;
+  bandKey: "NT" | "ST" | "HT" | null;
+  bandLabel: string;
+  valueCtPerKwh: string;
+  isHourStart: boolean;
+};
+
 export type TariffQuarter = {
   key: TariffQuarterKey;
   label: TariffQuarterKey;
   summaryLabel: string;
   groups: TariffQuarterGroup[];
   timelineEntries: TariffQuarterEntry[];
+  slots: TariffQuarterSlot[];
 };
 
 export type QuarterlyTariffInput = {
@@ -39,6 +51,8 @@ export type QuarterlyTariffInput = {
 };
 
 const QUARTER_ORDER: TariffQuarterKey[] = ["Q1", "Q2", "Q3", "Q4"];
+const SLOT_MINUTES = 15;
+const SLOTS_PER_DAY = (24 * 60) / SLOT_MINUTES;
 
 const BAND_DISPLAY_ORDER: Record<TariffQuarterGroup["bandKey"], number> = {
   ST: 0,
@@ -140,6 +154,121 @@ function compareTimeRanges(left: string, right: string) {
   return parseMinutes(leftMatch[2]!) - parseMinutes(rightMatch[2]!);
 }
 
+function isCatchAllTimeRange(timeRange: string) {
+  return getCatchAllRank(timeRange) > 0;
+}
+
+function formatTimeLabel(minutes: number) {
+  const hours = Math.floor(minutes / 60);
+  const remainderMinutes = minutes % 60;
+
+  return `${String(hours).padStart(2, "0")}:${String(remainderMinutes).padStart(2, "0")}`;
+}
+
+function buildEmptyQuarterSlots(): TariffQuarterSlot[] {
+  return Array.from({ length: SLOTS_PER_DAY }, (_, slotIndex) => {
+    const startMinutes = slotIndex * SLOT_MINUTES;
+    const endMinutes = startMinutes + SLOT_MINUTES;
+
+    return {
+      slotIndex,
+      startLabel: formatTimeLabel(startMinutes),
+      endLabel: formatTimeLabel(endMinutes),
+      timeLabel: `${formatTimeLabel(startMinutes)}-${formatTimeLabel(endMinutes)}`,
+      bandKey: null,
+      bandLabel: "Keine Zuordnung",
+      valueCtPerKwh: "",
+      isHourStart: startMinutes % 60 === 0
+    };
+  });
+}
+
+function parseTimeRangeToSlotBounds(timeRange: string) {
+  const match = timeRange.match(/(\d{2}:\d{2})-(\d{2}:\d{2})/);
+
+  if (!match) {
+    return null;
+  }
+
+  const startMinutes = parseMinutes(match[1]!);
+  let endMinutes = parseMinutes(match[2]!);
+
+  if (!Number.isFinite(startMinutes) || !Number.isFinite(endMinutes)) {
+    return null;
+  }
+
+  if (endMinutes <= startMinutes) {
+    endMinutes += 24 * 60;
+  }
+
+  return {
+    startIndex: Math.max(0, Math.floor(startMinutes / SLOT_MINUTES)),
+    endIndex: Math.min(SLOTS_PER_DAY, Math.ceil(endMinutes / SLOT_MINUTES))
+  };
+}
+
+function applyTimeRangeToSlots(
+  slots: TariffQuarterSlot[],
+  group: TariffQuarterGroup,
+  timeRange: string,
+  onlyEmpty: boolean
+) {
+  const slotBounds = parseTimeRangeToSlotBounds(timeRange);
+
+  if (!slotBounds) {
+    return;
+  }
+
+  for (let slotIndex = slotBounds.startIndex; slotIndex < slotBounds.endIndex; slotIndex += 1) {
+    if (onlyEmpty && slots[slotIndex]?.bandKey) {
+      continue;
+    }
+
+    const slot = slots[slotIndex];
+
+    if (!slot) {
+      continue;
+    }
+
+    slots[slotIndex] = {
+      ...slot,
+      bandKey: group.bandKey,
+      bandLabel: group.label,
+      valueCtPerKwh: group.valueCtPerKwh
+    };
+  }
+}
+
+function buildQuarterSlots(groups: TariffQuarterGroup[]) {
+  const slots = buildEmptyQuarterSlots();
+  const explicitTimeRanges: Array<{ group: TariffQuarterGroup; timeRange: string }> = [];
+  const catchAllTimeRanges: Array<{ group: TariffQuarterGroup; timeRange: string }> = [];
+
+  for (const group of groups) {
+    for (const timeRange of group.timeRanges) {
+      if (isCatchAllTimeRange(timeRange)) {
+        catchAllTimeRanges.push({ group, timeRange });
+        continue;
+      }
+
+      explicitTimeRanges.push({ group, timeRange });
+    }
+  }
+
+  explicitTimeRanges.sort((left, right) => compareTimeRanges(left.timeRange, right.timeRange));
+  catchAllTimeRanges.sort((left, right) => compareTimeRanges(left.timeRange, right.timeRange));
+
+  for (const entry of explicitTimeRanges) {
+    applyTimeRangeToSlots(slots, entry.group, entry.timeRange, false);
+  }
+
+  for (const entry of catchAllTimeRanges) {
+    applyTimeRangeToSlots(slots, entry.group, "00:00-24:00", true);
+  }
+
+  return slots;
+}
+
 function buildQuarterTimelineEntries(groups: TariffQuarterGroup[]): TariffQuarterEntry[] {
   return groups
     .flatMap((group) =>
@@ -202,7 +331,8 @@ export function buildQuarterlyTariffMatrix(input: QuarterlyTariffInput): TariffQ
       label: quarter,
       summaryLabel: getQuarterSummaryLabel(groups),
       groups,
-      timelineEntries: buildQuarterTimelineEntries(groups)
+      timelineEntries: buildQuarterTimelineEntries(groups),
+      slots: buildQuarterSlots(groups)
     };
   });
 }

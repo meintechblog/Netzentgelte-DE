@@ -1,0 +1,80 @@
+[
+  {
+    "id": "bnetza-mastr-netzbetreiber-overview",
+    "scope": "all-operators",
+    "kind": "registry-overview",
+    "authority": "Bundesnetzagentur",
+    "title": "Übersicht Strom- und Gasnetzbetreiber",
+    "url": "https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/Datenuebertragung_Energiedatenportal/Uebersicht_Netzbetreiber/start.html",
+    "refreshStrategy": "quarterly-review",
+    "notes": [
+      "Primäre Discovery-Quelle für Netzbetreiber in Deutschland.",
+      "Die Seite verweist auf das Marktstammdatenregister und beschreibt den Exportfilter 'MaStR-Nr. startet mit SNB'.",
+      "Der Export dient als Ausgangsliste für alle Stromnetzbetreiber."
+    ],
+    "artifactsToStore": [
+      "registry export",
+      "export timestamp",
+      "query filter documentation",
+      "operator identifier mapping"
+    ]
+  },
+  {
+    "id": "bnetza-mastr-register",
+    "scope": "all-operators",
+    "kind": "registry-system",
+    "authority": "Bundesnetzagentur",
+    "title": "Marktstammdatenregister",
+    "url": "https://www.marktstammdatenregister.de/",
+    "refreshStrategy": "quarterly-review",
+    "notes": [
+      "Operative Registerquelle hinter der BNetzA-Übersichtsseite.",
+      "Für die spätere Pipeline ist hier ein reproduzierbarer Export- oder Webservice-Pfad zu dokumentieren."
+    ],
+    "artifactsToStore": [
+      "operator export",
+      "MaStR identifiers",
+      "raw export file",
+      "schema notes"
+    ]
+  },
+  {
+    "id": "vnbdigital-portal",
+    "scope": "operator-discovery-and-profile-links",
+    "kind": "operator-directory",
+    "authority": "BDEW / VNBdigital",
+    "title": "VNBdigital Netzbetreibersuche",
+    "url": "https://vnbdigital.de/",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Zentrale Netzbetreibersuche mit digitalen Visitenkarten der Stromverteilnetzbetreiber.",
+      "Soll genutzt werden, um Betreiber-Webseiten und spätere Primärquellen für Preisdokumente zu finden.",
+      "Von hier aus werden Betreiberprofile, Netzanschlussportale und häufig weitere Dokumentlinks erschlossen."
+    ],
+    "artifactsToStore": [
+      "operator profile url",
+      "profile screenshot",
+      "linked website url",
+      "document link candidates"
+    ]
+  },
+  {
+    "id": "vnbdigital-regionalszenarien",
+    "scope": "regional-operator-clusters",
+    "kind": "supporting-reference",
+    "authority": "VNBdigital",
+    "title": "Regionalszenarien / Netzausbaupläne",
+    "url": "https://www.vnbdigital.de/",
+    "refreshStrategy": "annual-review",
+    "notes": [
+      "Unterstützende Quelle, um Betreiber regional zu clustern und Vollständigkeit gegen Planungsregionen zu prüfen.",
+      "PDFs enthalten Listen von Verteilnetzbetreibern je Region und helfen bei Coverage-Checks."
+    ],
+    "artifactsToStore": [
+      "pdf url",
+      "pdf hash",
+      "operator names in pdf",
+      "planungsregion mapping"
+    ]
+  }
+]

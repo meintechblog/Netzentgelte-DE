@@ -335,10 +335,7 @@ export function TariffTable({ rows }: TariffTableProps) {
                               title={getQuarterSlotLabel(quarter.label, segment)}
                             >
                               {segment.bandKey ? (
-                                <>
-                                  <span className="tariff-quarter-segment__band">{segment.bandKey}</span>
-                                  <span className="tariff-quarter-segment__time">{segment.timeLabel}</span>
-                                </>
+                                <span className="tariff-quarter-segment__time">{segment.timeLabel}</span>
                               ) : null}
                             </span>
                           ))}

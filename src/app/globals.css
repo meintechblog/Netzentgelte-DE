@@ -604,16 +604,8 @@ input:focus-visible {
     0 0 0 3px rgba(59, 130, 246, 0.16);
 }
 
-.tariff-quarter-segment__band,
 .tariff-quarter-segment__time {
   font-family: var(--font-heading), monospace;
-}
-
-.tariff-quarter-segment__band {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 .tariff-quarter-segment__time {

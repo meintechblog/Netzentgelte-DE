@@ -601,7 +601,7 @@
           "label": "Niedrigtarif",
           "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Alle Tage",
-          "timeRangeLabel": "23:00-24:00",
+          "timeRangeLabel": "23:00-00:15",
           "sourceQuote": "Quartal 1 und Quartal 4 Niedriglasttarifstufe 23:00-00:15 Uhr"
         },
         {
@@ -2894,8 +2894,8 @@
           "label": "Standardtarif",
           "seasonLabel": "Q1 und Q4 2026",
           "dayLabel": "Taeglich",
-          "timeRangeLabel": "20:00-24:00",
-          "sourceQuote": "Arbeitspreis ST (Modul 1 und Modul 3 ausserhalb HT und NT)"
+          "timeRangeLabel": "20:00-00:45",
+          "sourceQuote": "Arbeitspreis ST (Modul 1 und Modul 3 ausserhalb HT und NT), daraus taeglich 20:00-00:45 Uhr in Q1 und Q4"
         },
         {
           "id": "nrm-netzdienste-2026-q2q3-standard-all-day",

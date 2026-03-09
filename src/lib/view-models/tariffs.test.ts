@@ -350,6 +350,22 @@ describe("buildQuarterlyTariffMatrix", () => {
     ).toBe("Nur Standardtarif");
   });
 
+  test("leaves only MVV Q2 and Q3 unresolved in the quarter coverage audit", () => {
+    const rows = getRegistryTariffRows(getSeedPublishedOperators());
+    const issues = rows.flatMap((row) =>
+      row.quarterMatrix.flatMap((quarter) => {
+        const nullSlots = quarter.slots.filter((slot) => slot.bandKey === null).length;
+
+        return nullSlots > 0 ? [{ operatorSlug: row.operatorSlug, quarter: quarter.key, nullSlots }] : [];
+      })
+    );
+
+    expect(issues).toEqual([
+      { operatorSlug: "mvv-netze", quarter: "Q2", nullSlots: 96 },
+      { operatorSlug: "mvv-netze", quarter: "Q3", nullSlots: 96 }
+    ]);
+  });
+
   test("merges current source metadata by exact source slug instead of operator slug", () => {
     const row = getRegistryTariffRows(getSeedPublishedOperators()).find(
       (entry) => entry.operatorSlug === "stadtwerke-schwaebisch-hall"

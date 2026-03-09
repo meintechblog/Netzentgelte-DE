@@ -363,6 +363,11 @@ describe("getSeedPublishedOperators", () => {
           timeRangeLabel: "16:45-20:00"
         }),
         expect.objectContaining({
+          seasonLabel: "Q1 und Q4 2026",
+          bandKey: "ST",
+          timeRangeLabel: "20:00-00:45"
+        }),
+        expect.objectContaining({
           seasonLabel: "Q2-Q3 2026",
           bandKey: "ST",
           timeRangeLabel: "00:00-24:00"
@@ -399,6 +404,11 @@ describe("getSeedPublishedOperators", () => {
           seasonLabel: "Q1 und Q4 2026",
           bandKey: "HT",
           timeRangeLabel: "16:30-21:00"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q1 und Q4 2026",
+          bandKey: "NT",
+          timeRangeLabel: "23:00-00:15"
         })
       ])
     );

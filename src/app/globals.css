@@ -981,65 +981,6 @@ input:focus-visible {
   vector-effect: non-scaling-stroke;
 }
 
-.operator-map-legend {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  z-index: 2;
-  display: grid;
-  gap: 0.45rem;
-  max-width: min(22rem, calc(100% - 2rem));
-  padding: 0.85rem 1rem;
-  border-radius: 0.9rem;
-  border: 1px solid rgba(125, 211, 252, 0.18);
-  background: rgba(4, 12, 24, 0.82);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 20px 38px rgba(2, 8, 16, 0.34);
-}
-
-.operator-map-legend__eyebrow {
-  color: rgba(191, 219, 254, 0.92);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.operator-map-legend__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.operator-map-legend__chip {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2rem;
-  padding: 0.35rem 0.7rem;
-  border-radius: 999px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  line-height: 1.1;
-}
-
-.operator-map-legend__chip--coverage {
-  color: #e0f2fe;
-  border: 1px solid rgba(125, 211, 252, 0.34);
-  background: rgba(8, 47, 73, 0.78);
-}
-
-.operator-map-legend__chip--neutral {
-  color: rgba(226, 232, 240, 0.92);
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  background: rgba(15, 23, 42, 0.78);
-}
-
-.operator-map-legend__hint {
-  margin: 0;
-  color: rgba(191, 219, 254, 0.82);
-  font-size: 0.82rem;
-}
-
 .map-stage__detail {
   display: grid;
   align-content: start;
@@ -1099,13 +1040,6 @@ input:focus-visible {
   .map-stage__canvas--hero,
   .operator-map-svg {
     min-height: 420px;
-  }
-
-  .operator-map-legend {
-    top: 0.85rem;
-    left: 0.85rem;
-    right: 0.85rem;
-    max-width: none;
   }
 
   .hero-actions,

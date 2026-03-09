@@ -5,7 +5,7 @@ import { projectGermanyMap, type OperatorMapFeature } from "../lib/maps/geojson"
 import { OperatorMap } from "./operator-map";
 
 describe("OperatorMap", () => {
-  test("surfaces a coverage legend and dedicated polygon hitareas for exact regions", () => {
+  test("keeps dedicated polygon hitareas for exact regions without rendering the removed legend", () => {
     const { container } = render(
       <OperatorMap
         scene={projectGermanyMap([
@@ -41,9 +41,9 @@ describe("OperatorMap", () => {
       />
     );
 
-    expect(screen.getByText("Belegte Netzgebiete")).toBeInTheDocument();
-    expect(screen.getByText("1 exakt verankert")).toBeInTheDocument();
-    expect(screen.getByText("Klick fixiert, freie Fläche löst")).toBeInTheDocument();
+    expect(screen.queryByText("Belegte Netzgebiete")).not.toBeInTheDocument();
+    expect(screen.queryByText("1 exakt verankert")).not.toBeInTheDocument();
+    expect(screen.queryByText("Klick fixiert, freie Fläche löst")).not.toBeInTheDocument();
     expect(container.querySelector('[data-testid="operator-map-hitarea-berlin"]')).not.toBeNull();
   });
 

@@ -53,9 +53,6 @@ function getCoverageUnitsLabel(feature: ProjectedGermanyMapScene["operators"][nu
 
 export function OperatorMap({ scene }: OperatorMapProps) {
   const visibleFeatures = scene.operators.filter((feature) => feature.mapDisplayMode !== "hidden");
-  const exactFeatureCount = visibleFeatures.filter(
-    (feature) => feature.geometryPrecision === "exact"
-  ).length;
   const [hoveredFeatureId, setHoveredFeatureId] = useState<string | null>(visibleFeatures[0]?.id ?? null);
   const [lockedFeatureId, setLockedFeatureId] = useState<string | null>(null);
 
@@ -132,18 +129,6 @@ export function OperatorMap({ scene }: OperatorMapProps) {
   return (
     <section className="map-stage map-stage--hero" aria-label="Netzgebietsübersicht">
       <div className="map-stage__canvas map-stage__canvas--hero">
-        <div className="operator-map-legend" data-testid="operator-map-legend">
-          <span className="operator-map-legend__eyebrow">Belegte Netzgebiete</span>
-          <div className="operator-map-legend__chips" aria-label="Kartenlegende">
-            <span className="operator-map-legend__chip operator-map-legend__chip--coverage">
-              {exactFeatureCount} exakt verankert
-            </span>
-            <span className="operator-map-legend__chip operator-map-legend__chip--neutral">
-              Nicht verankerte Flächen bleiben neutral
-            </span>
-          </div>
-          <p className="operator-map-legend__hint">Klick fixiert, freie Fläche löst</p>
-        </div>
         <svg
           aria-label="Deutschlandkarte der Netzbetreiber"
           className="operator-map-svg"

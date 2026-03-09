@@ -71,14 +71,61 @@ describe("getStadtwerkeSchwaebischHallEndcustomerReference", () => {
 });
 
 describe("getSeedEndcustomerReferences", () => {
-  test("includes the first published multi-operator batch beyond Schwäbisch Hall", () => {
+  test("includes the next source-backed operator batch beyond Schwäbisch Hall", () => {
     expect(getSeedEndcustomerReferences().map((reference) => reference.operatorSlug)).toEqual(
       expect.arrayContaining([
         "stadtwerke-schwaebisch-hall",
         "netze-bw",
         "stromnetz-berlin",
         "netze-odr",
-        "mitnetz-strom"
+        "mitnetz-strom",
+        "allgaeunetz",
+        "mainzer-netze"
+      ])
+    );
+  });
+
+  test("captures endcustomer module data for AllgaeuNetz and Mainzer Netze", () => {
+    const references = new Map(
+      getSeedEndcustomerReferences().map((reference) => [reference.operatorSlug, reference] as const)
+    );
+
+    const allgaeu = references.get("allgaeunetz");
+    const mainzer = references.get("mainzer-netze");
+
+    expect(allgaeu?.products.find((product) => product.moduleKey === "modul-1")?.components).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "base_price_eur_per_year", valueNumeric: "96.00" }),
+        expect.objectContaining({ componentKey: "work_price_ct_per_kwh", valueNumeric: "8.63" }),
+        expect.objectContaining({
+          componentKey: "net_fee_reduction_eur_per_year",
+          valueNumeric: "131.95"
+        })
+      ])
+    );
+    expect(allgaeu?.meteringPrices).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "single_register_meter_eur_per_year", valueNumeric: "10.75" }),
+        expect.objectContaining({ componentKey: "dual_register_meter_eur_per_year", valueNumeric: "20.30" })
+      ])
+    );
+
+    expect(mainzer?.products.find((product) => product.moduleKey === "modul-2")?.components).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "base_price_eur_per_year", valueNumeric: "0.00" }),
+        expect.objectContaining({ componentKey: "work_price_ct_per_kwh", valueNumeric: "2.69" })
+      ])
+    );
+    expect(mainzer?.products.find((product) => product.moduleKey === "modul-3")?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ quarterKey: "Q2", bandKey: "standard", startsAt: "00:00", endsAt: "24:00" }),
+        expect.objectContaining({ quarterKey: "Q4", bandKey: "low", startsAt: "22:00", endsAt: "06:00" })
+      ])
+    );
+    expect(mainzer?.meteringPrices).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "single_register_meter_eur_per_year", valueNumeric: "15.90" }),
+        expect.objectContaining({ componentKey: "dual_register_meter_eur_per_year", valueNumeric: "19.90" })
       ])
     );
   });

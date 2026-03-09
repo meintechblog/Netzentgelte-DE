@@ -68,6 +68,10 @@ const NETZE_ODR_SOURCE =
   "https://www.netze-odr.de/fileadmin/Netze-ODR/Dokumente/Unternehmen/Veroeffentlichungen/Netzentgelte/Netzentgelte_Strom_2026.pdf";
 const MITNETZ_STROM_SOURCE =
   "https://www.mitnetz-strom.de/Media/docs/default-source/datei-ablage/2026_mns_pb_endg%C3%BCltig_12-12-2025.pdf?sfvrsn=2aee4cf8_3";
+const ALLGAEUNETZ_SOURCE =
+  "https://www.allgaeunetz.com/download/2025_12_22_preisblatt_nne_2026_endg.pdf";
+const MAINZER_NETZE_SOURCE =
+  "https://www.mainzer-netze.de/-/media/project/mainzer-stadtwerke/websites-mainzer-netze/mainzer-netze/dateien/ordnerstruktur-clean/g_s_w_preise-netzentgelte/strom/s_preisblatt_2026.pdf?rev=0b246c97be4b493188d844c94c08eb1f";
 
 export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
   return [
@@ -75,7 +79,9 @@ export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
     getNetzeBwEndcustomerReference(),
     getStromnetzBerlinEndcustomerReference(),
     getNetzeOdrEndcustomerReference(),
-    getMitnetzStromEndcustomerReference()
+    getMitnetzStromEndcustomerReference(),
+    getAllgaeuNetzEndcustomerReference(),
+    getMainzerNetzeEndcustomerReference()
   ];
 }
 
@@ -347,6 +353,120 @@ export function getMitnetzStromEndcustomerReference(): EndcustomerOperatorRefere
       }
     ],
     meteringPrices: meteringPrices("7.84", "7.84")
+  };
+}
+
+export function getAllgaeuNetzEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "allgaeunetz",
+    operatorName: "AllgäuNetz GmbH & Co. KG",
+    sourceDocumentUrl: ALLGAEUNETZ_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: ALLGAEUNETZ_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "96.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "8.63", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "131.95", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: ALLGAEUNETZ_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "3.45", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: ALLGAEUNETZ_SOURCE,
+        components: modul3Components("8.63", "13.84", "3.45"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: [
+          ...buildQuarterRanges("Q1", "standard", ["00:00-02:00", "04:00-17:30", "19:30-24:00"]),
+          ...buildQuarterRanges("Q1", "low", ["02:00-04:00"]),
+          ...buildQuarterRanges("Q1", "high", ["17:30-19:30"]),
+          ...buildQuarterRanges("Q2", "standard", ["00:00-24:00"]),
+          ...buildQuarterRanges("Q3", "standard", ["00:00-24:00"]),
+          ...buildQuarterRanges("Q4", "standard", ["00:00-02:00", "04:00-17:30", "19:30-24:00"]),
+          ...buildQuarterRanges("Q4", "low", ["02:00-04:00"]),
+          ...buildQuarterRanges("Q4", "high", ["17:30-19:30"])
+        ]
+      }
+    ],
+    meteringPrices: meteringPrices("10.75", "20.30")
+  };
+}
+
+export function getMainzerNetzeEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "mainzer-netze",
+    operatorName: "Mainzer Netze GmbH",
+    sourceDocumentUrl: MAINZER_NETZE_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: MAINZER_NETZE_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "75.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "6.72", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "117.63", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: MAINZER_NETZE_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "2.69", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: MAINZER_NETZE_SOURCE,
+        components: modul3Components("6.72", "7.86", "1.01"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: [
+          ...buildQuarterRanges("Q1", "standard", ["06:00-16:45", "20:00-22:00"]),
+          ...buildQuarterRanges("Q1", "high", ["16:45-20:00"]),
+          ...buildQuarterRanges("Q1", "low", ["22:00-06:00"]),
+          ...buildQuarterRanges("Q2", "standard", ["00:00-24:00"]),
+          ...buildQuarterRanges("Q3", "standard", ["00:00-24:00"]),
+          ...buildQuarterRanges("Q4", "standard", ["06:00-16:45", "20:00-22:00"]),
+          ...buildQuarterRanges("Q4", "high", ["16:45-20:00"]),
+          ...buildQuarterRanges("Q4", "low", ["22:00-06:00"])
+        ]
+      }
+    ],
+    meteringPrices: meteringPrices("15.90", "19.90")
   };
 }
 

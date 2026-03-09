@@ -17,16 +17,27 @@ test("renders the page shell around a dominant germany map hero", async () => {
   expect((heroSection as HTMLElement).querySelector("svg")).not.toBeNull();
   expect(
     (heroSection as HTMLElement).compareDocumentPosition(
-      screen.getByRole("heading", { name: "Aktuelle Tarifmatrix" })
+      screen.getByRole("heading", { name: "Netzbetreiber & Tarifdaten" })
     ) & Node.DOCUMENT_POSITION_FOLLOWING
   ).toBeTruthy();
   expect(screen.getAllByText(/Stromnetz Berlin/).length).toBeGreaterThan(0);
   expect(screen.getAllByText("Avacon Netz GmbH").length).toBeGreaterThan(0);
-  expect(screen.getByRole("heading", { name: "Quellenprüfung" })).toBeInTheDocument();
+  expect(screen.queryByRole("heading", { name: "Quellenprüfung" })).not.toBeInTheDocument();
   expect(screen.getByText("Zeitfenster")).toBeInTheDocument();
   expect(screen.getAllByText("Hero-Karte").length).toBeGreaterThan(0);
+  expect(screen.getByText("Endkunden · Niederspannung")).toBeInTheDocument();
+  expect(screen.getByText("Modul 1")).toBeInTheDocument();
+  expect(screen.getByText("Modul 2")).toBeInTheDocument();
+  expect(screen.getByText("Modul 3")).toBeInTheDocument();
+  expect(screen.getByText("Messung")).toBeInTheDocument();
+  expect(screen.getByText("61,00 €/a")).toBeInTheDocument();
+  expect(screen.getByText("108,70 €/a")).toBeInTheDocument();
+  expect(screen.getByText("9,50 €/a")).toBeInTheDocument();
   expect(
     screen.getByText(/Öffentlich erscheinen nur verifizierte und integritätsgeprüfte Betreiber/i)
   ).toBeInTheDocument();
   expect(screen.getByText("Dark mode · WCAG AA")).toBeInTheDocument();
+  expect(
+    screen.getAllByRole("button", { name: "Quelle & Prüfstatus anzeigen" }).length
+  ).toBeGreaterThan(0);
 });

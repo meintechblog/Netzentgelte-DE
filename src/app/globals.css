@@ -639,6 +639,155 @@ input:focus-visible {
   color: var(--color-success);
 }
 
+.tariff-endcustomer-panel {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.55rem;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid rgba(94, 234, 212, 0.14);
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgba(9, 18, 34, 0.92), rgba(6, 13, 24, 0.96));
+}
+
+.tariff-endcustomer-panel__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.7rem;
+  align-items: baseline;
+}
+
+.tariff-endcustomer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.tariff-endcustomer-card {
+  display: grid;
+  gap: 0.55rem;
+  min-width: 0;
+  padding: 0.8rem 0.85rem;
+  border-radius: 0.95rem;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(8, 16, 30, 0.88);
+}
+
+.tariff-endcustomer-card--modul-3 {
+  border-color: rgba(245, 158, 11, 0.28);
+  background: linear-gradient(180deg, rgba(41, 25, 5, 0.96), rgba(19, 14, 7, 0.94));
+}
+
+.tariff-endcustomer-card--messung {
+  border-color: rgba(125, 211, 252, 0.24);
+}
+
+.tariff-endcustomer-card h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.tariff-endcustomer-metrics {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+}
+
+.tariff-endcustomer-metrics div {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.tariff-endcustomer-metrics dt {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.76rem;
+}
+
+.tariff-endcustomer-metrics dd {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.tariff-endcustomer-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tariff-endcustomer-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(20, 40, 70, 0.68);
+  color: var(--color-primary);
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.source-details-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 2rem;
+  margin-top: 0.25rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(140, 199, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(20, 40, 70, 0.62);
+  color: var(--color-primary);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.source-details-panel {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.4rem;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 0.9rem;
+  background: rgba(7, 16, 31, 0.82);
+}
+
+.source-details-panel__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.source-details-grid,
+.source-details-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.8rem;
+}
+
+.source-health-chip--ok {
+  color: var(--color-success);
+}
+
+.source-health-chip--warning {
+  color: var(--color-warning);
+}
+
+.source-health-chip--blocked {
+  color: #fca5a5;
+}
+
+.source-health-issues {
+  margin: 0;
+  padding-left: 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+}
+
 .toggle-row {
   display: flex;
   flex-wrap: wrap;
@@ -967,6 +1116,10 @@ input:focus-visible {
   .hero-button,
   .hero-button-secondary {
     width: 100%;
+  }
+
+  .tariff-endcustomer-grid {
+    grid-template-columns: 1fr;
   }
 
   .tariff-table tbody tr {

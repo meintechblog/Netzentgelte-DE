@@ -54,7 +54,17 @@ export function OperatorExplorer({ rows, mapScene }: OperatorExplorerProps) {
       ? rows
       : rows.filter((row) =>
           matchesSearch(
-            buildSearchIndex([row.operatorName, row.operatorSlug, row.regionLabel]),
+            buildSearchIndex([
+              row.operatorName,
+              row.operatorSlug,
+              row.regionLabel,
+              row.sourceSlug,
+              row.sourcePageUrl,
+              row.documentUrl,
+              row.endcustomerDisplay?.title ?? "",
+              row.endcustomerDisplay?.searchText ?? "",
+              ...(row.sourceHealthReport?.issues.map((issue) => issue.message) ?? [])
+            ]),
             deferredQuery
           )
         );
@@ -113,9 +123,8 @@ export function OperatorExplorer({ rows, mapScene }: OperatorExplorerProps) {
             ) : null}
           </div>
           <p className="operator-search__hint">
-            Filtert Tarifmatrix direkt. Die Karte zeigt aktuell nur Betreiber mit
-            belastbar belegter Flächengeometrie und dimmt diese nach Betreibername,
-            Slug oder Region.
+            Filtert den gesamten Betreiberbereich mitsamt integrierten Quelleninfos.
+            Die Karte dimmt weiterhin nach Betreibername, Slug oder Region.
           </p>
         </div>
         <OperatorMap scene={filteredMapScene} />
@@ -125,10 +134,10 @@ export function OperatorExplorer({ rows, mapScene }: OperatorExplorerProps) {
         <div className="panel-header">
           <div>
             <span className="section-eyebrow">Nachvollziehbare Daten</span>
-            <h2>Aktuelle Tarifmatrix</h2>
+            <h2>Netzbetreiber & Tarifdaten</h2>
             <p>
-              Jeder Eintrag führt zur Betreiberseite, zum Dokument und zeigt offen, ob die
-              Bandwerte bereits sauber kuratiert sind.
+              Tarifmatrix, Quellenpfad und Prüfstatus stehen je Betreiber in einem
+              gemeinsamen Eintrag.
             </p>
           </div>
           <div className="panel-actions">

@@ -2,20 +2,20 @@ import { render, screen, within } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 
 import { getSeedPublishedOperators } from "../modules/operators/current-catalog";
-import { getRegistryTariffRows } from "../lib/view-models/tariffs";
+import { getSeedEndcustomerTariffCatalog } from "../modules/tariffs/endcustomer-catalog";
+import { getRegistryTariffRows, mergeTariffRowsWithEndcustomerCatalog } from "../lib/view-models/tariffs";
 import { TariffTable } from "./tariff-table";
 
 describe("TariffTable", () => {
   test("renders a quarterly tariff matrix anchored on the Schwäbisch Hall source layout", () => {
-    const schwaebischHall = getRegistryTariffRows(getSeedPublishedOperators()).find(
+    const schwaebischHall = mergeTariffRowsWithEndcustomerCatalog(
+      getRegistryTariffRows(getSeedPublishedOperators()),
+      getSeedEndcustomerTariffCatalog()
+    ).find(
       (row) => row.operatorSlug === "stadtwerke-schwaebisch-hall"
     );
 
-    render(
-      <TariffTable
-        rows={[schwaebischHall!]}
-      />
-    );
+    render(<TariffTable rows={[schwaebischHall!]} />);
 
     expect(screen.getByText("Stadtwerke Schwäbisch Hall GmbH")).toBeInTheDocument();
     expect(screen.getByText("Schwäbisch Hall")).toBeInTheDocument();
@@ -32,10 +32,22 @@ describe("TariffTable", () => {
       "https://stadtwerke-hall.de/tarife-angebote/service/downloadcenter/netze"
     );
     expect(screen.getByText(/Zuletzt geprüft 2026-03-09/)).toBeInTheDocument();
+    expect(screen.getByText("Quelle & Prüfstatus anzeigen")).toBeInTheDocument();
+    expect(screen.queryByText("Gespeicherte Quellseite")).not.toBeInTheDocument();
     expect(screen.getByText("Q1")).toBeInTheDocument();
     expect(screen.getByText("Q2")).toBeInTheDocument();
     expect(screen.getByText("Q3")).toBeInTheDocument();
     expect(screen.getByText("Q4")).toBeInTheDocument();
+    expect(screen.getByText("Endkunden · Niederspannung")).toBeInTheDocument();
+    expect(screen.getByText("Modul 1")).toBeInTheDocument();
+    expect(screen.getByText("Modul 2")).toBeInTheDocument();
+    expect(screen.getByText("Modul 3")).toBeInTheDocument();
+    expect(screen.getByText("Messung")).toBeInTheDocument();
+    expect(screen.getByText("61,00 €/a")).toBeInTheDocument();
+    expect(screen.getAllByText("5,53 ct/kWh").length).toBeGreaterThan(0);
+    expect(screen.getByText("108,70 €/a")).toBeInTheDocument();
+    expect(screen.getByText("9,50 €/a")).toBeInTheDocument();
+    expect(screen.getByText("14,75 €/a")).toBeInTheDocument();
     expect(screen.getByRole("columnheader", { name: "Netzbetreiber" })).toBeInTheDocument();
     expect(screen.getByRole("columnheader", { name: "Q1" })).toBeInTheDocument();
     expect(screen.getByRole("columnheader", { name: "Q2" })).toBeInTheDocument();

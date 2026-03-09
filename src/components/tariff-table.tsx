@@ -1,4 +1,8 @@
-import type { TariffTableRow } from "../lib/view-models/tariffs";
+"use client";
+
+import { useState } from "react";
+
+import type { EndcustomerDisplayProduct, TariffTableRow } from "../lib/view-models/tariffs";
 
 type TariffTableProps = {
   rows: TariffTableRow[];
@@ -27,7 +31,28 @@ function getBandAccentClass(bandKey: "NT" | "ST" | "HT") {
   return "tariff-quarter-band--standard";
 }
 
+function getEndcustomerProductAccent(productKey: EndcustomerDisplayProduct["key"]) {
+  if (productKey === "modul-3") {
+    return "tariff-endcustomer-card--modul-3";
+  }
+
+  if (productKey === "messung") {
+    return "tariff-endcustomer-card--messung";
+  }
+
+  return "tariff-endcustomer-card--base";
+}
+
 export function TariffTable({ rows }: TariffTableProps) {
+  const [expandedSourceSlugs, setExpandedSourceSlugs] = useState<Record<string, boolean>>({});
+
+  function toggleSourceDetails(operatorSlug: string) {
+    setExpandedSourceSlugs((current) => ({
+      ...current,
+      [operatorSlug]: !current[operatorSlug]
+    }));
+  }
+
   return (
     <div className="tariff-table-wrap">
       <table className="tariff-table tariff-table--quarterly">
@@ -86,6 +111,144 @@ export function TariffTable({ rows }: TariffTableProps) {
                     {row.checkedAt ? `Zuletzt geprüft ${row.checkedAt}` : "Noch nicht geprüft"}
                   </span>
                   <span className="table-muted">{`Quelle ${row.sourceSlug}`}</span>
+                  {row.endcustomerDisplay ? (
+                    <section
+                      aria-label={`${row.operatorName} ${row.endcustomerDisplay.title}`}
+                      className="tariff-endcustomer-panel"
+                    >
+                      <div className="tariff-endcustomer-panel__header">
+                        <span className="section-eyebrow">{row.endcustomerDisplay.title}</span>
+                        <span className="table-muted">verifiziertes Niederspannungsprodukt</span>
+                      </div>
+                      <div className="tariff-endcustomer-grid">
+                        {row.endcustomerDisplay.products.map((product) => (
+                          <article
+                            className={`tariff-endcustomer-card ${getEndcustomerProductAccent(product.key)}`}
+                            key={`${row.operatorSlug}-${product.key}`}
+                          >
+                            <h3>{product.label}</h3>
+                            <dl className="tariff-endcustomer-metrics">
+                              {product.metrics.map((metric) => (
+                                <div key={`${row.operatorSlug}-${product.key}-${metric.label}`}>
+                                  <dt>{metric.label}</dt>
+                                  <dd>{metric.value}</dd>
+                                </div>
+                              ))}
+                            </dl>
+                            {product.requirementBadges.length > 0 ? (
+                              <div className="tariff-endcustomer-badges">
+                                {product.requirementBadges.map((badge) => (
+                                  <span
+                                    className="tariff-endcustomer-badge"
+                                    key={`${row.operatorSlug}-${product.key}-${badge}`}
+                                  >
+                                    {badge}
+                                  </span>
+                                ))}
+                              </div>
+                            ) : null}
+                          </article>
+                        ))}
+                      </div>
+                    </section>
+                  ) : null}
+                  <button
+                    aria-controls={`source-details-${row.operatorSlug}`}
+                    aria-expanded={expandedSourceSlugs[row.operatorSlug] ? "true" : "false"}
+                    className="source-details-toggle"
+                    onClick={() => toggleSourceDetails(row.operatorSlug)}
+                    type="button"
+                  >
+                    {expandedSourceSlugs[row.operatorSlug]
+                      ? "Quelle & Prüfstatus ausblenden"
+                      : "Quelle & Prüfstatus anzeigen"}
+                  </button>
+                  {expandedSourceSlugs[row.operatorSlug] ? (
+                    <section
+                      className="source-details-panel"
+                      id={`source-details-${row.operatorSlug}`}
+                    >
+                      <div className="source-details-panel__header">
+                        <span className={`review-pill ${row.reviewStatus}`}>
+                          {row.reviewStatus === "verified" ? "Geprüft" : "Offen"}
+                        </span>
+                        {row.sourceHealthReport ? (
+                          <span
+                            className={`surface-chip source-health-chip source-health-chip--${row.sourceHealthReport.status}`}
+                          >
+                            {row.sourceHealthReport.status === "ok"
+                              ? "Quelle stabil"
+                              : row.sourceHealthReport.status === "blocked"
+                                ? "Quelle blockiert"
+                                : "Quelle prüfen"}
+                          </span>
+                        ) : null}
+                      </div>
+                      <div className="source-details-grid">
+                        <span className="table-muted">
+                          {row.latestPageSnapshotFetchedAt
+                            ? `Seiten-Snapshot ${row.latestPageSnapshotFetchedAt.slice(0, 10)}`
+                            : "Seiten-Snapshot ausstehend"}
+                        </span>
+                        <span className="table-muted">
+                          {row.latestDocumentSnapshotFetchedAt
+                            ? `Dokumenten-Snapshot ${row.latestDocumentSnapshotFetchedAt.slice(0, 10)}`
+                            : "Dokumenten-Snapshot ausstehend"}
+                        </span>
+                        {row.latestPageSnapshotHash ? (
+                          <span className="table-muted">{`Seite Hash ${row.latestPageSnapshotHash}`}</span>
+                        ) : null}
+                        {row.latestDocumentSnapshotHash ? (
+                          <span className="table-muted">{`Dokument Hash ${row.latestDocumentSnapshotHash}`}</span>
+                        ) : null}
+                      </div>
+                      <div className="source-details-links">
+                        <a
+                          className="source-link"
+                          href={row.sourcePageUrl}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          Quellseite
+                        </a>
+                        <a
+                          className="source-link"
+                          href={row.documentUrl}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          Originaldokument
+                        </a>
+                        {row.pageArtifactApiUrl ? (
+                          <a
+                            className="source-link"
+                            href={row.pageArtifactApiUrl}
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            Gespeicherte Quellseite
+                          </a>
+                        ) : null}
+                        {row.documentArtifactApiUrl ? (
+                          <a
+                            className="source-link"
+                            href={row.documentArtifactApiUrl}
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            Gespeichertes Dokument
+                          </a>
+                        ) : null}
+                      </div>
+                      {row.sourceHealthReport?.issues.length ? (
+                        <ul className="source-health-issues">
+                          {row.sourceHealthReport.issues.map((issue) => (
+                            <li key={`${row.operatorSlug}-${issue.key}`}>{issue.message}</li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </section>
+                  ) : null}
                 </div>
               </td>
               {row.quarterMatrix.map((quarter) => (

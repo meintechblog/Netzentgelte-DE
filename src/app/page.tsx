@@ -1,24 +1,40 @@
 import { OperatorExplorer } from "../components/operator-explorer";
-import { SourceReviewTable } from "../components/source-review-table";
 import { getRegistryMapFeatures, projectGermanyMap } from "../lib/maps/geojson";
-import { getRegistryTariffRows } from "../lib/view-models/tariffs";
+import { getRegistryTariffRows, mergeTariffRowsWithEndcustomerCatalog } from "../lib/view-models/tariffs";
 import {
   getPublishedOperatorSnapshotStats,
   loadPublishedOperatorSnapshot
 } from "../modules/operators/current-catalog";
 import { loadCurrentSources } from "../modules/sources/current-sources";
+import { loadEndcustomerTariffCatalog } from "../modules/tariffs/endcustomer-catalog";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const operatorSnapshot = await loadPublishedOperatorSnapshot();
+  const endcustomerCatalog = await loadEndcustomerTariffCatalog();
   const operators = operatorSnapshot.operators;
   const currentSources = await loadCurrentSources();
   const publishedOperatorSlugs = new Set(operators.map((entry) => entry.slug));
-  const rows = getRegistryTariffRows(operators);
+  const rows = mergeTariffRowsWithEndcustomerCatalog(getRegistryTariffRows(operators), endcustomerCatalog);
   const mapScene = projectGermanyMap(getRegistryMapFeatures(operators));
   const stats = getPublishedOperatorSnapshotStats(operatorSnapshot);
   const publicSources = currentSources.filter((row) => publishedOperatorSlugs.has(row.operatorSlug));
+  const sourceByOperatorSlug = new Map(publicSources.map((row) => [row.operatorSlug, row] as const));
+  const mergedRows = rows.map((row) => {
+    const source = sourceByOperatorSlug.get(row.operatorSlug);
+
+    return {
+      ...row,
+      latestPageSnapshotFetchedAt: source?.latestPageSnapshotFetchedAt ?? null,
+      latestPageSnapshotHash: source?.latestPageSnapshotHash ?? null,
+      pageArtifactApiUrl: source?.pageArtifactApiUrl ?? null,
+      latestDocumentSnapshotFetchedAt: source?.latestDocumentSnapshotFetchedAt ?? null,
+      latestDocumentSnapshotHash: source?.latestDocumentSnapshotHash ?? null,
+      documentArtifactApiUrl: source?.documentArtifactApiUrl ?? null,
+      sourceHealthReport: source?.healthReport ?? null
+    };
+  });
 
   return (
     <main className="dashboard-shell">
@@ -41,7 +57,7 @@ export default async function HomePage() {
       </section>
 
       <div className="dashboard-grid">
-        <OperatorExplorer mapScene={mapScene} rows={rows} />
+        <OperatorExplorer mapScene={mapScene} rows={mergedRows} />
 
         <section className="stats-grid" aria-label="Kennzahlen">
           <article className="stat-card">
@@ -90,24 +106,6 @@ export default async function HomePage() {
               <p>Hover-Details für Betreiberregionen mit direktem Sprung zur Quellseite.</p>
             </article>
           </div>
-        </section>
-
-        <section className="content-panel" aria-labelledby="quellenpruefung">
-          <div className="panel-header">
-            <div>
-              <span className="section-eyebrow">Human In The Loop</span>
-              <h2 id="quellenpruefung">Quellenprüfung</h2>
-              <p>
-                Gespeicherte Artefakte, Snapshot-Zeitpunkte und Hashes bleiben pro Quelle
-                direkt aus der Datenbasis nachvollziehbar.
-              </p>
-            </div>
-            <div className="panel-actions">
-              <span className="surface-chip">Snapshot trail</span>
-              <span className="surface-chip">Artifact access</span>
-            </div>
-          </div>
-          <SourceReviewTable rows={publicSources} />
         </section>
       </div>
     </main>

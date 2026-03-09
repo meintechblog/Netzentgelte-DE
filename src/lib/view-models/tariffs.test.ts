@@ -224,7 +224,24 @@ describe("buildQuarterlyTariffMatrix", () => {
       }
     ];
 
+    const missingRequirementCatalog = [
+      {
+        ...reference,
+        products: reference.products.map((product) =>
+          product.moduleKey === "modul-1"
+            ? {
+                ...product,
+                requirements: product.requirements.filter(
+                  (requirement) => requirement.requirementKey !== "default_if_no_choice"
+                )
+              }
+            : product
+        )
+      }
+    ];
+
     expect(mergeTariffRowsWithEndcustomerCatalog([row!], incompleteCatalog)[0]?.endcustomerDisplay).toBeNull();
     expect(mergeTariffRowsWithEndcustomerCatalog([row!], unverifiedCatalog)[0]?.endcustomerDisplay).toBeNull();
+    expect(mergeTariffRowsWithEndcustomerCatalog([row!], missingRequirementCatalog)[0]?.endcustomerDisplay).toBeNull();
   });
 });

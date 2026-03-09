@@ -9,6 +9,10 @@ import type {
   EndcustomerTariffCatalogProduct,
   EndcustomerTariffCatalogRequirement
 } from "../../modules/tariffs/endcustomer-catalog";
+import {
+  hasCompleteMeteringSet,
+  selectCurrentCompleteEndcustomerSet
+} from "../../modules/tariffs/endcustomer-integrity";
 import type { SourceHealthReport } from "../../modules/sources/source-health";
 export {
   buildQuarterlyTariffMatrix,
@@ -132,7 +136,7 @@ function buildEndcustomerDisplay(entry: EndcustomerTariffCatalogEntry | undefine
     return null;
   }
 
-  const selectedProducts = selectCurrentVerifiedProducts(entry.products);
+  const selectedProducts = selectCurrentCompleteEndcustomerSet(entry);
   if (!selectedProducts || !hasCompleteMeteringSet(entry.meteringPrices)) {
     return null;
   }
@@ -155,62 +159,6 @@ function buildEndcustomerDisplay(entry: EndcustomerTariffCatalogEntry | undefine
       ])
       .join(" ")
   };
-}
-
-function selectCurrentVerifiedProducts(products: EndcustomerTariffCatalogProduct[]) {
-  const verifiedProducts = products.filter((product) => product.humanReviewStatus === "verified");
-  const validFroms = [...new Set(verifiedProducts.map((product) => product.validFrom))].sort((left, right) =>
-    right.localeCompare(left, "de")
-  );
-
-  for (const validFrom of validFroms) {
-    const productsForDate = verifiedProducts.filter((product) => product.validFrom === validFrom);
-    const modul1 = productsForDate.find((product) => product.moduleKey === "modul-1");
-    const modul2 = productsForDate.find((product) => product.moduleKey === "modul-2");
-    const modul3 = productsForDate.find((product) => product.moduleKey === "modul-3");
-
-    if (
-      modul1 &&
-      modul2 &&
-      modul3 &&
-      isCompleteProduct(modul1) &&
-      isCompleteProduct(modul2) &&
-      isCompleteProduct(modul3)
-    ) {
-      return { modul1, modul2, modul3 };
-    }
-  }
-
-  return null;
-}
-
-function isCompleteProduct(product: EndcustomerTariffCatalogProduct) {
-  if (product.moduleKey === "modul-1") {
-    return hasComponent(product.components, "base_price_eur_per_year") &&
-      hasComponent(product.components, "work_price_ct_per_kwh") &&
-      hasComponent(product.components, "net_fee_reduction_eur_per_year");
-  }
-
-  if (product.moduleKey === "modul-2") {
-    return hasComponent(product.components, "base_price_eur_per_year") &&
-      hasComponent(product.components, "work_price_ct_per_kwh");
-  }
-
-  return hasComponent(product.components, "low_work_price_ct_per_kwh") &&
-    hasComponent(product.components, "standard_work_price_ct_per_kwh") &&
-    hasComponent(product.components, "high_work_price_ct_per_kwh");
-}
-
-function hasCompleteMeteringSet(components: EndcustomerTariffCatalogComponent[]) {
-  return hasComponent(components, "single_register_meter_eur_per_year") &&
-    hasComponent(components, "dual_register_meter_eur_per_year");
-}
-
-function hasComponent(
-  components: EndcustomerTariffCatalogComponent[],
-  key: EndcustomerTariffCatalogComponent["componentKey"]
-) {
-  return components.some((component) => component.componentKey === key && component.valueNumeric.length > 0);
 }
 
 function buildProductDisplay(

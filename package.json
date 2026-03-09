@@ -13,7 +13,8 @@
     "test:watch": "vitest",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node scripts/db/migrate.mjs",
-    "ingest:run": "tsx scripts/ingest/run-ingest.ts"
+    "ingest:run": "tsx scripts/ingest/run-ingest.ts",
+    "registry:import": "tsx scripts/registry/import-registry.ts"
   },
   "dependencies": {
     "drizzle-orm": "^0.44.5",

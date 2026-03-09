@@ -1,5 +1,7 @@
 import { describe, expect, test } from "vitest";
 
+import { operators } from "./operators";
+import { tariffVersions } from "./tariffs";
 import { tables } from "./index";
 
 describe("database schema bootstrap", () => {
@@ -14,5 +16,14 @@ describe("database schema bootstrap", () => {
         "ingest_runs"
       ])
     );
+  });
+
+  test("persists operator registry metadata fields", () => {
+    expect(operators.regionLabel).toBeDefined();
+    expect(operators.websiteUrl).toBeDefined();
+  });
+
+  test("stores an explicit modul-3 band key per tariff row", () => {
+    expect(tariffVersions.bandKey).toBeDefined();
   });
 });

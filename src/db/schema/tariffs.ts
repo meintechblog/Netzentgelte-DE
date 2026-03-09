@@ -12,6 +12,7 @@ export const tariffVersions = pgTable("tariff_versions", {
     onDelete: "set null"
   }),
   modelKey: text("model_key").notNull().default("14a-model-3"),
+  bandKey: text("band_key"),
   validFrom: date("valid_from").notNull(),
   validUntil: date("valid_until"),
   normalizationStatus: text("normalization_status").notNull().default("pending"),

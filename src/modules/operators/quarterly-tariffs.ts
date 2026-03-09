@@ -6,6 +6,7 @@ export type TariffQuarterGroup = {
   valueCtPerKwh: string;
   timeRanges: string[];
   sourceQuotes: string[];
+  coverageStatus: "official" | "assumed-st";
 };
 
 export type TariffQuarterEntry = {
@@ -24,6 +25,7 @@ export type TariffQuarterSlot = {
   bandLabel: string;
   valueCtPerKwh: string;
   isHourStart: boolean;
+  coverageStatus: "official" | "assumed-st" | "empty";
 };
 
 export type TariffQuarterSegment = {
@@ -35,12 +37,14 @@ export type TariffQuarterSegment = {
   bandKey: "NT" | "ST" | "HT" | null;
   bandLabel: string;
   valueCtPerKwh: string;
+  coverageStatus: "official" | "assumed-st" | "empty";
 };
 
 export type TariffQuarter = {
   key: TariffQuarterKey;
   label: TariffQuarterKey;
   summaryLabel: string;
+  coverageStatus: "official" | "assumed-st" | "empty";
   groups: TariffQuarterGroup[];
   timelineEntries: TariffQuarterEntry[];
   slots: TariffQuarterSlot[];
@@ -102,7 +106,14 @@ export function expandSeasonLabelToQuarters(seasonLabel: string): TariffQuarterK
   return [...QUARTER_ORDER];
 }
 
-function getQuarterSummaryLabel(groups: TariffQuarterGroup[]) {
+function getQuarterSummaryLabel(
+  groups: TariffQuarterGroup[],
+  coverageStatus: TariffQuarter["coverageStatus"]
+) {
+  if (coverageStatus === "assumed-st") {
+    return "ST-Annahme · Quelle ohne Zeitfenster";
+  }
+
   if (
     groups.length === 1 &&
     groups[0]?.bandKey === "ST" &&
@@ -190,7 +201,8 @@ function buildEmptyQuarterSlots(): TariffQuarterSlot[] {
       bandKey: null,
       bandLabel: "Keine Zuordnung",
       valueCtPerKwh: "",
-      isHourStart: startMinutes % 60 === 0
+      isHourStart: startMinutes % 60 === 0,
+      coverageStatus: "empty"
     };
   });
 }
@@ -258,7 +270,8 @@ function applyTimeRangeToSlots(
         ...slot,
         bandKey: group.bandKey,
         bandLabel: group.label,
-        valueCtPerKwh: group.valueCtPerKwh
+        valueCtPerKwh: group.valueCtPerKwh,
+        coverageStatus: group.coverageStatus
       };
     }
   }
@@ -318,7 +331,8 @@ function buildQuarterSegments(slots: TariffQuarterSlot[]): TariffQuarterSegment[
       timeLabel: `${currentSlot.startLabel}-${lastSlot.endLabel}`,
       bandKey: currentSlot.bandKey,
       bandLabel: currentSlot.bandLabel,
-      valueCtPerKwh: currentSlot.valueCtPerKwh
+      valueCtPerKwh: currentSlot.valueCtPerKwh,
+      coverageStatus: currentSlot.coverageStatus
     });
   }
 
@@ -356,6 +370,29 @@ function buildQuarterTimelineEntries(groups: TariffQuarterGroup[]): TariffQuarte
     .sort((left, right) => compareTimeRanges(left.timeRange, right.timeRange));
 }
 
+function buildAssumedStandardGroup(
+  bandValueMap: ReturnType<typeof getBandValueMap>
+): TariffQuarterGroup[] {
+  const standardBand = bandValueMap.get("ST");
+
+  if (!standardBand?.valueCtPerKwh) {
+    return [];
+  }
+
+  return [
+    {
+      bandKey: "ST",
+      label: standardBand.label,
+      valueCtPerKwh: standardBand.valueCtPerKwh,
+      timeRanges: ["00:00-24:00"],
+      sourceQuotes: [
+        "Verifizierte ST-Annahme: Fuer dieses Quartal sind im Originaldokument keine Zeitfenster veroeffentlicht."
+      ],
+      coverageStatus: "assumed-st"
+    }
+  ];
+}
+
 export function buildQuarterlyTariffMatrix(input: QuarterlyTariffInput): TariffQuarter[] {
   const bandValueMap = getBandValueMap(input);
   const groupsByQuarter = new Map<
@@ -390,21 +427,26 @@ export function buildQuarterlyTariffMatrix(input: QuarterlyTariffInput): TariffQ
         label: window.label,
         valueCtPerKwh: band?.valueCtPerKwh ?? "",
         timeRanges: [window.timeRangeLabel],
-        sourceQuotes: [window.sourceQuote]
+        sourceQuotes: [window.sourceQuote],
+        coverageStatus: "official"
       });
     }
   }
 
   return QUARTER_ORDER.map((quarter) => {
-    const groups = [...(groupsByQuarter.get(quarter)?.values() ?? [])].sort(
+    const officialGroups = [...(groupsByQuarter.get(quarter)?.values() ?? [])].sort(
       (left, right) => BAND_DISPLAY_ORDER[left.bandKey] - BAND_DISPLAY_ORDER[right.bandKey]
     );
+    const groups = officialGroups.length > 0 ? officialGroups : buildAssumedStandardGroup(bandValueMap);
+    const coverageStatus =
+      groups[0]?.coverageStatus ?? (officialGroups.length > 0 ? "official" : "empty");
     const slots = buildQuarterSlots(groups);
 
     return {
       key: quarter,
       label: quarter,
-      summaryLabel: getQuarterSummaryLabel(groups),
+      summaryLabel: getQuarterSummaryLabel(groups, coverageStatus),
+      coverageStatus,
       groups,
       timelineEntries: buildQuarterTimelineEntries(groups),
       slots,

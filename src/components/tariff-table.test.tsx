@@ -127,4 +127,23 @@ describe("TariffTable", () => {
     expect(screen.getAllByRole("link", { name: "Quellseite" })).toHaveLength(1);
     expect(screen.getAllByRole("link", { name: "PDF / Dokument" })).toHaveLength(1);
   });
+
+  test("renders assumed ST quarters without inline time text and with explicit assumption messaging", () => {
+    const mvv = mergeTariffRowsWithEndcustomerCatalog(
+      getRegistryTariffRows(getSeedPublishedOperators()),
+      getSeedEndcustomerTariffCatalog()
+    ).find((row) => row.operatorSlug === "mvv-netze");
+
+    render(<TariffTable rows={[mvv!]} />);
+
+    const q2Section = screen.getByLabelText("MVV Netze GmbH Q2");
+
+    expect(within(q2Section).getByText("ST-Annahme · Quelle ohne Zeitfenster")).toBeInTheDocument();
+    expect(
+      within(q2Section).getByLabelText(
+        "Q2 00:00-24:00 · ST · 4.32 ct/kWh · Verifizierte ST-Annahme, da im Originaldokument fuer dieses Quartal keine Zeitfenster veroeffentlicht sind"
+      )
+    ).toHaveClass("tariff-quarter-segment--st-assumed");
+    expect(q2Section.querySelector(".tariff-quarter-segment__time")).toBeNull();
+  });
 });

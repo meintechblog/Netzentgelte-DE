@@ -123,14 +123,13 @@ describe("OperatorExplorer", () => {
     expect(screen.getByText("0 Treffer")).toBeInTheDocument();
   });
 
-  test("filters the merged operator list by integrated source fields and keeps source details collapsed by default", () => {
+  test("filters the merged operator list by integrated source fields and shows inline source details", () => {
     render(<OperatorExplorer rows={rows} mapScene={projectGermanyMap(mapFeatures)} />);
 
     expect(screen.getByRole("heading", { name: "Netzbetreiber & Tarifdaten" })).toBeInTheDocument();
-    expect(
-      screen.getAllByRole("button", { name: "Quelle & Prüfstatus anzeigen" }).length
-    ).toBeGreaterThan(0);
-    expect(screen.queryByText("Gespeicherte Quellseite")).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Quelle & Prüfstatus anzeigen" })).not.toBeInTheDocument();
+    expect(screen.getByText("Prüfstatus: Offen")).toBeInTheDocument();
+    expect(screen.getByText("Gespeicherte Quellseite")).toBeInTheDocument();
 
     fireEvent.change(screen.getByRole("searchbox", { name: "Suchbegriff" }), {
       target: { value: "stromnetz-berlin-2026" }

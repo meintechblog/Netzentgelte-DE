@@ -38,6 +38,10 @@ function getQuarterSlotClass(
     return "tariff-quarter-segment tariff-quarter-segment--empty";
   }
 
+  if (slot.coverageStatus === "assumed-st" && slot.bandKey === "ST") {
+    return "tariff-quarter-segment tariff-quarter-segment--st-assumed";
+  }
+
   return `tariff-quarter-segment tariff-quarter-segment--${getBandAccentClass(slot.bandKey)}`;
 }
 
@@ -47,6 +51,10 @@ function getQuarterSlotLabel(
 ) {
   if (!slot.bandKey || !slot.valueCtPerKwh) {
     return `${quarterLabel} ${slot.timeLabel} · keine Zuordnung`;
+  }
+
+  if (slot.coverageStatus === "assumed-st") {
+    return `${quarterLabel} ${slot.timeLabel} · ${slot.bandKey} · ${slot.valueCtPerKwh} ct/kWh · Verifizierte ST-Annahme, da im Originaldokument fuer dieses Quartal keine Zeitfenster veroeffentlicht sind`;
   }
 
   return `${quarterLabel} ${slot.timeLabel} · ${slot.bandKey} · ${slot.valueCtPerKwh} ct/kWh`;
@@ -296,11 +304,7 @@ export function TariffTable({ rows }: TariffTableProps) {
                               key={`${row.operatorSlug}-${quarter.key}-${segment.startSlotIndex}`}
                               style={getQuarterSegmentStyle(segment)}
                               title={getQuarterSlotLabel(quarter.label, segment)}
-                            >
-                              {segment.bandKey ? (
-                                <span className="tariff-quarter-segment__time">{segment.timeLabel}</span>
-                              ) : null}
-                            </span>
+                            />
                           ))}
                         </div>
                       </div>

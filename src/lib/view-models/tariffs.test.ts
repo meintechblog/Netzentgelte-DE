@@ -174,11 +174,13 @@ describe("buildQuarterlyTariffMatrix", () => {
       key: "Q3",
       label: "Q3",
       summaryLabel: "Nur Standardtarif",
+      coverageStatus: "official",
       groups: [
         expect.objectContaining({
           bandKey: "ST",
           valueCtPerKwh: "5.53",
-          timeRanges: ["00:00-24:00"]
+          timeRanges: ["00:00-24:00"],
+          coverageStatus: "official"
         })
       ],
       timelineEntries: [
@@ -194,14 +196,16 @@ describe("buildQuarterlyTariffMatrix", () => {
           timeLabel: "00:00-00:15",
           bandKey: "ST",
           valueCtPerKwh: "5.53",
-          isHourStart: true
+          isHourStart: true,
+          coverageStatus: "official"
         }),
         expect.objectContaining({
           slotIndex: 95,
           timeLabel: "23:45-24:00",
           bandKey: "ST",
           valueCtPerKwh: "5.53",
-          isHourStart: false
+          isHourStart: false,
+          coverageStatus: "official"
         })
       ]),
       segments: [
@@ -210,7 +214,8 @@ describe("buildQuarterlyTariffMatrix", () => {
           endLabel: "24:00",
           timeLabel: "00:00-24:00",
           bandKey: "ST",
-          valueCtPerKwh: "5.53"
+          valueCtPerKwh: "5.53",
+          coverageStatus: "official"
         })
       ]
     });
@@ -350,7 +355,35 @@ describe("buildQuarterlyTariffMatrix", () => {
     ).toBe("Nur Standardtarif");
   });
 
-  test("leaves only MVV Q2 and Q3 unresolved in the quarter coverage audit", () => {
+  test("fills MVV Q2 and Q3 with an explicitly marked assumed standard tariff", () => {
+    const rows = getRegistryTariffRows(getSeedPublishedOperators());
+    const mvv = rows.find((row) => row.operatorSlug === "mvv-netze");
+    const q2 = mvv?.quarterMatrix.find((quarter) => quarter.key === "Q2");
+    const q3 = mvv?.quarterMatrix.find((quarter) => quarter.key === "Q3");
+
+    expect(q2).toEqual(
+      expect.objectContaining({
+        summaryLabel: "ST-Annahme · Quelle ohne Zeitfenster",
+        coverageStatus: "assumed-st"
+      })
+    );
+    expect(q2?.segments).toEqual([
+      expect.objectContaining({
+        timeLabel: "00:00-24:00",
+        bandKey: "ST",
+        valueCtPerKwh: "4.32",
+        coverageStatus: "assumed-st"
+      })
+    ]);
+    expect(q3).toEqual(
+      expect.objectContaining({
+        summaryLabel: "ST-Annahme · Quelle ohne Zeitfenster",
+        coverageStatus: "assumed-st"
+      })
+    );
+  });
+
+  test("does not leave unresolved empty quarter slots after assumed standard fallback", () => {
     const rows = getRegistryTariffRows(getSeedPublishedOperators());
     const issues = rows.flatMap((row) =>
       row.quarterMatrix.flatMap((quarter) => {
@@ -360,10 +393,7 @@ describe("buildQuarterlyTariffMatrix", () => {
       })
     );
 
-    expect(issues).toEqual([
-      { operatorSlug: "mvv-netze", quarter: "Q2", nullSlots: 96 },
-      { operatorSlug: "mvv-netze", quarter: "Q3", nullSlots: 96 }
-    ]);
+    expect(issues).toEqual([]);
   });
 
   test("merges current source metadata by exact source slug instead of operator slug", () => {

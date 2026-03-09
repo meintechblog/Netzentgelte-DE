@@ -4,32 +4,36 @@ type TariffTableProps = {
   rows: TariffTableRow[];
 };
 
-function getGroupedTimeWindows(row: TariffTableRow) {
-  const groups = new Map<string, TariffTableRow["timeWindows"]>();
-
-  for (const window of row.timeWindows) {
-    const existing = groups.get(window.seasonLabel);
-
-    if (existing) {
-      existing.push(window);
-      continue;
-    }
-
-    groups.set(window.seasonLabel, [window]);
-  }
-
-  return [...groups.entries()].map(([seasonLabel, windows]) => ({
-    seasonLabel,
-    windows
-  }));
-}
-
 function getTimeWindowMeta(row: TariffTableRow) {
   if (row.timeWindows.length === 0) {
     return "Zeitfenster noch nicht strukturiert";
   }
 
-  return `${row.timeWindows.length} strukturierte Zeitfenster`;
+  return `${row.quarterMatrix.length} Quartale`;
+}
+
+function getBandAccentClass(bandKey: "NT" | "ST" | "HT") {
+  if (bandKey === "HT") {
+    return "tariff-quarter-band--high";
+  }
+
+  if (bandKey === "NT") {
+    return "tariff-quarter-band--low";
+  }
+
+  return "tariff-quarter-band--standard";
+}
+
+function getBandDisplayLabel(bandKey: "NT" | "ST" | "HT") {
+  if (bandKey === "HT") {
+    return "Hochtarif";
+  }
+
+  if (bandKey === "NT") {
+    return "Niedrigtarif";
+  }
+
+  return "Standardtarif";
 }
 
 export function TariffTable({ rows }: TariffTableProps) {
@@ -60,30 +64,37 @@ export function TariffTable({ rows }: TariffTableProps) {
                   <div className="table-value">{row.currentBandsSummary}</div>
                   <div className="tariff-windows">
                     <div className="tariff-windows__header">
-                      <span className="tariff-windows__title">Tariffenster</span>
+                      <span className="tariff-windows__title">Quartalsmatrix</span>
                       <span className="table-muted">{getTimeWindowMeta(row)}</span>
                     </div>
                     {row.timeWindows.length > 0 ? (
-                      <div className="tariff-window-groups">
-                        {getGroupedTimeWindows(row).map((group) => (
-                          <section className="tariff-window-group" key={`${row.operatorSlug}-${group.seasonLabel}`}>
-                            <div className="tariff-window-group__header">
-                              <h3>{group.seasonLabel}</h3>
-                              <span className="table-muted">
-                                {group.windows.length} Zeitfenster
-                              </span>
+                      <div className="tariff-quarter-grid" role="list" aria-label={`Quartalsmatrix ${row.operatorName}`}>
+                        {row.quarterMatrix.map((quarter) => (
+                          <section className="tariff-quarter-card" key={`${row.operatorSlug}-${quarter.key}`} role="listitem">
+                            <div className="tariff-quarter-card__header">
+                              <h3>{quarter.label}</h3>
+                              <span className="table-muted">{quarter.summaryLabel}</span>
                             </div>
-                            <div className="tariff-window-list">
-                              {group.windows.map((window) => (
-                                <article className="tariff-window-card" key={window.id}>
-                                  <div className="tariff-window-card__topline">
-                                    <span className="tariff-window-chip">{window.label}</span>
-                                    <span className="tariff-window-time">{window.timeRangeLabel}</span>
+                            <div className="tariff-quarter-band-list">
+                              {quarter.groups.map((group) => (
+                                <article
+                                  className={`tariff-quarter-band ${getBandAccentClass(group.bandKey)}`}
+                                  key={`${row.operatorSlug}-${quarter.key}-${group.bandKey}`}
+                                >
+                                  <div className="tariff-quarter-band__header">
+                                    <div className="tariff-quarter-band__title">
+                                      <span className="tariff-window-chip">{getBandDisplayLabel(group.bandKey)}</span>
+                                      <span className="tariff-quarter-band__source-label">{group.label}</span>
+                                    </div>
+                                    <strong className="tariff-quarter-band__price">{`${group.valueCtPerKwh} ct/kWh`}</strong>
                                   </div>
-                                  <div className="tariff-window-card__meta">
-                                    <span>{window.dayLabel}</span>
-                                  </div>
-                                  <p>{window.sourceQuote}</p>
+                                  <ul className="tariff-quarter-band__times">
+                                    {group.timeRanges.map((timeRange) => (
+                                      <li className="tariff-window-time" key={`${row.operatorSlug}-${quarter.key}-${group.bandKey}-${timeRange}`}>
+                                        {timeRange}
+                                      </li>
+                                    ))}
+                                  </ul>
                                 </article>
                               ))}
                             </div>

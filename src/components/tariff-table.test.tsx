@@ -1,61 +1,38 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 
+import { getSeedPublishedOperators } from "../modules/operators/current-catalog";
+import { getRegistryTariffRows } from "../lib/view-models/tariffs";
 import { TariffTable } from "./tariff-table";
 
 describe("TariffTable", () => {
-  test("renders grouped schedule headings when tariff windows span multiple seasons", () => {
+  test("renders a quarterly tariff matrix anchored on the Schwäbisch Hall source layout", () => {
+    const schwaebischHall = getRegistryTariffRows(getSeedPublishedOperators()).find(
+      (row) => row.operatorSlug === "stadtwerke-schwaebisch-hall"
+    );
+
     render(
       <TariffTable
-        rows={[
-          {
-            operatorName: "Demo Netz",
-            operatorSlug: "demo-netz",
-            regionLabel: "Nord",
-            currentBandsSummary: "Manuelle Prüfung offen",
-            validFrom: "2026-01-01",
-            sourcePageUrl: "https://example.com/netzentgelte",
-            documentUrl: "https://example.com/preise.pdf",
-            sourceSlug: "demo-netz-example-com-preise-pdf",
-            checkedAt: "2026-03-09",
-            reviewStatus: "pending",
-            timeWindows: [
-              {
-                id: "demo-high-evening",
-                bandKey: "HT",
-                label: "Hochtarif",
-                seasonLabel: "Winter 2026",
-                dayLabel: "Alle Tage",
-                timeRangeLabel: "18:00-21:00",
-                sourceQuote: "Hochtarif 11,77 ct/kWh, 18:00-21:00"
-              },
-              {
-                id: "demo-standard-summer",
-                bandKey: "ST",
-                label: "Standardtarif",
-                seasonLabel: "Sommer 2026",
-                dayLabel: "Alle Tage",
-                timeRangeLabel: "00:00-10:00",
-                sourceQuote: "Standardtarif 4,72 ct/kWh, 00:00-10:00"
-              }
-            ]
-          }
-        ]}
+        rows={[schwaebischHall!]}
       />
     );
 
-    expect(screen.getByText("Demo Netz")).toBeInTheDocument();
-    expect(screen.getByText("Nord")).toBeInTheDocument();
-    expect(screen.getByText("Manuelle Prüfung offen")).toBeInTheDocument();
+    expect(screen.getByText("Stadtwerke Schwäbisch Hall GmbH")).toBeInTheDocument();
+    expect(screen.getByText("Schwäbisch Hall")).toBeInTheDocument();
+    expect(screen.getByText("NT 1.11 ct/kWh · ST 5.53 ct/kWh · HT 8.14 ct/kWh")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Quellseite" })).toHaveAttribute(
       "href",
-      "https://example.com/netzentgelte"
+      "https://stadtwerke-hall.de/tarife-angebote/service/downloadcenter/netze"
     );
     expect(screen.getByText(/Zuletzt geprüft 2026-03-09/)).toBeInTheDocument();
-    expect(screen.getByText(/Quelle demo-netz-example-com-preise-pdf/)).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Winter 2026" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Sommer 2026" })).toBeInTheDocument();
+    expect(screen.getByText("Q1")).toBeInTheDocument();
+    expect(screen.getByText("Q2")).toBeInTheDocument();
+    expect(screen.getByText("Q3")).toBeInTheDocument();
+    expect(screen.getByText("Q4")).toBeInTheDocument();
     expect(screen.getByRole("columnheader", { name: "Gültig ab" })).toBeInTheDocument();
-    expect(screen.getByText("18:00-21:00")).toBeInTheDocument();
+    expect(screen.getByText("Nur Standardtarif")).toBeInTheDocument();
+    expect(screen.getByText("00:00-24:00")).toBeInTheDocument();
+    expect(screen.getAllByText("10:00-14:00")).toHaveLength(3);
+    expect(screen.getAllByText("22:00-00:00")).toHaveLength(3);
   });
 });

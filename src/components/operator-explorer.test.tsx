@@ -17,7 +17,8 @@ const rows: TariffTableRow[] = [
     sourceSlug: "stadtwerke-schwaebisch-hall-2026",
     checkedAt: "2026-03-09",
     reviewStatus: "pending",
-    timeWindows: []
+    timeWindows: [],
+    quarterMatrix: []
   },
   {
     operatorName: "Stromnetz Berlin",
@@ -30,7 +31,8 @@ const rows: TariffTableRow[] = [
     sourceSlug: "stromnetz-berlin-2026",
     checkedAt: "2026-03-09",
     reviewStatus: "verified",
-    timeWindows: []
+    timeWindows: [],
+    quarterMatrix: []
   }
 ];
 

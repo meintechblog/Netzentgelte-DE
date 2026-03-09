@@ -1,0 +1,73 @@
+import { describe, expect, test } from "vitest";
+
+import { getSeedPublishedOperators } from "../../modules/operators/current-catalog";
+import {
+  buildQuarterlyTariffMatrix,
+  expandSeasonLabelToQuarters,
+  getRegistryTariffRows
+} from "./tariffs";
+
+describe("expandSeasonLabelToQuarters", () => {
+  test("normalizes season labels into concrete quarters", () => {
+    expect(expandSeasonLabelToQuarters("Ganzjährig 2026")).toEqual(["Q1", "Q2", "Q3", "Q4"]);
+    expect(expandSeasonLabelToQuarters("Q1 und Q4 2026")).toEqual(["Q1", "Q4"]);
+    expect(expandSeasonLabelToQuarters("Q2-Q3 2026")).toEqual(["Q2", "Q3"]);
+    expect(expandSeasonLabelToQuarters("Sommer 2026")).toEqual(["Q2", "Q3"]);
+    expect(expandSeasonLabelToQuarters("Winter 2026")).toEqual(["Q1", "Q4"]);
+  });
+});
+
+describe("buildQuarterlyTariffMatrix", () => {
+  test("renders Stadtwerke Schwäbisch Hall quarter logic from the official 2026 PDF", () => {
+    const operator = getSeedPublishedOperators().find(
+      (entry) => entry.slug === "stadtwerke-schwaebisch-hall"
+    );
+
+    expect(operator).toBeDefined();
+
+    const matrix = buildQuarterlyTariffMatrix(operator!);
+    const q1 = matrix.find((quarter) => quarter.key === "Q1");
+    const q3 = matrix.find((quarter) => quarter.key === "Q3");
+
+    expect(q1?.groups).toEqual([
+      expect.objectContaining({
+        bandKey: "ST",
+        valueCtPerKwh: "5.53",
+        timeRanges: ["07:00-10:00", "14:00-18:00", "20:00-22:00"]
+      }),
+      expect.objectContaining({
+        bandKey: "HT",
+        valueCtPerKwh: "8.14",
+        timeRanges: ["10:00-14:00", "18:00-20:00"]
+      }),
+      expect.objectContaining({
+        bandKey: "NT",
+        valueCtPerKwh: "1.11",
+        timeRanges: ["00:00-07:00", "22:00-00:00"]
+      })
+    ]);
+
+    expect(q3).toEqual({
+      key: "Q3",
+      label: "Q3",
+      summaryLabel: "Nur Standardtarif",
+      groups: [
+        expect.objectContaining({
+          bandKey: "ST",
+          valueCtPerKwh: "5.53",
+          timeRanges: ["00:00-24:00"]
+        })
+      ]
+    });
+  });
+
+  test("attaches a quarter matrix to published tariff rows", () => {
+    const rows = getRegistryTariffRows(getSeedPublishedOperators());
+    const schwaebischHall = rows.find((row) => row.operatorSlug === "stadtwerke-schwaebisch-hall");
+
+    expect(schwaebischHall?.quarterMatrix).toHaveLength(4);
+    expect(
+      schwaebischHall?.quarterMatrix.find((quarter) => quarter.key === "Q3")?.summaryLabel
+    ).toBe("Nur Standardtarif");
+  });
+});

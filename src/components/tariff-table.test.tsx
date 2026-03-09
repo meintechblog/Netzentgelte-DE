@@ -59,24 +59,19 @@ describe("TariffTable", () => {
     expect(screen.getByText("Nur Standardtarif")).toBeInTheDocument();
     const q1Section = screen.getByLabelText("Stadtwerke Schwäbisch Hall GmbH Q1");
     const q3Section = screen.getByLabelText("Stadtwerke Schwäbisch Hall GmbH Q3");
-    expect(q1Section.querySelectorAll(".tariff-quarter-segment")).toHaveLength(7);
-    expect(q3Section.querySelectorAll(".tariff-quarter-segment")).toHaveLength(1);
+    expect(q1Section.querySelectorAll(".tariff-quarter-grid__cell")).toHaveLength(96);
+    expect(q3Section.querySelectorAll(".tariff-quarter-grid__cell")).toHaveLength(96);
     expect(within(q1Section).getByText("00:00")).toBeInTheDocument();
-    expect(within(q1Section).getByText("04:00")).toBeInTheDocument();
-    expect(within(q1Section).getByText("08:00")).toBeInTheDocument();
     expect(within(q1Section).getByText("12:00")).toBeInTheDocument();
-    expect(within(q1Section).getByText("16:00")).toBeInTheDocument();
-    expect(within(q1Section).getByText("20:00")).toBeInTheDocument();
-    expect(within(q1Section).getByText("24:00")).toBeInTheDocument();
     expect(
-      within(q1Section).getByLabelText("Q1 10:00-14:00 · HT · 8.14 ct/kWh")
-    ).toHaveClass("tariff-quarter-segment--ht");
+      within(q1Section).getByLabelText("Q1 10:00-10:15 · HT · 8.14 ct/kWh")
+    ).toHaveClass("tariff-quarter-grid__cell--ht");
     expect(
-      within(q1Section).getByLabelText("Q1 22:00-24:00 · NT · 1.11 ct/kWh")
-    ).toHaveClass("tariff-quarter-segment--nt");
+      within(q1Section).getByLabelText("Q1 23:45-24:00 · NT · 1.11 ct/kWh")
+    ).toHaveClass("tariff-quarter-grid__cell--nt");
     expect(
-      within(q3Section).getByLabelText("Q3 00:00-24:00 · ST · 5.53 ct/kWh")
-    ).toHaveClass("tariff-quarter-segment--st");
+      within(q3Section).getByLabelText("Q3 14:00-14:15 · ST · 5.53 ct/kWh")
+    ).toHaveClass("tariff-quarter-grid__cell--st");
     expect(
       screen.getByText(/Quelle stadtwerke-schwaebisch-hall-stadtwerke-schwaebisch-hall-14a-2026/)
     ).toBeInTheDocument();

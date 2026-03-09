@@ -22,7 +22,7 @@ describe("expandSeasonLabelToQuarters", () => {
 });
 
 describe("buildQuarterlyTariffMatrix", () => {
-  test("sorts time ranges chronologically, fills quarter slots, and compresses adjacent slots into segments", () => {
+  test("sorts time ranges chronologically, fills quarter slots, and uses catch-all windows only for gaps", () => {
     const matrix = buildQuarterlyTariffMatrix({
       bands: [
         { key: "NT", label: "Niedrigtarif", valueCtPerKwh: "1.00" },
@@ -116,29 +116,6 @@ describe("buildQuarterlyTariffMatrix", () => {
         isHourStart: true
       })
     );
-    expect(q1?.segments).toEqual([
-      expect.objectContaining({
-        startLabel: "00:00",
-        endLabel: "07:00",
-        timeLabel: "00:00-07:00",
-        bandKey: "NT",
-        valueCtPerKwh: "1.00"
-      }),
-      expect.objectContaining({
-        startLabel: "07:00",
-        endLabel: "22:00",
-        timeLabel: "07:00-22:00",
-        bandKey: "ST",
-        valueCtPerKwh: "5.00"
-      }),
-      expect.objectContaining({
-        startLabel: "22:00",
-        endLabel: "24:00",
-        timeLabel: "22:00-24:00",
-        bandKey: "HT",
-        valueCtPerKwh: "8.00"
-      })
-    ]);
   });
 
   test("renders Stadtwerke Schwäbisch Hall quarter logic from the official 2026 PDF", () => {
@@ -203,28 +180,9 @@ describe("buildQuarterlyTariffMatrix", () => {
           valueCtPerKwh: "5.53",
           isHourStart: false
         })
-      ]),
-      segments: [
-        expect.objectContaining({
-          startLabel: "00:00",
-          endLabel: "24:00",
-          timeLabel: "00:00-24:00",
-          bandKey: "ST",
-          valueCtPerKwh: "5.53"
-        })
-      ]
+      ])
     });
     expect(q3?.slots).toHaveLength(96);
-    expect(q3?.segments).toEqual([
-      expect.objectContaining({
-        startLabel: "00:00",
-        endLabel: "24:00",
-        timeLabel: "00:00-24:00",
-        bandKey: "ST",
-        valueCtPerKwh: "5.53"
-      })
-    ]);
-    expect(q1?.segments).toHaveLength(7);
     expect(q1?.slots[40]).toEqual(
       expect.objectContaining({
         timeLabel: "10:00-10:15",

@@ -1,6 +1,6 @@
 "use client";
 
-import { type CSSProperties, useState } from "react";
+import { useState } from "react";
 
 import type { EndcustomerDisplayProduct, TariffTableRow } from "../lib/view-models/tariffs";
 
@@ -32,46 +32,24 @@ function getBandAccentClass(bandKey: "NT" | "ST" | "HT") {
 }
 
 function getQuarterSlotClass(
-  slot: TariffTableRow["quarterMatrix"][number]["segments"][number]
+  slot: TariffTableRow["quarterMatrix"][number]["slots"][number]
 ) {
   if (!slot.bandKey) {
-    return "tariff-quarter-segment tariff-quarter-segment--empty";
+    return "tariff-quarter-grid__cell tariff-quarter-grid__cell--empty";
   }
 
-  return `tariff-quarter-segment tariff-quarter-segment--${getBandAccentClass(slot.bandKey)}`;
+  return `tariff-quarter-grid__cell tariff-quarter-grid__cell--${getBandAccentClass(slot.bandKey)}`;
 }
 
 function getQuarterSlotLabel(
   quarterLabel: string,
-  slot: TariffTableRow["quarterMatrix"][number]["segments"][number]
+  slot: TariffTableRow["quarterMatrix"][number]["slots"][number]
 ) {
   if (!slot.bandKey || !slot.valueCtPerKwh) {
     return `${quarterLabel} ${slot.timeLabel} · keine Zuordnung`;
   }
 
   return `${quarterLabel} ${slot.timeLabel} · ${slot.bandKey} · ${slot.valueCtPerKwh} ct/kWh`;
-}
-
-const QUARTER_AXIS_MARKS = [
-  { label: "00:00", minutes: 0 },
-  { label: "04:00", minutes: 4 * 60 },
-  { label: "08:00", minutes: 8 * 60 },
-  { label: "12:00", minutes: 12 * 60 },
-  { label: "16:00", minutes: 16 * 60 },
-  { label: "20:00", minutes: 20 * 60 },
-  { label: "24:00", minutes: 24 * 60 }
-];
-
-function getQuarterSegmentStyle(
-  segment: TariffTableRow["quarterMatrix"][number]["segments"][number]
-): CSSProperties {
-  const top = (segment.startSlotIndex / 96) * 100;
-  const height = ((segment.endSlotIndex - segment.startSlotIndex) / 96) * 100;
-
-  return {
-    top: `${top}%`,
-    height: `${Math.max(height, 1.25)}%`
-  };
 }
 
 function getEndcustomerProductAccent(productKey: EndcustomerDisplayProduct["key"]) {
@@ -308,41 +286,31 @@ export function TariffTable({ rows }: TariffTableProps) {
                   >
                     <div className="tariff-quarter-card__header tariff-quarter-card__header--compact">
                       <span className="table-muted">{quarter.summaryLabel}</span>
-                      <span className="tariff-quarter-card__unit">Blockansicht · 15 Min</span>
+                      <span className="tariff-quarter-card__unit">15-Min Raster</span>
                     </div>
-                    {quarter.segments.some((segment) => segment.bandKey) ? (
-                      <div className="tariff-quarter-blocks">
-                        <div aria-hidden="true" className="tariff-quarter-axis">
-                          {QUARTER_AXIS_MARKS.map((mark) => (
+                    {quarter.slots.some((slot) => slot.bandKey) ? (
+                      <div className="tariff-quarter-grid">
+                        {quarter.slots.map((slot) => (
+                          <div
+                            className="tariff-quarter-grid__row"
+                            key={`${row.operatorSlug}-${quarter.key}-${slot.slotIndex}`}
+                          >
                             <span
-                              className={`tariff-quarter-axis__mark${
-                                mark.minutes === 24 * 60 ? " tariff-quarter-axis__mark--end" : ""
-                              }`}
-                              key={`${quarter.key}-${mark.label}`}
-                              style={{ top: `${(mark.minutes / (24 * 60)) * 100}%` }}
+                              className={
+                                slot.isHourStart
+                                  ? "tariff-quarter-grid__hour"
+                                  : "tariff-quarter-grid__hour tariff-quarter-grid__hour--spacer"
+                              }
                             >
-                              {mark.label}
+                              {slot.startLabel}
                             </span>
-                          ))}
-                        </div>
-                        <div className="tariff-quarter-rail">
-                          {quarter.segments.map((segment) => (
                             <span
-                              aria-label={getQuarterSlotLabel(quarter.label, segment)}
-                              className={getQuarterSlotClass(segment)}
-                              key={`${row.operatorSlug}-${quarter.key}-${segment.startSlotIndex}`}
-                              style={getQuarterSegmentStyle(segment)}
-                              title={getQuarterSlotLabel(quarter.label, segment)}
-                            >
-                              {segment.bandKey ? (
-                                <>
-                                  <span className="tariff-quarter-segment__band">{segment.bandKey}</span>
-                                  <span className="tariff-quarter-segment__time">{segment.timeLabel}</span>
-                                </>
-                              ) : null}
-                            </span>
-                          ))}
-                        </div>
+                              aria-label={getQuarterSlotLabel(quarter.label, slot)}
+                              className={getQuarterSlotClass(slot)}
+                              title={getQuarterSlotLabel(quarter.label, slot)}
+                            />
+                          </div>
+                        ))}
                       </div>
                     ) : (
                       <p className="tariff-window-empty">Keine Tariffenster erfasst.</p>

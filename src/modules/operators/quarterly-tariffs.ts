@@ -26,17 +26,6 @@ export type TariffQuarterSlot = {
   isHourStart: boolean;
 };
 
-export type TariffQuarterSegment = {
-  startSlotIndex: number;
-  endSlotIndex: number;
-  startLabel: string;
-  endLabel: string;
-  timeLabel: string;
-  bandKey: "NT" | "ST" | "HT" | null;
-  bandLabel: string;
-  valueCtPerKwh: string;
-};
-
 export type TariffQuarter = {
   key: TariffQuarterKey;
   label: TariffQuarterKey;
@@ -44,7 +33,6 @@ export type TariffQuarter = {
   groups: TariffQuarterGroup[];
   timelineEntries: TariffQuarterEntry[];
   slots: TariffQuarterSlot[];
-  segments: TariffQuarterSegment[];
 };
 
 export type QuarterlyTariffInput = {
@@ -294,55 +282,6 @@ function buildQuarterSlots(groups: TariffQuarterGroup[]) {
   return slots;
 }
 
-function buildQuarterSegments(slots: TariffQuarterSlot[]): TariffQuarterSegment[] {
-  if (slots.length === 0) {
-    return [];
-  }
-
-  const segments: TariffQuarterSegment[] = [];
-  let startSlotIndex = 0;
-  let currentSlot = slots[0]!;
-
-  function pushSegment(endSlotIndex: number) {
-    const lastSlot = slots[endSlotIndex - 1];
-
-    if (!lastSlot) {
-      return;
-    }
-
-    segments.push({
-      startSlotIndex,
-      endSlotIndex,
-      startLabel: currentSlot.startLabel,
-      endLabel: lastSlot.endLabel,
-      timeLabel: `${currentSlot.startLabel}-${lastSlot.endLabel}`,
-      bandKey: currentSlot.bandKey,
-      bandLabel: currentSlot.bandLabel,
-      valueCtPerKwh: currentSlot.valueCtPerKwh
-    });
-  }
-
-  for (let slotIndex = 1; slotIndex < slots.length; slotIndex += 1) {
-    const nextSlot = slots[slotIndex]!;
-    const isSameBand =
-      nextSlot.bandKey === currentSlot.bandKey &&
-      nextSlot.valueCtPerKwh === currentSlot.valueCtPerKwh &&
-      nextSlot.bandLabel === currentSlot.bandLabel;
-
-    if (isSameBand) {
-      continue;
-    }
-
-    pushSegment(slotIndex);
-    startSlotIndex = slotIndex;
-    currentSlot = nextSlot;
-  }
-
-  pushSegment(slots.length);
-
-  return segments;
-}
-
 function buildQuarterTimelineEntries(groups: TariffQuarterGroup[]): TariffQuarterEntry[] {
   return groups
     .flatMap((group) =>
@@ -396,10 +335,9 @@ export function buildQuarterlyTariffMatrix(input: QuarterlyTariffInput): TariffQ
   }
 
   return QUARTER_ORDER.map((quarter) => {
-    const groups = [...(groupsByQuarter.get(quarter)?.values() ?? [])].sort(
+      const groups = [...(groupsByQuarter.get(quarter)?.values() ?? [])].sort(
       (left, right) => BAND_DISPLAY_ORDER[left.bandKey] - BAND_DISPLAY_ORDER[right.bandKey]
     );
-    const slots = buildQuarterSlots(groups);
 
     return {
       key: quarter,
@@ -407,8 +345,7 @@ export function buildQuarterlyTariffMatrix(input: QuarterlyTariffInput): TariffQ
       summaryLabel: getQuarterSummaryLabel(groups),
       groups,
       timelineEntries: buildQuarterTimelineEntries(groups),
-      slots,
-      segments: buildQuarterSegments(slots)
+      slots: buildQuarterSlots(groups)
     };
   });
 }

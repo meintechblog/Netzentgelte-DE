@@ -527,99 +527,73 @@ input:focus-visible {
   color: #ffe0e0;
 }
 
-.tariff-quarter-blocks {
+.tariff-quarter-grid {
+  --tariff-quarter-slot-height: 0.09rem;
+  --tariff-quarter-row-gap: 0.03rem;
   display: grid;
-  grid-template-columns: 2.7rem minmax(0, 1fr);
-  gap: 0.45rem;
+  gap: var(--tariff-quarter-row-gap);
   align-items: stretch;
 }
 
-.tariff-quarter-axis {
-  position: relative;
-  min-height: 14rem;
+.tariff-quarter-grid__row {
+  display: grid;
+  grid-template-columns: 2.8rem minmax(0, 1fr);
+  column-gap: 0.4rem;
+  align-items: stretch;
+  min-height: var(--tariff-quarter-slot-height);
 }
 
-.tariff-quarter-axis__mark {
-  position: absolute;
-  right: 0;
+.tariff-quarter-grid__hour {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  min-height: var(--tariff-quarter-slot-height);
   color: rgba(203, 213, 225, 0.86);
   font-family: var(--font-heading), monospace;
-  font-size: 0.58rem;
-  line-height: 1;
-  transform: translateY(-50%);
+  font-size: 0.46rem;
+  line-height: 0.85;
 }
 
-.tariff-quarter-axis__mark--end {
-  transform: translateY(-100%);
+.tariff-quarter-grid__hour--spacer {
+  visibility: hidden;
 }
 
-.tariff-quarter-rail {
-  position: relative;
-  min-height: 14rem;
-  border-radius: 0.9rem;
-  border: 1px solid rgba(148, 163, 184, 0.14);
-  background: linear-gradient(180deg, rgba(8, 18, 34, 0.94), rgba(6, 14, 27, 0.98));
-  overflow: hidden;
-}
-
-.tariff-quarter-segment {
-  position: absolute;
-  left: 0.3rem;
-  right: 0.3rem;
-  display: grid;
-  gap: 0.12rem;
-  align-content: start;
-  padding: 0.28rem 0.38rem;
-  border-radius: 0.72rem;
+.tariff-quarter-grid__cell {
+  display: block;
+  min-height: var(--tariff-quarter-slot-height);
+  border-radius: 0.3rem;
   border: 1px solid rgba(148, 163, 184, 0.1);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  background: rgba(15, 23, 42, 0.88);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
 }
 
-.tariff-quarter-segment--nt {
+.tariff-quarter-grid__cell--nt {
   border-color: rgba(74, 222, 128, 0.28);
   background: linear-gradient(180deg, rgba(34, 197, 94, 0.9), rgba(22, 101, 52, 0.94));
 }
 
-.tariff-quarter-segment--st {
+.tariff-quarter-grid__cell--st {
   border-color: rgba(250, 204, 21, 0.28);
   background: linear-gradient(180deg, rgba(250, 204, 21, 0.92), rgba(161, 98, 7, 0.95));
 }
 
-.tariff-quarter-segment--ht {
+.tariff-quarter-grid__cell--ht {
   border-color: rgba(248, 113, 113, 0.3);
   background: linear-gradient(180deg, rgba(248, 113, 113, 0.92), rgba(153, 27, 27, 0.96));
 }
 
-.tariff-quarter-segment--empty {
+.tariff-quarter-grid__cell--empty {
   border-style: dashed;
   border-color: rgba(148, 163, 184, 0.2);
   background: rgba(15, 23, 42, 0.45);
 }
 
-.tariff-quarter-segment:hover,
-.tariff-quarter-segment:focus-visible {
+.tariff-quarter-grid__cell:hover,
+.tariff-quarter-grid__cell:focus-visible {
   outline: none;
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.18),
     0 0 0 3px rgba(59, 130, 246, 0.16);
-}
-
-.tariff-quarter-segment__band,
-.tariff-quarter-segment__time {
-  font-family: var(--font-heading), monospace;
-}
-
-.tariff-quarter-segment__band {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.tariff-quarter-segment__time {
-  font-size: 0.64rem;
-  line-height: 1.15;
-  opacity: 0.9;
 }
 
 .tariff-window-list {

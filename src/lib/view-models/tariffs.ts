@@ -21,7 +21,6 @@ export {
   type TariffQuarter,
   type TariffQuarterGroup,
   type TariffQuarterKey,
-  type TariffQuarterSegment,
   type TariffQuarterSlot
 } from "../../modules/operators/quarterly-tariffs";
 import { buildQuarterlyTariffMatrix, type TariffQuarter } from "../../modules/operators/quarterly-tariffs";

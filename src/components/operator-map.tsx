@@ -32,15 +32,29 @@ function getStateHintLabel(feature: ProjectedGermanyMapScene["operators"][number
 }
 
 export function OperatorMap({ scene }: OperatorMapProps) {
-  const [activeFeatureId, setActiveFeatureId] = useState<string | null>(scene.operators[0]?.id ?? null);
+  const [hoveredFeatureId, setHoveredFeatureId] = useState<string | null>(scene.operators[0]?.id ?? null);
+  const [lockedFeatureId, setLockedFeatureId] = useState<string | null>(null);
 
   useEffect(() => {
     if (scene.operators.length === 0) {
-      setActiveFeatureId(null);
+      setHoveredFeatureId(null);
+      setLockedFeatureId(null);
       return;
     }
 
-    setActiveFeatureId((current) => {
+    setLockedFeatureId((current) => {
+      const currentFeature = current
+        ? scene.operators.find((feature) => feature.id === current)
+        : null;
+
+      if (!currentFeature || !currentFeature.searchMatch) {
+        return null;
+      }
+
+      return currentFeature.id;
+    });
+
+    setHoveredFeatureId((current) => {
       const currentFeature = current
         ? scene.operators.find((feature) => feature.id === current)
         : null;
@@ -58,6 +72,29 @@ export function OperatorMap({ scene }: OperatorMapProps) {
     });
   }, [scene]);
 
+  const lockedFeature = lockedFeatureId
+    ? scene.operators.find((feature) => feature.id === lockedFeatureId) ?? null
+    : null;
+  const hoveredFeature = hoveredFeatureId
+    ? scene.operators.find((feature) => feature.id === hoveredFeatureId) ?? null
+    : null;
+  const fallbackFeature = scene.operators.find((feature) => feature.searchMatch) ?? null;
+  const activeFeature = lockedFeature ?? hoveredFeature ?? fallbackFeature;
+
+  const activateFeature = (featureId: string) => {
+    setHoveredFeatureId(featureId);
+  };
+
+  const lockFeature = (featureId: string) => {
+    setLockedFeatureId(featureId);
+    setHoveredFeatureId(featureId);
+  };
+
+  const unlockFeature = () => {
+    setLockedFeatureId(null);
+    setHoveredFeatureId(scene.operators.find((feature) => feature.searchMatch)?.id ?? null);
+  };
+
   if (scene.operators.length === 0) {
     return (
       <section className="map-stage" aria-label="Netzgebietsübersicht">
@@ -67,10 +104,6 @@ export function OperatorMap({ scene }: OperatorMapProps) {
       </section>
     );
   }
-
-  const activeFeature = activeFeatureId
-    ? scene.operators.find((feature) => feature.id === activeFeatureId) ?? null
-    : null;
 
   return (
     <section className="map-stage map-stage--hero" aria-label="Netzgebietsübersicht">
@@ -87,6 +120,17 @@ export function OperatorMap({ scene }: OperatorMapProps) {
               <stop offset="100%" stopColor="rgba(34, 197, 94, 0)" />
             </radialGradient>
           </defs>
+
+          <rect
+            className="operator-map-svg__background-hitarea"
+            data-testid="map-background-hitarea"
+            fill="transparent"
+            height="960"
+            onClick={unlockFeature}
+            width="780"
+            x="0"
+            y="0"
+          />
 
           <g data-country-base="">
             {scene.states.map((state) => (
@@ -131,7 +175,11 @@ export function OperatorMap({ scene }: OperatorMapProps) {
                 data-filter-match={String(feature.searchMatch)}
                 data-operator-region=""
                 key={feature.id}
-                onMouseEnter={() => setActiveFeatureId(feature.id)}
+                onMouseEnter={() => {
+                  if (!lockedFeature) {
+                    activateFeature(feature.id);
+                  }
+                }}
               >
                 {feature.projectedOverlays.map((overlay, index) => (
                   <path
@@ -145,8 +193,12 @@ export function OperatorMap({ scene }: OperatorMapProps) {
                       .join(" ")}
                     d={overlay.path}
                     key={`${feature.id}-${index}`}
-                    onClick={() => setActiveFeatureId(feature.id)}
-                    onMouseEnter={() => setActiveFeatureId(feature.id)}
+                    onClick={() => lockFeature(feature.id)}
+                    onMouseEnter={() => {
+                      if (!lockedFeature) {
+                        activateFeature(feature.id);
+                      }
+                    }}
                   />
                 ))}
                 <circle
@@ -180,15 +232,28 @@ export function OperatorMap({ scene }: OperatorMapProps) {
                   className="operator-map-region__focus-target"
                   cx={feature.projectedFocusPoint.x}
                   cy={feature.projectedFocusPoint.y}
-                  onClick={() => setActiveFeatureId(feature.id)}
-                  onFocus={() => setActiveFeatureId(feature.id)}
+                  onClick={() => lockFeature(feature.id)}
+                  onFocus={() => {
+                    if (!lockedFeature) {
+                      activateFeature(feature.id);
+                    }
+                  }}
                   onKeyDown={(event) => {
                     if (event.key === "Enter" || event.key === " ") {
                       event.preventDefault();
-                      setActiveFeatureId(feature.id);
+                      lockFeature(feature.id);
+                    }
+
+                    if (event.key === "Escape") {
+                      event.preventDefault();
+                      unlockFeature();
                     }
                   }}
-                  onMouseEnter={() => setActiveFeatureId(feature.id)}
+                  onMouseEnter={() => {
+                    if (!lockedFeature) {
+                      activateFeature(feature.id);
+                    }
+                  }}
                   r={22}
                   role="button"
                   tabIndex={0}
@@ -200,7 +265,9 @@ export function OperatorMap({ scene }: OperatorMapProps) {
       </div>
 
       <aside className="map-stage__detail map-stage__detail--hero">
-        <span className="section-eyebrow">Hover / Fokus</span>
+        <span className="section-eyebrow">
+          {lockedFeature ? "Auswahl fixiert" : "Hover / Fokus"}
+        </span>
         {activeFeature ? (
           <>
             <h3>{activeFeature.operatorName}</h3>

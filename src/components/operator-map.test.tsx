@@ -122,4 +122,95 @@ describe("OperatorMap", () => {
     expect(screen.getByText("Geometrie: approximate")).toBeInTheDocument();
     expect(screen.getByText(/Bundesländer: Baden-Württemberg/)).toBeInTheDocument();
   });
+
+  test("locks the detail panel after clicking an operator and ignores later hover changes", () => {
+    render(
+      <OperatorMap
+        scene={projectGermanyMap([
+          {
+            id: "berlin",
+            operatorName: "Stromnetz Berlin",
+            regionLabel: "Berlin",
+            mapRank: 1,
+            coverageKind: "metro-zone",
+            geometryPrecision: "approximate",
+            geometrySourceLabel: "Testgeometrie",
+            anchors: [{ longitude: 13.405, latitude: 52.52, radiusKm: 24 }],
+            stateHints: ["11"],
+            currentBandsSummary: "NT 2.00 · ST 5.00 · HT 8.00",
+            sourcePageUrl: "https://example.com/berlin",
+            documentUrl: "https://example.com/berlin.pdf"
+          },
+          {
+            id: "mvv",
+            operatorName: "MVV Netze",
+            regionLabel: "Mannheim",
+            mapRank: 2,
+            coverageKind: "metro-zone",
+            geometryPrecision: "approximate",
+            geometrySourceLabel: "Testgeometrie",
+            anchors: [{ longitude: 8.467, latitude: 49.489, radiusKm: 26 }],
+            stateHints: ["08"],
+            currentBandsSummary: "NT 3.00 · ST 6.00 · HT 9.00",
+            sourcePageUrl: "https://example.com/mvv",
+            documentUrl: "https://example.com/mvv.pdf"
+          }
+        ] satisfies OperatorMapFeature[])}
+      />
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "MVV Netze in Mannheim" }));
+    expect(screen.getByText("MVV Netze")).toBeInTheDocument();
+    expect(screen.getByText("Auswahl fixiert")).toBeInTheDocument();
+
+    fireEvent.mouseEnter(screen.getByRole("button", { name: "Stromnetz Berlin in Berlin" }));
+    expect(screen.getByText("MVV Netze")).toBeInTheDocument();
+    expect(screen.queryByText("Stromnetz Berlin")).not.toBeInTheDocument();
+  });
+
+  test("clears a locked operator when the user clicks an empty map area", () => {
+    render(
+      <OperatorMap
+        scene={projectGermanyMap([
+          {
+            id: "berlin",
+            operatorName: "Stromnetz Berlin",
+            regionLabel: "Berlin",
+            mapRank: 1,
+            coverageKind: "metro-zone",
+            geometryPrecision: "approximate",
+            geometrySourceLabel: "Testgeometrie",
+            anchors: [{ longitude: 13.405, latitude: 52.52, radiusKm: 24 }],
+            stateHints: ["11"],
+            currentBandsSummary: "NT 2.00 · ST 5.00 · HT 8.00",
+            sourcePageUrl: "https://example.com/berlin",
+            documentUrl: "https://example.com/berlin.pdf"
+          },
+          {
+            id: "mvv",
+            operatorName: "MVV Netze",
+            regionLabel: "Mannheim",
+            mapRank: 2,
+            coverageKind: "metro-zone",
+            geometryPrecision: "approximate",
+            geometrySourceLabel: "Testgeometrie",
+            anchors: [{ longitude: 8.467, latitude: 49.489, radiusKm: 26 }],
+            stateHints: ["08"],
+            currentBandsSummary: "NT 3.00 · ST 6.00 · HT 9.00",
+            sourcePageUrl: "https://example.com/mvv",
+            documentUrl: "https://example.com/mvv.pdf"
+          }
+        ] satisfies OperatorMapFeature[])}
+      />
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "MVV Netze in Mannheim" }));
+    expect(screen.getByText("Auswahl fixiert")).toBeInTheDocument();
+
+    fireEvent.click(screen.getByTestId("map-background-hitarea"));
+    expect(screen.queryByText("Auswahl fixiert")).not.toBeInTheDocument();
+
+    fireEvent.mouseEnter(screen.getByRole("button", { name: "Stromnetz Berlin in Berlin" }));
+    expect(screen.getByText("Stromnetz Berlin")).toBeInTheDocument();
+  });
 });

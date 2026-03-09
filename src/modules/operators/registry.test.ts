@@ -103,7 +103,7 @@ describe("getOperatorRegistry", () => {
           currentTariff: expect.objectContaining({
             timeWindows: expect.arrayContaining([
               expect.objectContaining({
-                seasonLabel: "Ganzjaehrig 2026",
+                seasonLabel: "Ganzjährig 2026",
                 bandKey: "HT",
                 timeRangeLabel: "15:00-20:00"
               })
@@ -115,7 +115,7 @@ describe("getOperatorRegistry", () => {
           currentTariff: expect.objectContaining({
             timeWindows: expect.arrayContaining([
               expect.objectContaining({
-                seasonLabel: "Ganzjaehrig 2026",
+                seasonLabel: "Ganzjährig 2026",
                 bandKey: "HT",
                 timeRangeLabel: "17:00-19:30"
               })
@@ -127,7 +127,7 @@ describe("getOperatorRegistry", () => {
           currentTariff: expect.objectContaining({
             timeWindows: expect.arrayContaining([
               expect.objectContaining({
-                seasonLabel: "Ganzjaehrig 2026",
+                seasonLabel: "Ganzjährig 2026",
                 bandKey: "HT",
                 timeRangeLabel: "16:30-19:30"
               })

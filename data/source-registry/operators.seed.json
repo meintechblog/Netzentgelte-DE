@@ -312,8 +312,8 @@
           "id": "westnetz-2026-low-night",
           "bandKey": "NT",
           "label": "Niedrigtarif",
-          "seasonLabel": "Ganzjaehrig 2026",
-          "dayLabel": "Taeglich",
+          "seasonLabel": "Ganzjährig 2026",
+          "dayLabel": "Täglich",
           "timeRangeLabel": "00:00-07:00",
           "sourceQuote": "Modul 3 - täglich 0 bis 7 Uhr (Niedriglasttarifstufe)"
         },
@@ -321,8 +321,8 @@
           "id": "westnetz-2026-standard-day",
           "bandKey": "ST",
           "label": "Standardtarif",
-          "seasonLabel": "Ganzjaehrig 2026",
-          "dayLabel": "Taeglich",
+          "seasonLabel": "Ganzjährig 2026",
+          "dayLabel": "Täglich",
           "timeRangeLabel": "07:00-15:00",
           "sourceQuote": "Modul 3 - täglich 7 bis 15 Uhr (Standardlasttarifstufe)"
         },
@@ -330,8 +330,8 @@
           "id": "westnetz-2026-high-peak",
           "bandKey": "HT",
           "label": "Hochtarif",
-          "seasonLabel": "Ganzjaehrig 2026",
-          "dayLabel": "Taeglich",
+          "seasonLabel": "Ganzjährig 2026",
+          "dayLabel": "Täglich",
           "timeRangeLabel": "15:00-20:00",
           "sourceQuote": "Modul 3 - täglich 15 bis 20 Uhr (Hochlasttarifstufe)"
         },
@@ -339,8 +339,8 @@
           "id": "westnetz-2026-standard-evening",
           "bandKey": "ST",
           "label": "Standardtarif",
-          "seasonLabel": "Ganzjaehrig 2026",
-          "dayLabel": "Taeglich",
+          "seasonLabel": "Ganzjährig 2026",
+          "dayLabel": "Täglich",
           "timeRangeLabel": "20:00-24:00",
           "sourceQuote": "Modul 3 - täglich 20 bis 24 Uhr (Standardlasttarifstufe)"
         }
@@ -401,7 +401,7 @@
           "id": "wesernetz-bremen-2026-low-night",
           "bandKey": "NT",
           "label": "Niedrigtarif",
-          "seasonLabel": "Ganzjaehrig 2026",
+          "seasonLabel": "Ganzjährig 2026",
           "dayLabel": "Im Preisblatt nicht spezifiziert",
           "timeRangeLabel": "01:00-05:00",
           "sourceQuote": "Zeitfenster 01:00-05:00 Uhr (NT)"
@@ -410,7 +410,7 @@
           "id": "wesernetz-bremen-2026-high-peak",
           "bandKey": "HT",
           "label": "Hochtarif",
-          "seasonLabel": "Ganzjaehrig 2026",
+          "seasonLabel": "Ganzjährig 2026",
           "dayLabel": "Im Preisblatt nicht spezifiziert",
           "timeRangeLabel": "17:00-19:30",
           "sourceQuote": "Zeitfenster 17:00-19:30 Uhr (HT)"
@@ -419,7 +419,7 @@
           "id": "wesernetz-bremen-2026-standard-rest",
           "bandKey": "ST",
           "label": "Standardtarif",
-          "seasonLabel": "Ganzjaehrig 2026",
+          "seasonLabel": "Ganzjährig 2026",
           "dayLabel": "Im Preisblatt nicht spezifiziert",
           "timeRangeLabel": "Alle restlichen Zeiten",
           "sourceQuote": "Standardtarif für alle restlichen Zeiten"
@@ -481,7 +481,7 @@
           "id": "wesernetz-bremerhaven-2026-low-night",
           "bandKey": "NT",
           "label": "Niedrigtarif",
-          "seasonLabel": "Ganzjaehrig 2026",
+          "seasonLabel": "Ganzjährig 2026",
           "dayLabel": "Im Preisblatt nicht spezifiziert",
           "timeRangeLabel": "01:00-05:00",
           "sourceQuote": "Zeitfenster 01:00-05:00 Uhr (NT)"
@@ -490,7 +490,7 @@
           "id": "wesernetz-bremerhaven-2026-high-peak",
           "bandKey": "HT",
           "label": "Hochtarif",
-          "seasonLabel": "Ganzjaehrig 2026",
+          "seasonLabel": "Ganzjährig 2026",
           "dayLabel": "Im Preisblatt nicht spezifiziert",
           "timeRangeLabel": "16:30-19:30",
           "sourceQuote": "Zeitfenster 16:30-19:30 Uhr (HT)"
@@ -499,7 +499,7 @@
           "id": "wesernetz-bremerhaven-2026-standard-rest",
           "bandKey": "ST",
           "label": "Standardtarif",
-          "seasonLabel": "Ganzjaehrig 2026",
+          "seasonLabel": "Ganzjährig 2026",
           "dayLabel": "Im Preisblatt nicht spezifiziert",
           "timeRangeLabel": "Alle restlichen Zeiten",
           "sourceQuote": "Standardtarif für alle restlichen Zeiten"
@@ -1195,7 +1195,7 @@
   {
     "slug": "n-ergie-netz",
     "name": "N-ERGIE Netz GmbH",
-    "regionLabel": "Nuernberg / Franken",
+    "regionLabel": "Nürnberg / Franken",
     "websiteUrl": "https://www.n-ergie-netz.de/",
     "registrySourceIds": ["bnetza-mastr-netzbetreiber-overview", "vnbdigital-portal"],
     "sourceDocuments": [

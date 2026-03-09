@@ -185,8 +185,9 @@ describe("getSeedPublishedOperators", () => {
     expect(westnetz?.timeWindows).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          seasonLabel: "Ganzjaehrig 2026",
+          seasonLabel: "Ganzjährig 2026",
           bandKey: "NT",
+          dayLabel: "Täglich",
           timeRangeLabel: "00:00-07:00"
         })
       ])
@@ -194,7 +195,7 @@ describe("getSeedPublishedOperators", () => {
     expect(wesernetzBremen?.timeWindows).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          seasonLabel: "Ganzjaehrig 2026",
+          seasonLabel: "Ganzjährig 2026",
           bandKey: "HT",
           timeRangeLabel: "17:00-19:30"
         })
@@ -203,7 +204,7 @@ describe("getSeedPublishedOperators", () => {
     expect(wesernetzBremerhaven?.timeWindows).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          seasonLabel: "Ganzjaehrig 2026",
+          seasonLabel: "Ganzjährig 2026",
           bandKey: "HT",
           timeRangeLabel: "16:30-19:30"
         })

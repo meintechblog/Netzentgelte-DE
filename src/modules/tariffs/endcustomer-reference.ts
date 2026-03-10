@@ -76,6 +76,10 @@ const ENERCITY_NETZ_SOURCE =
   "https://www.enercity-netz.de/assets/cms/eng/marktpartner/pdfs/netzentgelte-strom/preisblatt-netznutzung-strom-2026-jahr.pdf";
 const TWS_NETZ_SOURCE =
   "https://www.tws-netz.de/de/Unsere-Netze/Netze-neu/Stromnetz/Netzzugang-Entgelte/5-132-TWS-Netz-Preisblatt-2026-final.pdf";
+const WESERNETZ_BREMEN_SOURCE =
+  "https://www.wesernetz.de/-/media/wesernetz/downloads-aktuell/fuer-partner/energielieferanten/stromnetz/stromentgelte/hb/nenu_hb_108_007_preisblatt_5_strom_paragraph_14a_enwg_web.pdf";
+const WESERNETZ_BREMERHAVEN_SOURCE =
+  "https://www.wesernetz.de/-/media/wesernetz/downloads-aktuell/fuer-partner/energielieferanten/stromnetz/stromentgelte/bhv/nenu_bhv_108_007_preisblatt_5_strom_paragraph_14a_enwg_2026_web.pdf";
 
 export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
   return [
@@ -87,7 +91,9 @@ export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
     getAllgaeuNetzEndcustomerReference(),
     getMainzerNetzeEndcustomerReference(),
     getEnercityNetzEndcustomerReference(),
-    getTwsNetzEndcustomerReference()
+    getTwsNetzEndcustomerReference(),
+    getWesernetzBremenEndcustomerReference(),
+    getWesernetzBremerhavenEndcustomerReference()
   ];
 }
 
@@ -577,6 +583,110 @@ export function getTwsNetzEndcustomerReference(): EndcustomerOperatorReference {
       }
     ],
     meteringPrices: meteringPrices("13.70", "21.32")
+  };
+}
+
+export function getWesernetzBremenEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "wesernetz-bremen",
+    operatorName: "wesernetz Bremen GmbH",
+    sourceDocumentUrl: WESERNETZ_BREMEN_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: WESERNETZ_BREMEN_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "65.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "5.46", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "108.18", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: WESERNETZ_BREMEN_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "2.18", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: WESERNETZ_BREMEN_SOURCE,
+        components: modul3Components("5.46", "7.65", "2.18"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: buildFullYearWindows([
+          ["low", ["01:00-05:00"]],
+          ["standard", ["00:00-01:00", "05:00-17:00", "19:30-24:00"]],
+          ["high", ["17:00-19:30"]]
+        ])
+      }
+    ],
+    meteringPrices: meteringPrices("14.20", "30.00")
+  };
+}
+
+export function getWesernetzBremerhavenEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "wesernetz-bremerhaven",
+    operatorName: "wesernetz Bremerhaven GmbH",
+    sourceDocumentUrl: WESERNETZ_BREMERHAVEN_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: WESERNETZ_BREMERHAVEN_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "70.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "5.34", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "107.28", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: WESERNETZ_BREMERHAVEN_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "2.14", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: WESERNETZ_BREMERHAVEN_SOURCE,
+        components: modul3Components("5.34", "7.29", "2.14"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: buildFullYearWindows([
+          ["low", ["01:00-05:00"]],
+          ["standard", ["00:00-01:00", "05:00-16:30", "19:30-24:00"]],
+          ["high", ["16:30-19:30"]]
+        ])
+      }
+    ],
+    meteringPrices: meteringPrices("14.20", "30.00")
   };
 }
 

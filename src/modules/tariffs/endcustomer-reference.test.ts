@@ -82,12 +82,14 @@ describe("getSeedEndcustomerReferences", () => {
         "allgaeunetz",
         "mainzer-netze",
         "enercity-netz",
-        "tws-netz"
+        "tws-netz",
+        "wesernetz-bremen",
+        "wesernetz-bremerhaven"
       ])
     );
   });
 
-  test("captures endcustomer module data for AllgaeuNetz, Mainzer Netze, enercity Netz and TWS Netz", () => {
+  test("captures endcustomer module data for AllgaeuNetz, Mainzer Netze, enercity Netz, TWS Netz and wesernetz", () => {
     const references = new Map(
       getSeedEndcustomerReferences().map((reference) => [reference.operatorSlug, reference] as const)
     );
@@ -96,6 +98,8 @@ describe("getSeedEndcustomerReferences", () => {
     const mainzer = references.get("mainzer-netze");
     const enercity = references.get("enercity-netz");
     const tws = references.get("tws-netz");
+    const wesernetzBremen = references.get("wesernetz-bremen");
+    const wesernetzBremerhaven = references.get("wesernetz-bremerhaven");
 
     expect(allgaeu?.products.find((product) => product.moduleKey === "modul-1")?.components).toEqual(
       expect.arrayContaining([
@@ -172,6 +176,69 @@ describe("getSeedEndcustomerReferences", () => {
       expect.arrayContaining([
         expect.objectContaining({ componentKey: "single_register_meter_eur_per_year", valueNumeric: "13.70" }),
         expect.objectContaining({ componentKey: "dual_register_meter_eur_per_year", valueNumeric: "21.32" })
+      ])
+    );
+
+    expect(wesernetzBremen?.products.find((product) => product.moduleKey === "modul-1")?.components).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "base_price_eur_per_year", valueNumeric: "65.00" }),
+        expect.objectContaining({ componentKey: "work_price_ct_per_kwh", valueNumeric: "5.46" }),
+        expect.objectContaining({
+          componentKey: "net_fee_reduction_eur_per_year",
+          valueNumeric: "108.18"
+        })
+      ])
+    );
+    expect(wesernetzBremen?.products.find((product) => product.moduleKey === "modul-2")?.components).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "base_price_eur_per_year", valueNumeric: "0.00" }),
+        expect.objectContaining({ componentKey: "work_price_ct_per_kwh", valueNumeric: "2.18" })
+      ])
+    );
+    expect(wesernetzBremen?.products.find((product) => product.moduleKey === "modul-3")?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ quarterKey: "Q1", bandKey: "low", startsAt: "01:00", endsAt: "05:00" }),
+        expect.objectContaining({ quarterKey: "Q4", bandKey: "high", startsAt: "17:00", endsAt: "19:30" })
+      ])
+    );
+    expect(wesernetzBremen?.meteringPrices).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "single_register_meter_eur_per_year", valueNumeric: "14.20" }),
+        expect.objectContaining({ componentKey: "dual_register_meter_eur_per_year", valueNumeric: "30.00" })
+      ])
+    );
+
+    expect(wesernetzBremerhaven?.products.find((product) => product.moduleKey === "modul-1")?.components).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "base_price_eur_per_year", valueNumeric: "70.00" }),
+        expect.objectContaining({ componentKey: "work_price_ct_per_kwh", valueNumeric: "5.34" }),
+        expect.objectContaining({
+          componentKey: "net_fee_reduction_eur_per_year",
+          valueNumeric: "107.28"
+        })
+      ])
+    );
+    expect(
+      wesernetzBremerhaven?.products.find((product) => product.moduleKey === "modul-3")?.components
+    ).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "standard_work_price_ct_per_kwh", valueNumeric: "5.34" }),
+        expect.objectContaining({ componentKey: "high_work_price_ct_per_kwh", valueNumeric: "7.29" }),
+        expect.objectContaining({ componentKey: "low_work_price_ct_per_kwh", valueNumeric: "2.14" })
+      ])
+    );
+    expect(
+      wesernetzBremerhaven?.products.find((product) => product.moduleKey === "modul-3")?.timeWindows
+    ).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ quarterKey: "Q2", bandKey: "low", startsAt: "01:00", endsAt: "05:00" }),
+        expect.objectContaining({ quarterKey: "Q3", bandKey: "high", startsAt: "16:30", endsAt: "19:30" })
+      ])
+    );
+    expect(wesernetzBremerhaven?.meteringPrices).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "single_register_meter_eur_per_year", valueNumeric: "14.20" }),
+        expect.objectContaining({ componentKey: "dual_register_meter_eur_per_year", valueNumeric: "30.00" })
       ])
     );
   });

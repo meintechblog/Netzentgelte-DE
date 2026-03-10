@@ -6,10 +6,12 @@ import { getSeedEndcustomerTariffCatalog } from "../../modules/tariffs/endcustom
 import {
   buildQuarterlyTariffMatrix,
   expandSeasonLabelToQuarters,
+  getComplianceRuleSetDisplay,
   getRegistryTariffRows,
   mergeTariffRowsWithCurrentSources,
   mergeTariffRowsWithEndcustomerCatalog
 } from "./tariffs";
+import { getActiveModul3RuleSet } from "../../modules/compliance/rule-catalog";
 
 describe("expandSeasonLabelToQuarters", () => {
   test("normalizes season labels into concrete quarters", () => {
@@ -343,16 +345,44 @@ describe("buildQuarterlyTariffMatrix", () => {
   test("attaches a quarter matrix to published tariff rows", () => {
     const rows = getRegistryTariffRows(getSeedPublishedOperators());
     const schwaebischHall = rows.find((row) => row.operatorSlug === "stadtwerke-schwaebisch-hall");
+    const netzeBw = rows.find((row) => row.operatorSlug === "netze-bw");
 
     expect(schwaebischHall?.quarterMatrix).toHaveLength(4);
     expect(schwaebischHall?.currentBandBadges).toEqual([
-      { key: "NT", valueCtPerKwh: "1.11" },
-      { key: "ST", valueCtPerKwh: "5.53" },
-      { key: "HT", valueCtPerKwh: "8.14" }
+      { key: "NT", valueCtPerKwh: "1.11", priceBasis: "assumed-netto" },
+      { key: "ST", valueCtPerKwh: "5.53", priceBasis: "assumed-netto" },
+      { key: "HT", valueCtPerKwh: "8.14", priceBasis: "assumed-netto" }
     ]);
     expect(
       schwaebischHall?.quarterMatrix.find((quarter) => quarter.key === "Q3")?.summaryLabel
     ).toBe("Nur Standardtarif");
+    expect(schwaebischHall?.compliance.status).toBe("compliant");
+    expect(netzeBw?.compliance.violations).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          ruleId: "nt_between_10_and_40_percent_of_st"
+        })
+      ])
+    );
+  });
+
+  test("projects the active compliance rule set for the UI", () => {
+    const display = getComplianceRuleSetDisplay(getActiveModul3RuleSet());
+
+    expect(display).toMatchObject({
+      ruleSetId: "bdew-modul-3-v1-1",
+      title: "BDEW Anwendungshilfe Modul 3",
+      sourceDocumentUrl:
+        "https://www.bdew.de/media/documents/BDEW-AWH_Modul_3_V1.1_Korrektur070225.pdf"
+    });
+    expect(display.rules).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          ruleId: "ht_min_2h_per_day",
+          title: "HT mindestens 2 Stunden pro Tag"
+        })
+      ])
+    );
   });
 
   test("fills MVV Q2 and Q3 with an explicitly marked assumed standard tariff", () => {

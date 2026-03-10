@@ -4,12 +4,20 @@ import {
   getPublicationIntegrityReports,
   type PublicationIntegrityReport
 } from "./publication-integrity";
+import { normalizePriceValueToNet, type PriceBasis } from "./price-basis";
+import { isExcludedTransmissionOperator } from "./operator-exclusions";
+import {
+  evaluateModul3Compliance,
+  type ComplianceEvaluation
+} from "../compliance/modul-3-evaluator";
+import { getActiveModul3RuleSet } from "../compliance/rule-catalog";
 
 export type PublishedOperatorBand = {
   key: "NT" | "ST" | "HT";
   label: string;
   valueCtPerKwh: string;
   sourceQuote: string;
+  priceBasis: PriceBasis;
 };
 
 export type PublishedOperator = {
@@ -23,8 +31,10 @@ export type PublishedOperator = {
   documentUrl: string;
   sourceSlug: string;
   checkedAt: string | null;
+  priceBasis: PriceBasis;
   bands: PublishedOperatorBand[];
   timeWindows: OperatorTimeWindow[];
+  compliance: ComplianceEvaluation;
 };
 
 export type PublishedOperatorSnapshot = {
@@ -33,6 +43,8 @@ export type PublishedOperatorSnapshot = {
   totalOperatorCount: number;
   withheldCount: number;
 };
+
+type PublishedOperatorBase = Omit<PublishedOperator, "compliance">;
 
 export type PublishedOperatorRow = {
   operatorSlug: string;
@@ -49,6 +61,7 @@ export type PublishedOperatorRow = {
   bandLabel: string;
   valueCtPerKwh: string;
   sourceQuote: string;
+  priceBasis?: PriceBasis;
 };
 
 const BAND_ORDER: Record<PublishedOperatorBand["key"], number> = {
@@ -81,19 +94,47 @@ function normalizeTariffValue(valueCtPerKwh: string) {
   return `${integerPart}.${trimmedFraction}`;
 }
 
+function normalizeStoredTariffValue(valueCtPerKwh: string, priceBasis: PriceBasis) {
+  return normalizeTariffValue(normalizePriceValueToNet(valueCtPerKwh, priceBasis));
+}
+
+function getDefaultPriceBasis(): PriceBasis {
+  return "assumed-netto";
+}
+
 export function getSeedPublishedOperators(): PublishedOperator[] {
   return buildPublishedOperatorSnapshot(getSeedOperatorBase()).operators;
 }
 
-export function buildPublishedOperatorSnapshot(operators: PublishedOperator[]): PublishedOperatorSnapshot {
-  const integrityReports = getPublicationIntegrityReports(operators);
-  const publishableOperators = filterPublishableOperators(operators);
+export function buildPublishedOperatorSnapshot(operators: PublishedOperatorBase[]): PublishedOperatorSnapshot {
+  const ruleSet = getActiveModul3RuleSet();
+  const evaluatedOperators: PublishedOperator[] = operators.map((operator) => ({
+    ...operator,
+    compliance: evaluateModul3Compliance({
+      operatorSlug: operator.slug,
+      operatorName: operator.name,
+      bands: operator.bands,
+      timeWindows: operator.timeWindows,
+      ruleSet
+    })
+  }));
+  const distributionOperators = evaluatedOperators.filter(
+    (operator) =>
+      !isExcludedTransmissionOperator({
+        slug: operator.slug,
+        name: operator.name,
+        websiteUrl: operator.websiteUrl,
+        sourcePageUrl: operator.sourcePageUrl
+      })
+  );
+  const integrityReports = getPublicationIntegrityReports(distributionOperators);
+  const publishableOperators = filterPublishableOperators(distributionOperators);
 
   return {
     operators: publishableOperators,
     integrityReports,
-    totalOperatorCount: operators.length,
-    withheldCount: operators.length - publishableOperators.length
+    totalOperatorCount: distributionOperators.length,
+    withheldCount: distributionOperators.length - publishableOperators.length
   };
 }
 
@@ -111,7 +152,9 @@ export function getPublishedOperatorSnapshotStats(snapshot: PublishedOperatorSna
   };
 }
 
-function getSeedOperatorBase(): PublishedOperator[] {
+function getSeedOperatorBase(): PublishedOperatorBase[] {
+  const defaultPriceBasis = getDefaultPriceBasis();
+
   return getOperatorRegistry().map((entry) => ({
     slug: entry.slug,
     name: entry.name,
@@ -125,15 +168,37 @@ function getSeedOperatorBase(): PublishedOperator[] {
     checkedAt:
       entry.sourceDocuments.find((document) => document.id === entry.currentTariff.sourceDocumentId)
         ?.checkedAt ?? null,
-    bands: [...entry.currentTariff.bands].sort((left, right) => BAND_ORDER[left.key] - BAND_ORDER[right.key]),
+    priceBasis: defaultPriceBasis,
+    bands: [...entry.currentTariff.bands]
+      .map((band) => ({
+        ...band,
+        priceBasis: defaultPriceBasis,
+        valueCtPerKwh: normalizeStoredTariffValue(band.valueCtPerKwh, defaultPriceBasis)
+      }))
+      .sort((left, right) => BAND_ORDER[left.key] - BAND_ORDER[right.key]),
     timeWindows: entry.currentTariff.timeWindows ?? []
   }));
 }
 
-export function buildPublishedOperators(rows: PublishedOperatorRow[]): PublishedOperator[] {
-  const grouped = new Map<string, PublishedOperator>();
+export function buildPublishedOperators(rows: PublishedOperatorRow[]): PublishedOperatorBase[] {
+  const latestValidFromByOperator = new Map<string, string>();
 
   for (const row of rows) {
+    const currentLatest = latestValidFromByOperator.get(row.operatorSlug);
+
+    if (!currentLatest || row.validFrom > currentLatest) {
+      latestValidFromByOperator.set(row.operatorSlug, row.validFrom);
+    }
+  }
+
+  const grouped = new Map<string, PublishedOperatorBase>();
+
+  for (const row of rows) {
+    if (latestValidFromByOperator.get(row.operatorSlug) !== row.validFrom) {
+      continue;
+    }
+
+    const rowPriceBasis = row.priceBasis ?? getDefaultPriceBasis();
     const existing = grouped.get(row.operatorSlug);
 
     if (!existing) {
@@ -148,13 +213,15 @@ export function buildPublishedOperators(rows: PublishedOperatorRow[]): Published
         documentUrl: row.documentUrl,
         sourceSlug: row.sourceSlug,
         checkedAt: row.checkedAt,
+        priceBasis: rowPriceBasis,
         timeWindows: [],
         bands: [
           {
             key: row.bandKey,
             label: row.bandLabel,
             valueCtPerKwh: normalizeTariffValue(row.valueCtPerKwh),
-            sourceQuote: row.sourceQuote
+            sourceQuote: row.sourceQuote,
+            priceBasis: rowPriceBasis
           }
         ]
       });
@@ -165,7 +232,8 @@ export function buildPublishedOperators(rows: PublishedOperatorRow[]): Published
       key: row.bandKey,
       label: row.bandLabel,
       valueCtPerKwh: normalizeTariffValue(row.valueCtPerKwh),
-      sourceQuote: row.sourceQuote
+      sourceQuote: row.sourceQuote,
+      priceBasis: rowPriceBasis
     });
   }
 
@@ -206,7 +274,7 @@ export async function loadPublishedOperatorSnapshot() {
   const { operators, sourceCatalog, tariffVersions } = await import("../../db/schema");
   const { and, asc, eq, sql } = await import("drizzle-orm");
 
-const rows = await db
+  const rows = await db
     .select({
       operatorSlug: operators.slug,
       operatorName: operators.name,
@@ -221,7 +289,8 @@ const rows = await db
       bandKey: sql<"NT" | "ST" | "HT">`${tariffVersions.bandKey}`,
       bandLabel: sql<string>`coalesce(${tariffVersions.rawLabel}, '')`,
       valueCtPerKwh: sql<string>`${tariffVersions.valueCtPerKwh}::text`,
-      sourceQuote: sql<string>`coalesce(${tariffVersions.sourceQuote}, '')`
+      sourceQuote: sql<string>`coalesce(${tariffVersions.sourceQuote}, '')`,
+      priceBasis: sql<PriceBasis>`'assumed-netto'`
     })
     .from(tariffVersions)
     .innerJoin(operators, eq(tariffVersions.operatorId, operators.id))

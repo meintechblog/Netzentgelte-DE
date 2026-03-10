@@ -1,0 +1,77 @@
+{
+  "ruleSetId": "bdew-modul-3-v1-1",
+  "title": "BDEW Anwendungshilfe Modul 3",
+  "version": "1.1",
+  "sourceDocumentUrl": "https://www.bdew.de/media/documents/BDEW-AWH_Modul_3_V1.1_Korrektur070225.pdf",
+  "sourceDocumentLabel": "BDEW Anwendungshilfe Modul 3, Version 1.1",
+  "effectiveFrom": "2024-09-16",
+  "rules": [
+    {
+      "ruleId": "ht_min_2h_per_day",
+      "title": "HT mindestens 2 Stunden pro Tag",
+      "description": "Hochlasttarif-Zeitfenster müssen mindestens 2 Stunden pro Tag umfassen.",
+      "scope": "modul-3",
+      "severity": "high",
+      "sourceCitation": "Hochlasttarif (HT): min. an 2 Stunden pro Tag",
+      "checkType": "min_window_duration_by_band",
+      "parameters": {
+        "bandKey": "HT",
+        "minMinutes": 120
+      }
+    },
+    {
+      "ruleId": "ht_max_100_percent_above_st",
+      "title": "HT maximal 100 Prozent über ST",
+      "description": "Der HT darf höchstens 100 Prozent Aufschlag auf den ST haben.",
+      "scope": "modul-3",
+      "severity": "medium",
+      "sourceCitation": "Hochlasttarif (HT): ... max. 100 %-Aufschlag zum ST",
+      "checkType": "max_ratio_between_bands",
+      "parameters": {
+        "numeratorBandKey": "HT",
+        "denominatorBandKey": "ST",
+        "maxRatio": 2
+      }
+    },
+    {
+      "ruleId": "nt_between_10_and_40_percent_of_st",
+      "title": "NT zwischen 10 und 40 Prozent des ST",
+      "description": "Der NT muss in einem Korridor zwischen 10 und 40 Prozent des ST liegen.",
+      "scope": "modul-3",
+      "severity": "high",
+      "sourceCitation": "Niedriglasttarif (NT): Korridor zwischen 10 % und 40 % des ST.",
+      "checkType": "band_ratio_range",
+      "parameters": {
+        "numeratorBandKey": "NT",
+        "denominatorBandKey": "ST",
+        "minRatio": 0.1,
+        "maxRatio": 0.4
+      }
+    },
+    {
+      "ruleId": "at_least_two_quarters_active",
+      "title": "HT und NT in mindestens zwei Quartalen",
+      "description": "Die Zeitfenster und Preisstufen für HT und NT müssen in mindestens zwei Quartalen eines Jahres abgerechnet werden.",
+      "scope": "modul-3",
+      "severity": "high",
+      "sourceCitation": "Die Zeitfenster und Preisstufen für HT und NT müssen in mindestens zwei Quartalen im Jahr durch den Netzbetreiber abgerechnet werden.",
+      "checkType": "min_active_quarters_for_bands",
+      "parameters": {
+        "bandKeys": ["HT", "NT"],
+        "minQuarterCount": 2
+      }
+    },
+    {
+      "ruleId": "same_time_windows_across_quarters",
+      "title": "Zeitfenster über aktive Quartale identisch",
+      "description": "Die Preisstufen und Zeitfenster dürfen zwischen einzelnen aktiven Quartalen nicht variieren.",
+      "scope": "modul-3",
+      "severity": "medium",
+      "sourceCitation": "Die Preisstufen und Zeitfenster müssen ganzjährig identisch sein, d. h. sie dürfen zwischen den einzelnen Quartalen nicht variieren.",
+      "checkType": "consistent_windows_across_active_quarters",
+      "parameters": {
+        "bandKeys": ["HT", "NT", "ST"]
+      }
+    }
+  ]
+}

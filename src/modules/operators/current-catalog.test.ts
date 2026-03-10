@@ -58,19 +58,22 @@ describe("buildPublishedOperators", () => {
           "https://assets.ctfassets.net/xytfb1vrn7of/7eQvxehZzn3ECbR9rALmyD/ecc795b9dcd666ce1f53d9d04362a321/netzentgelte-strom-netze-bw-gmbh-2026.pdf",
         sourceSlug: "netze-bw-netze-bw-14a-2026",
         checkedAt: "2026-03-09",
+        priceBasis: "assumed-netto",
         timeWindows: [],
         bands: [
           {
             key: "NT",
             label: "Niedertarifstufe",
             valueCtPerKwh: "3.03",
-            sourceQuote: "Niedertarifstufe 3,03 ct/kWh"
+            sourceQuote: "Niedertarifstufe 3,03 ct/kWh",
+            priceBasis: "assumed-netto"
           },
           {
             key: "ST",
             label: "Standardtarifstufe",
             valueCtPerKwh: "7.57",
-            sourceQuote: "Standardtarifstufe 7,57 ct/kWh"
+            sourceQuote: "Standardtarifstufe 7,57 ct/kWh",
+            priceBasis: "assumed-netto"
           }
         ]
       }
@@ -244,7 +247,22 @@ describe("getSeedPublishedOperators", () => {
       ])
     );
     expect(mainzerNetze).toMatchObject({
-      reviewStatus: "verified"
+      reviewStatus: "verified",
+      priceBasis: "assumed-netto",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
+    expect(netzeBw).toMatchObject({
+      priceBasis: "assumed-netto",
+      compliance: expect.objectContaining({
+        status: "violation",
+        violations: expect.arrayContaining([
+          expect.objectContaining({
+            ruleId: "nt_between_10_and_40_percent_of_st"
+          })
+        ])
+      })
     });
     expect(mainzerNetze?.timeWindows).toEqual(
       expect.arrayContaining([
@@ -438,6 +456,7 @@ describe("getSeedPublishedOperators", () => {
     );
     expect(twsNetz).toMatchObject({
       reviewStatus: "verified",
+      priceBasis: "assumed-netto",
       sourcePageUrl: "https://www.tws-netz.de/de/Unsere-Netze/Stromnetz/",
       documentUrl:
         "https://www.tws-netz.de/de/Unsere-Netze/Netze-neu/Stromnetz/Netzzugang-Entgelte/5-132-TWS-Netz-Preisblatt-2026-final.pdf",

@@ -94,6 +94,30 @@ function getEndcustomerProductAccent(productKey: EndcustomerDisplayProduct["key"
   return "tariff-endcustomer-card--base";
 }
 
+function getComplianceStatusLabel(row: TariffTableRow) {
+  if (row.compliance.status === "violation") {
+    return "Mit Verstößen";
+  }
+
+  if (row.compliance.status === "not-evaluable") {
+    return "Nicht bewertbar";
+  }
+
+  return "Regelkonform";
+}
+
+function getComplianceStatusClass(row: TariffTableRow) {
+  if (row.compliance.status === "violation") {
+    return "review-pill pending";
+  }
+
+  if (row.compliance.status === "not-evaluable") {
+    return "review-pill review-pill--neutral";
+  }
+
+  return "review-pill verified";
+}
+
 export function TariffTable({ rows }: TariffTableProps) {
   const [openEndcustomerOperators, setOpenEndcustomerOperators] = useState<Set<string>>(
     () => new Set()
@@ -187,6 +211,9 @@ export function TariffTable({ rows }: TariffTableProps) {
                     <span className={`review-pill ${row.reviewStatus}`}>
                       {`Prüfstatus: ${getReviewStatusLabel(row)}`}
                     </span>
+                    <span className={getComplianceStatusClass(row)}>
+                      {`Regelstatus: ${getComplianceStatusLabel(row)}`}
+                    </span>
                     {row.latestPageSnapshotFetchedAt ? (
                       <span className="table-muted">
                         {`Seiten-Snapshot ${row.latestPageSnapshotFetchedAt.slice(0, 10)}`}
@@ -224,6 +251,32 @@ export function TariffTable({ rows }: TariffTableProps) {
                       </a>
                     ) : null}
                   </div>
+                  {row.compliance.violations.length > 0 ? (
+                    <section className="operator-compliance-panel" aria-label={`${row.operatorName} Regelverstöße`}>
+                      <strong>Abweichungen vom BDEW-Regelwerk</strong>
+                      <ul className="operator-compliance-panel__list">
+                        {row.compliance.violations.map((finding) => (
+                          <li key={`${row.operatorSlug}-${finding.ruleId}`}>
+                            <span className="operator-compliance-panel__title">{finding.title}</span>
+                            <span>{finding.message}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  ) : null}
+                  {row.compliance.status === "not-evaluable" && row.compliance.notEvaluated.length > 0 ? (
+                    <section className="operator-compliance-panel" aria-label={`${row.operatorName} nicht bewertbare Regeln`}>
+                      <strong>Nicht vollständig bewertbar</strong>
+                      <ul className="operator-compliance-panel__list">
+                        {row.compliance.notEvaluated.map((finding) => (
+                          <li key={`${row.operatorSlug}-${finding.ruleId}`}>
+                            <span className="operator-compliance-panel__title">{finding.title}</span>
+                            <span>{finding.message}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  ) : null}
                   {row.endcustomerDisplay ? (
                     <section className="tariff-endcustomer-panel">
                       <button

@@ -3,14 +3,17 @@
 import { useDeferredValue, useId, useState } from "react";
 
 import type { ProjectedGermanyMapScene } from "../lib/maps/geojson";
-import type { TariffTableRow } from "../lib/view-models/tariffs";
+import type { ComplianceRuleSetDisplay, TariffTableRow } from "../lib/view-models/tariffs";
 import { OperatorMap } from "./operator-map";
 import { TariffTable } from "./tariff-table";
 
 type OperatorExplorerProps = {
   rows: TariffTableRow[];
   mapScene: ProjectedGermanyMapScene;
+  complianceRuleSet: ComplianceRuleSetDisplay;
 };
+
+type ComplianceFilter = "all" | "compliant" | "violation" | "not-evaluable";
 
 function normalizeSearchValue(value: string) {
   return value
@@ -44,42 +47,77 @@ function getResultLabel(count: number) {
   return count === 1 ? "1 Treffer" : `${count} Treffer`;
 }
 
-export function OperatorExplorer({ rows, mapScene }: OperatorExplorerProps) {
+function getComplianceFilterLabel(filter: ComplianceFilter) {
+  switch (filter) {
+    case "compliant":
+      return "Regelkonform";
+    case "violation":
+      return "Mit Verstößen";
+    case "not-evaluable":
+      return "Nicht bewertbar";
+    default:
+      return "Alle";
+  }
+}
+
+function matchesComplianceFilter(row: TariffTableRow, filter: ComplianceFilter) {
+  return filter === "all" ? true : row.compliance.status === filter;
+}
+
+export function OperatorExplorer({ rows, mapScene, complianceRuleSet }: OperatorExplorerProps) {
   const [query, setQuery] = useState("");
+  const [complianceFilter, setComplianceFilter] = useState<ComplianceFilter>("all");
   const deferredQuery = useDeferredValue(query.trim());
   const searchId = useId();
 
-  const filteredRows =
-    deferredQuery.length === 0
-      ? rows
-      : rows.filter((row) =>
-          matchesSearch(
-            buildSearchIndex([
-              row.operatorName,
-              row.operatorSlug,
-              row.regionLabel,
-              row.sourceSlug,
-              row.sourcePageUrl,
-              row.documentUrl,
-              row.endcustomerDisplay?.title ?? "",
-              row.endcustomerDisplay?.searchText ?? "",
-              ...(row.sourceHealthReport?.issues.map((issue) => issue.message) ?? [])
-            ]),
-            deferredQuery
-          )
-        );
+  const filteredRows = rows.filter((row) => {
+    if (!matchesComplianceFilter(row, complianceFilter)) {
+      return false;
+    }
+
+    if (deferredQuery.length === 0) {
+      return true;
+    }
+
+    return matchesSearch(
+      buildSearchIndex([
+        row.operatorName,
+        row.operatorSlug,
+        row.regionLabel,
+        row.sourceSlug,
+        row.sourcePageUrl,
+        row.documentUrl,
+        row.reviewStatus,
+        row.priceBasisLabel,
+        row.compliance.status,
+        ...row.compliance.violations.flatMap((finding) => [finding.ruleId, finding.title, finding.message]),
+        ...row.compliance.notEvaluated.flatMap((finding) => [
+          finding.ruleId,
+          finding.title,
+          finding.message
+        ]),
+        row.endcustomerDisplay?.title ?? "",
+        row.endcustomerDisplay?.searchText ?? "",
+        ...(row.sourceHealthReport?.issues.map((issue) => issue.message) ?? [])
+      ]),
+      deferredQuery
+    );
+  });
+  const visibleOperatorSlugs = new Set(filteredRows.map((row) => row.operatorSlug));
 
   const filteredMapScene = {
     ...mapScene,
     operators: mapScene.operators.map((feature) => ({
       ...feature,
       searchMatch:
-        deferredQuery.length === 0
-          ? true
-          : matchesSearch(
-              buildSearchIndex([feature.operatorName, feature.id, feature.regionLabel]),
-              deferredQuery
-            )
+        visibleOperatorSlugs.size === 0
+          ? false
+          : visibleOperatorSlugs.has(feature.id) &&
+            (deferredQuery.length === 0 ||
+              matchesSearch(
+                buildSearchIndex([feature.operatorName, feature.id, feature.regionLabel]),
+                deferredQuery
+              ))
     }))
   };
 
@@ -136,16 +174,58 @@ export function OperatorExplorer({ rows, mapScene }: OperatorExplorerProps) {
             <span className="section-eyebrow">Nachvollziehbare Daten</span>
             <h2>Netzbetreiber & Tarifdaten</h2>
             <p>
-              Tarifmatrix, Quellenpfad und Prüfstatus stehen je Betreiber in einem
-              gemeinsamen Eintrag.
+              Tarifmatrix, Quellenpfad, Prüfstatus und Regelkonformität stehen je Betreiber in
+              einem gemeinsamen Eintrag.
             </p>
           </div>
           <div className="panel-actions">
             <span className="surface-chip">Zeitfenster</span>
+            <span className="surface-chip">{getComplianceFilterLabel(complianceFilter)}</span>
             <span className="surface-chip">Dark mode · WCAG AA</span>
             <span className="surface-chip">Blue / Amber Dashboard</span>
           </div>
         </div>
+        <section className="compliance-rule-set" aria-labelledby="modul-3-regeln">
+          <div className="compliance-rule-set__header">
+            <div>
+              <span className="section-eyebrow">Regelwerk</span>
+              <h3 id="modul-3-regeln">{`${complianceRuleSet.title} ${complianceRuleSet.version}`}</h3>
+              <p>Strukturierte Modul-3-Regeln aus der BDEW-Anwendungshilfe als Filter- und Prüfgrundlage.</p>
+            </div>
+            <a
+              className="source-link"
+              href={complianceRuleSet.sourceDocumentUrl}
+              rel="noreferrer"
+              target="_blank"
+            >
+              {complianceRuleSet.sourceDocumentLabel}
+            </a>
+          </div>
+          <ul className="compliance-rule-set__list">
+            {complianceRuleSet.rules.map((rule) => (
+              <li className="compliance-rule-set__item" key={rule.ruleId}>
+                <strong>{rule.title}</strong>
+                <span>{rule.description}</span>
+                <span className="table-muted">{rule.sourceCitation}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="compliance-filter" aria-label="Compliance-Filter">
+            {(["all", "compliant", "violation", "not-evaluable"] as const).map((filter) => (
+              <button
+                aria-pressed={complianceFilter === filter}
+                className={`compliance-filter__button${
+                  complianceFilter === filter ? " compliance-filter__button--active" : ""
+                }`}
+                key={filter}
+                onClick={() => setComplianceFilter(filter)}
+                type="button"
+              >
+                {getComplianceFilterLabel(filter)}
+              </button>
+            ))}
+          </div>
+        </section>
         {filteredRows.length > 0 ? (
           <TariffTable rows={filteredRows} />
         ) : (

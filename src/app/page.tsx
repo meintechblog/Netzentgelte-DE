@@ -1,10 +1,12 @@
 import { OperatorExplorer } from "../components/operator-explorer";
 import { getRegistryMapFeatures, projectGermanyMap } from "../lib/maps/geojson";
 import {
+  getComplianceRuleSetDisplay,
   getRegistryTariffRows,
   mergeTariffRowsWithCurrentSources,
   mergeTariffRowsWithEndcustomerCatalog
 } from "../lib/view-models/tariffs";
+import { getActiveModul3RuleSet } from "../modules/compliance/rule-catalog";
 import {
   getPublishedOperatorSnapshotStats,
   loadPublishedOperatorSnapshot
@@ -25,6 +27,7 @@ export default async function HomePage() {
   const stats = getPublishedOperatorSnapshotStats(operatorSnapshot);
   const publicSources = currentSources.filter((row) => publishedOperatorSlugs.has(row.operatorSlug));
   const mergedRows = mergeTariffRowsWithCurrentSources(rows, publicSources);
+  const complianceRuleSet = getComplianceRuleSetDisplay(getActiveModul3RuleSet());
 
   return (
     <main className="dashboard-shell">
@@ -47,7 +50,7 @@ export default async function HomePage() {
       </section>
 
       <div className="dashboard-grid">
-        <OperatorExplorer mapScene={mapScene} rows={mergedRows} />
+        <OperatorExplorer complianceRuleSet={complianceRuleSet} mapScene={mapScene} rows={mergedRows} />
 
         <section className="stats-grid" aria-label="Kennzahlen">
           <article className="stat-card">

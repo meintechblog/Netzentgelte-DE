@@ -71,6 +71,13 @@ Nach jeder relevanten Filling-Aenderung mindestens ausfuehren:
 pnpm vitest run src/modules/operators/registry.test.ts src/modules/operators/registry-import.test.ts src/app/api/operators/route.test.ts src/app/api/tariffs/current/route.test.ts
 ```
 
+## Modul-3 Compliance Maintenance
+
+- Die aktive, quellverlinkte Regelbasis liegt in [`modul-3-rules.json`](/Users/hulki/projects/netzentgelte-de/.worktrees/compliance-rules/data/compliance/modul-3-rules.json).
+- Neue oder geaenderte BDEW-Regeln werden zuerst dort strukturiert gepflegt und erst danach in die UI uebernommen.
+- Nur explizit aus dem Referenzdokument ableitbare, maschinell pruefbare Regeln als automatische Verstossregeln modellieren.
+- Nicht belastbar automatisch pruefbare Anforderungen werden als `not-evaluable` oder rein dokumentierte Regel gelassen, nicht als stiller Verstoß.
+
 ## Iterative Improvement Rule
 
 Wenn ein neuer Betreiberfall eine Regel aufdeckt, die in der Skill oder im Runbook noch fehlt:

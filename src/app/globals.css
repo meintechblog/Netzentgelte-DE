@@ -744,6 +744,79 @@ input:focus-visible {
   color: var(--color-success);
 }
 
+.review-pill--neutral {
+  background: rgba(148, 163, 184, 0.14);
+  color: var(--color-text-muted);
+}
+
+.compliance-rule-set {
+  display: grid;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(96, 165, 250, 0.18);
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgba(9, 18, 34, 0.94), rgba(7, 14, 26, 0.98));
+}
+
+.compliance-rule-set__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.8rem 1rem;
+}
+
+.compliance-rule-set__header h3,
+.compliance-rule-set__header p {
+  margin: 0;
+}
+
+.compliance-rule-set__header p {
+  margin-top: 0.25rem;
+  color: var(--color-text-muted);
+}
+
+.compliance-rule-set__list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.compliance-rule-set__item {
+  display: grid;
+  gap: 0.18rem;
+  padding: 0.75rem 0.8rem;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 0.9rem;
+  background: rgba(8, 16, 30, 0.88);
+}
+
+.compliance-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.compliance-filter__button {
+  min-height: 2rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(96, 165, 250, 0.18);
+  border-radius: 999px;
+  background: rgba(14, 27, 49, 0.74);
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.compliance-filter__button--active {
+  border-color: rgba(96, 165, 250, 0.34);
+  background: rgba(37, 99, 235, 0.18);
+  color: var(--color-primary);
+}
+
 .source-review-inline {
   display: grid;
   gap: 0.35rem;
@@ -751,6 +824,31 @@ input:focus-visible {
   border: 1px solid rgba(148, 163, 184, 0.14);
   border-radius: 0.85rem;
   background: rgba(8, 18, 34, 0.72);
+}
+
+.operator-compliance-panel {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.65rem 0.7rem;
+  border: 1px solid rgba(245, 158, 11, 0.18);
+  border-radius: 0.9rem;
+  background: linear-gradient(180deg, rgba(41, 25, 5, 0.82), rgba(19, 14, 7, 0.88));
+}
+
+.operator-compliance-panel__list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.operator-compliance-panel__list li {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.operator-compliance-panel__title {
+  font-weight: 700;
 }
 
 .tariff-endcustomer-panel {

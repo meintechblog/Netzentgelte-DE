@@ -34,6 +34,7 @@ describe("TariffTable", () => {
     expect(screen.getByText(/Zuletzt geprüft 2026-03-09/)).toBeInTheDocument();
     expect(screen.queryByText("Quelle & Prüfstatus anzeigen")).not.toBeInTheDocument();
     expect(screen.getByText("Prüfstatus: Geprüft")).toBeInTheDocument();
+    expect(screen.getByText("Regelstatus: Regelkonform")).toBeInTheDocument();
     expect(screen.queryByText(/Quellenstatus:/)).not.toBeInTheDocument();
     expect(screen.queryByText("Gespeicherte Quellseite")).not.toBeInTheDocument();
     expect(screen.getByText("Q1")).toBeInTheDocument();
@@ -152,5 +153,21 @@ describe("TariffTable", () => {
       )
     ).toHaveClass("tariff-quarter-segment--st-assumed");
     expect(q2Section.querySelector(".tariff-quarter-segment__time")).toBeNull();
+  });
+
+  test("renders concrete compliance violations for operators that break the BDEW Modul-3 rules", () => {
+    const violatingOperator = mergeTariffRowsWithEndcustomerCatalog(
+      getRegistryTariffRows(getSeedPublishedOperators()),
+      getSeedEndcustomerTariffCatalog()
+    ).find((row) => row.operatorSlug === "netze-bw");
+
+    render(<TariffTable rows={[violatingOperator!]} />);
+
+    expect(screen.getByText("Regelstatus: Mit Verstößen")).toBeInTheDocument();
+    expect(screen.getByText("Abweichungen vom BDEW-Regelwerk")).toBeInTheDocument();
+    expect(screen.getByText("NT zwischen 10 und 40 Prozent des ST")).toBeInTheDocument();
+    expect(
+      screen.getByText("NT liegt mit 3.03 ct/kWh außerhalb des zulässigen Korridors relativ zu ST 7.57 ct/kWh.")
+    ).toBeInTheDocument();
   });
 });

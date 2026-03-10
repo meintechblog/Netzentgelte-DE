@@ -16,7 +16,7 @@ describe("GET /api/tariffs/endcustomer/current", () => {
     );
 
     expect(data.summary).toMatchObject({
-      operatorCount: 5
+      operatorCount: 12
     });
     expect(hall).toMatchObject({
       operatorSlug: "stadtwerke-schwaebisch-hall",

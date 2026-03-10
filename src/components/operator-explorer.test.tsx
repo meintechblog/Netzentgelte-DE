@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 
 import { projectGermanyMap, type OperatorMapFeature } from "../lib/maps/geojson";
-import type { TariffTableRow } from "../lib/view-models/tariffs";
+import type { ComplianceRuleSetDisplay, TariffTableRow } from "../lib/view-models/tariffs";
 import { OperatorExplorer } from "./operator-explorer";
 
 const rows: TariffTableRow[] = [
@@ -17,6 +17,23 @@ const rows: TariffTableRow[] = [
     sourceSlug: "stadtwerke-schwaebisch-hall-2026",
     checkedAt: "2026-03-09",
     reviewStatus: "pending",
+    priceBasis: "assumed-netto",
+    priceBasisLabel: "Nettobasis (angenommen)",
+    compliance: {
+      ruleSetId: "bdew-modul-3-v1-1",
+      status: "violation",
+      violations: [
+        {
+          ruleId: "ht_min_2h_per_day",
+          title: "HT mindestens 2 Stunden pro Tag",
+          severity: "high",
+          message: "HT-Zeitfenster 18:00-18:30 unterschreitet die Mindestdauer von 2 Stunden.",
+          sourceCitation: "Hochlasttarif (HT): min. an 2 Stunden pro Tag"
+        }
+      ],
+      passes: [],
+      notEvaluated: []
+    },
     latestPageSnapshotFetchedAt: "2026-03-09T01:22:00.000Z",
     latestPageSnapshotHash: "page123",
     pageArtifactApiUrl: "/api/artifacts/swh-page.html",
@@ -46,6 +63,23 @@ const rows: TariffTableRow[] = [
     sourceSlug: "stromnetz-berlin-2026",
     checkedAt: "2026-03-09",
     reviewStatus: "verified",
+    priceBasis: "assumed-netto",
+    priceBasisLabel: "Nettobasis (angenommen)",
+    compliance: {
+      ruleSetId: "bdew-modul-3-v1-1",
+      status: "compliant",
+      violations: [],
+      passes: [
+        {
+          ruleId: "ht_min_2h_per_day",
+          title: "HT mindestens 2 Stunden pro Tag",
+          severity: "high",
+          message: "HT-Zeitfenster erfüllen die Mindestdauer von 2 Stunden.",
+          sourceCitation: "Hochlasttarif (HT): min. an 2 Stunden pro Tag"
+        }
+      ],
+      notEvaluated: []
+    },
     latestPageSnapshotFetchedAt: null,
     latestPageSnapshotHash: null,
     pageArtifactApiUrl: null,
@@ -60,6 +94,24 @@ const rows: TariffTableRow[] = [
     quarterMatrix: []
   }
 ];
+
+const complianceRuleSet: ComplianceRuleSetDisplay = {
+  ruleSetId: "bdew-modul-3-v1-1",
+  title: "BDEW Anwendungshilfe Modul 3",
+  version: "1.1",
+  sourceDocumentUrl:
+    "https://www.bdew.de/media/documents/BDEW-AWH_Modul_3_V1.1_Korrektur070225.pdf",
+  sourceDocumentLabel: "BDEW Anwendungshilfe Modul 3, Version 1.1",
+  rules: [
+    {
+      ruleId: "ht_min_2h_per_day",
+      title: "HT mindestens 2 Stunden pro Tag",
+      description: "Hochlasttarif-Zeitfenster müssen mindestens 2 Stunden pro Tag umfassen.",
+      severity: "high",
+      sourceCitation: "Hochlasttarif (HT): min. an 2 Stunden pro Tag"
+    }
+  ]
+};
 
 const mapFeatures: OperatorMapFeature[] = [
   {
@@ -95,7 +147,11 @@ const mapFeatures: OperatorMapFeature[] = [
 describe("OperatorExplorer", () => {
   test("keeps the hero map detail panel in sync while dimming non-matching map regions", () => {
     const { container } = render(
-      <OperatorExplorer rows={rows} mapScene={projectGermanyMap(mapFeatures)} />
+      <OperatorExplorer
+        complianceRuleSet={complianceRuleSet}
+        rows={rows}
+        mapScene={projectGermanyMap(mapFeatures)}
+      />
     );
 
     fireEvent.change(screen.getByRole("searchbox", { name: "Suchbegriff" }), {
@@ -112,7 +168,13 @@ describe("OperatorExplorer", () => {
   });
 
   test("shows a dimmed map state when no operator matches the current query", () => {
-    render(<OperatorExplorer rows={rows} mapScene={projectGermanyMap(mapFeatures)} />);
+    render(
+      <OperatorExplorer
+        complianceRuleSet={complianceRuleSet}
+        rows={rows}
+        mapScene={projectGermanyMap(mapFeatures)}
+      />
+    );
 
     fireEvent.change(screen.getByRole("searchbox", { name: "Suchbegriff" }), {
       target: { value: "hamburg" }
@@ -124,12 +186,23 @@ describe("OperatorExplorer", () => {
   });
 
   test("filters the merged operator list by integrated source fields and shows inline source details", () => {
-    render(<OperatorExplorer rows={rows} mapScene={projectGermanyMap(mapFeatures)} />);
+    render(
+      <OperatorExplorer
+        complianceRuleSet={complianceRuleSet}
+        rows={rows}
+        mapScene={projectGermanyMap(mapFeatures)}
+      />
+    );
 
     expect(screen.getByRole("heading", { name: "Netzbetreiber & Tarifdaten" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "BDEW Anwendungshilfe Modul 3 1.1" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "BDEW Anwendungshilfe Modul 3, Version 1.1" })
+    ).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Quelle & Prüfstatus anzeigen" })).not.toBeInTheDocument();
     expect(screen.getByText("Prüfstatus: Offen")).toBeInTheDocument();
     expect(screen.getByText("Gespeicherte Quellseite")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Mit Verstößen" })).toHaveAttribute("aria-pressed", "false");
 
     fireEvent.change(screen.getByRole("searchbox", { name: "Suchbegriff" }), {
       target: { value: "stromnetz-berlin-2026" }
@@ -137,5 +210,28 @@ describe("OperatorExplorer", () => {
 
     expect(screen.getAllByText("Stromnetz Berlin").length).toBeGreaterThan(0);
     expect(screen.queryByText("Stadtwerke Schwäbisch Hall")).not.toBeInTheDocument();
+  });
+
+  test("filters the operator list by compliance status and composes with the global search", () => {
+    render(
+      <OperatorExplorer
+        complianceRuleSet={complianceRuleSet}
+        rows={rows}
+        mapScene={projectGermanyMap(mapFeatures)}
+      />
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Mit Verstößen" }));
+
+    expect(screen.getByRole("button", { name: "Mit Verstößen" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getAllByText("Stadtwerke Schwäbisch Hall").length).toBeGreaterThan(0);
+    expect(screen.queryByText("Stromnetz Berlin")).not.toBeInTheDocument();
+
+    fireEvent.change(screen.getByRole("searchbox", { name: "Suchbegriff" }), {
+      target: { value: "ht mindestens 2 stunden" }
+    });
+
+    expect(screen.getAllByText("Stadtwerke Schwäbisch Hall").length).toBeGreaterThan(0);
+    expect(screen.queryByText("Stromnetz Berlin")).not.toBeInTheDocument();
   });
 });

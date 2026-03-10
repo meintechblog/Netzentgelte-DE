@@ -37,4 +37,13 @@ test("renders the page shell around a dominant germany map hero", async () => {
   ).toBeInTheDocument();
   expect(screen.getByText("Dark mode · WCAG AA")).toBeInTheDocument();
   expect(screen.getAllByText(/Prüfstatus:/).length).toBeGreaterThan(0);
+  expect(screen.getByRole("heading", { name: "BDEW Anwendungshilfe Modul 3 1.1" })).toBeInTheDocument();
+  expect(
+    screen.getByRole("link", { name: "BDEW Anwendungshilfe Modul 3, Version 1.1" })
+  ).toHaveAttribute(
+    "href",
+    "https://www.bdew.de/media/documents/BDEW-AWH_Modul_3_V1.1_Korrektur070225.pdf"
+  );
+  expect(screen.getByRole("button", { name: "Regelkonform" })).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: "Mit Verstößen" })).toBeInTheDocument();
 });

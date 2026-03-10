@@ -19,8 +19,10 @@ export function serializeCurrentRegistryTariffs(entries: PublishedOperator[]) {
       checkedAt: entry.checkedAt,
       sourcePageUrl: entry.sourcePageUrl,
       documentUrl: entry.documentUrl,
+      priceBasis: entry.priceBasis,
       bands: entry.bands,
       timeWindows: entry.timeWindows,
+      compliance: entry.compliance,
       summary: summarizePublishedOperatorBands(entry)
     }))
   };
@@ -57,7 +59,11 @@ export function serializeRegistryOperators(entries: PublishedOperator[]) {
       regionLabel: entry.regionLabel,
       reviewStatus: entry.reviewStatus,
       sourceDocumentCount: 1,
-      latestValidFrom: entry.validFrom
+      latestValidFrom: entry.validFrom,
+      priceBasis: entry.priceBasis,
+      complianceStatus: entry.compliance.status,
+      complianceViolationCount: entry.compliance.violations.length,
+      complianceNotEvaluatedCount: entry.compliance.notEvaluated.length
     }))
   };
 }

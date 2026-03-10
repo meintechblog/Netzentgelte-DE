@@ -18,7 +18,7 @@ describe("GET /api/operators/shell-batches", () => {
     });
     expect(data.summary.totalShellCount).toBeGreaterThan(800);
     expect(data.items[0]).toMatchObject({
-      id: expect.stringMatching(/backfill-ready|discovery|audit-refresh/),
+      id: expect.stringMatching(/backfill-ready|discovery|audit-refresh|registry-review/),
       lane: expect.any(String),
       operatorCount: expect.any(Number),
       hostnames: expect.any(Array),

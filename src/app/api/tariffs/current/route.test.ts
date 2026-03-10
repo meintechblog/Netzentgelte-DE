@@ -3,7 +3,7 @@ import { describe, expect, test } from "vitest";
 import { GET } from "./route";
 
 describe("GET /api/tariffs/current", () => {
-  test("returns current tariff payload with source metadata and modul-3 bands", async () => {
+  test("returns current tariff payload with source metadata, price basis and compliance", async () => {
     const response = await GET(new Request("http://localhost/api/tariffs/current"));
     const data = await response.json();
 
@@ -13,6 +13,12 @@ describe("GET /api/tariffs/current", () => {
       sourcePageUrl: expect.any(String),
       documentUrl: expect.any(String),
       checkedAt: expect.any(String),
+      priceBasis: expect.any(String),
+      compliance: expect.objectContaining({
+        ruleSetId: expect.any(String),
+        status: expect.any(String),
+        violations: expect.any(Array)
+      }),
       bands: expect.arrayContaining([
         expect.objectContaining({
           key: expect.any(String)
@@ -22,6 +28,12 @@ describe("GET /api/tariffs/current", () => {
     });
 
     const nErgie = data.items.find((item: { operatorSlug: string }) => item.operatorSlug === "n-ergie-netz");
+    const eDisNetz = data.items.find(
+      (item: { operatorSlug: string }) => item.operatorSlug === "e-dis-netz"
+    );
+    const schwaebischHall = data.items.find(
+      (item: { operatorSlug: string }) => item.operatorSlug === "stadtwerke-schwaebisch-hall"
+    );
 
     expect(nErgie).toMatchObject({
       timeWindows: expect.arrayContaining([
@@ -31,14 +43,6 @@ describe("GET /api/tariffs/current", () => {
         })
       ])
     });
-
-    const eDisNetz = data.items.find(
-      (item: { operatorSlug: string }) => item.operatorSlug === "e-dis-netz"
-    );
-    const schwaebischHall = data.items.find(
-      (item: { operatorSlug: string }) => item.operatorSlug === "stadtwerke-schwaebisch-hall"
-    );
-
     expect(eDisNetz).toMatchObject({
       reviewStatus: "verified",
       timeWindows: expect.arrayContaining([
@@ -72,6 +76,10 @@ describe("GET /api/tariffs/current", () => {
     });
     expect(schwaebischHall).toMatchObject({
       reviewStatus: "verified",
+      priceBasis: "assumed-netto",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      }),
       timeWindows: expect.arrayContaining([
         expect.objectContaining({
           seasonLabel: "Q3 2026",

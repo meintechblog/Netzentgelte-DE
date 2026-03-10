@@ -2,6 +2,8 @@ import {
   summarizePublishedOperatorBands,
   type PublishedOperator
 } from "../../modules/operators/current-catalog";
+import type { ComplianceEvaluation } from "../../modules/compliance/modul-3-evaluator";
+import type { ComplianceRuleSet } from "../../modules/compliance/rule-catalog";
 import type { CurrentSource } from "../../modules/sources/current-sources";
 import type {
   EndcustomerTariffCatalogComponent,
@@ -14,6 +16,7 @@ import {
   selectCurrentCompleteEndcustomerSet
 } from "../../modules/tariffs/endcustomer-integrity";
 import type { SourceHealthReport } from "../../modules/sources/source-health";
+import { getPriceBasisLabel, type PriceBasis } from "../../modules/operators/price-basis";
 export {
   buildQuarterlyTariffMatrix,
   expandSeasonLabelToQuarters,
@@ -29,6 +32,7 @@ import { buildQuarterlyTariffMatrix, type TariffQuarter } from "../../modules/op
 export type TariffBandBadge = {
   key: "NT" | "ST" | "HT";
   valueCtPerKwh: string;
+  priceBasis: PriceBasis;
 };
 
 export type EndcustomerDisplayMetric = {
@@ -61,6 +65,9 @@ export type TariffTableRow = {
   sourceSlug: string;
   checkedAt: string | null;
   reviewStatus: "pending" | "verified";
+  priceBasis: PriceBasis;
+  priceBasisLabel: string;
+  compliance: ComplianceEvaluation;
   latestPageSnapshotFetchedAt?: string | null;
   latestPageSnapshotHash?: string | null;
   pageArtifactApiUrl?: string | null;
@@ -73,6 +80,23 @@ export type TariffTableRow = {
   endcustomerDisplay?: EndcustomerDisplay | null;
 };
 
+export type ComplianceDisplayRule = {
+  ruleId: string;
+  title: string;
+  description: string;
+  severity: "low" | "medium" | "high";
+  sourceCitation: string;
+};
+
+export type ComplianceRuleSetDisplay = {
+  ruleSetId: string;
+  title: string;
+  version: string;
+  sourceDocumentUrl: string;
+  sourceDocumentLabel: string;
+  rules: ComplianceDisplayRule[];
+};
+
 export function getRegistryTariffRows(operators: PublishedOperator[]): TariffTableRow[] {
   return operators.map((entry) => ({
     operatorName: entry.name,
@@ -81,7 +105,8 @@ export function getRegistryTariffRows(operators: PublishedOperator[]): TariffTab
     currentBandsSummary: summarizePublishedOperatorBands(entry),
     currentBandBadges: entry.bands.map((band) => ({
       key: band.key,
-      valueCtPerKwh: band.valueCtPerKwh
+      valueCtPerKwh: band.valueCtPerKwh,
+      priceBasis: band.priceBasis
     })),
     validFrom: entry.validFrom,
     sourcePageUrl: entry.sourcePageUrl,
@@ -89,6 +114,9 @@ export function getRegistryTariffRows(operators: PublishedOperator[]): TariffTab
     sourceSlug: entry.sourceSlug,
     checkedAt: entry.checkedAt,
     reviewStatus: entry.reviewStatus,
+    priceBasis: entry.priceBasis,
+    priceBasisLabel: getPriceBasisLabel(entry.priceBasis),
+    compliance: entry.compliance,
     timeWindows: entry.timeWindows,
     quarterMatrix: buildQuarterlyTariffMatrix({
       bands: entry.bands,
@@ -96,6 +124,23 @@ export function getRegistryTariffRows(operators: PublishedOperator[]): TariffTab
     }),
     endcustomerDisplay: null
   }));
+}
+
+export function getComplianceRuleSetDisplay(ruleSet: ComplianceRuleSet): ComplianceRuleSetDisplay {
+  return {
+    ruleSetId: ruleSet.ruleSetId,
+    title: ruleSet.title,
+    version: ruleSet.version,
+    sourceDocumentUrl: ruleSet.sourceDocumentUrl,
+    sourceDocumentLabel: ruleSet.sourceDocumentLabel,
+    rules: ruleSet.rules.map((rule) => ({
+      ruleId: rule.ruleId,
+      title: rule.title,
+      description: rule.description,
+      severity: rule.severity,
+      sourceCitation: rule.sourceCitation
+    }))
+  };
 }
 
 export function mergeTariffRowsWithEndcustomerCatalog(

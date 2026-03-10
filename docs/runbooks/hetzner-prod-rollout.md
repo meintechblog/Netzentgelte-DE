@@ -2,35 +2,41 @@
 
 ## Zielbild
 
-- Entwicklung und Build laufen auf `CT128` unter `/root/netzentgelte-de`
-- Produktion laeuft auf `hetzner-netzentgelte` unter `/netzentgelte-deutschland`
-- Die App wird unter dem Subpath `/netzentgelte-deutschland` veroeffentlicht
-- Releases werden atomar ueber den Symlink `current` umgeschaltet
+- Entwicklung, Backfills, Compliance und Verifikation laufen auf `CT128` unter `/root/netzentgelte-de`.
+- Oeffentliche Auslieferung auf `kigenerated.de` ist eine statische Public-Version.
+- Finale Haupt-URL ist `https://kigenerated.de/netzentgelte/`.
+- Bestehende App `https://kigenerated.de/prince2-vorbereitung` bleibt unberuehrt.
+- Shared Hosting bekommt keinen zweiten Node-Prozess fuer Netzentgelte, sondern nur Dateien.
 
-## Verzeichnislayout auf Hetzner
+## Warum dieses Modell
+
+- Hetzner Webhosting L laesst sich fuer die bestehende `prince2`-App nutzen, ist aber unzuverlaessig fuer einen zweiten parallelen Node-Subpath.
+- Die Public-App ist read-only und kann aus einem exportierten Snapshot gebaut werden.
+- Die produktive Daten- und Job-Last bleibt damit auf `CT128`.
+
+## Finales Public-Layout auf dem Hosting
 
 ```text
-/netzentgelte-deutschland/
-  current -> /netzentgelte-deutschland/releases/<timestamp>
-  releases/<timestamp>
-  shared/.env
-  logs/
+/usr/www/users/bpjwjy/netzentgelte/
+  index.html
+  404.html
+  _next/static/...
+  data/netzentgelte/meta.json
+  data/netzentgelte/snapshot.json
+
+/usr/www/users/bpjwjy/public_html/netzentgelte/
+  index.html
+  404.html
+  _next/static/...
+  data/netzentgelte/meta.json
+  data/netzentgelte/snapshot.json
 ```
 
-## Vorbedingungen
+Die doppelte Ablage ist Absicherung gegen die undokumentierte Frontdoor-/Docroot-Variante des Webhostings.
 
-1. Quellstand auf `CT128` ist aktuell und verifiziert:
+## Build auf CT128
 
-```bash
-ssh proxi1 'pct exec 128 -- bash -lc "
-  cd /root/netzentgelte-de &&
-  NEXT_PUBLIC_BASE_PATH=/netzentgelte-deutschland pnpm typecheck &&
-  NEXT_PUBLIC_BASE_PATH=/netzentgelte-deutschland pnpm test &&
-  NEXT_PUBLIC_BASE_PATH=/netzentgelte-deutschland pnpm build
-"'
-```
-
-2. AppleDouble-Reste muessen vor dem Testen entfernt werden, falls der Stand von macOS synchronisiert wurde:
+Vor dem Build:
 
 ```bash
 ssh proxi1 'pct exec 128 -- bash -lc "
@@ -39,126 +45,82 @@ ssh proxi1 'pct exec 128 -- bash -lc "
 "'
 ```
 
-## Release bauen und kopieren
+Public-Build:
 
 ```bash
-timestamp=$(date +%Y%m%d%H%M%S)
-
-ssh hetzner-netzentgelte "
-  sudo mkdir -p \
-    /netzentgelte-deutschland/releases/$timestamp \
-    /netzentgelte-deutschland/shared \
-    /netzentgelte-deutschland/logs
-"
-
 ssh proxi1 'pct exec 128 -- bash -lc "
   cd /root/netzentgelte-de &&
-  tar \
-    --exclude=.env \
-    --exclude=.git \
-    --exclude=node_modules \
-    --exclude=.next/cache \
-    --exclude=tmp \
-    --exclude=tmp_missing_endcustomer.tsv \
-    -czf - .
-"' | ssh hetzner-netzentgelte "
-  cd /netzentgelte-deutschland/releases/$timestamp &&
-  tar xzf -
-"
+  NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm export:public &&
+  NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm typecheck &&
+  NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm test &&
+  NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm build
+"'
 ```
 
-## Shared Environment
+## Deploy auf `www438.your-server.de`
 
-`/netzentgelte-deutschland/shared/.env` wird an jedes Release gelinkt.
-
-Pflichtvariablen:
+Die Zielpfade sind per Domain-SSH erreichbar:
 
 ```bash
-NEXT_PUBLIC_BASE_PATH=/netzentgelte-deutschland
-NODE_ENV=production
+ssh -p 222 bpjwjy@www438.your-server.de
 ```
 
-Wenn die Produktivdatenbank erreichbar ist, kommt `DATABASE_URL` ausschliesslich in `shared/.env`.
-
-## Symlink und Migration
+Artefakte ausrollen:
 
 ```bash
-ssh hetzner-netzentgelte "
-  ln -sfn /netzentgelte-deutschland/shared/.env \
-    /netzentgelte-deutschland/releases/$timestamp/.env &&
-  ln -sfn /netzentgelte-deutschland/releases/$timestamp \
-    /netzentgelte-deutschland/current
-"
-```
-
-Migration nur ausfuehren, wenn `DATABASE_URL` auf dem Zielhost erreichbar ist:
-
-```bash
-ssh hetzner-netzentgelte '
-  cd /netzentgelte-deutschland/current &&
-  node scripts/db/migrate.mjs
+ssh -p 222 bpjwjy@www438.your-server.de '
+  mkdir -p \
+    /usr/www/users/bpjwjy/netzentgelte/_next/static \
+    /usr/www/users/bpjwjy/netzentgelte/data/netzentgelte \
+    /usr/www/users/bpjwjy/public_html/netzentgelte/_next/static \
+    /usr/www/users/bpjwjy/public_html/netzentgelte/data/netzentgelte
 '
+
+scp -P 222 .next/server/app/index.html \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/netzentgelte/index.html
+scp -P 222 .next/server/app/_not-found.html \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/netzentgelte/404.html
+scp -P 222 public/netzentgelte/meta.json public/netzentgelte/snapshot.json \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/netzentgelte/data/netzentgelte/
+rsync -az --delete -e 'ssh -p 222' .next/static/ \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/netzentgelte/_next/static/
+
+scp -P 222 .next/server/app/index.html \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/public_html/netzentgelte/index.html
+scp -P 222 .next/server/app/_not-found.html \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/public_html/netzentgelte/404.html
+scp -P 222 public/netzentgelte/meta.json public/netzentgelte/snapshot.json \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/public_html/netzentgelte/data/netzentgelte/
+rsync -az --delete -e 'ssh -p 222' .next/static/ \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/public_html/netzentgelte/_next/static/
 ```
 
-## Systemd
+## Altpfade
 
-Die Runtime laeuft ueber `netzentgelte-deutschland.service`:
+- Alte aktive Haupt-URL: `https://kigenerated.de/prince2-vorbereitung/netzentgelte/`
+- Neue Haupt-URL: `https://kigenerated.de/netzentgelte/`
 
-```ini
-[Unit]
-Description=Netzentgelte Deutschland Next.js Runtime
-After=network-online.target
-Wants=network-online.target
-
-[Service]
-Type=simple
-WorkingDirectory=/netzentgelte-deutschland/current
-EnvironmentFile=/netzentgelte-deutschland/shared/.env
-ExecStart=/usr/bin/node /netzentgelte-deutschland/current/node_modules/next/dist/bin/next start -p 3100 -H 127.0.0.1
-Restart=always
-RestartSec=5
-StandardOutput=append:/netzentgelte-deutschland/logs/netzentgelte-deutschland.log
-StandardError=append:/netzentgelte-deutschland/logs/netzentgelte-deutschland.log
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Aktivierung:
-
-```bash
-ssh hetzner-netzentgelte '
-  sudo systemctl daemon-reload &&
-  sudo systemctl enable netzentgelte-deutschland.service &&
-  sudo systemctl restart netzentgelte-deutschland.service
-'
-```
-
-## Frontdoor
-
-Auf dem Zielhost selbst laeuft kein oeffentlicher Webserver. Die App wird hinter dem vorhandenen `prince2-tutor-node`-Frontproxy unter `/netzentgelte-deutschland` eingebunden. Der oeffentliche Host `kigenerated.de` braucht zusaetzlich einen vorgeschalteten Apache-/Frontdoor-Eintrag fuer denselben Subpath.
+Der verschachtelte Altpfad sollte nur noch per Redirect oder statischer Hinweis-Seite auf die neue Haupt-URL zeigen.
 
 ## Verifikation
 
-Intern auf dem Zielhost:
-
 ```bash
-ssh hetzner-netzentgelte '
-  systemctl status netzentgelte-deutschland --no-pager &&
-  journalctl -u netzentgelte-deutschland -n 100 --no-pager &&
-  curl -I http://127.0.0.1:8765/netzentgelte-deutschland &&
-  curl -fsS http://127.0.0.1:8765/netzentgelte-deutschland | grep -i "<title>Netzentgelte Deutschland" &&
-  curl -fsS http://127.0.0.1:8765/netzentgelte-deutschland/api/operators > /dev/null &&
-  curl -fsS http://127.0.0.1:8765/netzentgelte-deutschland/api/tariffs/current > /dev/null &&
-  curl -fsS http://127.0.0.1:8765/netzentgelte-deutschland/api/sources/current > /dev/null
-'
+curl -I https://kigenerated.de/netzentgelte/
+curl -I https://kigenerated.de/netzentgelte/_next/static/chunks/4f89753f-1e7502e145cbdcac.js
+curl -I https://kigenerated.de/prince2-vorbereitung
+curl -L https://kigenerated.de/netzentgelte/ | grep -i '<title>Netzentgelte Deutschland'
 ```
 
-## Rollback
+Browser-Check:
 
-```bash
-ssh hetzner-netzentgelte '
-  ln -sfn /netzentgelte-deutschland/releases/<previous-timestamp> /netzentgelte-deutschland/current &&
-  sudo systemctl restart netzentgelte-deutschland.service
-'
-```
+- URL endet auf `/netzentgelte/`
+- Titel `Netzentgelte Deutschland`
+- keine Asset-404s ausser optional `favicon.ico`
+- `prince2-vorbereitung` bleibt funktionsfaehig
+
+## Wichtige Lessons Learned
+
+- Auf diesem Hosting-Paket ist ein zusaetzlicher Node-Subpath neben `prince2-vorbereitung` nicht belastbar.
+- `/netzentgelte/` funktioniert als statischer Webspace-Pfad.
+- Die eigentliche Anwendungslogik gehoert auf `CT128`; das Hosting liefert nur den Snapshot aus.
+- Fuer kuenftige Webapps unter `kigenerated.de/<projektname>/` zuerst pruefen, ob ein statischer Export moeglich ist. Das ist auf diesem Setup der schnellste und stabilste Weg.

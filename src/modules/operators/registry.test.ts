@@ -6,7 +6,7 @@ describe("getOperatorRegistry", () => {
   test("loads curated operators with provenance rich source records", () => {
     const registry = getOperatorRegistry();
 
-    expect(registry.length).toBeGreaterThanOrEqual(33);
+    expect(registry.length).toBeGreaterThanOrEqual(70);
     expect(registry[0]).toMatchObject({
       slug: expect.any(String),
       sourceDocuments: expect.arrayContaining([
@@ -16,6 +16,14 @@ describe("getOperatorRegistry", () => {
         })
       ])
     });
+  });
+
+  test("retains the recovered larger modul-3 slice with structured time windows", () => {
+    const registry = getOperatorRegistry();
+
+    expect(
+      registry.filter((entry) => (entry.currentTariff.timeWindows?.length ?? 0) > 0).length
+    ).toBeGreaterThanOrEqual(70);
   });
 
   test("includes the next official operator slice for LEW, E.DIS and Mainzer Netze", () => {

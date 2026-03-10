@@ -226,6 +226,15 @@ export function OperatorExplorer({ rows, mapScene, complianceRuleSet }: Operator
           </div>
           {isComplianceOpen ? (
             <div className="compliance-rule-set__panel" id={compliancePanelId}>
+              <ul className="compliance-rule-set__list">
+                {complianceRuleSet.rules.map((rule) => (
+                  <li className="compliance-rule-set__item" key={rule.ruleId}>
+                    <strong>{rule.title}</strong>
+                    <span>{rule.description}</span>
+                    <span className="table-muted">{rule.sourceCitation}</span>
+                  </li>
+                ))}
+              </ul>
               <div className="compliance-filter" aria-label="Compliance-Filter">
                 {(["all", "compliant", "violation", "not-evaluable"] as const).map((filter) => (
                   <button
@@ -241,15 +250,6 @@ export function OperatorExplorer({ rows, mapScene, complianceRuleSet }: Operator
                   </button>
                 ))}
               </div>
-              <ul className="compliance-rule-set__list">
-                {complianceRuleSet.rules.map((rule) => (
-                  <li className="compliance-rule-set__item" key={rule.ruleId}>
-                    <strong>{rule.title}</strong>
-                    <span>{rule.description}</span>
-                    <span className="table-muted">{rule.sourceCitation}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
           ) : null}
         </section>

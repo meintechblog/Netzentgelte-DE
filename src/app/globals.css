@@ -472,6 +472,21 @@ input:focus-visible {
   padding-bottom: 0.45rem;
 }
 
+.tariff-quarter-card__copy {
+  display: grid;
+  gap: 0.12rem;
+  min-width: 0;
+}
+
+.tariff-quarter-card__quarter {
+  color: rgba(226, 232, 240, 0.92);
+  font-family: var(--font-heading), monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .tariff-quarter-card__unit {
   color: rgba(157, 176, 208, 0.7);
   font-family: var(--font-heading), monospace;
@@ -783,6 +798,11 @@ input:focus-visible {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.compliance-rule-set__panel {
+  display: grid;
+  gap: 0.9rem;
 }
 
 .compliance-rule-set__item {
@@ -1299,6 +1319,19 @@ input:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .tariff-quarter-card__header--compact {
+    align-items: flex-start;
+  }
+
+  .tariff-quarter-card__unit {
+    font-size: 0.64rem;
+  }
+
+  .tariff-quarter-axis,
+  .tariff-quarter-rail {
+    min-height: 15.5rem;
+  }
+
 }
 
 @media (max-width: 1220px) {
@@ -1349,6 +1382,16 @@ input:focus-visible {
 
   .tariff-quarter-card {
     min-height: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .tariff-table tbody tr {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tariff-table tbody td {
+    grid-column: 1 / -1;
   }
 }
 

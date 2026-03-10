@@ -182,10 +182,13 @@ describe("OperatorExplorer", () => {
     expect(
       screen.getByRole("link", { name: "BDEW Anwendungshilfe Modul 3, Version 1.1" })
     ).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Alle (2)" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Regelkonform (1)" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Mit Verstößen (1)" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Nicht bewertbar (0)" })).toBeInTheDocument();
+    const rulePanel = screen.getByRole("button", { name: "Regelwerk zuklappen" }).closest("section");
+    const complianceFilter = within(rulePanel as HTMLElement).getByLabelText("Compliance-Filter");
+    expect(complianceFilter).toBeInTheDocument();
+    expect(within(complianceFilter).getByRole("button", { name: "Alle (2)" })).toBeInTheDocument();
+    expect(within(complianceFilter).getByRole("button", { name: "Regelkonform (1)" })).toBeInTheDocument();
+    expect(within(complianceFilter).getByRole("button", { name: "Mit Verstößen (1)" })).toBeInTheDocument();
+    expect(within(complianceFilter).getByRole("button", { name: "Nicht bewertbar (0)" })).toBeInTheDocument();
     expect(within(ruleSection).getByText("HT mindestens 2 Stunden pro Tag")).toBeInTheDocument();
   });
 

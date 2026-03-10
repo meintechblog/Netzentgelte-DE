@@ -340,7 +340,10 @@ export function TariffTable({ rows }: TariffTableProps) {
                       className="tariff-quarter-card tariff-quarter-card--table"
                     >
                       <div className="tariff-quarter-card__header tariff-quarter-card__header--compact">
-                        <span className="table-muted">{quarter.summaryLabel}</span>
+                        <div className="tariff-quarter-card__copy">
+                          <span className="tariff-quarter-card__quarter">{quarter.key}</span>
+                          <span className="table-muted">{quarter.summaryLabel}</span>
+                        </div>
                         <span className="tariff-quarter-card__unit">Blockansicht · 15 Min</span>
                       </div>
                       {quarter.segments.some((segment) => segment.bandKey) ? (

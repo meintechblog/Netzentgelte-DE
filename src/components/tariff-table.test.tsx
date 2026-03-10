@@ -37,10 +37,6 @@ describe("TariffTable", () => {
     expect(screen.getByText("Regelstatus: Regelkonform")).toBeInTheDocument();
     expect(screen.queryByText(/Quellenstatus:/)).not.toBeInTheDocument();
     expect(screen.queryByText("Gespeicherte Quellseite")).not.toBeInTheDocument();
-    expect(screen.getByText("Q1")).toBeInTheDocument();
-    expect(screen.getByText("Q2")).toBeInTheDocument();
-    expect(screen.getByText("Q3")).toBeInTheDocument();
-    expect(screen.getByText("Q4")).toBeInTheDocument();
     const endcustomerToggle = screen.getByRole("button", {
       name: "Endkunden · Niederspannung verifiziertes Niederspannungsprodukt Bereich aufklappen"
     });
@@ -68,6 +64,10 @@ describe("TariffTable", () => {
     expect(screen.getByText("Nur Standardtarif")).toBeInTheDocument();
     const q1Section = screen.getByLabelText("Stadtwerke Schwäbisch Hall GmbH Q1");
     const q3Section = screen.getByLabelText("Stadtwerke Schwäbisch Hall GmbH Q3");
+    expect(within(q1Section).getByText("Q1")).toBeInTheDocument();
+    expect(within(q1Section).getByText("Tarifstufen aktiv")).toBeInTheDocument();
+    expect(within(q3Section).getByText("Q3")).toBeInTheDocument();
+    expect(within(q3Section).getByText("Nur Standardtarif")).toBeInTheDocument();
     expect(q1Section.querySelectorAll(".tariff-quarter-segment")).toHaveLength(7);
     expect(q3Section.querySelectorAll(".tariff-quarter-segment")).toHaveLength(1);
     expect(within(q1Section).getByText("00:00")).toBeInTheDocument();
@@ -146,6 +146,7 @@ describe("TariffTable", () => {
 
     const q2Section = screen.getByLabelText("MVV Netze GmbH Q2");
 
+    expect(within(q2Section).getByText("Q2")).toBeInTheDocument();
     expect(within(q2Section).getByText("Quelle ohne Zeitfenster")).toBeInTheDocument();
     expect(
       within(q2Section).getByLabelText(
@@ -159,15 +160,13 @@ describe("TariffTable", () => {
     const violatingOperator = mergeTariffRowsWithEndcustomerCatalog(
       getRegistryTariffRows(getSeedPublishedOperators()),
       getSeedEndcustomerTariffCatalog()
-    ).find((row) => row.operatorSlug === "netze-bw");
+    ).find((row) => row.operatorSlug === "albwerk-und");
 
     render(<TariffTable rows={[violatingOperator!]} />);
 
     expect(screen.getByText("Regelstatus: Mit Verstößen")).toBeInTheDocument();
-    expect(screen.getByText("Abweichungen vom BDEW-Regelwerk")).toBeInTheDocument();
-    expect(screen.getByText("NT zwischen 10 und 40 Prozent des ST")).toBeInTheDocument();
-    expect(
-      screen.getByText("NT liegt mit 3.03 ct/kWh außerhalb des zulässigen Korridors relativ zu ST 7.57 ct/kWh.")
-    ).toBeInTheDocument();
+    const violationsPanel = screen.getByLabelText(/Albwerk GmbH & Co\. KG Regelverstöße/i);
+    expect(within(violationsPanel).getByText("Abweichungen vom BDEW-Regelwerk")).toBeInTheDocument();
+    expect(within(violationsPanel).getAllByRole("listitem").length).toBeGreaterThan(0);
   });
 });

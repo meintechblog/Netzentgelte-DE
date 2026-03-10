@@ -26,7 +26,10 @@ export function buildBackfillBriefing(input: {
       ...item,
       action: getAuditAction(item.reasonKey)
     }));
-  const nextBatch = input.batches.find((batch) => batch.lane === "backfill-ready") ?? null;
+  const nextBatch =
+    input.batches.find((batch) => batch.lane === "registry-review") ??
+    input.batches.find((batch) => batch.lane === "backfill-ready") ??
+    null;
 
   return {
     summary: {

@@ -1,6 +1,6 @@
 import type { OperatorShell } from "./shell-catalog";
 
-export type ShellBatchLane = "backfill-ready" | "discovery" | "audit-refresh";
+export type ShellBatchLane = "registry-review" | "backfill-ready" | "discovery" | "audit-refresh";
 
 export type ShellBackfillBatch = {
   id: string;
@@ -13,6 +13,7 @@ export type ShellBackfillBatch = {
 export type ShellBatchBuildResult = {
   summary: {
     totalShellCount: number;
+    registryReviewCount: number;
     backfillReadyCount: number;
     discoveryCount: number;
     auditRefreshCount: number;
@@ -27,11 +28,13 @@ export function buildShellBackfillBatches(
   }
 ): ShellBatchBuildResult {
   const targetBatchSize = options?.targetBatchSize ?? 25;
+  const registryReview = sortShells(shells.filter((shell) => classifyShellLane(shell) === "registry-review"));
   const backfillReady = sortShells(shells.filter((shell) => classifyShellLane(shell) === "backfill-ready"));
   const discovery = sortShells(shells.filter((shell) => classifyShellLane(shell) === "discovery"));
   const auditRefresh = sortShells(shells.filter((shell) => classifyShellLane(shell) === "audit-refresh"));
 
   const batches = [
+    ...buildLaneBatches("registry-review", registryReview, targetBatchSize),
     ...buildLaneBatches("backfill-ready", backfillReady, targetBatchSize),
     ...buildLaneBatches("discovery", discovery, targetBatchSize),
     ...buildLaneBatches("audit-refresh", auditRefresh, targetBatchSize)
@@ -40,6 +43,7 @@ export function buildShellBackfillBatches(
   return {
     summary: {
       totalShellCount: shells.length,
+      registryReviewCount: registryReview.length,
       backfillReadyCount: backfillReady.length,
       discoveryCount: discovery.length,
       auditRefreshCount: auditRefresh.length
@@ -55,15 +59,26 @@ export function getShellBatchSummary(
   return {
     ...summary,
     batchCount: batches.length,
-    suggestedParallelAgents: {
-      backfillReady: batches.filter((batch) => batch.lane === "backfill-ready").length,
-      discovery: batches.filter((batch) => batch.lane === "discovery").length,
-      auditRefresh: batches.filter((batch) => batch.lane === "audit-refresh").length
+      suggestedParallelAgents: {
+        registryReview: batches.filter((batch) => batch.lane === "registry-review").length,
+        backfillReady: batches.filter((batch) => batch.lane === "backfill-ready").length,
+        discovery: batches.filter((batch) => batch.lane === "discovery").length,
+        auditRefresh: batches.filter((batch) => batch.lane === "audit-refresh").length
     }
   };
 }
 
 function classifyShellLane(shell: OperatorShell): ShellBatchLane {
+  if (
+    shell.deprecatedStatus === "disappearance-review" ||
+    (shell.registryFeedSource === "bnetza-rollout-quote" &&
+      shell.registryFeedLabel === "2025-Q3" &&
+      shell.sourceStatus === "missing" &&
+      shell.deprecatedStatus === "active")
+  ) {
+    return "registry-review";
+  }
+
   if (shell.reviewStatus === "verified" || shell.tariffStatus === "verified") {
     return "audit-refresh";
   }

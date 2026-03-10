@@ -12,6 +12,12 @@ export type ShellImportRow = {
   sourceStatus: OperatorShellRegistryEntry["sourceStatus"];
   tariffStatus: OperatorShellRegistryEntry["tariffStatus"];
   reviewStatus: OperatorShellRegistryEntry["reviewStatus"];
+  registryFeedSource: string | null;
+  registryFeedLabel: string | null;
+  lastSeenInRegistryFeed: string | null;
+  deprecatedStatus: OperatorShellRegistryEntry["deprecatedStatus"];
+  deprecatedCheckedAt: string | null;
+  deprecatedReason: string | null;
   mastrId: string | null;
   sourcePageUrl: string | null;
   documentUrl: string | null;
@@ -37,6 +43,12 @@ export function buildShellImportPayload(entries: OperatorShellRegistryEntry[]): 
       sourceStatus: entry.sourceStatus,
       tariffStatus: entry.tariffStatus,
       reviewStatus: entry.reviewStatus,
+      registryFeedSource: entry.registryFeedSource ?? null,
+      registryFeedLabel: entry.registryFeedLabel ?? null,
+      lastSeenInRegistryFeed: entry.lastSeenInRegistryFeed ?? null,
+      deprecatedStatus: entry.deprecatedStatus,
+      deprecatedCheckedAt: entry.deprecatedCheckedAt ?? null,
+      deprecatedReason: entry.deprecatedReason ?? null,
       mastrId: entry.mastrId ?? null,
       sourcePageUrl: entry.sourcePageUrl ?? null,
       documentUrl: entry.documentUrl ?? null,

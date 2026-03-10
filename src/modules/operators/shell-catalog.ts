@@ -20,7 +20,8 @@ export function getShellCatalogStats(entries: OperatorShell[]) {
     operatorCount: entries.length,
     verifiedCount: entries.filter((entry) => entry.reviewStatus === "verified").length,
     exactCoverageCount: entries.filter((entry) => entry.coverageStatus === "exact").length,
-    sourceFoundCount: entries.filter((entry) => entry.sourceStatus !== "missing").length
+    sourceFoundCount: entries.filter((entry) => entry.sourceStatus !== "missing").length,
+    deprecatedCount: entries.filter((entry) => entry.deprecatedStatus === "deprecated").length
   };
 }
 
@@ -57,6 +58,12 @@ export async function loadOperatorShells() {
       sourceStatus: operatorShells.sourceStatus,
       tariffStatus: operatorShells.tariffStatus,
       reviewStatus: operatorShells.reviewStatus,
+      registryFeedSource: operatorShells.registryFeedSource,
+      registryFeedLabel: operatorShells.registryFeedLabel,
+      lastSeenInRegistryFeed: operatorShells.lastSeenInRegistryFeed,
+      deprecatedStatus: operatorShells.deprecatedStatus,
+      deprecatedCheckedAt: operatorShells.deprecatedCheckedAt,
+      deprecatedReason: operatorShells.deprecatedReason,
       mastrId: operatorShells.mastrId,
       sourcePageUrl: operatorShells.sourcePageUrl,
       documentUrl: operatorShells.documentUrl,
@@ -72,6 +79,12 @@ export async function loadOperatorShells() {
     websiteUrl: row.websiteUrl ?? undefined,
     sourcePageUrl: row.sourcePageUrl ?? undefined,
     documentUrl: row.documentUrl ?? undefined,
-    notes: row.notes ?? undefined
+    notes: row.notes ?? undefined,
+    registryFeedSource: row.registryFeedSource ?? undefined,
+    registryFeedLabel: row.registryFeedLabel ?? undefined,
+    lastSeenInRegistryFeed: row.lastSeenInRegistryFeed ?? undefined,
+    deprecatedStatus: row.deprecatedStatus,
+    deprecatedCheckedAt: row.deprecatedCheckedAt ?? undefined,
+    deprecatedReason: row.deprecatedReason ?? undefined
   })) as OperatorShell[];
 }

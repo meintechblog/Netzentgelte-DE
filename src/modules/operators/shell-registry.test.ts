@@ -32,7 +32,8 @@ describe("operatorShellRegistry", () => {
   });
 
   test("includes distinct operator shells that only appear in the rollout quota supplement", () => {
-    const shellSlugs = new Set(getOperatorShellRegistry().map((entry) => entry.slug));
+    const shells = getOperatorShellRegistry();
+    const shellSlugs = new Set(shells.map((entry) => entry.slug));
 
     for (const slug of [
       "50hertz-transmission",
@@ -42,6 +43,18 @@ describe("operatorShellRegistry", () => {
     ]) {
       expect(shellSlugs.has(slug)).toBe(true);
     }
+
+    expect(shells).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          slug: "50hertz-transmission",
+          registryFeedSource: "bnetza-rollout-quote",
+          registryFeedLabel: "2025-Q3",
+          lastSeenInRegistryFeed: "2025-09-30",
+          deprecatedStatus: "active"
+        })
+      ])
+    );
   });
 
   test("rejects duplicate slugs", () => {

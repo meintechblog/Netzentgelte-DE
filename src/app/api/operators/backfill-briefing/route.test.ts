@@ -23,7 +23,7 @@ describe("GET /api/operators/backfill-briefing", () => {
     );
     expect(data.nextBatch).toMatchObject({
       id: expect.any(String),
-      lane: "backfill-ready",
+      lane: "registry-review",
       operatorCount: expect.any(Number),
       operators: expect.any(Array)
     });

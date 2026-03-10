@@ -39,6 +39,7 @@ const existingShells = [
     sourceStatus: "source-found",
     tariffStatus: "verified",
     reviewStatus: "verified",
+    deprecatedStatus: "active",
     sourcePageUrl: "https://www.mitn.de/"
   },
   {
@@ -50,7 +51,8 @@ const existingShells = [
     coverageStatus: "unknown",
     sourceStatus: "candidate",
     tariffStatus: "missing",
-    reviewStatus: "pending"
+    reviewStatus: "pending",
+    deprecatedStatus: "active"
   }
 ] satisfies OperatorShellRegistryEntry[];
 
@@ -208,7 +210,8 @@ describe("buildShellCandidatesFromVnbdigital", () => {
           coverageStatus: "unknown",
           sourceStatus: "missing",
           tariffStatus: "missing",
-          reviewStatus: "pending"
+          reviewStatus: "pending",
+          deprecatedStatus: "active"
         }
       ],
       publishedOperators: []

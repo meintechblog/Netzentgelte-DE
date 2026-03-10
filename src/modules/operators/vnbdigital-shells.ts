@@ -194,6 +194,12 @@ function mergePublishedOperatorIntoShell(input: {
     sourceStatus: input.existingShell?.sourceStatus ?? inferSourceStatus(input.operator),
     tariffStatus: "verified",
     reviewStatus: input.publishedOperator.currentTariff.reviewStatus,
+    registryFeedSource: input.existingShell?.registryFeedSource,
+    registryFeedLabel: input.existingShell?.registryFeedLabel,
+    lastSeenInRegistryFeed: input.existingShell?.lastSeenInRegistryFeed,
+    deprecatedStatus: input.existingShell?.deprecatedStatus ?? "active",
+    deprecatedCheckedAt: input.existingShell?.deprecatedCheckedAt,
+    deprecatedReason: input.existingShell?.deprecatedReason,
     mastrId: input.existingShell?.mastrId,
     sourcePageUrl:
       input.existingShell?.sourcePageUrl ?? input.publishedOperator.currentTariff.sourcePageUrl,
@@ -250,6 +256,7 @@ function createShellFromVnbdigital(operator: VnbdigitalOperator): OperatorShellR
     sourceStatus: inferSourceStatus(operator),
     tariffStatus: "missing",
     reviewStatus: "pending",
+    deprecatedStatus: "active",
     sourcePageUrl: operator.websiteUrl,
     notes: appendVnbdigitalNote(undefined, operator.id)
   };

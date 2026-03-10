@@ -69,6 +69,7 @@ export function serializeOperatorShells(input: {
     verifiedCount: number;
     exactCoverageCount: number;
     sourceFoundCount: number;
+    deprecatedCount: number;
   };
 }) {
   return {
@@ -85,6 +86,12 @@ export function serializeOperatorShells(input: {
       sourceStatus: entry.sourceStatus,
       tariffStatus: entry.tariffStatus,
       reviewStatus: entry.reviewStatus,
+      registryFeedSource: entry.registryFeedSource ?? null,
+      registryFeedLabel: entry.registryFeedLabel ?? null,
+      lastSeenInRegistryFeed: entry.lastSeenInRegistryFeed ?? null,
+      deprecatedStatus: entry.deprecatedStatus,
+      deprecatedCheckedAt: entry.deprecatedCheckedAt ?? null,
+      deprecatedReason: entry.deprecatedReason ?? null,
       mastrId: entry.mastrId ?? null,
       sourcePageUrl: entry.sourcePageUrl ?? null,
       documentUrl: entry.documentUrl ?? null,

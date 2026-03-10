@@ -34,6 +34,11 @@ const tariffStatusSchema = z.union([
 ]);
 
 const reviewStatusSchema = z.union([z.literal("pending"), z.literal("verified")]);
+const deprecatedStatusSchema = z.union([
+  z.literal("active"),
+  z.literal("disappearance-review"),
+  z.literal("deprecated")
+]);
 
 const operatorShellRegistryEntrySchema = z.object({
   slug: z.string(),
@@ -46,6 +51,12 @@ const operatorShellRegistryEntrySchema = z.object({
   sourceStatus: sourceStatusSchema.default("missing"),
   tariffStatus: tariffStatusSchema.default("missing"),
   reviewStatus: reviewStatusSchema.default("pending"),
+  registryFeedSource: z.string().optional(),
+  registryFeedLabel: z.string().optional(),
+  lastSeenInRegistryFeed: z.string().optional(),
+  deprecatedStatus: deprecatedStatusSchema.default("active"),
+  deprecatedCheckedAt: z.string().optional(),
+  deprecatedReason: z.string().optional(),
   mastrId: z.string().optional(),
   sourcePageUrl: z.string().url().optional(),
   documentUrl: z.string().url().optional(),
@@ -89,6 +100,7 @@ export function getOperatorShellRegistryStats() {
     shellCount: entries.filter((entry) => entry.shellStatus === "shell").length,
     sourceFoundCount: entries.filter((entry) => entry.sourceStatus !== "missing").length,
     verifiedCount: entries.filter((entry) => entry.reviewStatus === "verified").length,
-    exactCoverageCount: entries.filter((entry) => entry.coverageStatus === "exact").length
+    exactCoverageCount: entries.filter((entry) => entry.coverageStatus === "exact").length,
+    deprecatedCount: entries.filter((entry) => entry.deprecatedStatus === "deprecated").length
   };
 }

@@ -47,6 +47,7 @@ const batches: ShellBackfillBatch[] = [
         sourceStatus: "candidate",
         tariffStatus: "missing",
         reviewStatus: "pending",
+        deprecatedStatus: "active",
         sourcePageUrl: "https://alpha.example/netzentgelte",
         documentUrl: undefined,
         lastCheckedAt: null
@@ -62,6 +63,7 @@ const batches: ShellBackfillBatch[] = [
         sourceStatus: "candidate",
         tariffStatus: "partial",
         reviewStatus: "pending",
+        deprecatedStatus: "active",
         sourcePageUrl: "https://alpha.example/netzentgelte",
         documentUrl: undefined,
         lastCheckedAt: null
@@ -85,6 +87,7 @@ const batches: ShellBackfillBatch[] = [
         sourceStatus: "missing",
         tariffStatus: "missing",
         reviewStatus: "pending",
+        deprecatedStatus: "active",
         sourcePageUrl: undefined,
         documentUrl: undefined,
         lastCheckedAt: null

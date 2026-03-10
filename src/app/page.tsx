@@ -1,6 +1,7 @@
 import { OperatorExplorer } from "../components/operator-explorer";
 import { withBasePath } from "../lib/base-path";
 import { getRegistryMapFeatures, projectGermanyMap } from "../lib/maps/geojson";
+import { loadPublicSnapshotFromDisk } from "../lib/public-snapshot-loader";
 import {
   getComplianceRuleSetDisplay,
   getRegistryTariffRows,
@@ -15,20 +16,14 @@ import {
 import { loadCurrentSources } from "../modules/sources/current-sources";
 import { loadEndcustomerTariffCatalog } from "../modules/tariffs/endcustomer-catalog";
 
-export const dynamic = "force-dynamic";
-
 export default async function HomePage() {
-  const operatorSnapshot = await loadPublishedOperatorSnapshot();
-  const endcustomerCatalog = await loadEndcustomerTariffCatalog();
-  const operators = operatorSnapshot.operators;
-  const currentSources = await loadCurrentSources();
-  const publishedOperatorSlugs = new Set(operators.map((entry) => entry.slug));
-  const rows = mergeTariffRowsWithEndcustomerCatalog(getRegistryTariffRows(operators), endcustomerCatalog);
-  const mapScene = projectGermanyMap(getRegistryMapFeatures(operators));
-  const stats = getPublishedOperatorSnapshotStats(operatorSnapshot);
-  const publicSources = currentSources.filter((row) => publishedOperatorSlugs.has(row.operatorSlug));
-  const mergedRows = mergeTariffRowsWithCurrentSources(rows, publicSources);
-  const complianceRuleSet = getComplianceRuleSetDisplay(getActiveModul3RuleSet());
+  const exportedSnapshot = await loadPublicSnapshotFromDisk();
+  const mergedRows = exportedSnapshot ? exportedSnapshot.operators : await loadRuntimeTariffRows();
+  const mapScene = exportedSnapshot ? exportedSnapshot.map : await loadRuntimeMapScene();
+  const complianceRuleSet = exportedSnapshot
+    ? exportedSnapshot.compliance
+    : getComplianceRuleSetDisplay(getActiveModul3RuleSet());
+  const stats = exportedSnapshot ? buildSnapshotStats(exportedSnapshot) : await loadRuntimeStats();
 
   return (
     <main className="dashboard-shell">
@@ -44,9 +39,15 @@ export default async function HomePage() {
           <a className="hero-button" href="#tarifmatrix">
             Tarifmatrix öffnen
           </a>
-          <a className="hero-button-secondary" href={withBasePath("/api/tariffs/current")}>
-            API prüfen
-          </a>
+          {exportedSnapshot ? (
+            <span className="hero-button-secondary" aria-label={`Datenstand ${exportedSnapshot.generatedAt}`}>
+              {`Datenstand ${exportedSnapshot.generatedAt.slice(0, 10)}`}
+            </span>
+          ) : (
+            <a className="hero-button-secondary" href={withBasePath("/api/tariffs/current")}>
+              API prüfen
+            </a>
+          )}
         </div>
       </section>
 
@@ -104,4 +105,38 @@ export default async function HomePage() {
       </div>
     </main>
   );
+}
+
+async function loadRuntimeTariffRows() {
+  const operatorSnapshot = await loadPublishedOperatorSnapshot();
+  const endcustomerCatalog = await loadEndcustomerTariffCatalog();
+  const currentSources = await loadCurrentSources();
+  const publishedOperatorSlugs = new Set(operatorSnapshot.operators.map((entry) => entry.slug));
+  const rows = mergeTariffRowsWithEndcustomerCatalog(
+    getRegistryTariffRows(operatorSnapshot.operators),
+    endcustomerCatalog
+  );
+  const publicSources = currentSources.filter((row) => publishedOperatorSlugs.has(row.operatorSlug));
+
+  return mergeTariffRowsWithCurrentSources(rows, publicSources);
+}
+
+async function loadRuntimeMapScene() {
+  const operatorSnapshot = await loadPublishedOperatorSnapshot();
+  return projectGermanyMap(getRegistryMapFeatures(operatorSnapshot.operators));
+}
+
+async function loadRuntimeStats() {
+  const operatorSnapshot = await loadPublishedOperatorSnapshot();
+  return getPublishedOperatorSnapshotStats(operatorSnapshot);
+}
+
+function buildSnapshotStats(snapshot: NonNullable<Awaited<ReturnType<typeof loadPublicSnapshotFromDisk>>>) {
+  return {
+    operatorCount: snapshot.operatorCount,
+    sourceDocumentCount: snapshot.sources.length,
+    verifiedCount: snapshot.operators.filter((operator) => operator.reviewStatus === "verified").length,
+    totalOperatorCount: snapshot.operatorCount,
+    withheldCount: 0
+  };
 }

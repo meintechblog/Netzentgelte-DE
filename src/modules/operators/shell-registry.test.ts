@@ -31,6 +31,19 @@ describe("operatorShellRegistry", () => {
     }
   });
 
+  test("includes distinct operator shells that only appear in the rollout quota supplement", () => {
+    const shellSlugs = new Set(getOperatorShellRegistry().map((entry) => entry.slug));
+
+    for (const slug of [
+      "50hertz-transmission",
+      "amprion",
+      "hamburger-energienetze",
+      "transnetbw"
+    ]) {
+      expect(shellSlugs.has(slug)).toBe(true);
+    }
+  });
+
   test("rejects duplicate slugs", () => {
     expect(() =>
       parseOperatorShellRegistry([

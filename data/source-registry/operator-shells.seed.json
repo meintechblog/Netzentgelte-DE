@@ -1,5 +1,16 @@
 [
   {
+    "slug": "50hertz-transmission",
+    "operatorName": "50Hertz Transmission GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
     "slug": "abita-energie-otterberg",
     "operatorName": "Abita Energie Otterberg GmbH",
     "websiteUrl": "https://www.abita-energie.de/",
@@ -90,6 +101,28 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.alzchem.com",
     "notes": "VNBdigital ID oaboR56jqSt8W4HXi"
+  },
+  {
+    "slug": "alzchem-trostberg",
+    "operatorName": "Alzchem Trostberg GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
+    "slug": "amprion",
+    "operatorName": "Amprion GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
   },
   {
     "slug": "ascanetz",
@@ -263,6 +296,17 @@
     "notes": "VNBdigital ID 7010"
   },
   {
+    "slug": "bnnetze",
+    "operatorName": "bnNETZE GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 8.51%"
+  },
+  {
     "slug": "bocholter-energie-und-wasserversorgung",
     "operatorName": "Bocholter Energie- und Wasserversorgung GmbH",
     "websiteUrl": "https://www.bew-bocholt.de",
@@ -300,6 +344,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.bs-netz.de/",
     "notes": "VNBdigital ID 102"
+  },
+  {
+    "slug": "brucken-center-ansbach",
+    "operatorName": "Brücken Center Ansbach GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
   },
   {
     "slug": "btt-bauteam-tretzel",
@@ -432,6 +487,17 @@
     "notes": "VNBdigital ID 796"
   },
   {
+    "slug": "digimeto-und",
+    "operatorName": "DIGImeto GmbH & Co. KG",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 10.57%"
+  },
+  {
     "slug": "donau-stadtwerke-dillingen-lauingen",
     "operatorName": "Donau-Stadtwerke Dillingen-Lauingen",
     "websiteUrl": "https://www.dsdl.de",
@@ -499,6 +565,17 @@
     "notes": "VNBdigital ID McJLd6A47sSAzLyoN"
   },
   {
+    "slug": "e-shelter-power-grid",
+    "operatorName": "e-shelter power grid GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
     "slug": "e-wa-riss-netze",
     "operatorName": "e.wa riss Netze GmbH",
     "websiteUrl": "https://www.ewa-netze.de/",
@@ -545,6 +622,17 @@
     "tariffStatus": "missing",
     "reviewStatus": "pending",
     "notes": "VNBdigital ID 7497"
+  },
+  {
+    "slug": "e-werk-rupert-buchauer",
+    "operatorName": "E-Werk Rupert Buchauer",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
   },
   {
     "slug": "e-werk-sachsenwald",
@@ -662,6 +750,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.ehinger-energie.de",
     "notes": "VNBdigital ID 163"
+  },
+  {
+    "slug": "eichsfelder-energie-und-wasserversorgungs",
+    "operatorName": "Eichsfelder Energie und Wasserversorgungs GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.10%"
   },
   {
     "slug": "eichsfelder-wirtschaftsbetriebe",
@@ -950,6 +1049,17 @@
     "notes": "VNBdigital ID 7013"
   },
   {
+    "slug": "elektrizitatsversorgung-der-gemeinde-gochsheim",
+    "operatorName": "Elektrizitätsversorgung der Gemeinde Gochsheim",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
     "slug": "elektrizitatsversorgungsunternehmen-evu-der-gemeinde-gochsheim",
     "operatorName": "Elektrizitätsversorgungsunternehmen (EVU) der Gemeinde Gochsheim",
     "websiteUrl": "https://evu.gochsheim.de/",
@@ -976,6 +1086,17 @@
     "notes": "VNBdigital ID 7162"
   },
   {
+    "slug": "elektrizitatswerk-dahner-felsenland",
+    "operatorName": "Elektrizitätswerk Dahner Felsenland",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 8.94%"
+  },
+  {
     "slug": "elektrizitatswerk-des-kantons-schaffhausen",
     "operatorName": "Elektrizitätswerk des Kantons Schaffhausen AG",
     "websiteUrl": "https://www.eks.ch/",
@@ -987,6 +1108,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.eks.ch/",
     "notes": "VNBdigital ID MjMd3FhszYgzaWjQZ"
+  },
+  {
+    "slug": "elektrizitatswerk-diessen",
+    "operatorName": "Elektrizitätswerk Diessen",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
   },
   {
     "slug": "elektrizitatswerk-diessen-stadler",
@@ -1026,6 +1158,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.ew-goldbach-hoesbach.de",
     "notes": "VNBdigital ID 235"
+  },
+  {
+    "slug": "elektrizitatswerk-haimmerer",
+    "operatorName": "Elektrizitätswerk Haimmerer",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
   },
   {
     "slug": "elektrizitatswerk-hindelang-eg",
@@ -1145,6 +1288,17 @@
     "notes": "VNBdigital ID 597"
   },
   {
+    "slug": "elektrizitatswerk-stern",
+    "operatorName": "Elektrizitätswerk Stern KG",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
     "slug": "elektrizitatswerk-stern-bad-endorf",
     "operatorName": "Elektrizitätswerk Stern KG Bad Endorf",
     "websiteUrl": "https://www.sternstrom.de/ewerk/",
@@ -1197,6 +1351,17 @@
     "notes": "VNBdigital ID 13"
   },
   {
+    "slug": "elektrizitatswerk-worth-a-d-donau-rupert-heider-und",
+    "operatorName": "Elektrizitätswerk Wörth a. d. Donau Rupert Heider & Co. KG",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.04%"
+  },
+  {
     "slug": "elektrizitatswerk-worth-an-der-donau-rupert",
     "operatorName": "Elektrizitätswerk Wörth an der Donau Rupert",
     "websiteUrl": "https://www.heider-energie.de",
@@ -1221,6 +1386,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.ewr-energie.com/de/",
     "notes": "VNBdigital ID 208"
+  },
+  {
+    "slug": "elektrizitatswerke-reutte-und-beide-teilnetze",
+    "operatorName": "Elektrizitätswerke Reutte GmbH & Co. KG (beide Teilnetze)",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 9.22%"
   },
   {
     "slug": "elektrizitatswerke-schonau-netze",
@@ -1729,6 +1905,17 @@
     "notes": "VNBdigital ID 636"
   },
   {
+    "slug": "energiewerke-zeulenroda",
+    "operatorName": "Energiewerke Zeulenroda GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
     "slug": "energis-netzgesellschaft",
     "operatorName": "energis-Netzgesellschaft mbH",
     "websiteUrl": "https://www.energis-netzgesellschaft.de",
@@ -1740,6 +1927,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.energis-netzgesellschaft.de",
     "notes": "VNBdigital ID 7211"
+  },
+  {
+    "slug": "enertrag-netz",
+    "operatorName": "Enertrag Netz GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
   },
   {
     "slug": "enervie-vernetzt",
@@ -2000,6 +2198,17 @@
     "notes": "VNBdigital ID 496"
   },
   {
+    "slug": "ewn-entsorgungswerk-fur-nuklearanlagen",
+    "operatorName": "EWN Entsorgungswerk für Nuklearanlagen GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
     "slug": "ewr",
     "operatorName": "EWR GmbH",
     "websiteUrl": "https://www.ewr-netze-remscheid.de/",
@@ -2117,6 +2326,28 @@
     "notes": "VNBdigital ID XcXREgcNp6bHGmWTN"
   },
   {
+    "slug": "flughafen-energie-und-wasser",
+    "operatorName": "Flughafen Energie und Wasser GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
+    "slug": "flughafen-leipzig-halle-gesellschaft-mit-beschrankter-haftung",
+    "operatorName": "Flughafen Leipzig/Halle Gesellschaft mit beschränkter Haftung",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
     "slug": "freiberger-stromversorgung",
     "operatorName": "Freiberger Stromversorgung GmbH",
     "websiteUrl": "http://www.stadtwerke-freiberg.de/",
@@ -2156,6 +2387,28 @@
     "notes": "VNBdigital ID 971"
   },
   {
+    "slug": "freudenberg-service",
+    "operatorName": "Freudenberg Service KG",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
+    "slug": "furst-fugger-v-glott-sche-e-werks-und",
+    "operatorName": "Fürst. Fugger v. Glött´sche E-Werks GmbH & Co. KG",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
     "slug": "furstl-fugger-glott-sches-elektrizitatswerk",
     "operatorName": "Fürstl. Fugger-Glött'sches Elektrizitätswerk",
     "websiteUrl": "https://www.ffew.de",
@@ -2180,6 +2433,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.gebruedereirich.de",
     "notes": "VNBdigital ID 271"
+  },
+  {
+    "slug": "gebruder-miller-elektrizitatsversorgung-und",
+    "operatorName": "Gebrüder Miller; Elektrizitätsversorgung GmbH & Co. KG",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
   },
   {
     "slug": "gebruder-miller-und",
@@ -2219,6 +2483,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.gew-burtenbach.de/",
     "notes": "VNBdigital ID 121"
+  },
+  {
+    "slug": "gemeinde-glattbach",
+    "operatorName": "Gemeinde Glattbach",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 10.71%"
   },
   {
     "slug": "gemeindewerke-baiersbronn",
@@ -2321,6 +2596,17 @@
     "tariffStatus": "missing",
     "reviewStatus": "pending",
     "notes": "VNBdigital ID 7160"
+  },
+  {
+    "slug": "gemeindewerke-frammersbach",
+    "operatorName": "Gemeindewerke Frammersbach",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 20.56%"
   },
   {
     "slug": "gemeindewerke-gangkofen",
@@ -2479,6 +2765,17 @@
     "notes": "VNBdigital ID 307"
   },
   {
+    "slug": "gemeindewerke-hutschenhausen",
+    "operatorName": "Gemeindewerke Hütschenhausen",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.72%"
+  },
+  {
     "slug": "gemeindewerke-hutschenhausen-c-o-sw-ramstein-miesenbach",
     "operatorName": "Gemeindewerke Hütschenhausen c/o SW Ramstein-Miesenbach GmbH",
     "websiteUrl": "https://www.stadtwerke-ramstein.de",
@@ -2542,6 +2839,28 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.gemeindewerke-lam.de",
     "notes": "VNBdigital ID 7129"
+  },
+  {
+    "slug": "gemeindewerke-langenpreising-und",
+    "operatorName": "Gemeindewerke Langenpreising GmbH & Co.KG",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
+    "slug": "gemeindewerke-markt-lichtenau",
+    "operatorName": "Gemeindewerke Markt Lichtenau",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 3.04%"
   },
   {
     "slug": "gemeindewerke-markt-stockstadt-am-main",
@@ -2674,6 +2993,17 @@
     "notes": "VNBdigital ID 980"
   },
   {
+    "slug": "gemeindewerke-rheinzabern",
+    "operatorName": "Gemeindewerke Rheinzabern",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 3.19%"
+  },
+  {
     "slug": "gemeindewerke-schonkirchen",
     "operatorName": "Gemeindewerke Schönkirchen GmbH",
     "websiteUrl": "https://www.gws-sh.de/",
@@ -2724,6 +3054,28 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.gs-werke.de",
     "notes": "VNBdigital ID 7070"
+  },
+  {
+    "slug": "gemeindewerke-steisslingen-eigenbetrieb",
+    "operatorName": "Gemeindewerke Steißlingen (Eigenbetrieb)",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
+    "slug": "gemeindewerke-stockstadt",
+    "operatorName": "Gemeindewerke Stockstadt",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 1.71%"
   },
   {
     "slug": "gemeindewerke-wadgassen",
@@ -2818,6 +3170,17 @@
     "notes": "VNBdigital ID 745"
   },
   {
+    "slug": "getec-metering",
+    "operatorName": "GETEC metering GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 2.38%"
+  },
+  {
     "slug": "getec-net",
     "operatorName": "GETEC net GmbH",
     "websiteUrl": "https://www.getec-net.de",
@@ -2870,6 +3233,17 @@
     "notes": "VNBdigital ID 685"
   },
   {
+    "slug": "ggew-gruppen-gas-und-elektrizitatswerk-bergstrasse",
+    "operatorName": "GGEW, Gruppen-Gas und Elektrizitätswerk Bergstraße AG",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 3.16%"
+  },
+  {
     "slug": "gig-energy-services",
     "operatorName": "GIG energy services GmbH",
     "websiteUrl": "https://bbtp-netz.de/",
@@ -2907,6 +3281,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.gen-greiz.de",
     "notes": "VNBdigital ID 783"
+  },
+  {
+    "slug": "grid-b",
+    "operatorName": "Grid.B GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
   },
   {
     "slug": "gruppen-gas-und-elektrizitatswerk-bergstrasse-aktiengesellschaft",
@@ -2961,6 +3346,17 @@
     "notes": "VNBdigital ID 760"
   },
   {
+    "slug": "hamburger-energienetze",
+    "operatorName": "Hamburger Energienetze GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 22.31%"
+  },
+  {
     "slug": "hanau-netz",
     "operatorName": "Hanau Netz GmbH",
     "websiteUrl": "https://hanau-netz.de",
@@ -3012,6 +3408,17 @@
     "sourcePageUrl": "https://www.netze-heidelberg.de/veroeffentlichung-strom-gas",
     "documentUrl": "https://www.netze-heidelberg.de/de/Veroeffentlichungspflichten/Stromnetz/Preisblatt-Netznutzung-Strom-2026.pdf",
     "notes": "VNBdigital ID heidelberg-netze"
+  },
+  {
+    "slug": "heinzelmann-stromhandel-und-vertrieb-und",
+    "operatorName": "Heinzelmann Stromhandel & Vertrieb GmbH & Co. KG",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
   },
   {
     "slug": "hellenstein-energie-logistik",
@@ -3131,6 +3538,17 @@
     "notes": "VNBdigital ID yiDXEDhddCy2auyAS"
   },
   {
+    "slug": "infraserv-und-hochst",
+    "operatorName": "Infraserv GmbH & Co. Höchst KG",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
     "slug": "infraserv-und-wiesbaden",
     "operatorName": "InfraServ GmbH ＆ Co. Wiesbaden KG",
     "websiteUrl": "https://www.infraserv-wi.de/",
@@ -3155,6 +3573,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.infrastrukturbetrieb-stadt-arneburg.de",
     "notes": "VNBdigital ID 8qYN75EviSjXRcjDZ"
+  },
+  {
+    "slug": "kbg-homberg",
+    "operatorName": "KBG Homberg eG",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
   },
   {
     "slug": "kbg-kraftstrom-bezugsgenossenschaft-homberg-eg",
@@ -3510,6 +3939,17 @@
     "notes": "VNBdigital ID 7281"
   },
   {
+    "slug": "markt-zellingen-versorgungsbetriebe",
+    "operatorName": "Markt Zellingen - Versorgungsbetriebe",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 16.77%"
+  },
+  {
     "slug": "mega-monheimer-elektrizitats-und-gasversorgung",
     "operatorName": "MEGA Monheimer Elektrizitäts- und Gasversorgung",
     "websiteUrl": "https://www.mega-monheim.de/",
@@ -3656,6 +4096,17 @@
     "notes": "VNBdigital ID 7323"
   },
   {
+    "slug": "naturstrom-vor-ort",
+    "operatorName": "naturstrom vor ort GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
     "slug": "netcur",
     "operatorName": "NETCUR GmbH",
     "websiteUrl": "https://www.netcur.de/",
@@ -3694,6 +4145,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.netz-leipzig.de/",
     "notes": "VNBdigital ID 770"
+  },
+  {
+    "slug": "netz-und-energie-betriebsgesellschaft",
+    "operatorName": "Netz & Energie Betriebsgesellschaft mbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 39.64%"
   },
   {
     "slug": "netzbetrieb-hirschberg-und",
@@ -3852,6 +4314,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.netz-eisenberg.de/",
     "notes": "VNBdigital ID 925"
+  },
+  {
+    "slug": "netzgesellschaft-eisenberg-hbr-205234",
+    "operatorName": "Netzgesellschaft Eisenberg mbH (HBR 205234)",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 8.83%"
   },
   {
     "slug": "netzgesellschaft-forst-lausitz-und",
@@ -4142,6 +4615,17 @@
     "notes": "VNBdigital ID 485"
   },
   {
+    "slug": "obermaier-und-gerg-grundstucksverwaltung",
+    "operatorName": "Obermaier und Gerg Grundstücksverwaltung",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 1.78%"
+  },
+  {
     "slug": "obermaier-und-gerg-gv-netz",
     "operatorName": "Obermaier und Gerg GV KG Netz",
     "websiteUrl": "https://www.glonntalstrom.de/home-netz.html",
@@ -4220,6 +4704,17 @@
     "notes": "VNBdigital ID 396"
   },
   {
+    "slug": "philipp-maier-jun-berneck-inhaber-wilhelm-kempf-erben",
+    "operatorName": "Philipp Maier jun. Berneck Inhaber Wilhelm Kempf Erben",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
     "slug": "pvu-energienetze",
     "operatorName": "PVU Energienetze GmbH",
     "websiteUrl": "https://www.pvu-netze.de/",
@@ -4257,6 +4752,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.stromversorgung-greding.de",
     "notes": "VNBdigital ID 7265"
+  },
+  {
+    "slug": "raubling-papier",
+    "operatorName": "Raubling Papier GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 100.00%"
   },
   {
     "slug": "redinet-burgenland",
@@ -4540,6 +5046,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.ssw-netz.de/",
     "notes": "VNBdigital ID 939"
+  },
+  {
+    "slug": "stadt-burgbernheim",
+    "operatorName": "Stadt Burgbernheim",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 19.35%"
   },
   {
     "slug": "stadt-heilsbronn-stadtwerke",
@@ -5151,6 +5668,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.stadtwerke-baden-baden.de/",
     "notes": "VNBdigital ID 61"
+  },
+  {
+    "slug": "stadtwerke-baiersdorf-anstalt-des-offentlichen-rechts",
+    "operatorName": "Stadtwerke Baiersdorf Anstalt des öffentlichen Rechts",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 5.62%"
   },
   {
     "slug": "stadtwerke-baiersdorf-ku-aor",
@@ -6428,6 +6956,17 @@
     "notes": "VNBdigital ID 7087"
   },
   {
+    "slug": "stadtwerke-harsewinkel",
+    "operatorName": "Stadtwerke Harsewinkel GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.56%"
+  },
+  {
     "slug": "stadtwerke-haslach-elektrizitats-und-wasserwerk",
     "operatorName": "Stadtwerke Haslach Elektrizitäts- und Wasserwerk",
     "websiteUrl": "https://www.stadtwerke-haslach.de",
@@ -6504,6 +7043,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.stadtwerke-heiligenhaus.de",
     "notes": "VNBdigital ID 7740"
+  },
+  {
+    "slug": "stadtwerke-heilsbronn",
+    "operatorName": "Stadtwerke Heilsbronn",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.86%"
   },
   {
     "slug": "stadtwerke-hemau",
@@ -8119,6 +8669,17 @@
     "notes": "VNBdigital ID 982"
   },
   {
+    "slug": "stadtwerke-schlitz",
+    "operatorName": "Stadtwerke Schlitz",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 2.73%"
+  },
+  {
     "slug": "stadtwerke-schneeberg",
     "operatorName": "Stadtwerke Schneeberg GmbH",
     "websiteUrl": "https://www.stw-schneeberg-netz.de/",
@@ -8520,6 +9081,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.swst.de",
     "notes": "VNBdigital ID 7775"
+  },
+  {
+    "slug": "stadtwerke-stendal",
+    "operatorName": "Stadtwerke Stendal GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
   },
   {
     "slug": "stadtwerke-stockach",
@@ -9328,6 +9900,17 @@
     "notes": "VNBdigital ID 706"
   },
   {
+    "slug": "stadtwerke-zeitz",
+    "operatorName": "Stadtwerke Zeitz GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
     "slug": "stadtwerke-zeven",
     "operatorName": "Stadtwerke Zeven GmbH",
     "websiteUrl": "https://www.stadtwerke-zeven.de/",
@@ -9417,6 +10000,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.sg-wismar.de/",
     "notes": "VNBdigital ID 1065"
+  },
+  {
+    "slug": "strom-und-gasversorgung-versmold",
+    "operatorName": "Strom- und Gasversorgung Versmold GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 2.19%"
   },
   {
     "slug": "stromkontor-netzgesellschaft",
@@ -9730,6 +10324,17 @@
     "notes": "VNBdigital ID 129"
   },
   {
+    "slug": "sudwest-metering",
+    "operatorName": "SüdWest Metering GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 1.39%"
+  },
+  {
     "slug": "suedwest-netz",
     "operatorName": "Südwestdeutsche Netzgesellschaft mbH",
     "websiteUrl": "https://www.suedwest-netz.de/",
@@ -10029,6 +10634,17 @@
     "notes": "VNBdigital ID 7792"
   },
   {
+    "slug": "swv-regional",
+    "operatorName": "SWV Regional GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 2.08%"
+  },
+  {
     "slug": "sww-wunsiedel",
     "operatorName": "SWW Wunsiedel GmbH",
     "websiteUrl": "https://s-w-w.com",
@@ -10080,6 +10696,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "http://www.two.de",
     "notes": "VNBdigital ID 944"
+  },
+  {
+    "slug": "tacherting-feichten-e-g",
+    "operatorName": "EG Tacherting-Feichten e.G.",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 12.45%"
   },
   {
     "slug": "talwerk",
@@ -10134,6 +10761,50 @@
     "notes": "VNBdigital ID 730"
   },
   {
+    "slug": "tennet-offshore-1-beteiligungsgesellschaft",
+    "operatorName": "TenneT Offshore 1. Beteiligungsgesellschaft mbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
+    "slug": "tennet-offshore-9-beteiligungsgesellschaft",
+    "operatorName": "TenneT Offshore 9. Beteiligungsgesellschaft mbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
+    "slug": "tennet-offshore-dolwin3-und",
+    "operatorName": "TenneT Offshore DolWin3 GmbH & Co. KG",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
+    "slug": "tennet-tso",
+    "operatorName": "TenneT TSO GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
     "slug": "teutoburger-energie-netzwerk-eg-ten",
     "operatorName": "Teutoburger Energie Netzwerk eG (TEN)",
     "websiteUrl": "https://www.ten.eg.de",
@@ -10172,6 +10843,28 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.thuega-netze.de",
     "notes": "VNBdigital ID 599"
+  },
+  {
+    "slug": "thyssenkrupp-steel-europe",
+    "operatorName": "thyssenkrupp Steel Europe AG",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
+    "slug": "transnetbw",
+    "operatorName": "TransnetBW GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
   },
   {
     "slug": "travenetz",
@@ -10252,6 +10945,17 @@
     "notes": "VNBdigital ID 243"
   },
   {
+    "slug": "uberlandwerk-mittelbaden-und",
+    "operatorName": "Überlandwerk Mittelbaden GmbH & Co. KG",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 1.59%"
+  },
+  {
     "slug": "uberlandwerk-rhon",
     "operatorName": "Überlandwerk Rhön GmbH",
     "websiteUrl": "https://www.uew-rhoen.de/",
@@ -10276,6 +10980,28 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.uezw-energie.de",
     "notes": "VNBdigital ID 21"
+  },
+  {
+    "slug": "unnaer-kreis-bau-und-siedlungsgesellschaft",
+    "operatorName": "Unnaer Kreis-, Bau- und Siedlungsgesellschaft mbh",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
+    "slug": "unterneukirchen",
+    "operatorName": "EG Unterneukirchen eG",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
   },
   {
     "slug": "uz-mainfranken-eg",
@@ -10482,6 +11208,17 @@
     "notes": "VNBdigital ID 676"
   },
   {
+    "slug": "vorarlberger-energienetze-betriebsstatte-lindenberg",
+    "operatorName": "Vorarlberger Energienetze GmbH, Betriebsstätte Lindenberg",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 0.00%"
+  },
+  {
     "slug": "vse-verteilnetz",
     "operatorName": "VSE Verteilnetz GmbH",
     "websiteUrl": "https://www.vse-verteilnetz.de/",
@@ -10665,6 +11402,17 @@
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.stadtwerke-warendorf.de/",
     "notes": "VNBdigital ID 7759"
+  },
+  {
+    "slug": "wirtschaftsbetriebe-der-stadt-norden",
+    "operatorName": "Wirtschaftsbetriebe der Stadt Norden GmbH",
+    "regionLabel": "Deutschland",
+    "shellStatus": "shell",
+    "coverageStatus": "unknown",
+    "sourceStatus": "missing",
+    "tariffStatus": "missing",
+    "reviewStatus": "pending",
+    "notes": "Roll-out-Quoten iMSys Q3 2025 | Ausstattungsquote zum 30. September 2025: 15.96%"
   },
   {
     "slug": "wsw-netz",

@@ -195,17 +195,24 @@ export function OperatorExplorer({ rows, mapScene, complianceRuleSet }: Operator
             <div>
               <span className="section-eyebrow">Regelwerk</span>
               <h3 id="modul-3-regeln">{`${complianceRuleSet.title} ${complianceRuleSet.version}`}</h3>
-              <p>Strukturierte Modul-3-Regeln aus der BDEW-Anwendungshilfe als Filter- und Prüfgrundlage.</p>
+              {isComplianceOpen ? (
+                <p>
+                  Strukturierte Modul-3-Regeln aus der BDEW-Anwendungshilfe als Filter- und
+                  Prüfgrundlage.
+                </p>
+              ) : null}
             </div>
             <div className="compliance-rule-set__actions">
-              <a
-                className="source-link"
-                href={complianceRuleSet.sourceDocumentUrl}
-                rel="noreferrer"
-                target="_blank"
-              >
-                {complianceRuleSet.sourceDocumentLabel}
-              </a>
+              {isComplianceOpen ? (
+                <a
+                  className="source-link"
+                  href={complianceRuleSet.sourceDocumentUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {complianceRuleSet.sourceDocumentLabel}
+                </a>
+              ) : null}
               <button
                 aria-controls={compliancePanelId}
                 aria-expanded={isComplianceOpen}
@@ -217,23 +224,23 @@ export function OperatorExplorer({ rows, mapScene, complianceRuleSet }: Operator
               </button>
             </div>
           </div>
-          <div className="compliance-filter" aria-label="Compliance-Filter">
-            {(["all", "compliant", "violation", "not-evaluable"] as const).map((filter) => (
-              <button
-                aria-pressed={complianceFilter === filter}
-                className={`compliance-filter__button${
-                  complianceFilter === filter ? " compliance-filter__button--active" : ""
-                }`}
-                key={filter}
-                onClick={() => setComplianceFilter(filter)}
-                type="button"
-              >
-                {`${getComplianceFilterLabel(filter)} (${complianceCounts[filter]})`}
-              </button>
-            ))}
-          </div>
           {isComplianceOpen ? (
             <div className="compliance-rule-set__panel" id={compliancePanelId}>
+              <div className="compliance-filter" aria-label="Compliance-Filter">
+                {(["all", "compliant", "violation", "not-evaluable"] as const).map((filter) => (
+                  <button
+                    aria-pressed={complianceFilter === filter}
+                    className={`compliance-filter__button${
+                      complianceFilter === filter ? " compliance-filter__button--active" : ""
+                    }`}
+                    key={filter}
+                    onClick={() => setComplianceFilter(filter)}
+                    type="button"
+                  >
+                    {`${getComplianceFilterLabel(filter)} (${complianceCounts[filter]})`}
+                  </button>
+                ))}
+              </div>
               <ul className="compliance-rule-set__list">
                 {complianceRuleSet.rules.map((rule) => (
                   <li className="compliance-rule-set__item" key={rule.ruleId}>

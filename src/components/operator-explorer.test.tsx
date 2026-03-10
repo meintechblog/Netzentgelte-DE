@@ -159,15 +159,33 @@ describe("OperatorExplorer", () => {
     });
 
     expect(screen.getByRole("button", { name: "Regelwerk aufklappen" })).toBeInTheDocument();
+    expect(screen.getByText("Regelwerk")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "BDEW Anwendungshilfe Modul 3 1.1" })).toBeInTheDocument();
+    expect(
+      screen.queryByText("Strukturierte Modul-3-Regeln aus der BDEW-Anwendungshilfe als Filter- und Prüfgrundlage.")
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("link", { name: "BDEW Anwendungshilfe Modul 3, Version 1.1" })
+    ).not.toBeInTheDocument();
     expect(within(ruleSection).queryByText("Hochlasttarif (HT): min. an 2 Stunden pro Tag")).not.toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Alle (2)" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Regelkonform (1)" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Mit Verstößen (1)" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Nicht bewertbar (0)" })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Alle (2)" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Regelkonform (1)" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Mit Verstößen (1)" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Nicht bewertbar (0)" })).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "Regelwerk aufklappen" }));
 
     expect(screen.getByRole("button", { name: "Regelwerk zuklappen" })).toBeInTheDocument();
+    expect(
+      screen.getByText("Strukturierte Modul-3-Regeln aus der BDEW-Anwendungshilfe als Filter- und Prüfgrundlage.")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "BDEW Anwendungshilfe Modul 3, Version 1.1" })
+    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Alle (2)" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Regelkonform (1)" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Mit Verstößen (1)" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Nicht bewertbar (0)" })).toBeInTheDocument();
     expect(within(ruleSection).getByText("HT mindestens 2 Stunden pro Tag")).toBeInTheDocument();
   });
 
@@ -222,6 +240,7 @@ describe("OperatorExplorer", () => {
 
     expect(screen.getByRole("heading", { name: "Netzbetreiber & Tarifdaten" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "BDEW Anwendungshilfe Modul 3 1.1" })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Regelwerk aufklappen" }));
     expect(
       screen.getByRole("link", { name: "BDEW Anwendungshilfe Modul 3, Version 1.1" })
     ).toBeInTheDocument();

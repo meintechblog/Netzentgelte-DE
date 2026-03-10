@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
 
+import { withBasePath } from "../../lib/base-path";
 import { buildHistoricalTariffs, getSeedHistoricalTariffs } from "./history-catalog";
 
 describe("buildHistoricalTariffs", () => {
@@ -57,8 +58,9 @@ describe("buildHistoricalTariffs", () => {
         validFrom: "2026-01-01",
         reviewStatus: "verified",
         latestSnapshotHash: "abc123",
-        artifactApiUrl:
-          "/api/artifacts/netze-bw-netze-bw-14a-2026/2026-03-09/netzentgelte-strom-netze-bw-gmbh-2026.pdf",
+        artifactApiUrl: withBasePath(
+          "/api/artifacts/netze-bw-netze-bw-14a-2026/2026-03-09/netzentgelte-strom-netze-bw-gmbh-2026.pdf"
+        ),
         bands: [
           expect.objectContaining({
             key: "NT",
@@ -71,6 +73,48 @@ describe("buildHistoricalTariffs", () => {
         ]
       })
     ]);
+  });
+
+  test("prefixes history artifact URLs with the public base path when configured", () => {
+    const previousBasePath = process.env.NEXT_PUBLIC_BASE_PATH;
+    process.env.NEXT_PUBLIC_BASE_PATH = "/netzentgelte-deutschland";
+
+    try {
+      const history = buildHistoricalTariffs([
+        {
+          operatorSlug: "netze-bw",
+          operatorName: "Netze BW GmbH",
+          regionLabel: "Baden-Wuerttemberg",
+          websiteUrl: "https://www.netze-bw.de/",
+          validFrom: "2026-01-01",
+          validUntil: null,
+          reviewStatus: "verified",
+          sourcePageUrl: "https://www.netze-bw.de/neuregelung-14a-enwg",
+          documentUrl:
+            "https://assets.ctfassets.net/xytfb1vrn7of/7eQvxehZzn3ECbR9rALmyD/ecc795b9dcd666ce1f53d9d04362a321/netzentgelte-strom-netze-bw-gmbh-2026.pdf",
+          sourceSlug: "netze-bw-netze-bw-14a-2026",
+          checkedAt: "2026-03-09",
+          latestSnapshotFetchedAt: "2026-03-09T01:23:00.000Z",
+          latestSnapshotHash: "abc123",
+          latestSnapshotStoragePath:
+            "artifacts/netze-bw-netze-bw-14a-2026/2026-03-09/netzentgelte-strom-netze-bw-gmbh-2026.pdf",
+          bandKey: "NT",
+          bandLabel: "Niedertarifstufe",
+          valueCtPerKwh: "3.0300",
+          sourceQuote: "Niedertarifstufe 3,03 ct/kWh"
+        }
+      ]);
+
+      expect(history[0]?.artifactApiUrl).toBe(
+        "/netzentgelte-deutschland/api/artifacts/netze-bw-netze-bw-14a-2026/2026-03-09/netzentgelte-strom-netze-bw-gmbh-2026.pdf"
+      );
+    } finally {
+      if (previousBasePath === undefined) {
+        delete process.env.NEXT_PUBLIC_BASE_PATH;
+      } else {
+        process.env.NEXT_PUBLIC_BASE_PATH = previousBasePath;
+      }
+    }
   });
 });
 

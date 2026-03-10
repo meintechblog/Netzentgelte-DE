@@ -1,4 +1,5 @@
 import { OperatorExplorer } from "../components/operator-explorer";
+import { withBasePath } from "../lib/base-path";
 import { getRegistryMapFeatures, projectGermanyMap } from "../lib/maps/geojson";
 import {
   getComplianceRuleSetDisplay,
@@ -43,7 +44,7 @@ export default async function HomePage() {
           <a className="hero-button" href="#tarifmatrix">
             Tarifmatrix öffnen
           </a>
-          <a className="hero-button-secondary" href="/api/tariffs/current">
+          <a className="hero-button-secondary" href={withBasePath("/api/tariffs/current")}>
             API prüfen
           </a>
         </div>

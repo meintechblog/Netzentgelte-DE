@@ -1,5 +1,6 @@
 import { and, desc, eq, inArray, sql } from "drizzle-orm";
 
+import { withBasePath } from "../../lib/base-path";
 import { getOperatorRegistry, type OperatorTimeWindow } from "./registry";
 
 export type HistoricalTariffBand = {
@@ -87,10 +88,12 @@ function buildArtifactApiUrl(storagePath: string | null) {
 
   const normalizedStoragePath = storagePath.replace(/^artifacts\//, "");
 
-  return `/api/artifacts/${normalizedStoragePath
-    .split("/")
-    .map((segment) => encodeURIComponent(segment))
-    .join("/")}`;
+  return withBasePath(
+    `/api/artifacts/${normalizedStoragePath
+      .split("/")
+      .map((segment) => encodeURIComponent(segment))
+      .join("/")}`
+  );
 }
 
 export function getSeedHistoricalTariffs(): HistoricalTariff[] {

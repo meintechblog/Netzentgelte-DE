@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint .",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "rm -f tsconfig.tsbuildinfo && next typegen && tsc --noEmit",
     "test:watch": "vitest",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node scripts/db/migrate.mjs",

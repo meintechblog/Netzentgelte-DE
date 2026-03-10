@@ -1,5 +1,6 @@
 import { desc, eq, inArray, sql } from "drizzle-orm";
 
+import { withBasePath } from "../../lib/base-path";
 import { getOperatorRegistry } from "../operators/registry";
 import { buildSourceHealthReport, type SourceHealthReport } from "./source-health";
 
@@ -200,8 +201,10 @@ function buildArtifactApiUrl(storagePath: string | null) {
 
   const normalizedStoragePath = storagePath.replace(/^artifacts\//, "");
 
-  return `/api/artifacts/${normalizedStoragePath
-    .split("/")
-    .map((segment) => encodeURIComponent(segment))
-    .join("/")}`;
+  return withBasePath(
+    `/api/artifacts/${normalizedStoragePath
+      .split("/")
+      .map((segment) => encodeURIComponent(segment))
+      .join("/")}`
+  );
 }

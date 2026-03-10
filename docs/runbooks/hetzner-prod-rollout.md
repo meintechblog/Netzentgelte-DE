@@ -106,6 +106,7 @@ rsync -az --delete -e 'ssh -p 222' .next/static/ \
 - Root `https://kigenerated.de/` bleibt die App-Uebersicht mit Links auf beide Webapps.
 
 Der verschachtelte Altpfad sollte nur noch per Redirect oder statischer Hinweis-Seite auf die neue Haupt-URL zeigen.
+Auf dem aktuellen Shared-Hosting-Setup wird diese Kanonisierung clientseitig in der Netzentgelte-HTML erzwungen, weil `/netzentgelte/` und `/prince2-vorbereitung/netzentgelte/` vom Hosting auf dieselbe statische Seite fallen koennen.
 
 ## Verifikation
 

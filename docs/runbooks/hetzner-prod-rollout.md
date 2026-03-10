@@ -7,6 +7,10 @@
 - Finale Haupt-URL ist `https://kigenerated.de/netzentgelte/`.
 - Bestehende App `https://kigenerated.de/prince2-vorbereitung` bleibt unberuehrt.
 - Shared Hosting bekommt keinen zweiten Node-Prozess fuer Netzentgelte, sondern nur Dateien.
+- Die kanonischen oeffentlichen Einstiegspunkte sind:
+  - `https://kigenerated.de/`
+  - `https://kigenerated.de/netzentgelte/`
+  - `https://kigenerated.de/prince2-vorbereitung`
 
 ## Warum dieses Modell
 
@@ -99,6 +103,7 @@ rsync -az --delete -e 'ssh -p 222' .next/static/ \
 
 - Alte aktive Haupt-URL: `https://kigenerated.de/prince2-vorbereitung/netzentgelte/`
 - Neue Haupt-URL: `https://kigenerated.de/netzentgelte/`
+- Root `https://kigenerated.de/` bleibt die App-Uebersicht mit Links auf beide Webapps.
 
 Der verschachtelte Altpfad sollte nur noch per Redirect oder statischer Hinweis-Seite auf die neue Haupt-URL zeigen.
 

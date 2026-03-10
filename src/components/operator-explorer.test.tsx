@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 
 import { projectGermanyMap, type OperatorMapFeature } from "../lib/maps/geojson";
@@ -145,6 +145,32 @@ const mapFeatures: OperatorMapFeature[] = [
 ];
 
 describe("OperatorExplorer", () => {
+  test("renders the compliance rule block collapsed by default with filter counters", () => {
+    render(
+      <OperatorExplorer
+        complianceRuleSet={complianceRuleSet}
+        rows={rows}
+        mapScene={projectGermanyMap(mapFeatures)}
+      />
+    );
+
+    const ruleSection = screen.getByRole("region", {
+      name: "BDEW Anwendungshilfe Modul 3 1.1"
+    });
+
+    expect(screen.getByRole("button", { name: "Regelwerk aufklappen" })).toBeInTheDocument();
+    expect(within(ruleSection).queryByText("Hochlasttarif (HT): min. an 2 Stunden pro Tag")).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Alle (2)" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Regelkonform (1)" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Mit Verstößen (1)" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Nicht bewertbar (0)" })).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Regelwerk aufklappen" }));
+
+    expect(screen.getByRole("button", { name: "Regelwerk zuklappen" })).toBeInTheDocument();
+    expect(within(ruleSection).getByText("HT mindestens 2 Stunden pro Tag")).toBeInTheDocument();
+  });
+
   test("keeps the hero map detail panel in sync while dimming non-matching map regions", () => {
     const { container } = render(
       <OperatorExplorer
@@ -199,10 +225,9 @@ describe("OperatorExplorer", () => {
     expect(
       screen.getByRole("link", { name: "BDEW Anwendungshilfe Modul 3, Version 1.1" })
     ).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Quelle & Prüfstatus anzeigen" })).not.toBeInTheDocument();
     expect(screen.getByText("Prüfstatus: Offen")).toBeInTheDocument();
     expect(screen.getByText("Gespeicherte Quellseite")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Mit Verstößen" })).toHaveAttribute("aria-pressed", "false");
+    expect(screen.getByRole("button", { name: "Mit Verstößen (1)" })).toHaveAttribute("aria-pressed", "false");
 
     fireEvent.change(screen.getByRole("searchbox", { name: "Suchbegriff" }), {
       target: { value: "stromnetz-berlin-2026" }
@@ -221,9 +246,10 @@ describe("OperatorExplorer", () => {
       />
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "Mit Verstößen" }));
+    fireEvent.click(screen.getByRole("button", { name: "Regelwerk aufklappen" }));
+    fireEvent.click(screen.getByRole("button", { name: "Mit Verstößen (1)" }));
 
-    expect(screen.getByRole("button", { name: "Mit Verstößen" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: "Mit Verstößen (1)" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getAllByText("Stadtwerke Schwäbisch Hall").length).toBeGreaterThan(0);
     expect(screen.queryByText("Stromnetz Berlin")).not.toBeInTheDocument();
 

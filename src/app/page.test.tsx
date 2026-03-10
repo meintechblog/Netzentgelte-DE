@@ -44,6 +44,6 @@ test("renders the page shell around a dominant germany map hero", async () => {
     "href",
     "https://www.bdew.de/media/documents/BDEW-AWH_Modul_3_V1.1_Korrektur070225.pdf"
   );
-  expect(screen.getByRole("button", { name: "Regelkonform" })).toBeInTheDocument();
-  expect(screen.getByRole("button", { name: "Mit Verstößen" })).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: /Regelkonform \(\d+\)/ })).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: /Mit Verstößen \(\d+\)/ })).toBeInTheDocument();
 });

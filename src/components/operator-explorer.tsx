@@ -67,14 +67,12 @@ function matchesComplianceFilter(row: TariffTableRow, filter: ComplianceFilter) 
 export function OperatorExplorer({ rows, mapScene, complianceRuleSet }: OperatorExplorerProps) {
   const [query, setQuery] = useState("");
   const [complianceFilter, setComplianceFilter] = useState<ComplianceFilter>("all");
+  const [isComplianceOpen, setIsComplianceOpen] = useState(false);
   const deferredQuery = useDeferredValue(query.trim());
   const searchId = useId();
+  const compliancePanelId = useId();
 
-  const filteredRows = rows.filter((row) => {
-    if (!matchesComplianceFilter(row, complianceFilter)) {
-      return false;
-    }
-
+  const searchFilteredRows = rows.filter((row) => {
     if (deferredQuery.length === 0) {
       return true;
     }
@@ -103,6 +101,13 @@ export function OperatorExplorer({ rows, mapScene, complianceRuleSet }: Operator
       deferredQuery
     );
   });
+  const complianceCounts: Record<ComplianceFilter, number> = {
+    all: searchFilteredRows.length,
+    compliant: searchFilteredRows.filter((row) => row.compliance.status === "compliant").length,
+    violation: searchFilteredRows.filter((row) => row.compliance.status === "violation").length,
+    "not-evaluable": searchFilteredRows.filter((row) => row.compliance.status === "not-evaluable").length
+  };
+  const filteredRows = searchFilteredRows.filter((row) => matchesComplianceFilter(row, complianceFilter));
   const visibleOperatorSlugs = new Set(filteredRows.map((row) => row.operatorSlug));
 
   const filteredMapScene = {
@@ -192,24 +197,26 @@ export function OperatorExplorer({ rows, mapScene, complianceRuleSet }: Operator
               <h3 id="modul-3-regeln">{`${complianceRuleSet.title} ${complianceRuleSet.version}`}</h3>
               <p>Strukturierte Modul-3-Regeln aus der BDEW-Anwendungshilfe als Filter- und Prüfgrundlage.</p>
             </div>
-            <a
-              className="source-link"
-              href={complianceRuleSet.sourceDocumentUrl}
-              rel="noreferrer"
-              target="_blank"
-            >
-              {complianceRuleSet.sourceDocumentLabel}
-            </a>
+            <div className="compliance-rule-set__actions">
+              <a
+                className="source-link"
+                href={complianceRuleSet.sourceDocumentUrl}
+                rel="noreferrer"
+                target="_blank"
+              >
+                {complianceRuleSet.sourceDocumentLabel}
+              </a>
+              <button
+                aria-controls={compliancePanelId}
+                aria-expanded={isComplianceOpen}
+                className="compliance-rule-set__toggle"
+                onClick={() => setIsComplianceOpen((current) => !current)}
+                type="button"
+              >
+                {isComplianceOpen ? "Regelwerk zuklappen" : "Regelwerk aufklappen"}
+              </button>
+            </div>
           </div>
-          <ul className="compliance-rule-set__list">
-            {complianceRuleSet.rules.map((rule) => (
-              <li className="compliance-rule-set__item" key={rule.ruleId}>
-                <strong>{rule.title}</strong>
-                <span>{rule.description}</span>
-                <span className="table-muted">{rule.sourceCitation}</span>
-              </li>
-            ))}
-          </ul>
           <div className="compliance-filter" aria-label="Compliance-Filter">
             {(["all", "compliant", "violation", "not-evaluable"] as const).map((filter) => (
               <button
@@ -221,10 +228,23 @@ export function OperatorExplorer({ rows, mapScene, complianceRuleSet }: Operator
                 onClick={() => setComplianceFilter(filter)}
                 type="button"
               >
-                {getComplianceFilterLabel(filter)}
+                {`${getComplianceFilterLabel(filter)} (${complianceCounts[filter]})`}
               </button>
             ))}
           </div>
+          {isComplianceOpen ? (
+            <div className="compliance-rule-set__panel" id={compliancePanelId}>
+              <ul className="compliance-rule-set__list">
+                {complianceRuleSet.rules.map((rule) => (
+                  <li className="compliance-rule-set__item" key={rule.ruleId}>
+                    <strong>{rule.title}</strong>
+                    <span>{rule.description}</span>
+                    <span className="table-muted">{rule.sourceCitation}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </section>
         {filteredRows.length > 0 ? (
           <TariffTable rows={filteredRows} />

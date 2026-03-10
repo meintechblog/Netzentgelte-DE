@@ -4,6 +4,10 @@
 
 Netzbetreiber-Eintraege in der Registry nur mit belastbarer offizieller Evidenz erweitern oder auf `verified` anheben.
 
+Die uebergeordnete Arbeitsordnung dafuer steht in:
+
+- [operator-curation-model.md](/Users/hulki/projects/netzentgelte-de/.worktrees/endcustomer-backfill-batch/docs/runbooks/operator-curation-model.md)
+
 ## Primary Reference
 
 Die wiederverwendbare globale Arbeitsregel liegt in:
@@ -28,6 +32,8 @@ Im Projekt betrifft das Filling vor allem:
 
 ## Local Rules
 
+- Bestands-Sanierung hat Prioritaet vor reinem Neufill.
+- Bereits vorhandene Betreiber duerfen aktiv korrigiert, erweitert und vervollstaendigt werden; sie sind nicht "fertig", nur weil schon ein Eintrag existiert.
 - Nur offizielle Betreiberseiten und offizielle Artefakte als tariff truth verwenden.
 - Discovery-Quellen wie MaStR oder VNBdigital nur fuer Vollstaendigkeit und Linkfindung nutzen.
 - `verified` nur setzen, wenn `validFrom`, `NT`, `ST`, `HT` und die benoetigten Zeitfenster direkt aus der Quelle belegbar sind.
@@ -36,6 +42,17 @@ Im Projekt betrifft das Filling vor allem:
 - Anti-Bot- oder Cloudflare-Sperren sind kein stilles `verified`: wenn die offizielle Primaerquelle im Automationslauf nicht abrufbar ist, bleibt der Datensatz `pending`, bis ein belastbarer offizieller Snapshot oder ein manuell verifizierter Beleg vorliegt.
 - Quellen, die nur HT/NT fuer `Q1/Q4` nennen, reichen nicht fuer eine Sommer- oder Volljahres-Promotion. Ohne explizite `Q2/Q3`-Logik oder klaren Komplement-Beleg bleibt der Datensatz `pending`.
 - Wenn ein `pending`-Datensatz nur Teilquartale, unklare ST-Labels oder access-blockierte Primaerquellen hat, werden strukturierte `bands` und `timeWindows` aus dem Seed entfernt und durch einen dokumentierten `summaryFallback` ersetzt.
+- Projektregeln wie `lueckenlose Quartalsmatrix`, `korrekte Mitternachts-Splits` oder `Mindestdauer pro explizitem Tarifslot` muessen explizit dokumentiert sein, bevor sie fuer Promotion oder Rework verwendet werden.
+
+## Priority Order
+
+Die Reihenfolge fuer operative Arbeit ist:
+
+1. bestehende Audit-Faelle aus `structure-audit` und `endcustomer audit`
+2. bestehende Shells mit vorhandener Quelle
+3. neue Betreiber aus `registry-review`
+4. generische Discovery
+5. deprecated/disappearance review
 
 ## Current Learnings
 

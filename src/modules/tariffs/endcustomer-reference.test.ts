@@ -84,12 +84,13 @@ describe("getSeedEndcustomerReferences", () => {
         "enercity-netz",
         "tws-netz",
         "wesernetz-bremen",
-        "wesernetz-bremerhaven"
+        "wesernetz-bremerhaven",
+        "westnetz"
       ])
     );
   });
 
-  test("captures endcustomer module data for AllgaeuNetz, Mainzer Netze, enercity Netz, TWS Netz and wesernetz", () => {
+  test("captures endcustomer module data for AllgaeuNetz, Mainzer Netze, enercity Netz, TWS Netz, wesernetz and Westnetz", () => {
     const references = new Map(
       getSeedEndcustomerReferences().map((reference) => [reference.operatorSlug, reference] as const)
     );
@@ -100,6 +101,7 @@ describe("getSeedEndcustomerReferences", () => {
     const tws = references.get("tws-netz");
     const wesernetzBremen = references.get("wesernetz-bremen");
     const wesernetzBremerhaven = references.get("wesernetz-bremerhaven");
+    const westnetz = references.get("westnetz");
 
     expect(allgaeu?.products.find((product) => product.moduleKey === "modul-1")?.components).toEqual(
       expect.arrayContaining([
@@ -239,6 +241,36 @@ describe("getSeedEndcustomerReferences", () => {
       expect.arrayContaining([
         expect.objectContaining({ componentKey: "single_register_meter_eur_per_year", valueNumeric: "14.20" }),
         expect.objectContaining({ componentKey: "dual_register_meter_eur_per_year", valueNumeric: "30.00" })
+      ])
+    );
+
+    expect(westnetz?.products.find((product) => product.moduleKey === "modul-1")?.components).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "base_price_eur_per_year", valueNumeric: "80.30" }),
+        expect.objectContaining({ componentKey: "work_price_ct_per_kwh", valueNumeric: "9.53" }),
+        expect.objectContaining({
+          componentKey: "net_fee_reduction_eur_per_year",
+          valueNumeric: "138.70"
+        })
+      ])
+    );
+    expect(westnetz?.products.find((product) => product.moduleKey === "modul-2")?.components).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "base_price_eur_per_year", valueNumeric: "0.00" }),
+        expect.objectContaining({ componentKey: "work_price_ct_per_kwh", valueNumeric: "3.81" })
+      ])
+    );
+    expect(westnetz?.products.find((product) => product.moduleKey === "modul-3")?.components).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "standard_work_price_ct_per_kwh", valueNumeric: "9.53" }),
+        expect.objectContaining({ componentKey: "high_work_price_ct_per_kwh", valueNumeric: "15.65" }),
+        expect.objectContaining({ componentKey: "low_work_price_ct_per_kwh", valueNumeric: "0.95" })
+      ])
+    );
+    expect(westnetz?.meteringPrices).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ componentKey: "single_register_meter_eur_per_year", valueNumeric: "16.83" }),
+        expect.objectContaining({ componentKey: "dual_register_meter_eur_per_year", valueNumeric: "18.65" })
       ])
     );
   });

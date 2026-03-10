@@ -80,6 +80,8 @@ const WESERNETZ_BREMEN_SOURCE =
   "https://www.wesernetz.de/-/media/wesernetz/downloads-aktuell/fuer-partner/energielieferanten/stromnetz/stromentgelte/hb/nenu_hb_108_007_preisblatt_5_strom_paragraph_14a_enwg_web.pdf";
 const WESERNETZ_BREMERHAVEN_SOURCE =
   "https://www.wesernetz.de/-/media/wesernetz/downloads-aktuell/fuer-partner/energielieferanten/stromnetz/stromentgelte/bhv/nenu_bhv_108_007_preisblatt_5_strom_paragraph_14a_enwg_2026_web.pdf";
+const WESTNETZ_SOURCE =
+  "https://www.westnetz.de/content/dam/revu-global/westnetz/documents/ueber-westnetz/unser-netz/netzentgelte-strom/preisblaetter-westnetz-strom-01-01-2026.pdf";
 
 export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
   return [
@@ -93,7 +95,8 @@ export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
     getEnercityNetzEndcustomerReference(),
     getTwsNetzEndcustomerReference(),
     getWesernetzBremenEndcustomerReference(),
-    getWesernetzBremerhavenEndcustomerReference()
+    getWesernetzBremerhavenEndcustomerReference(),
+    getWestnetzEndcustomerReference()
   ];
 }
 
@@ -687,6 +690,58 @@ export function getWesernetzBremerhavenEndcustomerReference(): EndcustomerOperat
       }
     ],
     meteringPrices: meteringPrices("14.20", "30.00")
+  };
+}
+
+export function getWestnetzEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "westnetz",
+    operatorName: "Westnetz GmbH",
+    sourceDocumentUrl: WESTNETZ_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: WESTNETZ_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "80.30", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "9.53", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "138.70", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: WESTNETZ_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "3.81", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: WESTNETZ_SOURCE,
+        components: modul3Components("9.53", "15.65", "0.95"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: buildFullYearWindows([
+          ["low", ["00:00-07:00"]],
+          ["standard", ["07:00-15:00", "20:00-24:00"]],
+          ["high", ["15:00-20:00"]]
+        ])
+      }
+    ],
+    meteringPrices: meteringPrices("16.83", "18.65")
   };
 }
 

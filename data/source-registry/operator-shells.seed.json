@@ -5827,14 +5827,15 @@
     "operatorName": "Stadtnetze Münster GmbH",
     "websiteUrl": "https://www.stadtnetze-muenster.de",
     "regionLabel": "Münster",
-    "shellStatus": "profile-found",
+    "shellStatus": "published",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
+    "sourceStatus": "source-found",
     "tariffStatus": "missing",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.stadtnetze-muenster.de",
-    "notes": "VNBdigital ID 449",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://www.stadtnetze-muenster.de/unsere-netze/marktkommunikation-strom",
+    "notes": "VNBdigital ID 449; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://www.stadtnetze-muenster.de/Stadtnetze/Dokumente/Strom/Marktpartner%20Strom/Netzentgelte/Netznutzungsentgelte%20Strom%202026.pdf"
   },
   {
     "slug": "stadtwerk-am-see",
@@ -5912,14 +5913,15 @@
     "operatorName": "Stadtwerke Altdorf GmbH",
     "websiteUrl": "https://www.stadtwerke-altdorf.de",
     "regionLabel": "Altdorf",
-    "shellStatus": "profile-found",
+    "shellStatus": "published",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
+    "sourceStatus": "source-found",
     "tariffStatus": "missing",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.stadtwerke-altdorf.de",
-    "notes": "VNBdigital ID 15",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://www.stadtwerke-altdorf.de/stromnetz/veroeffentlichungen",
+    "notes": "VNBdigital ID 15; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://www.stadtwerke-altdorf.de/fileadmin/user_upload/2025_Netznutzungsentgelte_endgueltig_fuer_2026.pdf"
   },
   {
     "slug": "stadtwerke-altensteig",
@@ -6224,14 +6226,15 @@
     "operatorName": "Stadtwerke Bad Pyrmont GmbH",
     "websiteUrl": "https://www.stadtwerke-bad-pyrmont.de",
     "regionLabel": "Bad Pyrmont",
-    "shellStatus": "profile-found",
+    "shellStatus": "published",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
+    "sourceStatus": "source-found",
     "tariffStatus": "missing",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.stadtwerke-bad-pyrmont.de",
-    "notes": "VNBdigital ID 48",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://www.stadtwerke-bad-pyrmont.de/netze/marktpartner/netzentgelte/index.htm",
+    "notes": "VNBdigital ID 48; Synced source page/document (2026-03-11), tariff extraction pending. Official 2026 Hochlastzeitfenster companion PDF also listed on the same page.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://www.stadtwerke-bad-pyrmont.de/_mediafiles/1328-nne_strom_-2026_entgueltig.pdf"
   },
   {
     "slug": "stadtwerke-bad-reichenhall-ku",

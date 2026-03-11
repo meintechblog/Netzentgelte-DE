@@ -103,11 +103,17 @@ describe("getSeedPendingOperatorCatalog", () => {
     expect(result.items.find((entry) => entry.slug === "50hertz-transmission")).toBeUndefined();
   });
 
-  test("includes newly promoted public-pending operators from backfill-ready-013", () => {
+  test("includes the promoted public-pending operators from backfill-ready-013", () => {
     const result = getSeedPendingOperatorCatalog();
 
     expect(result.items).toEqual(
       expect.arrayContaining([
+        expect.objectContaining({
+          slug: "stadtnetze-munster",
+          reviewStatus: "pending",
+          sourceStatus: "source-found",
+          tariffStatus: "missing"
+        }),
         expect.objectContaining({
           slug: "stadtwerke-achim",
           reviewStatus: "pending",
@@ -115,7 +121,19 @@ describe("getSeedPendingOperatorCatalog", () => {
           tariffStatus: "missing"
         }),
         expect.objectContaining({
+          slug: "stadtwerke-altdorf",
+          reviewStatus: "pending",
+          sourceStatus: "source-found",
+          tariffStatus: "missing"
+        }),
+        expect.objectContaining({
           slug: "stadtwerke-bad-aibling",
+          reviewStatus: "pending",
+          sourceStatus: "source-found",
+          tariffStatus: "missing"
+        }),
+        expect.objectContaining({
+          slug: "stadtwerke-bad-pyrmont",
           reviewStatus: "pending",
           sourceStatus: "source-found",
           tariffStatus: "missing"

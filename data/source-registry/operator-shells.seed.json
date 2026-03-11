@@ -5975,12 +5975,13 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "missing",
-    "reviewStatus": "pending",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
     "sourcePageUrl": "https://www.stadtwerke-andernach-energie.de/strom/netzbetrieb/netzzugang-netzentgelte/",
-    "notes": "VNBdigital ID 7690; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "notes": "VNBdigital ID 7690; Synced from curated operator entry (verified-first backfill 2026-03-11).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.stadtwerke-andernach-energie.de/app/uploads/2026/01/2025-12-19_Preisblatt-NNE-Strom-ab-01.01.2026.pdf"
+    "documentUrl": "https://www.stadtwerke-andernach-energie.de/app/uploads/2026/01/2025-12-19_Preisblatt-NNE-Strom-ab-01.01.2026.pdf",
+    "lastCheckedAt": "2026-03-11"
   },
   {
     "slug": "stadtwerke-annaberg-buchholz-energie",

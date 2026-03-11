@@ -1,11 +1,10 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { buildBackfillBriefing } from "../../src/modules/operators/backfill-briefing";
 import { planBackfillCoordinatorRun, type CoordinatorClaimsBoard } from "../../src/modules/operators/backfill-koordinator";
 import { loadOperatorShells } from "../../src/modules/operators/shell-catalog";
 import { buildShellBackfillBatches } from "../../src/modules/operators/shell-batches";
-import { getSeedOperatorStructureAudit } from "../../src/modules/operators/structure-audit";
+import { selectVerifiedCandidate } from "../../src/modules/operators/verified-candidate-selector";
 
 function readClaimsBoard(projectRoot: string): CoordinatorClaimsBoard {
   const claimsBoardPath = join(projectRoot, "docs/coordination/claims-board.json");
@@ -36,14 +35,11 @@ async function main() {
   const board = readClaimsBoard(projectRoot);
   const shells = await loadOperatorShells();
   const batches = buildShellBackfillBatches(shells).batches;
-  const briefing = buildBackfillBriefing({
-    auditItems: getSeedOperatorStructureAudit(),
-    batches
-  });
+  const candidateSelection = selectVerifiedCandidate(shells);
   const plan = planBackfillCoordinatorRun({
     board,
     batches,
-    briefing,
+    candidateSelection,
     mode
   });
 

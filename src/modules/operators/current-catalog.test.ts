@@ -156,8 +156,9 @@ describe("getSeedPublishedOperators", () => {
     const nordnetz = published.find((entry) => entry.slug === "nordnetz");
     const twsNetz = published.find((entry) => entry.slug === "tws-netz");
     const heidelbergNetze = published.find((entry) => entry.slug === "heidelberg-netze");
+    const andernach = published.find((entry) => entry.slug === "stadtwerke-andernach-energie");
 
-    expect(published).toHaveLength(73);
+    expect(published).toHaveLength(74);
     expect(heidelbergNetze).toBeUndefined();
     expect(ewrNetz).toBeUndefined();
 
@@ -486,6 +487,46 @@ describe("getSeedPublishedOperators", () => {
           seasonLabel: "Q1-Q4 2026",
           bandKey: "HT",
           timeRangeLabel: "17:00-22:00"
+        })
+      ])
+    );
+    expect(andernach).toMatchObject({
+      reviewStatus: "verified",
+      sourcePageUrl:
+        "https://www.stadtwerke-andernach-energie.de/strom/netzbetrieb/netzzugang-netzentgelte/",
+      documentUrl:
+        "https://www.stadtwerke-andernach-energie.de/app/uploads/2026/01/2025-12-19_Preisblatt-NNE-Strom-ab-01.01.2026.pdf",
+      bands: expect.arrayContaining([
+        expect.objectContaining({
+          key: "NT",
+          valueCtPerKwh: "1.49"
+        }),
+        expect.objectContaining({
+          key: "ST",
+          valueCtPerKwh: "5.97"
+        }),
+        expect.objectContaining({
+          key: "HT",
+          valueCtPerKwh: "7.80"
+        })
+      ])
+    });
+    expect(andernach?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q1-Q4 2026",
+          bandKey: "NT",
+          timeRangeLabel: "01:00-05:30"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q1-Q4 2026",
+          bandKey: "ST",
+          timeRangeLabel: "Alle restlichen Zeiten"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q1-Q4 2026",
+          bandKey: "HT",
+          timeRangeLabel: "17:30-20:15"
         })
       ])
     );

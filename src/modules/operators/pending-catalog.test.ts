@@ -133,12 +133,6 @@ describe("getSeedPendingOperatorCatalog", () => {
           tariffStatus: "missing"
         }),
         expect.objectContaining({
-          slug: "stadtwerke-andernach-energie",
-          reviewStatus: "pending",
-          sourceStatus: "source-found",
-          tariffStatus: "missing"
-        }),
-        expect.objectContaining({
           slug: "stadtwerke-bad-aibling",
           reviewStatus: "pending",
           sourceStatus: "source-found",
@@ -170,5 +164,6 @@ describe("getSeedPendingOperatorCatalog", () => {
         })
       ])
     );
+    expect(result.items.find((entry) => entry.slug === "stadtwerke-andernach-energie")).toBeUndefined();
   });
 });

@@ -19,9 +19,9 @@ describe("buildBackfillBatchWorkset", () => {
       operatorCount: 25,
       hostnameCount: 24,
       summary: {
-        sourceCandidateCount: 22,
+        sourceCandidateCount: 16,
         sourceMissingCount: 0,
-        documentedCount: 3,
+        documentedCount: 9,
         tariffMissingCount: 25,
         reviewPendingCount: 25
       }
@@ -46,8 +46,8 @@ describe("buildBackfillBatchWorkset", () => {
     ]);
     expect(workset.items.at(-1)).toEqual(
       expect.objectContaining({
-        slug: "stadtwerke-bad-pyrmont",
-        hostname: "stadtwerke-bad-pyrmont.de",
+        slug: "stadtwerke-bad-reichenhall-ku",
+        hostname: "stadtwerke-bad-reichenhall.de",
         sourceStatus: "candidate"
       })
     );

@@ -6644,6 +6644,90 @@
     }
   },
   {
+    "slug": "stadtwerke-andernach-energie",
+    "name": "Stadtwerke Andernach Energie GmbH",
+    "regionLabel": "Andernach",
+    "websiteUrl": "https://www.stadtwerke-andernach-energie.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "stadtwerke-andernach-energie-14a-2026",
+        "title": "Preisblatt NNE Strom ab 01.01.2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.stadtwerke-andernach-energie.de/strom/netzbetrieb/netzzugang-netzentgelte/",
+        "documentUrl": "https://www.stadtwerke-andernach-energie.de/app/uploads/2026/01/2025-12-19_Preisblatt-NNE-Strom-ab-01.01.2026.pdf",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Betreiberseite fuer Netzzugang und Netzentgelte Strom.",
+          "Das Preisblatt nennt fuer Modul 3 ausdruecklich NT 1,49 ct/kWh, ST 5,97 ct/kWh und HT 7,80 ct/kWh.",
+          "Die Zeitfenster sind fuer Quartal 1 - 4 (01.01. - 31.12.) explizit veroeffentlicht: NT 01:00-05:30, HT 17:30-20:15, ST alle restlichen Zeiten."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "stadtwerke-andernach-energie-14a-2026",
+      "sourcePageUrl": "https://www.stadtwerke-andernach-energie.de/strom/netzbetrieb/netzzugang-netzentgelte/",
+      "documentUrl": "https://www.stadtwerke-andernach-energie.de/app/uploads/2026/01/2025-12-19_Preisblatt-NNE-Strom-ab-01.01.2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedriglasttarifstufe",
+          "valueCtPerKwh": "1.49",
+          "sourceQuote": "Niedriglasttarifstufe (NT) ct/kWh 1,49"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "5.97",
+          "sourceQuote": "Standardtarifstufe (ST) ct/kWh 5,97"
+        },
+        {
+          "key": "HT",
+          "label": "Hochlasttarifstufe",
+          "valueCtPerKwh": "7.80",
+          "sourceQuote": "Hochlasttarifstufe (HT) ct/kWh 7,80"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "stadtwerke-andernach-energie-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "01:00-05:30",
+          "sourceQuote": "Niedriglasttarifstufe (NT) 01:00 - 05:30"
+        },
+        {
+          "id": "stadtwerke-andernach-energie-2026-standard-rest",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "Alle restlichen Zeiten",
+          "sourceQuote": "Standardtarifstufe (ST) Alle restlichen Zeiten"
+        },
+        {
+          "id": "stadtwerke-andernach-energie-2026-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:30-20:15",
+          "sourceQuote": "Hochlasttarifstufe (HT) 17:30 - 20:15"
+        }
+      ]
+    }
+  },
+  {
     "slug": "stadtwerke-arnstadt-netz-und",
     "name": "Stadtwerke Arnstadt Netz GmbH & Co. KG",
     "regionLabel": "Arnstadt",

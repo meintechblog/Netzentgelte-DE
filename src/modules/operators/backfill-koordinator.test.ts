@@ -1,11 +1,8 @@
 import { describe, expect, test } from "vitest";
 
-import { buildBackfillBriefing } from "./backfill-briefing";
 import { planBackfillCoordinatorRun, type CoordinatorClaimsBoard } from "./backfill-koordinator";
+import type { VerifiedCandidateSelection } from "./verified-candidate-selector";
 import type { ShellBackfillBatch } from "./shell-batches";
-import type { StructureAuditItem } from "./structure-audit";
-
-const auditItems: StructureAuditItem[] = [];
 
 const batches: ShellBackfillBatch[] = [
   {
@@ -39,9 +36,20 @@ const emptyBoard: CoordinatorClaimsBoard = {
   releasedClaims: []
 };
 
+const noCandidate: VerifiedCandidateSelection = {
+  selected: null,
+  blocked: [],
+  candidates: [],
+  summary: {
+    queuedCount: 0,
+    evidenceReadyCount: 0,
+    verificationReadyCount: 0,
+    blockedCount: 0
+  }
+};
+
 describe("planBackfillCoordinatorRun", () => {
   test("prioritizes completed claims awaiting integration ahead of new dispatches", () => {
-    const briefing = buildBackfillBriefing({ auditItems, batches });
     const plan = planBackfillCoordinatorRun({
       board: {
         ...emptyBoard,
@@ -64,7 +72,7 @@ describe("planBackfillCoordinatorRun", () => {
         ]
       },
       batches,
-      briefing,
+      candidateSelection: noCandidate,
       mode: "dry-run"
     });
 
@@ -74,23 +82,37 @@ describe("planBackfillCoordinatorRun", () => {
     expect(plan.notes[0]).toContain("completed");
   });
 
-  test("dispatches the next promotable backfill batch when capacity is available", () => {
-    const briefing = buildBackfillBriefing({ auditItems, batches });
+  test("selects the next verification-ready operator instead of dispatching a batch", () => {
     const plan = planBackfillCoordinatorRun({
       board: emptyBoard,
       batches,
-      briefing,
+      candidateSelection: {
+        selected: {
+          slug: "stadtwerke-andernach-energie",
+          operatorName: "Stadtwerke Andernach Energie GmbH",
+          stage: "verification-ready",
+          score: 120,
+          blockedReasons: []
+        },
+        blocked: [],
+        candidates: [],
+        summary: {
+          queuedCount: 0,
+          evidenceReadyCount: 1,
+          verificationReadyCount: 1,
+          blockedCount: 0
+        }
+      },
       mode: "dry-run"
     });
 
-    expect(plan.intent).toBe("dispatch");
-    expect(plan.dispatchBatchId).toBe("backfill-ready-021");
-    expect(plan.dispatchLane).toBe("backfill-ready");
+    expect(plan.intent).toBe("verify");
+    expect(plan.verifyOperatorSlug).toBe("stadtwerke-andernach-energie");
+    expect(plan.verifyStage).toBe("verification-ready");
     expect(plan.integrateBatchIds).toEqual([]);
   });
 
   test("stops dispatch when a blocker is still active", () => {
-    const briefing = buildBackfillBriefing({ auditItems, batches });
     const plan = planBackfillCoordinatorRun({
       board: {
         ...emptyBoard,
@@ -106,12 +128,12 @@ describe("planBackfillCoordinatorRun", () => {
         }
       },
       batches,
-      briefing,
+      candidateSelection: noCandidate,
       mode: "dry-run"
     });
 
     expect(plan.intent).toBe("blocked");
-    expect(plan.dispatchBatchId).toBeNull();
+    expect(plan.verifyOperatorSlug).toBeNull();
     expect(plan.integrateBatchIds).toEqual([]);
     expect(plan.notes[0]).toContain("pnpm test failed");
   });

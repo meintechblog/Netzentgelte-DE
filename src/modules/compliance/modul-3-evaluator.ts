@@ -55,6 +55,11 @@ function parseNumericValue(value: string) {
   return /^-?\d+(?:\.\d+)?$/.test(value) ? Number.parseFloat(value) : null;
 }
 
+function roundCommercial(value: number, digits: number) {
+  const factor = 10 ** digits;
+  return Math.round((value + Number.EPSILON) * factor) / factor;
+}
+
 function parseTimeRangeMinutes(timeRangeLabel: string) {
   const match = timeRangeLabel.match(/^(\d{2}):(\d{2})-(\d{2}):(\d{2})$/);
 
@@ -155,7 +160,7 @@ function evaluateMaxRatioBetweenBands(rule: ComplianceRule, bands: EvaluatorBand
     };
   }
 
-  const ratio = numeratorValue / denominatorValue;
+  const ratio = roundCommercial(numeratorValue / denominatorValue, 2);
 
   if (ratio <= maxRatio) {
     return {
@@ -193,7 +198,7 @@ function evaluateBandRatioRange(rule: ComplianceRule, bands: EvaluatorBand[]): E
     };
   }
 
-  const ratio = numeratorValue / denominatorValue;
+  const ratio = roundCommercial(numeratorValue / denominatorValue, 2);
 
   if (ratio >= minRatio && ratio <= maxRatio) {
     return {

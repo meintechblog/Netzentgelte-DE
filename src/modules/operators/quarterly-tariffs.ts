@@ -136,7 +136,9 @@ function getCatchAllRank(timeRange: string) {
   if (
     normalized.includes("alle anderen zeiten") ||
     normalized.includes("alle restlichen zeiten") ||
-    normalized.includes("alle restzeiten")
+    normalized.includes("alle restzeiten") ||
+    normalized.includes("restzeit") ||
+    normalized.includes("restliche zeitfenster")
   ) {
     return 1;
   }

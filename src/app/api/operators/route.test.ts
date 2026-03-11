@@ -16,7 +16,7 @@ describe("GET /api/operators", () => {
       complianceViolationCount: expect.any(Number),
       complianceNotEvaluatedCount: expect.any(Number)
     });
-    expect(data.items).toHaveLength(27);
+    expect(data.items).toHaveLength(73);
     expect(data.items).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -39,8 +39,8 @@ describe("GET /api/operators", () => {
         expect.objectContaining({
           slug: "netze-bw",
           reviewStatus: "verified",
-          complianceStatus: "violation",
-          complianceViolationCount: 1
+          complianceStatus: "compliant",
+          complianceViolationCount: 0
         })
       ])
     );

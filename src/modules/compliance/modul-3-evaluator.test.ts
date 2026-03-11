@@ -106,6 +106,28 @@ describe("evaluateModul3Compliance", () => {
     ]);
   });
 
+  test("treats corridor boundary cases as compliant after kaufmaennisch rounding", () => {
+    const evaluation = evaluateModul3Compliance(
+      buildInput({
+        operatorSlug: "netze-bw",
+        operatorName: "Netze BW GmbH",
+        bands: [
+          { key: "NT", label: "Niedrigtarif", valueCtPerKwh: "3.03", priceBasis: "netto" },
+          { key: "ST", label: "Standardtarif", valueCtPerKwh: "7.57", priceBasis: "netto" },
+          { key: "HT", label: "Hochtarif", valueCtPerKwh: "15.14", priceBasis: "netto" }
+        ]
+      })
+    );
+
+    expect(evaluation.violations).not.toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          ruleId: "nt_between_10_and_40_percent_of_st"
+        })
+      ])
+    );
+  });
+
   test("flags operators that publish HT and NT in fewer than two quarters", () => {
     const evaluation = evaluateModul3Compliance(
       buildInput({

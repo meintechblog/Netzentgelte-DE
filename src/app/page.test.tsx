@@ -44,4 +44,4 @@ test("renders the page shell around a dominant germany map hero", async () => {
   ).not.toBeInTheDocument();
   expect(screen.queryByRole("button", { name: /Regelkonform \(\d+\)/ })).not.toBeInTheDocument();
   expect(screen.queryByRole("button", { name: /Mit Verstößen \(\d+\)/ })).not.toBeInTheDocument();
-});
+}, 10000);

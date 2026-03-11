@@ -357,7 +357,7 @@ describe("buildQuarterlyTariffMatrix", () => {
       schwaebischHall?.quarterMatrix.find((quarter) => quarter.key === "Q3")?.summaryLabel
     ).toBe("Nur Standardtarif");
     expect(schwaebischHall?.compliance.status).toBe("compliant");
-    expect(netzeBw?.compliance.violations).toEqual(
+    expect(netzeBw?.compliance.violations).not.toEqual(
       expect.arrayContaining([
         expect.objectContaining({
           ruleId: "nt_between_10_and_40_percent_of_st"
@@ -410,6 +410,29 @@ describe("buildQuarterlyTariffMatrix", () => {
         summaryLabel: "Quelle ohne Zeitfenster",
         coverageStatus: "assumed-st"
       })
+    );
+  });
+
+  test("fills EVU Weilerbach rest-time standard tariff windows without null slots", () => {
+    const rows = getRegistryTariffRows(getSeedPublishedOperators());
+    const weilerbach = rows.find((row) => row.operatorSlug === "evu-weilerbach");
+    const q1 = weilerbach?.quarterMatrix.find((quarter) => quarter.key === "Q1");
+
+    expect(q1).toBeDefined();
+    expect(q1?.slots.filter((slot) => slot.bandKey === null)).toEqual([]);
+    expect(q1?.segments).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          timeLabel: "06:00-17:00",
+          bandKey: "ST",
+          valueCtPerKwh: "6.05"
+        }),
+        expect.objectContaining({
+          timeLabel: "20:00-22:00",
+          bandKey: "ST",
+          valueCtPerKwh: "6.05"
+        })
+      ])
     );
   });
 

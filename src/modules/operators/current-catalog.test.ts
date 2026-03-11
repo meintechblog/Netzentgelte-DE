@@ -157,19 +157,23 @@ describe("getSeedPublishedOperators", () => {
     const twsNetz = published.find((entry) => entry.slug === "tws-netz");
     const heidelbergNetze = published.find((entry) => entry.slug === "heidelberg-netze");
 
-    expect(published).toHaveLength(27);
+    expect(published).toHaveLength(73);
     expect(heidelbergNetze).toBeUndefined();
     expect(ewrNetz).toBeUndefined();
 
-    expect(published[0]).toMatchObject({
-      slug: "netze-bw",
-      sourcePageUrl: expect.stringContaining("https://"),
-      bands: expect.arrayContaining([
+    expect(published).toEqual(
+      expect.arrayContaining([
         expect.objectContaining({
-          key: "NT"
+          slug: "netze-bw",
+          sourcePageUrl: expect.stringContaining("https://"),
+          bands: expect.arrayContaining([
+            expect.objectContaining({
+              key: "NT"
+            })
+          ])
         })
       ])
-    });
+    );
     expect(nErgie?.timeWindows).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -256,12 +260,8 @@ describe("getSeedPublishedOperators", () => {
     expect(netzeBw).toMatchObject({
       priceBasis: "assumed-netto",
       compliance: expect.objectContaining({
-        status: "violation",
-        violations: expect.arrayContaining([
-          expect.objectContaining({
-            ruleId: "nt_between_10_and_40_percent_of_st"
-          })
-        ])
+        status: "compliant",
+        violations: []
       })
     });
     expect(mainzerNetze?.timeWindows).toEqual(

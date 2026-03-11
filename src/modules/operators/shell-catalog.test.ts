@@ -32,7 +32,7 @@ describe("getSeedOperatorShells", () => {
       expect.arrayContaining([
         expect.objectContaining({
           slug: "stadtwerke-achim",
-          shellStatus: "source-found",
+          shellStatus: "published",
           sourceStatus: "source-found",
           sourcePageUrl:
             "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1.html",
@@ -41,14 +41,14 @@ describe("getSeedOperatorShells", () => {
         }),
         expect.objectContaining({
           slug: "stadtwerke-bad-aibling",
-          shellStatus: "source-found",
+          shellStatus: "published",
           sourceStatus: "source-found",
           sourcePageUrl: "https://www.stadtwerke-bad-aibling.de/de/Strom/Stromnetz1/Netzzugang-Entgelte/",
           documentUrl: "https://www.stadtwerke-bad-aibling.de/de/Strom/Preisblatt-Netznutzung-ab01012026-endgueltig.pdf"
         }),
         expect.objectContaining({
           slug: "ssw-netz",
-          shellStatus: "source-found",
+          shellStatus: "published",
           sourceStatus: "source-found",
           sourcePageUrl: "https://ssw-netz.de/stromnetz/netzzugang-und-entgelte-strom/netznutzungsentgelte-strom/",
           documentUrl:

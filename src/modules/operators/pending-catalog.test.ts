@@ -102,4 +102,31 @@ describe("getSeedPendingOperatorCatalog", () => {
     expect(result.items.find((entry) => entry.slug === "netze-bw")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "50hertz-transmission")).toBeUndefined();
   });
+
+  test("includes newly promoted public-pending operators from backfill-ready-013", () => {
+    const result = getSeedPendingOperatorCatalog();
+
+    expect(result.items).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          slug: "stadtwerke-achim",
+          reviewStatus: "pending",
+          sourceStatus: "source-found",
+          tariffStatus: "missing"
+        }),
+        expect.objectContaining({
+          slug: "stadtwerke-bad-aibling",
+          reviewStatus: "pending",
+          sourceStatus: "source-found",
+          tariffStatus: "missing"
+        }),
+        expect.objectContaining({
+          slug: "ssw-netz",
+          reviewStatus: "pending",
+          sourceStatus: "source-found",
+          tariffStatus: "missing"
+        })
+      ])
+    );
+  });
 });

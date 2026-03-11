@@ -10456,5 +10456,955 @@
       "bands": [],
       "timeWindows": []
     }
+  },
+  {
+    "slug": "elektrizitatswerk-worth-an-der-donau-rupert",
+    "name": "Elektrizitätswerk Wörth an der Donau Rupert",
+    "regionLabel": "Wörth a.d. Donau",
+    "websiteUrl": "https://www.heider-energie.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "elektrizitatswerk-worth-an-der-donau-rupert-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.heider-energie.de",
+        "documentUrl": "https://www.heider-energie.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "elektrizitatswerk-worth-an-der-donau-rupert-14a-2026-source",
+      "sourcePageUrl": "https://www.heider-energie.de",
+      "documentUrl": "https://www.heider-energie.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "hanau-netz",
+    "name": "Hanau Netz GmbH",
+    "regionLabel": "Hanau",
+    "websiteUrl": "https://hanau-netz.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "hanau-netz-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://hanau-netz.de",
+        "documentUrl": "https://hanau-netz.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "hanau-netz-14a-2026-source",
+      "sourcePageUrl": "https://hanau-netz.de",
+      "documentUrl": "https://hanau-netz.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "harz-energie-netz",
+    "name": "Harz Energie Netz GmbH",
+    "regionLabel": "Osterode am Harz",
+    "websiteUrl": "https://www.harzenergie-netz.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "harz-energie-netz-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.harzenergie-netz.de",
+        "documentUrl": "https://www.harzenergie-netz.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "harz-energie-netz-14a-2026-source",
+      "sourcePageUrl": "https://www.harzenergie-netz.de",
+      "documentUrl": "https://www.harzenergie-netz.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "hellenstein-energie-logistik",
+    "name": "Hellenstein-Energie-Logistik GmbH",
+    "regionLabel": "Heidenheim",
+    "websiteUrl": "https://www.hellenstein-energie-logistik.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "hellenstein-energie-logistik-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.hellenstein-energie-logistik.de/",
+        "documentUrl": "https://www.hellenstein-energie-logistik.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "hellenstein-energie-logistik-14a-2026-source",
+      "sourcePageUrl": "https://www.hellenstein-energie-logistik.de/",
+      "documentUrl": "https://www.hellenstein-energie-logistik.de/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "hertener-stadtwerke",
+    "name": "Hertener Stadtwerke GmbH",
+    "regionLabel": "Herten",
+    "websiteUrl": "https://www.hertener-stadtwerke.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "hertener-stadtwerke-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.hertener-stadtwerke.de",
+        "documentUrl": "https://www.hertener-stadtwerke.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "hertener-stadtwerke-14a-2026-source",
+      "sourcePageUrl": "https://www.hertener-stadtwerke.de",
+      "documentUrl": "https://www.hertener-stadtwerke.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "herzo-werke",
+    "name": "Herzo Werke GmbH",
+    "regionLabel": "Herzogenaurach",
+    "websiteUrl": "https://www.herzowerke.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "herzo-werke-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.herzowerke.de/",
+        "documentUrl": "https://www.herzowerke.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "herzo-werke-14a-2026-source",
+      "sourcePageUrl": "https://www.herzowerke.de/",
+      "documentUrl": "https://www.herzowerke.de/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "hewa",
+    "name": "HEWA GmbH",
+    "regionLabel": "Hersbruck",
+    "websiteUrl": "https://www.hewagmbh.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "hewa-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.hewagmbh.de/",
+        "documentUrl": "https://www.hewagmbh.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "hewa-14a-2026-source",
+      "sourcePageUrl": "https://www.hewagmbh.de/",
+      "documentUrl": "https://www.hewagmbh.de/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "igs-netze",
+    "name": "IGS Netze GmbH",
+    "regionLabel": "Gersthofen",
+    "websiteUrl": "http://www.igs-netze.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "igs-netze-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "http://www.igs-netze.de",
+        "documentUrl": "http://www.igs-netze.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "igs-netze-14a-2026-source",
+      "sourcePageUrl": "http://www.igs-netze.de",
+      "documentUrl": "http://www.igs-netze.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "inetz",
+    "name": "inetz GmbH",
+    "regionLabel": "Chemnitz",
+    "websiteUrl": "https://www.inetz.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "inetz-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.inetz.de",
+        "documentUrl": "https://www.inetz.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "inetz-14a-2026-source",
+      "sourcePageUrl": "https://www.inetz.de",
+      "documentUrl": "https://www.inetz.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "infra-furth",
+    "name": "infra fürth gmbh",
+    "regionLabel": "Fürth",
+    "websiteUrl": "https://www.infra-fuerth.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "infra-furth-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.infra-fuerth.de",
+        "documentUrl": "https://www.infra-fuerth.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "infra-furth-14a-2026-source",
+      "sourcePageUrl": "https://www.infra-fuerth.de",
+      "documentUrl": "https://www.infra-fuerth.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "infraleuna",
+    "name": "InfraLeuna GmbH",
+    "regionLabel": "Leuna",
+    "websiteUrl": "https://www.infraleuna.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "infraleuna-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.infraleuna.de",
+        "documentUrl": "https://www.infraleuna.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "infraleuna-14a-2026-source",
+      "sourcePageUrl": "https://www.infraleuna.de",
+      "documentUrl": "https://www.infraleuna.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "infraserv-gendorf-netze",
+    "name": "InfraServ Gendorf Netze GmbH",
+    "regionLabel": "Burgkirchen",
+    "websiteUrl": "https://infraserv.gendorf-netze.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "infraserv-gendorf-netze-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://infraserv.gendorf-netze.de/",
+        "documentUrl": "https://infraserv.gendorf-netze.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "infraserv-gendorf-netze-14a-2026-source",
+      "sourcePageUrl": "https://infraserv.gendorf-netze.de/",
+      "documentUrl": "https://infraserv.gendorf-netze.de/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "infraserv-und-wiesbaden",
+    "name": "InfraServ GmbH ＆ Co. Wiesbaden KG",
+    "regionLabel": "Wiesbaden",
+    "websiteUrl": "https://www.infraserv-wi.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "infraserv-und-wiesbaden-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.infraserv-wi.de/",
+        "documentUrl": "https://www.infraserv-wi.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "infraserv-und-wiesbaden-14a-2026-source",
+      "sourcePageUrl": "https://www.infraserv-wi.de/",
+      "documentUrl": "https://www.infraserv-wi.de/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "infrastrukturbetrieb-der-stadt-arneburg",
+    "name": "Infrastrukturbetrieb der Stadt Arneburg",
+    "regionLabel": "Arneburg",
+    "websiteUrl": "https://www.infrastrukturbetrieb-stadt-arneburg.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "infrastrukturbetrieb-der-stadt-arneburg-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.infrastrukturbetrieb-stadt-arneburg.de",
+        "documentUrl": "https://www.infrastrukturbetrieb-stadt-arneburg.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "infrastrukturbetrieb-der-stadt-arneburg-14a-2026-source",
+      "sourcePageUrl": "https://www.infrastrukturbetrieb-stadt-arneburg.de",
+      "documentUrl": "https://www.infrastrukturbetrieb-stadt-arneburg.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "kbg-kraftstrom-bezugsgenossenschaft-homberg-eg",
+    "name": "KBG Kraftstrom-Bezugsgenossenschaft Homberg eG",
+    "regionLabel": "Homberg (Efze)",
+    "websiteUrl": "https://www.kbg-homberg.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "kbg-kraftstrom-bezugsgenossenschaft-homberg-eg-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.kbg-homberg.de",
+        "documentUrl": "https://www.kbg-homberg.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "kbg-kraftstrom-bezugsgenossenschaft-homberg-eg-14a-2026-source",
+      "sourcePageUrl": "https://www.kbg-homberg.de",
+      "documentUrl": "https://www.kbg-homberg.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "keep-kommunale-eisenberger-energiepartner",
+    "name": "Keep - Kommunale Eisenberger Energiepartner GmbH",
+    "regionLabel": "Eisenberg",
+    "websiteUrl": "https://keep-gmbh.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "keep-kommunale-eisenberger-energiepartner-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://keep-gmbh.de",
+        "documentUrl": "https://keep-gmbh.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "keep-kommunale-eisenberger-energiepartner-14a-2026-source",
+      "sourcePageUrl": "https://keep-gmbh.de",
+      "documentUrl": "https://keep-gmbh.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "kew-karwendel-energie-und-wasser",
+    "name": "KEW Karwendel Energie und Wasser GmbH",
+    "regionLabel": "Mittenwald",
+    "websiteUrl": "https://www.kewgmbh.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "kew-karwendel-energie-und-wasser-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.kewgmbh.de",
+        "documentUrl": "https://www.kewgmbh.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "kew-karwendel-energie-und-wasser-14a-2026-source",
+      "sourcePageUrl": "https://www.kewgmbh.de",
+      "documentUrl": "https://www.kewgmbh.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "kew-kommunale-energie-und-wasserversorgung",
+    "name": "KEW Kommunale Energie- und Wasserversorgung AG",
+    "regionLabel": "Neunkirchen",
+    "websiteUrl": "https://www.kew-netz.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "kew-kommunale-energie-und-wasserversorgung-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.kew-netz.de",
+        "documentUrl": "https://www.kew-netz.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "kew-kommunale-energie-und-wasserversorgung-14a-2026-source",
+      "sourcePageUrl": "https://www.kew-netz.de",
+      "documentUrl": "https://www.kew-netz.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "kommunale-energienetze-inn-salzach-und",
+    "name": "Kommunale Energienetze Inn-Salzach GmbH & Co. KG",
+    "regionLabel": "Mühldorf a. Inn",
+    "websiteUrl": "https://www.ken-is.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "kommunale-energienetze-inn-salzach-und-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.ken-is.de",
+        "documentUrl": "https://www.ken-is.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "kommunale-energienetze-inn-salzach-und-14a-2026-source",
+      "sourcePageUrl": "https://www.ken-is.de",
+      "documentUrl": "https://www.ken-is.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "kommunale-energieversorgung-eisenhuttenstadt",
+    "name": "Kommunale Energieversorgung GmbH Eisenhüttenstadt",
+    "regionLabel": "Eisenhüttenstadt",
+    "websiteUrl": "https://kev-ehst.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "kommunale-energieversorgung-eisenhuttenstadt-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://kev-ehst.de/",
+        "documentUrl": "https://kev-ehst.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "kommunale-energieversorgung-eisenhuttenstadt-14a-2026-source",
+      "sourcePageUrl": "https://kev-ehst.de/",
+      "documentUrl": "https://kev-ehst.de/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "stadt-heilsbronn-stadtwerke",
+    "name": "Stadt Heilsbronn Stadtwerke",
+    "regionLabel": "Heilsbronn",
+    "websiteUrl": "https://www.heilsbronn-stadtwerke.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "stadt-heilsbronn-stadtwerke-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.heilsbronn-stadtwerke.de",
+        "documentUrl": "https://www.heilsbronn-stadtwerke.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "stadt-heilsbronn-stadtwerke-14a-2026-source",
+      "sourcePageUrl": "https://www.heilsbronn-stadtwerke.de",
+      "documentUrl": "https://www.heilsbronn-stadtwerke.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "stadtwerke-husum-netz",
+    "name": "Stadtwerke Husum Netz GmbH",
+    "regionLabel": "Husum",
+    "websiteUrl": "https://www.husumnetz.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "stadtwerke-husum-netz-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.husumnetz.de/",
+        "documentUrl": "https://www.husumnetz.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "stadtwerke-husum-netz-14a-2026-source",
+      "sourcePageUrl": "https://www.husumnetz.de/",
+      "documentUrl": "https://www.husumnetz.de/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "stadtwerke-munster-bispingen",
+    "name": "Stadtwerke Munster-Bispingen GmbH",
+    "regionLabel": "Munster",
+    "websiteUrl": "https://www.ihr-stadtwerk.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "stadtwerke-munster-bispingen-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.ihr-stadtwerk.de",
+        "documentUrl": "https://www.ihr-stadtwerk.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "stadtwerke-munster-bispingen-14a-2026-source",
+      "sourcePageUrl": "https://www.ihr-stadtwerk.de",
+      "documentUrl": "https://www.ihr-stadtwerk.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "stadtwerke-schneverdingen-neuenkirchen",
+    "name": "Stadtwerke Schneverdingen-Neuenkirchen GmbH",
+    "regionLabel": "Schneverdingen",
+    "websiteUrl": "https://www.heidjers-stadtwerke.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "stadtwerke-schneverdingen-neuenkirchen-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.heidjers-stadtwerke.de",
+        "documentUrl": "https://www.heidjers-stadtwerke.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "stadtwerke-schneverdingen-neuenkirchen-14a-2026-source",
+      "sourcePageUrl": "https://www.heidjers-stadtwerke.de",
+      "documentUrl": "https://www.heidjers-stadtwerke.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "stromnetz-hamburg",
+    "name": "Stromnetz Hamburg GmbH",
+    "regionLabel": "Hamburg",
+    "websiteUrl": "https://www.stromnetz-hamburg.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "stromnetz-hamburg-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.hamburger-energienetze.de/",
+        "documentUrl": "https://www.hamburger-energienetze.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "stromnetz-hamburg-14a-2026-source",
+      "sourcePageUrl": "https://www.hamburger-energienetze.de/",
+      "documentUrl": "https://www.hamburger-energienetze.de/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
   }
 ]

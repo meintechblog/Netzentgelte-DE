@@ -157,11 +157,19 @@ describe("getSeedPublishedOperators", () => {
     const twsNetz = published.find((entry) => entry.slug === "tws-netz");
     const heidelbergNetze = published.find((entry) => entry.slug === "heidelberg-netze");
     const andernach = published.find((entry) => entry.slug === "stadtwerke-andernach-energie");
+    const altdorf = published.find((entry) => entry.slug === "stadtwerke-altdorf");
     const badAibling = published.find((entry) => entry.slug === "stadtwerke-bad-aibling");
 
-    expect(published).toHaveLength(75);
+    expect(published).toHaveLength(76);
     expect(heidelbergNetze).toBeUndefined();
     expect(ewrNetz).toBeUndefined();
+    expect(altdorf).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.stadtwerke-altdorf.de/stromnetz/veroeffentlichungen",
+      documentUrl:
+        "https://www.stadtwerke-altdorf.de/fileadmin/user_upload/2025_Netznutzungsentgelte_endgueltig_fuer_2026.pdf"
+    });
 
     expect(published).toEqual(
       expect.arrayContaining([

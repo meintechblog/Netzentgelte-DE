@@ -82,6 +82,54 @@ describe("getPublicationIntegrityReport", () => {
     expect(report.failedCheckKeys).toEqual([]);
   });
 
+  test("accepts omitted Q2 and Q3 windows when the source only publishes Q1 and Q4 slots", () => {
+    const report = getPublicationIntegrityReport({
+      ...completeVerifiedOperator,
+      slug: "q1-q4-reference-netz",
+      timeWindows: [
+        {
+          id: "demo-q1q4-standard-day",
+          bandKey: "ST",
+          label: "Standardtarif",
+          seasonLabel: "Q1 und Q4 2026",
+          dayLabel: "Alle Tage",
+          timeRangeLabel: "06:00-17:00",
+          sourceQuote: "Standardtarif 06:00 - 17:00"
+        },
+        {
+          id: "demo-q1q4-high-evening",
+          bandKey: "HT",
+          label: "Hochtarif",
+          seasonLabel: "Q1 und Q4 2026",
+          dayLabel: "Alle Tage",
+          timeRangeLabel: "17:00-21:00",
+          sourceQuote: "Hochtarif 17:00 - 21:00"
+        },
+        {
+          id: "demo-q1q4-standard-late",
+          bandKey: "ST",
+          label: "Standardtarif",
+          seasonLabel: "Q1 und Q4 2026",
+          dayLabel: "Alle Tage",
+          timeRangeLabel: "21:00-24:00",
+          sourceQuote: "Standardtarif 21:00 - 00:00"
+        },
+        {
+          id: "demo-q1q4-low-night",
+          bandKey: "NT",
+          label: "Niedrigtarif",
+          seasonLabel: "Q1 und Q4 2026",
+          dayLabel: "Alle Tage",
+          timeRangeLabel: "00:00-06:00",
+          sourceQuote: "Niedrigtarif 00:00 - 06:00"
+        }
+      ]
+    });
+
+    expect(report.publishable).toBe(true);
+    expect(report.failedCheckKeys).toEqual([]);
+  });
+
   test("rejects pending operators from public publication", () => {
     const report = getPublicationIntegrityReport({
       ...completeVerifiedOperator,

@@ -172,6 +172,31 @@ describe("TariffTable", () => {
     expect(q2Section.querySelector(".tariff-quarter-segment__time")).toBeNull();
   });
 
+  test("renders the Albstadtwerke Q2 and Q3 reference case as assumed ST segments", () => {
+    const albstadtwerke = mergeTariffRowsWithEndcustomerCatalog(
+      getRegistryTariffRows(getSeedPublishedOperators()),
+      getSeedEndcustomerTariffCatalog()
+    ).find((row) => row.operatorSlug === "albstadtwerke");
+
+    render(<TariffTable rows={[albstadtwerke!]} />);
+
+    const q2Section = screen.getByLabelText("Albstadtwerke GmbH Q2");
+    const q3Section = screen.getByLabelText("Albstadtwerke GmbH Q3");
+
+    expect(within(q2Section).getByText("Quelle ohne Zeitfenster")).toBeInTheDocument();
+    expect(within(q3Section).getByText("Quelle ohne Zeitfenster")).toBeInTheDocument();
+    expect(
+      within(q2Section).getByLabelText(
+        "Q2 00:00-24:00 · ST · 6.54 ct/kWh · Verifizierte ST-Annahme, da im Originaldokument für dieses Quartal keine Zeitfenster veröffentlicht sind"
+      )
+    ).toHaveClass("tariff-quarter-segment--st-assumed");
+    expect(
+      within(q3Section).getByLabelText(
+        "Q3 00:00-24:00 · ST · 6.54 ct/kWh · Verifizierte ST-Annahme, da im Originaldokument für dieses Quartal keine Zeitfenster veröffentlicht sind"
+      )
+    ).toHaveClass("tariff-quarter-segment--st-assumed");
+  });
+
   test("renders concrete compliance violations for operators that break the BDEW Modul-3 rules", () => {
     const violatingOperator = mergeTariffRowsWithEndcustomerCatalog(
       getRegistryTariffRows(getSeedPublishedOperators()),

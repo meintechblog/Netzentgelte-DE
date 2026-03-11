@@ -58,6 +58,8 @@ describe("getSeedOperatorShells", () => {
           slug: "stadtwerke-altdorf",
           shellStatus: "published",
           sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
           sourcePageUrl: "https://www.stadtwerke-altdorf.de/stromnetz/veroeffentlichungen",
           documentUrl:
             "https://www.stadtwerke-altdorf.de/fileadmin/user_upload/2025_Netznutzungsentgelte_endgueltig_fuer_2026.pdf"

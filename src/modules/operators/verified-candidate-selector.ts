@@ -90,7 +90,11 @@ function getStage(
     return hasOfficialSource(shell) ? "evidence-ready" : "queued";
   }
 
-  if (hasConcreteArtifactEvidence(shell) && shell.shellStatus === "published") {
+  if (
+    hasConcreteArtifactEvidence(shell) &&
+    shell.shellStatus === "published" &&
+    shell.tariffStatus !== "missing"
+  ) {
     return "verification-ready";
   }
 
@@ -131,6 +135,18 @@ function getBlockedReasons(shell: OperatorShell) {
 
   if (haystack.includes("vorlaeufig") || haystack.includes("vorläufig")) {
     reasons.push("Official evidence is explicitly marked as vorlaeufig.");
+  }
+
+  if (
+    haystack.includes("keine publizierbare modul-3-jahresmatrix") ||
+    haystack.includes("nicht publizierbare modul-3-jahresmatrix") ||
+    haystack.includes("nur fuer q1/q4") ||
+    haystack.includes("nur für q1/q4") ||
+    haystack.includes("nur in den quartalen 1 und 4") ||
+    haystack.includes("winterquartale") ||
+    haystack.includes("widerspr")
+  ) {
+    reasons.push("Official evidence already documents a non-publishable annual tariff matrix.");
   }
 
   return reasons;

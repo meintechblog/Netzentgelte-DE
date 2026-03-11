@@ -19,9 +19,9 @@ describe("buildBackfillBatchWorkset", () => {
       operatorCount: 25,
       hostnameCount: 24,
       summary: {
-        sourceCandidateCount: 17,
+        sourceCandidateCount: 18,
         sourceMissingCount: 0,
-        documentedCount: 8,
+        documentedCount: 7,
         tariffMissingCount: 25,
         reviewPendingCount: 25
       }
@@ -46,8 +46,8 @@ describe("buildBackfillBatchWorkset", () => {
     ]);
     expect(workset.items.at(-1)).toEqual(
       expect.objectContaining({
-        slug: "stadtwerke-bad-wildbad-und",
-        hostname: "stadtwerke-bad-wildbad.de",
+        slug: "stadtwerke-baden-baden",
+        hostname: "stadtwerke-baden-baden.de",
         sourceStatus: "candidate"
       })
     );

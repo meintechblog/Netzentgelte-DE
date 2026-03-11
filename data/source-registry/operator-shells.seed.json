@@ -5918,12 +5918,13 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "missing",
-    "reviewStatus": "pending",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
     "sourcePageUrl": "https://www.stadtwerke-altdorf.de/stromnetz/veroeffentlichungen",
-    "notes": "VNBdigital ID 15; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "notes": "VNBdigital ID 15; Synced from curated operator entry (verified-first backfill 2026-03-11, Q2/Q3 assumed ST).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.stadtwerke-altdorf.de/fileadmin/user_upload/2025_Netznutzungsentgelte_endgueltig_fuer_2026.pdf"
+    "documentUrl": "https://www.stadtwerke-altdorf.de/fileadmin/user_upload/2025_Netznutzungsentgelte_endgueltig_fuer_2026.pdf",
+    "lastCheckedAt": "2026-03-11"
   },
   {
     "slug": "stadtwerke-altensteig",

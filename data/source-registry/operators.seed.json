@@ -6644,6 +6644,99 @@
     }
   },
   {
+    "slug": "stadtwerke-altdorf",
+    "name": "Stadtwerke Altdorf GmbH",
+    "regionLabel": "Altdorf",
+    "websiteUrl": "https://www.stadtwerke-altdorf.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "stadtwerke-altdorf-14a-2026",
+        "title": "Netznutzungsentgelte endgueltig fuer 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.stadtwerke-altdorf.de/stromnetz/veroeffentlichungen",
+        "documentUrl": "https://www.stadtwerke-altdorf.de/fileadmin/user_upload/2025_Netznutzungsentgelte_endgueltig_fuer_2026.pdf",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Veroeffentlichungsseite der Stadtwerke Altdorf fuer Netzentgelte Strom.",
+          "Das endgueltige Preisblatt 2026 veroeffentlicht Modul 3 mit ST 7,99 ct/kWh, HT 11,32 ct/kWh und NT 1,60 ct/kWh.",
+          "Nur fuer Q1 und Q4 sind Zeitfenster im Preisblatt ausgewiesen; Q2 und Q3 werden deshalb in der Darstellung als verifizierte ST-Annahme abgebildet."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "stadtwerke-altdorf-14a-2026",
+      "sourcePageUrl": "https://www.stadtwerke-altdorf.de/stromnetz/veroeffentlichungen",
+      "documentUrl": "https://www.stadtwerke-altdorf.de/fileadmin/user_upload/2025_Netznutzungsentgelte_endgueltig_fuer_2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "1.60",
+          "sourceQuote": "Niedrigtarif 1,60 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "7.99",
+          "sourceQuote": "Standardtarif 7,99 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "11.32",
+          "sourceQuote": "Hochtarif 11,32 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "stadtwerke-altdorf-2026-q1q4-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-06:00",
+          "sourceQuote": "Niedrigtarif 00:00 - 06:00"
+        },
+        {
+          "id": "stadtwerke-altdorf-2026-q1q4-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:00-17:00",
+          "sourceQuote": "Standardtarif 06:00 - 17:00"
+        },
+        {
+          "id": "stadtwerke-altdorf-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-21:00",
+          "sourceQuote": "Hochtarif 17:00 - 21:00"
+        },
+        {
+          "id": "stadtwerke-altdorf-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "21:00-24:00",
+          "sourceQuote": "Standardtarif 21:00 - 00:00"
+        }
+      ]
+    }
+  },
+  {
     "slug": "stadtwerke-andernach-energie",
     "name": "Stadtwerke Andernach Energie GmbH",
     "regionLabel": "Andernach",

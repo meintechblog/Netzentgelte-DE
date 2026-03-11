@@ -61,18 +61,35 @@ function createRegistryEntry(overrides: Partial<OperatorRegistryEntry> = {}): Op
 }
 
 describe("classifyVerifiedCandidate", () => {
-  test("marks a documented published shell as verification-ready", () => {
+  test("marks a structured published shell as verification-ready", () => {
     const result = classifyVerifiedCandidate(
       createShell({
         slug: "ready-netz",
         shellStatus: "published",
         sourceStatus: "source-found",
+        tariffStatus: "partial",
         documentUrl: "https://demo.example/preisblatt-2026.pdf"
       }),
       []
     );
 
     expect(result.stage).toBe("verification-ready");
+    expect(result.blockedReasons).toEqual([]);
+  });
+
+  test("keeps shell-only candidates with raw source links in evidence-ready until tariff extraction exists", () => {
+    const result = classifyVerifiedCandidate(
+      createShell({
+        slug: "shell-only-netz",
+        shellStatus: "published",
+        sourceStatus: "source-found",
+        tariffStatus: "missing",
+        documentUrl: "https://demo.example/preisblatt-2026.pdf"
+      }),
+      []
+    );
+
+    expect(result.stage).toBe("evidence-ready");
     expect(result.blockedReasons).toEqual([]);
   });
 
@@ -106,6 +123,23 @@ describe("classifyVerifiedCandidate", () => {
 
     expect(result.stage).toBe("blocked");
     expect(result.blockedReasons.join(" ")).toMatch(/vorlaeufig/i);
+  });
+
+  test("blocks evidence notes that already document a non-publishable annual matrix", () => {
+    const result = classifyVerifiedCandidate(
+      createShell({
+        slug: "winter-only-netz",
+        shellStatus: "published",
+        sourceStatus: "source-found",
+        tariffStatus: "missing",
+        documentUrl: "https://demo.example/preisblatt-2026.pdf",
+        notes: "Finale 2026-Quelle erfasst, aber keine publizierbare Modul-3-Jahresmatrix; gilt nur fuer Q1/Q4."
+      }),
+      []
+    );
+
+    expect(result.stage).toBe("blocked");
+    expect(result.blockedReasons.join(" ")).toMatch(/non-publishable|annual tariff matrix/i);
   });
 
   test("keeps homepage-only shell links out of the verify lane until a concrete artifact exists", () => {
@@ -165,6 +199,7 @@ describe("selectVerifiedCandidate", () => {
           slug: "verification-ready-netz",
           shellStatus: "published",
           sourceStatus: "source-found",
+          tariffStatus: "partial",
           documentUrl: "https://demo.example/verified.pdf"
         })
       ],

@@ -6826,6 +6826,90 @@
     }
   },
   {
+    "slug": "stadtwerke-bad-aibling",
+    "name": "Stadtwerke Bad Aibling",
+    "regionLabel": "Bad Aibling",
+    "websiteUrl": "https://www.stadtwerke-bad-aibling.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "stadtwerke-bad-aibling-14a-2026",
+        "title": "Preisblatt Netznutzung Strom ab 01.01.2026 endgueltig",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.stadtwerke-bad-aibling.de/de/Strom/Stromnetz1/Netzzugang-Entgelte/",
+        "documentUrl": "https://www.stadtwerke-bad-aibling.de/de/Strom/Preisblatt-Netznutzung-ab01012026-endgueltig.pdf",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Netzseite der Stadtwerke Bad Aibling mit direktem Link auf das endgueltige Preisblatt 2026.",
+          "Das Preisblatt veroeffentlicht Modul 3 explizit fuer Quartal 1 - 4 mit NT 3,02 ct/kWh, ST 7,54 ct/kWh und HT 10,90 ct/kWh.",
+          "Die Zeitfenster sind direkt im Preisblatt ausgewiesen: NT 00:45-05:15, HT 17:00-19:00, ST alle restlichen Zeiten."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "stadtwerke-bad-aibling-14a-2026",
+      "sourcePageUrl": "https://www.stadtwerke-bad-aibling.de/de/Strom/Stromnetz1/Netzzugang-Entgelte/",
+      "documentUrl": "https://www.stadtwerke-bad-aibling.de/de/Strom/Preisblatt-Netznutzung-ab01012026-endgueltig.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "3.02",
+          "sourceQuote": "NT Arbeitspreis ct/kWh 3,02"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "7.54",
+          "sourceQuote": "ST Arbeitspreis ct/kWh 7,54"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "10.90",
+          "sourceQuote": "HT Arbeitspreis ct/kWh 10,90"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "stadtwerke-bad-aibling-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:45-05:15",
+          "sourceQuote": "Niedriglasttarif 00:45-05:15"
+        },
+        {
+          "id": "stadtwerke-bad-aibling-2026-standard-rest",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "Alle restlichen Zeiten",
+          "sourceQuote": "Standardtarif alle restlichen Zeiten"
+        },
+        {
+          "id": "stadtwerke-bad-aibling-2026-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-19:00",
+          "sourceQuote": "Hochtarif 17:00-19:00"
+        }
+      ]
+    }
+  },
+  {
     "slug": "stadtwerke-bad-saulgau",
     "name": "Stadtwerke Bad Saulgau",
     "regionLabel": "Bad Saulgau",

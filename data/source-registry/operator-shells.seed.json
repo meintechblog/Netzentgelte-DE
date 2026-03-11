@@ -6077,12 +6077,13 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "missing",
-    "reviewStatus": "pending",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
     "sourcePageUrl": "https://www.stadtwerke-bad-aibling.de/de/Strom/Stromnetz1/Netzzugang-Entgelte/",
-    "notes": "VNBdigital ID 30; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "notes": "VNBdigital ID 30; Synced from curated operator entry (verified-first backfill 2026-03-11).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.stadtwerke-bad-aibling.de/de/Strom/Preisblatt-Netznutzung-ab01012026-endgueltig.pdf"
+    "documentUrl": "https://www.stadtwerke-bad-aibling.de/de/Strom/Preisblatt-Netznutzung-ab01012026-endgueltig.pdf",
+    "lastCheckedAt": "2026-03-11"
   },
   {
     "slug": "stadtwerke-bad-bergzabern",

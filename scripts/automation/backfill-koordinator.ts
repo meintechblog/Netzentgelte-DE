@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { planBackfillCoordinatorRun, type CoordinatorClaimsBoard } from "../../src/modules/operators/backfill-koordinator";
+import { getOperatorRegistry } from "../../src/modules/operators/registry";
 import { loadOperatorShells } from "../../src/modules/operators/shell-catalog";
 import { buildShellBackfillBatches } from "../../src/modules/operators/shell-batches";
 import { selectVerifiedCandidate } from "../../src/modules/operators/verified-candidate-selector";
@@ -34,8 +35,9 @@ async function main() {
   const projectRoot = process.cwd();
   const board = readClaimsBoard(projectRoot);
   const shells = await loadOperatorShells();
+  const registryEntries = getOperatorRegistry();
   const batches = buildShellBackfillBatches(shells).batches;
-  const candidateSelection = selectVerifiedCandidate(shells);
+  const candidateSelection = selectVerifiedCandidate(shells, registryEntries);
   const plan = planBackfillCoordinatorRun({
     board,
     batches,

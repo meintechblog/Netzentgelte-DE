@@ -1,4 +1,5 @@
 import { isExcludedTransmissionOperator } from "./operator-exclusions";
+import type { OperatorRegistryEntry } from "./registry";
 import type { OperatorShell } from "./shell-catalog";
 
 export type VerifiedCandidateStage = "queued" | "evidence-ready" | "verification-ready" | "blocked";
@@ -23,20 +24,27 @@ export type VerifiedCandidateSelection = {
   };
 };
 
-export function classifyVerifiedCandidate(shell: OperatorShell): VerifiedCandidate {
+export function classifyVerifiedCandidate(
+  shell: OperatorShell,
+  registryEntries: OperatorRegistryEntry[]
+): VerifiedCandidate {
   const blockedReasons = getBlockedReasons(shell);
-  const stage = getStage(shell, blockedReasons);
+  const registryEntry = registryEntries.find((entry) => entry.slug === shell.slug);
+  const stage = getStage(shell, blockedReasons, registryEntry);
 
   return {
     slug: shell.slug,
     operatorName: shell.operatorName,
     stage,
-    score: getStageScore(stage, shell),
+    score: getStageScore(stage, shell, registryEntry),
     blockedReasons
   };
 }
 
-export function selectVerifiedCandidate(shells: OperatorShell[]): VerifiedCandidateSelection {
+export function selectVerifiedCandidate(
+  shells: OperatorShell[],
+  registryEntries: OperatorRegistryEntry[] = []
+): VerifiedCandidateSelection {
   const relevant = shells
     .filter((shell) => shell.deprecatedStatus === "active")
     .filter(
@@ -50,7 +58,7 @@ export function selectVerifiedCandidate(shells: OperatorShell[]): VerifiedCandid
     )
     .filter((shell) => shell.reviewStatus !== "verified");
 
-  const candidates = relevant.map(classifyVerifiedCandidate);
+  const candidates = relevant.map((shell) => classifyVerifiedCandidate(shell, registryEntries));
   const blocked = candidates.filter((candidate) => candidate.stage === "blocked");
   const eligible = candidates
     .filter((candidate) => candidate.stage === "verification-ready" || candidate.stage === "evidence-ready")
@@ -69,24 +77,48 @@ export function selectVerifiedCandidate(shells: OperatorShell[]): VerifiedCandid
   };
 }
 
-function getStage(shell: OperatorShell, blockedReasons: string[]): VerifiedCandidateStage {
+function getStage(
+  shell: OperatorShell,
+  blockedReasons: string[],
+  registryEntry: OperatorRegistryEntry | undefined
+): VerifiedCandidateStage {
   if (blockedReasons.length > 0) {
     return "blocked";
   }
 
-  if (hasOfficialEvidence(shell) && shell.shellStatus === "published") {
+  if (registryEntry && !isRegistryVerificationReady(registryEntry)) {
+    return hasOfficialSource(shell) ? "evidence-ready" : "queued";
+  }
+
+  if (hasConcreteArtifactEvidence(shell) && shell.shellStatus === "published") {
     return "verification-ready";
   }
 
-  if (hasOfficialEvidence(shell)) {
+  if (hasOfficialSource(shell)) {
     return "evidence-ready";
   }
 
   return "queued";
 }
 
-function hasOfficialEvidence(shell: OperatorShell) {
-  return isUrl(shell.sourcePageUrl) && isUrl(shell.documentUrl) && shell.sourceStatus !== "missing";
+function hasOfficialSource(shell: OperatorShell) {
+  return isUrl(shell.sourcePageUrl) && shell.sourceStatus !== "missing";
+}
+
+function hasConcreteArtifactEvidence(shell: OperatorShell) {
+  if (!hasOfficialSource(shell) || !isUrl(shell.documentUrl)) {
+    return false;
+  }
+
+  return normalizeComparableUrl(shell.sourcePageUrl) !== normalizeComparableUrl(shell.documentUrl);
+}
+
+function isRegistryVerificationReady(entry: OperatorRegistryEntry) {
+  if (entry.currentTariff.reviewStatus === "verified") {
+    return false;
+  }
+
+  return entry.currentTariff.bands.length === 3 && entry.currentTariff.timeWindows.length > 0;
 }
 
 function getBlockedReasons(shell: OperatorShell) {
@@ -97,6 +129,10 @@ function getBlockedReasons(shell: OperatorShell) {
     reasons.push("Official evidence is explicitly marked as fiktiv.");
   }
 
+  if (haystack.includes("vorlaeufig") || haystack.includes("vorläufig")) {
+    reasons.push("Official evidence is explicitly marked as vorlaeufig.");
+  }
+
   return reasons;
 }
 
@@ -104,13 +140,29 @@ function isUrl(value: string | undefined) {
   return typeof value === "string" && /^https?:\/\//.test(value);
 }
 
-function getStageScore(stage: VerifiedCandidateStage, shell: OperatorShell) {
+function normalizeComparableUrl(value: string | undefined) {
+  if (!value) {
+    return "";
+  }
+
+  return value.replace(/\/+$/, "");
+}
+
+function getStageScore(
+  stage: VerifiedCandidateStage,
+  shell: OperatorShell,
+  registryEntry: OperatorRegistryEntry | undefined
+) {
   if (stage === "blocked") {
     return -1;
   }
 
   if (stage === "verification-ready") {
-    return 100 + (shell.tariffStatus === "partial" || shell.tariffStatus === "parsed" ? 10 : 0);
+    return (
+      100 +
+      (shell.tariffStatus === "partial" || shell.tariffStatus === "parsed" ? 10 : 0) +
+      (registryEntry ? 5 : 0)
+    );
   }
 
   if (stage === "evidence-ready") {

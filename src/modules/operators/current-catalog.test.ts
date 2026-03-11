@@ -157,8 +157,9 @@ describe("getSeedPublishedOperators", () => {
     const twsNetz = published.find((entry) => entry.slug === "tws-netz");
     const heidelbergNetze = published.find((entry) => entry.slug === "heidelberg-netze");
     const andernach = published.find((entry) => entry.slug === "stadtwerke-andernach-energie");
+    const badAibling = published.find((entry) => entry.slug === "stadtwerke-bad-aibling");
 
-    expect(published).toHaveLength(74);
+    expect(published).toHaveLength(75);
     expect(heidelbergNetze).toBeUndefined();
     expect(ewrNetz).toBeUndefined();
 
@@ -527,6 +528,45 @@ describe("getSeedPublishedOperators", () => {
           seasonLabel: "Q1-Q4 2026",
           bandKey: "HT",
           timeRangeLabel: "17:30-20:15"
+        })
+      ])
+    );
+    expect(badAibling).toMatchObject({
+      reviewStatus: "verified",
+      sourcePageUrl: "https://www.stadtwerke-bad-aibling.de/de/Strom/Stromnetz1/Netzzugang-Entgelte/",
+      documentUrl:
+        "https://www.stadtwerke-bad-aibling.de/de/Strom/Preisblatt-Netznutzung-ab01012026-endgueltig.pdf",
+      bands: expect.arrayContaining([
+        expect.objectContaining({
+          key: "NT",
+          valueCtPerKwh: "3.02"
+        }),
+        expect.objectContaining({
+          key: "ST",
+          valueCtPerKwh: "7.54"
+        }),
+        expect.objectContaining({
+          key: "HT",
+          valueCtPerKwh: "10.90"
+        })
+      ])
+    });
+    expect(badAibling?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q1-Q4 2026",
+          bandKey: "NT",
+          timeRangeLabel: "00:45-05:15"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q1-Q4 2026",
+          bandKey: "ST",
+          timeRangeLabel: "Alle restlichen Zeiten"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q1-Q4 2026",
+          bandKey: "HT",
+          timeRangeLabel: "17:00-19:00"
         })
       ])
     );

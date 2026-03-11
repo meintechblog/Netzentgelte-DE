@@ -13,13 +13,13 @@
     "test:watch": "vitest",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node scripts/db/migrate.mjs",
-    "ingest:run": "tsx scripts/ingest/run-ingest.ts",
-    "registry:import": "tsx scripts/registry/import-registry.ts",
-    "build:shell-registry": "tsx scripts/registry/build-vnbdigital-shell-registry.ts",
-    "shells:import": "tsx scripts/registry/import-shell-registry.ts",
-    "sources:refresh": "tsx scripts/sources/refresh-sources.ts",
-    "sources:audit": "tsx scripts/sources/refresh-sources.ts --mode audit",
-    "export:public": "tsx scripts/public/export-public-snapshot.ts"
+    "ingest:run": "node --import tsx scripts/ingest/run-ingest.ts",
+    "registry:import": "node --import tsx scripts/registry/import-registry.ts",
+    "build:shell-registry": "node --import tsx scripts/registry/build-vnbdigital-shell-registry.ts",
+    "shells:import": "node --import tsx scripts/registry/import-shell-registry.ts",
+    "sources:refresh": "node --import tsx scripts/sources/refresh-sources.ts",
+    "sources:audit": "node --import tsx scripts/sources/refresh-sources.ts --mode audit",
+    "export:public": "node --import tsx scripts/public/export-public-snapshot.ts"
   },
   "dependencies": {
     "d3-geo": "^3.1.1",

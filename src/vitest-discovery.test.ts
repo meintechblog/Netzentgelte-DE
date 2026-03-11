@@ -7,5 +7,6 @@ describe("vitest config", () => {
     const configSource = readFileSync(join(process.cwd(), "vitest.config.ts"), "utf8");
 
     expect(configSource).toContain('".worktrees/**"');
+    expect(configSource).toContain('".pnpm-store/**"');
   });
 });

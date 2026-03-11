@@ -144,6 +144,8 @@ Persistierte `blocked`-Zustaende sind nie blind zu uebernehmen. Jeder Poll muss 
 
 Die Koordinator-Laufzeitdaten (`docs/coordination/claims-board.*`, `docs/coordination/dispatches/`, `docs/coordination/agent-learnings/`) und der exportierte Public-Snapshot unter `public/netzentgelte/` sind lokale Betriebsartefakte. Sie bleiben aus Git heraus, werden pro Lauf frisch erzeugt und nach abgeschlossener Integration zusammen mit temporaeren Batch-Worktrees aufgeraeumt.
 
+Automation-faehige TypeScript-Skripte werden ueber `node --import tsx ...` aufgerufen, nicht ueber das `tsx`-CLI. Der CLI-Pfad versucht in manchen Scheduler-Sandboxes eine IPC-Pipe zum Parent-Prozess zu oeffnen und kann dabei mit `listen EPERM` scheitern.
+
 Pflicht-Deploy-Reihenfolge bei gruener Verifikation und echten integrierten Aenderungen:
 
 1. Git commit + push

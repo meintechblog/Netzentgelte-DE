@@ -9,6 +9,7 @@ export default defineConfig({
     setupFiles: ["./vitest.setup.ts"],
     exclude: [
       "**/node_modules/**",
+      ".pnpm-store/**",
       "**/dist/**",
       "**/cypress/**",
       "**/.{idea,git,cache,output,temp}/**",

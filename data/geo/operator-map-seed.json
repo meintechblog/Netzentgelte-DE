@@ -1,0 +1,227 @@
+[
+  {
+    "slug": "westnetz",
+    "mapRank": 6,
+    "coverageKind": "multi-zone",
+    "coveragePrecision": "regional",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["05", "07"],
+    "anchors": [
+      { "longitude": 6.776, "latitude": 51.227, "radiusKm": 105 },
+      { "longitude": 6.638, "latitude": 49.756, "radiusKm": 55 }
+    ]
+  },
+  {
+    "slug": "e-dis-netz",
+    "mapRank": 7,
+    "coverageKind": "multi-zone",
+    "coveragePrecision": "regional",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["12", "13"],
+    "anchors": [
+      { "longitude": 13.064, "latitude": 52.4, "radiusKm": 85 },
+      { "longitude": 13.261, "latitude": 53.557, "radiusKm": 80 }
+    ]
+  },
+  {
+    "slug": "avacon-netz",
+    "mapRank": 8,
+    "coverageKind": "multi-zone",
+    "coveragePrecision": "regional",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["03", "15"],
+    "anchors": [
+      { "longitude": 10.526, "latitude": 52.267, "radiusKm": 95 },
+      { "longitude": 11.629, "latitude": 52.121, "radiusKm": 70 }
+    ]
+  },
+  {
+    "slug": "bayernwerk-netz",
+    "mapRank": 9,
+    "coverageKind": "state-zone",
+    "coveragePrecision": "regional",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["09"],
+    "anchors": [{ "longitude": 12.101, "latitude": 49.016, "radiusKm": 145 }]
+  },
+  {
+    "slug": "netze-bw",
+    "mapRank": 10,
+    "coverageKind": "state-zone",
+    "coveragePrecision": "regional",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["08"],
+    "anchors": [{ "longitude": 9.182, "latitude": 48.775, "radiusKm": 140 }]
+  },
+  {
+    "slug": "n-ergie-netz",
+    "mapRank": 11,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["09"],
+    "anchors": [{ "longitude": 11.078, "latitude": 49.452, "radiusKm": 52 }]
+  },
+  {
+    "slug": "lew-verteilnetz",
+    "mapRank": 12,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["09"],
+    "anchors": [{ "longitude": 10.898, "latitude": 48.371, "radiusKm": 46 }]
+  },
+  {
+    "slug": "mainzer-netze",
+    "mapRank": 13,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["07", "06"],
+    "anchors": [{ "longitude": 8.247, "latitude": 49.992, "radiusKm": 28 }]
+  },
+  {
+    "slug": "mvv-netze",
+    "mapRank": 14,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["08"],
+    "anchors": [{ "longitude": 8.467, "latitude": 49.489, "radiusKm": 26 }]
+  },
+  {
+    "slug": "stromnetz-berlin",
+    "mapRank": 15,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["11"],
+    "anchors": [{ "longitude": 13.405, "latitude": 52.52, "radiusKm": 24 }]
+  },
+  {
+    "slug": "swm-infrastruktur",
+    "mapRank": 16,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["09"],
+    "anchors": [{ "longitude": 11.582, "latitude": 48.135, "radiusKm": 24 }]
+  },
+  {
+    "slug": "wesernetz-bremen",
+    "mapRank": 17,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["04"],
+    "anchors": [{ "longitude": 8.8017, "latitude": 53.0793, "radiusKm": 15 }]
+  },
+  {
+    "slug": "wesernetz-bremerhaven",
+    "mapRank": 18,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["04"],
+    "anchors": [{ "longitude": 8.5809, "latitude": 53.5396, "radiusKm": 12 }]
+  },
+  {
+    "slug": "stadtwerke-schwaebisch-hall",
+    "mapRank": 19,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["08"],
+    "anchors": [{ "longitude": 9.739, "latitude": 49.112, "radiusKm": 28 }]
+  },
+  {
+    "slug": "mittelhessen-netz",
+    "mapRank": 20,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["06"],
+    "anchors": [{ "longitude": 8.67, "latitude": 50.58, "radiusKm": 45 }]
+  },
+  {
+    "slug": "netze-odr",
+    "mapRank": 21,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["08"],
+    "anchors": [{ "longitude": 10.09, "latitude": 48.84, "radiusKm": 40 }]
+  },
+  {
+    "slug": "stadtwerke-ingolstadt-netze",
+    "mapRank": 22,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["09"],
+    "anchors": [{ "longitude": 11.43, "latitude": 48.77, "radiusKm": 25 }]
+  },
+  {
+    "slug": "nordnetz",
+    "mapRank": 23,
+    "coverageKind": "state-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["01"],
+    "anchors": [{ "longitude": 9.43, "latitude": 54.78, "radiusKm": 70 }]
+  },
+  {
+    "slug": "heidelberg-netze",
+    "mapRank": 24,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["08"],
+    "anchors": [{ "longitude": 8.69, "latitude": 49.4, "radiusKm": 22 }]
+  },
+  {
+    "slug": "ewr-netz",
+    "mapRank": 25,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["07"],
+    "anchors": [{ "longitude": 8.36, "latitude": 49.63, "radiusKm": 35 }]
+  },
+  {
+    "slug": "geranetz",
+    "mapRank": 26,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["16"],
+    "anchors": [{ "longitude": 12.08, "latitude": 50.88, "radiusKm": 25 }]
+  },
+  {
+    "slug": "allgaeunetz",
+    "mapRank": 27,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["09"],
+    "anchors": [{ "longitude": 10.18, "latitude": 47.73, "radiusKm": 30 }]
+  },
+  {
+    "slug": "e-netz-suedhessen",
+    "mapRank": 28,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["06"],
+    "anchors": [{ "longitude": 8.65, "latitude": 49.87, "radiusKm": 30 }]
+  },
+  {
+    "slug": "tws-netz",
+    "mapRank": 29,
+    "coverageKind": "metro-zone",
+    "coveragePrecision": "approximate",
+    "geometrySourceLabel": "Kuratiertes Betreiber-Slice auf WGS84-Ankern 2026-03-09",
+    "stateHints": ["08"],
+    "anchors": [{ "longitude": 9.61, "latitude": 47.78, "radiusKm": 24 }]
+  }
+]

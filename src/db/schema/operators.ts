@@ -5,6 +5,8 @@ export const operators = pgTable("operators", {
   slug: text("slug").notNull().unique(),
   name: text("name").notNull(),
   countryCode: varchar("country_code", { length: 2 }).notNull().default("DE"),
+  regionLabel: text("region_label"),
+  websiteUrl: text("website_url"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow()
 });

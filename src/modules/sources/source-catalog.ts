@@ -9,7 +9,7 @@ export type BuildSourceRecordInput = {
   operatorSlug: string;
   sourceUrl: string;
   updateStrategy: keyof typeof UPDATE_STRATEGY_REFRESH_DAYS | string;
-  documentType?: "pdf" | "html" | "csv" | "json";
+  documentType?: "pdf" | "html" | "csv" | "json" | "xlsx";
   providerHint?: string;
 };
 
@@ -42,6 +42,10 @@ function detectDocumentType(sourceUrl: string) {
 
   if (normalizedUrl.endsWith(".json")) {
     return "json";
+  }
+
+  if (normalizedUrl.endsWith(".xlsx")) {
+    return "xlsx";
   }
 
   return "html";

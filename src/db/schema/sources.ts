@@ -8,6 +8,7 @@ export const sourceCatalog = pgTable("source_catalog", {
     .notNull()
     .references(() => operators.id, { onDelete: "cascade" }),
   sourceSlug: text("source_slug").notNull().unique(),
+  pageUrl: text("page_url"),
   sourceUrl: text("source_url").notNull(),
   documentType: text("document_type").notNull(),
   providerHint: text("provider_hint"),
@@ -26,6 +27,7 @@ export const sourceSnapshots = pgTable("source_snapshots", {
   sourceCatalogId: uuid("source_catalog_id")
     .notNull()
     .references(() => sourceCatalog.id, { onDelete: "cascade" }),
+  artifactKind: text("artifact_kind").notNull().default("document"),
   fetchedAt: timestamp("fetched_at", { withTimezone: true }).notNull().defaultNow(),
   pageUrl: text("page_url"),
   fileUrl: text("file_url"),

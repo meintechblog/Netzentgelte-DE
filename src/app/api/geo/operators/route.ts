@@ -1,9 +1,9 @@
-import { serializeOperatorGeo } from "../../../../lib/api/serializers";
-import { runIngest } from "../../../../modules/ingest/runner";
+import { serializeRegistryOperatorGeo } from "../../../../lib/api/serializers";
+import { loadPublishedOperators } from "../../../../modules/operators/current-catalog";
 
 export async function GET(request: Request) {
   void request;
-  const result = await runIngest("demo-operator");
+  const registry = await loadPublishedOperators();
 
-  return Response.json(serializeOperatorGeo(result));
+  return Response.json(serializeRegistryOperatorGeo(registry));
 }

@@ -1,9 +1,9 @@
-import { serializeCurrentTariffs } from "../../../../lib/api/serializers";
-import { runIngest } from "../../../../modules/ingest/runner";
+import { serializeCurrentRegistryTariffs } from "../../../../lib/api/serializers";
+import { loadPublishedOperators } from "../../../../modules/operators/current-catalog";
 
 export async function GET(request: Request) {
   void request;
-  const result = await runIngest("demo-operator");
+  const registry = await loadPublishedOperators();
 
-  return Response.json(serializeCurrentTariffs(result));
+  return Response.json(serializeCurrentRegistryTariffs(registry));
 }

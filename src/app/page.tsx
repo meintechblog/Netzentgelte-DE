@@ -1,12 +1,30 @@
-import { OperatorMap } from "../components/operator-map";
-import { TariffTable } from "../components/tariff-table";
-import { getDemoMapFeatures } from "../lib/maps/geojson";
-import { getDemoTariffRows } from "../lib/view-models/tariffs";
+import { OperatorExplorer } from "../components/operator-explorer";
+import { withBasePath } from "../lib/base-path";
+import { getRegistryMapFeatures, projectGermanyMap } from "../lib/maps/geojson";
+import { loadPublicSnapshotFromDisk } from "../lib/public-snapshot-loader";
+import {
+  getComplianceRuleSetDisplay,
+  getRegistryTariffRows,
+  mergeTariffRowsWithCurrentSources,
+  mergeTariffRowsWithEndcustomerCatalog
+} from "../lib/view-models/tariffs";
+import { getActiveModul3RuleSet } from "../modules/compliance/rule-catalog";
+import {
+  getPublishedOperatorSnapshotStats,
+  loadPublishedOperatorSnapshot
+} from "../modules/operators/current-catalog";
+import { loadCurrentSources } from "../modules/sources/current-sources";
+import { loadEndcustomerTariffCatalog } from "../modules/tariffs/endcustomer-catalog";
 
-const rows = getDemoTariffRows();
-const mapFeatures = getDemoMapFeatures();
+export default async function HomePage() {
+  const exportedSnapshot = await loadPublicSnapshotFromDisk();
+  const mergedRows = exportedSnapshot ? exportedSnapshot.operators : await loadRuntimeTariffRows();
+  const mapScene = exportedSnapshot ? exportedSnapshot.map : await loadRuntimeMapScene();
+  const complianceRuleSet = exportedSnapshot
+    ? exportedSnapshot.compliance
+    : getComplianceRuleSetDisplay(getActiveModul3RuleSet());
+  const stats = exportedSnapshot ? buildSnapshotStats(exportedSnapshot) : await loadRuntimeStats();
 
-export default function HomePage() {
   return (
     <main className="dashboard-shell">
       <section className="dashboard-hero">
@@ -14,34 +32,49 @@ export default function HomePage() {
         <h1>Netzentgelte Deutschland</h1>
         <p>
           Vergleichbare Netzentgelte, nachvollziehbare Quellen und ein klarer
-          Human-in-the-loop-Pruefpfad fuer jede gezeigte Zahl.
+          Human-in-the-loop-Prüfpfad. Öffentlich erscheinen nur verifizierte und
+          integritätsgeprüfte Betreiber.
         </p>
         <div className="hero-actions">
           <a className="hero-button" href="#tarifmatrix">
-            Tarifmatrix oeffnen
+            Tarifmatrix öffnen
           </a>
-          <a className="hero-button-secondary" href="/api/tariffs/current">
-            API pruefen
-          </a>
+          {exportedSnapshot ? (
+            <span className="hero-button-secondary" aria-label={`Datenstand ${exportedSnapshot.generatedAt}`}>
+              {`Datenstand ${exportedSnapshot.generatedAt.slice(0, 10)}`}
+            </span>
+          ) : (
+            <a className="hero-button-secondary" href={withBasePath("/api/tariffs/current")}>
+              API prüfen
+            </a>
+          )}
         </div>
       </section>
 
       <div className="dashboard-grid">
+        <OperatorExplorer complianceRuleSet={complianceRuleSet} mapScene={mapScene} rows={mergedRows} />
+
         <section className="stats-grid" aria-label="Kennzahlen">
           <article className="stat-card">
             <div className="stat-label">Erfasste Betreiber</div>
-            <div className="stat-value">3</div>
-            <div className="stat-footnote">Demo-Slice fuer Pipeline, UI und API</div>
+            <div className="stat-value">{stats.operatorCount}</div>
+            <div className="stat-footnote">Kuratiertes Startregister aus offiziellen Betreiberquellen</div>
           </article>
           <article className="stat-card">
             <div className="stat-label">Nachweise</div>
-            <div className="stat-value">3 PDFs</div>
-            <div className="stat-footnote">Jeder Datensatz bleibt zur Quelle verlinkt</div>
+            <div className="stat-value">{stats.sourceDocumentCount} Dokumente</div>
+            <div className="stat-footnote">Nur veröffentlichte Betreiber mit belastbarem Prüfpfad</div>
           </article>
           <article className="stat-card">
             <div className="stat-label">Review Status</div>
-            <div className="stat-value">2/3</div>
-            <div className="stat-footnote">Gepruefte Werte sind im UI sichtbar markiert</div>
+            <div className="stat-value">
+              {stats.verifiedCount}/{stats.operatorCount}
+            </div>
+            <div className="stat-footnote">
+              {stats.withheldCount > 0
+                ? `${stats.withheldCount} Betreiber bleiben bis zur Vollprüfung verborgen`
+                : "Alle sichtbaren Betreiber bestehen die Public-Gates"}
+            </div>
           </article>
         </section>
 
@@ -49,10 +82,10 @@ export default function HomePage() {
           <div className="panel-header">
             <div>
               <span className="section-eyebrow">Darstellungsmodi</span>
-              <h2 id="darstellungsmodi">Tabelle zuerst, Karte direkt vorbereitet</h2>
+              <h2 id="darstellungsmodi">Tabelle und Karte auf demselben Quellenregister</h2>
               <p>
-                Die Kartenansicht folgt im naechsten Schritt auf derselben Datenbasis und
-                mit denselben Provenance-Feldern.
+                Die Weboberfläche zeigt nur verifizierte und integritätsgeprüfte Betreiber
+                mit offiziellen Dokumentlinks und Reviewpfad.
               </p>
             </div>
           </div>
@@ -60,51 +93,50 @@ export default function HomePage() {
             <article className="toggle-card active">
               <span className="surface-chip">Aktiv</span>
               <h3>Tarifmatrix</h3>
-              <p>Data-dense Tabelle mit Quellenlink, Gueltigkeit und Review-Status.</p>
+              <p>Modul-3-Bänder oder klarer Review-Fallback direkt neben Quellseite und PDF.</p>
             </article>
             <article className="toggle-card active">
               <span className="surface-chip">Interaktiv</span>
               <h3>Interaktive Karte</h3>
-              <p>Hover-Details fuer Netzgebiete mit direktem Link zu PDF und Rohwert.</p>
+              <p>Hover-Details für Betreiberregionen mit direktem Sprung zur Quellseite.</p>
             </article>
           </div>
-        </section>
-
-        <section className="content-panel" aria-labelledby="kartenstufe">
-          <div className="panel-header">
-            <div>
-              <span className="section-eyebrow">Raumliche Lesart</span>
-              <h2 id="kartenstufe">Interaktive Netzgebiets-Stufe</h2>
-              <p>
-                Noch abstrakt, aber bereits mit Hover-Overlay, Review-Kontext und direkter
-                Quellenverlinkung.
-              </p>
-            </div>
-            <div className="panel-actions">
-              <span className="surface-chip">Map hover</span>
-              <span className="surface-chip">Source trace</span>
-            </div>
-          </div>
-          <OperatorMap features={mapFeatures} />
-        </section>
-
-        <section className="content-panel" aria-labelledby="tarifmatrix" id="tarifmatrix">
-          <div className="panel-header">
-            <div>
-              <span className="section-eyebrow">Nachvollziehbare Daten</span>
-              <h2>Aktuelle Tarifmatrix</h2>
-              <p>
-                Jeder Tabellenwert bleibt mit Quell-PDF und Review-Markierung sichtbar.
-              </p>
-            </div>
-            <div className="panel-actions">
-              <span className="surface-chip">Light mode · WCAG AA</span>
-              <span className="surface-chip">Blue / Amber Dashboard</span>
-            </div>
-          </div>
-          <TariffTable rows={rows} />
         </section>
       </div>
     </main>
   );
+}
+
+async function loadRuntimeTariffRows() {
+  const operatorSnapshot = await loadPublishedOperatorSnapshot();
+  const endcustomerCatalog = await loadEndcustomerTariffCatalog();
+  const currentSources = await loadCurrentSources();
+  const publishedOperatorSlugs = new Set(operatorSnapshot.operators.map((entry) => entry.slug));
+  const rows = mergeTariffRowsWithEndcustomerCatalog(
+    getRegistryTariffRows(operatorSnapshot.operators),
+    endcustomerCatalog
+  );
+  const publicSources = currentSources.filter((row) => publishedOperatorSlugs.has(row.operatorSlug));
+
+  return mergeTariffRowsWithCurrentSources(rows, publicSources);
+}
+
+async function loadRuntimeMapScene() {
+  const operatorSnapshot = await loadPublishedOperatorSnapshot();
+  return projectGermanyMap(getRegistryMapFeatures(operatorSnapshot.operators));
+}
+
+async function loadRuntimeStats() {
+  const operatorSnapshot = await loadPublishedOperatorSnapshot();
+  return getPublishedOperatorSnapshotStats(operatorSnapshot);
+}
+
+function buildSnapshotStats(snapshot: NonNullable<Awaited<ReturnType<typeof loadPublicSnapshotFromDisk>>>) {
+  return {
+    operatorCount: snapshot.operatorCount,
+    sourceDocumentCount: snapshot.sources.length,
+    verifiedCount: snapshot.operators.filter((operator) => operator.reviewStatus === "verified").length,
+    totalOperatorCount: snapshot.operatorCount,
+    withheldCount: 0
+  };
 }

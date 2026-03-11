@@ -1,0 +1,155 @@
+# Hetzner Production Rollout
+
+## Zielbild
+
+- Entwicklung, Backfills, Compliance und Verifikation laufen auf `CT128` unter `/root/netzentgelte-de`.
+- Oeffentliche Auslieferung auf `kigenerated.de` ist eine statische Public-Version.
+- Finale Haupt-URL ist `https://kigenerated.de/netzentgelte/`.
+- Bestehende App `https://kigenerated.de/prince2-vorbereitung` bleibt unberuehrt.
+- Shared Hosting bekommt keinen zweiten Node-Prozess fuer Netzentgelte, sondern nur Dateien.
+- Die kanonischen oeffentlichen Einstiegspunkte sind:
+  - `https://kigenerated.de/`
+  - `https://kigenerated.de/netzentgelte/`
+  - `https://kigenerated.de/prince2-vorbereitung`
+
+## Warum dieses Modell
+
+- Hetzner Webhosting L laesst sich fuer die bestehende `prince2`-App nutzen, ist aber unzuverlaessig fuer einen zweiten parallelen Node-Subpath.
+- Die Public-App ist read-only und kann aus einem exportierten Snapshot gebaut werden.
+- Die produktive Daten- und Job-Last bleibt damit auf `CT128`.
+
+## Finales Public-Layout auf dem Hosting
+
+```text
+/usr/www/users/bpjwjy/netzentgelte/
+  index.html
+  404.html
+  _next/static/...
+  data/netzentgelte/meta.json
+  data/netzentgelte/snapshot.json
+
+/usr/www/users/bpjwjy/public_html/netzentgelte/
+  index.html
+  404.html
+  _next/static/...
+  data/netzentgelte/meta.json
+  data/netzentgelte/snapshot.json
+```
+
+Die doppelte Ablage ist Absicherung gegen die undokumentierte Frontdoor-/Docroot-Variante des Webhostings.
+
+## Build auf CT128
+
+Vor dem Build:
+
+```bash
+ssh proxi1 'pct exec 128 -- bash -lc "
+  cd /root/netzentgelte-de &&
+  find . -name \"._*\" -type f -delete
+"'
+```
+
+Public-Build:
+
+```bash
+ssh proxi1 'pct exec 128 -- bash -lc "
+  cd /root/netzentgelte-de &&
+  NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm export:public &&
+  NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm typecheck &&
+  NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm test &&
+  NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm build
+"'
+```
+
+Alternativ direkt aus dem aktiven Worktree:
+
+```bash
+cd /Users/hulki/projects/netzentgelte-de/.worktrees/endcustomer-backfill-batch
+NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm export:public
+NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm build
+```
+
+## Deploy auf `www438.your-server.de`
+
+Die Zielpfade sind per Domain-SSH erreichbar:
+
+```bash
+ssh -p 222 bpjwjy@www438.your-server.de
+```
+
+Artefakte ausrollen:
+
+```bash
+ssh -p 222 bpjwjy@www438.your-server.de '
+  mkdir -p \
+    /usr/www/users/bpjwjy/netzentgelte/_next/static \
+    /usr/www/users/bpjwjy/netzentgelte/data/netzentgelte \
+    /usr/www/users/bpjwjy/public_html/netzentgelte/_next/static \
+    /usr/www/users/bpjwjy/public_html/netzentgelte/data/netzentgelte
+'
+
+scp -P 222 .next/server/app/index.html \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/netzentgelte/index.html
+scp -P 222 .next/server/app/_not-found.html \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/netzentgelte/404.html
+scp -P 222 public/netzentgelte/meta.json public/netzentgelte/snapshot.json \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/netzentgelte/data/netzentgelte/
+rsync -az --delete -e 'ssh -p 222' .next/static/ \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/netzentgelte/_next/static/
+
+scp -P 222 .next/server/app/index.html \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/public_html/netzentgelte/index.html
+scp -P 222 .next/server/app/_not-found.html \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/public_html/netzentgelte/404.html
+scp -P 222 public/netzentgelte/meta.json public/netzentgelte/snapshot.json \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/public_html/netzentgelte/data/netzentgelte/
+rsync -az --delete -e 'ssh -p 222' .next/static/ \
+  bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/public_html/netzentgelte/_next/static/
+```
+
+Wiederverwendbarer Projektpfad:
+
+```bash
+cd /Users/hulki/projects/netzentgelte-de/.worktrees/endcustomer-backfill-batch
+bash scripts/public/deploy-public-static.sh
+```
+
+Der Scriptpfad:
+
+- baut den Public-Snapshot neu
+- erzeugt `.deploy-public/`
+- publiziert in alle bekannten Hetzner-Zielpfade
+- verifiziert danach `https://kigenerated.de/netzentgelte/`
+
+## Altpfade
+
+- Alte aktive Haupt-URL: `https://kigenerated.de/prince2-vorbereitung/netzentgelte/`
+- Neue Haupt-URL: `https://kigenerated.de/netzentgelte/`
+- Root `https://kigenerated.de/` bleibt die App-Uebersicht mit Links auf beide Webapps.
+
+Der verschachtelte Altpfad sollte nur noch per Redirect oder statischer Hinweis-Seite auf die neue Haupt-URL zeigen.
+Auf dem aktuellen Shared-Hosting-Setup wird diese Kanonisierung clientseitig in der Netzentgelte-HTML erzwungen, weil `/netzentgelte/` und `/prince2-vorbereitung/netzentgelte/` vom Hosting auf dieselbe statische Seite fallen koennen.
+
+## Verifikation
+
+```bash
+curl -I https://kigenerated.de/netzentgelte/
+curl -I https://kigenerated.de/netzentgelte/_next/static/chunks/4f89753f-1e7502e145cbdcac.js
+curl -I https://kigenerated.de/prince2-vorbereitung
+curl -L https://kigenerated.de/netzentgelte/ | grep -i '<title>Netzentgelte Deutschland'
+```
+
+Browser-Check:
+
+- URL endet auf `/netzentgelte/`
+- Titel `Netzentgelte Deutschland`
+- keine Asset-404s ausser optional `favicon.ico`
+- `prince2-vorbereitung` bleibt funktionsfaehig
+
+## Wichtige Lessons Learned
+
+- Auf diesem Hosting-Paket ist ein zusaetzlicher Node-Subpath neben `prince2-vorbereitung` nicht belastbar.
+- `/netzentgelte/` funktioniert als statischer Webspace-Pfad.
+- Die eigentliche Anwendungslogik gehoert auf `CT128`; das Hosting liefert nur den Snapshot aus.
+- Fuer kuenftige Webapps unter `kigenerated.de/<projektname>/` zuerst pruefen, ob ein statischer Export moeglich ist. Das ist auf diesem Setup der schnellste und stabilste Weg.
+- Fuer kuenftige Deploys nach `kigenerated.de/<projektname>/` zuerst ein projektspezifisches Static-Deploy-Script anlegen und von Automation oder CI aufrufen, statt den Shared-Host wie eine zweite Runtime zu behandeln.

@@ -4,6 +4,10 @@
 
 Neue oder geaenderte Preisinformationen fuer `§14a Modell 3` nachvollziehbar nachziehen, ohne die Herkunft der Daten zu verlieren.
 
+Fuer das kuratierte Filling neuer oder unvollstaendiger Betreiber siehe auch:
+
+- [netzbetreiber-filling.md](/Users/hulki/projects/netzentgelte-de/.worktrees/bootstrap/docs/runbooks/netzbetreiber-filling.md)
+
 ## Core Rule
 
 Kein publizierter Wert ohne gespeicherte Herkunft.
@@ -28,6 +32,19 @@ Die aktuelle Startreihenfolge ist:
 2. VNBdigital fuer Betreiberprofile und Links auf die Betreiber-Webseiten.
 3. Betreiber-Webseiten und PDFs als eigentliche Preisquellen.
 
+Der aktuell kuratierte Start-Slice liegt in:
+
+- [operators.seed.json](/Users/hulki/projects/netzentgelte-de/.worktrees/bootstrap/data/source-registry/operators.seed.json)
+
+Jeder Seed-Eintrag fuehrt bereits:
+
+- `sourcePageUrl`
+- `documentUrl`
+- `checkedAt`
+- `validFrom`
+- `reviewStatus`
+- manuell kuratierte `NT` / `ST` / `HT`-Werte, falls sicher extrahiert
+
 ## Refresh Ablauf
 
 1. Aktuelle Betreiberliste gegen BNetzA/MaStR aktualisieren.
@@ -39,6 +56,40 @@ Die aktuelle Startreihenfolge ist:
 7. Werte mit `human_review_status = pending` markieren.
 8. Im UI Rohwert, PDF, Quellseite und Vergleich zum letzten Stand pruefen.
 9. Nach Sichtpruefung auf `verified` setzen.
+
+## Operativer CLI-Pfad
+
+Refresh aller currently catalogued sources:
+
+```bash
+pnpm sources:refresh
+```
+
+Live-Audit aller currently catalogued sources mit Statusdiagnosen und Snapshot-Persistenz bei Erfolg:
+
+```bash
+pnpm sources:audit
+```
+
+Refresh einer konkreten Quelle:
+
+```bash
+pnpm sources:refresh --source-slug netze-bw-netze-bw-14a-2026
+```
+
+Live-Audit einer konkreten Quelle:
+
+```bash
+pnpm sources:audit --source-slug netze-bw-netze-bw-14a-2026
+```
+
+Erwartetes Ergebnis:
+
+- neues Artefakt unter `data/artifacts/<source-slug>/<date>/...`
+- neuer Datensatz in `source_snapshots`
+- `last_checked_at` und `last_successful_at` in `source_catalog` aktualisiert
+- Audit-Eintrag in `ingest_runs`
+- bei Audit-Läufen zusaetzlich Statuszaehler fuer `ok`, `warning` und `blocked`
 
 ## Human In The Loop
 

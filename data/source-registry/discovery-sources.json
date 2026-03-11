@@ -76,5 +76,483 @@
       "operator names in pdf",
       "planungsregion mapping"
     ]
+  },
+  {
+    "id": "netze-bw-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Netze BW GmbH",
+    "title": "Neuregelung §14a EnWG / Netzentgelte Strom 2026",
+    "url": "https://www.netze-bw.de/neuregelung-14a-enwg",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für die §14a-EnWG-Neuregelung.",
+      "Das 2026er PDF ist als endgültige Preisdatei veröffentlicht und führt Modul-3-Zeitfenster in einer Quartalsmatrix.",
+      "Für Refreshes sollten die Quartalsspalten auf identische oder geänderte Uhrzeiten geprüft werden."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quarter matrix",
+      "time-window quote snippets"
+    ]
+  },
+  {
+    "id": "bayernwerk-netz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Bayernwerk Netz GmbH",
+    "title": "Netzentgelte für unser Stromnetz 2026",
+    "url": "https://mir.bayernwerk-netz.de/de/bayernwerk-netz-gmbh/netzinformation/netzentgelte/netzentgelte-strom/netzentgelte-fuer-unser-stromnetz.html",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für Netzentgelte Strom.",
+      "Das 2026er Preisblatt zeigt Modul 3 mit saisonaler Differenz zwischen Q1/Q4 und Q2/Q3.",
+      "Für Refreshes sollten insbesondere die Volltag-ST-Phasen in Q1 und Q4 gegen die Sommerquartale verglichen werden."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quarter matrix",
+      "time-window quote snippets"
+    ]
+  },
+  {
+    "id": "westnetz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Westnetz GmbH",
+    "title": "Netzentgelte Strom / Preisblätter 01.01.2026",
+    "url": "https://www.westnetz.de/de/ueber-westnetz/unser-netz/netzentgelte-strom.html",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für Netzentgelte Strom.",
+      "Das PDF formuliert die Modul-3-Zeitfenster direkt als tägliche Uhrzeiten für NT, ST und HT.",
+      "Für Refreshes reicht ein gezielter Vergleich der Preisblatt-6-Zeilen für die täglichen Zeitfenster."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "preisblatt 6 modul-3 lines",
+      "time-window quote snippets"
+    ]
+  },
+  {
+    "id": "wesernetz-bremen-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "wesernetz Bremen GmbH",
+    "title": "Preisblatt Strom §14a EnWG Bremen 2026",
+    "url": "https://www.wesernetz.de/fuer-partner/energielieferanten/stromnetz/entgelte-hb-bhv",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Entgeltseite mit direktem Dokumentlink für Bremen.",
+      "Das Preisblatt nennt nur zwei explizite Zeitfenster und fasst den Rest als Standardtarif zusammen.",
+      "Für Refreshes muss geprüft werden, ob aus 'alle restlichen Zeiten' später explizite Uhrzeiten werden."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "time-window quote snippets",
+      "human review note for residual standard window"
+    ]
+  },
+  {
+    "id": "wesernetz-bremerhaven-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "wesernetz Bremerhaven GmbH",
+    "title": "Preisblatt Strom §14a EnWG Bremerhaven 2026",
+    "url": "https://www.wesernetz.de/fuer-partner/energielieferanten/stromnetz/entgelte-hb-bhv",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Entgeltseite mit separatem 2026er Dokument für Bremerhaven.",
+      "Wie in Bremen nennt das Preisblatt zwei explizite Zeitfenster und einen Restblock für Standardtarif.",
+      "Für Refreshes muss der HT-Block gegen Bremen separat kontrolliert werden, da die Uhrzeit abweicht."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "time-window quote snippets",
+      "human review note for residual standard window"
+    ]
+  },
+  {
+    "id": "avacon-netz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Avacon Netz GmbH",
+    "title": "Netzentgelte Strom 2026 / Preisblätter",
+    "url": "https://www.avacon-netz.de/de/avacon-netz/netzinformation/netzentgelte/netzentgelte-strom.html",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für Netzentgelte Strom.",
+      "Das PDF 'Preisblaetter_AVANG_Strom_01.01.2026.pdf' enthält das Preisblatt für steuerbare Verbrauchseinrichtungen mit Modul-3-Werten.",
+      "Die Betreiberseite veröffentlicht die endgültigen Netzentgelte 2026 mit Stand 10.12.2025.",
+      "Der aktuell gespeicherte Quellbeleg ist aber weiter nur das PDF mit Vorbehaltslogik; deshalb bleibt Avacon bis zum Mitspeichern des page-level Finalitätsbelegs pending.",
+      "Für einen späteren Upgrade auf verified muessen HTML-Snapshot oder expliziter Seitenquote gemeinsam mit dem PDF persistiert werden."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quote snippets"
+    ]
+  },
+  {
+    "id": "n-ergie-netz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "N-ERGIE Netz GmbH",
+    "title": "Netznutzung Strom / Preisblatt 6a 2026",
+    "url": "https://www.n-ergie-netz.de/n-ergie-netz/veroeffentlichungen/netznutzung/netznutzung-strom",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für Netznutzung Strom.",
+      "Das PDF 'N_Preisblatt6a_steuerbare_Verbrauchseinrichtung_ab2024_end_Neu.pdf' ist besonders parserfreundlich, weil Modul 1/2/3 direkt separat dargestellt werden.",
+      "Stand laut Recherche: 16.12.2025."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "preisblatt 6a pdf",
+      "pdf hash",
+      "modul-3 raw lines"
+    ]
+  },
+  {
+    "id": "stromnetz-berlin-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Stromnetz Berlin GmbH",
+    "title": "Entgelte 2026",
+    "url": "https://www.stromnetz.berlin/netz-nutzen/entgelte/",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für Entgelte.",
+      "Aktuell sichtbar ist ein offizielles voraussichtliches 2026-PDF mit Modul-3-Werten und Zeitfenstern.",
+      "Die Version 18.12.2025 ist in den kuratierten Registry-Slice übernommen und aktuell als verifiziert markiert."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "status note preliminary/final"
+    ]
+  },
+  {
+    "id": "mvv-netze-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "MVV Netze GmbH",
+    "title": "Preisblatt Strom 2026",
+    "url": "https://www.mvv-netze.de/ich-beziehe-energie/netzentgelte/preisblatt-strom",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für Preisblätter Strom.",
+      "Das finale 2026-PDF enthält Modul-3-Werte und Zeitfenster für das Mannheim-Netzgebiet.",
+      "Die Betreiberseite veröffentlicht die endgültigen Preisblätter für 01.01.2026 bis 31.12.2026 mit Stand 18.12.2025.",
+      "Für Refresh-Runs sollte geprüft werden, ob spätere endgültige Preisblätter vom 18.12.2025 abweichen oder nur den Snapshot wiederholen."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quote snippets"
+    ]
+  },
+  {
+    "id": "swm-infrastruktur-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "SWM Infrastruktur GmbH & Co. KG",
+    "title": "Netznutzungsentgelte Strom 2026",
+    "url": "https://www.swm-infrastruktur.de/strom/netzzugang/netznutzungsentgelte",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für Netznutzungsentgelte Strom.",
+      "Das 2026-PDF führt reduzierte Netzentgelte und Modul-3-Zeitfenster für das Münchner Netzgebiet.",
+      "Quelle ist in den kuratierten Registry-Slice übernommen und als verifiziert markiert."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 raw lines"
+    ]
+  },
+  {
+    "id": "lew-verteilnetz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "LEW Verteilnetz GmbH",
+    "title": "Steuerbare Verbrauchseinrichtungen / Preisblätter 2026",
+    "url": "https://www.lew-verteilnetz.de/lew-verteilnetz/fuer-netzkunden/steuerbare-verbrauchseinrichtungen",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für steuerbare Verbrauchseinrichtungen nach §14a EnWG.",
+      "Das offizielle 2026er Preisblatt ist über die Netzentgelt-Uebersicht verlinkt und führt Modul-3-Werte auf Seite 18.",
+      "Quelle ist in den kuratierten Registry-Slice übernommen; die PDF ist offiziell veröffentlicht, aber nicht explizit als 'endgültig' etikettiert."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quote snippets"
+    ]
+  },
+  {
+    "id": "e-dis-netz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "E.DIS Netz GmbH",
+    "title": "Netzentgelte Strom 2026",
+    "url": "https://www.e-dis-netz.de/de/energie-anschliessen/netznutzung-strom/netzentgelte.html",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für Netzentgelte Strom.",
+      "Das PDF 'Preisblaetter_Netzentgelte_Strom_20260101.pdf' ist als 'Endgültige Netzentgelte 2026' gekennzeichnet und führt Modul 3 auf Seite 13.",
+      "Quelle ist in den kuratierten Registry-Slice übernommen und als verifiziert markiert."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quote snippets"
+    ]
+  },
+  {
+    "id": "mainzer-netze-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Mainzer Netze GmbH",
+    "title": "Netzentgelte Strom 2026",
+    "url": "https://www.mainzer-netze.de/strom/netzzugang/netzentgelte",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für Netzentgelte Strom.",
+      "Das offizielle Preisblatt 2026 führt Modul-3-Werte auf Seite 2 und Zeitfenster auf Seite 5.",
+      "Quelle ist in den kuratierten Registry-Slice übernommen und als verifiziert markiert."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 raw lines"
+    ]
+  },
+  {
+    "id": "stadtwerke-schwaebisch-hall-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Stadtwerke Schwäbisch Hall GmbH",
+    "title": "Netzentgelte Strom 2026",
+    "url": "https://stadtwerke-hall.de/tarife-angebote/service/downloadcenter/netze",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielles Downloadcenter der Stadtwerke Schwäbisch Hall Netze.",
+      "Das veröffentlichte 2026er Strompreisblatt enthält die Modul-3-Werte und die vollständige Tagesmatrix direkt im Hauptdokument.",
+      "Der bisherige 14a-Speziallink war veraltet und wurde am 09.03.2026 auf die aktuelle Veröffentlichung korrigiert."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 raw lines",
+      "time-window quote snippets"
+    ]
+  },
+  {
+    "id": "mittelhessen-netz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "MIT.N Mittelhessen Netz GmbH",
+    "title": "Anlage 6a Preisblatt für steuerbare Verbrauchseinrichtungen gem. §14a EnWG ab 01.01.2026",
+    "url": "https://www.mitn.de/",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielles MIT.N-Dokument für steuerbare Verbrauchseinrichtungen.",
+      "Die Quelle arbeitet mit einer Winter-/Sommerlogik: Q1 und Q4 als Volltag-ST, Q2 und Q3 mit detaillierter Tagesmatrix.",
+      "Beim Refresh sollten Änderungen an den Volltag-ST-Phasen besonders beobachtet werden."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quarter matrix",
+      "time-window quote snippets"
+    ]
+  },
+  {
+    "id": "netze-odr-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Netze ODR GmbH",
+    "title": "Preisblatt 6a Steuerbare Verbrauchseinrichtungen nach §14a EnWG 2026",
+    "url": "https://www.netze-odr.de/veroeffentlichungen/strom",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für Netzentgelte Strom.",
+      "Das Preisblatt nennt Q1/Q4 als Volltag-ST und Q2/Q3 mit Sommer-Tagesmatrix.",
+      "Quelle ist in den kuratierten Registry-Slice übernommen und als verifiziert markiert."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quarter matrix",
+      "time-window quote snippets"
+    ]
+  },
+  {
+    "id": "stadtwerke-ingolstadt-netze-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Stadtwerke Ingolstadt Netze GmbH",
+    "title": "Preisblatt 6a §14a EnWG 2026",
+    "url": "https://www.swi-netze.de/entgelte/",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Entgeltseite der Stadtwerke Ingolstadt Netze.",
+      "Das Preisblatt 6a ist auf den 01.02.2026 datiert und ersetzt damit einen früheren Stand.",
+      "Refreshes sollten gezielt auf Folgeversionen nach dem 01.02.2026 prüfen."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "version note",
+      "time-window quote snippets"
+    ]
+  },
+  {
+    "id": "nordnetz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "NORDNetz GmbH",
+    "title": "Preisblatt 6a Steuerbare Verbrauchseinrichtungen nach §14a EnWG 2026 Version 1.0",
+    "url": "https://nordnetz.com/de/strom/netzzugang-strom/netzentgelte",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielles Preisblatt 6a von NORDNetz.",
+      "Die PDF-Extraktion ist aktuell unruhig; der kuratierte Eintrag basiert auf manuell gegengeprüften Zeilen aus dem Dokument.",
+      "Für ein Upgrade von pending auf verified sollten HTML-Snapshot und strukturierter Textbeleg gemeinsam gespeichert werden."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "manual review note",
+      "time-window quote snippets"
+    ]
+  },
+  {
+    "id": "heidelberg-netze-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "Heidelberg Netze GmbH",
+    "title": "Netznutzungsentgelte Strom 2026",
+    "url": "https://www.netze-heidelberg.de/veroeffentlichung-strom-gas",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Entgeltseite der Stadtwerke Heidelberg Netze.",
+      "Die Modul-3-Werte sind klar sichtbar, die Zeitfenster wurden bisher nur für die eindeutig lesbaren Quartale kuratiert.",
+      "Bis zur vollständigen Snapshot-basierenden Extraktion bleibt der Betreiber im Seed auf pending."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "quarter-specific time-window snippets",
+      "human review note"
+    ]
+  },
+  {
+    "id": "ewr-netz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "EWR Netz GmbH",
+    "title": "Endgültiges Preisblatt Netznutzungsentgelte Strom 2026 der EWR Netz GmbH mit Anlagen",
+    "url": "https://www.ewr-netz.de/kunden/lieferanten/netzkosten/",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für Netzentgelte Strom.",
+      "Das Dokument ist ausdrücklich als endgültiges Preisblatt 2026 veröffentlicht.",
+      "Quelle ist in den kuratierten Registry-Slice übernommen und als verifiziert markiert."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 raw lines",
+      "time-window quote snippets"
+    ]
+  },
+  {
+    "id": "geranetz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "GeraNetz GmbH",
+    "title": "Preisblatt 2a Steuerbare Verbrauchseinrichtungen nach §14a EnWG 2026",
+    "url": "https://www.geranetz.de/strom/netznutzungsvertrag-lieferantletztverbraucher/preisblaetter.html",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für Netzentgelte Strom.",
+      "Q1/Q4 sind als Volltag-ST, Q2/Q3 als Sommermatrix dokumentiert.",
+      "Quelle ist in den kuratierten Registry-Slice übernommen und als verifiziert markiert."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quarter matrix",
+      "time-window quote snippets"
+    ]
+  },
+  {
+    "id": "allgaeunetz-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "AllgäuNetz GmbH & Co. KG",
+    "title": "Anlage 6a - Preisblatt für steuerbare Verbrauchseinrichtungen ab 01.01.2026",
+    "url": "https://www.allgaeunetz.com/netznutzungsentgelte.html",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für Netzentgelte Strom.",
+      "Das Preisblatt 6a ist als separates Dokument für steuerbare Verbrauchseinrichtungen veröffentlicht.",
+      "Quelle ist in den kuratierten Registry-Slice übernommen und als verifiziert markiert."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "modul-3 quarter matrix",
+      "time-window quote snippets"
+    ]
+  },
+  {
+    "id": "e-netz-suedhessen-14a-2026",
+    "scope": "operator-tariffs",
+    "kind": "operator-source-candidate",
+    "authority": "e-netz Südhessen AG",
+    "title": "Anlage 6a - Preisblatt für steuerbare Verbrauchseinrichtungen nach §14a EnWG ab 01.01.2026 - Version 1.0",
+    "url": "https://www.e-netz-suedhessen.de/kontakt-service/pflichtveroeffentlichungen",
+    "refreshStrategy": "monthly-review",
+    "notes": [
+      "Offizielle Betreiberseite für Netzentgelte Strom.",
+      "Die Anlage 6a ist als Version 1.0 ab 01.01.2026 veröffentlicht.",
+      "Quelle ist in den kuratierten Registry-Slice übernommen und als verifiziert markiert."
+    ],
+    "artifactsToStore": [
+      "source page html",
+      "2026 pdf",
+      "pdf hash",
+      "version note",
+      "time-window quote snippets"
+    ]
   }
 ]

@@ -1,25 +1,258 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 
+import { projectGermanyMap, type OperatorMapFeature } from "../lib/maps/geojson";
 import { OperatorMap } from "./operator-map";
 
 describe("OperatorMap", () => {
-  test("shows hovered operator name in overlay", () => {
-    render(
+  test("keeps dedicated polygon hitareas for exact regions without rendering the removed legend", () => {
+    const { container } = render(
       <OperatorMap
-        features={[
+        scene={projectGermanyMap([
+          {
+            id: "berlin",
+            operatorName: "Stromnetz Berlin",
+            regionLabel: "Berlin",
+            mapRank: 1,
+            coverageKind: "municipality-union",
+            geometryPrecision: "exact",
+            geometrySourceLabel: "Offizielles Netzgebiet",
+            geometrySourceUrl: "https://example.com/berlin-gebiet",
+            coverageUnits: [{ ags: "11000000", name: "Berlin", kind: "Stadtstaat" }],
+            anchors: [{ longitude: 13.405, latitude: 52.52, radiusKm: 24 }],
+            stateHints: ["11"],
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [13.05, 52.35],
+                  [13.85, 52.35],
+                  [13.85, 52.75],
+                  [13.05, 52.75],
+                  [13.05, 52.35]
+                ]
+              ]
+            },
+            currentBandsSummary: "NT 2.00 · ST 5.00 · HT 8.00",
+            sourcePageUrl: "https://example.com/berlin",
+            documentUrl: "https://example.com/berlin.pdf"
+          }
+        ] satisfies OperatorMapFeature[])}
+      />
+    );
+
+    expect(screen.queryByText("Belegte Netzgebiete")).not.toBeInTheDocument();
+    expect(screen.queryByText("1 exakt verankert")).not.toBeInTheDocument();
+    expect(screen.queryByText("Klick fixiert, freie Fläche löst")).not.toBeInTheDocument();
+    expect(container.querySelector('[data-testid="operator-map-hitarea-berlin"]')).not.toBeNull();
+  });
+
+  test("renders a projected germany stage with state boundaries and no visible map labels", () => {
+    const { container } = render(
+      <OperatorMap
+        scene={projectGermanyMap([
           {
             id: "demo",
             operatorName: "Demo Netz",
             regionLabel: "Nord",
-            currentValue: "12.34 ct/kWh",
-            geometry: null,
-            sourceUrl: "https://example.com/preise.pdf"
+            mapRank: 1,
+            coverageKind: "state-zone",
+            geometryPrecision: "regional",
+            geometrySourceLabel: "Testgeometrie",
+            anchors: [{ longitude: 9.732, latitude: 52.375, radiusKm: 48 }],
+            stateHints: ["03"],
+            currentBandsSummary: "NT 1.00 · ST 2.00 · HT 3.00",
+            sourcePageUrl: "https://example.com/netzentgelte",
+            documentUrl: "https://example.com/preise.pdf"
           }
-        ]}
+        ] satisfies OperatorMapFeature[])}
       />
     );
 
+    expect(screen.getByLabelText("Deutschlandkarte der Netzbetreiber")).toBeInTheDocument();
+    expect(container.querySelectorAll("[data-operator-region]").length).toBe(1);
+    expect(container.querySelector("[data-country-base]")).not.toBeNull();
+    expect(container.querySelectorAll("[data-state-boundary]").length).toBeGreaterThan(0);
     expect(screen.getByText("Demo Netz")).toBeInTheDocument();
+    expect(screen.getByText("NT 1.00 · ST 2.00 · HT 3.00")).toBeInTheDocument();
+    expect(screen.queryByText("DN")).not.toBeInTheDocument();
+    expect(screen.getByText("Geometrie: regional")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Quellseite" })).toHaveAttribute(
+      "href",
+      "https://example.com/netzentgelte"
+    );
+  });
+
+  test("renders a safe empty state without crashing", () => {
+    render(<OperatorMap scene={projectGermanyMap([])} />);
+
+    expect(screen.getByText("Noch keine Netzgebiete geladen")).toBeInTheDocument();
+    expect(screen.getByLabelText("Netzgebietsübersicht")).toBeInTheDocument();
+  });
+
+  test("resets to the safe empty state when filtered features disappear", () => {
+    const { rerender } = render(
+      <OperatorMap
+        scene={projectGermanyMap([
+          {
+            id: "demo",
+            operatorName: "Demo Netz",
+            regionLabel: "Nord",
+            mapRank: 1,
+            coverageKind: "state-zone",
+            geometryPrecision: "regional",
+            geometrySourceLabel: "Testgeometrie",
+            anchors: [{ longitude: 9.732, latitude: 52.375, radiusKm: 48 }],
+            stateHints: ["03"],
+            currentBandsSummary: "NT 1.00 · ST 2.00 · HT 3.00",
+            sourcePageUrl: "https://example.com/netzentgelte",
+            documentUrl: "https://example.com/preise.pdf"
+          }
+        ] satisfies OperatorMapFeature[])}
+      />
+    );
+
+    rerender(<OperatorMap scene={projectGermanyMap([])} />);
+
+    expect(screen.getByText("Noch keine Netzgebiete geladen")).toBeInTheDocument();
+    expect(screen.queryByText("Demo Netz")).not.toBeInTheDocument();
+  });
+
+  test("switches detail state when another projected region is activated", () => {
+    const { container } = render(
+      <OperatorMap
+        scene={projectGermanyMap([
+          {
+            id: "berlin",
+            operatorName: "Stromnetz Berlin",
+            regionLabel: "Berlin",
+            mapRank: 1,
+            coverageKind: "metro-zone",
+            geometryPrecision: "approximate",
+            geometrySourceLabel: "Testgeometrie",
+            anchors: [{ longitude: 13.405, latitude: 52.52, radiusKm: 24 }],
+            stateHints: ["11"],
+            currentBandsSummary: "NT 2.00 · ST 5.00 · HT 8.00",
+            sourcePageUrl: "https://example.com/berlin",
+            documentUrl: "https://example.com/berlin.pdf"
+          },
+          {
+            id: "mvv",
+            operatorName: "MVV Netze",
+            regionLabel: "Mannheim",
+            mapRank: 2,
+            coverageKind: "metro-zone",
+            geometryPrecision: "approximate",
+            geometrySourceLabel: "Testgeometrie",
+            anchors: [{ longitude: 8.467, latitude: 49.489, radiusKm: 26 }],
+            stateHints: ["08"],
+            currentBandsSummary: "NT 3.00 · ST 6.00 · HT 9.00",
+            sourcePageUrl: "https://example.com/mvv",
+            documentUrl: "https://example.com/mvv.pdf"
+          }
+        ] satisfies OperatorMapFeature[])}
+      />
+    );
+
+    const regions = container.querySelectorAll("[data-operator-region]");
+    expect(regions).toHaveLength(2);
+
+    fireEvent.mouseEnter(regions[1] as Element);
+
+    expect(screen.getByText("MVV Netze")).toBeInTheDocument();
+    expect(screen.queryByText("MVV")).not.toBeInTheDocument();
+    expect(screen.getByText("Geometrie: approximate")).toBeInTheDocument();
+    expect(screen.getByText(/Bundesländer: Baden-Württemberg/)).toBeInTheDocument();
+  });
+
+  test("locks the detail panel after clicking an operator and ignores later hover changes", () => {
+    render(
+      <OperatorMap
+        scene={projectGermanyMap([
+          {
+            id: "berlin",
+            operatorName: "Stromnetz Berlin",
+            regionLabel: "Berlin",
+            mapRank: 1,
+            coverageKind: "metro-zone",
+            geometryPrecision: "approximate",
+            geometrySourceLabel: "Testgeometrie",
+            anchors: [{ longitude: 13.405, latitude: 52.52, radiusKm: 24 }],
+            stateHints: ["11"],
+            currentBandsSummary: "NT 2.00 · ST 5.00 · HT 8.00",
+            sourcePageUrl: "https://example.com/berlin",
+            documentUrl: "https://example.com/berlin.pdf"
+          },
+          {
+            id: "mvv",
+            operatorName: "MVV Netze",
+            regionLabel: "Mannheim",
+            mapRank: 2,
+            coverageKind: "metro-zone",
+            geometryPrecision: "approximate",
+            geometrySourceLabel: "Testgeometrie",
+            anchors: [{ longitude: 8.467, latitude: 49.489, radiusKm: 26 }],
+            stateHints: ["08"],
+            currentBandsSummary: "NT 3.00 · ST 6.00 · HT 9.00",
+            sourcePageUrl: "https://example.com/mvv",
+            documentUrl: "https://example.com/mvv.pdf"
+          }
+        ] satisfies OperatorMapFeature[])}
+      />
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "MVV Netze in Mannheim" }));
+    expect(screen.getByText("MVV Netze")).toBeInTheDocument();
+    expect(screen.getByText("Auswahl fixiert")).toBeInTheDocument();
+
+    fireEvent.mouseEnter(screen.getByRole("button", { name: "Stromnetz Berlin in Berlin" }));
+    expect(screen.getByText("MVV Netze")).toBeInTheDocument();
+    expect(screen.queryByText("Stromnetz Berlin")).not.toBeInTheDocument();
+  });
+
+  test("clears a locked operator when the user clicks an empty map area", () => {
+    render(
+      <OperatorMap
+        scene={projectGermanyMap([
+          {
+            id: "berlin",
+            operatorName: "Stromnetz Berlin",
+            regionLabel: "Berlin",
+            mapRank: 1,
+            coverageKind: "metro-zone",
+            geometryPrecision: "approximate",
+            geometrySourceLabel: "Testgeometrie",
+            anchors: [{ longitude: 13.405, latitude: 52.52, radiusKm: 24 }],
+            stateHints: ["11"],
+            currentBandsSummary: "NT 2.00 · ST 5.00 · HT 8.00",
+            sourcePageUrl: "https://example.com/berlin",
+            documentUrl: "https://example.com/berlin.pdf"
+          },
+          {
+            id: "mvv",
+            operatorName: "MVV Netze",
+            regionLabel: "Mannheim",
+            mapRank: 2,
+            coverageKind: "metro-zone",
+            geometryPrecision: "approximate",
+            geometrySourceLabel: "Testgeometrie",
+            anchors: [{ longitude: 8.467, latitude: 49.489, radiusKm: 26 }],
+            stateHints: ["08"],
+            currentBandsSummary: "NT 3.00 · ST 6.00 · HT 9.00",
+            sourcePageUrl: "https://example.com/mvv",
+            documentUrl: "https://example.com/mvv.pdf"
+          }
+        ] satisfies OperatorMapFeature[])}
+      />
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "MVV Netze in Mannheim" }));
+    expect(screen.getByText("Auswahl fixiert")).toBeInTheDocument();
+
+    fireEvent.click(screen.getByTestId("map-background-hitarea"));
+    expect(screen.queryByText("Auswahl fixiert")).not.toBeInTheDocument();
+
+    fireEvent.mouseEnter(screen.getByRole("button", { name: "Stromnetz Berlin in Berlin" }));
+    expect(screen.getByText("Stromnetz Berlin")).toBeInTheDocument();
   });
 });

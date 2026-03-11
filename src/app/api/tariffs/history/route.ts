@@ -1,9 +1,12 @@
-import { serializeTariffHistory } from "../../../../lib/api/serializers";
-import { runIngest } from "../../../../modules/ingest/runner";
+import { serializeRegistryTariffHistory } from "../../../../lib/api/serializers";
+import { loadHistoricalTariffs } from "../../../../modules/operators/history-catalog";
 
 export async function GET(request: Request) {
-  void request;
-  const result = await runIngest("demo-operator");
+  const { searchParams } = new URL(request.url);
+  const operatorSlug = searchParams.get("operator");
+  const entries = await loadHistoricalTariffs();
+  const filteredEntries =
+    operatorSlug === null ? entries : entries.filter((entry) => entry.slug === operatorSlug);
 
-  return Response.json(serializeTariffHistory(result));
+  return Response.json(serializeRegistryTariffHistory(filteredEntries));
 }

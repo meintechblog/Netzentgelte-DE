@@ -5770,14 +5770,15 @@
     "operatorName": "Städtische Betriebswerke Luckenwalde GmbH",
     "websiteUrl": "https://www.sbl-gmbh.net/netze/",
     "regionLabel": "Luckenwalde",
-    "shellStatus": "profile-found",
+    "shellStatus": "published",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
+    "sourceStatus": "source-found",
     "tariffStatus": "missing",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.sbl-gmbh.net/netze/",
-    "notes": "VNBdigital ID 967",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://www.sbl-gmbh.net/netze/luckenwalde-netze-netznutzung/netznutzung-strom/",
+    "notes": "VNBdigital ID 967; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://www.sbl-gmbh.net/wp-content/uploads/2025/12/PB_NE_Strom_2026.pdf"
   },
   {
     "slug": "stadtische-werke-borna-netz",
@@ -5870,14 +5871,15 @@
     "operatorName": "Stadtwerk Tauberfranken GmbH",
     "websiteUrl": "https://www.stadtwerk-tauberfranken.de",
     "regionLabel": "Bad Mergentheim",
-    "shellStatus": "profile-found",
+    "shellStatus": "published",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
+    "sourceStatus": "source-found",
     "tariffStatus": "missing",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.stadtwerk-tauberfranken.de",
-    "notes": "VNBdigital ID 43",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://stadtwerk-tauberfranken.de/netz/marktpartner/strom/",
+    "notes": "VNBdigital ID 43; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://stadtwerk-tauberfranken.de/fileadmin/user_upload/Netz/Marktpartner/Strom/Netzentgelte/endgueltig_Preisblatt_SWTF_Strom_NNE_2026.pdf"
   },
   {
     "slug": "stadtwerke-aalen",
@@ -5970,14 +5972,15 @@
     "operatorName": "Stadtwerke Andernach Energie GmbH",
     "websiteUrl": "https://www.stadtwerke-andernach-energie.de",
     "regionLabel": "Andernach",
-    "shellStatus": "profile-found",
+    "shellStatus": "published",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
+    "sourceStatus": "source-found",
     "tariffStatus": "missing",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.stadtwerke-andernach-energie.de",
-    "notes": "VNBdigital ID 7690",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://www.stadtwerke-andernach-energie.de/strom/netzbetrieb/netzzugang-netzentgelte/",
+    "notes": "VNBdigital ID 7690; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://www.stadtwerke-andernach-energie.de/app/uploads/2026/01/2025-12-19_Preisblatt-NNE-Strom-ab-01.01.2026.pdf"
   },
   {
     "slug": "stadtwerke-annaberg-buchholz-energie",
@@ -11094,14 +11097,15 @@
     "operatorName": "Strom- und Gasnetz Wismar GmbH",
     "websiteUrl": "https://www.sg-wismar.de/",
     "regionLabel": "Wismar",
-    "shellStatus": "profile-found",
+    "shellStatus": "published",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
+    "sourceStatus": "source-found",
     "tariffStatus": "missing",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.sg-wismar.de/",
-    "notes": "VNBdigital ID 1065",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://www.sg-wismar.de/stromnetz/netzzugang/netznutzung",
+    "notes": "VNBdigital ID 1065; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://www.sg-wismar.de/fileadmin/user_upload/ID064_Netznutzung_Strom/ID354_Netznutzungsentgelte/251216_Preisblatt_Zusammenfassung_2026.pdf"
   },
   {
     "slug": "strom-und-gasversorgung-versmold",

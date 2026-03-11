@@ -121,7 +121,19 @@ describe("getSeedPendingOperatorCatalog", () => {
           tariffStatus: "missing"
         }),
         expect.objectContaining({
+          slug: "stadtische-betriebswerke-luckenwalde",
+          reviewStatus: "pending",
+          sourceStatus: "source-found",
+          tariffStatus: "missing"
+        }),
+        expect.objectContaining({
           slug: "stadtwerke-altdorf",
+          reviewStatus: "pending",
+          sourceStatus: "source-found",
+          tariffStatus: "missing"
+        }),
+        expect.objectContaining({
+          slug: "stadtwerke-andernach-energie",
           reviewStatus: "pending",
           sourceStatus: "source-found",
           tariffStatus: "missing"
@@ -139,7 +151,19 @@ describe("getSeedPendingOperatorCatalog", () => {
           tariffStatus: "missing"
         }),
         expect.objectContaining({
+          slug: "stadtwerk-tauberfranken",
+          reviewStatus: "pending",
+          sourceStatus: "source-found",
+          tariffStatus: "missing"
+        }),
+        expect.objectContaining({
           slug: "ssw-netz",
+          reviewStatus: "pending",
+          sourceStatus: "source-found",
+          tariffStatus: "missing"
+        }),
+        expect.objectContaining({
+          slug: "strom-und-gasnetz-wismar",
           reviewStatus: "pending",
           sourceStatus: "source-found",
           tariffStatus: "missing"

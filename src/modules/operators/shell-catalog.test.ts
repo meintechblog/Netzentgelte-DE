@@ -48,12 +48,27 @@ describe("getSeedOperatorShells", () => {
             "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1/PB-KK-NNE-Strom-2026-01-01.pdf"
         }),
         expect.objectContaining({
+          slug: "stadtische-betriebswerke-luckenwalde",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          sourcePageUrl: "https://www.sbl-gmbh.net/netze/luckenwalde-netze-netznutzung/netznutzung-strom/",
+          documentUrl: "https://www.sbl-gmbh.net/wp-content/uploads/2025/12/PB_NE_Strom_2026.pdf"
+        }),
+        expect.objectContaining({
           slug: "stadtwerke-altdorf",
           shellStatus: "published",
           sourceStatus: "source-found",
           sourcePageUrl: "https://www.stadtwerke-altdorf.de/stromnetz/veroeffentlichungen",
           documentUrl:
             "https://www.stadtwerke-altdorf.de/fileadmin/user_upload/2025_Netznutzungsentgelte_endgueltig_fuer_2026.pdf"
+        }),
+        expect.objectContaining({
+          slug: "stadtwerke-andernach-energie",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          sourcePageUrl: "https://www.stadtwerke-andernach-energie.de/strom/netzbetrieb/netzzugang-netzentgelte/",
+          documentUrl:
+            "https://www.stadtwerke-andernach-energie.de/app/uploads/2026/01/2025-12-19_Preisblatt-NNE-Strom-ab-01.01.2026.pdf"
         }),
         expect.objectContaining({
           slug: "stadtwerke-bad-aibling",
@@ -70,12 +85,28 @@ describe("getSeedOperatorShells", () => {
           documentUrl: "https://www.stadtwerke-bad-pyrmont.de/_mediafiles/1328-nne_strom_-2026_entgueltig.pdf"
         }),
         expect.objectContaining({
+          slug: "stadtwerk-tauberfranken",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          sourcePageUrl: "https://stadtwerk-tauberfranken.de/netz/marktpartner/strom/",
+          documentUrl:
+            "https://stadtwerk-tauberfranken.de/fileadmin/user_upload/Netz/Marktpartner/Strom/Netzentgelte/endgueltig_Preisblatt_SWTF_Strom_NNE_2026.pdf"
+        }),
+        expect.objectContaining({
           slug: "ssw-netz",
           shellStatus: "published",
           sourceStatus: "source-found",
           sourcePageUrl: "https://ssw-netz.de/stromnetz/netzzugang-und-entgelte-strom/netznutzungsentgelte-strom/",
           documentUrl:
             "https://ssw-netz.de/wp-content/uploads/sites/4/2025/12/P1-021_Preisblaetter_Netznutzung_Strom_SSW_Netz_20260101_endgueltig.pdf"
+        }),
+        expect.objectContaining({
+          slug: "strom-und-gasnetz-wismar",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          sourcePageUrl: "https://www.sg-wismar.de/stromnetz/netzzugang/netznutzung",
+          documentUrl:
+            "https://www.sg-wismar.de/fileadmin/user_upload/ID064_Netznutzung_Strom/ID354_Netznutzungsentgelte/251216_Preisblatt_Zusammenfassung_2026.pdf"
         })
       ])
     );

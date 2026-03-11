@@ -5711,14 +5711,15 @@
     "operatorName": "SSW Netz GmbH",
     "websiteUrl": "https://www.ssw-netz.de/",
     "regionLabel": "St. Wendel",
-    "shellStatus": "profile-found",
+    "shellStatus": "source-found",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
+    "sourceStatus": "source-found",
     "tariffStatus": "missing",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.ssw-netz.de/",
-    "notes": "VNBdigital ID 939",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://ssw-netz.de/stromnetz/netzzugang-und-entgelte-strom/netznutzungsentgelte-strom/",
+    "notes": "VNBdigital ID 939; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://ssw-netz.de/wp-content/uploads/sites/4/2025/12/P1-021_Preisblaetter_Netznutzung_Strom_SSW_Netz_20260101_endgueltig.pdf"
   },
   {
     "slug": "stadt-burgbernheim",
@@ -5896,14 +5897,15 @@
     "operatorName": "Stadtwerke Achim AG",
     "websiteUrl": "https://www.stadtwerke-achim.de/",
     "regionLabel": "Achim",
-    "shellStatus": "profile-found",
+    "shellStatus": "source-found",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
+    "sourceStatus": "source-found",
     "tariffStatus": "missing",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.stadtwerke-achim.de/",
-    "notes": "VNBdigital ID 6",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1.html",
+    "notes": "VNBdigital ID 6; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1/PB-KK-NNE-Strom-2026-01-01.pdf"
   },
   {
     "slug": "stadtwerke-altdorf",
@@ -6066,14 +6068,15 @@
     "operatorName": "Stadtwerke Bad Aibling",
     "websiteUrl": "https://www.stadtwerke-bad-aibling.de",
     "regionLabel": "Bad Aibling",
-    "shellStatus": "profile-found",
+    "shellStatus": "source-found",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
+    "sourceStatus": "source-found",
     "tariffStatus": "missing",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.stadtwerke-bad-aibling.de",
-    "notes": "VNBdigital ID 30",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://www.stadtwerke-bad-aibling.de/de/Strom/Stromnetz1/Netzzugang-Entgelte/",
+    "notes": "VNBdigital ID 30; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://www.stadtwerke-bad-aibling.de/de/Strom/Preisblatt-Netznutzung-ab01012026-endgueltig.pdf"
   },
   {
     "slug": "stadtwerke-bad-bergzabern",

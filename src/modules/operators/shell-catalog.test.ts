@@ -24,6 +24,39 @@ describe("getSeedOperatorShells", () => {
     expect(stats.verifiedCount).toBe(registryStats.verifiedCount);
     expect(stats.exactCoverageCount).toBe(registryStats.exactCoverageCount);
   });
+
+  test("includes source-found shell metadata for the first verified backfill-ready-013 operators", () => {
+    const shells = getSeedOperatorShells();
+
+    expect(shells).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          slug: "stadtwerke-achim",
+          shellStatus: "source-found",
+          sourceStatus: "source-found",
+          sourcePageUrl:
+            "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1.html",
+          documentUrl:
+            "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1/PB-KK-NNE-Strom-2026-01-01.pdf"
+        }),
+        expect.objectContaining({
+          slug: "stadtwerke-bad-aibling",
+          shellStatus: "source-found",
+          sourceStatus: "source-found",
+          sourcePageUrl: "https://www.stadtwerke-bad-aibling.de/de/Strom/Stromnetz1/Netzzugang-Entgelte/",
+          documentUrl: "https://www.stadtwerke-bad-aibling.de/de/Strom/Preisblatt-Netznutzung-ab01012026-endgueltig.pdf"
+        }),
+        expect.objectContaining({
+          slug: "ssw-netz",
+          shellStatus: "source-found",
+          sourceStatus: "source-found",
+          sourcePageUrl: "https://ssw-netz.de/stromnetz/netzzugang-und-entgelte-strom/netznutzungsentgelte-strom/",
+          documentUrl:
+            "https://ssw-netz.de/wp-content/uploads/sites/4/2025/12/P1-021_Preisblaetter_Netznutzung_Strom_SSW_Netz_20260101_endgueltig.pdf"
+        })
+      ])
+    );
+  });
 });
 
 describe("shouldUseSeedOperatorShells", () => {

@@ -13,6 +13,7 @@ describe("package scripts", () => {
     const scriptNames = [
       "automation:backfill-koordinator",
       "automation:backfill-koordinator:dry-run",
+      "automation:backfill-workset",
       "ingest:run",
       "registry:import",
       "build:shell-registry",

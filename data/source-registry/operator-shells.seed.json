@@ -3161,12 +3161,13 @@
     "regionLabel": "Kirkel",
     "shellStatus": "profile-found",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
-    "tariffStatus": "missing",
+    "sourceStatus": "source-found",
+    "tariffStatus": "partial",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.gwk-netz.de",
-    "notes": "VNBdigital ID 344",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://www.gwk-netz.de/strom/netzzugang",
+    "notes": "VNBdigital ID 344; Official GWK net access page links 2026 Strom netznutzungsentgelte (vorlaeufig) with §14a Modul 3 sections; kept pending.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://www.gwk-netz.de/media/pages/dokumente/allgemein/marktpartner/strom-netznutzungsentgelte-vorlaeufig-ab-01-01-2026/68512e9038-1761659273/2026_gwk-netzentgelte-strom-vorlaeufig.pdf"
   },
   {
     "slug": "gemeindewerke-lam",
@@ -3247,12 +3248,13 @@
     "regionLabel": "Neuendettelsau",
     "shellStatus": "profile-found",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
-    "tariffStatus": "missing",
+    "sourceStatus": "source-found",
+    "tariffStatus": "partial",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.gw-neuendettelsau.de",
-    "notes": "VNBdigital ID 454",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://www.gw-neuendettelsau.de/Netze/Stromnetz.html",
+    "notes": "VNBdigital ID 454; Official Stromnetz page lists 2026 §14a/fiktiv/vorlaeufig sheets, with retrievable vorlaeufig 2026 tariff PDF on operator domain; kept pending.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://www.gw-neuendettelsau.de/download.php?file=GWNStromPreisblattvorlNNE01012026.pdf"
   },
   {
     "slug": "gemeindewerke-niefern-oschelbronn",
@@ -3261,12 +3263,13 @@
     "regionLabel": "Niefern-Öschelbronn",
     "shellStatus": "profile-found",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
-    "tariffStatus": "missing",
+    "sourceStatus": "source-found",
+    "tariffStatus": "partial",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.gwnoe.de",
-    "notes": "VNBdigital ID 7051",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://www.gwnoe.de/netze-messung/veroeffentlichungspflichten-netzbetreiber/preisblaetter",
+    "notes": "VNBdigital ID 7051; Official Preisblaetter page publishes 2026 netzentgelte plus separate fiktive sheet, so entry remains pending until stable full §14a extraction is confirmed.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://www.gwnoe.de/fileadmin/Dateien/Microsite/Dateien/Veroeffentlichungspflichten_Netzbetreiber/Preisblaetter/Netzentgelte/Netzentgelte_Strom_ab_01.01.2026.pdf"
   },
   {
     "slug": "gemeindewerke-nudlingen",
@@ -3516,12 +3519,13 @@
     "regionLabel": "Hengersberg",
     "shellStatus": "profile-found",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
-    "tariffStatus": "missing",
+    "sourceStatus": "source-found",
+    "tariffStatus": "partial",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.gw-hengersberg.de",
-    "notes": "VNBdigital ID 74R9Bmq7QAgEn2KYG",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://www.gw-hengersberg.de/wpfd_file/preisblatt-%C2%A7-14-a-enwg-2026/",
+    "notes": "VNBdigital ID 74R9Bmq7QAgEn2KYG; Official 2026 §14a Preisblatt page and linked PDF found on operator domain; structured matrix not extracted, kept pending.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://www.gw-hengersberg.de/download/27/1-0-preisblaetter-netznutzung/2890/preisblatt-%C2%A7-14-a-enwg-2026.pdf"
   },
   {
     "slug": "gemeinsames-kommunalunternehmen-oberes-egertal",
@@ -3659,12 +3663,13 @@
     "regionLabel": "Gotha",
     "shellStatus": "profile-found",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
-    "tariffStatus": "missing",
+    "sourceStatus": "source-found",
+    "tariffStatus": "partial",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.gothaer-stadtwerke-netz.de",
-    "notes": "VNBdigital ID 746",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://www.gothaer-stadtwerke-netz.de/fileadmin/user_upload/pdf/netznutzung/netznutzungsentgelte/strom/2026/NNE_GSWN_Preisblatt_STV_Strom_012026_voraus.pdf",
+    "notes": "VNBdigital ID 746; Official 2026 §14a STV tariff sheet found on operator domain, marked vorlaeufig (stand 15.10.2025), kept pending.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://www.gothaer-stadtwerke-netz.de/fileadmin/user_upload/pdf/netznutzung/netznutzungsentgelte/strom/2026/NNE_GSWN_Preisblatt_STV_Strom_012026_voraus.pdf"
   },
   {
     "slug": "greizer-energienetze",

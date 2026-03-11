@@ -121,3 +121,32 @@ Wenn ein Betreiberfall eine neue robuste Regel ergibt:
 4. erst danach den naechsten Batch starten
 
 So wird das Vorgehensmodell nicht nur dokumentiert, sondern operativ wirksam.
+
+## Automation Contract
+
+Der `Backfill Koordinator` arbeitet ab jetzt gegen:
+
+- Worktree: `/Users/hulki/projects/netzentgelte-de/.worktrees/endcustomer-backfill-batch`
+- Dev-Ziel: `root@192.168.3.178:/root/netzentgelte-de`
+- Public-Ziel: `https://kigenerated.de/netzentgelte/`
+
+Pflicht-Gate vor jedem automatischen Push/Deploy:
+
+```bash
+pnpm test
+pnpm typecheck
+pnpm exec eslint src scripts
+NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm export:public
+NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm build
+```
+
+Pflicht-Deploy-Reihenfolge bei gruener Verifikation und echten integrierten Aenderungen:
+
+1. Git commit + push
+2. Sync auf den LXC und Neustart dort
+3. `bash scripts/public/deploy-public-static.sh`
+4. Live-Checks fuer:
+   - `http://192.168.3.178:3000`
+   - `https://kigenerated.de/netzentgelte/`
+
+Bestandskorrekturen und neue Betreiber werden identisch behandelt. Ein Lauf darf also ebenso gut vorhandene Netzbetreiber reparieren wie neue Backfill-Batches integrieren.

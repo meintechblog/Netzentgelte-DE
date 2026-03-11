@@ -61,6 +61,14 @@ ssh proxi1 'pct exec 128 -- bash -lc "
 "'
 ```
 
+Alternativ direkt aus dem aktiven Worktree:
+
+```bash
+cd /Users/hulki/projects/netzentgelte-de/.worktrees/endcustomer-backfill-batch
+NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm export:public
+NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm build
+```
+
 ## Deploy auf `www438.your-server.de`
 
 Die Zielpfade sind per Domain-SSH erreichbar:
@@ -99,6 +107,20 @@ rsync -az --delete -e 'ssh -p 222' .next/static/ \
   bpjwjy@www438.your-server.de:/usr/www/users/bpjwjy/public_html/netzentgelte/_next/static/
 ```
 
+Wiederverwendbarer Projektpfad:
+
+```bash
+cd /Users/hulki/projects/netzentgelte-de/.worktrees/endcustomer-backfill-batch
+bash scripts/public/deploy-public-static.sh
+```
+
+Der Scriptpfad:
+
+- baut den Public-Snapshot neu
+- erzeugt `.deploy-public/`
+- publiziert in alle bekannten Hetzner-Zielpfade
+- verifiziert danach `https://kigenerated.de/netzentgelte/`
+
 ## Altpfade
 
 - Alte aktive Haupt-URL: `https://kigenerated.de/prince2-vorbereitung/netzentgelte/`
@@ -130,3 +152,4 @@ Browser-Check:
 - `/netzentgelte/` funktioniert als statischer Webspace-Pfad.
 - Die eigentliche Anwendungslogik gehoert auf `CT128`; das Hosting liefert nur den Snapshot aus.
 - Fuer kuenftige Webapps unter `kigenerated.de/<projektname>/` zuerst pruefen, ob ein statischer Export moeglich ist. Das ist auf diesem Setup der schnellste und stabilste Weg.
+- Fuer kuenftige Deploys nach `kigenerated.de/<projektname>/` zuerst ein projektspezifisches Static-Deploy-Script anlegen und von Automation oder CI aufrufen, statt den Shared-Host wie eine zweite Runtime zu behandeln.

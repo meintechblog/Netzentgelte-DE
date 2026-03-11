@@ -14,13 +14,13 @@ export function buildAutomationCommandPlan(): AutomationCommandPlan {
       "NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm build"
     ],
     deploy: [
-      "rsync -az --delete /Users/hulki/codex/netzentgelte/ root@192.168.3.178:/root/netzentgelte-de/",
-      "ssh root@192.168.3.178 'cd /root/netzentgelte-de && pnpm install --frozen-lockfile && pnpm build && pkill -f \"next start\" || true && nohup pnpm start >/tmp/netzentgelte-start.log 2>&1 &'",
+      "rsync -az --delete --exclude='.git' --exclude='node_modules' --exclude='.next' --exclude='.playwright-cli' --exclude='data/artifacts' --exclude='tmp' /Users/hulki/codex/netzentgelte/ root@192.168.3.178:/root/netzentgelte-de/",
+      "ssh root@192.168.3.178 'cd /root/netzentgelte-de && pnpm install --frozen-lockfile && rm -rf .next && env -u NEXT_PUBLIC_BASE_PATH pnpm build && old_pid=$(ss -ltnp | sed -n \"s/.*:3000 .*pid=\\\\([0-9]\\\\+\\\\).*/\\\\1/p\" | head -n 1) && if [ -n \"$old_pid\" ]; then kill \"$old_pid\"; fi && nohup pnpm start >/tmp/netzentgelte-start.log 2>&1 &'",
       "ssh root@192.168.3.178 'cd /root/netzentgelte-de && pnpm registry:import && pnpm shells:import'",
       "bash scripts/public/deploy-public-static.sh"
     ],
     liveChecks: [
-      "curl -fsS http://192.168.3.178:3000 >/dev/null",
+      "curl -fsS http://192.168.3.178:3000 | rg 'href=\"/_next/static/css/'",
       "curl -fsS http://192.168.3.178:3000/api/operators >/dev/null",
       "curl -fsS https://kigenerated.de/netzentgelte/ >/dev/null"
     ]

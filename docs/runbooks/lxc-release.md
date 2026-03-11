@@ -46,7 +46,8 @@ ssh root@192.168.3.178 '
   pnpm install --frozen-lockfile &&
   pnpm test &&
   pnpm lint &&
-  pnpm build &&
+  rm -rf .next &&
+  env -u NEXT_PUBLIC_BASE_PATH pnpm build &&
   pnpm typecheck
 '
 ```
@@ -75,6 +76,7 @@ ssh root@192.168.3.178 '
 '
 
 curl -fsS http://192.168.3.178:3000 | rg 'Zeitfenster|18:00-21:00|N-ERGIE'
+curl -fsS http://192.168.3.178:3000 | rg 'href="/_next/static/css/'
 curl -fsS http://192.168.3.178:3000/api/tariffs/current | rg 'timeWindows|18:00-21:00|n-ergie-netz'
 ```
 
@@ -100,3 +102,4 @@ pnpm automation:backfill-koordinator:dry-run
 - `data/artifacts` bleibt bewusst ausserhalb des Paket-Transfers und wird aus dem aktiven Verzeichnis in das Release kopiert.
 - `tmp/` muss aus dem Transfer ausgeschlossen bleiben. Der Ordner kann lokale Import- oder Extraktionsartefakte im GB-Bereich enthalten und blockiert sonst den Release-Upload.
 - Der Release-Check muss im Release-Verzeichnis selbst laufen, nicht nur lokal.
+- Der LXC-Host laeuft bewusst ohne `NEXT_PUBLIC_BASE_PATH`. Vor jedem Root-Build deshalb `.next` loeschen und `env -u NEXT_PUBLIC_BASE_PATH pnpm build` verwenden, sonst zeigen HTML und CSS-Linking auf `/netzentgelte/_next/...` und das Styling faellt auf `http://192.168.3.178:3000` aus.

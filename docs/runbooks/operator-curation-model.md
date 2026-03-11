@@ -165,6 +165,7 @@ Pflicht-Deploy-Reihenfolge bei gruener Verifikation und echten integrierten Aend
    - `pnpm shells:import`
 5. Live-Checks fuer:
    - `http://192.168.3.178:3000`
+   - Root-HTML muss CSS unter `/_next/static/css/` referenzieren, nicht unter `/netzentgelte/_next/`
    - `http://192.168.3.178:3000/api/operators`
    - `https://kigenerated.de/netzentgelte/`
 

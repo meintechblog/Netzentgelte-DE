@@ -8221,5 +8221,575 @@
         }
       ]
     }
+  },
+  {
+    "slug": "elektrizitatsgenossenschaft-oesterweg-e-g",
+    "name": "Elektrizitätsgenossenschaft Oesterweg e.G.",
+    "regionLabel": "Versmold-Oesterweg",
+    "websiteUrl": "http://www.eg-oesterweg.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "elektrizitatsgenossenschaft-oesterweg-e-g-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "http://www.eg-oesterweg.de",
+        "documentUrl": "http://www.eg-oesterweg.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "elektrizitatsgenossenschaft-oesterweg-e-g-14a-2026-source",
+      "sourcePageUrl": "http://www.eg-oesterweg.de",
+      "documentUrl": "http://www.eg-oesterweg.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "elektrizitats-genossenschaft-schonstett-eg",
+    "name": "Elektrizitäts-Genossenschaft Schonstett eG",
+    "regionLabel": "Schonstett",
+    "websiteUrl": "https://www.eg-schonstett.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "elektrizitats-genossenschaft-schonstett-eg-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.eg-schonstett.de",
+        "documentUrl": "https://www.eg-schonstett.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "elektrizitats-genossenschaft-schonstett-eg-14a-2026-source",
+      "sourcePageUrl": "https://www.eg-schonstett.de",
+      "documentUrl": "https://www.eg-schonstett.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "elektrizitatsgenossenschaft-unterneukirchen-eg",
+    "name": "Elektrizitätsgenossenschaft Unterneukirchen eG",
+    "regionLabel": "Unterneukirchen",
+    "websiteUrl": "https://www.eg-unterneukirchen.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "elektrizitatsgenossenschaft-unterneukirchen-eg-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.eg-unterneukirchen.de",
+        "documentUrl": "https://www.eg-unterneukirchen.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "elektrizitatsgenossenschaft-unterneukirchen-eg-14a-2026-source",
+      "sourcePageUrl": "https://www.eg-unterneukirchen.de",
+      "documentUrl": "https://www.eg-unterneukirchen.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "energiegenossenschaft-fur-wittmund-eg",
+    "name": "Energiegenossenschaft für Wittmund eG",
+    "regionLabel": "Wittmund",
+    "websiteUrl": "https://www.eg-wittmund.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "energiegenossenschaft-fur-wittmund-eg-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.eg-wittmund.de",
+        "documentUrl": "https://www.eg-wittmund.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "energiegenossenschaft-fur-wittmund-eg-14a-2026-source",
+      "sourcePageUrl": "https://www.eg-wittmund.de",
+      "documentUrl": "https://www.eg-wittmund.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "elektrizitatsgenossenschaft-ohlstadt-eg",
+    "name": "Elektrizitätsgenossenschaft Ohlstadt eG",
+    "regionLabel": "Ohlstadt",
+    "websiteUrl": "http://www.ego-ohlstadt.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "elektrizitatsgenossenschaft-ohlstadt-eg-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "http://www.ego-ohlstadt.de",
+        "documentUrl": "http://www.ego-ohlstadt.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "elektrizitatsgenossenschaft-ohlstadt-eg-14a-2026-source",
+      "sourcePageUrl": "http://www.ego-ohlstadt.de",
+      "documentUrl": "http://www.ego-ohlstadt.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "egt-energie",
+    "name": "EGT Energie GmbH",
+    "regionLabel": "Triberg",
+    "websiteUrl": "https://www.egt-energie.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "egt-energie-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.egt-energie.de/",
+        "documentUrl": "https://www.egt-energie.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "egt-energie-14a-2026-source",
+      "sourcePageUrl": "https://www.egt-energie.de/",
+      "documentUrl": "https://www.egt-energie.de/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "elektrizitats-genossenschaft-tacherting-feichen-e-g",
+    "name": "Elektrizitäts-Genossenschaft Tacherting-Feichen e.G.",
+    "regionLabel": "Tacherting",
+    "websiteUrl": "https://www.egtf.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "elektrizitats-genossenschaft-tacherting-feichen-e-g-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.egtf.de",
+        "documentUrl": "https://www.egtf.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "elektrizitats-genossenschaft-tacherting-feichen-e-g-14a-2026-source",
+      "sourcePageUrl": "https://www.egtf.de",
+      "documentUrl": "https://www.egtf.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "ehinger-energie-und",
+    "name": "EHINGER ENERGIE GmbH & Co. KG",
+    "regionLabel": "Ehingen",
+    "websiteUrl": "https://www.ehinger-energie.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "ehinger-energie-und-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.ehinger-energie.de",
+        "documentUrl": "https://www.ehinger-energie.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "ehinger-energie-und-14a-2026-source",
+      "sourcePageUrl": "https://www.ehinger-energie.de",
+      "documentUrl": "https://www.ehinger-energie.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "stadtwerke-eilenburg",
+    "name": "Stadtwerke Eilenburg GmbH",
+    "regionLabel": "Eilenburg",
+    "websiteUrl": "https://www.eilenburger-stadtwerke.de/netz/stromnetz.html",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "stadtwerke-eilenburg-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.eilenburger-stadtwerke.de/netz/stromnetz.html",
+        "documentUrl": "https://www.eilenburger-stadtwerke.de/netz/stromnetz.html",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "stadtwerke-eilenburg-14a-2026-source",
+      "sourcePageUrl": "https://www.eilenburger-stadtwerke.de/netz/stromnetz.html",
+      "documentUrl": "https://www.eilenburger-stadtwerke.de/netz/stromnetz.html",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "elektrizitatswerk-des-kantons-schaffhausen",
+    "name": "Elektrizitätswerk des Kantons Schaffhausen AG",
+    "regionLabel": "Schaffhausen (Schweiz)",
+    "websiteUrl": "https://www.eks.ch/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "elektrizitatswerk-des-kantons-schaffhausen-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.eks.ch/",
+        "documentUrl": "https://www.eks.ch/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "elektrizitatswerk-des-kantons-schaffhausen-14a-2026-source",
+      "sourcePageUrl": "https://www.eks.ch/",
+      "documentUrl": "https://www.eks.ch/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "elektra-genossenschaft-effeltrich-eg",
+    "name": "Elektra-Genossenschaft Effeltrich eG",
+    "regionLabel": "Effeltrich",
+    "websiteUrl": "https://www.elektra-effeltrich.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "elektra-genossenschaft-effeltrich-eg-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.elektra-effeltrich.de",
+        "documentUrl": "https://www.elektra-effeltrich.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "elektra-genossenschaft-effeltrich-eg-14a-2026-source",
+      "sourcePageUrl": "https://www.elektra-effeltrich.de",
+      "documentUrl": "https://www.elektra-effeltrich.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "elektra-genossenschaft-pinzberg-eg",
+    "name": "Elektra-Genossenschaft Pinzberg eG",
+    "regionLabel": "Pinzberg",
+    "websiteUrl": "http://www.elektra-pinzberg.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "elektra-genossenschaft-pinzberg-eg-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "http://www.elektra-pinzberg.de",
+        "documentUrl": "http://www.elektra-pinzberg.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "elektra-genossenschaft-pinzberg-eg-14a-2026-source",
+      "sourcePageUrl": "http://www.elektra-pinzberg.de",
+      "documentUrl": "http://www.elektra-pinzberg.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "ena-energienetze-apolda",
+    "name": "ENA Energienetze Apolda GmbH",
+    "regionLabel": "Apolda",
+    "websiteUrl": "https://www.en-apolda.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "ena-energienetze-apolda-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.en-apolda.de",
+        "documentUrl": "https://www.en-apolda.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "ena-energienetze-apolda-14a-2026-source",
+      "sourcePageUrl": "https://www.en-apolda.de",
+      "documentUrl": "https://www.en-apolda.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "energie-und-baderbetrieb-hauenstein",
+    "name": "Energie- und Bäderbetrieb Hauenstein",
+    "regionLabel": "Hauenstein",
+    "websiteUrl": "https://energiehauenstein.de/netz/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "energie-und-baderbetrieb-hauenstein-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://energiehauenstein.de/netz/",
+        "documentUrl": "https://energiehauenstein.de/netz/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "energie-und-baderbetrieb-hauenstein-14a-2026-source",
+      "sourcePageUrl": "https://energiehauenstein.de/netz/",
+      "documentUrl": "https://energiehauenstein.de/netz/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "elektroenergieversorgung-cottbus",
+    "name": "Elektroenergieversorgung Cottbus GmbH",
+    "regionLabel": "Cottbus",
+    "websiteUrl": "http://www.energienetze-cottbus.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "elektroenergieversorgung-cottbus-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "http://www.energienetze-cottbus.de",
+        "documentUrl": "http://www.energienetze-cottbus.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite als Primärquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollständig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primär belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "elektroenergieversorgung-cottbus-14a-2026-source",
+      "sourcePageUrl": "http://www.energienetze-cottbus.de",
+      "documentUrl": "http://www.energienetze-cottbus.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primär belegt",
+      "bands": [],
+      "timeWindows": []
+    }
   }
 ]

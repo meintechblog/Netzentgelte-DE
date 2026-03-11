@@ -831,10 +831,10 @@
     "sourceStatus": "source-found",
     "tariffStatus": "partial",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.egt-energie.de/",
-    "notes": "VNBdigital ID 634",
+    "sourcePageUrl": "https://www.egt-energie.de/download-center/",
+    "notes": "VNBdigital ID 634; Official download center lists Vorlaeufige Netzentgelte Strom 2026 PDF on operator domain; kept pending.",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.egt-energie.de/"
+    "documentUrl": "https://www.egt-energie.de/download/34/1-0-netzentgelte-strom/4884/vorlaeufige-netzentgelte-strom-2026.pdf"
   },
   {
     "slug": "ehinger-energie-und",
@@ -846,10 +846,10 @@
     "sourceStatus": "source-found",
     "tariffStatus": "partial",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.ehinger-energie.de",
-    "notes": "VNBdigital ID 163",
+    "sourcePageUrl": "https://www.ehinger-energie.de/unser-netz/veroeffentlichung/",
+    "notes": "VNBdigital ID 163; Official Veroeffentlichung page publishes Preisblatt Netznutzungsentgelte Strom 2026 PDF; kept pending.",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.ehinger-energie.de"
+    "documentUrl": "https://www.ehinger-energie.de/fileadmin/ehinger-energie/Stromnetz/Netzentgelte/Preisblatt_Netznutzungsentgelte_Strom_2026.pdf"
   },
   {
     "slug": "eichsfelder-energie-und-wasserversorgungs",
@@ -926,17 +926,18 @@
   },
   {
     "slug": "elektrizitats-genossenschaft-nordhalben-und",
-    "operatorName": "Elektrizitäts-Genossenschaft Nordhalben und",
+    "operatorName": "Elektrizitäts-Genossenschaft Nordhalben und Umgebung eG",
     "websiteUrl": "https://www.eg-nordhalben.de",
     "regionLabel": "Nordhalben",
     "shellStatus": "profile-found",
     "coverageStatus": "hinted",
-    "sourceStatus": "candidate",
-    "tariffStatus": "missing",
+    "sourceStatus": "source-found",
+    "tariffStatus": "partial",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.eg-nordhalben.de",
-    "notes": "VNBdigital ID 474",
-    "deprecatedStatus": "active"
+    "sourcePageUrl": "https://www.eg-nordhalben.de/preise-und-leistungen/",
+    "notes": "VNBdigital ID 474; Official Preise und Leistungen page lists Preisblatt Netznutzung 2026 (vorlaeufig); linked PDF endpoint was access-constrained in-session, kept pending.",
+    "deprecatedStatus": "active",
+    "documentUrl": "https://www.eg-nordhalben.de/app/download/13617403395/Preisblatt+-+Netznutzung+2026+-+vorl%C3%A4ufig.pdf"
   },
   {
     "slug": "elektrizitats-genossenschaft-rothenbach-eg",
@@ -978,10 +979,10 @@
     "sourceStatus": "source-found",
     "tariffStatus": "partial",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.eg-schonstett.de",
-    "notes": "VNBdigital ID 713",
+    "sourcePageUrl": "https://www.eg-schonstett.de/ver%C3%B6ffentlichungen/",
+    "notes": "VNBdigital ID 713; Official Veroeffentlichungen page links Netznutzungsentgelte Strom ab 01.01.2026 PDF; kept pending.",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.eg-schonstett.de"
+    "documentUrl": "https://www.eg-schonstett.de/_media/download_gallery/Netznutzungsentgelte_Strom_ab_01_2026.pdf"
   },
   {
     "slug": "elektrizitats-genossenschaft-tacherting-feichen-e-g",
@@ -993,10 +994,10 @@
     "sourceStatus": "source-found",
     "tariffStatus": "partial",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.egtf.de",
-    "notes": "VNBdigital ID 740",
+    "sourcePageUrl": "https://www.egtf.de/netz/nutzungsentgelte-und-mehr/",
+    "notes": "VNBdigital ID 740; Official Nutzungsentgelte page links Netzentgelte 2026 PDF on operator domain; kept pending.",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.egtf.de"
+    "documentUrl": "https://www.egtf.de/_Resources/Persistent/8/f/c/4/8fc49b5beeb432f7f4f5cf233f1f409d6d413992/Netzentgelte%202026.pdf"
   },
   {
     "slug": "elektrizitats-und-wasserversorgungsgenossenschaft-vagen-eg",
@@ -1076,13 +1077,12 @@
     "regionLabel": "Versmold-Oesterweg",
     "shellStatus": "published",
     "coverageStatus": "hinted",
-    "sourceStatus": "source-found",
-    "tariffStatus": "partial",
+    "sourceStatus": "candidate",
+    "tariffStatus": "missing",
     "reviewStatus": "pending",
     "sourcePageUrl": "http://www.eg-oesterweg.de",
-    "notes": "VNBdigital ID pJW5JijGS6HhTmttr",
-    "deprecatedStatus": "active",
-    "documentUrl": "http://www.eg-oesterweg.de"
+    "notes": "VNBdigital ID pJW5JijGS6HhTmttr; Official site was not directly reachable in-session (HTTP 502), no stable 2026 primary artifact validated yet.",
+    "deprecatedStatus": "active"
   },
   {
     "slug": "elektrizitatsgenossenschaft-ohlstadt-eg",
@@ -1094,10 +1094,10 @@
     "sourceStatus": "source-found",
     "tariffStatus": "partial",
     "reviewStatus": "pending",
-    "sourcePageUrl": "http://www.ego-ohlstadt.de",
-    "notes": "VNBdigital ID 495",
+    "sourcePageUrl": "https://ego-ohlstadt.de/Stromnetz/Veroffentlichungen/veroffentlichungen.html",
+    "notes": "VNBdigital ID 495; Official Veroeffentlichungen page and Preisblatt NNE ab 01.01.2026 PDF identified on operator domain; kept pending.",
     "deprecatedStatus": "active",
-    "documentUrl": "http://www.ego-ohlstadt.de"
+    "documentUrl": "https://ego-ohlstadt.de/Stromnetz/Downloads/Preisblatt-NNE-ab-01-01-2026.pdf"
   },
   {
     "slug": "elektrizitatsgenossenschaft-rettenberg-eg",
@@ -1124,10 +1124,10 @@
     "sourceStatus": "source-found",
     "tariffStatus": "partial",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.eg-unterneukirchen.de",
-    "notes": "VNBdigital ID 7140",
+    "sourcePageUrl": "https://eg-unterneukirchen.de/netz.html",
+    "notes": "VNBdigital ID 7140; Official Netz page links Preisblatt Netznutzungsentgelte Strom 01/2026 PDF; kept pending.",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.eg-unterneukirchen.de"
+    "documentUrl": "https://eg-unterneukirchen.de/downloads/Preisblatt_Netznutzungsentgelte_Strom_01-2026.pdf"
   },
   {
     "slug": "elektrizitatsgenossenschaft-vogling-und-angrenzer-eg",
@@ -1803,10 +1803,10 @@
     "sourceStatus": "source-found",
     "tariffStatus": "partial",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.eg-wittmund.de",
-    "notes": "VNBdigital ID 7083",
+    "sourcePageUrl": "https://www.eg-wittmund.de/netz",
+    "notes": "VNBdigital ID 7083; Official Netz page links Preisblatt Netznutzungsentgelte 2026 PDF on operator domain; kept pending.",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.eg-wittmund.de"
+    "documentUrl": "https://www.eg-wittmund.de/wp-content/uploads/2025/12/preisblatt-netznutzungsentgelte-2026.pdf"
   },
   {
     "slug": "energienetze-bayern",
@@ -7053,10 +7053,10 @@
     "sourceStatus": "source-found",
     "tariffStatus": "partial",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.eilenburger-stadtwerke.de/netz/stromnetz.html",
-    "notes": "VNBdigital ID 7182",
+    "sourcePageUrl": "https://www.eilenburger-stadtwerke.de/netz/stromnetz/netzzugang.html",
+    "notes": "VNBdigital ID 7182; Official Netzzugang page references 2026 Strom-NNE PDF (link target exposed via file parameter), kept pending until stable retrieval checks pass.",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.eilenburger-stadtwerke.de/netz/stromnetz.html"
+    "documentUrl": "https://www.eilenburger-stadtwerke.de/files/downloads/netz/strom/netzzugang/entgelte/NNE_Strom_2026.pdf"
   },
   {
     "slug": "stadtwerke-einbeck",

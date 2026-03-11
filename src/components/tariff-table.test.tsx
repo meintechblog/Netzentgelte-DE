@@ -61,7 +61,7 @@ describe("TariffTable", () => {
     expect(screen.queryByRole("columnheader", { name: "Review" })).not.toBeInTheDocument();
     expect(screen.queryByRole("columnheader", { name: "Quelle" })).not.toBeInTheDocument();
     expect(screen.queryByRole("columnheader", { name: "Gültig ab" })).not.toBeInTheDocument();
-    expect(screen.getByText("Nur Standardtarif")).toBeInTheDocument();
+    expect(screen.getAllByText("Nur Standardtarif").length).toBeGreaterThan(0);
     const q1Section = screen.getByLabelText("Stadtwerke Schwäbisch Hall GmbH Q1");
     const q3Section = screen.getByLabelText("Stadtwerke Schwäbisch Hall GmbH Q3");
     expect(within(q1Section).getByText("Q1")).toBeInTheDocument();
@@ -89,6 +89,22 @@ describe("TariffTable", () => {
     expect(
       screen.getByText(/Quelle stadtwerke-schwaebisch-hall-stadtwerke-schwaebisch-hall-14a-2026/)
     ).toBeInTheDocument();
+  });
+
+  test("renders a dedicated mobile quarter stack inside the operator panel", () => {
+    const schwaebischHall = mergeTariffRowsWithEndcustomerCatalog(
+      getRegistryTariffRows(getSeedPublishedOperators()),
+      getSeedEndcustomerTariffCatalog()
+    ).find((row) => row.operatorSlug === "stadtwerke-schwaebisch-hall");
+
+    const { container } = render(<TariffTable rows={[schwaebischHall!]} />);
+    const mobileStack = container.querySelector(".tariff-quarter-mobile-stack");
+
+    expect(mobileStack).not.toBeNull();
+    expect(within(mobileStack as HTMLElement).getByLabelText("Stadtwerke Schwäbisch Hall GmbH Q1 mobil")).toBeInTheDocument();
+    expect(within(mobileStack as HTMLElement).getByLabelText("Stadtwerke Schwäbisch Hall GmbH Q2 mobil")).toBeInTheDocument();
+    expect(within(mobileStack as HTMLElement).getByLabelText("Stadtwerke Schwäbisch Hall GmbH Q3 mobil")).toBeInTheDocument();
+    expect(within(mobileStack as HTMLElement).getByLabelText("Stadtwerke Schwäbisch Hall GmbH Q4 mobil")).toBeInTheDocument();
   });
 
   test("renders source review details inline without duplicating primary links", () => {

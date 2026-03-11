@@ -457,6 +457,14 @@ input:focus-visible {
   align-content: start;
 }
 
+.tariff-quarter-mobile-stack {
+  display: none;
+}
+
+.tariff-quarter-mobile-stack__item {
+  min-width: 0;
+}
+
 .tariff-quarter-card__header {
   display: flex;
   flex-wrap: wrap;
@@ -1315,10 +1323,6 @@ input:focus-visible {
     grid-template-columns: 1fr;
   }
 
-  .tariff-table tbody tr {
-    grid-template-columns: 1fr;
-  }
-
   .tariff-quarter-card__header--compact {
     align-items: flex-start;
   }
@@ -1330,6 +1334,57 @@ input:focus-visible {
   .tariff-quarter-axis,
   .tariff-quarter-rail {
     min-height: 15.5rem;
+  }
+
+  .tariff-table-wrap {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+  }
+
+  .tariff-table,
+  .tariff-table tbody,
+  .tariff-table tr,
+  .tariff-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .tariff-table thead,
+  .tariff-table colgroup {
+    display: none;
+  }
+
+  .tariff-table tbody {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .tariff-table tbody tr {
+    display: block;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(7, 16, 31, 0.96);
+  }
+
+  .tariff-table tbody td {
+    padding: 0;
+    border: 0;
+  }
+
+  .tariff-table__quarter-cell {
+    display: none !important;
+  }
+
+  .tariff-quarter-mobile-stack {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 0.9rem;
+  }
+
+  .tariff-quarter-card--mobile {
+    min-height: auto;
   }
 
 }
@@ -1385,13 +1440,61 @@ input:focus-visible {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
+  .tariff-table-wrap {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+  }
+
+  .tariff-table,
+  .tariff-table tbody,
+  .tariff-table tr,
+  .tariff-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .tariff-table thead,
+  .tariff-table colgroup {
+    display: none;
+  }
+
+  .tariff-table tbody {
+    display: grid;
+    gap: 1rem;
+  }
+
   .tariff-table tbody tr {
-    grid-template-columns: minmax(0, 1fr);
+    display: block;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(7, 16, 31, 0.96);
   }
 
   .tariff-table tbody td {
-    grid-column: 1 / -1;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+
+  .tariff-table__quarter-cell {
+    display: none !important;
+  }
+
+  .tariff-quarter-mobile-stack {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 0.9rem;
+  }
+
+  .tariff-quarter-mobile-stack__item {
+    width: 100%;
+  }
+
+  .tariff-quarter-card--mobile {
+    min-height: auto;
   }
 }
 

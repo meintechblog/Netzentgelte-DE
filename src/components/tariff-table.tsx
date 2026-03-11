@@ -118,6 +118,59 @@ function getComplianceStatusClass(row: TariffTableRow) {
   return "review-pill verified";
 }
 
+function renderQuarterCard(
+  row: TariffTableRow,
+  quarter: TariffTableRow["quarterMatrix"][number],
+  variant: "table" | "mobile"
+) {
+  const suffix = variant === "mobile" ? " mobil" : "";
+
+  return (
+    <section
+      aria-label={`${row.operatorName} ${quarter.label}${suffix}`}
+      className={`tariff-quarter-card ${variant === "table" ? "tariff-quarter-card--table" : "tariff-quarter-card--mobile"}`}
+    >
+      <div className="tariff-quarter-card__header tariff-quarter-card__header--compact">
+        <div className="tariff-quarter-card__copy">
+          <span className="tariff-quarter-card__quarter">{quarter.key}</span>
+          <span className="table-muted">{quarter.summaryLabel}</span>
+        </div>
+        <span className="tariff-quarter-card__unit">Blockansicht · 15 Min</span>
+      </div>
+      {quarter.segments.some((segment) => segment.bandKey) ? (
+        <div className="tariff-quarter-blocks">
+          <div aria-hidden="true" className="tariff-quarter-axis">
+            {QUARTER_AXIS_MARKS.map((mark) => (
+              <span
+                className={`tariff-quarter-axis__mark${
+                  mark.minutes === 24 * 60 ? " tariff-quarter-axis__mark--end" : ""
+                }`}
+                key={`${quarter.key}-${variant}-${mark.label}`}
+                style={{ top: `${(mark.minutes / (24 * 60)) * 100}%` }}
+              >
+                {mark.label}
+              </span>
+            ))}
+          </div>
+          <div className="tariff-quarter-rail">
+            {quarter.segments.map((segment) => (
+              <span
+                aria-label={getQuarterSlotLabel(quarter.label, segment)}
+                className={getQuarterSlotClass(segment)}
+                key={`${row.operatorSlug}-${quarter.key}-${variant}-${segment.startSlotIndex}`}
+                style={getQuarterSegmentStyle(segment)}
+                title={getQuarterSlotLabel(quarter.label, segment)}
+              />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <p className="tariff-window-empty">Keine Zeitfenster erfasst.</p>
+      )}
+    </section>
+  );
+}
+
 export function TariffTable({ rows }: TariffTableProps) {
   const [openEndcustomerOperators, setOpenEndcustomerOperators] = useState<Set<string>>(
     () => new Set()
@@ -331,52 +384,18 @@ export function TariffTable({ rows }: TariffTableProps) {
                       ) : null}
                     </section>
                   ) : null}
+                  <div className="tariff-quarter-mobile-stack">
+                    {row.quarterMatrix.map((quarter) => (
+                      <div className="tariff-quarter-mobile-stack__item" key={`${row.operatorSlug}-${quarter.key}-mobile`}>
+                        {renderQuarterCard(row, quarter, "mobile")}
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 </td>
                 {row.quarterMatrix.map((quarter) => (
-                  <td key={`${row.operatorSlug}-${quarter.key}`}>
-                    <section
-                      aria-label={`${row.operatorName} ${quarter.label}`}
-                      className="tariff-quarter-card tariff-quarter-card--table"
-                    >
-                      <div className="tariff-quarter-card__header tariff-quarter-card__header--compact">
-                        <div className="tariff-quarter-card__copy">
-                          <span className="tariff-quarter-card__quarter">{quarter.key}</span>
-                          <span className="table-muted">{quarter.summaryLabel}</span>
-                        </div>
-                        <span className="tariff-quarter-card__unit">Blockansicht · 15 Min</span>
-                      </div>
-                      {quarter.segments.some((segment) => segment.bandKey) ? (
-                        <div className="tariff-quarter-blocks">
-                          <div aria-hidden="true" className="tariff-quarter-axis">
-                            {QUARTER_AXIS_MARKS.map((mark) => (
-                              <span
-                                className={`tariff-quarter-axis__mark${
-                                  mark.minutes === 24 * 60 ? " tariff-quarter-axis__mark--end" : ""
-                                }`}
-                                key={`${quarter.key}-${mark.label}`}
-                                style={{ top: `${(mark.minutes / (24 * 60)) * 100}%` }}
-                              >
-                                {mark.label}
-                              </span>
-                            ))}
-                          </div>
-                          <div className="tariff-quarter-rail">
-                            {quarter.segments.map((segment) => (
-                              <span
-                                aria-label={getQuarterSlotLabel(quarter.label, segment)}
-                                className={getQuarterSlotClass(segment)}
-                                key={`${row.operatorSlug}-${quarter.key}-${segment.startSlotIndex}`}
-                                style={getQuarterSegmentStyle(segment)}
-                                title={getQuarterSlotLabel(quarter.label, segment)}
-                              />
-                            ))}
-                          </div>
-                        </div>
-                      ) : (
-                        <p className="tariff-window-empty">Keine Zeitfenster erfasst.</p>
-                      )}
-                    </section>
+                  <td className="tariff-table__quarter-cell" key={`${row.operatorSlug}-${quarter.key}`}>
+                    {renderQuarterCard(row, quarter, "table")}
                   </td>
                 ))}
               </tr>

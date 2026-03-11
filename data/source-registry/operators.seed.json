@@ -9568,5 +9568,893 @@
       "bands": [],
       "timeWindows": []
     }
+  },
+  {
+    "slug": "gemeindewerke-bayerisch-gmain",
+    "name": "Gemeindewerke Bayerisch Gmain",
+    "regionLabel": "Bad Reichenhall",
+    "websiteUrl": "http://www.gemeindewerke-bayerisch-gmain.com/",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-bayerisch-gmain-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "http://www.gemeindewerke-bayerisch-gmain.com/",
+        "documentUrl": "http://www.gemeindewerke-bayerisch-gmain.com/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Bayerisch Gmain als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-bayerisch-gmain-14a-2026-source",
+      "sourcePageUrl": "http://www.gemeindewerke-bayerisch-gmain.com/",
+      "documentUrl": "http://www.gemeindewerke-bayerisch-gmain.com/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-bovenden-und",
+    "name": "Gemeindewerke Bovenden GmbH & Co. KG",
+    "regionLabel": "Bovenden",
+    "websiteUrl": "https://www.gemeindewerke-bovenden.de/netze",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-bovenden-und-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-bovenden.de/netze",
+        "documentUrl": "https://www.gemeindewerke-bovenden.de/netze",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Bovenden GmbH & Co. KG als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-bovenden-und-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-bovenden.de/netze",
+      "documentUrl": "https://www.gemeindewerke-bovenden.de/netze",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-budenheim-aor",
+    "name": "Gemeindewerke Budenheim AöR",
+    "regionLabel": "Budenheim",
+    "websiteUrl": "https://www.gemeindewerke-budenheim.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-budenheim-aor-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-budenheim.de",
+        "documentUrl": "https://www.gemeindewerke-budenheim.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Budenheim AöR als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-budenheim-aor-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-budenheim.de",
+      "documentUrl": "https://www.gemeindewerke-budenheim.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-dudenhofen",
+    "name": "Gemeindewerke Dudenhofen",
+    "regionLabel": "Dudenhofen",
+    "websiteUrl": "https://www.gemeindewerke-dudenhofen.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-dudenhofen-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-dudenhofen.de",
+        "documentUrl": "https://www.gemeindewerke-dudenhofen.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Dudenhofen als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-dudenhofen-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-dudenhofen.de",
+      "documentUrl": "https://www.gemeindewerke-dudenhofen.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-georgensgmund",
+    "name": "Gemeindewerke Georgensgmünd",
+    "regionLabel": "Georgensgmünd",
+    "websiteUrl": "https://www.gemeindewerke-georgensgmuend.de/de/startseite",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-georgensgmund-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-georgensgmuend.de/de/startseite",
+        "documentUrl": "https://www.gemeindewerke-georgensgmuend.de/de/startseite",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Georgensgmünd als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-georgensgmund-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-georgensgmuend.de/de/startseite",
+      "documentUrl": "https://www.gemeindewerke-georgensgmuend.de/de/startseite",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-grefrath",
+    "name": "Gemeindewerke Grefrath GmbH",
+    "regionLabel": "Grefrath",
+    "websiteUrl": "https://www.gemeindewerke-grefrath.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-grefrath-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-grefrath.de",
+        "documentUrl": "https://www.gemeindewerke-grefrath.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Grefrath GmbH als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-grefrath-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-grefrath.de",
+      "documentUrl": "https://www.gemeindewerke-grefrath.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-grosskrotzenburg",
+    "name": "Gemeindewerke Großkrotzenburg GmbH",
+    "regionLabel": "Großkrotzenburg",
+    "websiteUrl": "https://www.gemeindewerke-grosskrotzenburg.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-grosskrotzenburg-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-grosskrotzenburg.de",
+        "documentUrl": "https://www.gemeindewerke-grosskrotzenburg.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Großkrotzenburg GmbH als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-grosskrotzenburg-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-grosskrotzenburg.de",
+      "documentUrl": "https://www.gemeindewerke-grosskrotzenburg.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-herxheim",
+    "name": "Gemeindewerke Herxheim",
+    "regionLabel": "Herxheim",
+    "websiteUrl": "https://www.gemeindewerke-herxheim.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-herxheim-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-herxheim.de",
+        "documentUrl": "https://www.gemeindewerke-herxheim.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Herxheim als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-herxheim-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-herxheim.de",
+      "documentUrl": "https://www.gemeindewerke-herxheim.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-kahl-versorgungsgesellschaft",
+    "name": "Gemeindewerke Kahl Versorgungsgesellschaft mbH",
+    "regionLabel": "Kahl am Main",
+    "websiteUrl": "https://www.gemeindewerke-kahl.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-kahl-versorgungsgesellschaft-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-kahl.de",
+        "documentUrl": "https://www.gemeindewerke-kahl.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Kahl Versorgungsgesellschaft mbH als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-kahl-versorgungsgesellschaft-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-kahl.de",
+      "documentUrl": "https://www.gemeindewerke-kahl.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-kiefersfelden",
+    "name": "Gemeindewerke Kiefersfelden",
+    "regionLabel": "Kiefersfelden",
+    "websiteUrl": "https://www.gemeindewerke-kiefersfelden.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-kiefersfelden-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-kiefersfelden.de",
+        "documentUrl": "https://www.gemeindewerke-kiefersfelden.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Kiefersfelden als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-kiefersfelden-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-kiefersfelden.de",
+      "documentUrl": "https://www.gemeindewerke-kiefersfelden.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-lam",
+    "name": "Gemeindewerke Lam",
+    "regionLabel": "Lam",
+    "websiteUrl": "https://www.gemeindewerke-lam.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-lam-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-lam.de",
+        "documentUrl": "https://www.gemeindewerke-lam.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Lam als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-lam-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-lam.de",
+      "documentUrl": "https://www.gemeindewerke-lam.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-oberaudorf",
+    "name": "Gemeindewerke Oberaudorf",
+    "regionLabel": "Oberaudorf",
+    "websiteUrl": "https://www.gemeindewerke-oberaudorf.de/",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-oberaudorf-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-oberaudorf.de/",
+        "documentUrl": "https://www.gemeindewerke-oberaudorf.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Oberaudorf als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-oberaudorf-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-oberaudorf.de/",
+      "documentUrl": "https://www.gemeindewerke-oberaudorf.de/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-peissenberg-ku",
+    "name": "Gemeindewerke Peißenberg KU",
+    "regionLabel": "Peißenberg",
+    "websiteUrl": "https://www.gemeindewerke-peissenberg.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-peissenberg-ku-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-peissenberg.de",
+        "documentUrl": "https://www.gemeindewerke-peissenberg.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Peißenberg KU als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-peissenberg-ku-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-peissenberg.de",
+      "documentUrl": "https://www.gemeindewerke-peissenberg.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-schutterwald",
+    "name": "Gemeindewerke Schutterwald",
+    "regionLabel": "Schutterwald",
+    "websiteUrl": "https://www.gemeindewerke-schutterwald.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-schutterwald-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-schutterwald.de",
+        "documentUrl": "https://www.gemeindewerke-schutterwald.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Schutterwald als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-schutterwald-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-schutterwald.de",
+      "documentUrl": "https://www.gemeindewerke-schutterwald.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "kommunalunternehmen-gemeindewerke-stammbach-aor",
+    "name": "Kommunalunternehmen Gemeindewerke Stammbach AöR",
+    "regionLabel": "Stammbach",
+    "websiteUrl": "https://www.gemeindewerke-stammbach.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "kommunalunternehmen-gemeindewerke-stammbach-aor-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-stammbach.de",
+        "documentUrl": "https://www.gemeindewerke-stammbach.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Kommunalunternehmen Gemeindewerke Stammbach AöR als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "kommunalunternehmen-gemeindewerke-stammbach-aor-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-stammbach.de",
+      "documentUrl": "https://www.gemeindewerke-stammbach.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-wadgassen",
+    "name": "Gemeindewerke Wadgassen GmbH",
+    "regionLabel": "Wadgassen",
+    "websiteUrl": "https://gemeindewerke-wadgassen.de/",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-wadgassen-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://gemeindewerke-wadgassen.de/",
+        "documentUrl": "https://gemeindewerke-wadgassen.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Wadgassen GmbH als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-wadgassen-14a-2026-source",
+      "sourcePageUrl": "https://gemeindewerke-wadgassen.de/",
+      "documentUrl": "https://gemeindewerke-wadgassen.de/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-waging-a-see",
+    "name": "Gemeindewerke Waging a. See",
+    "regionLabel": "Waging am See",
+    "websiteUrl": "https://www.gemeindewerke-waging.de/",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-waging-a-see-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-waging.de/",
+        "documentUrl": "https://www.gemeindewerke-waging.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Waging a. See als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-waging-a-see-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-waging.de/",
+      "documentUrl": "https://www.gemeindewerke-waging.de/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeindewerke-wendelstein-ku",
+    "name": "Gemeindewerke Wendelstein KU",
+    "regionLabel": "Wendelstein",
+    "websiteUrl": "https://www.gemeindewerke-wendelstein.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeindewerke-wendelstein-ku-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gemeindewerke-wendelstein.de",
+        "documentUrl": "https://www.gemeindewerke-wendelstein.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeindewerke Wendelstein KU als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeindewerke-wendelstein-ku-14a-2026-source",
+      "sourcePageUrl": "https://www.gemeindewerke-wendelstein.de",
+      "documentUrl": "https://www.gemeindewerke-wendelstein.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "greizer-energienetze",
+    "name": "Greizer Energienetze GmbH",
+    "regionLabel": "Greiz",
+    "websiteUrl": "https://www.gen-greiz.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "greizer-energienetze-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gen-greiz.de",
+        "documentUrl": "https://www.gen-greiz.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Greizer Energienetze GmbH als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "greizer-energienetze-14a-2026-source",
+      "sourcePageUrl": "https://www.gen-greiz.de",
+      "documentUrl": "https://www.gen-greiz.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "getec-quartier",
+    "name": "GETEC Quartier GmbH",
+    "regionLabel": "Hannover",
+    "websiteUrl": "https://www.getec-net.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "getec-quartier-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.getec-net.de",
+        "documentUrl": "https://www.getec-net.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von GETEC Quartier GmbH als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "getec-quartier-14a-2026-source",
+      "sourcePageUrl": "https://www.getec-net.de",
+      "documentUrl": "https://www.getec-net.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "getreidemuhle-zwiefalten-e-g",
+    "name": "Getreidemühle Zwiefalten e.G.",
+    "regionLabel": "Zwiefalten",
+    "websiteUrl": "https://getreidemuehle-zwiefalten.de/",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "getreidemuhle-zwiefalten-e-g-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://getreidemuehle-zwiefalten.de/",
+        "documentUrl": "https://getreidemuehle-zwiefalten.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Getreidemühle Zwiefalten e.G. als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "getreidemuhle-zwiefalten-e-g-14a-2026-source",
+      "sourcePageUrl": "https://getreidemuehle-zwiefalten.de/",
+      "documentUrl": "https://getreidemuehle-zwiefalten.de/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gemeinde-elektrizitats-und-wasserwerk-burtenbach",
+    "name": "Gemeinde-Elektrizitäts- und Wasserwerk Burtenbach",
+    "regionLabel": "Burtenbach",
+    "websiteUrl": "https://www.gew-burtenbach.de/",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gemeinde-elektrizitats-und-wasserwerk-burtenbach-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gew-burtenbach.de/",
+        "documentUrl": "https://www.gew-burtenbach.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von Gemeinde-Elektrizitäts- und Wasserwerk Burtenbach als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gemeinde-elektrizitats-und-wasserwerk-burtenbach-14a-2026-source",
+      "sourcePageUrl": "https://www.gew-burtenbach.de/",
+      "documentUrl": "https://www.gew-burtenbach.de/",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gew-wilhelmshaven",
+    "name": "GEW Wilhelmshaven GmbH",
+    "regionLabel": "Wilhelmshaven",
+    "websiteUrl": "https://www.gew-wilhelmshaven.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gew-wilhelmshaven-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.gew-wilhelmshaven.de",
+        "documentUrl": "https://www.gew-wilhelmshaven.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von GEW Wilhelmshaven GmbH als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gew-wilhelmshaven-14a-2026-source",
+      "sourcePageUrl": "https://www.gew-wilhelmshaven.de",
+      "documentUrl": "https://www.gew-wilhelmshaven.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "gruppen-gas-und-elektrizitatswerk-bergstrasse-aktiengesellschaft",
+    "name": "GRUPPEN-GAS- UND ELEKTRIZITÄTSWERK BERGSTRASSE AKTIENGESELLSCHAFT",
+    "regionLabel": "Bensheim",
+    "websiteUrl": "https://www.ggew.de",
+    "registrySourceIds": [
+      "vnbdigital-shells"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "gruppen-gas-und-elektrizitatswerk-bergstrasse-aktiengesellschaft-14a-2026-source",
+        "title": "Offizielle Netzbetreiberseite (Modul-3-Datenstand offen)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.ggew.de",
+        "documentUrl": "https://www.ggew.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberseite von GRUPPEN-GAS- UND ELEKTRIZITÄTSWERK BERGSTRASSE AKTIENGESELLSCHAFT als Primaerquelle erfasst.",
+          "In dieser Backfill-Iteration wurde kein belastbares, vollstaendig auswertbares Modul-3-Preisblatt 2026 extrahiert.",
+          "Datensatz bleibt pending bis explizite NT/ST/HT-Werte und widerspruchsfreie Zeitfenster primaer belegt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "gruppen-gas-und-elektrizitatswerk-bergstrasse-aktiengesellschaft-14a-2026-source",
+      "sourcePageUrl": "https://www.ggew.de",
+      "documentUrl": "https://www.ggew.de",
+      "summaryFallback": "Offizielle Betreiberquelle erfasst; belastbare Modul-3-Matrix 2026 noch nicht primaer belegt",
+      "bands": [],
+      "timeWindows": []
+    }
   }
 ]

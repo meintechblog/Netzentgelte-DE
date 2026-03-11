@@ -1,66 +1,70 @@
 # Netzentgelte Deutschland
 
-Zentrale Datenplattform fuer deutsche Stromnetzbetreiber mit Fokus auf `Paragraf 14a`-Netzentgelte, Quellenpruefung und nachvollziehbare Publikation.
+Zentrale Datenplattform für deutsche Stromnetzbetreiber mit Fokus auf `§ 14a`-Netzentgelte, Quellenprüfung und nachvollziehbare Publikation.
 
 Live:
 
-- Public app: [https://kigenerated.de/netzentgelte/](https://kigenerated.de/netzentgelte/)
-- Public API: [https://kigenerated.de/netzentgelte/api/operators.json](https://kigenerated.de/netzentgelte/api/operators.json)
-- LXC development app: `http://192.168.3.178:3000`
+- Öffentliche App: [https://kigenerated.de/netzentgelte/](https://kigenerated.de/netzentgelte/)
+- Öffentliche API: [https://kigenerated.de/netzentgelte/api/operators.json](https://kigenerated.de/netzentgelte/api/operators.json)
+- LXC-Entwicklungsinstanz: `http://192.168.3.178:3000`
 
-## Projektueberblick
+## Projektüberblick
 
-Das Projekt sammelt Netzbetreiberdaten, Tariflogiken, Zeitfenster, Quellenbelege und Geometriehinweise in einer eigenen Datenbasis und spielt daraus einen oeffentlichen Read-Stand als Webapp und API aus.
+Das Projekt sammelt Netzbetreiberdaten, Tariflogiken, Zeitfenster, Quellenbelege und Geometriehinweise in einer eigenen Datenbasis und spielt daraus einen öffentlichen Read-Stand als Webapp und API aus.
 
 Der aktuelle Fokus liegt auf:
 
-- Betreiber-Registry fuer Deutschland
+- Betreiber-Registry für Deutschland
 - `14a Modul 3`-Tarife mit Bands, Zeitfenstern und Quartalslogik
 - nachvollziehbaren Quellen- und Compliance-Informationen
-- sauberer Trennung zwischen internem Arbeitsstand und oeffentlichem Snapshot
+- sauberer Trennung zwischen internem Arbeitsstand und öffentlichem Snapshot
 
-## API Ueberblick
+## API-Überblick
 
-Die API ist oeffentlich lesbar und liefert JSON.
+Die API ist öffentlich lesbar und liefert JSON.
 
 Eigenschaften:
 
 - nur `GET`
 - keine Authentifizierung
-- keine Query-Parameter fuer die oeffentlichen Endpunkte
-- Content-Type: `application/json`
-- oeffentliche Auslieferung als statischer Snapshot unter dem App-Pfad
+- keine Query-Parameter für die öffentlichen Endpunkte
+- Content-Type: `application/json; charset=UTF-8`
+- öffentliche Auslieferung als statischer Snapshot unter dem App-Pfad
 - `id === slug`
 
-Es gibt zwei Zugriffsebenen mit gleichem Datenmodell:
+Es gibt zwei API-Ebenen mit unterschiedlichen Stabilitätszielen:
 
-### Oeffentliche Snapshot-API
+### Öffentliche Snapshot-API
 
 - `GET /netzentgelte/api/operators.json`
 - `GET /netzentgelte/api/operators/<slug>.json`
 
-Beispiel:
+Diese Endpunkte sind der maßgebliche externe Integrationsvertrag.
+
+Beispiele:
 
 - [https://kigenerated.de/netzentgelte/api/operators.json](https://kigenerated.de/netzentgelte/api/operators.json)
 - [https://kigenerated.de/netzentgelte/api/operators/netze-bw.json](https://kigenerated.de/netzentgelte/api/operators/netze-bw.json)
 
-### Interne Next.js-API fuer Entwicklung und Betrieb
+### Interne Next.js-Runtime-APIs
 
 - `GET /api/operators`
-- `GET /api/operators/<slug>`
+- `GET /api/tariffs/current`
 
-Beispiel LXC:
+Diese Routen bilden den aktuellen Entwicklungs- und Betriebsstand der App ab. Sie sind für interne Nutzung gedacht und nicht der primäre öffentliche Integrationsvertrag.
+
+Beispiele im LXC:
 
 - `http://192.168.3.178:3000/api/operators`
-- `http://192.168.3.178:3000/api/operators/netze-bw`
+- `http://192.168.3.178:3000/api/tariffs/current`
 
-## Schnellstart fuer Integrationen
+## Schnellstart für externe Integrationen
 
 Typischer Ablauf:
 
 1. Betreiberliste laden
-2. `items[].id` oder `items[].slug` fuer die UI-Auswahl verwenden
-3. beim Absenden das Detail fuer genau diesen Betreiber laden
+2. `items[].id` oder `items[].slug` für die UI-Auswahl verwenden
+3. beim Absenden das Detail für genau diesen Betreiber laden
 4. `item.bands`, `item.timeWindows` oder `item.quarterMatrix[].slots[]` weiterverarbeiten
 
 Beispiel in JavaScript:
@@ -90,18 +94,18 @@ curl -fsS https://kigenerated.de/netzentgelte/api/operators/netze-bw.json | jq '
 curl -fsS https://kigenerated.de/netzentgelte/api/operators/netze-bw.json | jq '.item.quarterMatrix[0].slots[0]'
 ```
 
-## Endpoint Referenz
+## Endpoint-Referenz
 
 | Endpoint | Zweck | Erfolg |
 | --- | --- | --- |
-| `GET /netzentgelte/api/operators.json` | Liste aller oeffentlich publizierten Betreiber | `200` |
-| `GET /netzentgelte/api/operators/<slug>.json` | Detaildaten fuer einen Betreiber | `200` |
-| `GET /api/operators` | Interne Liste im Next.js-App-Runtime-Kontext | `200` |
-| `GET /api/operators/<slug>` | Internes Detail im Next.js-App-Runtime-Kontext | `200`, sonst `404` |
+| `GET /netzentgelte/api/operators.json` | Liste aller öffentlich publizierten Betreiber | `200` |
+| `GET /netzentgelte/api/operators/<slug>.json` | Detaildaten für einen Betreiber | `200` |
+| `GET /api/operators` | Interne, kompakte Betreiberliste im Runtime-Kontext | `200` |
+| `GET /api/tariffs/current` | Interne Vollansicht der aktuellen Tarifdaten aller publizierten Betreiber | `200` |
 
 ## GET /netzentgelte/api/operators.json
 
-Liefert die oeffentlich publizierte Betreiberliste fuer Auswahlfelder, Suchindizes und erste Uebersichten.
+Liefert die öffentlich publizierte Betreiberliste für Auswahlfelder, Suchindizes und erste Übersichten.
 
 ### Response
 
@@ -112,7 +116,7 @@ Liefert die oeffentlich publizierte Betreiberliste fuer Auswahlfelder, Suchindiz
       "id": "netze-bw",
       "slug": "netze-bw",
       "name": "Netze BW GmbH",
-      "regionLabel": "Baden-Wuerttemberg",
+      "regionLabel": "Baden-Württemberg",
       "reviewStatus": "verified",
       "sourceDocumentCount": 1,
       "latestValidFrom": "2026-01-01",
@@ -133,19 +137,19 @@ Liefert die oeffentlich publizierte Betreiberliste fuer Auswahlfelder, Suchindiz
 | `slug` | `string` | URL-tauglicher Betreiber-Slug |
 | `name` | `string` | Anzeigename des Betreibers |
 | `regionLabel` | `string` | grobe regionale Zuordnung |
-| `reviewStatus` | `"verified" \| "pending"` | Pruefstatus des publizierten Datensatzes |
-| `sourceDocumentCount` | `number` | Anzahl beruecksichtigter Quelldokumente im Snapshot |
-| `latestValidFrom` | `string` | Tarifgueltigkeit ab, Format `YYYY-MM-DD` |
+| `reviewStatus` | `"verified" \| "pending"` | Prüfstatus des publizierten Datensatzes |
+| `sourceDocumentCount` | `number` | Anzahl berücksichtigter Quelldokumente im Snapshot |
+| `latestValidFrom` | `string` | Tarifgültigkeit ab, Format `YYYY-MM-DD` |
 | `priceBasis` | `string` | Preisbasis, z. B. `netto` oder `assumed-netto` |
-| `complianceStatus` | `"compliant" \| "violation" \| "not-evaluable"` | Ergebnis der Regelpruefung |
-| `complianceViolationCount` | `number` | Anzahl gefundener Regelverstoesse |
+| `complianceStatus` | `"compliant" \| "violation" \| "not-evaluable"` | Ergebnis der Regelprüfung |
+| `complianceViolationCount` | `number` | Anzahl gefundener Regelverstöße |
 | `complianceNotEvaluatedCount` | `number` | Anzahl nicht bewertbarer Regeln |
 
 ## GET /netzentgelte/api/operators/<slug>.json
 
-Liefert den vollstaendigen publizierten Datensatz fuer einen Betreiber.
+Liefert den vollständigen publizierten Datensatz für einen Betreiber.
 
-Dieser Endpunkt ist fuer die eigentliche Weiterverarbeitung gedacht, zum Beispiel fuer:
+Dieser Endpunkt ist für die eigentliche Weiterverarbeitung gedacht, zum Beispiel für:
 
 - Tarif-Rendering
 - Zeitslot-Mapping
@@ -161,7 +165,7 @@ Dieser Endpunkt ist fuer die eigentliche Weiterverarbeitung gedacht, zum Beispie
     "id": "netze-bw",
     "slug": "netze-bw",
     "name": "Netze BW GmbH",
-    "regionLabel": "Baden-Wuerttemberg",
+    "regionLabel": "Baden-Württemberg",
     "operatorSlug": "netze-bw",
     "operatorName": "Netze BW GmbH",
     "modelKey": "14a-model-3",
@@ -171,7 +175,7 @@ Dieser Endpunkt ist fuer die eigentliche Weiterverarbeitung gedacht, zum Beispie
     "checkedAt": "2026-03-09",
     "priceBasis": "assumed-netto",
     "sourcePageUrl": "https://www.netze-bw.de/neuregelung-14a-enwg",
-    "documentUrl": "https://assets.ctfassets.net/example/netzentgelte.pdf",
+    "documentUrl": "https://assets.ctfassets.net/xytfb1vrn7of/7eQvxehZzn3ECbR9rALmyD/ecc795b9dcd666ce1f53d9d04362a321/netzentgelte-strom-netze-bw-gmbh-2026.pdf",
     "summary": "NT 3.03 ct/kWh · ST 7.57 ct/kWh · HT 11.06 ct/kWh · Preisbasis Netto angenommen",
     "bands": [],
     "timeWindows": [],
@@ -192,18 +196,18 @@ Dieser Endpunkt ist fuer die eigentliche Weiterverarbeitung gedacht, zum Beispie
 | `operatorSlug` | `string` | fachlicher Betreiber-Slug, identisch zum aktuellen `slug` |
 | `operatorName` | `string` | fachlicher Betreibername, identisch zu `name` |
 | `modelKey` | `string` | Tarifmodell, aktuell `14a-model-3` |
-| `validFrom` | `string` | Tarifgueltigkeit ab, `YYYY-MM-DD` |
+| `validFrom` | `string` | Tarifgültigkeit ab, `YYYY-MM-DD` |
 | `reviewStatus` | `string` | Publikationsstatus des Datensatzes |
 | `sourceSlug` | `string` | eindeutiger Snapshot-/Quellen-Identifier |
-| `checkedAt` | `string \| null` | letzter Pruefzeitpunkt |
+| `checkedAt` | `string \| null` | letzter Prüfzeitpunkt |
 | `priceBasis` | `string` | Preisbasis des publizierten Datensatzes |
 | `sourcePageUrl` | `string` | Quellseite |
 | `documentUrl` | `string` | konkretes Dokument oder Artefakt |
 | `summary` | `string` | kompakte Preiszusammenfassung |
 | `bands` | `Band[]` | Preisstufen |
-| `timeWindows` | `TimeWindow[]` | veroeffentlichte Tarifzeitfenster |
+| `timeWindows` | `TimeWindow[]` | veröffentlichte Tarifzeitfenster |
 | `quarterMatrix` | `Quarter[]` | vorberechnete Quartals- und Slot-Darstellung |
-| `compliance` | `Compliance` | Regelpruefung gegen das hinterlegte Regelwerk |
+| `compliance` | `Compliance` | Regelprüfung gegen das hinterlegte Regelwerk |
 
 ### `bands`
 
@@ -225,7 +229,7 @@ Beispiel:
 
 | Feld | Typ | Bedeutung |
 | --- | --- | --- |
-| `key` | `"NT" \| "ST" \| "HT"` | Band-Schluessel |
+| `key` | `"NT" \| "ST" \| "HT"` | Band-Schlüssel |
 | `label` | `string` | menschenlesbare Band-Bezeichnung |
 | `valueCtPerKwh` | `string` | Preis in `ct/kWh` als String |
 | `sourceQuote` | `string` | kurzer Herkunftsausschnitt |
@@ -253,24 +257,24 @@ Beispiel:
 
 | Feld | Typ | Bedeutung |
 | --- | --- | --- |
-| `id` | `string` | stabiles Zeitfenster-Id |
+| `id` | `string` | stabile Zeitfenster-ID |
 | `bandKey` | `"NT" \| "ST" \| "HT"` | zugeordnete Preisstufe |
 | `label` | `string` | menschenlesbare Bezeichnung |
-| `seasonLabel` | `string` | saisonale oder quartalsbezogene Gueltigkeit |
-| `dayLabel` | `string` | Tagesregel, aktuell haeufig `Alle Tage` |
+| `seasonLabel` | `string` | saisonale oder quartalsbezogene Gültigkeit |
+| `dayLabel` | `string` | Tagesregel, aktuell häufig `Alle Tage` |
 | `timeRangeLabel` | `string` | Zeitbereich, z. B. `17:00-22:00` |
 | `sourceQuote` | `string` | kurze Quellenangabe |
 
 ### `quarterMatrix`
 
-`quarterMatrix` ist die fuer Clients am leichtesten nutzbare Darstellung, wenn konkrete Zeitslots benoetigt werden.
+`quarterMatrix` ist die für Clients am leichtesten nutzbare Darstellung, wenn konkrete Zeitslots benötigt werden.
 
-Sie enthaelt fuer jedes Quartal:
+Sie enthält für jedes Quartal:
 
 - zusammengefasste Gruppen
-- Timeline-Eintraege
-- `slots` in 15-Minuten-Aufloesung
-- `segments` fuer blockartige Visualisierung
+- Timeline-Einträge
+- `slots` in 15-Minuten-Auflösung
+- `segments` für blockartige Visualisierung
 
 Minimalbeispiel:
 
@@ -306,12 +310,12 @@ Minimalbeispiel:
 
 | Feld | Typ | Bedeutung |
 | --- | --- | --- |
-| `key` | `"Q1" \| "Q2" \| "Q3" \| "Q4"` | Quartalsschluessel |
+| `key` | `"Q1" \| "Q2" \| "Q3" \| "Q4"` | Quartalsschlüssel |
 | `label` | `string` | Anzeigename |
 | `summaryLabel` | `string` | kompakte Quartalszusammenfassung |
 | `coverageStatus` | `"official" \| "assumed-st" \| "empty"` | Herkunft/Deckungsstatus |
 | `groups` | `QuarterGroup[]` | zusammengefasste Preisgruppen |
-| `timelineEntries` | `QuarterTimelineEntry[]` | verdichtete Zeitlinien-Eintraege |
+| `timelineEntries` | `QuarterTimelineEntry[]` | verdichtete Zeitlinien-Einträge |
 | `slots` | `QuarterSlot[]` | 96 Slots pro Tag in 15-Minuten-Schritten |
 | `segments` | `QuarterSegment[]` | grobere Blockdarstellung |
 
@@ -321,7 +325,7 @@ Minimalbeispiel:
 | --- | --- | --- |
 | `bandKey` | `"NT" \| "ST" \| "HT"` | Preisband |
 | `label` | `string` | menschenlesbarer Band-Name |
-| `valueCtPerKwh` | `string` | Preis fuer die Gruppe |
+| `valueCtPerKwh` | `string` | Preis für die Gruppe |
 | `priceBasis` | `string` | Preisbasis der Gruppe |
 | `timeRanges` | `string[]` | zusammengefasste Zeitbereiche |
 | `sourceQuotes` | `string[]` | Quellenzitate der Gruppe |
@@ -333,7 +337,7 @@ Minimalbeispiel:
 | --- | --- | --- |
 | `bandKey` | `"NT" \| "ST" \| "HT"` | Preisband |
 | `label` | `string` | menschenlesbarer Band-Name |
-| `valueCtPerKwh` | `string` | Preis fuer den Zeitblock |
+| `valueCtPerKwh` | `string` | Preis für den Zeitblock |
 | `priceBasis` | `string` | Preisbasis |
 | `timeRange` | `string` | kompakter Zeitblock, z. B. `00:00-10:00` |
 
@@ -347,8 +351,8 @@ Minimalbeispiel:
 | `timeLabel` | `string` | kombinierte Darstellung, z. B. `00:00-00:15` |
 | `bandKey` | `"NT" \| "ST" \| "HT" \| null` | zugeordnetes Band |
 | `bandLabel` | `string` | menschenlesbare Band-Bezeichnung |
-| `valueCtPerKwh` | `string` | Preis fuer diesen Slot |
-| `priceBasis` | `string \| null` | Preisbasis fuer diesen Slot |
+| `valueCtPerKwh` | `string` | Preis für diesen Slot |
+| `priceBasis` | `string \| null` | Preisbasis für diesen Slot |
 | `isHourStart` | `boolean` | `true`, wenn der Slot auf voller Stunde beginnt |
 | `coverageStatus` | `"official" \| "assumed-st" \| "empty"` | Herkunft des Slot-Werts |
 
@@ -363,13 +367,13 @@ Minimalbeispiel:
 | `timeLabel` | `string` | kompakter Zeitblock |
 | `bandKey` | `"NT" \| "ST" \| "HT" \| null` | Preisband des Segments |
 | `bandLabel` | `string` | menschenlesbarer Band-Name |
-| `valueCtPerKwh` | `string` | Preis fuer das Segment |
+| `valueCtPerKwh` | `string` | Preis für das Segment |
 | `priceBasis` | `string \| null` | Preisbasis |
 | `coverageStatus` | `"official" \| "assumed-st" \| "empty"` | Herkunft der Segmentbelegung |
 
 ### `compliance`
 
-`compliance` liefert die Regelpruefung gegen das hinterlegte Modul-3-Regelwerk.
+`compliance` liefert die Regelprüfung gegen das hinterlegte Modul-3-Regelwerk.
 
 Beispiel:
 
@@ -382,7 +386,7 @@ Beispiel:
       "ruleId": "nt_between_10_and_40_percent_of_st",
       "title": "NT zwischen 10 und 40 Prozent des ST",
       "severity": "high",
-      "message": "NT liegt mit 3.03 ct/kWh ausserhalb des zulaessigen Korridors relativ zu ST 7.57 ct/kWh.",
+      "message": "NT liegt mit 3.03 ct/kWh außerhalb des zulässigen Korridors relativ zu ST 7.57 ct/kWh.",
       "sourceCitation": "Niedriglasttarif (NT): Korridor zwischen 10 % und 40 % des ST."
     }
   ],
@@ -401,30 +405,30 @@ Beispiel:
 
 ## Statuscodes
 
-### Oeffentliche Snapshot-API
+### Öffentliche Snapshot-API
 
 | Status | Bedeutung |
 | --- | --- |
 | `200` | Datei vorhanden und erfolgreich geladen |
 | `404` | Betreiberdatei oder Snapshot-Datei existiert nicht |
 
-### Interne Next.js-API
+### Interne Runtime-APIs
 
 | Status | Bedeutung |
 | --- | --- |
 | `200` | erfolgreicher JSON-Response |
-| `404` | Betreiber nicht gefunden |
 
-Beispiel fuer den internen `404`-Body:
+## Interne Runtime-APIs
 
-```json
-{
-  "error": "operator_not_found",
-  "operatorSlug": "unbekannt"
-}
-```
+Die internen Routen sind für Entwicklung, Backoffice und Betriebslogik gedacht.
 
-## TypeScript Referenz
+`GET /api/operators` liefert eine kompakte Betreiberliste ohne `id`, aber mit `slug`, `name`, `regionLabel`, `reviewStatus`, `priceBasis` und Compliance-Zählern.
+
+`GET /api/tariffs/current` liefert die aktuelle Tarifvollansicht aller publizierten Betreiber. Die Antwort enthält `items[]` mit `operatorSlug`, `operatorName`, `modelKey`, `validFrom`, `bands`, `timeWindows`, `compliance`, `sourcePageUrl`, `documentUrl`, `checkedAt` und `summary`.
+
+## TypeScript-Referenz
+
+Die folgenden Typen beschreiben den öffentlichen Snapshot-Vertrag. Für interne Runtime-Routen siehe den Abschnitt darüber.
 
 ```ts
 type OperatorListResponse = {
@@ -561,17 +565,17 @@ type ComplianceRuleResult = {
 };
 ```
 
-## Maintainer Hinweise
+## Maintainer-Hinweise
 
-Die oeffentliche API unter `/netzentgelte/api/*.json` ist aktuell ein statischer Snapshot der publizierten Betreiberdaten.
+Die öffentliche API unter `/netzentgelte/api/*.json` ist aktuell ein statischer Snapshot der publizierten Betreiberdaten.
 
 Wichtige Pfade:
 
 - interner App-Code auf Hetzner: `/usr/home/bpjwjy/apps/netzentgelte-deutschland`
-- oeffentliche statische Auslieferung: `/usr/home/bpjwjy/apps/prince2-vorbereitung/web/netzentgelte`
+- öffentliche statische Auslieferung: `/usr/home/bpjwjy/apps/prince2-vorbereitung/web/netzentgelte`
 - LXC-Entwicklung: `/root/netzentgelte-de`
 
-Weiterfuehrende Runbooks:
+Weiterführende Runbooks:
 
 - [hetzner-public-netzentgelte.md](/Users/hulki/projects/netzentgelte-de/.worktrees/bootstrap/docs/runbooks/hetzner-public-netzentgelte.md)
 - [lxc-release.md](/Users/hulki/projects/netzentgelte-de/.worktrees/bootstrap/docs/runbooks/lxc-release.md)

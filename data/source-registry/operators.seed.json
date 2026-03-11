@@ -8791,5 +8791,782 @@
       "bands": [],
       "timeWindows": []
     }
+  },
+  {
+    "slug": "enr-energienetze-rudolstadt",
+    "name": "EnR Energienetze Rudolstadt GmbH",
+    "regionLabel": "Rudolstadt",
+    "websiteUrl": "https://www.energienetze-rudolstadt.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "enr-energienetze-rudolstadt-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.energienetze-rudolstadt.de",
+        "documentUrl": "https://www.energienetze-rudolstadt.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 7634"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "enr-energienetze-rudolstadt-14a-2026-source-page",
+      "sourcePageUrl": "https://www.energienetze-rudolstadt.de",
+      "documentUrl": "https://www.energienetze-rudolstadt.de",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "energis-netzgesellschaft",
+    "name": "energis-Netzgesellschaft mbH",
+    "regionLabel": "Saarbrücken",
+    "websiteUrl": "https://www.energis-netzgesellschaft.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "energis-netzgesellschaft-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.energis-netzgesellschaft.de",
+        "documentUrl": "https://www.energis-netzgesellschaft.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 7211"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "energis-netzgesellschaft-14a-2026-source-page",
+      "sourcePageUrl": "https://www.energis-netzgesellschaft.de",
+      "documentUrl": "https://www.energis-netzgesellschaft.de",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "enervie-vernetzt",
+    "name": "ENERVIE Vernetzt GmbH",
+    "regionLabel": "Lüdenscheid",
+    "websiteUrl": "https://www.enervie-vernetzt.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "enervie-vernetzt-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.enervie-vernetzt.de",
+        "documentUrl": "https://www.enervie-vernetzt.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 7409"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "enervie-vernetzt-14a-2026-source-page",
+      "sourcePageUrl": "https://www.enervie-vernetzt.de",
+      "documentUrl": "https://www.enervie-vernetzt.de",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "engie-deutschland",
+    "name": "ENGIE Deutschland GmbH",
+    "regionLabel": "Köln",
+    "websiteUrl": "https://www.engie-deutschland.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "engie-deutschland-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.engie-deutschland.de",
+        "documentUrl": "https://www.engie-deutschland.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID okGoTm829gYproboD"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "engie-deutschland-14a-2026-source-page",
+      "sourcePageUrl": "https://www.engie-deutschland.de",
+      "documentUrl": "https://www.engie-deutschland.de",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "enro-ludwigsfelde-netz",
+    "name": "ENRO Ludwigsfelde Netz GmbH",
+    "regionLabel": "Ludwigsfelde",
+    "websiteUrl": "http://www.enro-netz-ludwigsfelde.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "enro-ludwigsfelde-netz-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "http://www.enro-netz-ludwigsfelde.de/",
+        "documentUrl": "http://www.enro-netz-ludwigsfelde.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID yFgoneFaFMwMBY69k"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "enro-ludwigsfelde-netz-14a-2026-source-page",
+      "sourcePageUrl": "http://www.enro-netz-ludwigsfelde.de/",
+      "documentUrl": "http://www.enro-netz-ludwigsfelde.de/",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "enrw-energieversorgung-rottweil-und",
+    "name": "ENRW Energieversorgung Rottweil GmbH & Co. KG",
+    "regionLabel": "Rottweil",
+    "websiteUrl": "https://www.enrw.de/willkommen",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "enrw-energieversorgung-rottweil-und-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.enrw.de/willkommen",
+        "documentUrl": "https://www.enrw.de/willkommen",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 558"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "enrw-energieversorgung-rottweil-und-14a-2026-source-page",
+      "sourcePageUrl": "https://www.enrw.de/willkommen",
+      "documentUrl": "https://www.enrw.de/willkommen",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "enwag-energie-und-wassergesellschaft",
+    "name": "enwag energie- und wassergesellschaft mbh",
+    "regionLabel": "Wetzlar",
+    "websiteUrl": "https://www.enwag.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "enwag-energie-und-wassergesellschaft-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.enwag.de",
+        "documentUrl": "https://www.enwag.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID EQ5hdQYCuitLBWrqu"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "enwag-energie-und-wassergesellschaft-14a-2026-source-page",
+      "sourcePageUrl": "https://www.enwag.de",
+      "documentUrl": "https://www.enwag.de",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "enwg-energienetze-weimar-und",
+    "name": "ENWG Energienetze Weimar GmbH & Co. KG",
+    "regionLabel": "Weimar",
+    "websiteUrl": "https://www.enwg-weimar.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "enwg-energienetze-weimar-und-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.enwg-weimar.de",
+        "documentUrl": "https://www.enwg-weimar.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 739"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "enwg-energienetze-weimar-und-14a-2026-source-page",
+      "sourcePageUrl": "https://www.enwg-weimar.de",
+      "documentUrl": "https://www.enwg-weimar.de",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "energieversorgung-sudbaar-und",
+    "name": "Energieversorgung Südbaar GmbH & Co. KG",
+    "regionLabel": "Blumberg",
+    "websiteUrl": "https://www.esb-energie.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "energieversorgung-sudbaar-und-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.esb-energie.de",
+        "documentUrl": "https://www.esb-energie.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 7011"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "energieversorgung-sudbaar-und-14a-2026-source-page",
+      "sourcePageUrl": "https://www.esb-energie.de",
+      "documentUrl": "https://www.esb-energie.de",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "energieversorgung-selb-marktredwitz",
+    "name": "Energieversorgung Selb-Marktredwitz GmbH",
+    "regionLabel": "Selb",
+    "websiteUrl": "https://www.esm-selb.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "energieversorgung-selb-marktredwitz-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.esm-selb.de",
+        "documentUrl": "https://www.esm-selb.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 593"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "energieversorgung-selb-marktredwitz-14a-2026-source-page",
+      "sourcePageUrl": "https://www.esm-selb.de",
+      "documentUrl": "https://www.esm-selb.de",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "estw-erlanger-stadtwerke",
+    "name": "ESTW - Erlanger Stadtwerke AG",
+    "regionLabel": "Erlangen",
+    "websiteUrl": "https://www.estw.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "estw-erlanger-stadtwerke-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.estw.de",
+        "documentUrl": "https://www.estw.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 179"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "estw-erlanger-stadtwerke-14a-2026-source-page",
+      "sourcePageUrl": "https://www.estw.de",
+      "documentUrl": "https://www.estw.de",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "energiesudwest-netz",
+    "name": "EnergieSüdwest Netz GmbH",
+    "regionLabel": "Landau",
+    "websiteUrl": "https://esw-netz.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "energiesudwest-netz-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://esw-netz.de/",
+        "documentUrl": "https://esw-netz.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 369"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "energiesudwest-netz-14a-2026-source-page",
+      "sourcePageUrl": "https://esw-netz.de/",
+      "documentUrl": "https://esw-netz.de/",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "elektrizitatsvereinigung-bobing-eg",
+    "name": "Elektrizitätsvereinigung Böbing eG",
+    "regionLabel": "Böbing",
+    "websiteUrl": "https://ev-boebing.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "elektrizitatsvereinigung-bobing-eg-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://ev-boebing.de/",
+        "documentUrl": "https://ev-boebing.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 7013"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "elektrizitatsvereinigung-bobing-eg-14a-2026-source-page",
+      "sourcePageUrl": "https://ev-boebing.de/",
+      "documentUrl": "https://ev-boebing.de/",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "energieversorgung-guben",
+    "name": "Energieversorgung Guben GmbH",
+    "regionLabel": "Guben",
+    "websiteUrl": "https://www.ev-guben.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "energieversorgung-guben-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.ev-guben.de",
+        "documentUrl": "https://www.ev-guben.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 7660"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "energieversorgung-guben-14a-2026-source-page",
+      "sourcePageUrl": "https://www.ev-guben.de",
+      "documentUrl": "https://www.ev-guben.de",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "energieversorgung-sylt",
+    "name": "Energieversorgung Sylt GmbH",
+    "regionLabel": "Sylt",
+    "websiteUrl": "https://ev-sylt.am-servicecenter.de/servicecenter-hc-portal-ui/prozesse",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "energieversorgung-sylt-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://ev-sylt.am-servicecenter.de/servicecenter-hc-portal-ui/prozesse",
+        "documentUrl": "https://ev-sylt.am-servicecenter.de/servicecenter-hc-portal-ui/prozesse",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 679"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "energieversorgung-sylt-14a-2026-source-page",
+      "sourcePageUrl": "https://ev-sylt.am-servicecenter.de/servicecenter-hc-portal-ui/prozesse",
+      "documentUrl": "https://ev-sylt.am-servicecenter.de/servicecenter-hc-portal-ui/prozesse",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "energieversorgung-alzenau",
+    "name": "Energieversorgung Alzenau GmbH",
+    "regionLabel": "Alzenau",
+    "websiteUrl": "https://www.eva-alzenau.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "energieversorgung-alzenau-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.eva-alzenau.de",
+        "documentUrl": "https://www.eva-alzenau.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 7191"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "energieversorgung-alzenau-14a-2026-source-page",
+      "sourcePageUrl": "https://www.eva-alzenau.de",
+      "documentUrl": "https://www.eva-alzenau.de",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "elektrizitatsgenossenschaft-vogling-und-angrenzer-eg",
+    "name": "Elektrizitätsgenossenschaft Vogling & Angrenzer eG",
+    "regionLabel": "Siegsdorf",
+    "websiteUrl": "https://www.eva-siegsdorf.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "elektrizitatsgenossenschaft-vogling-und-angrenzer-eg-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.eva-siegsdorf.de",
+        "documentUrl": "https://www.eva-siegsdorf.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 594"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "elektrizitatsgenossenschaft-vogling-und-angrenzer-eg-14a-2026-source-page",
+      "sourcePageUrl": "https://www.eva-siegsdorf.de",
+      "documentUrl": "https://www.eva-siegsdorf.de",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "energieversorgung-beckum-und",
+    "name": "Energieversorgung Beckum GmbH & Co. KG",
+    "regionLabel": "Beckum",
+    "websiteUrl": "https://www.evb-beckum.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "energieversorgung-beckum-und-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.evb-beckum.de",
+        "documentUrl": "https://www.evb-beckum.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 7006"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "energieversorgung-beckum-und-14a-2026-source-page",
+      "sourcePageUrl": "https://www.evb-beckum.de",
+      "documentUrl": "https://www.evb-beckum.de",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "evb-netze",
+    "name": "EVB Netze GmbH",
+    "regionLabel": "Eisenach",
+    "websiteUrl": "https://www.evb-netze.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "evb-netze-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.evb-netze.de",
+        "documentUrl": "https://www.evb-netze.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 749"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "evb-netze-14a-2026-source-page",
+      "sourcePageUrl": "https://www.evb-netze.de",
+      "documentUrl": "https://www.evb-netze.de",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "energieversorgung-dahlenburg-bleckede",
+    "name": "Energieversorgung Dahlenburg-Bleckede AG",
+    "regionLabel": "Dahlenburg",
+    "websiteUrl": "https://www.evdbag.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "energieversorgung-dahlenburg-bleckede-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.evdbag.de",
+        "documentUrl": "https://www.evdbag.de",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 133"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "energieversorgung-dahlenburg-bleckede-14a-2026-source-page",
+      "sourcePageUrl": "https://www.evdbag.de",
+      "documentUrl": "https://www.evdbag.de",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
+    "slug": "eve-netz",
+    "name": "EVE Netz GmbH",
+    "regionLabel": "Dannenberg",
+    "websiteUrl": "https://www.eve-netz.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "eve-netz-14a-2026-source-page",
+        "title": "Offizielle Betreiberseite Netzentgelte Strom / §14a EnWG (Detailquelle ausstehend)",
+        "documentType": "html",
+        "sourcePageUrl": "https://www.eve-netz.de/",
+        "documentUrl": "https://www.eve-netz.de/",
+        "checkedAt": "2026-03-11",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Betreiberdomain aus dem Shell-Register erfasst; detaillierte 2026-Modul-3-Primärdatei ist noch nicht dokumentiert.",
+          "VNBdigital ID 7669"
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "eve-netz-14a-2026-source-page",
+      "sourcePageUrl": "https://www.eve-netz.de/",
+      "documentUrl": "https://www.eve-netz.de/",
+      "summaryFallback": "Offizielle Betreiberseite erfasst; belastbarer 2026-Modul-3-Primärbeleg noch ausstehend",
+      "bands": [],
+      "timeWindows": []
+    }
   }
 ]

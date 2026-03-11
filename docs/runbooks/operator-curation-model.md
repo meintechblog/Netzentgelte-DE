@@ -140,6 +140,10 @@ NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm export:public
 NEXT_PUBLIC_BASE_PATH=/netzentgelte pnpm build
 ```
 
+Persistierte `blocked`-Zustaende sind nie blind zu uebernehmen. Jeder Poll muss den Gate-Fehler frisch revalidieren. Sobald das Gate wieder gruen ist, wird der Blocker geloescht, die wartenden `completed-awaiting-integration`-Batches zuerst integriert und erst danach neuer Dispatch gestartet.
+
+Die Koordinator-Laufzeitdaten (`docs/coordination/claims-board.*`, `docs/coordination/dispatches/`, `docs/coordination/agent-learnings/`) und der exportierte Public-Snapshot unter `public/netzentgelte/` sind lokale Betriebsartefakte. Sie bleiben aus Git heraus, werden pro Lauf frisch erzeugt und nach abgeschlossener Integration zusammen mit temporaeren Batch-Worktrees aufgeraeumt.
+
 Pflicht-Deploy-Reihenfolge bei gruener Verifikation und echten integrierten Aenderungen:
 
 1. Git commit + push

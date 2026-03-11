@@ -1,6 +1,11 @@
 .worktrees/
 node_modules/
 .next/
+public/netzentgelte/
+docs/coordination/claims-board.json
+docs/coordination/claims-board.md
+docs/coordination/dispatches/
+docs/coordination/agent-learnings/
 playwright-report/
 test-results/
 tsconfig.tsbuildinfo

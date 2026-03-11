@@ -27,7 +27,8 @@ export async function writePublicSnapshotFiles(
     `${JSON.stringify(
       {
         generatedAt: input.snapshot.generatedAt,
-        operatorCount: input.snapshot.operatorCount
+        operatorCount: input.snapshot.operatorCount,
+        pendingOperatorCount: input.snapshot.pendingOperators.summary.operatorCount
       },
       null,
       2

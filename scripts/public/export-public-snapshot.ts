@@ -2,6 +2,7 @@ import { resolve } from "node:path";
 
 import { getActiveModul3RuleSet } from "../../src/modules/compliance/rule-catalog";
 import { loadPublishedOperatorSnapshot } from "../../src/modules/operators/current-catalog";
+import { loadPendingOperatorCatalog } from "../../src/modules/operators/pending-catalog";
 import { loadCurrentSources } from "../../src/modules/sources/current-sources";
 import { loadEndcustomerTariffCatalog } from "../../src/modules/tariffs/endcustomer-catalog";
 import { buildPublicSnapshot } from "../../src/modules/public-snapshot/build-public-snapshot";
@@ -9,14 +10,16 @@ import { writePublicSnapshotFiles } from "../../src/modules/public-snapshot/expo
 
 async function main() {
   const outputRoot = resolve(process.cwd(), "public");
-  const [publishedOperatorSnapshot, currentSources, endcustomerCatalog] = await Promise.all([
+  const [publishedOperatorSnapshot, pendingOperatorCatalog, currentSources, endcustomerCatalog] = await Promise.all([
     loadPublishedOperatorSnapshot(),
+    loadPendingOperatorCatalog(),
     loadCurrentSources(),
     loadEndcustomerTariffCatalog()
   ]);
 
   const snapshot = buildPublicSnapshot({
     publishedOperatorSnapshot,
+    pendingOperatorCatalog,
     currentSources,
     endcustomerCatalog,
     complianceRuleSet: getActiveModul3RuleSet()
@@ -32,6 +35,7 @@ async function main() {
       {
         generatedAt: snapshot.generatedAt,
         operatorCount: snapshot.operatorCount,
+        pendingOperatorCount: snapshot.pendingOperators.summary.operatorCount,
         snapshotPath: result.snapshotPath,
         metaPath: result.metaPath
       },

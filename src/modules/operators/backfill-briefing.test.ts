@@ -31,6 +31,30 @@ const auditItems: StructureAuditItem[] = [
 
 const batches: ShellBackfillBatch[] = [
   {
+    id: "registry-review-001",
+    lane: "registry-review",
+    operatorCount: 1,
+    hostnames: ["rollout.example"],
+    operators: [
+      {
+        slug: "rollout-neu",
+        operatorName: "Rollout Neu GmbH",
+        countryCode: "DE",
+        websiteUrl: "https://rollout.example/",
+        regionLabel: "Rollout",
+        shellStatus: "profile-found",
+        coverageStatus: "hinted",
+        sourceStatus: "missing",
+        tariffStatus: "missing",
+        reviewStatus: "pending",
+        deprecatedStatus: "active",
+        sourcePageUrl: "https://rollout.example/netzentgelte",
+        documentUrl: undefined,
+        lastCheckedAt: null
+      }
+    ]
+  },
+  {
     id: "backfill-ready-001",
     lane: "backfill-ready",
     operatorCount: 2,
@@ -97,7 +121,7 @@ const batches: ShellBackfillBatch[] = [
 ];
 
 describe("buildBackfillBriefing", () => {
-  test("prioritizes audit targets and recommends the next backfill-ready batch", () => {
+  test("prioritizes audit targets and recommends the next promotable backfill batch", () => {
     const briefing = buildBackfillBriefing({
       auditItems,
       batches
@@ -133,7 +157,11 @@ describe("buildBackfillBriefing", () => {
       batches: batches.filter((batch) => batch.lane !== "backfill-ready")
     });
 
-    expect(briefing.summary.nextBatchId).toBeNull();
-    expect(briefing.nextBatch).toBeNull();
+    expect(briefing.summary.nextBatchId).toBe("registry-review-001");
+    expect(briefing.summary.nextBatchLane).toBe("registry-review");
+    expect(briefing.nextBatch).toMatchObject({
+      id: "registry-review-001",
+      lane: "registry-review"
+    });
   });
 });

@@ -1514,3 +1514,72 @@ input:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+
+.pending-operators-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pending-operators-table th,
+.pending-operators-table td {
+  padding: 0.95rem 1rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.pending-operators-table th {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(191, 219, 254, 0.78);
+}
+
+.pending-operators-table__name {
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.pending-operators-table__slug {
+  margin-top: 0.3rem;
+  font-size: 0.78rem;
+  color: rgba(148, 163, 184, 0.9);
+  word-break: break-word;
+}
+
+@media (max-width: 900px) {
+  .pending-operators-table,
+  .pending-operators-table thead,
+  .pending-operators-table tbody,
+  .pending-operators-table tr,
+  .pending-operators-table th,
+  .pending-operators-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .pending-operators-table thead {
+    display: none;
+  }
+
+  .pending-operators-table tbody {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .pending-operators-table tr {
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    background: rgba(7, 16, 31, 0.96);
+  }
+
+  .pending-operators-table td {
+    padding: 0;
+    border: 0;
+  }
+
+  .pending-operators-table td + td {
+    margin-top: 0.65rem;
+  }
+}

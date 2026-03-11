@@ -35,6 +35,9 @@ test("renders the page shell around a dominant germany map hero", async () => {
   expect(
     screen.getByText(/Öffentlich erscheinen nur verifizierte und integritätsgeprüfte Betreiber/i)
   ).toBeInTheDocument();
+  expect(
+    screen.getByRole("link", { name: "Netzbetreiber in Prüfung" })
+  ).toHaveAttribute("href", "/netzbetreiber/in-pruefung");
   expect(screen.getByText("Dark mode · WCAG AA")).toBeInTheDocument();
   expect(screen.getAllByText(/Prüfstatus:/).length).toBeGreaterThan(0);
   expect(screen.getByRole("heading", { name: "BDEW Anwendungshilfe Modul 3 1.1" })).toBeInTheDocument();

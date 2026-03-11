@@ -88,6 +88,12 @@ ssh root@192.168.3.178 '
 '
 ```
 
+Fuer den automatisierten Betrieb ist dieser LXC-Teil Teil des stuedlichen Koordinators. Der lokale Vorab-Check dafuer ist:
+
+```bash
+pnpm automation:backfill-koordinator:dry-run
+```
+
 ## Hinweise
 
 - `COPYFILE_DISABLE=1` ist auf macOS Pflicht. Ohne diese Variable erzeugt `tar` zusaetzliche `._*`-Dateien, die Vitest als kaputte Testdateien einsammelt.

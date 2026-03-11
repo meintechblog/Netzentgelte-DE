@@ -9,6 +9,7 @@ import {
 } from "../../lib/view-models/tariffs";
 import { getActiveModul3RuleSet } from "../compliance/rule-catalog";
 import { buildPublishedOperatorSnapshot, getSeedPublishedOperators } from "../operators/current-catalog";
+import { getSeedPendingOperatorCatalog } from "../operators/pending-catalog";
 import { getSeedCurrentSources } from "../sources/current-sources";
 import { getSeedEndcustomerTariffCatalog } from "../tariffs/endcustomer-catalog";
 
@@ -17,6 +18,7 @@ import { buildPublicSnapshot } from "./build-public-snapshot";
 describe("buildPublicSnapshot", () => {
   test("composes published operators, map data, sources, compliance and endcustomer data into one public payload", () => {
     const publishedOperatorSnapshot = buildPublishedOperatorSnapshot(getSeedPublishedOperators());
+    const pendingOperatorCatalog = getSeedPendingOperatorCatalog();
     const currentSources = getSeedCurrentSources();
     const endcustomerCatalog = getSeedEndcustomerTariffCatalog();
     const complianceRuleSet = getActiveModul3RuleSet();
@@ -24,6 +26,7 @@ describe("buildPublicSnapshot", () => {
     const snapshot = buildPublicSnapshot({
       generatedAt: "2026-03-10T18:00:00.000Z",
       publishedOperatorSnapshot,
+      pendingOperatorCatalog,
       currentSources,
       endcustomerCatalog,
       complianceRuleSet
@@ -43,6 +46,7 @@ describe("buildPublicSnapshot", () => {
       generatedAt: "2026-03-10T18:00:00.000Z",
       operatorCount: publishedOperatorSnapshot.operators.length,
       operators: expectedRows,
+      pendingOperators: pendingOperatorCatalog,
       map: projectGermanyMap(getRegistryMapFeatures(publishedOperatorSnapshot.operators)),
       sources: currentSources.filter((source) =>
         new Set(publishedOperatorSnapshot.operators.map((operator) => operator.slug)).has(source.operatorSlug)

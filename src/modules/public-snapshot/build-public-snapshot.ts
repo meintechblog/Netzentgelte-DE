@@ -7,6 +7,7 @@ import {
 } from "../../lib/view-models/tariffs";
 import type { ComplianceRuleSet } from "../compliance/rule-catalog";
 import type { PublishedOperatorSnapshot } from "../operators/current-catalog";
+import type { PendingOperatorCatalog } from "../operators/pending-catalog";
 import type { CurrentSource } from "../sources/current-sources";
 import type { EndcustomerTariffCatalogEntry } from "../tariffs/endcustomer-catalog";
 
@@ -15,6 +16,7 @@ import { parsePublicSnapshot, type PublicSnapshot } from "./schema";
 export type BuildPublicSnapshotInput = {
   generatedAt?: string;
   publishedOperatorSnapshot: PublishedOperatorSnapshot;
+  pendingOperatorCatalog: PendingOperatorCatalog;
   currentSources: CurrentSource[];
   endcustomerCatalog: EndcustomerTariffCatalogEntry[];
   complianceRuleSet: ComplianceRuleSet;
@@ -43,6 +45,7 @@ export function buildPublicSnapshot(input: BuildPublicSnapshotInput): PublicSnap
       pageArtifactApiUrl: null,
       documentArtifactApiUrl: null
     })),
+    pendingOperators: input.pendingOperatorCatalog,
     map: projectGermanyMap(getRegistryMapFeatures(input.publishedOperatorSnapshot.operators)),
     sources: filteredSources.map((source) => ({
       ...source,

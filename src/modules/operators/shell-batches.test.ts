@@ -70,7 +70,7 @@ const shells: OperatorShell[] = [
 ];
 
 describe("buildShellBackfillBatches", () => {
-  test("classifies shells into registry-review, backfill, discovery and audit lanes", () => {
+  test("classifies shells into lanes and emits promotable backfill batches first", () => {
     const result = buildShellBackfillBatches(shells, { targetBatchSize: 2 });
 
     expect(result.summary).toMatchObject({
@@ -81,8 +81,8 @@ describe("buildShellBackfillBatches", () => {
       auditRefreshCount: 1
     });
     expect(result.batches.map((batch) => batch.id)).toEqual([
-      "registry-review-001",
       "backfill-ready-001",
+      "registry-review-001",
       "discovery-001",
       "audit-refresh-001"
     ]);

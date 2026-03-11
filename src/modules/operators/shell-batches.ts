@@ -34,8 +34,8 @@ export function buildShellBackfillBatches(
   const auditRefresh = sortShells(shells.filter((shell) => classifyShellLane(shell) === "audit-refresh"));
 
   const batches = [
-    ...buildLaneBatches("registry-review", registryReview, targetBatchSize),
     ...buildLaneBatches("backfill-ready", backfillReady, targetBatchSize),
+    ...buildLaneBatches("registry-review", registryReview, targetBatchSize),
     ...buildLaneBatches("discovery", discovery, targetBatchSize),
     ...buildLaneBatches("audit-refresh", auditRefresh, targetBatchSize)
   ];

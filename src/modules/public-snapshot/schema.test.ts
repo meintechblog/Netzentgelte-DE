@@ -16,6 +16,14 @@ describe("parsePublicSnapshot", () => {
         generatedAt: "2026-03-10T17:00:00.000Z",
         operatorCount: 1,
         operators: [],
+        pendingOperators: {
+          summary: {
+            operatorCount: 0,
+            sourceFoundCount: 0,
+            tariffReadyCount: 0
+          },
+          items: []
+        },
         map: {
           attribution: "GeoBasis-DE",
           mappedOperatorCount: 0,
@@ -37,6 +45,11 @@ describe("parsePublicSnapshot", () => {
       generatedAt: "2026-03-10T17:00:00.000Z",
       operatorCount: 1,
       operators: [],
+      pendingOperators: {
+        summary: {
+          operatorCount: 0
+        }
+      },
       sources: []
     });
   });

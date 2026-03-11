@@ -24,6 +24,14 @@ describe("writePublicSnapshotFiles", () => {
       generatedAt: "2026-03-10T18:30:00.000Z",
       operatorCount: 1,
       operators: [],
+      pendingOperators: {
+        summary: {
+          operatorCount: 2,
+          sourceFoundCount: 2,
+          tariffReadyCount: 1
+        },
+        items: []
+      },
       map: {
         attribution: "GeoBasis-DE",
         hiddenOperatorCount: 0,
@@ -56,7 +64,8 @@ describe("writePublicSnapshotFiles", () => {
     expect(persistedSnapshot).toMatchObject(snapshot);
     expect(persistedMeta).toEqual({
       generatedAt: "2026-03-10T18:30:00.000Z",
-      operatorCount: 1
+      operatorCount: 1,
+      pendingOperatorCount: 2
     });
   });
 });

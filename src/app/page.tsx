@@ -39,6 +39,9 @@ export default async function HomePage() {
           <a className="hero-button" href="#tarifmatrix">
             Tarifmatrix öffnen
           </a>
+          <a className="hero-button-secondary" href={withBasePath("/netzbetreiber/in-pruefung")}>
+            Netzbetreiber in Prüfung
+          </a>
           {exportedSnapshot ? (
             <span className="hero-button-secondary" aria-label={`Datenstand ${exportedSnapshot.generatedAt}`}>
               {`Datenstand ${exportedSnapshot.generatedAt.slice(0, 10)}`}

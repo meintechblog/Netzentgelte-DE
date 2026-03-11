@@ -146,6 +146,15 @@ Die Koordinator-Laufzeitdaten (`docs/coordination/claims-board.*`, `docs/coordin
 
 Automation-faehige TypeScript-Skripte werden ueber `node --import tsx ...` aufgerufen, nicht ueber das `tsx`-CLI. Der CLI-Pfad versucht in manchen Scheduler-Sandboxes eine IPC-Pipe zum Parent-Prozess zu oeffnen und kann dabei mit `listen EPERM` scheitern.
 
+Koordinator-Einstiegspunkte im Projekt:
+
+```bash
+pnpm automation:backfill-koordinator:dry-run
+pnpm automation:backfill-koordinator
+```
+
+Die stuedliche Codex-Definition liegt unter `/Users/hulki/.codex/automations/backfill-koordinator/automation.toml`.
+
 Pflicht-Deploy-Reihenfolge bei gruener Verifikation und echten integrierten Aenderungen:
 
 1. Git commit + push

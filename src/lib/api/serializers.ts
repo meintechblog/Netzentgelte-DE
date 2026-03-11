@@ -6,6 +6,7 @@ import { getRegistryMapFeatures } from "../maps/geojson";
 import type { HistoricalTariff } from "../../modules/operators/history-catalog";
 import type { CurrentSource } from "../../modules/sources/current-sources";
 import type { OperatorShell } from "../../modules/operators/shell-catalog";
+import type { PendingOperatorCatalog } from "../../modules/operators/pending-catalog";
 
 export function serializeCurrentRegistryTariffs(entries: PublishedOperator[]) {
   return {
@@ -103,6 +104,22 @@ export function serializeOperatorShells(input: {
       documentUrl: entry.documentUrl ?? null,
       notes: entry.notes ?? null,
       lastCheckedAt: entry.lastCheckedAt
+    }))
+  };
+}
+
+export function serializePendingOperatorCatalog(input: PendingOperatorCatalog) {
+  return {
+    summary: input.summary,
+    items: input.items.map((entry) => ({
+      slug: entry.slug,
+      name: entry.name,
+      regionLabel: entry.regionLabel,
+      reviewStatus: entry.reviewStatus,
+      sourceStatus: entry.sourceStatus,
+      tariffStatus: entry.tariffStatus,
+      websiteUrl: entry.websiteUrl ?? null,
+      checkedAt: entry.checkedAt
     }))
   };
 }

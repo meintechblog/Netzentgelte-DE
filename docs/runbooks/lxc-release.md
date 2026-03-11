@@ -16,7 +16,7 @@ COPYFILE_DISABLE=1 tar \
   --exclude='.playwright-cli' \
   --exclude='data/artifacts' \
   --exclude='tmp' \
-  -C /Users/hulki/projects/netzentgelte-de/.worktrees/bootstrap \
+  -C /Users/hulki/projects/netzentgelte-de \
   -czf - . \
 | ssh root@192.168.3.178 '
     rm -rf /root/netzentgelte-de-release &&
@@ -76,6 +76,16 @@ ssh root@192.168.3.178 '
 
 curl -fsS http://192.168.3.178:3000 | rg 'Zeitfenster|18:00-21:00|N-ERGIE'
 curl -fsS http://192.168.3.178:3000/api/tariffs/current | rg 'timeWindows|18:00-21:00|n-ergie-netz'
+```
+
+Nach dem Code-Deploy fuer neue Registry-/Shell-Eintraege:
+
+```bash
+ssh root@192.168.3.178 '
+  cd /root/netzentgelte-de &&
+  pnpm registry:import &&
+  pnpm shells:import
+'
 ```
 
 ## Hinweise

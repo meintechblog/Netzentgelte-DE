@@ -126,7 +126,7 @@ So wird das Vorgehensmodell nicht nur dokumentiert, sondern operativ wirksam.
 
 Der `Backfill Koordinator` arbeitet ab jetzt gegen:
 
-- Worktree: `/Users/hulki/projects/netzentgelte-de/.worktrees/endcustomer-backfill-batch`
+- Hauptpfad: `/Users/hulki/projects/netzentgelte-de` (Branch `main`)
 - Dev-Ziel: `root@192.168.3.178:/root/netzentgelte-de`
 - Public-Ziel: `https://kigenerated.de/netzentgelte/`
 
@@ -145,8 +145,21 @@ Pflicht-Deploy-Reihenfolge bei gruener Verifikation und echten integrierten Aend
 1. Git commit + push
 2. Sync auf den LXC und Neustart dort
 3. `bash scripts/public/deploy-public-static.sh`
-4. Live-Checks fuer:
+4. Nach dem LXC-Deploy Import-Sync ausfuehren, damit neue Eintraege sofort ueber die Dev-API nutzbar sind:
+   - `pnpm registry:import`
+   - `pnpm shells:import`
+5. Live-Checks fuer:
    - `http://192.168.3.178:3000`
+   - `http://192.168.3.178:3000/api/operators`
    - `https://kigenerated.de/netzentgelte/`
+
+## Simplified Operations
+
+Ziel ist ein einfacher Dauerbetrieb ohne langlebige Koordinator-Worktrees:
+
+1. Koordinator laeuft direkt im Haupt-Repo auf `main`.
+2. Batch-Worker duerfen temporaere Worktrees benutzen.
+3. Nach erfolgreicher Batch-Integration werden temporaere Worker-Worktrees entfernt.
+4. Produktionsrelevante Aenderungen werden ausschliesslich ueber `main` gepusht und ausgerollt.
 
 Bestandskorrekturen und neue Betreiber werden identisch behandelt. Ein Lauf darf also ebenso gut vorhandene Netzbetreiber reparieren wie neue Backfill-Batches integrieren.

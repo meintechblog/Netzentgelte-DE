@@ -37,7 +37,11 @@ async function main() {
         operatorCount: snapshot.operatorCount,
         pendingOperatorCount: snapshot.pendingOperators.summary.operatorCount,
         snapshotPath: result.snapshotPath,
-        metaPath: result.metaPath
+        metaPath: result.metaPath,
+        pendingOperatorsPath: result.pendingOperatorsPath,
+        staticSnapshotPath: result.staticSnapshotPath,
+        staticMetaPath: result.staticMetaPath,
+        staticPendingOperatorsPath: result.staticPendingOperatorsPath
       },
       null,
       2

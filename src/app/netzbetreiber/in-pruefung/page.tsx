@@ -5,6 +5,9 @@ import { loadPendingOperatorCatalog, type PendingOperatorPublic } from "../../..
 export default async function PendingOperatorsPage() {
   const exportedSnapshot = await loadPublicSnapshotFromDisk();
   const catalog = exportedSnapshot ? exportedSnapshot.pendingOperators : await loadPendingOperatorCatalog();
+  const pendingDataHref = exportedSnapshot
+    ? withBasePath("/data/netzentgelte/pending-operators.json")
+    : withBasePath("/api/operators/pending");
 
   return (
     <main className="dashboard-shell">
@@ -20,8 +23,8 @@ export default async function PendingOperatorsPage() {
           <a className="hero-button" href={withBasePath("/")}>
             Zur verifizierten Tarifmatrix
           </a>
-          <a className="hero-button-secondary" href={withBasePath("/api/operators/pending")}>
-            Pending API prüfen
+          <a className="hero-button-secondary" href={pendingDataHref}>
+            Pending-Daten prüfen
           </a>
         </div>
       </section>

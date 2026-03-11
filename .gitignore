@@ -2,11 +2,11 @@
 .pnpm-store/
 node_modules/
 .next/
+.deploy-public/
+.playwright-cli/
 public/netzentgelte/
-docs/coordination/claims-board.json
-docs/coordination/claims-board.md
-docs/coordination/dispatches/
-docs/coordination/agent-learnings/
+public/data/netzentgelte/
+docs/coordination/
 playwright-report/
 test-results/
 tsconfig.tsbuildinfo

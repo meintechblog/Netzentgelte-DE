@@ -57,9 +57,19 @@ describe("writePublicSnapshotFiles", () => {
 
     expect(result.snapshotPath).toBe(join(outputRoot, "netzentgelte", "snapshot.json"));
     expect(result.metaPath).toBe(join(outputRoot, "netzentgelte", "meta.json"));
+    expect(result.pendingOperatorsPath).toBe(join(outputRoot, "netzentgelte", "pending-operators.json"));
+    expect(result.staticSnapshotPath).toBe(join(outputRoot, "data", "netzentgelte", "snapshot.json"));
+    expect(result.staticMetaPath).toBe(join(outputRoot, "data", "netzentgelte", "meta.json"));
+    expect(result.staticPendingOperatorsPath).toBe(
+      join(outputRoot, "data", "netzentgelte", "pending-operators.json")
+    );
 
     const persistedSnapshot = JSON.parse(await readFile(result.snapshotPath, "utf8"));
     const persistedMeta = JSON.parse(await readFile(result.metaPath, "utf8"));
+    const persistedPendingOperators = JSON.parse(await readFile(result.pendingOperatorsPath, "utf8"));
+    const staticSnapshot = JSON.parse(await readFile(result.staticSnapshotPath, "utf8"));
+    const staticMeta = JSON.parse(await readFile(result.staticMetaPath, "utf8"));
+    const staticPendingOperators = JSON.parse(await readFile(result.staticPendingOperatorsPath, "utf8"));
 
     expect(persistedSnapshot).toMatchObject(snapshot);
     expect(persistedMeta).toEqual({
@@ -67,5 +77,9 @@ describe("writePublicSnapshotFiles", () => {
       operatorCount: 1,
       pendingOperatorCount: 2
     });
+    expect(persistedPendingOperators).toEqual(snapshot.pendingOperators);
+    expect(staticSnapshot).toMatchObject(snapshot);
+    expect(staticMeta).toEqual(persistedMeta);
+    expect(staticPendingOperators).toEqual(snapshot.pendingOperators);
   });
 });

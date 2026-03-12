@@ -173,6 +173,7 @@ describe("getSeedPublishedOperators", () => {
     const leitungspartner = published.find((entry) => entry.slug === "leitungspartner");
     const helmbrechts = published.find((entry) => entry.slug === "licht-und-kraftwerke-helmbrechts");
     const sonneberg = published.find((entry) => entry.slug === "licht-und-kraftwerke-sonneberg");
+    const lokalwerke = published.find((entry) => entry.slug === "lokalwerke");
     const kitzingen = published.find(
       (entry) => entry.slug === "licht-kraft-und-wasserwerke-kitzingen"
     );
@@ -182,7 +183,7 @@ describe("getSeedPublishedOperators", () => {
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(92);
+    expect(published).toHaveLength(93);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -253,6 +254,15 @@ describe("getSeedPublishedOperators", () => {
       sourcePageUrl: "https://likra.de/netz/strom/netzentgelte/",
       documentUrl:
         "https://likra.de/fileadmin/user_upload/netz/Veroeffentlichungen/2025/Preisblatt_Netznutzung_Strom_ab_01.01.2026.pdf",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
+    expect(lokalwerke).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://lokalwerke.de/netz/stromnetz/netzzugang-netzentgelte/",
+      documentUrl: "https://lokalwerke.de/wp-content/uploads/2025/12/Preisblatt-Netznutzung-Strom-2026.pdf",
       compliance: expect.objectContaining({
         status: "compliant"
       })

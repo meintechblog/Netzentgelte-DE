@@ -19,20 +19,15 @@ describe("buildBackfillBatchWorkset", () => {
       operatorCount: 25,
       hostnameCount: 25,
       summary: {
-        sourceCandidateCount: 24,
+        sourceCandidateCount: 25,
         sourceMissingCount: 0,
-        documentedCount: 1,
+        documentedCount: 0,
         tariffMissingCount: 25,
         reviewPendingCount: 25
       }
     });
 
     expect(workset.items.slice(0, 3)).toEqual([
-      expect.objectContaining({
-        slug: "ssw-netz",
-        hostname: "ssw-netz.de",
-        sourceStatus: "source-found"
-      }),
       expect.objectContaining({
         slug: "stadtwerk-am-see",
         hostname: "stadtwerk-am-see.de",
@@ -42,12 +37,17 @@ describe("buildBackfillBatchWorkset", () => {
         slug: "stadtwerke-altensteig",
         hostname: "stadtwerke-altensteig.de",
         sourceStatus: "candidate"
+      }),
+      expect.objectContaining({
+        slug: "stadtwerke-amberg-versorgungs",
+        hostname: "stadtwerke-amberg.de",
+        sourceStatus: "candidate"
       })
     ]);
     expect(workset.items.at(-1)).toEqual(
       expect.objectContaining({
-        slug: "stadtwerke-bretten",
-        hostname: "stadtwerke-bretten.de",
+        slug: "energie-und-wasserversorgung-bruchsal",
+        hostname: "stadtwerke-bruchsal.de",
         sourceStatus: "candidate"
       })
     );

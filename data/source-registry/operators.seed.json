@@ -6540,6 +6540,104 @@
     }
   },
   {
+    "slug": "lokalwerke",
+    "name": "LokalWerke GmbH",
+    "regionLabel": "Ahaus",
+    "websiteUrl": "https://lokalwerke.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "lokalwerke-14a-2026",
+        "title": "Preisblatt Netznutzung Strom 2026",
+        "documentType": "pdf",
+        "priceBasis": "netto",
+        "sourcePageUrl": "https://lokalwerke.de/netz/stromnetz/netzzugang-netzentgelte/",
+        "documentUrl": "https://lokalwerke.de/wp-content/uploads/2025/12/Preisblatt-Netznutzung-Strom-2026.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Die offizielle Netzzugang-/Netzentgelteseite der LokalWerke verlinkt das Strom-Preisblatt 2026 direkt als PDF.",
+          "Das Preisblatt ist fuer das Netzgebiet der LokalWerke GmbH mit Gueltigkeit vom 01.01.2026 bis 31.12.2026 veroefentlicht.",
+          "Auf Seite 2 nennt das Dokument fuer Modul 3 in Niederspannung netto NT 1,38 ct/kWh, ST 5,51 ct/kWh und HT 7,31 ct/kWh mit vollstaendigen taeglichen Zeitfenstern ohne Quartalseinschraenkung."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "priceBasis": "netto",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "lokalwerke-14a-2026",
+      "sourcePageUrl": "https://lokalwerke.de/netz/stromnetz/netzzugang-netzentgelte/",
+      "documentUrl": "https://lokalwerke.de/wp-content/uploads/2025/12/Preisblatt-Netznutzung-Strom-2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedriglasttarifstufe",
+          "valueCtPerKwh": "1.38",
+          "priceBasis": "netto",
+          "sourceQuote": "Niedriglasttarifstufe 00:00 Uhr - 06:00 Uhr 1,38"
+        },
+        {
+          "key": "ST",
+          "label": "Standardlasttarifstufe",
+          "valueCtPerKwh": "5.51",
+          "priceBasis": "netto",
+          "sourceQuote": "Standardlasttarifstufe 06:00 Uhr - 16:30 Uhr und 21:00 Uhr - 00:00 Uhr 5,51"
+        },
+        {
+          "key": "HT",
+          "label": "Hochlasttarifstufe",
+          "valueCtPerKwh": "7.31",
+          "priceBasis": "netto",
+          "sourceQuote": "Hochlasttarifstufe 16:30 Uhr - 21:00 Uhr 7,31"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "lokalwerke-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-06:00",
+          "sourceQuote": "Niedriglasttarifstufe 00:00 Uhr - 06:00 Uhr"
+        },
+        {
+          "id": "lokalwerke-2026-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:00-16:30",
+          "sourceQuote": "Standardlasttarifstufe 06:00 Uhr - 16:30 Uhr und 21:00 Uhr - 00:00 Uhr"
+        },
+        {
+          "id": "lokalwerke-2026-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "16:30-21:00",
+          "sourceQuote": "Hochlasttarifstufe 16:30 Uhr - 21:00 Uhr"
+        },
+        {
+          "id": "lokalwerke-2026-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "21:00-24:00",
+          "sourceQuote": "Standardlasttarifstufe 06:00 Uhr - 16:30 Uhr und 21:00 Uhr - 00:00 Uhr"
+        }
+      ]
+    }
+  },
+  {
     "slug": "mainzer-netze",
     "name": "Mainzer Netze GmbH",
     "regionLabel": "Mainz",

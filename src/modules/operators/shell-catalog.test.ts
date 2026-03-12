@@ -141,6 +141,15 @@ describe("getSeedOperatorShells", () => {
             "https://likra.de/fileadmin/user_upload/netz/Veroeffentlichungen/2025/Preisblatt_Netznutzung_Strom_ab_01.01.2026.pdf"
         }),
         expect.objectContaining({
+          slug: "lokalwerke",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://lokalwerke.de/netz/stromnetz/netzzugang-netzentgelte/",
+          documentUrl: "https://lokalwerke.de/wp-content/uploads/2025/12/Preisblatt-Netznutzung-Strom-2026.pdf"
+        }),
+        expect.objectContaining({
           slug: "licht-kraft-und-wasserwerke-kitzingen",
           shellStatus: "published",
           sourceStatus: "source-found",

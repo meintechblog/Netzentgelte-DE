@@ -146,6 +146,8 @@ describe("getSeedOperatorShells", () => {
           slug: "strom-und-gasnetz-wismar",
           shellStatus: "published",
           sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
           sourcePageUrl: "https://www.sg-wismar.de/stromnetz/netzzugang/netznutzung",
           documentUrl:
             "https://www.sg-wismar.de/fileadmin/user_upload/ID064_Netznutzung_Strom/ID354_Netznutzungsentgelte/251216_Preisblatt_Zusammenfassung_2026.pdf"

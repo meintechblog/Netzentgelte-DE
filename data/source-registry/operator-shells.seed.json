@@ -11111,12 +11111,13 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "missing",
-    "reviewStatus": "pending",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
     "sourcePageUrl": "https://www.sg-wismar.de/stromnetz/netzzugang/netznutzung",
-    "notes": "VNBdigital ID 1065; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "notes": "VNBdigital ID 1065; Synced from curated operator entry (verified operator loop 2026-03-12, Q1/Q4 matrix with documented ST fallback for omitted quarters).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.sg-wismar.de/fileadmin/user_upload/ID064_Netznutzung_Strom/ID354_Netznutzungsentgelte/251216_Preisblatt_Zusammenfassung_2026.pdf"
+    "documentUrl": "https://www.sg-wismar.de/fileadmin/user_upload/ID064_Netznutzung_Strom/ID354_Netznutzungsentgelte/251216_Preisblatt_Zusammenfassung_2026.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "strom-und-gasversorgung-versmold",

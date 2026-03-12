@@ -16,7 +16,7 @@ describe("GET /api/operators", () => {
       complianceViolationCount: expect.any(Number),
       complianceNotEvaluatedCount: expect.any(Number)
     });
-    expect(data.items).toHaveLength(84);
+    expect(data.items).toHaveLength(85);
     expect(data.items).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -75,6 +75,12 @@ describe("GET /api/operators", () => {
         }),
         expect.objectContaining({
           slug: "stadtwerke-bad-pyrmont",
+          reviewStatus: "verified",
+          complianceStatus: "compliant",
+          complianceViolationCount: 0
+        }),
+        expect.objectContaining({
+          slug: "strom-und-gasnetz-wismar",
           reviewStatus: "verified",
           complianceStatus: "compliant",
           complianceViolationCount: 0

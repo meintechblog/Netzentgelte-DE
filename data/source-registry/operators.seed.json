@@ -8555,6 +8555,126 @@
     }
   },
   {
+    "slug": "strom-und-gasnetz-wismar",
+    "name": "Strom- und Gasnetz Wismar GmbH",
+    "regionLabel": "Wismar",
+    "websiteUrl": "https://www.sg-wismar.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "strom-und-gasnetz-wismar-14a-2026",
+        "title": "Preisblatt Zusammenfassung 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.sg-wismar.de/stromnetz/netzzugang/netznutzung",
+        "documentUrl": "https://www.sg-wismar.de/fileadmin/user_upload/ID064_Netznutzung_Strom/ID354_Netznutzungsentgelte/251216_Preisblatt_Zusammenfassung_2026.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Netznutzungsseite der Strom- und Gasnetz Wismar GmbH mit direktem finalen Preisblatt 2026.",
+          "Das Preisblatt veroeffentlicht fuer Modul 3 ausdruecklich ST 4,09 ct/kWh, HT 5,01 ct/kWh und NT 0,67 ct/kWh.",
+          "Das Blatt nennt HT 08:30-15:15 und 17:15-21:15 Uhr sowie NT 23:00-06:45 Uhr; fuer Q1 und Q4 werden die restlichen Zeiten als ST ausgewiesen, Q2 und Q3 werden daher projektkonform als dokumentierte ST-Annahme dargestellt."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "strom-und-gasnetz-wismar-14a-2026",
+      "sourcePageUrl": "https://www.sg-wismar.de/stromnetz/netzzugang/netznutzung",
+      "documentUrl": "https://www.sg-wismar.de/fileadmin/user_upload/ID064_Netznutzung_Strom/ID354_Netznutzungsentgelte/251216_Preisblatt_Zusammenfassung_2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "0.67",
+          "sourceQuote": "0,67"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "4.09",
+          "sourceQuote": "4,09"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "5.01",
+          "sourceQuote": "5,01"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "strom-und-gasnetz-wismar-2026-q1q4-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-06:45",
+          "sourceQuote": "NT 23:00 - 06:45"
+        },
+        {
+          "id": "strom-und-gasnetz-wismar-2026-q1q4-standard-morning",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:45-08:30",
+          "sourceQuote": "ST Restzeit"
+        },
+        {
+          "id": "strom-und-gasnetz-wismar-2026-q1q4-high-day",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "08:30-15:15",
+          "sourceQuote": "HT 08:30 - 15:15"
+        },
+        {
+          "id": "strom-und-gasnetz-wismar-2026-q1q4-standard-afternoon",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "15:15-17:15",
+          "sourceQuote": "ST Restzeit"
+        },
+        {
+          "id": "strom-und-gasnetz-wismar-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:15-21:15",
+          "sourceQuote": "HT 17:15 - 21:15"
+        },
+        {
+          "id": "strom-und-gasnetz-wismar-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "21:15-23:00",
+          "sourceQuote": "ST Restzeit"
+        },
+        {
+          "id": "strom-und-gasnetz-wismar-2026-q1q4-low-late",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "23:00-24:00",
+          "sourceQuote": "NT 23:00 - 06:45"
+        }
+      ]
+    }
+  },
+  {
     "slug": "stromversorgung-seebruck-eg",
     "name": "Stromversorgung Seebruck eG",
     "regionLabel": "Seebruck",

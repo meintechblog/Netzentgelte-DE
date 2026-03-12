@@ -164,13 +164,14 @@ describe("getSeedPublishedOperators", () => {
     const altdorf = published.find((entry) => entry.slug === "stadtwerke-altdorf");
     const badAibling = published.find((entry) => entry.slug === "stadtwerke-bad-aibling");
     const badPyrmont = published.find((entry) => entry.slug === "stadtwerke-bad-pyrmont");
+    const wismar = published.find((entry) => entry.slug === "strom-und-gasnetz-wismar");
     const luckenwalde = published.find(
       (entry) => entry.slug === "stadtische-betriebswerke-luckenwalde"
     );
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(84);
+    expect(published).toHaveLength(85);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -231,6 +232,16 @@ describe("getSeedPublishedOperators", () => {
       validFrom: "2026-01-01",
       sourcePageUrl: "https://www.stadtwerke-bad-pyrmont.de/netze/marktpartner/netzentgelte/index.htm",
       documentUrl: "https://www.stadtwerke-bad-pyrmont.de/_mediafiles/1328-nne_strom_-2026_entgueltig.pdf",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
+    expect(wismar).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.sg-wismar.de/stromnetz/netzzugang/netznutzung",
+      documentUrl:
+        "https://www.sg-wismar.de/fileadmin/user_upload/ID064_Netznutzung_Strom/ID354_Netznutzungsentgelte/251216_Preisblatt_Zusammenfassung_2026.pdf",
       compliance: expect.objectContaining({
         status: "compliant"
       })

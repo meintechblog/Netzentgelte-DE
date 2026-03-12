@@ -113,12 +113,6 @@ describe("getSeedPendingOperatorCatalog", () => {
           reviewStatus: "pending",
           sourceStatus: "source-found",
           tariffStatus: "missing"
-        }),
-        expect.objectContaining({
-          slug: "strom-und-gasnetz-wismar",
-          reviewStatus: "pending",
-          sourceStatus: "source-found",
-          tariffStatus: "missing"
         })
       ])
     );
@@ -135,5 +129,6 @@ describe("getSeedPendingOperatorCatalog", () => {
     expect(result.items.find((entry) => entry.slug === "stadtwerke-andernach-energie")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "stadtwerke-bad-aibling")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "stadtwerke-bad-pyrmont")).toBeUndefined();
+    expect(result.items.find((entry) => entry.slug === "strom-und-gasnetz-wismar")).toBeUndefined();
   });
 });

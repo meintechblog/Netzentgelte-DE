@@ -163,13 +163,14 @@ describe("getSeedPublishedOperators", () => {
     const andernach = published.find((entry) => entry.slug === "stadtwerke-andernach-energie");
     const altdorf = published.find((entry) => entry.slug === "stadtwerke-altdorf");
     const badAibling = published.find((entry) => entry.slug === "stadtwerke-bad-aibling");
+    const badPyrmont = published.find((entry) => entry.slug === "stadtwerke-bad-pyrmont");
     const luckenwalde = published.find(
       (entry) => entry.slug === "stadtische-betriebswerke-luckenwalde"
     );
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(83);
+    expect(published).toHaveLength(84);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -221,6 +222,15 @@ describe("getSeedPublishedOperators", () => {
       validFrom: "2026-01-01",
       sourcePageUrl: "https://www.sbl-gmbh.net/netze/luckenwalde-netze-netznutzung/netznutzung-strom/",
       documentUrl: "https://www.sbl-gmbh.net/wp-content/uploads/2025/12/PB_NE_Strom_2026.pdf",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
+    expect(badPyrmont).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.stadtwerke-bad-pyrmont.de/netze/marktpartner/netzentgelte/index.htm",
+      documentUrl: "https://www.stadtwerke-bad-pyrmont.de/_mediafiles/1328-nne_strom_-2026_entgueltig.pdf",
       compliance: expect.objectContaining({
         status: "compliant"
       })

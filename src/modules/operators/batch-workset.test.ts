@@ -19,9 +19,9 @@ describe("buildBackfillBatchWorkset", () => {
       operatorCount: 25,
       hostnameCount: 25,
       summary: {
-        sourceCandidateCount: 22,
+        sourceCandidateCount: 23,
         sourceMissingCount: 0,
-        documentedCount: 3,
+        documentedCount: 2,
         tariffMissingCount: 25,
         reviewPendingCount: 25
       }
@@ -46,8 +46,8 @@ describe("buildBackfillBatchWorkset", () => {
     ]);
     expect(workset.items.at(-1)).toEqual(
       expect.objectContaining({
-        slug: "stadtwerke-bernburg",
-        hostname: "stadtwerke-bernburg.de",
+        slug: "stadtwerke-bexbach",
+        hostname: "stadtwerke-bexbach.de",
         sourceStatus: "candidate"
       })
     );

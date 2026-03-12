@@ -119,6 +119,8 @@ describe("getSeedOperatorShells", () => {
           slug: "stadtwerke-bad-pyrmont",
           shellStatus: "published",
           sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
           sourcePageUrl: "https://www.stadtwerke-bad-pyrmont.de/netze/marktpartner/netzentgelte/index.htm",
           documentUrl: "https://www.stadtwerke-bad-pyrmont.de/_mediafiles/1328-nne_strom_-2026_entgueltig.pdf"
         }),

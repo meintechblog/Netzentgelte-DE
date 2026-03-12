@@ -6242,12 +6242,13 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "missing",
-    "reviewStatus": "pending",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
     "sourcePageUrl": "https://www.stadtwerke-bad-pyrmont.de/netze/marktpartner/netzentgelte/index.htm",
-    "notes": "VNBdigital ID 48; Synced source page/document (2026-03-11), tariff extraction pending. Official 2026 Hochlastzeitfenster companion PDF also listed on the same page.",
+    "notes": "VNBdigital ID 48; Synced from curated operator entry (verified operator loop 2026-03-12, Q1/Q4 matrix with documented ST fallback for omitted quarters). Official 2026 Hochlastzeitfenster companion PDF also listed on the same page.",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.stadtwerke-bad-pyrmont.de/_mediafiles/1328-nne_strom_-2026_entgueltig.pdf"
+    "documentUrl": "https://www.stadtwerke-bad-pyrmont.de/_mediafiles/1328-nne_strom_-2026_entgueltig.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "stadtwerke-bad-reichenhall-ku",

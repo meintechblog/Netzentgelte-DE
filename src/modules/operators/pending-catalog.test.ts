@@ -109,12 +109,6 @@ describe("getSeedPendingOperatorCatalog", () => {
     expect(result.items).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          slug: "stadtwerke-bad-pyrmont",
-          reviewStatus: "pending",
-          sourceStatus: "source-found",
-          tariffStatus: "missing"
-        }),
-        expect.objectContaining({
           slug: "ssw-netz",
           reviewStatus: "pending",
           sourceStatus: "source-found",
@@ -140,5 +134,6 @@ describe("getSeedPendingOperatorCatalog", () => {
     expect(result.items.find((entry) => entry.slug === "stadtwerke-altdorf")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "stadtwerke-andernach-energie")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "stadtwerke-bad-aibling")).toBeUndefined();
+    expect(result.items.find((entry) => entry.slug === "stadtwerke-bad-pyrmont")).toBeUndefined();
   });
 });

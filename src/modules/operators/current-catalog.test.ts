@@ -166,8 +166,9 @@ describe("getSeedPublishedOperators", () => {
     const luckenwalde = published.find(
       (entry) => entry.slug === "stadtische-betriebswerke-luckenwalde"
     );
+    const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
 
-    expect(published).toHaveLength(81);
+    expect(published).toHaveLength(82);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -219,6 +220,16 @@ describe("getSeedPublishedOperators", () => {
       validFrom: "2026-01-01",
       sourcePageUrl: "https://www.sbl-gmbh.net/netze/luckenwalde-netze-netznutzung/netznutzung-strom/",
       documentUrl: "https://www.sbl-gmbh.net/wp-content/uploads/2025/12/PB_NE_Strom_2026.pdf",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
+    expect(muenster).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.stadtnetze-muenster.de/unsere-netze/marktkommunikation-strom",
+      documentUrl:
+        "https://www.stadtnetze-muenster.de/Stadtnetze/Dokumente/Strom/Marktpartner%20Strom/Netzentgelte/Netznutzungsentgelte%20Strom%202026.pdf",
       compliance: expect.objectContaining({
         status: "compliant"
       })

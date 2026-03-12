@@ -7111,6 +7111,104 @@
     }
   },
   {
+    "slug": "stadtnetze-munster",
+    "name": "Stadtnetze Münster GmbH",
+    "regionLabel": "Münster",
+    "websiteUrl": "https://www.stadtnetze-muenster.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "stadtnetze-munster-14a-2026",
+        "title": "Netznutzungsentgelte Strom gueltig ab 01.01.2026",
+        "documentType": "pdf",
+        "priceBasis": "assumed-netto",
+        "sourcePageUrl": "https://www.stadtnetze-muenster.de/unsere-netze/marktkommunikation-strom",
+        "documentUrl": "https://www.stadtnetze-muenster.de/Stadtnetze/Dokumente/Strom/Marktpartner%20Strom/Netzentgelte/Netznutzungsentgelte%20Strom%202026.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Marktkommunikationsseite der Stadtnetze Münster mit direktem 2026-Preisblatt fuer Netznutzungsentgelte Strom.",
+          "Das Preisblatt publiziert fuer Modul 3 ganzjaehrig HT 7,70 ct/kWh und NT 2,46 ct/kWh; der Standardtarif folgt aus dem allgemeinen SLP-Arbeitspreis 6,15 ct/kWh.",
+          "Die offizielle Ergaenzungsseite 3 stellt klar: Die Zeitangaben sind Endwerte der Viertelstunde. Deshalb werden die Fenster fuer die strukturierte Matrix auf 00:00-05:45 NT, 05:45-15:30 ST, 15:30-20:15 HT und 20:15-24:00 ST normalisiert."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "priceBasis": "assumed-netto",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "stadtnetze-munster-14a-2026",
+      "sourcePageUrl": "https://www.stadtnetze-muenster.de/unsere-netze/marktkommunikation-strom",
+      "documentUrl": "https://www.stadtnetze-muenster.de/Stadtnetze/Dokumente/Strom/Marktpartner%20Strom/Netzentgelte/Netznutzungsentgelte%20Strom%202026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "2.46",
+          "priceBasis": "assumed-netto",
+          "sourceQuote": "Modul 3 laut Festlegung BK6-22-300/BK8-22/010-A: Arbeitspreis Niedriglasttarif (NT); ganzjaehrig abgerechnet 2,46"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "6.15",
+          "priceBasis": "assumed-netto",
+          "sourceQuote": "Haushalt, Gewerbe, Landwirtschaft und sonstige; Standardtarif 87,60 6,15"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "7.70",
+          "priceBasis": "assumed-netto",
+          "sourceQuote": "Modul 3 laut Festlegung BK6-22-300/BK8-22/010-A: Arbeitspreis Hochlasttarif (HT); ganzjaehrig abgerechnet 7,70"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "stadtnetze-munster-2026-all-year-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-05:45",
+          "sourceQuote": "Niedertarif von 0:15 Uhr bis 5:45 Uhr"
+        },
+        {
+          "id": "stadtnetze-munster-2026-all-year-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "05:45-15:30",
+          "sourceQuote": "Standardtarif von 6:00 Uhr bis 15:30 Uhr"
+        },
+        {
+          "id": "stadtnetze-munster-2026-all-year-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "15:30-20:15",
+          "sourceQuote": "Hochtarif von 15:45 Uhr bis 20:15 Uhr"
+        },
+        {
+          "id": "stadtnetze-munster-2026-all-year-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "20:15-24:00",
+          "sourceQuote": "Standardtarif von 20:30 Uhr bis 0:00 Uhr"
+        }
+      ]
+    }
+  },
+  {
     "slug": "stadtwerke-achim",
     "name": "Stadtwerke Achim AG",
     "regionLabel": "Achim",

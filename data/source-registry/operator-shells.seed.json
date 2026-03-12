@@ -5835,12 +5835,13 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "missing",
-    "reviewStatus": "pending",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
     "sourcePageUrl": "https://www.stadtnetze-muenster.de/unsere-netze/marktkommunikation-strom",
-    "notes": "VNBdigital ID 449; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "notes": "VNBdigital ID 449; Synced from curated operator entry (verified operator loop 2026-03-12, Modul-3 quarter-hour end-value normalization from official 2026 PDF).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.stadtnetze-muenster.de/Stadtnetze/Dokumente/Strom/Marktpartner%20Strom/Netzentgelte/Netznutzungsentgelte%20Strom%202026.pdf"
+    "documentUrl": "https://www.stadtnetze-muenster.de/Stadtnetze/Dokumente/Strom/Marktpartner%20Strom/Netzentgelte/Netznutzungsentgelte%20Strom%202026.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "stadtwerk-am-see",

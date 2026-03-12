@@ -34,6 +34,8 @@ describe("getSeedOperatorShells", () => {
           slug: "stadtnetze-munster",
           shellStatus: "published",
           sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
           sourcePageUrl: "https://www.stadtnetze-muenster.de/unsere-netze/marktkommunikation-strom",
           documentUrl:
             "https://www.stadtnetze-muenster.de/Stadtnetze/Dokumente/Strom/Marktpartner%20Strom/Netzentgelte/Netznutzungsentgelte%20Strom%202026.pdf"

@@ -109,12 +109,6 @@ describe("getSeedPendingOperatorCatalog", () => {
     expect(result.items).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          slug: "stadtnetze-munster",
-          reviewStatus: "pending",
-          sourceStatus: "source-found",
-          tariffStatus: "missing"
-        }),
-        expect.objectContaining({
           slug: "stadtwerke-bad-pyrmont",
           reviewStatus: "pending",
           sourceStatus: "source-found",
@@ -142,6 +136,7 @@ describe("getSeedPendingOperatorCatalog", () => {
     );
     expect(result.items.find((entry) => entry.slug === "stadtwerke-achim")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "ahrtal-werke")).toBeUndefined();
+    expect(result.items.find((entry) => entry.slug === "stadtnetze-munster")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "alliander-netz-heinsberg")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "abita-energie-otterberg")).toBeUndefined();
     expect(

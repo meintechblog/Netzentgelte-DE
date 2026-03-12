@@ -14,6 +14,8 @@ COPYFILE_DISABLE=1 tar \
   --exclude='node_modules' \
   --exclude='.next' \
   --exclude='.playwright-cli' \
+  --exclude='.deploy-public' \
+  --exclude='.worktrees' \
   --exclude='data/artifacts' \
   --exclude='tmp' \
   -C /Users/hulki/projects/netzentgelte-de \
@@ -45,7 +47,7 @@ ssh root@192.168.3.178 '
   cd /root/netzentgelte-de-release &&
   pnpm install --frozen-lockfile &&
   pnpm test &&
-  pnpm lint &&
+  pnpm exec eslint src scripts &&
   rm -rf .next &&
   env -u NEXT_PUBLIC_BASE_PATH pnpm build &&
   pnpm typecheck

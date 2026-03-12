@@ -170,6 +170,16 @@ describe("getSeedOperatorShells", () => {
             "https://nahwerk-energie.de/wp-content/uploads/2025/12/Preisblatt-NNE-2026-Nahwerke-20251212.pdf"
         }),
         expect.objectContaining({
+          slug: "naturenergie-netze",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://www.naturenergie-netze.de/partner/lieferanten/netzentgelte-2026",
+          documentUrl:
+            "https://www.naturenergie-netze.de/fileadmin/ednetze/PDF/Geschaeftspartner/Lieferanten/Netzentgelte/2026/Preisblaetter_Gesamt_2026.pdf"
+        }),
+        expect.objectContaining({
           slug: "mega-monheimer-elektrizitats-und-gasversorgung",
           shellStatus: "published",
           sourceStatus: "source-found",

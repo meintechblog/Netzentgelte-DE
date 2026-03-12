@@ -102,6 +102,7 @@ describe("getSeedPendingOperatorCatalog", () => {
     expect(result.summary.tariffReadyCount).toBeLessThanOrEqual(result.summary.operatorCount);
     expect(result.items.find((entry) => entry.slug === "mainnetz")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "nahwerk-energie-und")).toBeUndefined();
+    expect(result.items.find((entry) => entry.slug === "naturenergie-netze")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "netze-bw")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "50hertz-transmission")).toBeUndefined();
   });
@@ -147,6 +148,7 @@ describe("getSeedPendingOperatorCatalog", () => {
     expect(result.items.find((entry) => entry.slug === "lsw-netz-und")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "mainnetz")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "nahwerk-energie-und")).toBeUndefined();
+    expect(result.items.find((entry) => entry.slug === "naturenergie-netze")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "mainsite-und")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "maintal-werke")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "markt-zellingen")).toBeUndefined();

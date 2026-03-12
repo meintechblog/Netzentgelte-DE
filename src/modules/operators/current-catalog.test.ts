@@ -147,6 +147,7 @@ describe("getSeedPublishedOperators", () => {
       (entry) => entry.slug === "mega-monheimer-elektrizitats-und-gasversorgung"
     );
     const nahwerk = published.find((entry) => entry.slug === "nahwerk-energie-und");
+    const naturenergie = published.find((entry) => entry.slug === "naturenergie-netze");
     const mainnetz = published.find((entry) => entry.slug === "mainnetz");
     const mainsite = published.find((entry) => entry.slug === "mainsite-und");
     const mainzerNetze = published.find((entry) => entry.slug === "mainzer-netze");
@@ -192,7 +193,7 @@ describe("getSeedPublishedOperators", () => {
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(100);
+    expect(published).toHaveLength(101);
     expect(nahwerk).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -209,6 +210,17 @@ describe("getSeedPublishedOperators", () => {
       validFrom: "2026-01-01",
       sourcePageUrl: "https://netze.mega-monheim.de/fuer-lieferanten/messstellenbetreiber/vertraege",
       documentUrl: "https://netze.mega-monheim.de/fileadmin/SW-MEGA/user_upload/Downloads/NNE_S_2026.pdf",
+      priceBasis: "assumed-netto",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
+    expect(naturenergie).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.naturenergie-netze.de/partner/lieferanten/netzentgelte-2026",
+      documentUrl:
+        "https://www.naturenergie-netze.de/fileadmin/ednetze/PDF/Geschaeftspartner/Lieferanten/Netzentgelte/2026/Preisblaetter_Gesamt_2026.pdf",
       priceBasis: "assumed-netto",
       compliance: expect.objectContaining({
         status: "compliant"

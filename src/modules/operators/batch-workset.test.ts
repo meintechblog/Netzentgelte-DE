@@ -29,11 +29,6 @@ describe("buildBackfillBatchWorkset", () => {
 
     expect(workset.items.slice(0, 3)).toEqual([
       expect.objectContaining({
-        slug: "stadtwerke-baden-baden",
-        hostname: "stadtwerke-baden-baden.de",
-        sourceStatus: "candidate"
-      }),
-      expect.objectContaining({
         slug: "stadtwerke-baiersdorf-ku-aor",
         hostname: "stadtwerke-baiersdorf.de",
         sourceStatus: "candidate"
@@ -42,12 +37,17 @@ describe("buildBackfillBatchWorkset", () => {
         slug: "stadtwerke-bamberg-energie-und-wasserversorgungs",
         hostname: "stadtwerke-bamberg.de",
         sourceStatus: "candidate"
+      }),
+      expect.objectContaining({
+        slug: "stadtwerke-barmstedt",
+        hostname: "stadtwerke-barmstedt.de",
+        sourceStatus: "candidate"
       })
     ]);
     expect(workset.items.at(-1)).toEqual(
       expect.objectContaining({
-        slug: "stadtwerke-buxtehude",
-        hostname: "stadtwerke-buxtehude.de",
+        slug: "stadtwerke-bad-bergzabern",
+        hostname: "stadtwerke-bza.de",
         sourceStatus: "candidate"
       })
     );

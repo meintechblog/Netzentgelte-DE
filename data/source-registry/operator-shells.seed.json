@@ -4640,12 +4640,12 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.naturenergie-netze.de/",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://www.naturenergie-netze.de/partner/lieferanten/netzentgelte-2026",
     "notes": "VNBdigital ID 7323",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.naturenergie-netze.de/"
+    "documentUrl": "https://www.naturenergie-netze.de/fileadmin/ednetze/PDF/Geschaeftspartner/Lieferanten/Netzentgelte/2026/Preisblaetter_Gesamt_2026.pdf"
   },
   {
     "slug": "naturstrom-vor-ort",

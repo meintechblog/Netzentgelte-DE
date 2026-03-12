@@ -7989,6 +7989,122 @@
     }
   },
   {
+    "slug": "naturenergie-netze",
+    "name": "naturenergie netze GmbH",
+    "regionLabel": "Rheinfelden",
+    "websiteUrl": "https://www.naturenergie-netze.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "naturenergie-netze-14a-2026",
+        "title": "Preisblaetter Gesamt 2026",
+        "documentType": "pdf",
+        "priceBasis": "netto",
+        "sourcePageUrl": "https://www.naturenergie-netze.de/partner/lieferanten/netzentgelte-2026",
+        "documentUrl": "https://www.naturenergie-netze.de/fileadmin/ednetze/PDF/Geschaeftspartner/Lieferanten/Netzentgelte/2026/Preisblaetter_Gesamt_2026.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Die offizielle Lieferantenseite von naturenergie netze verlinkt das finale Gesamt-Preisblatt 2026 direkt als PDF auf der Betreiberdomain.",
+          "Das Preisblatt nennt fuer Modul 3 in Niederspannung netto NT 2,19 ct/kWh, ST 7,30 ct/kWh und HT 13,68 ct/kWh.",
+          "Die Zeitlogik gilt ausdruecklich nur in Q2 und Q3; Q1 und Q4 werden deshalb projektkonform als Volltag-Standardtarif gefuehrt."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "priceBasis": "netto",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "naturenergie-netze-14a-2026",
+      "sourcePageUrl": "https://www.naturenergie-netze.de/partner/lieferanten/netzentgelte-2026",
+      "documentUrl": "https://www.naturenergie-netze.de/fileadmin/ednetze/PDF/Geschaeftspartner/Lieferanten/Netzentgelte/2026/Preisblaetter_Gesamt_2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarif",
+          "valueCtPerKwh": "2.19",
+          "priceBasis": "netto",
+          "sourceQuote": "Niedrigtarif 10.30 Uhr bis 13.30 Uhr 2,19"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarif",
+          "valueCtPerKwh": "7.30",
+          "priceBasis": "netto",
+          "sourceQuote": "Standardtarif 00:00 Uhr bis 10:30 Uhr, 13:30 Uhr bis 17:30 Uhr und 19:30 Uhr bis 00.00 Uhr 7,30"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarif",
+          "valueCtPerKwh": "13.68",
+          "priceBasis": "netto",
+          "sourceQuote": "Hochtarif 17.30 Uhr bis 19.30 Uhr 13,68"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "naturenergie-netze-2026-q1q4-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Das Modul 3 kommt im Jahr 2026 ausschliesslich im zweiten und dritten Quartal (01.04.-30.06. und 01.07.-30.09.) zur Anwendung."
+        },
+        {
+          "id": "naturenergie-netze-2026-q2q3-standard-night",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-10:30",
+          "sourceQuote": "00:00 Uhr bis 10:30 Uhr"
+        },
+        {
+          "id": "naturenergie-netze-2026-q2q3-low-midday",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "10:30-13:30",
+          "sourceQuote": "10.30 Uhr bis 13.30 Uhr"
+        },
+        {
+          "id": "naturenergie-netze-2026-q2q3-standard-afternoon",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "13:30-17:30",
+          "sourceQuote": "13:30 Uhr bis 17:30 Uhr"
+        },
+        {
+          "id": "naturenergie-netze-2026-q2q3-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:30-19:30",
+          "sourceQuote": "17.30 Uhr bis 19.30 Uhr"
+        },
+        {
+          "id": "naturenergie-netze-2026-q2q3-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "19:30-24:00",
+          "sourceQuote": "19:30 Uhr bis 00.00 Uhr"
+        }
+      ]
+    }
+  },
+  {
     "slug": "netze-bw",
     "name": "Netze BW GmbH",
     "regionLabel": "Baden-Württemberg",

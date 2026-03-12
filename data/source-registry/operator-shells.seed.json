@@ -5879,12 +5879,13 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "missing",
-    "reviewStatus": "pending",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
     "sourcePageUrl": "https://stadtwerk-tauberfranken.de/netz/marktpartner/strom/",
-    "notes": "VNBdigital ID 43; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "notes": "VNBdigital ID 43; Synced from curated operator entry (verified operator loop 2026-03-12, Q1/Q4 official matrix with documented ST fallback for Q2/Q3).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://stadtwerk-tauberfranken.de/fileadmin/user_upload/Netz/Marktpartner/Strom/Netzentgelte/endgueltig_Preisblatt_SWTF_Strom_NNE_2026.pdf"
+    "documentUrl": "https://stadtwerk-tauberfranken.de/fileadmin/user_upload/Netz/Marktpartner/Strom/Netzentgelte/endgueltig_Preisblatt_SWTF_Strom_NNE_2026.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "stadtwerke-aalen",

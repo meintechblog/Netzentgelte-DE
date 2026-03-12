@@ -16,7 +16,7 @@ describe("GET /api/operators", () => {
       complianceViolationCount: expect.any(Number),
       complianceNotEvaluatedCount: expect.any(Number)
     });
-    expect(data.items).toHaveLength(82);
+    expect(data.items).toHaveLength(83);
     expect(data.items).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -45,6 +45,12 @@ describe("GET /api/operators", () => {
         }),
         expect.objectContaining({
           slug: "stadtnetze-munster",
+          reviewStatus: "verified",
+          complianceStatus: "compliant",
+          complianceViolationCount: 0
+        }),
+        expect.objectContaining({
+          slug: "stadtwerk-tauberfranken",
           reviewStatus: "verified",
           complianceStatus: "compliant",
           complianceViolationCount: 0

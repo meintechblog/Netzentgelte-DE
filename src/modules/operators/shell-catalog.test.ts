@@ -126,6 +126,8 @@ describe("getSeedOperatorShells", () => {
           slug: "stadtwerk-tauberfranken",
           shellStatus: "published",
           sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
           sourcePageUrl: "https://stadtwerk-tauberfranken.de/netz/marktpartner/strom/",
           documentUrl:
             "https://stadtwerk-tauberfranken.de/fileadmin/user_upload/Netz/Marktpartner/Strom/Netzentgelte/endgueltig_Preisblatt_SWTF_Strom_NNE_2026.pdf"

@@ -115,12 +115,6 @@ describe("getSeedPendingOperatorCatalog", () => {
           tariffStatus: "missing"
         }),
         expect.objectContaining({
-          slug: "stadtwerk-tauberfranken",
-          reviewStatus: "pending",
-          sourceStatus: "source-found",
-          tariffStatus: "missing"
-        }),
-        expect.objectContaining({
           slug: "ssw-netz",
           reviewStatus: "pending",
           sourceStatus: "source-found",
@@ -137,6 +131,7 @@ describe("getSeedPendingOperatorCatalog", () => {
     expect(result.items.find((entry) => entry.slug === "stadtwerke-achim")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "ahrtal-werke")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "stadtnetze-munster")).toBeUndefined();
+    expect(result.items.find((entry) => entry.slug === "stadtwerk-tauberfranken")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "alliander-netz-heinsberg")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "abita-energie-otterberg")).toBeUndefined();
     expect(

@@ -7209,6 +7209,131 @@
     }
   },
   {
+    "slug": "stadtwerk-tauberfranken",
+    "name": "Stadtwerk Tauberfranken GmbH",
+    "regionLabel": "Bad Mergentheim",
+    "websiteUrl": "https://www.stadtwerk-tauberfranken.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "stadtwerk-tauberfranken-14a-2026",
+        "title": "Preisblatt SWTF Strom NNE 2026 endgueltig",
+        "documentType": "pdf",
+        "priceBasis": "assumed-netto",
+        "sourcePageUrl": "https://stadtwerk-tauberfranken.de/netz/marktpartner/strom/",
+        "documentUrl": "https://stadtwerk-tauberfranken.de/fileadmin/user_upload/Netz/Marktpartner/Strom/Netzentgelte/endgueltig_Preisblatt_SWTF_Strom_NNE_2026.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Marktpartnerseite des Stadtwerk Tauberfranken mit direktem finalen 2026-Preisblatt Strom.",
+          "Das Modul-3-Blatt nennt ST 8,32 ct/kWh, HT 12,38 ct/kWh und NT 3,33 ct/kWh sowie die konkreten Uhrzeiten.",
+          "Die Quartalsmatrix im Preisblatt markiert die drei Tarifstufen fuer Q1 und Q4 als aktiv und fuer Q2 und Q3 als nicht aktiv; die fehlenden Quartale werden daher projektkonform als dokumentierte ST-Annahme dargestellt."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "priceBasis": "assumed-netto",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "stadtwerk-tauberfranken-14a-2026",
+      "sourcePageUrl": "https://stadtwerk-tauberfranken.de/netz/marktpartner/strom/",
+      "documentUrl": "https://stadtwerk-tauberfranken.de/fileadmin/user_upload/Netz/Marktpartner/Strom/Netzentgelte/endgueltig_Preisblatt_SWTF_Strom_NNE_2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "3.33",
+          "priceBasis": "assumed-netto",
+          "sourceQuote": "Niedriglasttarifstufe (NT) 3,33 3,96"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "8.32",
+          "priceBasis": "assumed-netto",
+          "sourceQuote": "Standardtarifstufe (ST) 8,32 9,90"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "12.38",
+          "priceBasis": "assumed-netto",
+          "sourceQuote": "Hochlasttarifstufe (HT) 12,38 14,73"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "stadtwerk-tauberfranken-2026-q1q4-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-06:00",
+          "sourceQuote": "00:00 06:00 Niedriglasttarifstufe (NT)"
+        },
+        {
+          "id": "stadtwerk-tauberfranken-2026-q1q4-standard-morning",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:00-09:15",
+          "sourceQuote": "06:00 09:15 Standardtarifstufe (ST)"
+        },
+        {
+          "id": "stadtwerk-tauberfranken-2026-q1q4-high-midday",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "09:15-13:15",
+          "sourceQuote": "09:15 13:15 Hochlasttarifstufe (HT)"
+        },
+        {
+          "id": "stadtwerk-tauberfranken-2026-q1q4-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "13:15-17:00",
+          "sourceQuote": "13:15 17:00 Standardtarifstufe (ST)"
+        },
+        {
+          "id": "stadtwerk-tauberfranken-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-19:30",
+          "sourceQuote": "17:00 19:30 Hochlasttarifstufe (HT)"
+        },
+        {
+          "id": "stadtwerk-tauberfranken-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "19:30-22:00",
+          "sourceQuote": "19:30 22:00 Standardtarifstufe (ST)"
+        },
+        {
+          "id": "stadtwerk-tauberfranken-2026-q1q4-low-late",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "22:00-24:00",
+          "sourceQuote": "22:00 00:00 Niedriglasttarifstufe (NT)"
+        }
+      ]
+    }
+  },
+  {
     "slug": "stadtwerke-achim",
     "name": "Stadtwerke Achim AG",
     "regionLabel": "Achim",

@@ -167,8 +167,9 @@ describe("getSeedPublishedOperators", () => {
       (entry) => entry.slug === "stadtische-betriebswerke-luckenwalde"
     );
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
+    const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(82);
+    expect(published).toHaveLength(83);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -230,6 +231,16 @@ describe("getSeedPublishedOperators", () => {
       sourcePageUrl: "https://www.stadtnetze-muenster.de/unsere-netze/marktkommunikation-strom",
       documentUrl:
         "https://www.stadtnetze-muenster.de/Stadtnetze/Dokumente/Strom/Marktpartner%20Strom/Netzentgelte/Netznutzungsentgelte%20Strom%202026.pdf",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
+    expect(tauberfranken).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://stadtwerk-tauberfranken.de/netz/marktpartner/strom/",
+      documentUrl:
+        "https://stadtwerk-tauberfranken.de/fileadmin/user_upload/Netz/Marktpartner/Strom/Netzentgelte/endgueltig_Preisblatt_SWTF_Strom_NNE_2026.pdf",
       compliance: expect.objectContaining({
         status: "compliant"
       })

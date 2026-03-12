@@ -5882,6 +5882,171 @@
     }
   },
   {
+    "slug": "leinenetz",
+    "name": "LeineNetz GmbH",
+    "regionLabel": "Neustadt",
+    "websiteUrl": "https://www.leinenetz.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "leinenetz-14a-2026",
+        "title": "Endgueltiges Preisblatt STROM 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.leinenetz.de/netzbetrieb/strom/netzentgelte-strom-1",
+        "documentUrl": "https://www.leinenetz.de/_Resources/Persistent/f/b/5/0/fb5018a483982b655aa147d40749ac5d4df4c5b0/2025-12-10%2C%20endg%C3%BCltiges%20PB_STROM_LNG_2026.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Die offizielle Netzentgelte-Strom-Seite der LeineNetz veroeffentlicht das endgueltige Preisblatt STROM 2026 direkt als PDF.",
+          "Das finale 2026-PDF nennt fuer Modul 3 in Niederspannung ST 11,70 ct/kWh netto, HT 20,83 ct/kWh netto und NT 4,68 ct/kWh netto.",
+          "Die Quartalsmatrix ist vollstaendig ausgewiesen: Quartal 1 und 2 jeweils Standardtarif 00:00-24:00 Uhr, Quartal 3 und 4 mit expliziten ST/HT/NT-Fenstern ohne Tagesluecken."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "leinenetz-14a-2026",
+      "sourcePageUrl": "https://www.leinenetz.de/netzbetrieb/strom/netzentgelte-strom-1",
+      "documentUrl": "https://www.leinenetz.de/_Resources/Persistent/f/b/5/0/fb5018a483982b655aa147d40749ac5d4df4c5b0/2025-12-10%2C%20endg%C3%BCltiges%20PB_STROM_LNG_2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedriglasttarifstufe",
+          "valueCtPerKwh": "4.68",
+          "sourceQuote": "Niederspannung 4,68"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "11.70",
+          "sourceQuote": "Niederspannung 11,70"
+        },
+        {
+          "key": "HT",
+          "label": "Hochlasttarifstufe",
+          "valueCtPerKwh": "20.83",
+          "sourceQuote": "Niederspannung 20,83"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "leinenetz-2026-q1-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 2026 (01.01.-31.03.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Quartal 1 (01.01.-31.03.) 00:00 - 24:00"
+        },
+        {
+          "id": "leinenetz-2026-q2-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2 2026 (01.04.-30.06.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Quartal 2 (01.04.-30.06.) 00:00 - 24:00"
+        },
+        {
+          "id": "leinenetz-2026-q3-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q3 2026 (01.07.-30.09.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-06:15",
+          "sourceQuote": "Quartal 3 (01.07.-30.09.) 00:00 - 06:15"
+        },
+        {
+          "id": "leinenetz-2026-q3-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q3 2026 (01.07.-30.09.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:15-17:15",
+          "sourceQuote": "Quartal 3 (01.07.-30.09.) 06:15 - 17:15"
+        },
+        {
+          "id": "leinenetz-2026-q3-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q3 2026 (01.07.-30.09.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:15-19:15",
+          "sourceQuote": "Quartal 3 (01.07.-30.09.) 17:15 - 19:15"
+        },
+        {
+          "id": "leinenetz-2026-q3-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q3 2026 (01.07.-30.09.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "19:15-23:30",
+          "sourceQuote": "Quartal 3 (01.07.-30.09.) 19:15 - 23:30"
+        },
+        {
+          "id": "leinenetz-2026-q3-low-late",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q3 2026 (01.07.-30.09.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "23:30-24:00",
+          "sourceQuote": "Quartal 3 (01.07.-30.09.) 23:30 - 24:00"
+        },
+        {
+          "id": "leinenetz-2026-q4-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q4 2026 (01.10.-31.12.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-06:15",
+          "sourceQuote": "Quartal 4 (01.10.-31.12.) 00:00 - 06:15"
+        },
+        {
+          "id": "leinenetz-2026-q4-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q4 2026 (01.10.-31.12.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:15-17:15",
+          "sourceQuote": "Quartal 4 (01.10.-31.12.) 06:15 - 17:15"
+        },
+        {
+          "id": "leinenetz-2026-q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q4 2026 (01.10.-31.12.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:15-19:15",
+          "sourceQuote": "Quartal 4 (01.10.-31.12.) 17:15 - 19:15"
+        },
+        {
+          "id": "leinenetz-2026-q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q4 2026 (01.10.-31.12.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "19:15-23:30",
+          "sourceQuote": "Quartal 4 (01.10.-31.12.) 19:15 - 23:30"
+        },
+        {
+          "id": "leinenetz-2026-q4-low-late",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q4 2026 (01.10.-31.12.)",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "23:30-24:00",
+          "sourceQuote": "Quartal 4 (01.10.-31.12.) 23:30 - 24:00"
+        }
+      ]
+    }
+  },
+  {
     "slug": "lew-verteilnetz",
     "name": "LEW Verteilnetz GmbH",
     "regionLabel": "Augsburg / Bayerisch-Schwaben",

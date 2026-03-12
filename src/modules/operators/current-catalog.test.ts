@@ -169,13 +169,14 @@ describe("getSeedPublishedOperators", () => {
     const farchant = published.find(
       (entry) => entry.slug === "kraftwerk-farchant-a-poettinger-und"
     );
+    const leinenetz = published.find((entry) => entry.slug === "leinenetz");
     const luckenwalde = published.find(
       (entry) => entry.slug === "stadtische-betriebswerke-luckenwalde"
     );
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(87);
+    expect(published).toHaveLength(88);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -267,6 +268,16 @@ describe("getSeedPublishedOperators", () => {
         "https://www.kw-farchant.com/kontakt-und-hilfe/downloads/downloads-netz-veroeffentlichungspflichten",
       documentUrl:
         "https://www.kw-farchant.com/images/pdf/Preisblatt%20Netznutzungsentgelte%20ab%2001.01.2026.pdf",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
+    expect(leinenetz).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.leinenetz.de/netzbetrieb/strom/netzentgelte-strom-1",
+      documentUrl:
+        "https://www.leinenetz.de/_Resources/Persistent/f/b/5/0/fb5018a483982b655aa147d40749ac5d4df4c5b0/2025-12-10%2C%20endg%C3%BCltiges%20PB_STROM_LNG_2026.pdf",
       compliance: expect.objectContaining({
         status: "compliant"
       })

@@ -4254,12 +4254,12 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.leinenetz.de",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://www.leinenetz.de/netzbetrieb/strom/netzentgelte-strom-1",
     "notes": "VNBdigital ID 7787",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.leinenetz.de"
+    "documentUrl": "https://www.leinenetz.de/_Resources/Persistent/f/b/5/0/fb5018a483982b655aa147d40749ac5d4df4c5b0/2025-12-10%2C%20endg%C3%BCltiges%20PB_STROM_LNG_2026.pdf"
   },
   {
     "slug": "leitungspartner",

@@ -29,11 +29,6 @@ describe("buildBackfillBatchWorkset", () => {
 
     expect(workset.items.slice(0, 3)).toEqual([
       expect.objectContaining({
-        slug: "stadtwerke-lutherstadt-eisleben",
-        hostname: "sle24.de",
-        sourceStatus: "candidate"
-      }),
-      expect.objectContaining({
         slug: "stadtwerke-ostmunsterland-und",
         hostname: "so.de",
         sourceStatus: "candidate"
@@ -42,12 +37,17 @@ describe("buildBackfillBatchWorkset", () => {
         slug: "ssw-netz",
         hostname: "ssw-netz.de",
         sourceStatus: "source-found"
+      }),
+      expect.objectContaining({
+        slug: "stadtwerk-am-see",
+        hostname: "stadtwerk-am-see.de",
+        sourceStatus: "candidate"
       })
     ]);
     expect(workset.items.at(-1)).toEqual(
       expect.objectContaining({
-        slug: "stadtische-werke-borna-netz",
-        hostname: "stadtwerke-borna-netz.de",
+        slug: "stadtwerke-bramsche",
+        hostname: "stadtwerke-bramsche.de",
         sourceStatus: "candidate"
       })
     );

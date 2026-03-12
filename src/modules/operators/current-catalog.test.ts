@@ -171,6 +171,7 @@ describe("getSeedPublishedOperators", () => {
     );
     const leinenetz = published.find((entry) => entry.slug === "leinenetz");
     const leitungspartner = published.find((entry) => entry.slug === "leitungspartner");
+    const helmbrechts = published.find((entry) => entry.slug === "licht-und-kraftwerke-helmbrechts");
     const kitzingen = published.find(
       (entry) => entry.slug === "licht-kraft-und-wasserwerke-kitzingen"
     );
@@ -180,7 +181,7 @@ describe("getSeedPublishedOperators", () => {
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(90);
+    expect(published).toHaveLength(91);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -232,6 +233,15 @@ describe("getSeedPublishedOperators", () => {
       validFrom: "2026-01-01",
       sourcePageUrl: "https://www.sbl-gmbh.net/netze/luckenwalde-netze-netznutzung/netznutzung-strom/",
       documentUrl: "https://www.sbl-gmbh.net/wp-content/uploads/2025/12/PB_NE_Strom_2026.pdf",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
+    expect(helmbrechts).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.luk-helmbrechts.de/netze/stromnetz/netzentgelte/",
+      documentUrl: "https://www.luk-helmbrechts.de/wp-content/uploads/2025/12/s-preisblatt-nn-slp-2026.pdf",
       compliance: expect.objectContaining({
         status: "compliant"
       })

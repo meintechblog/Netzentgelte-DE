@@ -122,6 +122,15 @@ describe("getSeedOperatorShells", () => {
           documentUrl: "https://www.leitungspartner.de/download/preisblatt-netzentgelte/"
         }),
         expect.objectContaining({
+          slug: "licht-und-kraftwerke-helmbrechts",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://www.luk-helmbrechts.de/netze/stromnetz/netzentgelte/",
+          documentUrl: "https://www.luk-helmbrechts.de/wp-content/uploads/2025/12/s-preisblatt-nn-slp-2026.pdf"
+        }),
+        expect.objectContaining({
           slug: "licht-kraft-und-wasserwerke-kitzingen",
           shellStatus: "published",
           sourceStatus: "source-found",

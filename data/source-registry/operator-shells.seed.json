@@ -4314,12 +4314,12 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.luk-helmbrechts.de/",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://www.luk-helmbrechts.de/netze/stromnetz/netzentgelte/",
     "notes": "VNBdigital ID 283",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.luk-helmbrechts.de/"
+    "documentUrl": "https://www.luk-helmbrechts.de/wp-content/uploads/2025/12/s-preisblatt-nn-slp-2026.pdf"
   },
   {
     "slug": "licht-und-kraftwerke-sonneberg",

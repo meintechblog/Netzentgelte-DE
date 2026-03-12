@@ -50,6 +50,16 @@ describe("getSeedOperatorShells", () => {
             "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1/PB-KK-NNE-Strom-2026-01-01.pdf"
         }),
         expect.objectContaining({
+          slug: "abita-energie-otterberg",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://www.abita-energie.de/netze/netznutzung/netznutzung",
+          documentUrl:
+            "https://www.abita-energie.de/fileadmin/dokumente/Netze/Entgelte/Preisblatt_Strom_NNE_01012026.pdf"
+        }),
+        expect.objectContaining({
           slug: "stadtische-betriebswerke-luckenwalde",
           shellStatus: "published",
           sourceStatus: "source-found",

@@ -157,11 +157,19 @@ describe("getSeedPublishedOperators", () => {
     const twsNetz = published.find((entry) => entry.slug === "tws-netz");
     const heidelbergNetze = published.find((entry) => entry.slug === "heidelberg-netze");
     const achim = published.find((entry) => entry.slug === "stadtwerke-achim");
+    const abita = published.find((entry) => entry.slug === "abita-energie-otterberg");
     const andernach = published.find((entry) => entry.slug === "stadtwerke-andernach-energie");
     const altdorf = published.find((entry) => entry.slug === "stadtwerke-altdorf");
     const badAibling = published.find((entry) => entry.slug === "stadtwerke-bad-aibling");
 
-    expect(published).toHaveLength(77);
+    expect(published).toHaveLength(78);
+    expect(abita).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.abita-energie.de/netze/netznutzung/netznutzung",
+      documentUrl:
+        "https://www.abita-energie.de/fileadmin/dokumente/Netze/Entgelte/Preisblatt_Strom_NNE_01012026.pdf"
+    });
     expect(heidelbergNetze).toBeUndefined();
     expect(ewrNetz).toBeUndefined();
     expect(achim).toMatchObject({

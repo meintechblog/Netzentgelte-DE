@@ -16,9 +16,15 @@ describe("GET /api/operators", () => {
       complianceViolationCount: expect.any(Number),
       complianceNotEvaluatedCount: expect.any(Number)
     });
-    expect(data.items).toHaveLength(77);
+    expect(data.items).toHaveLength(78);
     expect(data.items).toEqual(
       expect.arrayContaining([
+        expect.objectContaining({
+          slug: "abita-energie-otterberg",
+          reviewStatus: "verified",
+          complianceStatus: "compliant",
+          complianceViolationCount: 0
+        }),
         expect.objectContaining({
           slug: "stadtwerke-achim",
           reviewStatus: "verified",

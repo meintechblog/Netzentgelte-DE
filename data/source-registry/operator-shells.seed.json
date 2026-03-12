@@ -22,12 +22,13 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "missing",
-    "reviewStatus": "pending",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
     "sourcePageUrl": "https://www.abita-energie.de/netze/netznutzung/netznutzung",
-    "notes": "VNBdigital ID 7156; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "notes": "VNBdigital ID 7156; Synced from curated operator entry (verified operator loop 2026-03-12, Q2/Q3 assumed ST).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.abita-energie.de/fileadmin/dokumente/Netze/Entgelte/Preisblatt_Strom_NNE_01012026.pdf"
+    "documentUrl": "https://www.abita-energie.de/fileadmin/dokumente/Netze/Entgelte/Preisblatt_Strom_NNE_01012026.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "ahrtal-werke",

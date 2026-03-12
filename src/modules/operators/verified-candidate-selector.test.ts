@@ -215,6 +215,34 @@ describe("selectVerifiedCandidate", () => {
     expect(result.summary.verificationReadyCount).toBe(1);
   });
 
+  test("prefers a published source-found shell with a concrete document over generic evidence-ready candidates", () => {
+    const result = selectVerifiedCandidate(
+      [
+        createShell({
+          slug: "abita-energie-otterberg",
+          operatorName: "Abita Energie Otterberg GmbH",
+          shellStatus: "profile-found",
+          sourceStatus: "source-found"
+        }),
+        createShell({
+          slug: "stadtwerke-achim",
+          operatorName: "Stadtwerke Achim AG",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          documentUrl: "https://demo.example/stadtwerke-achim-2026.pdf"
+        })
+      ],
+      []
+    );
+
+    expect(result.selected).toEqual(
+      expect.objectContaining({
+        slug: "stadtwerke-achim",
+        stage: "evidence-ready"
+      })
+    );
+  });
+
   test("ignores already verified operators and returns blocked reasons when nothing qualifies", () => {
     const result = selectVerifiedCandidate(
       [

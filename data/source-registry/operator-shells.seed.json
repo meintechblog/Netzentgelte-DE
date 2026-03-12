@@ -5903,12 +5903,13 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "missing",
-    "reviewStatus": "pending",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
     "sourcePageUrl": "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1.html",
-    "notes": "VNBdigital ID 6; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "notes": "VNBdigital ID 6; Synced from curated operator entry (verified-first backfill 2026-03-12, Q2/Q3 assumed ST).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1/PB-KK-NNE-Strom-2026-01-01.pdf"
+    "documentUrl": "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1/PB-KK-NNE-Strom-2026-01-01.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "stadtwerke-altdorf",

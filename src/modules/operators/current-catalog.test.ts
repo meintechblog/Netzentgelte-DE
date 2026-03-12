@@ -156,13 +156,22 @@ describe("getSeedPublishedOperators", () => {
     const nordnetz = published.find((entry) => entry.slug === "nordnetz");
     const twsNetz = published.find((entry) => entry.slug === "tws-netz");
     const heidelbergNetze = published.find((entry) => entry.slug === "heidelberg-netze");
+    const achim = published.find((entry) => entry.slug === "stadtwerke-achim");
     const andernach = published.find((entry) => entry.slug === "stadtwerke-andernach-energie");
     const altdorf = published.find((entry) => entry.slug === "stadtwerke-altdorf");
     const badAibling = published.find((entry) => entry.slug === "stadtwerke-bad-aibling");
 
-    expect(published).toHaveLength(76);
+    expect(published).toHaveLength(77);
     expect(heidelbergNetze).toBeUndefined();
     expect(ewrNetz).toBeUndefined();
+    expect(achim).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl:
+        "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1.html",
+      documentUrl:
+        "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1/PB-KK-NNE-Strom-2026-01-01.pdf"
+    });
     expect(altdorf).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",

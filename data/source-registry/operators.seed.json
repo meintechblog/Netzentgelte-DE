@@ -6644,6 +6644,99 @@
     }
   },
   {
+    "slug": "stadtwerke-achim",
+    "name": "Stadtwerke Achim AG",
+    "regionLabel": "Achim",
+    "websiteUrl": "https://www.stadtwerke-achim.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "stadtwerke-achim-14a-2026",
+        "title": "Preisblatt der Stadtwerke Achim AG fuer die Netznutzung von Elektrizitaetsversorgungsnetzen durch Kleinkunden ohne Leistungsmessung 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1.html",
+        "documentUrl": "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1/PB-KK-NNE-Strom-2026-01-01.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Netzzugang-/Entgelteseite der Stadtwerke Achim AG mit direktem 2026-Kleinkunden-Preisblatt.",
+          "Das Preisblatt nennt fuer Modul 3 ausdruecklich ST 4,26 ct/kWh, HT 7,41 ct/kWh und NT 1,71 ct/kWh.",
+          "Die Quartalstabelle markiert Q1 und Q4 mit Ja sowie Q2 und Q3 mit Nein; die nicht ausgewiesenen Quartale werden daher in der Darstellung als verifizierte ST-Annahme abgebildet."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "stadtwerke-achim-14a-2026",
+      "sourcePageUrl": "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1.html",
+      "documentUrl": "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1/PB-KK-NNE-Strom-2026-01-01.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "1.71",
+          "sourceQuote": "Niedrigtarif 1,71 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "4.26",
+          "sourceQuote": "Standardtarif 4,26 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "7.41",
+          "sourceQuote": "Hochtarif 7,41 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "stadtwerke-achim-2026-q1q4-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "07:00-17:15",
+          "sourceQuote": "Standardtarif 07:00-17:15"
+        },
+        {
+          "id": "stadtwerke-achim-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:15-19:15",
+          "sourceQuote": "Hochtarif 17:15-19:15"
+        },
+        {
+          "id": "stadtwerke-achim-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "19:15-01:30",
+          "sourceQuote": "Standardtarif 19:15-01:30"
+        },
+        {
+          "id": "stadtwerke-achim-2026-q1q4-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "01:30-07:00",
+          "sourceQuote": "Niedrigtarif 01:30-7:00"
+        }
+      ]
+    }
+  },
+  {
     "slug": "stadtwerke-altdorf",
     "name": "Stadtwerke Altdorf GmbH",
     "regionLabel": "Altdorf",

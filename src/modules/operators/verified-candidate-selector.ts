@@ -182,7 +182,17 @@ function getStageScore(
   }
 
   if (stage === "evidence-ready") {
-    return 50;
+    return (
+      50 +
+      (shell.shellStatus === "published" ? 20 : 0) +
+      (hasConcreteArtifactEvidence(shell) ? 15 : 0) +
+      (shell.sourceStatus === "source-found" || shell.sourceStatus === "snapshotted"
+        ? 10
+        : shell.sourceStatus === "reachable"
+          ? 5
+          : 0) +
+      (registryEntry ? 5 : 0)
+    );
   }
 
   return 0;

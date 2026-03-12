@@ -115,12 +115,6 @@ describe("getSeedPendingOperatorCatalog", () => {
           tariffStatus: "missing"
         }),
         expect.objectContaining({
-          slug: "stadtwerke-achim",
-          reviewStatus: "pending",
-          sourceStatus: "source-found",
-          tariffStatus: "missing"
-        }),
-        expect.objectContaining({
           slug: "stadtische-betriebswerke-luckenwalde",
           reviewStatus: "pending",
           sourceStatus: "source-found",
@@ -152,6 +146,7 @@ describe("getSeedPendingOperatorCatalog", () => {
         })
       ])
     );
+    expect(result.items.find((entry) => entry.slug === "stadtwerke-achim")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "stadtwerke-altdorf")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "stadtwerke-andernach-energie")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "stadtwerke-bad-aibling")).toBeUndefined();

@@ -11,7 +11,7 @@ export function getSeedOperatorShells(): OperatorShell[] {
   return getOperatorShellRegistry().map((entry) => ({
     ...entry,
     countryCode: "DE",
-    lastCheckedAt: null
+    lastCheckedAt: entry.lastCheckedAt ?? null
   }));
 }
 

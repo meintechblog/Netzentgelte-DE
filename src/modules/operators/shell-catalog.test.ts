@@ -31,6 +31,16 @@ describe("getSeedOperatorShells", () => {
     expect(shells).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
+          slug: "alzchem-netz",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "missing",
+          reviewStatus: "pending",
+          sourcePageUrl: "https://www.alzchem.com/de/strom-netz/",
+          documentUrl: "https://www.alzchem.com/fileadmin/Quicklinks/Strom_Netz/2026-ACNz-Preisblatt.pdf",
+          lastCheckedAt: "2026-03-12"
+        }),
+        expect.objectContaining({
           slug: "stadtnetze-munster",
           shellStatus: "published",
           sourceStatus: "source-found",

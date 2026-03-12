@@ -114,15 +114,16 @@
     "operatorName": "Alzchem Netz GmbH",
     "websiteUrl": "https://www.alzchem.com",
     "regionLabel": "Trostberg",
-    "shellStatus": "source-found",
+    "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
     "tariffStatus": "missing",
     "reviewStatus": "pending",
     "sourcePageUrl": "https://www.alzchem.com/de/strom-netz/",
-    "notes": "VNBdigital ID oaboR56jqSt8W4HXi; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "notes": "VNBdigital ID oaboR56jqSt8W4HXi; Offizielle 2026-Quellseite und Preisblatt geprueft, aber fuer Modul 3 fehlen eine explizite Standardtarifstufe und belastbare Zeitfenster.",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.alzchem.com/fileadmin/Quicklinks/Strom_Netz/2026-ACNz-Preisblatt.pdf"
+    "documentUrl": "https://www.alzchem.com/fileadmin/Quicklinks/Strom_Netz/2026-ACNz-Preisblatt.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "alzchem-trostberg",

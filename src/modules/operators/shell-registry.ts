@@ -60,7 +60,8 @@ const operatorShellRegistryEntrySchema = z.object({
   mastrId: z.string().optional(),
   sourcePageUrl: z.string().url().optional(),
   documentUrl: z.string().url().optional(),
-  notes: z.string().optional()
+  notes: z.string().optional(),
+  lastCheckedAt: z.string().nullable().optional()
 });
 
 const operatorShellRegistrySchema = z.array(operatorShellRegistryEntrySchema).superRefine((entries, context) => {

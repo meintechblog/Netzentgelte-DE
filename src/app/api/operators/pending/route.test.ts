@@ -27,6 +27,14 @@ describe("GET /api/operators/pending", () => {
     expect(data.items.find((item: { slug: string }) => item.slug === "mainsite-und")).toBeUndefined();
     expect(data.items.find((item: { slug: string }) => item.slug === "netze-bw")).toBeUndefined();
     expect(data.items.find((item: { slug: string }) => item.slug === "50hertz-transmission")).toBeUndefined();
+    expect(data.items).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          slug: "alzchem-netz",
+          checkedAt: "2026-03-12"
+        })
+      ])
+    );
     expect(data.items[0]).not.toHaveProperty("bands");
     expect(data.items[0]).not.toHaveProperty("timeWindows");
   });

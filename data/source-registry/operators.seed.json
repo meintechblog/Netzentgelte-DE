@@ -649,6 +649,43 @@
     }
   },
   {
+    "slug": "alzchem-netz",
+    "name": "Alzchem Netz GmbH",
+    "regionLabel": "Trostberg",
+    "websiteUrl": "https://www.alzchem.com/",
+    "registrySourceIds": [
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "alzchem-netz-14a-2026",
+        "title": "Preisblatt Netz der Alzchem Netz GmbH, Trostberg gueltig ab 01.01.2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.alzchem.com/de/strom-netz/",
+        "documentUrl": "https://www.alzchem.com/fileadmin/Quicklinks/Strom_Netz/2026-ACNz-Preisblatt.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "pending",
+        "notes": [
+          "Offizielle Strom-Netz-Seite der Alzchem Netz GmbH mit direktem 2026-Preisblatt auf der Betreiberdomain.",
+          "Das Preisblatt nennt fuer steuerbare Verbrauchseinrichtungen nach §14a EnWG Modul 1 maximal 91 EUR/a, fuer Modul 2 1,27 ct/kWh und im Modul-3-Zusatz nur Hochlasttarifstufe 3,17 ct/kWh sowie Niedriglasttarifstufe 3,17 ct/kWh.",
+          "Weder eine explizite Standardtarifstufe noch belastbare Modul-3-Zeitfenster oder eine Jahresmatrix werden auf der offiziellen 2026-Seite publiziert; der Datensatz bleibt deshalb pending."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "pending",
+      "sourceDocumentId": "alzchem-netz-14a-2026",
+      "sourcePageUrl": "https://www.alzchem.com/de/strom-netz/",
+      "documentUrl": "https://www.alzchem.com/fileadmin/Quicklinks/Strom_Netz/2026-ACNz-Preisblatt.pdf",
+      "summaryFallback": "Aktuelle 2026-Quelle erfasst, aber keine publizierbare Modul-3-Jahresmatrix",
+      "bands": [],
+      "timeWindows": []
+    }
+  },
+  {
     "slug": "avacon-netz",
     "name": "Avacon Netz GmbH",
     "regionLabel": "Niedersachsen / Sachsen-Anhalt",

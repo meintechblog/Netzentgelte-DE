@@ -174,6 +174,22 @@ describe("getOperatorRegistry", () => {
           })
         }),
         expect.objectContaining({
+          slug: "alzchem-netz",
+          currentTariff: expect.objectContaining({
+            reviewStatus: "pending",
+            summaryFallback: "Aktuelle 2026-Quelle erfasst, aber keine publizierbare Modul-3-Jahresmatrix",
+            bands: [],
+            timeWindows: []
+          }),
+          sourceDocuments: expect.arrayContaining([
+            expect.objectContaining({
+              sourcePageUrl: "https://www.alzchem.com/de/strom-netz/",
+              documentUrl: "https://www.alzchem.com/fileadmin/Quicklinks/Strom_Netz/2026-ACNz-Preisblatt.pdf",
+              reviewStatus: "pending"
+            })
+          ])
+        }),
+        expect.objectContaining({
           slug: "ewr-netz",
           currentTariff: expect.objectContaining({
             reviewStatus: "pending",

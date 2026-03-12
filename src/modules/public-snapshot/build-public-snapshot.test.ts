@@ -60,6 +60,15 @@ describe("buildPublicSnapshot", () => {
     expect(snapshot.operators).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
+          operatorSlug: "alzchem-netz",
+          publicationStatus: "missing-data",
+          endcustomerDisplay: null,
+          missingInformation: expect.arrayContaining([
+            "Verifiziertes Niederspannungsprodukt fehlt",
+            "Modul-3-Tarifdaten unvollständig"
+          ])
+        }),
+        expect.objectContaining({
           operatorSlug: "ssw-netz",
           publicationStatus: "blocked",
           statusSummary: expect.stringMatching(/Jahresbezug|Widerspruch|Problem|blockiert|fehlt/i),

@@ -113,6 +113,18 @@ describe("getSeedPendingOperatorCatalog", () => {
     expect(result.items).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
+          slug: "alzchem-netz",
+          reviewStatus: "pending",
+          sourceStatus: "source-found",
+          tariffStatus: "missing",
+          publicationStatus: "missing-data",
+          checkedAt: "2026-03-12",
+          missingInformation: expect.arrayContaining([
+            "Verifiziertes Niederspannungsprodukt fehlt",
+            "Modul-3-Tarifdaten unvollständig"
+          ])
+        }),
+        expect.objectContaining({
           slug: "ssw-netz",
           reviewStatus: "pending",
           sourceStatus: "source-found",

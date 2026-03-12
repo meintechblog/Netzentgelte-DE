@@ -50,6 +50,16 @@ describe("getSeedOperatorShells", () => {
             "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1/PB-KK-NNE-Strom-2026-01-01.pdf"
         }),
         expect.objectContaining({
+          slug: "ahrtal-werke",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://ahrtal-werke.de/netze/",
+          documentUrl:
+            "https://storage.googleapis.com/ahrtalwebseitendb/website/c4a32d62-preisblatt-netzentgelte-strom_ahrtal-werke_2026_final.pdf"
+        }),
+        expect.objectContaining({
           slug: "abita-energie-otterberg",
           shellStatus: "published",
           sourceStatus: "source-found",

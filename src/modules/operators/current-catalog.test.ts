@@ -157,12 +157,20 @@ describe("getSeedPublishedOperators", () => {
     const twsNetz = published.find((entry) => entry.slug === "tws-netz");
     const heidelbergNetze = published.find((entry) => entry.slug === "heidelberg-netze");
     const achim = published.find((entry) => entry.slug === "stadtwerke-achim");
+    const ahrtal = published.find((entry) => entry.slug === "ahrtal-werke");
     const abita = published.find((entry) => entry.slug === "abita-energie-otterberg");
     const andernach = published.find((entry) => entry.slug === "stadtwerke-andernach-energie");
     const altdorf = published.find((entry) => entry.slug === "stadtwerke-altdorf");
     const badAibling = published.find((entry) => entry.slug === "stadtwerke-bad-aibling");
 
-    expect(published).toHaveLength(78);
+    expect(published).toHaveLength(79);
+    expect(ahrtal).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://ahrtal-werke.de/netze/",
+      documentUrl:
+        "https://storage.googleapis.com/ahrtalwebseitendb/website/c4a32d62-preisblatt-netzentgelte-strom_ahrtal-werke_2026_final.pdf"
+    });
     expect(abita).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",

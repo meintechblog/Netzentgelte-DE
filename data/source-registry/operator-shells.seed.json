@@ -38,12 +38,13 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "missing",
-    "reviewStatus": "pending",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
     "sourcePageUrl": "https://ahrtal-werke.de/netze/",
-    "notes": "VNBdigital ID 7780; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "notes": "VNBdigital ID 7780; Synced from curated operator entry (verified operator loop 2026-03-12).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://storage.googleapis.com/ahrtalwebseitendb/website/c4a32d62-preisblatt-netzentgelte-strom_ahrtal-werke_2026_final.pdf"
+    "documentUrl": "https://storage.googleapis.com/ahrtalwebseitendb/website/c4a32d62-preisblatt-netzentgelte-strom_ahrtal-werke_2026_final.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "albstadtwerke",

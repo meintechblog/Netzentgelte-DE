@@ -147,6 +147,7 @@ describe("getSeedPendingOperatorCatalog", () => {
       ])
     );
     expect(result.items.find((entry) => entry.slug === "stadtwerke-achim")).toBeUndefined();
+    expect(result.items.find((entry) => entry.slug === "ahrtal-werke")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "abita-energie-otterberg")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "stadtwerke-altdorf")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "stadtwerke-andernach-energie")).toBeUndefined();

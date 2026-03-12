@@ -17,7 +17,7 @@ describe("buildBackfillBatchWorkset", () => {
       batchId: "backfill-ready-013",
       lane: "backfill-ready",
       operatorCount: 25,
-      hostnameCount: 24,
+      hostnameCount: 25,
       summary: {
         sourceCandidateCount: 19,
         sourceMissingCount: 0,
@@ -29,25 +29,25 @@ describe("buildBackfillBatchWorkset", () => {
 
     expect(workset.items.slice(0, 3)).toEqual([
       expect.objectContaining({
-        slug: "sachsennetz",
-        hostname: "sachsen-netze.de",
-        sourceStatus: "candidate"
-      }),
-      expect.objectContaining({
-        slug: "sachsennetze-hs-hd",
-        hostname: "sachsen-netze.de",
-        sourceStatus: "candidate"
-      }),
-      expect.objectContaining({
         slug: "saerbecker-ver-und-entsorgungsnetzgesellschaft",
         hostname: "saerve-online.de",
+        sourceStatus: "candidate"
+      }),
+      expect.objectContaining({
+        slug: "stadtische-betriebswerke-luckenwalde",
+        hostname: "sbl-gmbh.net",
+        sourceStatus: "source-found"
+      }),
+      expect.objectContaining({
+        slug: "stromversorgung-schierling-eg",
+        hostname: "schierling-strom.de",
         sourceStatus: "candidate"
       })
     ]);
     expect(workset.items.at(-1)).toEqual(
       expect.objectContaining({
-        slug: "stadtwerke-baiersdorf-ku-aor",
-        hostname: "stadtwerke-baiersdorf.de",
+        slug: "stadtwerke-barmstedt",
+        hostname: "stadtwerke-barmstedt.de",
         sourceStatus: "candidate"
       })
     );

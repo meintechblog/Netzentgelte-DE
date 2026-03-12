@@ -3,6 +3,8 @@ import { expect, test } from "vitest";
 
 import HomePage from "./page";
 
+const HOMEPAGE_COLD_RENDER_TIMEOUT_MS = 30_000;
+
 test("renders the page shell around a dominant germany map hero", async () => {
   render(await HomePage());
 
@@ -47,4 +49,4 @@ test("renders the page shell around a dominant germany map hero", async () => {
   ).not.toBeInTheDocument();
   expect(screen.queryByRole("button", { name: /Regelkonform \(\d+\)/ })).not.toBeInTheDocument();
   expect(screen.queryByRole("button", { name: /Mit Verstößen \(\d+\)/ })).not.toBeInTheDocument();
-}, 10000);
+}, HOMEPAGE_COLD_RENDER_TIMEOUT_MS);

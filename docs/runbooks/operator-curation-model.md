@@ -146,11 +146,11 @@ Die Koordinator-Laufzeitdaten (`docs/coordination/claims-board.*`, `docs/coordin
 
 Automation-faehige TypeScript-Skripte werden ueber `node --import tsx ...` aufgerufen, nicht ueber das `tsx`-CLI. Der CLI-Pfad versucht in manchen Scheduler-Sandboxes eine IPC-Pipe zum Parent-Prozess zu oeffnen und kann dabei mit `listen EPERM` scheitern.
 
-Koordinator-Einstiegspunkte im Projekt:
+Loop-Einstiegspunkte im Projekt:
 
 ```bash
-pnpm automation:backfill-koordinator:dry-run
-pnpm automation:backfill-koordinator
+pnpm automation:verified-operator-loop:dry-run
+pnpm automation:verified-operator-loop
 ```
 
 Die stuedliche Codex-Definition liegt unter `/Users/hulki/.codex/automations/backfill-koordinator/automation.toml`.
@@ -173,9 +173,9 @@ Pflicht-Deploy-Reihenfolge bei gruener Verifikation und echten integrierten Aend
 
 Ziel ist ein einfacher Dauerbetrieb ohne langlebige Koordinator-Worktrees:
 
-1. Koordinator laeuft direkt im Haupt-Repo auf `main`.
-2. Batch-Worker duerfen temporaere Worktrees benutzen.
-3. Nach erfolgreicher Batch-Integration werden temporaere Worker-Worktrees entfernt.
+1. Der stuedliche Loop laeuft direkt im kanonischen Haupt-Repo auf `main`.
+2. Pro Lauf wird genau ein Betreiber bis `verified` gebracht oder als `blocked` aus der Rotation genommen.
+3. Persistente Loop-Zustaende liegen lokal unter `docs/coordination/verified-operator-loop.*` und bleiben aus Git heraus.
 4. Produktionsrelevante Aenderungen werden ausschliesslich ueber `main` gepusht und ausgerollt.
 
 Bestandskorrekturen und neue Betreiber werden identisch behandelt. Ein Lauf darf also ebenso gut vorhandene Netzbetreiber reparieren wie neue Backfill-Batches integrieren.

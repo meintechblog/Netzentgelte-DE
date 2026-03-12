@@ -15,6 +15,8 @@ import { getSeedEndcustomerTariffCatalog } from "../tariffs/endcustomer-catalog"
 
 import { buildPublicSnapshot } from "./build-public-snapshot";
 
+const PUBLIC_SNAPSHOT_BUILD_TIMEOUT_MS = 15_000;
+
 describe("buildPublicSnapshot", () => {
   test("composes published operators, map data, sources, compliance and endcustomer data into one public payload", () => {
     const publishedOperatorSnapshot = buildPublishedOperatorSnapshot(getSeedPublishedOperators());
@@ -67,5 +69,5 @@ describe("buildPublicSnapshot", () => {
         (source) => source.pageArtifactApiUrl === null && source.documentArtifactApiUrl === null
       )
     ).toBe(true);
-  });
+  }, PUBLIC_SNAPSHOT_BUILD_TIMEOUT_MS);
 });

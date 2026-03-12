@@ -14,6 +14,8 @@ describe("package scripts", () => {
       "automation:backfill-koordinator",
       "automation:backfill-koordinator:dry-run",
       "automation:backfill-workset",
+      "automation:verified-operator-loop",
+      "automation:verified-operator-loop:dry-run",
       "ingest:run",
       "registry:import",
       "build:shell-registry",

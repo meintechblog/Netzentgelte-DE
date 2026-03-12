@@ -14,6 +14,8 @@
     "automation:backfill-koordinator": "node --import tsx scripts/automation/backfill-koordinator.ts --live",
     "automation:backfill-koordinator:dry-run": "node --import tsx scripts/automation/backfill-koordinator.ts --dry-run",
     "automation:backfill-workset": "node --import tsx scripts/automation/backfill-workset.ts",
+    "automation:verified-operator-loop": "node --import tsx scripts/automation/verified-operator-loop.ts --live",
+    "automation:verified-operator-loop:dry-run": "node --import tsx scripts/automation/verified-operator-loop.ts --dry-run",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node scripts/db/migrate.mjs",
     "ingest:run": "node --import tsx scripts/ingest/run-ingest.ts",

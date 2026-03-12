@@ -28,8 +28,8 @@ export function classifyVerifiedCandidate(
   shell: OperatorShell,
   registryEntries: OperatorRegistryEntry[]
 ): VerifiedCandidate {
-  const blockedReasons = getBlockedReasons(shell);
   const registryEntry = registryEntries.find((entry) => entry.slug === shell.slug);
+  const blockedReasons = getBlockedReasons(shell, registryEntry);
   const stage = getStage(shell, blockedReasons, registryEntry);
 
   return {
@@ -125,7 +125,10 @@ function isRegistryVerificationReady(entry: OperatorRegistryEntry) {
   return entry.currentTariff.bands.length === 3 && entry.currentTariff.timeWindows.length > 0;
 }
 
-function getBlockedReasons(shell: OperatorShell) {
+function getBlockedReasons(
+  shell: OperatorShell,
+  registryEntry: OperatorRegistryEntry | undefined
+) {
   const reasons: string[] = [];
   const haystack = [shell.notes, shell.documentUrl, shell.sourcePageUrl].filter(Boolean).join(" ").toLowerCase();
 
@@ -147,6 +150,22 @@ function getBlockedReasons(shell: OperatorShell) {
     haystack.includes("widerspr")
   ) {
     reasons.push("Official evidence already documents a non-publishable annual tariff matrix.");
+  }
+
+  const registryHaystack = [
+    registryEntry?.currentTariff.summaryFallback,
+    ...(registryEntry?.sourceDocuments.flatMap((document) => document.notes) ?? [])
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  if (
+    registryHaystack.includes("bleibt der datensatz pending") ||
+    registryHaystack.includes("bleibt pending") ||
+    registryHaystack.includes("ohne belastbare q2/q3-matrix")
+  ) {
+    reasons.push("Curated registry notes already document a pending dead end for this source pattern.");
   }
 
   return reasons;

@@ -90,10 +90,10 @@ ssh root@192.168.3.178 '
 '
 ```
 
-Fuer den automatisierten Betrieb ist dieser LXC-Teil Teil des stuedlichen Koordinators. Der lokale Vorab-Check dafuer ist:
+Fuer den automatisierten Betrieb ist dieser LXC-Teil Teil des stuedlichen Verified-Operator-Loops. Der lokale Vorab-Check dafuer ist:
 
 ```bash
-pnpm automation:backfill-koordinator:dry-run
+pnpm automation:verified-operator-loop:dry-run
 ```
 
 ## Hinweise

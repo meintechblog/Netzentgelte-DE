@@ -178,6 +178,42 @@ describe("classifyVerifiedCandidate", () => {
     expect(result.stage).toBe("evidence-ready");
     expect(result.blockedReasons).toEqual([]);
   });
+
+  test("blocks registry entries that already document a concrete pending dead end", () => {
+    const result = classifyVerifiedCandidate(
+      createShell({
+        slug: "e-netz-suedhessen",
+        shellStatus: "published",
+        sourceStatus: "source-found",
+        tariffStatus: "verified",
+        documentUrl: "https://demo.example/preisblatt-2026.pdf"
+      }),
+      [
+        createRegistryEntry({
+          slug: "e-netz-suedhessen",
+          name: "e-netz Südhessen AG",
+          sourceDocuments: [
+            {
+              id: "e-netz-suedhessen-14a-2026",
+              title: "Preisblatt 2026",
+              documentType: "pdf",
+              sourcePageUrl: "https://demo.example/netzentgelte",
+              documentUrl: "https://demo.example/preisblatt-2026.pdf",
+              checkedAt: "2026-03-12",
+              validFrom: "2026-01-01",
+              reviewStatus: "pending",
+              notes: [
+                "Explizit ausgewiesen sind nur Q1-/Q4-Zeitfenster; ohne belastbare Q2/Q3-Matrix bleibt der Datensatz pending."
+              ]
+            }
+          ]
+        })
+      ]
+    );
+
+    expect(result.stage).toBe("blocked");
+    expect(result.blockedReasons.join(" ")).toMatch(/pending/i);
+  });
 });
 
 describe("selectVerifiedCandidate", () => {

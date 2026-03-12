@@ -186,6 +186,7 @@ describe("getSeedPublishedOperators", () => {
     const lswNetz = published.find((entry) => entry.slug === "lsw-netz-und");
     const nhf = published.find((entry) => entry.slug === "nhf-netzgesellschaft-heilbronn-franken");
     const nhl = published.find((entry) => entry.slug === "nhl-netzgesellschaft-heilbronner-land-und");
+    const mengen = published.find((entry) => entry.slug === "stadtwerke-mengen");
     const kitzingen = published.find(
       (entry) => entry.slug === "licht-kraft-und-wasserwerke-kitzingen"
     );
@@ -196,7 +197,18 @@ describe("getSeedPublishedOperators", () => {
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(104);
+    expect(published).toHaveLength(105);
+    expect(mengen).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.mengen.de/sw/strom/netznutzung/content/03_netzzugng-und-entgelte.php",
+      documentUrl:
+        "https://www.mengen.de/sw-wAssets/docs/netznutzung/netzzugang/preisblaetter/02_preisblatt_nne_2026.pdf",
+      priceBasis: "assumed-netto",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
     expect(nhl).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",

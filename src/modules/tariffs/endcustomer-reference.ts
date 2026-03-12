@@ -88,6 +88,8 @@ const NHF_NETZGESELLSCHAFT_HEILBRONN_FRANKEN_SOURCE =
   "https://www.n-hf.de/files/downloads/pdf/netznutzung_strom/preisblaetter/NHF_Preisbl%C3%A4tter_Strom_2026.pdf";
 const NHL_NETZGESELLSCHAFT_HEILBRONNER_LAND_SOURCE =
   "https://www.n-hl.de/files/downloads/pdf/netznutzung_strom/preisblaetter/NHL_Preisblaetter_Strom_2026.pdf";
+const STADTWERKE_MENGEN_SOURCE =
+  "https://www.mengen.de/sw-wAssets/docs/netznutzung/netzzugang/preisblaetter/02_preisblatt_nne_2026.pdf";
 
 export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
   return [
@@ -105,7 +107,8 @@ export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
     getWestnetzEndcustomerReference(),
     getNetzeBadLangensalzaEndcustomerReference(),
     getNhfNetzgesellschaftHeilbronnFrankenEndcustomerReference(),
-    getNhlNetzgesellschaftHeilbronnerLandEndcustomerReference()
+    getNhlNetzgesellschaftHeilbronnerLandEndcustomerReference(),
+    getStadtwerkeMengenEndcustomerReference()
   ];
 }
 
@@ -908,6 +911,63 @@ export function getNhlNetzgesellschaftHeilbronnerLandEndcustomerReference(): End
       }
     ],
     meteringPrices: meteringPrices("8.58", "16.81")
+  };
+}
+
+export function getStadtwerkeMengenEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "stadtwerke-mengen",
+    operatorName: "Stadtwerke Mengen",
+    sourceDocumentUrl: STADTWERKE_MENGEN_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: STADTWERKE_MENGEN_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "100.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "8.13", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "128.20", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: STADTWERKE_MENGEN_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "3.25", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: STADTWERKE_MENGEN_SOURCE,
+        components: modul3Components("8.13", "10.75", "3.21"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: [
+          { quarterKey: "Q1", bandKey: "standard", startsAt: "00:00", endsAt: "24:00" },
+          ...buildQuarterRanges("Q2", "standard", ["00:00-01:30", "05:30-17:00", "20:00-24:00"]),
+          ...buildQuarterRanges("Q2", "low", ["01:30-05:30"]),
+          ...buildQuarterRanges("Q2", "high", ["17:00-20:00"]),
+          ...buildQuarterRanges("Q3", "standard", ["00:00-01:30", "05:30-17:00", "20:00-24:00"]),
+          ...buildQuarterRanges("Q3", "low", ["01:30-05:30"]),
+          ...buildQuarterRanges("Q3", "high", ["17:00-20:00"]),
+          { quarterKey: "Q4", bandKey: "standard", startsAt: "00:00", endsAt: "24:00" }
+        ]
+      }
+    ],
+    meteringPrices: meteringPrices("13.54", "23.79")
   };
 }
 

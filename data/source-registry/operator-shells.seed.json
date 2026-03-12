@@ -8634,17 +8634,18 @@
   {
     "slug": "stadtwerke-mengen",
     "operatorName": "Stadtwerke Mengen",
-    "websiteUrl": "https://mengen.de",
+    "websiteUrl": "https://www.mengen.de/sw/",
     "regionLabel": "Mengen",
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://mengen.de",
-    "notes": "VNBdigital ID 420",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://www.mengen.de/sw/strom/netznutzung/content/03_netzzugng-und-entgelte.php",
+    "notes": "VNBdigital ID 420; Synced from curated operator entry (verified operator loop 2026-03-12, official Stadtwerke Mengen Preisblatt Strom 2026).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://mengen.de"
+    "documentUrl": "https://www.mengen.de/sw-wAssets/docs/netznutzung/netzzugang/preisblaetter/02_preisblatt_nne_2026.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "stadtwerke-merseburg",

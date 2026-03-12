@@ -10337,6 +10337,117 @@
     }
   },
   {
+    "slug": "stadtwerke-mengen",
+    "name": "Stadtwerke Mengen",
+    "regionLabel": "Mengen",
+    "websiteUrl": "https://www.mengen.de/sw/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "stadtwerke-mengen-14a-2026",
+        "title": "Preisblatt Netznutzung Strom 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.mengen.de/sw/strom/netznutzung/content/03_netzzugng-und-entgelte.php",
+        "documentUrl": "https://www.mengen.de/sw-wAssets/docs/netznutzung/netzzugang/preisblaetter/02_preisblatt_nne_2026.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Die offizielle Netzzugang-und-Entgelte-Seite der Stadtwerke Mengen verlinkt das finale Preisblatt Netznutzung Strom 2026 direkt auf der Betreiberdomain.",
+          "Preisblatt Abschnitt 2.1 nennt fuer Modul 1 den regulaeren Niederspannungs-SLP mit 100,00 EUR/a und 8,13 ct/kWh sowie eine Gutschrift von 128,20 EUR/a; Modul 2 liegt bei 3,25 ct/kWh.",
+          "Modul 3 ist laut PDF nur in Q2 und Q3 aktiv; in Q1 und Q4 gelten keine drei Tarifstufen, daher wird projektkonform eine Standardtarifphase 00:00-24:00 fuer diese Quartale veroeffentlicht."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "stadtwerke-mengen-14a-2026",
+      "sourcePageUrl": "https://www.mengen.de/sw/strom/netznutzung/content/03_netzzugng-und-entgelte.php",
+      "documentUrl": "https://www.mengen.de/sw-wAssets/docs/netznutzung/netzzugang/preisblaetter/02_preisblatt_nne_2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "3.21",
+          "sourceQuote": "Steuerbare Verbrauchseinrichtung nach § 14a EnWG Standardlasttarifstufe (NT) 3,21"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "8.13",
+          "sourceQuote": "Steuerbare Verbrauchseinrichtung nach § 14a EnWG Standardlasttarifstufe (ST) 8,13"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "10.75",
+          "sourceQuote": "Steuerbare Verbrauchseinrichtung nach § 14a EnWG Standardlasttarifstufe (HT) 10,75"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "stadtwerke-mengen-2026-q1q4-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Gültigkeit der 3 Tarifstufen: Q1 Nein, Q4 Nein"
+        },
+        {
+          "id": "stadtwerke-mengen-2026-q2q3-standard-night",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-01:30",
+          "sourceQuote": "00:00 - 01:30"
+        },
+        {
+          "id": "stadtwerke-mengen-2026-q2q3-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "01:30-05:30",
+          "sourceQuote": "01:30 - 05:30"
+        },
+        {
+          "id": "stadtwerke-mengen-2026-q2q3-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "05:30-17:00",
+          "sourceQuote": "05:30 - 17:00"
+        },
+        {
+          "id": "stadtwerke-mengen-2026-q2q3-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-20:00",
+          "sourceQuote": "17:00 - 20:00"
+        },
+        {
+          "id": "stadtwerke-mengen-2026-q2q3-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "20:00-24:00",
+          "sourceQuote": "20:00 - 24:00"
+        }
+      ]
+    }
+  },
+  {
     "slug": "stadtwerke-schwaebisch-hall",
     "name": "Stadtwerke Schwäbisch Hall GmbH",
     "regionLabel": "Schwäbisch Hall",

@@ -115,12 +115,6 @@ describe("getSeedPendingOperatorCatalog", () => {
           tariffStatus: "missing"
         }),
         expect.objectContaining({
-          slug: "stadtische-betriebswerke-luckenwalde",
-          reviewStatus: "pending",
-          sourceStatus: "source-found",
-          tariffStatus: "missing"
-        }),
-        expect.objectContaining({
           slug: "stadtwerke-bad-pyrmont",
           reviewStatus: "pending",
           sourceStatus: "source-found",
@@ -150,6 +144,9 @@ describe("getSeedPendingOperatorCatalog", () => {
     expect(result.items.find((entry) => entry.slug === "ahrtal-werke")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "alliander-netz-heinsberg")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "abita-energie-otterberg")).toBeUndefined();
+    expect(
+      result.items.find((entry) => entry.slug === "stadtische-betriebswerke-luckenwalde")
+    ).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "stadtwerke-altdorf")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "stadtwerke-andernach-energie")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "stadtwerke-bad-aibling")).toBeUndefined();

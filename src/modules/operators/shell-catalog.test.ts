@@ -83,6 +83,8 @@ describe("getSeedOperatorShells", () => {
           slug: "stadtische-betriebswerke-luckenwalde",
           shellStatus: "published",
           sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
           sourcePageUrl: "https://www.sbl-gmbh.net/netze/luckenwalde-netze-netznutzung/netznutzung-strom/",
           documentUrl: "https://www.sbl-gmbh.net/wp-content/uploads/2025/12/PB_NE_Strom_2026.pdf"
         }),

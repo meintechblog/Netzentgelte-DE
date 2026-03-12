@@ -163,8 +163,11 @@ describe("getSeedPublishedOperators", () => {
     const andernach = published.find((entry) => entry.slug === "stadtwerke-andernach-energie");
     const altdorf = published.find((entry) => entry.slug === "stadtwerke-altdorf");
     const badAibling = published.find((entry) => entry.slug === "stadtwerke-bad-aibling");
+    const luckenwalde = published.find(
+      (entry) => entry.slug === "stadtische-betriebswerke-luckenwalde"
+    );
 
-    expect(published).toHaveLength(80);
+    expect(published).toHaveLength(81);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -210,6 +213,15 @@ describe("getSeedPublishedOperators", () => {
       sourcePageUrl: "https://www.stadtwerke-altdorf.de/stromnetz/veroeffentlichungen",
       documentUrl:
         "https://www.stadtwerke-altdorf.de/fileadmin/user_upload/2025_Netznutzungsentgelte_endgueltig_fuer_2026.pdf"
+    });
+    expect(luckenwalde).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.sbl-gmbh.net/netze/luckenwalde-netze-netznutzung/netznutzung-strom/",
+      documentUrl: "https://www.sbl-gmbh.net/wp-content/uploads/2025/12/PB_NE_Strom_2026.pdf",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
     });
 
     expect(published).toEqual(

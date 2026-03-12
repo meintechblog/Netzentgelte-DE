@@ -6995,6 +6995,122 @@
     }
   },
   {
+    "slug": "stadtische-betriebswerke-luckenwalde",
+    "name": "Städtische Betriebswerke Luckenwalde GmbH",
+    "regionLabel": "Luckenwalde",
+    "websiteUrl": "https://www.sbl-gmbh.net/netze/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "stadtische-betriebswerke-luckenwalde-14a-2026",
+        "title": "Preisblatt Netzentgelte Strom gueltig ab 01.01.2026",
+        "documentType": "pdf",
+        "priceBasis": "assumed-netto",
+        "sourcePageUrl": "https://www.sbl-gmbh.net/netze/luckenwalde-netze-netznutzung/netznutzung-strom/",
+        "documentUrl": "https://www.sbl-gmbh.net/wp-content/uploads/2025/12/PB_NE_Strom_2026.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Netznutzungsseite der Städtischen Betriebswerke Luckenwalde mit direkter 2026-PDF fuer Netzentgelte Strom.",
+          "Das offizielle Preisblatt publiziert fuer Modul 3 die Netto-Arbeitspreise ST 6,42 ct/kWh, HT 9,63 ct/kWh und NT 1,28 ct/kWh.",
+          "HT 11-14 Uhr und NT 21-6 Uhr gelten laut Preisblatt nur fuer Q2 bis Q4; der uebrige Zeitraum bleibt Standardtarif, sodass Q1 vollstaendig als ST 00:00-24:00 veroeffentlicht werden kann."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "priceBasis": "assumed-netto",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "stadtische-betriebswerke-luckenwalde-14a-2026",
+      "sourcePageUrl": "https://www.sbl-gmbh.net/netze/luckenwalde-netze-netznutzung/netznutzung-strom/",
+      "documentUrl": "https://www.sbl-gmbh.net/wp-content/uploads/2025/12/PB_NE_Strom_2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "1.28",
+          "priceBasis": "assumed-netto",
+          "sourceQuote": "Arbeitspreis NT ct/kWh 1,28 1,52 21-6 Uhr Q2 bis Q4"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "6.42",
+          "priceBasis": "assumed-netto",
+          "sourceQuote": "Arbeitspreis ST ct/kWh 6,42 7,64 uebriger Zeitraum"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "9.63",
+          "priceBasis": "assumed-netto",
+          "sourceQuote": "Arbeitspreis HT ct/kWh 9,63 11,46 11-14 Uhr Q2 bis Q4"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "stadtische-betriebswerke-luckenwalde-2026-q1-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Arbeitspreis ST ct/kWh 6,42 7,64 uebriger Zeitraum"
+        },
+        {
+          "id": "stadtische-betriebswerke-luckenwalde-2026-q2q4-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q2-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-06:00",
+          "sourceQuote": "Arbeitspreis NT ct/kWh 1,28 1,52 21-6 Uhr Q2 bis Q4"
+        },
+        {
+          "id": "stadtische-betriebswerke-luckenwalde-2026-q2q4-standard-morning",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:00-11:00",
+          "sourceQuote": "Arbeitspreis ST ct/kWh 6,42 7,64 uebriger Zeitraum"
+        },
+        {
+          "id": "stadtische-betriebswerke-luckenwalde-2026-q2q4-high-midday",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q2-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "11:00-14:00",
+          "sourceQuote": "Arbeitspreis HT ct/kWh 9,63 11,46 11-14 Uhr Q2 bis Q4"
+        },
+        {
+          "id": "stadtische-betriebswerke-luckenwalde-2026-q2q4-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "14:00-21:00",
+          "sourceQuote": "Arbeitspreis ST ct/kWh 6,42 7,64 uebriger Zeitraum"
+        },
+        {
+          "id": "stadtische-betriebswerke-luckenwalde-2026-q2q4-low-late",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q2-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "21:00-24:00",
+          "sourceQuote": "Arbeitspreis NT ct/kWh 1,28 1,52 21-6 Uhr Q2 bis Q4"
+        }
+      ]
+    }
+  },
+  {
     "slug": "stadtwerke-achim",
     "name": "Stadtwerke Achim AG",
     "regionLabel": "Achim",

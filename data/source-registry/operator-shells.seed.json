@@ -5776,12 +5776,13 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "missing",
-    "reviewStatus": "pending",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
     "sourcePageUrl": "https://www.sbl-gmbh.net/netze/luckenwalde-netze-netznutzung/netznutzung-strom/",
-    "notes": "VNBdigital ID 967; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "notes": "VNBdigital ID 967; Synced from curated operator entry (verified operator loop 2026-03-12, full Modul-3 matrix from official 2026 PDF).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.sbl-gmbh.net/wp-content/uploads/2025/12/PB_NE_Strom_2026.pdf"
+    "documentUrl": "https://www.sbl-gmbh.net/wp-content/uploads/2025/12/PB_NE_Strom_2026.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "stadtische-werke-borna-netz",

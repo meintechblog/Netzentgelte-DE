@@ -19,20 +19,15 @@ describe("buildBackfillBatchWorkset", () => {
       operatorCount: 25,
       hostnameCount: 25,
       summary: {
-        sourceCandidateCount: 19,
+        sourceCandidateCount: 20,
         sourceMissingCount: 0,
-        documentedCount: 6,
+        documentedCount: 5,
         tariffMissingCount: 25,
         reviewPendingCount: 25
       }
     });
 
     expect(workset.items.slice(0, 3)).toEqual([
-      expect.objectContaining({
-        slug: "stadtische-betriebswerke-luckenwalde",
-        hostname: "sbl-gmbh.net",
-        sourceStatus: "source-found"
-      }),
       expect.objectContaining({
         slug: "stromversorgung-schierling-eg",
         hostname: "schierling-strom.de",
@@ -42,12 +37,17 @@ describe("buildBackfillBatchWorkset", () => {
         slug: "gemeindewerke-schwarzenbruck",
         hostname: "schwarzenbruck-gw.de",
         sourceStatus: "candidate"
+      }),
+      expect.objectContaining({
+        slug: "sommerdaer-energieversorgung",
+        hostname: "sev-soemmerda.de",
+        sourceStatus: "candidate"
       })
     ]);
     expect(workset.items.at(-1)).toEqual(
       expect.objectContaining({
-        slug: "stadtwerke-bayreuth-energie-und-wasser",
-        hostname: "stadtwerke-bayreuth.de",
+        slug: "stadtwerke-bebra",
+        hostname: "stadtwerke-bebra-netz.de",
         sourceStatus: "candidate"
       })
     );

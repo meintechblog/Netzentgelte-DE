@@ -13,6 +13,11 @@ describe("GET /api/operators/pending", () => {
       tariffReadyCount: expect.any(Number)
     });
     expect(data.items.length).toBeGreaterThan(20);
+    expect(
+      data.items.find(
+        (item: { slug: string }) => item.slug === "mega-monheimer-elektrizitats-und-gasversorgung"
+      )
+    ).toBeUndefined();
     expect(data.items.find((item: { slug: string }) => item.slug === "markt-zellingen")).toBeUndefined();
     expect(data.items.find((item: { slug: string }) => item.slug === "maintal-werke")).toBeUndefined();
     expect(data.items.find((item: { slug: string }) => item.slug === "mainnetz")).toBeUndefined();

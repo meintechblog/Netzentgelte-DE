@@ -4493,12 +4493,12 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.mega-monheim.de/",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://netze.mega-monheim.de/fuer-lieferanten/messstellenbetreiber/vertraege",
     "notes": "VNBdigital ID 7154",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.mega-monheim.de/"
+    "documentUrl": "https://netze.mega-monheim.de/fileadmin/SW-MEGA/user_upload/Downloads/NNE_S_2026.pdf"
   },
   {
     "slug": "meissener-stadtwerke",

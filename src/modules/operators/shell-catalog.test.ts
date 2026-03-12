@@ -160,6 +160,15 @@ describe("getSeedOperatorShells", () => {
             "https://www.lsw-netz.de/fileadmin/user_upload/lsw-netz/strom/netznutzung/Preisblatt_f%C3%BCr_Netznutzung_Strom_01.01.-31.12.2026_endg_20251219.pdf"
         }),
         expect.objectContaining({
+          slug: "mega-monheimer-elektrizitats-und-gasversorgung",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://netze.mega-monheim.de/fuer-lieferanten/messstellenbetreiber/vertraege",
+          documentUrl: "https://netze.mega-monheim.de/fileadmin/SW-MEGA/user_upload/Downloads/NNE_S_2026.pdf"
+        }),
+        expect.objectContaining({
           slug: "markt-zellingen",
           shellStatus: "published",
           sourceStatus: "source-found",

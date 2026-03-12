@@ -143,6 +143,9 @@ describe("getSeedPublishedOperators", () => {
     const lewVerteilnetz = published.find((entry) => entry.slug === "lew-verteilnetz");
     const maintalWerke = published.find((entry) => entry.slug === "maintal-werke");
     const marktZellingen = published.find((entry) => entry.slug === "markt-zellingen");
+    const megaMonheim = published.find(
+      (entry) => entry.slug === "mega-monheimer-elektrizitats-und-gasversorgung"
+    );
     const mainnetz = published.find((entry) => entry.slug === "mainnetz");
     const mainsite = published.find((entry) => entry.slug === "mainsite-und");
     const mainzerNetze = published.find((entry) => entry.slug === "mainzer-netze");
@@ -188,7 +191,17 @@ describe("getSeedPublishedOperators", () => {
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(98);
+    expect(published).toHaveLength(99);
+    expect(megaMonheim).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://netze.mega-monheim.de/fuer-lieferanten/messstellenbetreiber/vertraege",
+      documentUrl: "https://netze.mega-monheim.de/fileadmin/SW-MEGA/user_upload/Downloads/NNE_S_2026.pdf",
+      priceBasis: "assumed-netto",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
     expect(marktZellingen).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",

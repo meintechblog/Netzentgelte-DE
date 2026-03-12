@@ -7329,6 +7329,113 @@
     }
   },
   {
+    "slug": "mega-monheimer-elektrizitats-und-gasversorgung",
+    "name": "MEGA Monheimer Elektrizitäts- und Gasversorgung GmbH",
+    "regionLabel": "Monheim am Rhein",
+    "websiteUrl": "https://netze.mega-monheim.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "mega-monheim-14a-2026",
+        "title": "Preisblatt Netzentgelte Strom 2026",
+        "documentType": "pdf",
+        "priceBasis": "netto",
+        "sourcePageUrl": "https://netze.mega-monheim.de/fuer-lieferanten/messstellenbetreiber/vertraege",
+        "documentUrl": "https://netze.mega-monheim.de/fileadmin/SW-MEGA/user_upload/Downloads/NNE_S_2026.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Die offizielle Netzseite fuer Lieferanten und Messstellenbetreiber verlinkt das finale Strom-Preisblatt 2026 direkt als PDF auf der Netzdomain.",
+          "Das Preisblatt weist fuer Modul 3 in Niederspannung netto NT 3,58 ct/kWh, HT 15,50 ct/kWh und ST 10,67 ct/kWh aus.",
+          "Die Zeitfenster gelten ganzjaehrig mit NT 01:00-05:30 Uhr, HT 17:30-20:00 Uhr und Standardtarif fuer den Rest des Tages."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "priceBasis": "netto",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "mega-monheim-14a-2026",
+      "sourcePageUrl": "https://netze.mega-monheim.de/fuer-lieferanten/messstellenbetreiber/vertraege",
+      "documentUrl": "https://netze.mega-monheim.de/fileadmin/SW-MEGA/user_upload/Downloads/NNE_S_2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedertarif",
+          "valueCtPerKwh": "3.58",
+          "priceBasis": "netto",
+          "sourceQuote": "Niedertarif 3,58 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarif",
+          "valueCtPerKwh": "10.67",
+          "priceBasis": "netto",
+          "sourceQuote": "Standardtarif 10,67 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarif",
+          "valueCtPerKwh": "15.50",
+          "priceBasis": "netto",
+          "sourceQuote": "Hochtarif 15,50 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "mega-monheim-2026-standard-night",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-01:00",
+          "sourceQuote": "Standardtarif Rest des Tages"
+        },
+        {
+          "id": "mega-monheim-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "01:00-05:30",
+          "sourceQuote": "Niedertarif 01:00 Uhr bis 05:30 Uhr"
+        },
+        {
+          "id": "mega-monheim-2026-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "05:30-17:30",
+          "sourceQuote": "Standardtarif Rest des Tages"
+        },
+        {
+          "id": "mega-monheim-2026-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:30-20:00",
+          "sourceQuote": "Hochtarif 17:30 Uhr bis 20:00 Uhr"
+        },
+        {
+          "id": "mega-monheim-2026-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "20:00-24:00",
+          "sourceQuote": "Standardtarif Rest des Tages"
+        }
+      ]
+    }
+  },
+  {
     "slug": "mitnetz-strom",
     "name": "Mitteldeutsche Netzgesellschaft Strom mbH",
     "regionLabel": "Sachsen / Sachsen-Anhalt / Brandenburg",

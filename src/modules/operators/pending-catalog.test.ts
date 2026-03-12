@@ -137,6 +137,11 @@ describe("getSeedPendingOperatorCatalog", () => {
     expect(result.items.find((entry) => entry.slug === "maintal-werke")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "markt-zellingen")).toBeUndefined();
     expect(
+      result.items.find(
+        (entry) => entry.slug === "mega-monheimer-elektrizitats-und-gasversorgung"
+      )
+    ).toBeUndefined();
+    expect(
       result.items.find((entry) => entry.slug === "licht-kraft-und-wasserwerke-kitzingen")
     ).toBeUndefined();
     expect(

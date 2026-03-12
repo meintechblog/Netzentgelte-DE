@@ -130,6 +130,17 @@ describe("getSeedPendingOperatorCatalog", () => {
           sourceStatus: "source-found",
           tariffStatus: "missing",
           publicationStatus: "blocked"
+        }),
+        expect.objectContaining({
+          slug: "bad-honnef",
+          reviewStatus: "pending",
+          sourceStatus: "source-found",
+          tariffStatus: "missing",
+          sourcePageUrl: "https://www.bhag.de/stromnetz/",
+          documentUrl: "https://www.bhag.de/wp-content/uploads/2026/02/Preisblatt-Stromnetzentgelte-ab-01.01.2026.pdf",
+          publicationStatus: "missing-data",
+          checkedAt: "2026-03-12",
+          statusSummary: expect.stringMatching(/noch nicht vollständig veröffentlichbar|modul-3-tarifdaten unvollständig/i)
         })
       ])
     );

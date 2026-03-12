@@ -61,6 +61,16 @@ describe("getSeedOperatorShells", () => {
           lastCheckedAt: "2026-03-12"
         }),
         expect.objectContaining({
+          slug: "bad-honnef",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "missing",
+          reviewStatus: "pending",
+          sourcePageUrl: "https://www.bhag.de/stromnetz/",
+          documentUrl: "https://www.bhag.de/wp-content/uploads/2026/02/Preisblatt-Stromnetzentgelte-ab-01.01.2026.pdf",
+          lastCheckedAt: "2026-03-12"
+        }),
+        expect.objectContaining({
           slug: "stadtnetze-munster",
           shellStatus: "published",
           sourceStatus: "source-found",

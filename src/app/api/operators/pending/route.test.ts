@@ -32,6 +32,14 @@ describe("GET /api/operators/pending", () => {
         expect.objectContaining({
           slug: "alzchem-netz",
           checkedAt: "2026-03-12"
+        }),
+        expect.objectContaining({
+          slug: "bad-honnef",
+          sourceStatus: "source-found",
+          tariffStatus: "missing",
+          websiteUrl: "https://www.bhag.de/",
+          checkedAt: "2026-03-12",
+          name: "Bad Honnef AG"
         })
       ])
     );

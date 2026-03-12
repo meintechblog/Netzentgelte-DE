@@ -73,6 +73,18 @@ describe("buildPublicSnapshot", () => {
           publicationStatus: "blocked",
           statusSummary: expect.stringMatching(/Jahresbezug|Widerspruch|Problem|blockiert|fehlt/i),
           missingInformation: expect.arrayContaining(["Verifiziertes Niederspannungsprodukt fehlt"])
+        }),
+        expect.objectContaining({
+          operatorSlug: "bad-honnef",
+          publicationStatus: "missing-data",
+          sourcePageUrl: "https://www.bhag.de/stromnetz/",
+          documentUrl: "https://www.bhag.de/wp-content/uploads/2026/02/Preisblatt-Stromnetzentgelte-ab-01.01.2026.pdf",
+          checkedAt: "2026-03-12",
+          statusSummary: expect.stringMatching(/noch nicht vollständig veröffentlichbar|modul-3-tarifdaten unvollständig/i),
+          missingInformation: expect.arrayContaining([
+            "Verifiziertes Niederspannungsprodukt fehlt",
+            "Modul-3-Tarifdaten unvollständig"
+          ])
         })
       ])
     );

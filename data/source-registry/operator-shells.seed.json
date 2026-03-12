@@ -219,17 +219,18 @@
   {
     "slug": "bad-honnef",
     "operatorName": "Bad Honnef AG",
-    "websiteUrl": "https://www.bhag.de/netzbetrieb/kunden/kunden/netzanschluss",
+    "websiteUrl": "https://www.bhag.de/",
     "regionLabel": "Bad Honnef",
-    "shellStatus": "source-found",
+    "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
+    "tariffStatus": "missing",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.bhag.de/netzbetrieb/kunden/kunden/netzanschluss",
-    "notes": "VNBdigital ID 38; 2026 preisblatt on official BHAG domain identified, but canonical netzentgelte landing page still to confirm.",
+    "sourcePageUrl": "https://www.bhag.de/stromnetz/",
+    "notes": "VNBdigital ID 38; Official Stromnetz page and 2026 price sheet verified on the BHAG domain (2026-03-12), but the Modul-3 windows apply only in Q1/Q4 on Mo. bis Fr. and are therefore not yet publishable as a safe annual matrix in the current public model.",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.bhag.de/wp-content/uploads/2025/12/Preisblatt-Netznutzung-2026_BHAG-Netz.pdf"
+    "documentUrl": "https://www.bhag.de/wp-content/uploads/2026/02/Preisblatt-Stromnetzentgelte-ab-01.01.2026.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "badenova-netze",

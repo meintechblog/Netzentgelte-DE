@@ -440,6 +440,10 @@ describe("buildQuarterlyTariffMatrix", () => {
     const rows = getRegistryTariffRows(getSeedPublishedOperators());
     const issues = rows.flatMap((row) =>
       row.quarterMatrix.flatMap((quarter) => {
+        if (row.operatorSlug === "alliander-netz-heinsberg") {
+          return [];
+        }
+
         const nullSlots = quarter.slots.filter((slot) => slot.bandKey === null).length;
 
         return nullSlots > 0 ? [{ operatorSlug: row.operatorSlug, quarter: quarter.key, nullSlots }] : [];
@@ -447,6 +451,30 @@ describe("buildQuarterlyTariffMatrix", () => {
     );
 
     expect(issues).toEqual([]);
+  });
+
+  test("keeps uncovered official quarter slots visible for verified operators with compliance violations", () => {
+    const rows = getRegistryTariffRows(getSeedPublishedOperators());
+    const alliander = rows.find((row) => row.operatorSlug === "alliander-netz-heinsberg");
+    const q1 = alliander?.quarterMatrix.find((quarter) => quarter.key === "Q1");
+
+    expect(alliander?.compliance.status).toBe("violation");
+    expect(alliander?.compliance.violations).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          ruleId: "full_day_coverage_in_active_quarters"
+        })
+      ])
+    );
+    expect(q1?.segments).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          timeLabel: "06:00-07:00",
+          bandKey: null,
+          coverageStatus: "empty"
+        })
+      ])
+    );
   });
 
   test("merges current source metadata by exact source slug instead of operator slug", () => {

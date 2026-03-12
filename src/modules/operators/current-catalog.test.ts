@@ -156,6 +156,7 @@ describe("getSeedPublishedOperators", () => {
     const nordnetz = published.find((entry) => entry.slug === "nordnetz");
     const twsNetz = published.find((entry) => entry.slug === "tws-netz");
     const heidelbergNetze = published.find((entry) => entry.slug === "heidelberg-netze");
+    const allianderHeinsberg = published.find((entry) => entry.slug === "alliander-netz-heinsberg");
     const achim = published.find((entry) => entry.slug === "stadtwerke-achim");
     const ahrtal = published.find((entry) => entry.slug === "ahrtal-werke");
     const abita = published.find((entry) => entry.slug === "abita-energie-otterberg");
@@ -163,7 +164,22 @@ describe("getSeedPublishedOperators", () => {
     const altdorf = published.find((entry) => entry.slug === "stadtwerke-altdorf");
     const badAibling = published.find((entry) => entry.slug === "stadtwerke-bad-aibling");
 
-    expect(published).toHaveLength(79);
+    expect(published).toHaveLength(80);
+    expect(allianderHeinsberg).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.alliander-netz.de/partner/lieferanten/entgelte-strom/",
+      documentUrl:
+        "https://www.alliander-netz.de/wp-content/uploads/2025/12/Anlage1a_LRV_Preisblatt_Heinsberg_2026_endg.pdf",
+      compliance: expect.objectContaining({
+        status: "violation",
+        violations: expect.arrayContaining([
+          expect.objectContaining({
+            ruleId: "full_day_coverage_in_active_quarters"
+          })
+        ])
+      })
+    });
     expect(ahrtal).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",

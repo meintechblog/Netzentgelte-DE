@@ -1,5 +1,9 @@
 import type { ComplianceBandKey, ComplianceRule, ComplianceRuleSet } from "./rule-catalog";
-import { expandSeasonLabelToQuarters, type TariffQuarterKey } from "../operators/quarterly-tariffs";
+import {
+  buildQuarterlyTariffMatrix,
+  expandSeasonLabelToQuarters,
+  type TariffQuarterKey
+} from "../operators/quarterly-tariffs";
 import type { PriceBasis } from "../operators/price-basis";
 
 type EvaluatorBand = {
@@ -315,6 +319,47 @@ function evaluateConsistentWindowsAcrossActiveQuarters(
   };
 }
 
+function evaluateFullDayCoverageInActiveQuarters(
+  rule: ComplianceRule,
+  input: Pick<EvaluationInput, "bands" | "timeWindows">
+): EvaluationOutcome {
+  const normalizedWindows = normalizeQuarterWindows(input.timeWindows);
+  const activeQuarters = [...new Set(normalizedWindows.flatMap((window) => window.quarterKeys))].sort();
+
+  if (activeQuarters.length === 0) {
+    return {
+      kind: "not-evaluable",
+      message: "Keine aktiven Quartale mit veröffentlichten Modul-3-Zeitfenstern gefunden."
+    };
+  }
+
+  const quarterMatrix = buildQuarterlyTariffMatrix({
+    bands: input.bands,
+    timeWindows: input.timeWindows
+  });
+  const uncoveredQuarter = activeQuarters.find((quarterKey) =>
+    quarterMatrix
+      .find((quarter) => quarter.key === quarterKey)
+      ?.segments.some((segment) => segment.coverageStatus === "empty")
+  );
+
+  if (!uncoveredQuarter) {
+    return {
+      kind: "pass",
+      message: "Alle aktiven Quartale sind ohne unbelegte Zeitslots abgedeckt."
+    };
+  }
+
+  const uncoveredSegment = quarterMatrix
+    .find((quarter) => quarter.key === uncoveredQuarter)
+    ?.segments.find((segment) => segment.coverageStatus === "empty");
+
+  return {
+    kind: "violation",
+    message: `Im aktiven Quartal ${uncoveredQuarter} bleibt ${uncoveredSegment?.timeLabel ?? "ein Zeitfenster"} ohne offizielle Tarifzuordnung.`
+  };
+}
+
 function evaluateRule(
   rule: ComplianceRule,
   input: Pick<EvaluationInput, "bands" | "timeWindows">
@@ -332,6 +377,8 @@ function evaluateRule(
       return evaluateMinActiveQuartersForBands(rule, normalizedWindows);
     case "consistent_windows_across_active_quarters":
       return evaluateConsistentWindowsAcrossActiveQuarters(rule, normalizedWindows);
+    case "full_day_coverage_in_active_quarters":
+      return evaluateFullDayCoverageInActiveQuarters(rule, input);
   }
 }
 

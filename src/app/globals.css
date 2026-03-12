@@ -628,8 +628,15 @@ input:focus-visible {
 
 .tariff-quarter-segment--empty {
   border-style: dashed;
-  border-color: rgba(148, 163, 184, 0.2);
-  background: rgba(15, 23, 42, 0.45);
+  border-color: rgba(248, 113, 113, 0.5);
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(127, 29, 29, 0.92) 0,
+      rgba(127, 29, 29, 0.92) 0.42rem,
+      rgba(68, 10, 10, 0.9) 0.42rem,
+      rgba(68, 10, 10, 0.9) 0.84rem
+    );
 }
 
 .tariff-quarter-segment:hover,

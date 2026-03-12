@@ -15,7 +15,8 @@ describe("getActiveModul3RuleSet", () => {
       "ht_max_100_percent_above_st",
       "nt_between_10_and_40_percent_of_st",
       "at_least_two_quarters_active",
-      "same_time_windows_across_quarters"
+      "same_time_windows_across_quarters",
+      "full_day_coverage_in_active_quarters"
     ]);
   });
 });

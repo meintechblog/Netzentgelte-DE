@@ -53,7 +53,7 @@ describe("evaluateModul3Compliance", () => {
 
     expect(evaluation.status).toBe("compliant");
     expect(evaluation.violations).toHaveLength(0);
-    expect(evaluation.passes).toHaveLength(5);
+    expect(evaluation.passes).toHaveLength(6);
     expect(evaluation.notEvaluated).toHaveLength(0);
   });
 
@@ -80,11 +80,16 @@ describe("evaluateModul3Compliance", () => {
     );
 
     expect(evaluation.status).toBe("violation");
-    expect(evaluation.violations).toEqual([
-      expect.objectContaining({
-        ruleId: "ht_min_2h_per_day"
-      })
-    ]);
+    expect(evaluation.violations).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          ruleId: "ht_min_2h_per_day"
+        }),
+        expect.objectContaining({
+          ruleId: "full_day_coverage_in_active_quarters"
+        })
+      ])
+    );
   });
 
   test("flags NT prices outside the 10 to 40 percent corridor of ST", () => {
@@ -151,11 +156,16 @@ describe("evaluateModul3Compliance", () => {
     );
 
     expect(evaluation.status).toBe("violation");
-    expect(evaluation.violations).toEqual([
-      expect.objectContaining({
-        ruleId: "at_least_two_quarters_active"
-      })
-    ]);
+    expect(evaluation.violations).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          ruleId: "at_least_two_quarters_active"
+        }),
+        expect.objectContaining({
+          ruleId: "full_day_coverage_in_active_quarters"
+        })
+      ])
+    );
   });
 
   test("flags operators whose active quarters change the published windows", () => {
@@ -195,11 +205,85 @@ describe("evaluateModul3Compliance", () => {
     );
 
     expect(evaluation.status).toBe("violation");
-    expect(evaluation.violations).toEqual([
-      expect.objectContaining({
-        ruleId: "same_time_windows_across_quarters"
+    expect(evaluation.violations).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          ruleId: "same_time_windows_across_quarters"
+        }),
+        expect.objectContaining({
+          ruleId: "full_day_coverage_in_active_quarters"
+        })
+      ])
+    );
+  });
+
+  test("flags active quarters with uncovered time slots as a violation", () => {
+    const evaluation = evaluateModul3Compliance(
+      buildInput({
+        operatorSlug: "alliander-netz-heinsberg",
+        operatorName: "Alliander Netz Heinsberg GmbH",
+        timeWindows: [
+          {
+            bandKey: "NT",
+            label: "Niedrigtarif",
+            seasonLabel: "Q1 und Q4 2026",
+            timeRangeLabel: "00:00-06:00",
+            sourceQuote: "NT 0:00-6:00"
+          },
+          {
+            bandKey: "ST",
+            label: "Standardtarif",
+            seasonLabel: "Q1 und Q4 2026",
+            timeRangeLabel: "07:00-11:00",
+            sourceQuote: "ST 7:00-11:00"
+          },
+          {
+            bandKey: "HT",
+            label: "Hochtarif",
+            seasonLabel: "Q1 und Q4 2026",
+            timeRangeLabel: "11:00-15:15",
+            sourceQuote: "HT 11:00-15:15"
+          },
+          {
+            bandKey: "ST",
+            label: "Standardtarif",
+            seasonLabel: "Q1 und Q4 2026",
+            timeRangeLabel: "15:15-17:15",
+            sourceQuote: "ST 15:15-17:15"
+          },
+          {
+            bandKey: "HT",
+            label: "Hochtarif",
+            seasonLabel: "Q1 und Q4 2026",
+            timeRangeLabel: "17:15-20:00",
+            sourceQuote: "HT 17:15-20:00"
+          },
+          {
+            bandKey: "ST",
+            label: "Standardtarif",
+            seasonLabel: "Q1 und Q4 2026",
+            timeRangeLabel: "20:00-23:30",
+            sourceQuote: "ST 20:00-23:30"
+          },
+          {
+            bandKey: "NT",
+            label: "Niedrigtarif",
+            seasonLabel: "Q1 und Q4 2026",
+            timeRangeLabel: "23:30-00:00",
+            sourceQuote: "NT 23:30-0:00"
+          }
+        ]
       })
-    ]);
+    );
+
+    expect(evaluation.status).toBe("violation");
+    expect(evaluation.violations).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          ruleId: "full_day_coverage_in_active_quarters"
+        })
+      ])
+    );
   });
 
   test("marks rules as not evaluable when mandatory pricing basis or tariff bands are missing", () => {

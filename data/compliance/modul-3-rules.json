@@ -1,7 +1,7 @@
 {
   "ruleSetId": "bdew-modul-3-v1-1",
   "title": "BDEW Anwendungshilfe Modul 3",
-  "version": "1.1",
+  "version": "1.2",
   "sourceDocumentUrl": "https://www.bdew.de/media/documents/BDEW-AWH_Modul_3_V1.1_Korrektur070225.pdf",
   "sourceDocumentLabel": "BDEW Anwendungshilfe Modul 3, Version 1.1",
   "effectiveFrom": "2024-09-16",
@@ -72,6 +72,16 @@
       "parameters": {
         "bandKeys": ["HT", "NT", "ST"]
       }
+    },
+    {
+      "ruleId": "full_day_coverage_in_active_quarters",
+      "title": "Aktive Quartale ohne unbelegte Zeitslots",
+      "description": "In Quartalen mit veröffentlichten Modul-3-Zeitfenstern darf kein unbelegter Zeitraum innerhalb des Tages verbleiben.",
+      "scope": "modul-3-project",
+      "severity": "high",
+      "sourceCitation": "Projektregel: veröffentlichte aktive Quartale dürfen keine unbelegten Zeitslots enthalten.",
+      "checkType": "full_day_coverage_in_active_quarters",
+      "parameters": {}
     }
   ]
 }

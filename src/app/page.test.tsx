@@ -42,7 +42,7 @@ test("renders the page shell around a dominant germany map hero", async () => {
   ).toHaveAttribute("href", "/netzbetreiber/in-pruefung");
   expect(screen.getByText("Dark mode · WCAG AA")).toBeInTheDocument();
   expect(screen.getAllByText(/Prüfstatus:/).length).toBeGreaterThan(0);
-  expect(screen.getByRole("heading", { name: "BDEW Anwendungshilfe Modul 3 1.1" })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: "BDEW Anwendungshilfe Modul 3 1.2" })).toBeInTheDocument();
   expect(screen.getByRole("button", { name: "Regelwerk aufklappen" })).toBeInTheDocument();
   expect(
     screen.queryByRole("link", { name: "BDEW Anwendungshilfe Modul 3, Version 1.1" })

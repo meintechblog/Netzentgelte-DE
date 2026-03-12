@@ -207,7 +207,23 @@ describe("TariffTable", () => {
 
     expect(screen.getByText("Regelstatus: Mit Verstößen")).toBeInTheDocument();
     const violationsPanel = screen.getByLabelText(/Albwerk GmbH & Co\. KG Regelverstöße/i);
-    expect(within(violationsPanel).getByText("Abweichungen vom BDEW-Regelwerk")).toBeInTheDocument();
+    expect(within(violationsPanel).getByText("Abweichungen vom Regelwerk")).toBeInTheDocument();
     expect(within(violationsPanel).getAllByRole("listitem").length).toBeGreaterThan(0);
+  });
+
+  test("renders uncovered official quarter slots as empty segments for verified operators with violations", () => {
+    const violatingOperator = mergeTariffRowsWithEndcustomerCatalog(
+      getRegistryTariffRows(getSeedPublishedOperators()),
+      getSeedEndcustomerTariffCatalog()
+    ).find((row) => row.operatorSlug === "alliander-netz-heinsberg");
+
+    render(<TariffTable rows={[violatingOperator!]} />);
+
+    expect(screen.getByText("Alliander Netz Heinsberg GmbH")).toBeInTheDocument();
+    expect(screen.getByText("Regelstatus: Mit Verstößen")).toBeInTheDocument();
+    const q1Section = screen.getByLabelText("Alliander Netz Heinsberg GmbH Q1");
+    expect(
+      within(q1Section).getByLabelText("Q1 06:00-07:00 · keine Zuordnung")
+    ).toHaveClass("tariff-quarter-segment--empty");
   });
 });

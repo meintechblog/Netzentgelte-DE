@@ -29,11 +29,6 @@ describe("buildBackfillBatchWorkset", () => {
 
     expect(workset.items.slice(0, 3)).toEqual([
       expect.objectContaining({
-        slug: "saerbecker-ver-und-entsorgungsnetzgesellschaft",
-        hostname: "saerve-online.de",
-        sourceStatus: "candidate"
-      }),
-      expect.objectContaining({
         slug: "stadtische-betriebswerke-luckenwalde",
         hostname: "sbl-gmbh.net",
         sourceStatus: "source-found"
@@ -42,12 +37,17 @@ describe("buildBackfillBatchWorkset", () => {
         slug: "stromversorgung-schierling-eg",
         hostname: "schierling-strom.de",
         sourceStatus: "candidate"
+      }),
+      expect.objectContaining({
+        slug: "gemeindewerke-schwarzenbruck",
+        hostname: "schwarzenbruck-gw.de",
+        sourceStatus: "candidate"
       })
     ]);
     expect(workset.items.at(-1)).toEqual(
       expect.objectContaining({
-        slug: "stadtwerke-barmstedt",
-        hostname: "stadtwerke-barmstedt.de",
+        slug: "stadtwerke-bayreuth-energie-und-wasser",
+        hostname: "stadtwerke-bayreuth.de",
         sourceStatus: "candidate"
       })
     );

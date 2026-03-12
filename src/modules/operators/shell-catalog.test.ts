@@ -50,6 +50,16 @@ describe("getSeedOperatorShells", () => {
             "https://www.stadtwerke-achim.de/de/Netz-Hausanschluesse/Privatkunden/Service/Veroeffentlichungspflichten-Strom/Stromnetz-2020/Netzzugang-Entgelte1/PB-KK-NNE-Strom-2026-01-01.pdf"
         }),
         expect.objectContaining({
+          slug: "alliander-netz-heinsberg",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://www.alliander-netz.de/partner/lieferanten/entgelte-strom/",
+          documentUrl:
+            "https://www.alliander-netz.de/wp-content/uploads/2025/12/Anlage1a_LRV_Preisblatt_Heinsberg_2026_endg.pdf"
+        }),
+        expect.objectContaining({
           slug: "ahrtal-werke",
           shellStatus: "published",
           sourceStatus: "source-found",

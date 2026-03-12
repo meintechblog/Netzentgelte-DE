@@ -306,7 +306,7 @@ export function TariffTable({ rows }: TariffTableProps) {
                   </div>
                   {row.compliance.violations.length > 0 ? (
                     <section className="operator-compliance-panel" aria-label={`${row.operatorName} Regelverstöße`}>
-                      <strong>Abweichungen vom BDEW-Regelwerk</strong>
+                      <strong>Abweichungen vom Regelwerk</strong>
                       <ul className="operator-compliance-panel__list">
                         {row.compliance.violations.map((finding) => (
                           <li key={`${row.operatorSlug}-${finding.ruleId}`}>

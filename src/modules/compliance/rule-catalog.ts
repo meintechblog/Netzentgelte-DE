@@ -18,7 +18,8 @@ const complianceRuleSchema = z.object({
     z.literal("max_ratio_between_bands"),
     z.literal("band_ratio_range"),
     z.literal("min_active_quarters_for_bands"),
-    z.literal("consistent_windows_across_active_quarters")
+    z.literal("consistent_windows_across_active_quarters"),
+    z.literal("full_day_coverage_in_active_quarters")
   ]),
   parameters: ruleParameterSchema
 });

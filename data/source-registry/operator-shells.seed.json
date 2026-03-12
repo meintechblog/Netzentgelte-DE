@@ -101,12 +101,13 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "missing",
-    "reviewStatus": "pending",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
     "sourcePageUrl": "https://www.alliander-netz.de/partner/lieferanten/entgelte-strom/",
-    "notes": "VNBdigital ID 7272; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "notes": "VNBdigital ID 7272; Synced from curated operator entry (verified operator loop 2026-03-12, visible with compliance violation for uncovered 06:00-07:00 slot).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.alliander-netz.de/wp-content/uploads/2025/12/Anlage1a_LRV_Preisblatt_Heinsberg_2026_endg.pdf"
+    "documentUrl": "https://www.alliander-netz.de/wp-content/uploads/2025/12/Anlage1a_LRV_Preisblatt_Heinsberg_2026_endg.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "alzchem-netz",

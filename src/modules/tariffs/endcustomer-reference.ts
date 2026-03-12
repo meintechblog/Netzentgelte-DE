@@ -90,6 +90,7 @@ const NHL_NETZGESELLSCHAFT_HEILBRONNER_LAND_SOURCE =
   "https://www.n-hl.de/files/downloads/pdf/netznutzung_strom/preisblaetter/NHL_Preisblaetter_Strom_2026.pdf";
 const STADTWERKE_MENGEN_SOURCE =
   "https://www.mengen.de/sw-wAssets/docs/netznutzung/netzzugang/preisblaetter/02_preisblatt_nne_2026.pdf";
+const ASCANETZ_SOURCE = "https://www.ascanetz.de/wp-content/uploads/NNE_Strom-2026.pdf";
 
 export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
   return [
@@ -108,7 +109,8 @@ export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
     getNetzeBadLangensalzaEndcustomerReference(),
     getNhfNetzgesellschaftHeilbronnFrankenEndcustomerReference(),
     getNhlNetzgesellschaftHeilbronnerLandEndcustomerReference(),
-    getStadtwerkeMengenEndcustomerReference()
+    getStadtwerkeMengenEndcustomerReference(),
+    getAscanetzEndcustomerReference()
   ];
 }
 
@@ -971,6 +973,59 @@ export function getStadtwerkeMengenEndcustomerReference(): EndcustomerOperatorRe
   };
 }
 
+export function getAscanetzEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "ascanetz",
+    operatorName: "ASCANETZ GmbH",
+    sourceDocumentUrl: ASCANETZ_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: ASCANETZ_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "30.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "7.18", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "121.08", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: ASCANETZ_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "2.87", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: ASCANETZ_SOURCE,
+        components: modul3Components("7.18", "10.77", "2.40"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: [
+          ...buildAscanetzQuarterWindows("Q1"),
+          { quarterKey: "Q2", bandKey: "standard", startsAt: "00:00", endsAt: "24:00" },
+          { quarterKey: "Q3", bandKey: "standard", startsAt: "00:00", endsAt: "24:00" },
+          ...buildAscanetzQuarterWindows("Q4")
+        ]
+      }
+    ],
+    meteringPrices: meteringPrices("10.00", "20.30")
+  };
+}
+
 function defaultModul1Requirements(): EndcustomerTariffRequirement[] {
   return [
     { requirementKey: "default_if_no_choice", requirementValue: "true" },
@@ -1030,6 +1085,18 @@ function buildNetzeBadLangensalzaQuarterWindows(
     { quarterKey, bandKey: "high", startsAt: "17:30", endsAt: "18:30" },
     { quarterKey, bandKey: "standard", startsAt: "18:30", endsAt: "22:00" },
     { quarterKey, bandKey: "low", startsAt: "22:00", endsAt: "24:00" }
+  ];
+}
+
+function buildAscanetzQuarterWindows(quarterKey: "Q1" | "Q4"): EndcustomerTariffTimeWindow[] {
+  return [
+    { quarterKey, bandKey: "low", startsAt: "00:00", endsAt: "07:00" },
+    { quarterKey, bandKey: "standard", startsAt: "07:00", endsAt: "11:00" },
+    { quarterKey, bandKey: "high", startsAt: "11:00", endsAt: "13:00" },
+    { quarterKey, bandKey: "standard", startsAt: "13:00", endsAt: "17:00" },
+    { quarterKey, bandKey: "high", startsAt: "17:00", endsAt: "19:00" },
+    { quarterKey, bandKey: "standard", startsAt: "19:00", endsAt: "23:00" },
+    { quarterKey, bandKey: "low", startsAt: "23:00", endsAt: "24:00" }
   ];
 }
 

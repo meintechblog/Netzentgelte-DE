@@ -160,15 +160,16 @@
     "operatorName": "ASCANETZ GmbH",
     "websiteUrl": "https://www.ascanetz.de/index.php",
     "regionLabel": "Aschersleben",
-    "shellStatus": "source-found",
+    "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "missing",
-    "reviewStatus": "pending",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
     "sourcePageUrl": "https://www.ascanetz.de/strom/preise-tarife/",
-    "notes": "VNBdigital ID 963; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "notes": "VNBdigital ID 963; Synced from curated operator entry (verified operator loop 2026-03-12, Q2/Q3 assumed ST).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.ascanetz.de/wp-content/uploads/NNE_Strom-2026.pdf"
+    "documentUrl": "https://www.ascanetz.de/wp-content/uploads/NNE_Strom-2026.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "aschaffenburger-versorgungs",

@@ -23,12 +23,72 @@ describe("GET /api/tariffs/endcustomer/current", () => {
     const nhl = data.items.find(
       (item: { operatorSlug: string }) => item.operatorSlug === "nhl-netzgesellschaft-heilbronner-land-und"
     );
+    const ascanetz = data.items.find((item: { operatorSlug: string }) => item.operatorSlug === "ascanetz");
     const mengen = data.items.find(
       (item: { operatorSlug: string }) => item.operatorSlug === "stadtwerke-mengen"
     );
 
     expect(data.summary).toMatchObject({
-      operatorCount: 16
+      operatorCount: 17
+    });
+    expect(ascanetz).toMatchObject({
+      operatorSlug: "ascanetz",
+      meteringPrices: expect.arrayContaining([
+        expect.objectContaining({
+          componentKey: "single_register_meter_eur_per_year",
+          valueNumeric: "10.00"
+        }),
+        expect.objectContaining({
+          componentKey: "dual_register_meter_eur_per_year",
+          valueNumeric: "20.30"
+        })
+      ]),
+      products: expect.arrayContaining([
+        expect.objectContaining({
+          moduleKey: "modul-1",
+          components: expect.arrayContaining([
+            expect.objectContaining({
+              componentKey: "base_price_eur_per_year",
+              valueNumeric: "30.00"
+            }),
+            expect.objectContaining({
+              componentKey: "net_fee_reduction_eur_per_year",
+              valueNumeric: "121.08"
+            })
+          ])
+        }),
+        expect.objectContaining({
+          moduleKey: "modul-3",
+          components: expect.arrayContaining([
+            expect.objectContaining({
+              componentKey: "standard_work_price_ct_per_kwh",
+              valueNumeric: "7.18"
+            }),
+            expect.objectContaining({
+              componentKey: "high_work_price_ct_per_kwh",
+              valueNumeric: "10.77"
+            }),
+            expect.objectContaining({
+              componentKey: "low_work_price_ct_per_kwh",
+              valueNumeric: "2.40"
+            })
+          ]),
+          timeWindows: expect.arrayContaining([
+            expect.objectContaining({
+              quarterKey: "Q1",
+              bandKey: "high",
+              startsAt: "17:00",
+              endsAt: "19:00"
+            }),
+            expect.objectContaining({
+              quarterKey: "Q3",
+              bandKey: "standard",
+              startsAt: "00:00",
+              endsAt: "24:00"
+            })
+          ])
+        })
+      ])
     });
     expect(mengen).toMatchObject({
       operatorSlug: "stadtwerke-mengen",

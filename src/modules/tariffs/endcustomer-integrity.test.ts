@@ -89,7 +89,7 @@ describe("buildEndcustomerIntegrityAudit", () => {
 
     expect(getEndcustomerIntegrityAuditSummary(audit)).toMatchObject({
       operatorCount: expect.any(Number),
-      completeCount: 16,
+      completeCount: 17,
       missingEntryCount: expect.any(Number),
       incompleteCount: 0
     });

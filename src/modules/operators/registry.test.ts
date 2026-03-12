@@ -981,6 +981,59 @@ describe("getOperatorRegistry", () => {
     });
   });
 
+  test("publishes Ascanetz as verified when the official 2026 sheet provides a Q1/Q4 matrix plus explicit rest-time ST", () => {
+    const registry = getOperatorRegistry();
+    const ascanetz = registry.find((entry) => entry.slug === "ascanetz");
+    const sourceDocument = ascanetz?.sourceDocuments.find((document) => document.id === "ascanetz-14a-2026");
+
+    expect(ascanetz).toMatchObject({
+      websiteUrl: "https://www.ascanetz.de/index.php",
+      currentTariff: expect.objectContaining({
+        reviewStatus: "verified",
+        validFrom: "2026-01-01",
+        sourcePageUrl: "https://www.ascanetz.de/strom/preise-tarife/",
+        documentUrl: "https://www.ascanetz.de/wp-content/uploads/NNE_Strom-2026.pdf",
+        bands: expect.arrayContaining([
+          expect.objectContaining({
+            key: "NT",
+            valueCtPerKwh: "2.40"
+          }),
+          expect.objectContaining({
+            key: "ST",
+            valueCtPerKwh: "7.18"
+          }),
+          expect.objectContaining({
+            key: "HT",
+            valueCtPerKwh: "10.77"
+          })
+        ]),
+        timeWindows: expect.arrayContaining([
+          expect.objectContaining({
+            seasonLabel: "Q1 und Q4 2026",
+            bandKey: "NT",
+            timeRangeLabel: "23:00-24:00"
+          }),
+          expect.objectContaining({
+            seasonLabel: "Q1 und Q4 2026",
+            bandKey: "HT",
+            timeRangeLabel: "11:00-13:00"
+          }),
+          expect.objectContaining({
+            seasonLabel: "Q2-Q3 2026",
+            bandKey: "ST",
+            timeRangeLabel: "00:00-24:00"
+          })
+        ])
+      })
+    });
+    expect(sourceDocument).toMatchObject({
+      id: "ascanetz-14a-2026",
+      reviewStatus: "verified",
+      checkedAt: "2026-03-12"
+    });
+    expect(sourceDocument?.notes.join("\n") ?? "").toContain("Q1 + Q4");
+  });
+
   test("rejects tariffs that reference an unknown source document", () => {
     expect(() =>
       parseOperatorRegistry([

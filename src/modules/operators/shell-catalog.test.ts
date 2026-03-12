@@ -41,6 +41,16 @@ describe("getSeedOperatorShells", () => {
           lastCheckedAt: "2026-03-12"
         }),
         expect.objectContaining({
+          slug: "ascanetz",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://www.ascanetz.de/strom/preise-tarife/",
+          documentUrl: "https://www.ascanetz.de/wp-content/uploads/NNE_Strom-2026.pdf",
+          lastCheckedAt: "2026-03-12"
+        }),
+        expect.objectContaining({
           slug: "stadtnetze-munster",
           shellStatus: "published",
           sourceStatus: "source-found",

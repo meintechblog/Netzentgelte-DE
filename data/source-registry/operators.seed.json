@@ -686,6 +686,135 @@
     }
   },
   {
+    "slug": "ascanetz",
+    "name": "ASCANETZ GmbH",
+    "regionLabel": "Aschersleben",
+    "websiteUrl": "https://www.ascanetz.de/index.php",
+    "registrySourceIds": [
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "ascanetz-14a-2026",
+        "title": "Entgelte fuer die Nutzung der Strom-Netzinfrastruktur gueltig ab 01. Jan 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.ascanetz.de/strom/preise-tarife/",
+        "documentUrl": "https://www.ascanetz.de/wp-content/uploads/NNE_Strom-2026.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Die offizielle Strom-Seite der ASCANETZ GmbH verlinkt das 2026-Preisblatt direkt auf der Betreiberdomain.",
+          "Das Preisblatt nennt fuer steuerbare Verbrauchseinrichtungen nach §14a EnWG Modul 1 mit 30,00 EUR/a Grundpreis und 121,08 EUR/a Pauschalreduktion, Modul 2 mit 2,87 ct/kWh sowie Modul 3 mit HT 10,77 ct/kWh, NT 2,40 ct/kWh und ST 7,18 ct/kWh.",
+          "Die Tabelle weist fuer Modul 3 die Zeitfenster 11:00-13:00 und 17:00-19:00 fuer HT, 23:00-07:00 fuer NT und Restzeit fuer ST aus.",
+          "Die explizite Quartalsangabe lautet Q1 + Q4; Q2 und Q3 werden deshalb in der Darstellung als verifizierte ST-Annahme gefuehrt."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "ascanetz-14a-2026",
+      "sourcePageUrl": "https://www.ascanetz.de/strom/preise-tarife/",
+      "documentUrl": "https://www.ascanetz.de/wp-content/uploads/NNE_Strom-2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "2.40",
+          "sourceQuote": "AP gilt nur in Quartal: Q1 + Q4 30,00 10,77 2,40 7,18 -121,08"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "7.18",
+          "sourceQuote": "Modul 3 GP+Pauschalred. wie Modul 1 HT NT ST"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "10.77",
+          "sourceQuote": "AP gilt nur in Quartal: Q1 + Q4 30,00 10,77 2,40 7,18 -121,08"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "ascanetz-2026-q1q4-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-07:00",
+          "sourceQuote": "23:00-07:00"
+        },
+        {
+          "id": "ascanetz-2026-q1q4-standard-morning",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "07:00-11:00",
+          "sourceQuote": "Restzeit"
+        },
+        {
+          "id": "ascanetz-2026-q1q4-high-midday",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "11:00-13:00",
+          "sourceQuote": "11:00-13:00"
+        },
+        {
+          "id": "ascanetz-2026-q1q4-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "13:00-17:00",
+          "sourceQuote": "Restzeit"
+        },
+        {
+          "id": "ascanetz-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-19:00",
+          "sourceQuote": "17:00-19:00"
+        },
+        {
+          "id": "ascanetz-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "19:00-23:00",
+          "sourceQuote": "Restzeit"
+        },
+        {
+          "id": "ascanetz-2026-q1q4-low-late",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "23:00-24:00",
+          "sourceQuote": "23:00-07:00"
+        },
+        {
+          "id": "ascanetz-2026-q2q3-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2-Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "AP gilt nur in Quartal: Q1 + Q4"
+        }
+      ]
+    }
+  },
+  {
     "slug": "avacon-netz",
     "name": "Avacon Netz GmbH",
     "regionLabel": "Niedersachsen / Sachsen-Anhalt",

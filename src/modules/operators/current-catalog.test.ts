@@ -142,6 +142,7 @@ describe("getSeedPublishedOperators", () => {
     const eDisNetz = published.find((entry) => entry.slug === "e-dis-netz");
     const lewVerteilnetz = published.find((entry) => entry.slug === "lew-verteilnetz");
     const maintalWerke = published.find((entry) => entry.slug === "maintal-werke");
+    const ascanetz = published.find((entry) => entry.slug === "ascanetz");
     const marktZellingen = published.find((entry) => entry.slug === "markt-zellingen");
     const megaMonheim = published.find(
       (entry) => entry.slug === "mega-monheimer-elektrizitats-und-gasversorgung"
@@ -197,7 +198,40 @@ describe("getSeedPublishedOperators", () => {
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(105);
+    expect(published).toHaveLength(106);
+    expect(ascanetz).toMatchObject({
+      reviewStatus: "verified",
+      sourcePageUrl: "https://www.ascanetz.de/strom/preise-tarife/",
+      documentUrl: "https://www.ascanetz.de/wp-content/uploads/NNE_Strom-2026.pdf",
+      bands: expect.arrayContaining([
+        expect.objectContaining({
+          key: "ST",
+          valueCtPerKwh: "7.18"
+        }),
+        expect.objectContaining({
+          key: "HT",
+          valueCtPerKwh: "10.77"
+        }),
+        expect.objectContaining({
+          key: "NT",
+          valueCtPerKwh: "2.40"
+        })
+      ])
+    });
+    expect(ascanetz?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q1 und Q4 2026",
+          bandKey: "HT",
+          timeRangeLabel: "17:00-19:00"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q2-Q3 2026",
+          bandKey: "ST",
+          timeRangeLabel: "00:00-24:00"
+        })
+      ])
+    );
     expect(mengen).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",

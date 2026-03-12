@@ -16,7 +16,7 @@ describe("GET /api/operators", () => {
       complianceViolationCount: expect.any(Number),
       complianceNotEvaluatedCount: expect.any(Number)
     });
-    expect(data.items).toHaveLength(85);
+    expect(data.items).toHaveLength(86);
     expect(data.items).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -84,6 +84,12 @@ describe("GET /api/operators", () => {
           reviewStatus: "verified",
           complianceStatus: "compliant",
           complianceViolationCount: 0
+        }),
+        expect.objectContaining({
+          slug: "evu-langenpreising",
+          reviewStatus: "verified",
+          complianceStatus: "violation",
+          complianceViolationCount: 1
         }),
         expect.objectContaining({
           slug: "stadtwerke-andernach-energie",

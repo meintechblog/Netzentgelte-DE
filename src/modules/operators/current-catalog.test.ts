@@ -165,13 +165,14 @@ describe("getSeedPublishedOperators", () => {
     const badAibling = published.find((entry) => entry.slug === "stadtwerke-bad-aibling");
     const badPyrmont = published.find((entry) => entry.slug === "stadtwerke-bad-pyrmont");
     const wismar = published.find((entry) => entry.slug === "strom-und-gasnetz-wismar");
+    const langenpreising = published.find((entry) => entry.slug === "evu-langenpreising");
     const luckenwalde = published.find(
       (entry) => entry.slug === "stadtische-betriebswerke-luckenwalde"
     );
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(85);
+    expect(published).toHaveLength(86);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -244,6 +245,16 @@ describe("getSeedPublishedOperators", () => {
         "https://www.sg-wismar.de/fileadmin/user_upload/ID064_Netznutzung_Strom/ID354_Netznutzungsentgelte/251216_Preisblatt_Zusammenfassung_2026.pdf",
       compliance: expect.objectContaining({
         status: "compliant"
+      })
+    });
+    expect(langenpreising).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.gemeindewerke-langenpreising.de/stromnetz/netznutzung/",
+      documentUrl:
+        "https://www.gemeindewerke-langenpreising.de/wp-content/uploads/2025_12_18_NNE_Preisblatt_Gemeindewerke_Langenpreising_2026_GWL.pdf",
+      compliance: expect.objectContaining({
+        status: "violation"
       })
     });
     expect(muenster).toMatchObject({

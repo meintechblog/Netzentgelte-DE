@@ -2391,18 +2391,19 @@
   },
   {
     "slug": "evu-langenpreising",
-    "operatorName": "EVU Langenpreising",
-    "websiteUrl": "https://www.langenpreising.de",
-    "regionLabel": "Wartenberg",
+    "operatorName": "Gemeindewerke Langenpreising GmbH & Co. KG",
+    "websiteUrl": "https://www.gemeindewerke-langenpreising.de/",
+    "regionLabel": "Langenpreising",
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.langenpreising.de",
-    "notes": "VNBdigital ID 7307",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://www.gemeindewerke-langenpreising.de/stromnetz/netznutzung/",
+    "notes": "VNBdigital ID 7307; Offizielle Gemeindeseite dokumentiert das Rebranding von EVU Langenpreising zur Gemeindewerke Langenpreising GmbH & Co. KG, finaler 2026-Netznutzungsnachweis verifiziert am 2026-03-12.",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.langenpreising.de"
+    "documentUrl": "https://www.gemeindewerke-langenpreising.de/wp-content/uploads/2025_12_18_NNE_Preisblatt_Gemeindewerke_Langenpreising_2026_GWL.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "evu-obernzell",

@@ -82,6 +82,16 @@ describe("getSeedOperatorShells", () => {
             "https://www.abita-energie.de/fileadmin/dokumente/Netze/Entgelte/Preisblatt_Strom_NNE_01012026.pdf"
         }),
         expect.objectContaining({
+          slug: "evu-langenpreising",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://www.gemeindewerke-langenpreising.de/stromnetz/netznutzung/",
+          documentUrl:
+            "https://www.gemeindewerke-langenpreising.de/wp-content/uploads/2025_12_18_NNE_Preisblatt_Gemeindewerke_Langenpreising_2026_GWL.pdf"
+        }),
+        expect.objectContaining({
           slug: "stadtische-betriebswerke-luckenwalde",
           shellStatus: "published",
           sourceStatus: "source-found",

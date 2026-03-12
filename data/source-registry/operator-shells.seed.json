@@ -5112,12 +5112,13 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.n-hf.de",
-    "notes": "VNBdigital ID 280",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://www.n-hf.de/netznutzung/strom/preisblaetter.html",
+    "notes": "VNBdigital ID 280; Synced from curated operator entry (verified operator loop 2026-03-12, official NHF price sheet 2026).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.n-hf.de"
+    "documentUrl": "https://www.n-hf.de/files/downloads/pdf/netznutzung_strom/preisblaetter/NHF_Preisbl%C3%A4tter_Strom_2026.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "nhl-netzgesellschaft-heilbronner-land-und",

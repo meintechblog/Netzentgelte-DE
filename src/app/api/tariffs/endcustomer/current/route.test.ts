@@ -17,9 +17,65 @@ describe("GET /api/tariffs/endcustomer/current", () => {
     const badLangensalza = data.items.find(
       (item: { operatorSlug: string }) => item.operatorSlug === "netze-bad-langensalza"
     );
+    const nhf = data.items.find(
+      (item: { operatorSlug: string }) => item.operatorSlug === "nhf-netzgesellschaft-heilbronn-franken"
+    );
 
     expect(data.summary).toMatchObject({
-      operatorCount: 13
+      operatorCount: 14
+    });
+    expect(nhf).toMatchObject({
+      operatorSlug: "nhf-netzgesellschaft-heilbronn-franken",
+      meteringPrices: expect.arrayContaining([
+        expect.objectContaining({
+          componentKey: "single_register_meter_eur_per_year",
+          valueNumeric: "8.58"
+        }),
+        expect.objectContaining({
+          componentKey: "dual_register_meter_eur_per_year",
+          valueNumeric: "16.81"
+        })
+      ]),
+      products: expect.arrayContaining([
+        expect.objectContaining({
+          moduleKey: "modul-1",
+          components: expect.arrayContaining([
+            expect.objectContaining({
+              componentKey: "base_price_eur_per_year",
+              valueNumeric: "77.00"
+            }),
+            expect.objectContaining({
+              componentKey: "net_fee_reduction_eur_per_year",
+              valueNumeric: "128.43"
+            })
+          ])
+        }),
+        expect.objectContaining({
+          moduleKey: "modul-3",
+          components: expect.arrayContaining([
+            expect.objectContaining({
+              componentKey: "standard_work_price_ct_per_kwh",
+              valueNumeric: "8.16"
+            }),
+            expect.objectContaining({
+              componentKey: "high_work_price_ct_per_kwh",
+              valueNumeric: "13.06"
+            }),
+            expect.objectContaining({
+              componentKey: "low_work_price_ct_per_kwh",
+              valueNumeric: "3.26"
+            })
+          ]),
+          timeWindows: expect.arrayContaining([
+            expect.objectContaining({
+              quarterKey: "Q4",
+              bandKey: "high",
+              startsAt: "17:00",
+              endsAt: "20:00"
+            })
+          ])
+        })
+      ])
     });
     expect(badLangensalza).toMatchObject({
       operatorSlug: "netze-bad-langensalza",

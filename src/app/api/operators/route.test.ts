@@ -16,9 +16,16 @@ describe("GET /api/operators", () => {
       complianceViolationCount: expect.any(Number),
       complianceNotEvaluatedCount: expect.any(Number)
     });
-    expect(data.items).toHaveLength(102);
+    expect(data.items).toHaveLength(103);
     expect(data.items).toEqual(
       expect.arrayContaining([
+        expect.objectContaining({
+          slug: "nhf-netzgesellschaft-heilbronn-franken",
+          reviewStatus: "verified",
+          complianceStatus: "compliant",
+          complianceViolationCount: 0,
+          priceBasis: "assumed-netto"
+        }),
         expect.objectContaining({
           slug: "netze-bad-langensalza",
           reviewStatus: "verified",

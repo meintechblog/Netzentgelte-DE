@@ -184,6 +184,7 @@ describe("getSeedPublishedOperators", () => {
     const sonneberg = published.find((entry) => entry.slug === "licht-und-kraftwerke-sonneberg");
     const lokalwerke = published.find((entry) => entry.slug === "lokalwerke");
     const lswNetz = published.find((entry) => entry.slug === "lsw-netz-und");
+    const nhf = published.find((entry) => entry.slug === "nhf-netzgesellschaft-heilbronn-franken");
     const kitzingen = published.find(
       (entry) => entry.slug === "licht-kraft-und-wasserwerke-kitzingen"
     );
@@ -194,7 +195,18 @@ describe("getSeedPublishedOperators", () => {
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(102);
+    expect(published).toHaveLength(103);
+    expect(nhf).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.n-hf.de/netznutzung/strom/preisblaetter.html",
+      documentUrl:
+        "https://www.n-hf.de/files/downloads/pdf/netznutzung_strom/preisblaetter/NHF_Preisbl%C3%A4tter_Strom_2026.pdf",
+      priceBasis: "assumed-netto",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
     expect(badLangensalza).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",

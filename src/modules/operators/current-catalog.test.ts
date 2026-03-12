@@ -166,13 +166,16 @@ describe("getSeedPublishedOperators", () => {
     const badPyrmont = published.find((entry) => entry.slug === "stadtwerke-bad-pyrmont");
     const wismar = published.find((entry) => entry.slug === "strom-und-gasnetz-wismar");
     const langenpreising = published.find((entry) => entry.slug === "evu-langenpreising");
+    const farchant = published.find(
+      (entry) => entry.slug === "kraftwerk-farchant-a-poettinger-und"
+    );
     const luckenwalde = published.find(
       (entry) => entry.slug === "stadtische-betriebswerke-luckenwalde"
     );
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(86);
+    expect(published).toHaveLength(87);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -255,6 +258,17 @@ describe("getSeedPublishedOperators", () => {
         "https://www.gemeindewerke-langenpreising.de/wp-content/uploads/2025_12_18_NNE_Preisblatt_Gemeindewerke_Langenpreising_2026_GWL.pdf",
       compliance: expect.objectContaining({
         status: "violation"
+      })
+    });
+    expect(farchant).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl:
+        "https://www.kw-farchant.com/kontakt-und-hilfe/downloads/downloads-netz-veroeffentlichungspflichten",
+      documentUrl:
+        "https://www.kw-farchant.com/images/pdf/Preisblatt%20Netznutzungsentgelte%20ab%2001.01.2026.pdf",
+      compliance: expect.objectContaining({
+        status: "compliant"
       })
     });
     expect(muenster).toMatchObject({

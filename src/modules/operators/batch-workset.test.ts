@@ -29,11 +29,6 @@ describe("buildBackfillBatchWorkset", () => {
 
     expect(workset.items.slice(0, 3)).toEqual([
       expect.objectContaining({
-        slug: "gemeindewerke-schwarzenbruck",
-        hostname: "schwarzenbruck-gw.de",
-        sourceStatus: "candidate"
-      }),
-      expect.objectContaining({
         slug: "sommerdaer-energieversorgung",
         hostname: "sev-soemmerda.de",
         sourceStatus: "candidate"
@@ -42,12 +37,17 @@ describe("buildBackfillBatchWorkset", () => {
         slug: "sew-stromversorgungs",
         hostname: "sewerding.de",
         sourceStatus: "candidate"
+      }),
+      expect.objectContaining({
+        slug: "stadtwerke-frondenberg-wickede",
+        hostname: "sfw-ruhr.de",
+        sourceStatus: "candidate"
       })
     ]);
     expect(workset.items.at(-1)).toEqual(
       expect.objectContaining({
-        slug: "stadtwerke-bliestal",
-        hostname: "stadtwerke-bliestal.de",
+        slug: "stadtwerke-bogen",
+        hostname: "stadtwerke-bogen.de",
         sourceStatus: "candidate"
       })
     );

@@ -92,6 +92,17 @@ describe("getSeedOperatorShells", () => {
             "https://www.gemeindewerke-langenpreising.de/wp-content/uploads/2025_12_18_NNE_Preisblatt_Gemeindewerke_Langenpreising_2026_GWL.pdf"
         }),
         expect.objectContaining({
+          slug: "kraftwerk-farchant-a-poettinger-und",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl:
+            "https://www.kw-farchant.com/kontakt-und-hilfe/downloads/downloads-netz-veroeffentlichungspflichten",
+          documentUrl:
+            "https://www.kw-farchant.com/images/pdf/Preisblatt%20Netznutzungsentgelte%20ab%2001.01.2026.pdf"
+        }),
+        expect.objectContaining({
           slug: "stadtische-betriebswerke-luckenwalde",
           shellStatus: "published",
           sourceStatus: "source-found",

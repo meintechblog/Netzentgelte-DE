@@ -131,5 +131,8 @@ describe("getSeedPendingOperatorCatalog", () => {
     expect(result.items.find((entry) => entry.slug === "stadtwerke-bad-pyrmont")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "strom-und-gasnetz-wismar")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "evu-langenpreising")).toBeUndefined();
+    expect(
+      result.items.find((entry) => entry.slug === "kraftwerk-farchant-a-poettinger-und")
+    ).toBeUndefined();
   });
 });

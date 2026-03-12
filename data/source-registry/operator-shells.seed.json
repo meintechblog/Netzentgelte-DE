@@ -4196,12 +4196,12 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://kw-farchant.com/",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://www.kw-farchant.com/kontakt-und-hilfe/downloads/downloads-netz-veroeffentlichungspflichten",
     "notes": "VNBdigital ID 185",
     "deprecatedStatus": "active",
-    "documentUrl": "https://kw-farchant.com/"
+    "documentUrl": "https://www.kw-farchant.com/images/pdf/Preisblatt%20Netznutzungsentgelte%20ab%2001.01.2026.pdf"
   },
   {
     "slug": "kraftwerk-kohlgartenwiese",

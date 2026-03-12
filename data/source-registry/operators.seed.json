@@ -5784,6 +5784,104 @@
     }
   },
   {
+    "slug": "kraftwerk-farchant-a-poettinger-und",
+    "name": "Kraftwerk Farchant A. Poettinger & Co. KG",
+    "regionLabel": "Farchant",
+    "websiteUrl": "https://www.kw-farchant.com/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "kraftwerk-farchant-a-poettinger-und-14a-2026",
+        "title": "Preisblatt Netznutzungsentgelte ab 01.01.2026",
+        "documentType": "pdf",
+        "priceBasis": "assumed-netto",
+        "sourcePageUrl": "https://www.kw-farchant.com/kontakt-und-hilfe/downloads/downloads-netz-veroeffentlichungspflichten",
+        "documentUrl": "https://www.kw-farchant.com/images/pdf/Preisblatt%20Netznutzungsentgelte%20ab%2001.01.2026.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Die offizielle Veröffentlichungsseite des Betreibers listet das Preisblatt Netznutzungsentgelte ab 01.01.2026 sowie das Hochlastzeitfenster 2026 direkt als PDF.",
+          "Das finale Preisblatt 2026 veröffentlicht für Modul 3 auf Niederspannung NT 3,53 ct/kWh, ST 8,83 ct/kWh und HT 9,96 ct/kWh.",
+          "Die Zeitlogik gilt ausdrücklich für Quartal 1 - 4 (01.01. - 31.12.) mit NT 00:00-06:00, HT 08:00-19:30 und ST für alle restlichen Zeiten; der Standardtarif wurde dafür in zwei explizite Restfenster normalisiert."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "priceBasis": "assumed-netto",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "kraftwerk-farchant-a-poettinger-und-14a-2026",
+      "sourcePageUrl": "https://www.kw-farchant.com/kontakt-und-hilfe/downloads/downloads-netz-veroeffentlichungspflichten",
+      "documentUrl": "https://www.kw-farchant.com/images/pdf/Preisblatt%20Netznutzungsentgelte%20ab%2001.01.2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "3.53",
+          "priceBasis": "assumed-netto",
+          "sourceQuote": "NT Arbeitspreis ct/kWh 3,53"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "8.83",
+          "priceBasis": "assumed-netto",
+          "sourceQuote": "ST Arbeitspreis ct/kWh 8,83"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "9.96",
+          "priceBasis": "assumed-netto",
+          "sourceQuote": "HT Arbeitspreis ct/kWh 9,96"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "kraftwerk-farchant-a-poettinger-und-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-06:00",
+          "sourceQuote": "Niedriglasttarif 00:00-06:00"
+        },
+        {
+          "id": "kraftwerk-farchant-a-poettinger-und-2026-standard-morning",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:00-08:00",
+          "sourceQuote": "Standardtarif alle restlichen Zeiten"
+        },
+        {
+          "id": "kraftwerk-farchant-a-poettinger-und-2026-high-day",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "08:00-19:30",
+          "sourceQuote": "Hochtarif 08:00-19:30"
+        },
+        {
+          "id": "kraftwerk-farchant-a-poettinger-und-2026-standard-evening",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "19:30-24:00",
+          "sourceQuote": "Standardtarif alle restlichen Zeiten"
+        }
+      ]
+    }
+  },
+  {
     "slug": "lew-verteilnetz",
     "name": "LEW Verteilnetz GmbH",
     "regionLabel": "Augsburg / Bayerisch-Schwaben",

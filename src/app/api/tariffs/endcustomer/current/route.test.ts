@@ -24,12 +24,72 @@ describe("GET /api/tariffs/endcustomer/current", () => {
       (item: { operatorSlug: string }) => item.operatorSlug === "nhl-netzgesellschaft-heilbronner-land-und"
     );
     const ascanetz = data.items.find((item: { operatorSlug: string }) => item.operatorSlug === "ascanetz");
+    const avuNetz = data.items.find((item: { operatorSlug: string }) => item.operatorSlug === "avu-netz");
     const mengen = data.items.find(
       (item: { operatorSlug: string }) => item.operatorSlug === "stadtwerke-mengen"
     );
 
     expect(data.summary).toMatchObject({
-      operatorCount: 17
+      operatorCount: 18
+    });
+    expect(avuNetz).toMatchObject({
+      operatorSlug: "avu-netz",
+      meteringPrices: expect.arrayContaining([
+        expect.objectContaining({
+          componentKey: "single_register_meter_eur_per_year",
+          valueNumeric: "14.55"
+        }),
+        expect.objectContaining({
+          componentKey: "dual_register_meter_eur_per_year",
+          valueNumeric: "25.50"
+        })
+      ]),
+      products: expect.arrayContaining([
+        expect.objectContaining({
+          moduleKey: "modul-1",
+          components: expect.arrayContaining([
+            expect.objectContaining({
+              componentKey: "base_price_eur_per_year",
+              valueNumeric: "70.00"
+            }),
+            expect.objectContaining({
+              componentKey: "net_fee_reduction_eur_per_year",
+              valueNumeric: "117.55"
+            })
+          ])
+        }),
+        expect.objectContaining({
+          moduleKey: "modul-3",
+          components: expect.arrayContaining([
+            expect.objectContaining({
+              componentKey: "standard_work_price_ct_per_kwh",
+              valueNumeric: "6.71"
+            }),
+            expect.objectContaining({
+              componentKey: "high_work_price_ct_per_kwh",
+              valueNumeric: "12.08"
+            }),
+            expect.objectContaining({
+              componentKey: "low_work_price_ct_per_kwh",
+              valueNumeric: "2.19"
+            })
+          ]),
+          timeWindows: expect.arrayContaining([
+            expect.objectContaining({
+              quarterKey: "Q2",
+              bandKey: "standard",
+              startsAt: "20:00",
+              endsAt: "22:00"
+            }),
+            expect.objectContaining({
+              quarterKey: "Q4",
+              bandKey: "high",
+              startsAt: "17:00",
+              endsAt: "20:00"
+            })
+          ])
+        })
+      ])
     });
     expect(ascanetz).toMatchObject({
       operatorSlug: "ascanetz",

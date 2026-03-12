@@ -815,6 +815,108 @@
     }
   },
   {
+    "slug": "avu-netz",
+    "name": "AVU Netz GmbH",
+    "regionLabel": "Gevelsberg",
+    "websiteUrl": "https://www.avu-netz.de",
+    "registrySourceIds": [
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "avu-netz-14a-2026",
+        "title": "Netzentgelte der AVU Netz GmbH 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://avu-netz.de/netznutzungsentgelte/",
+        "documentUrl": "https://avu-netz.de/wp-content/uploads/2026/03/2026-02-25-Netzentgelte-Strom-2026-1.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Die offizielle Netznutzungsentgelteseite der AVU Netz GmbH verlinkt das 2026-Preisblatt direkt auf der Betreiberdomain.",
+          "Das Preisblatt nennt fuer Niederspannung nach §14a EnWG Modul 1 mit 70,00 EUR/a Grundpreis und 117,55 EUR/a Entgeltreduzierung, Modul 2 mit 2,69 ct/kWh sowie Modul 3 mit Standardtarif 6,71 ct/kWh, Niederlasttarif 2,19 ct/kWh und Hochlasttarif 12,08 ct/kWh.",
+          "Die Modul-3-Tabelle weist Standardtarif 06:00-17:00 und 20:00-22:00 MEZ, Niederlasttarif 22:00-00:00 und 00:00-06:00 MEZ sowie Hochlasttarif 17:00-20:00 MEZ aus.",
+          "Das Preisblatt stellt klar, dass Niedriglasttarif und Hochlasttarif in 2026 ganzjaehrig gelten; die Zeitlogik ist deshalb als volljaehrige Q1-Q4-Matrix modelliert."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "avu-netz-14a-2026",
+      "sourcePageUrl": "https://avu-netz.de/netznutzungsentgelte/",
+      "documentUrl": "https://avu-netz.de/wp-content/uploads/2026/03/2026-02-25-Netzentgelte-Strom-2026-1.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "2.19",
+          "sourceQuote": "Niederlasttarif 22:00-00:00 und 00:00-06:00 2,19"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "6.71",
+          "sourceQuote": "Standardtarif 06:00-17:00 und 20:00-22:00 6,71"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "12.08",
+          "sourceQuote": "Hochlasttarif 17:00-20:00 12,08"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "avu-netz-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-06:00",
+          "sourceQuote": "Niederlasttarif 22:00-00:00 und 00:00-06:00"
+        },
+        {
+          "id": "avu-netz-2026-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:00-17:00",
+          "sourceQuote": "Standardtarif 06:00-17:00 und 20:00-22:00"
+        },
+        {
+          "id": "avu-netz-2026-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-20:00",
+          "sourceQuote": "Hochlasttarif 17:00-20:00"
+        },
+        {
+          "id": "avu-netz-2026-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "20:00-22:00",
+          "sourceQuote": "Standardtarif 06:00-17:00 und 20:00-22:00"
+        },
+        {
+          "id": "avu-netz-2026-low-late",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "22:00-24:00",
+          "sourceQuote": "Niederlasttarif 22:00-00:00 und 00:00-06:00"
+        }
+      ]
+    }
+  },
+  {
     "slug": "avacon-netz",
     "name": "Avacon Netz GmbH",
     "regionLabel": "Niedersachsen / Sachsen-Anhalt",

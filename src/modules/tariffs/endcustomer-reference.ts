@@ -91,6 +91,8 @@ const NHL_NETZGESELLSCHAFT_HEILBRONNER_LAND_SOURCE =
 const STADTWERKE_MENGEN_SOURCE =
   "https://www.mengen.de/sw-wAssets/docs/netznutzung/netzzugang/preisblaetter/02_preisblatt_nne_2026.pdf";
 const ASCANETZ_SOURCE = "https://www.ascanetz.de/wp-content/uploads/NNE_Strom-2026.pdf";
+const AVU_NETZ_SOURCE =
+  "https://avu-netz.de/wp-content/uploads/2026/03/2026-02-25-Netzentgelte-Strom-2026-1.pdf";
 
 export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
   return [
@@ -110,7 +112,8 @@ export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
     getNhfNetzgesellschaftHeilbronnFrankenEndcustomerReference(),
     getNhlNetzgesellschaftHeilbronnerLandEndcustomerReference(),
     getStadtwerkeMengenEndcustomerReference(),
-    getAscanetzEndcustomerReference()
+    getAscanetzEndcustomerReference(),
+    getAvuNetzEndcustomerReference()
   ];
 }
 
@@ -1023,6 +1026,58 @@ export function getAscanetzEndcustomerReference(): EndcustomerOperatorReference 
       }
     ],
     meteringPrices: meteringPrices("10.00", "20.30")
+  };
+}
+
+export function getAvuNetzEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "avu-netz",
+    operatorName: "AVU Netz GmbH",
+    sourceDocumentUrl: AVU_NETZ_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: AVU_NETZ_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "70.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "6.71", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "117.55", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: AVU_NETZ_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "2.69", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: AVU_NETZ_SOURCE,
+        components: modul3Components("6.71", "12.08", "2.19"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: buildFullYearWindows([
+          ["standard", ["06:00-17:00", "20:00-22:00"]],
+          ["high", ["17:00-20:00"]],
+          ["low", ["00:00-06:00", "22:00-00:00"]]
+        ])
+      }
+    ],
+    meteringPrices: meteringPrices("14.55", "25.50")
   };
 }
 

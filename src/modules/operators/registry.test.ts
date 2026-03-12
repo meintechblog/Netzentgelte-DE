@@ -1034,6 +1034,59 @@ describe("getOperatorRegistry", () => {
     expect(sourceDocument?.notes.join("\n") ?? "").toContain("Q1 + Q4");
   });
 
+  test("publishes AVU Netz as verified when the official 2026 sheet provides a full-year daily Modul-3 split", () => {
+    const registry = getOperatorRegistry();
+    const avuNetz = registry.find((entry) => entry.slug === "avu-netz");
+    const sourceDocument = avuNetz?.sourceDocuments.find((document) => document.id === "avu-netz-14a-2026");
+
+    expect(avuNetz).toMatchObject({
+      websiteUrl: "https://www.avu-netz.de",
+      currentTariff: expect.objectContaining({
+        reviewStatus: "verified",
+        validFrom: "2026-01-01",
+        sourcePageUrl: "https://avu-netz.de/netznutzungsentgelte/",
+        documentUrl: "https://avu-netz.de/wp-content/uploads/2026/03/2026-02-25-Netzentgelte-Strom-2026-1.pdf",
+        bands: expect.arrayContaining([
+          expect.objectContaining({
+            key: "NT",
+            valueCtPerKwh: "2.19"
+          }),
+          expect.objectContaining({
+            key: "ST",
+            valueCtPerKwh: "6.71"
+          }),
+          expect.objectContaining({
+            key: "HT",
+            valueCtPerKwh: "12.08"
+          })
+        ]),
+        timeWindows: expect.arrayContaining([
+          expect.objectContaining({
+            seasonLabel: "Q1-Q4 2026",
+            bandKey: "ST",
+            timeRangeLabel: "06:00-17:00"
+          }),
+          expect.objectContaining({
+            seasonLabel: "Q1-Q4 2026",
+            bandKey: "HT",
+            timeRangeLabel: "17:00-20:00"
+          }),
+          expect.objectContaining({
+            seasonLabel: "Q1-Q4 2026",
+            bandKey: "NT",
+            timeRangeLabel: "22:00-24:00"
+          })
+        ])
+      })
+    });
+    expect(sourceDocument).toMatchObject({
+      id: "avu-netz-14a-2026",
+      reviewStatus: "verified",
+      checkedAt: "2026-03-12"
+    });
+    expect(sourceDocument?.notes.join("\n") ?? "").toContain("ganzjaehrig");
+  });
+
   test("rejects tariffs that reference an unknown source document", () => {
     expect(() =>
       parseOperatorRegistry([

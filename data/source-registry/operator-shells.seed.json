@@ -205,15 +205,16 @@
     "operatorName": "AVU Netz GmbH",
     "websiteUrl": "https://www.avu-netz.de",
     "regionLabel": "Gevelsberg",
-    "shellStatus": "source-found",
+    "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "missing",
-    "reviewStatus": "pending",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
     "sourcePageUrl": "https://avu-netz.de/netznutzungsentgelte/",
-    "notes": "VNBdigital ID 227; Synced source page/document (2026-03-11), tariff extraction pending.",
+    "notes": "VNBdigital ID 227; Synced from curated operator entry (verified operator loop 2026-03-12, full-year Modul-3 daily split).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://avu-netz.de/wp-content/uploads/2026/03/2026-02-25-Netzentgelte-Strom-2026-1.pdf"
+    "documentUrl": "https://avu-netz.de/wp-content/uploads/2026/03/2026-02-25-Netzentgelte-Strom-2026-1.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "bad-honnef",

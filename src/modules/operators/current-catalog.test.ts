@@ -143,6 +143,7 @@ describe("getSeedPublishedOperators", () => {
     const lewVerteilnetz = published.find((entry) => entry.slug === "lew-verteilnetz");
     const maintalWerke = published.find((entry) => entry.slug === "maintal-werke");
     const ascanetz = published.find((entry) => entry.slug === "ascanetz");
+    const avuNetz = published.find((entry) => entry.slug === "avu-netz");
     const marktZellingen = published.find((entry) => entry.slug === "markt-zellingen");
     const megaMonheim = published.find(
       (entry) => entry.slug === "mega-monheimer-elektrizitats-und-gasversorgung"
@@ -198,7 +199,7 @@ describe("getSeedPublishedOperators", () => {
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(106);
+    expect(published).toHaveLength(107);
     expect(ascanetz).toMatchObject({
       reviewStatus: "verified",
       sourcePageUrl: "https://www.ascanetz.de/strom/preise-tarife/",
@@ -229,6 +230,44 @@ describe("getSeedPublishedOperators", () => {
           seasonLabel: "Q2-Q3 2026",
           bandKey: "ST",
           timeRangeLabel: "00:00-24:00"
+        })
+      ])
+    );
+    expect(avuNetz).toMatchObject({
+      reviewStatus: "verified",
+      sourcePageUrl: "https://avu-netz.de/netznutzungsentgelte/",
+      documentUrl: "https://avu-netz.de/wp-content/uploads/2026/03/2026-02-25-Netzentgelte-Strom-2026-1.pdf",
+      bands: expect.arrayContaining([
+        expect.objectContaining({
+          key: "ST",
+          valueCtPerKwh: "6.71"
+        }),
+        expect.objectContaining({
+          key: "HT",
+          valueCtPerKwh: "12.08"
+        }),
+        expect.objectContaining({
+          key: "NT",
+          valueCtPerKwh: "2.19"
+        })
+      ])
+    });
+    expect(avuNetz?.timeWindows).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          seasonLabel: "Q1-Q4 2026",
+          bandKey: "ST",
+          timeRangeLabel: "06:00-17:00"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q1-Q4 2026",
+          bandKey: "HT",
+          timeRangeLabel: "17:00-20:00"
+        }),
+        expect.objectContaining({
+          seasonLabel: "Q1-Q4 2026",
+          bandKey: "NT",
+          timeRangeLabel: "22:00-24:00"
         })
       ])
     );

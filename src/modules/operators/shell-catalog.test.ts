@@ -51,6 +51,16 @@ describe("getSeedOperatorShells", () => {
           lastCheckedAt: "2026-03-12"
         }),
         expect.objectContaining({
+          slug: "avu-netz",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://avu-netz.de/netznutzungsentgelte/",
+          documentUrl: "https://avu-netz.de/wp-content/uploads/2026/03/2026-02-25-Netzentgelte-Strom-2026-1.pdf",
+          lastCheckedAt: "2026-03-12"
+        }),
+        expect.objectContaining({
           slug: "stadtnetze-munster",
           shellStatus: "published",
           sourceStatus: "source-found",

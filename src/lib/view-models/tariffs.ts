@@ -205,7 +205,9 @@ export function mergeTariffRowsWithEndcustomerCatalog(
 
   return rows.map((row) => ({
     ...row,
-    endcustomerDisplay: buildEndcustomerDisplay(endcustomerByOperatorSlug.get(row.operatorSlug))
+    endcustomerDisplay:
+      buildEndcustomerDisplay(endcustomerByOperatorSlug.get(row.operatorSlug)) ??
+      buildFallbackEndcustomerDisplay(row, endcustomerByOperatorSlug.has(row.operatorSlug))
   }));
 }
 
@@ -303,6 +305,45 @@ function buildEndcustomerDisplay(entry: EndcustomerTariffCatalogEntry | undefine
         ...product.requirementBadges
       ])
       .join(" ")
+  };
+}
+
+function buildFallbackEndcustomerDisplay(row: TariffTableRow, hasCatalogEntry: boolean): EndcustomerDisplay | null {
+  if (hasCatalogEntry || !row.hasVerifiedLowVoltageProduct || !row.currentBandBadges || row.currentBandBadges.length === 0) {
+    return null;
+  }
+
+  const metricOrder: TariffBandBadge["key"][] = ["NT", "ST", "HT"];
+  const metrics = metricOrder.flatMap((bandKey) => {
+    const band = row.currentBandBadges?.find((candidate) => candidate.key === bandKey);
+
+    if (!band) {
+      return [];
+    }
+
+    return [
+      {
+        label: band.key,
+        value: `${formatGermanNumber(band.valueCtPerKwh)} ct/kWh`
+      }
+    ];
+  });
+
+  if (metrics.length === 0) {
+    return null;
+  }
+
+  return {
+    title: "Endkunden · Niederspannung",
+    products: [
+      {
+        key: "modul-3",
+        label: "Modul 3",
+        metrics,
+        requirementBadges: []
+      }
+    ],
+    searchText: ["Modul 3", ...metrics.flatMap((metric) => [metric.label, metric.value])].join(" ")
   };
 }
 

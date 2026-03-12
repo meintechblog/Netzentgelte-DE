@@ -587,4 +587,29 @@ describe("buildQuarterlyTariffMatrix", () => {
     expect(mergeTariffRowsWithEndcustomerCatalog([row!], unverifiedCatalog)[0]?.endcustomerDisplay).toBeNull();
     expect(mergeTariffRowsWithEndcustomerCatalog([row!], missingRequirementCatalog)[0]?.endcustomerDisplay).toBeNull();
   });
+
+  test("falls back to a Modul-3 endcustomer display for verified operators without a full endcustomer catalog", () => {
+    const duesseldorf = mergeTariffRowsWithEndcustomerCatalog(
+      getRegistryTariffRows(getSeedPublishedOperators()),
+      getSeedEndcustomerTariffCatalog()
+    ).find((row) => row.operatorSlug === "netz-duesseldorf");
+
+    expect(duesseldorf?.hasVerifiedLowVoltageProduct).toBe(true);
+    expect(duesseldorf?.endcustomerDisplay).toEqual(
+      expect.objectContaining({
+        title: "Endkunden · Niederspannung",
+        products: [
+          expect.objectContaining({
+            key: "modul-3",
+            label: "Modul 3",
+            metrics: [
+              { label: "NT", value: "3,16 ct/kWh" },
+              { label: "ST", value: "7,91 ct/kWh" },
+              { label: "HT", value: "8,19 ct/kWh" }
+            ]
+          })
+        ]
+      })
+    );
+  });
 });

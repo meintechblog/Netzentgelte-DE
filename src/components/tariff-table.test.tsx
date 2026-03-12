@@ -33,10 +33,14 @@ describe("TariffTable", () => {
     );
     expect(screen.getByText(/Zuletzt geprüft 2026-03-09/)).toBeInTheDocument();
     expect(screen.queryByText("Quelle & Prüfstatus anzeigen")).not.toBeInTheDocument();
-    expect(screen.getByText("Prüfstatus: Geprüft")).toBeInTheDocument();
-    expect(screen.getByText("Regelstatus: Regelkonform")).toBeInTheDocument();
+    expect(screen.queryByText("Prüfstatus: Geprüft")).not.toBeInTheDocument();
+    expect(screen.queryByText("Sichtbarkeit: Veröffentlicht")).not.toBeInTheDocument();
+    expect(screen.queryByText("Regelstatus: Regelkonform")).not.toBeInTheDocument();
     expect(screen.queryByText(/Quellenstatus:/)).not.toBeInTheDocument();
     expect(screen.queryByText("Gespeicherte Quellseite")).not.toBeInTheDocument();
+    expect(
+      screen.queryByLabelText("Stadtwerke Schwäbisch Hall GmbH Veröffentlichungsstatus")
+    ).not.toBeInTheDocument();
     const endcustomerToggle = screen.getByRole("button", {
       name: "Endkunden · Niederspannung verifiziertes Niederspannungsprodukt Bereich aufklappen"
     });
@@ -133,7 +137,9 @@ describe("TariffTable", () => {
     render(<TariffTable rows={[schwaebischHall]} />);
 
     expect(screen.queryByRole("button", { name: "Quelle & Prüfstatus anzeigen" })).not.toBeInTheDocument();
-    expect(screen.getByText("Prüfstatus: Geprüft")).toBeInTheDocument();
+    expect(screen.queryByText("Prüfstatus: Geprüft")).not.toBeInTheDocument();
+    expect(screen.queryByText("Sichtbarkeit: Veröffentlicht")).not.toBeInTheDocument();
+    expect(screen.queryByText("Regelstatus: Regelkonform")).not.toBeInTheDocument();
     expect(screen.queryByText(/Quellenstatus:/)).not.toBeInTheDocument();
     expect(screen.getByText("Seiten-Snapshot 2026-03-09")).toBeInTheDocument();
     expect(screen.getByText("Dokumenten-Snapshot 2026-03-09")).toBeInTheDocument();
@@ -290,5 +296,35 @@ describe("TariffTable", () => {
     expect(screen.getByText("Problemgrund")).toBeInTheDocument();
     expect(screen.getByText(/aktuell nur vorläufige oder widersprüchliche Angaben/i)).toBeInTheDocument();
     expect(screen.getByText("Noch kein vollständiger Tarifdatensatz veröffentlicht")).toBeInTheDocument();
+  });
+
+  test("renders fallback Modul-3 details for verified operators without a full extracted endcustomer catalog", () => {
+    const duesseldorf = mergeTariffRowsWithEndcustomerCatalog(
+      getRegistryTariffRows(getSeedPublishedOperators()),
+      getSeedEndcustomerTariffCatalog()
+    ).find((row) => row.operatorSlug === "netz-duesseldorf");
+
+    render(<TariffTable rows={[duesseldorf!]} />);
+
+    expect(screen.getByText("Netzgesellschaft Düsseldorf mbH")).toBeInTheDocument();
+    expect(screen.queryByText("Prüfstatus: Geprüft")).not.toBeInTheDocument();
+    expect(screen.queryByText("Sichtbarkeit: Veröffentlicht")).not.toBeInTheDocument();
+    expect(screen.queryByText("Regelstatus: Regelkonform")).not.toBeInTheDocument();
+    expect(
+      screen.queryByLabelText("Netzgesellschaft Düsseldorf mbH Veröffentlichungsstatus")
+    ).not.toBeInTheDocument();
+
+    const endcustomerToggle = screen.getByRole("button", {
+      name: "Endkunden · Niederspannung verifiziertes Niederspannungsprodukt Bereich aufklappen"
+    });
+
+    fireEvent.click(endcustomerToggle);
+
+    expect(screen.getByText("Modul 3")).toBeInTheDocument();
+    expect(screen.getByText("3,16 ct/kWh")).toBeInTheDocument();
+    expect(screen.getByText("7,91 ct/kWh")).toBeInTheDocument();
+    expect(screen.getByText("8,19 ct/kWh")).toBeInTheDocument();
+    expect(screen.queryByText("Modul 1")).not.toBeInTheDocument();
+    expect(screen.queryByText("Modul 2")).not.toBeInTheDocument();
   });
 });

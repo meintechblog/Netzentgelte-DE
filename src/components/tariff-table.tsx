@@ -151,6 +151,42 @@ function hasVerifiedLowVoltageProduct(row: TariffTableRow) {
   return row.hasVerifiedLowVoltageProduct ?? row.reviewStatus === "verified";
 }
 
+function hasCleanOperatorStatus(row: TariffTableRow) {
+  return (
+    row.reviewStatus === "verified" &&
+    row.publicationStatus === "verified" &&
+    row.compliance.status === "compliant"
+  );
+}
+
+function shouldShowReviewPills(row: TariffTableRow) {
+  return !hasCleanOperatorStatus(row);
+}
+
+function shouldShowSourceReviewInline(row: TariffTableRow) {
+  return (
+    shouldShowReviewPills(row) ||
+    Boolean(row.latestPageSnapshotFetchedAt) ||
+    Boolean(row.latestDocumentSnapshotFetchedAt) ||
+    Boolean(row.latestPageSnapshotHash) ||
+    Boolean(row.latestDocumentSnapshotHash) ||
+    Boolean(row.pageArtifactApiUrl) ||
+    Boolean(row.documentArtifactApiUrl)
+  );
+}
+
+function shouldShowLowVoltageStatusPanel(row: TariffTableRow) {
+  if (!hasVerifiedLowVoltageProduct(row)) {
+    return true;
+  }
+
+  if (!row.endcustomerDisplay) {
+    return true;
+  }
+
+  return row.compliance.status !== "compliant" || Boolean(row.statusSummary) || Boolean(row.missingInformation?.length);
+}
+
 function renderQuarterCard(
   row: TariffTableRow,
   quarter: TariffTableRow["quarterMatrix"][number],
@@ -300,70 +336,81 @@ export function TariffTable({ rows }: TariffTableProps) {
                     {row.checkedAt ? `Zuletzt geprüft ${row.checkedAt}` : "Noch nicht geprüft"}
                   </span>
                   <span className="table-muted">{`Quelle ${row.sourceSlug}`}</span>
-                  <div className="source-review-inline">
-                    <span className={`review-pill ${row.reviewStatus}`}>
-                      {`Prüfstatus: ${getReviewStatusLabel(row)}`}
-                    </span>
-                    <span className={getPublicationStatusClass(row)}>
-                      {`Sichtbarkeit: ${getPublicationStatusLabel(row)}`}
-                    </span>
-                    <span className={getComplianceStatusClass(row)}>
-                      {`Regelstatus: ${getComplianceStatusLabel(row)}`}
-                    </span>
-                    {row.latestPageSnapshotFetchedAt ? (
-                      <span className="table-muted">
-                        {`Seiten-Snapshot ${row.latestPageSnapshotFetchedAt.slice(0, 10)}`}
-                      </span>
-                    ) : null}
-                    {row.latestDocumentSnapshotFetchedAt ? (
-                      <span className="table-muted">
-                        {`Dokumenten-Snapshot ${row.latestDocumentSnapshotFetchedAt.slice(0, 10)}`}
-                      </span>
-                    ) : null}
-                    {row.latestPageSnapshotHash ? (
-                      <span className="table-muted">{`Seite Hash ${row.latestPageSnapshotHash}`}</span>
-                    ) : null}
-                    {row.latestDocumentSnapshotHash ? (
-                      <span className="table-muted">{`Dokument Hash ${row.latestDocumentSnapshotHash}`}</span>
-                    ) : null}
-                    {row.pageArtifactApiUrl ? (
-                      <a
-                        className="source-link"
-                        href={row.pageArtifactApiUrl}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        Gespeicherte Quellseite
-                      </a>
-                    ) : null}
-                    {row.documentArtifactApiUrl ? (
-                      <a
-                        className="source-link"
-                        href={row.documentArtifactApiUrl}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        Gespeichertes Dokument
-                      </a>
-                    ) : null}
-                  </div>
-                  <section className="operator-compliance-panel" aria-label={`${row.operatorName} Veröffentlichungsstatus`}>
-                    <strong>Verifiziertes Niederspannungsprodukt</strong>
-                    <ul className="operator-compliance-panel__list">
-                      <li>
-                        <span className="operator-compliance-panel__title">
-                          {hasVerifiedLowVoltageProduct(row)
-                            ? "Verifiziertes Niederspannungsprodukt vorhanden"
-                            : "Verifiziertes Niederspannungsprodukt fehlt"}
+                  {shouldShowSourceReviewInline(row) ? (
+                    <div className="source-review-inline">
+                      {shouldShowReviewPills(row) ? (
+                        <>
+                          <span className={`review-pill ${row.reviewStatus}`}>
+                            {`Prüfstatus: ${getReviewStatusLabel(row)}`}
+                          </span>
+                          <span className={getPublicationStatusClass(row)}>
+                            {`Sichtbarkeit: ${getPublicationStatusLabel(row)}`}
+                          </span>
+                          <span className={getComplianceStatusClass(row)}>
+                            {`Regelstatus: ${getComplianceStatusLabel(row)}`}
+                          </span>
+                        </>
+                      ) : null}
+                      {row.latestPageSnapshotFetchedAt ? (
+                        <span className="table-muted">
+                          {`Seiten-Snapshot ${row.latestPageSnapshotFetchedAt.slice(0, 10)}`}
                         </span>
-                        <span>
-                          {hasVerifiedLowVoltageProduct(row)
-                            ? "Die Niederspannungsdaten sind vollständig strukturiert und freigegeben."
-                            : "Der Betreiber bleibt sichtbar, aber die Niederspannungsdaten sind noch nicht vollständig verifiziert."}
+                      ) : null}
+                      {row.latestDocumentSnapshotFetchedAt ? (
+                        <span className="table-muted">
+                          {`Dokumenten-Snapshot ${row.latestDocumentSnapshotFetchedAt.slice(0, 10)}`}
                         </span>
-                      </li>
-                    </ul>
-                  </section>
+                      ) : null}
+                      {row.latestPageSnapshotHash ? (
+                        <span className="table-muted">{`Seite Hash ${row.latestPageSnapshotHash}`}</span>
+                      ) : null}
+                      {row.latestDocumentSnapshotHash ? (
+                        <span className="table-muted">{`Dokument Hash ${row.latestDocumentSnapshotHash}`}</span>
+                      ) : null}
+                      {row.pageArtifactApiUrl ? (
+                        <a
+                          className="source-link"
+                          href={row.pageArtifactApiUrl}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          Gespeicherte Quellseite
+                        </a>
+                      ) : null}
+                      {row.documentArtifactApiUrl ? (
+                        <a
+                          className="source-link"
+                          href={row.documentArtifactApiUrl}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          Gespeichertes Dokument
+                        </a>
+                      ) : null}
+                    </div>
+                  ) : null}
+                  {shouldShowLowVoltageStatusPanel(row) ? (
+                    <section
+                      className="operator-compliance-panel"
+                      aria-label={`${row.operatorName} Veröffentlichungsstatus`}
+                    >
+                      <strong>Verifiziertes Niederspannungsprodukt</strong>
+                      <ul className="operator-compliance-panel__list">
+                        <li>
+                          <span className="operator-compliance-panel__title">
+                            {hasVerifiedLowVoltageProduct(row)
+                              ? "Verifiziertes Niederspannungsprodukt vorhanden"
+                              : "Verifiziertes Niederspannungsprodukt fehlt"}
+                          </span>
+                          <span>
+                            {hasVerifiedLowVoltageProduct(row)
+                              ? "Die Niederspannungsdaten sind vollständig strukturiert und freigegeben."
+                              : "Der Betreiber bleibt sichtbar, aber die Niederspannungsdaten sind noch nicht vollständig verifiziert."}
+                          </span>
+                        </li>
+                      </ul>
+                    </section>
+                  ) : null}
                   {row.missingInformation && row.missingInformation.length > 0 ? (
                     <section className="operator-compliance-panel" aria-label={`${row.operatorName} fehlende Informationen`}>
                       <strong>Fehlende Informationen</strong>

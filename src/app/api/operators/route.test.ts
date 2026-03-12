@@ -16,9 +16,16 @@ describe("GET /api/operators", () => {
       complianceViolationCount: expect.any(Number),
       complianceNotEvaluatedCount: expect.any(Number)
     });
-    expect(data.items).toHaveLength(101);
+    expect(data.items).toHaveLength(102);
     expect(data.items).toEqual(
       expect.arrayContaining([
+        expect.objectContaining({
+          slug: "netze-bad-langensalza",
+          reviewStatus: "verified",
+          complianceStatus: "violation",
+          complianceViolationCount: 1,
+          priceBasis: "assumed-netto"
+        }),
         expect.objectContaining({
           slug: "nahwerk-energie-und",
           reviewStatus: "verified",

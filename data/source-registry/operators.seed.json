@@ -8105,6 +8105,126 @@
     }
   },
   {
+    "slug": "netze-bad-langensalza",
+    "name": "NETZE Bad Langensalza GmbH",
+    "regionLabel": "Bad Langensalza",
+    "websiteUrl": "https://nbl-badlangensalza.de",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "netze-bad-langensalza-14a-2026",
+        "title": "NETZE Bad Langensalza Preisblatt ab 01.01.2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://nbl-badlangensalza.de/netznutzung/netzentgelte/strom/",
+        "documentUrl": "https://nbl-badlangensalza.de/storage/sites/8/2025/12/endgueltiges-Preisblatt_Strom_ab-01.01.2026_Version-3_13.01.2026.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Strom-Netzentgelteseite der NETZE Bad Langensalza GmbH mit direktem Link auf das finale Preisblatt 2026.",
+          "Das Preisblatt nennt fuer Modul 3 ausdruecklich ST 8,05 ct/kWh, HT 16,08 ct/kWh und NT 3,22 ct/kWh.",
+          "Die Anwendungszeiten fuer Modul 3 sind im Dokument explizit auf Q1 und Q4 begrenzt; Q2 und Q3 werden deshalb fuer die Quartalsdarstellung als verifizierte ST-Annahme gefuehrt."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "netze-bad-langensalza-14a-2026",
+      "sourcePageUrl": "https://nbl-badlangensalza.de/netznutzung/netzentgelte/strom/",
+      "documentUrl": "https://nbl-badlangensalza.de/storage/sites/8/2025/12/endgueltiges-Preisblatt_Strom_ab-01.01.2026_Version-3_13.01.2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "3.22",
+          "sourceQuote": "Niedriglasttarifstufe (NT) 3,22"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "8.05",
+          "sourceQuote": "Standardtarifstufe (ST) 8,05"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "16.08",
+          "sourceQuote": "Hochlasttarifstufe (HT) 16,08"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "netze-bad-langensalza-2026-q1q4-standard-morning",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:00-10:15",
+          "sourceQuote": "Standardtarifstufe (ST) 06:00 - 10:15"
+        },
+        {
+          "id": "netze-bad-langensalza-2026-q1q4-high-late-morning",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "10:15-12:30",
+          "sourceQuote": "Hochlasttarifstufe (HT) 10:15 - 12:30"
+        },
+        {
+          "id": "netze-bad-langensalza-2026-q1q4-standard-afternoon",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "12:30-17:30",
+          "sourceQuote": "Standardtarifstufe (ST) 12:30 - 17:30"
+        },
+        {
+          "id": "netze-bad-langensalza-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:30-18:30",
+          "sourceQuote": "Hochlasttarifstufe (HT) 17:30 - 18:30"
+        },
+        {
+          "id": "netze-bad-langensalza-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "18:30-22:00",
+          "sourceQuote": "Standardtarifstufe (ST) 18:30 - 22:00"
+        },
+        {
+          "id": "netze-bad-langensalza-2026-q1q4-low-night-late",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "22:00-24:00",
+          "sourceQuote": "Niedriglasttarifstufe (NT) 22:00 - 00:00"
+        },
+        {
+          "id": "netze-bad-langensalza-2026-q1q4-low-night-early",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-06:00",
+          "sourceQuote": "Niedriglasttarifstufe (NT) 00:00 - 06:00"
+        }
+      ]
+    }
+  },
+  {
     "slug": "netze-bw",
     "name": "Netze BW GmbH",
     "regionLabel": "Baden-Württemberg",

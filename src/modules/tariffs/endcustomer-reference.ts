@@ -82,6 +82,8 @@ const WESERNETZ_BREMERHAVEN_SOURCE =
   "https://www.wesernetz.de/-/media/wesernetz/downloads-aktuell/fuer-partner/energielieferanten/stromnetz/stromentgelte/bhv/nenu_bhv_108_007_preisblatt_5_strom_paragraph_14a_enwg_2026_web.pdf";
 const WESTNETZ_SOURCE =
   "https://www.westnetz.de/content/dam/revu-global/westnetz/documents/ueber-westnetz/unser-netz/netzentgelte-strom/preisblaetter-westnetz-strom-01-01-2026.pdf";
+const NETZE_BAD_LANGENSALZA_SOURCE =
+  "https://nbl-badlangensalza.de/storage/sites/8/2025/12/endgueltiges-Preisblatt_Strom_ab-01.01.2026_Version-3_13.01.2026.pdf";
 
 export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
   return [
@@ -96,7 +98,8 @@ export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
     getTwsNetzEndcustomerReference(),
     getWesernetzBremenEndcustomerReference(),
     getWesernetzBremerhavenEndcustomerReference(),
-    getWestnetzEndcustomerReference()
+    getWestnetzEndcustomerReference(),
+    getNetzeBadLangensalzaEndcustomerReference()
   ];
 }
 
@@ -745,6 +748,59 @@ export function getWestnetzEndcustomerReference(): EndcustomerOperatorReference 
   };
 }
 
+export function getNetzeBadLangensalzaEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "netze-bad-langensalza",
+    operatorName: "NETZE Bad Langensalza GmbH",
+    sourceDocumentUrl: NETZE_BAD_LANGENSALZA_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: NETZE_BAD_LANGENSALZA_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "65.70", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "8.05", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "127.60", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: NETZE_BAD_LANGENSALZA_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "3.22", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: NETZE_BAD_LANGENSALZA_SOURCE,
+        components: modul3Components("8.05", "16.08", "3.22"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: [
+          ...buildNetzeBadLangensalzaQuarterWindows("Q1"),
+          { quarterKey: "Q2", bandKey: "standard", startsAt: "00:00", endsAt: "24:00" },
+          { quarterKey: "Q3", bandKey: "standard", startsAt: "00:00", endsAt: "24:00" },
+          ...buildNetzeBadLangensalzaQuarterWindows("Q4")
+        ]
+      }
+    ],
+    meteringPrices: meteringPrices("9.60", "16.81")
+  };
+}
+
 function defaultModul1Requirements(): EndcustomerTariffRequirement[] {
   return [
     { requirementKey: "default_if_no_choice", requirementValue: "true" },
@@ -789,6 +845,20 @@ function buildHallQuarterWindows(quarterKey: "Q1" | "Q2" | "Q4"): EndcustomerTar
     { quarterKey, bandKey: "standard", startsAt: "14:00", endsAt: "18:00" },
     { quarterKey, bandKey: "high", startsAt: "18:00", endsAt: "20:00" },
     { quarterKey, bandKey: "standard", startsAt: "20:00", endsAt: "22:00" },
+    { quarterKey, bandKey: "low", startsAt: "22:00", endsAt: "24:00" }
+  ];
+}
+
+function buildNetzeBadLangensalzaQuarterWindows(
+  quarterKey: "Q1" | "Q4"
+): EndcustomerTariffTimeWindow[] {
+  return [
+    { quarterKey, bandKey: "low", startsAt: "00:00", endsAt: "06:00" },
+    { quarterKey, bandKey: "standard", startsAt: "06:00", endsAt: "10:15" },
+    { quarterKey, bandKey: "high", startsAt: "10:15", endsAt: "12:30" },
+    { quarterKey, bandKey: "standard", startsAt: "12:30", endsAt: "17:30" },
+    { quarterKey, bandKey: "high", startsAt: "17:30", endsAt: "18:30" },
+    { quarterKey, bandKey: "standard", startsAt: "18:30", endsAt: "22:00" },
     { quarterKey, bandKey: "low", startsAt: "22:00", endsAt: "24:00" }
   ];
 }

@@ -187,13 +187,25 @@ describe("getSeedPublishedOperators", () => {
     const kitzingen = published.find(
       (entry) => entry.slug === "licht-kraft-und-wasserwerke-kitzingen"
     );
+    const badLangensalza = published.find((entry) => entry.slug === "netze-bad-langensalza");
     const luckenwalde = published.find(
       (entry) => entry.slug === "stadtische-betriebswerke-luckenwalde"
     );
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(101);
+    expect(published).toHaveLength(102);
+    expect(badLangensalza).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://nbl-badlangensalza.de/netznutzung/netzentgelte/strom/",
+      documentUrl:
+        "https://nbl-badlangensalza.de/storage/sites/8/2025/12/endgueltiges-Preisblatt_Strom_ab-01.01.2026_Version-3_13.01.2026.pdf",
+      priceBasis: "assumed-netto",
+      compliance: expect.objectContaining({
+        status: "violation"
+      })
+    });
     expect(nahwerk).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",

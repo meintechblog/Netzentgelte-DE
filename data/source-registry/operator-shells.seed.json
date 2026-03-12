@@ -4743,12 +4743,13 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://nbl-badlangensalza.de",
-    "notes": "VNBdigital ID 761",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://nbl-badlangensalza.de/netznutzung/netzentgelte/strom/",
+    "notes": "VNBdigital ID 761; Synced from curated operator entry (verified operator loop 2026-03-12, Q2/Q3 assumed ST).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://nbl-badlangensalza.de"
+    "documentUrl": "https://nbl-badlangensalza.de/storage/sites/8/2025/12/endgueltiges-Preisblatt_Strom_ab-01.01.2026_Version-3_13.01.2026.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "netze-bw",

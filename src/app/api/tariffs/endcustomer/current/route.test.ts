@@ -14,9 +14,65 @@ describe("GET /api/tariffs/endcustomer/current", () => {
     const hall = data.items.find(
       (item: { operatorSlug: string }) => item.operatorSlug === "stadtwerke-schwaebisch-hall"
     );
+    const badLangensalza = data.items.find(
+      (item: { operatorSlug: string }) => item.operatorSlug === "netze-bad-langensalza"
+    );
 
     expect(data.summary).toMatchObject({
-      operatorCount: 12
+      operatorCount: 13
+    });
+    expect(badLangensalza).toMatchObject({
+      operatorSlug: "netze-bad-langensalza",
+      meteringPrices: expect.arrayContaining([
+        expect.objectContaining({
+          componentKey: "single_register_meter_eur_per_year",
+          valueNumeric: "9.60"
+        }),
+        expect.objectContaining({
+          componentKey: "dual_register_meter_eur_per_year",
+          valueNumeric: "16.81"
+        })
+      ]),
+      products: expect.arrayContaining([
+        expect.objectContaining({
+          moduleKey: "modul-1",
+          components: expect.arrayContaining([
+            expect.objectContaining({
+              componentKey: "base_price_eur_per_year",
+              valueNumeric: "65.70"
+            }),
+            expect.objectContaining({
+              componentKey: "net_fee_reduction_eur_per_year",
+              valueNumeric: "127.60"
+            })
+          ])
+        }),
+        expect.objectContaining({
+          moduleKey: "modul-3",
+          components: expect.arrayContaining([
+            expect.objectContaining({
+              componentKey: "standard_work_price_ct_per_kwh",
+              valueNumeric: "8.05"
+            }),
+            expect.objectContaining({
+              componentKey: "high_work_price_ct_per_kwh",
+              valueNumeric: "16.08"
+            }),
+            expect.objectContaining({
+              componentKey: "low_work_price_ct_per_kwh",
+              valueNumeric: "3.22"
+            })
+          ]),
+          timeWindows: expect.arrayContaining([
+            expect.objectContaining({
+              quarterKey: "Q2",
+              bandKey: "standard",
+              startsAt: "00:00",
+              endsAt: "24:00"
+            })
+          ])
+        })
+      ])
     });
     expect(hall).toMatchObject({
       operatorSlug: "stadtwerke-schwaebisch-hall",

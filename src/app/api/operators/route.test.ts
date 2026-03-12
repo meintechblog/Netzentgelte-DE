@@ -16,7 +16,7 @@ describe("GET /api/operators", () => {
       complianceViolationCount: expect.any(Number),
       complianceNotEvaluatedCount: expect.any(Number)
     });
-    expect(data.items).toHaveLength(88);
+    expect(data.items).toHaveLength(89);
     expect(data.items).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -30,6 +30,13 @@ describe("GET /api/operators", () => {
           reviewStatus: "verified",
           complianceStatus: "compliant",
           complianceViolationCount: 0
+        }),
+        expect.objectContaining({
+          slug: "leitungspartner",
+          reviewStatus: "verified",
+          complianceStatus: "compliant",
+          complianceViolationCount: 0,
+          priceBasis: "assumed-netto"
         }),
         expect.objectContaining({
           slug: "alliander-netz-heinsberg",

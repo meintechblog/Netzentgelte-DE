@@ -6047,6 +6047,104 @@
     }
   },
   {
+    "slug": "leitungspartner",
+    "name": "Leitungspartner GmbH",
+    "regionLabel": "Düren",
+    "websiteUrl": "https://www.leitungspartner.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "leitungspartner-14a-2026",
+        "title": "Preisblatt Netzentgelte Strom 2026",
+        "documentType": "pdf",
+        "priceBasis": "netto",
+        "sourcePageUrl": "https://www.leitungspartner.de/fuer-partner/lieferantenrahmenvertraege/",
+        "documentUrl": "https://www.leitungspartner.de/download/preisblatt-netzentgelte/",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Die offizielle Partnerseite der Leitungspartner verlinkt das aktuelle Strom-Preisblatt im Download-Bereich direkt als offizielles Dokument.",
+          "Das ausgelieferte PDF ist fuer das Netzgebiet Leitungspartner GmbH mit 'Gueltig ab 01.01.2026' gekennzeichnet.",
+          "Preisblatt 8 nennt fuer Modul 3 in Niederspannung netto ST 7,23 ct/kWh, NT 0,73 ct/kWh und HT 11,66 ct/kWh sowie die taeglichen Zeitfenster ohne unbelegte Slots."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "priceBasis": "netto",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "leitungspartner-14a-2026",
+      "sourcePageUrl": "https://www.leitungspartner.de/fuer-partner/lieferantenrahmenvertraege/",
+      "documentUrl": "https://www.leitungspartner.de/download/preisblatt-netzentgelte/",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedriglasttarifstufe",
+          "valueCtPerKwh": "0.73",
+          "priceBasis": "netto",
+          "sourceQuote": "Modul 3 - taeglich 0:00 - 6:30 Uhr (Niedriglasttarifstufe) 0,73 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "7.23",
+          "priceBasis": "netto",
+          "sourceQuote": "Modul 3 - taeglich 6:30 - 16:00 Uhr und 20:00 - 24:00 Uhr (Standardlasttarifstufe) 7,23 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochlasttarifstufe",
+          "valueCtPerKwh": "11.66",
+          "priceBasis": "netto",
+          "sourceQuote": "Modul 3 - taeglich 16:00 - 20:00 Uhr (Hochlasttarifstufe) 11,66 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "leitungspartner-2026-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-06:30",
+          "sourceQuote": "Modul 3 - taeglich 0:00 - 6:30 Uhr (Niedriglasttarifstufe)"
+        },
+        {
+          "id": "leitungspartner-2026-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:30-16:00",
+          "sourceQuote": "Modul 3 - taeglich 6:30 - 16:00 Uhr und 20:00 - 24:00 Uhr (Standardlasttarifstufe)"
+        },
+        {
+          "id": "leitungspartner-2026-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "16:00-20:00",
+          "sourceQuote": "Modul 3 - taeglich 16:00 - 20:00 Uhr (Hochlasttarifstufe)"
+        },
+        {
+          "id": "leitungspartner-2026-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "20:00-24:00",
+          "sourceQuote": "Modul 3 - taeglich 6:30 - 16:00 Uhr und 20:00 - 24:00 Uhr (Standardlasttarifstufe)"
+        }
+      ]
+    }
+  },
+  {
     "slug": "lew-verteilnetz",
     "name": "LEW Verteilnetz GmbH",
     "regionLabel": "Augsburg / Bayerisch-Schwaben",

@@ -4269,12 +4269,12 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.leitungspartner.de/",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://www.leitungspartner.de/fuer-partner/lieferantenrahmenvertraege/",
     "notes": "VNBdigital ID 7658",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.leitungspartner.de/"
+    "documentUrl": "https://www.leitungspartner.de/download/preisblatt-netzentgelte/"
   },
   {
     "slug": "lew-verteilnetz",

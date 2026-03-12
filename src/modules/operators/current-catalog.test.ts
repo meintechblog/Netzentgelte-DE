@@ -170,13 +170,14 @@ describe("getSeedPublishedOperators", () => {
       (entry) => entry.slug === "kraftwerk-farchant-a-poettinger-und"
     );
     const leinenetz = published.find((entry) => entry.slug === "leinenetz");
+    const leitungspartner = published.find((entry) => entry.slug === "leitungspartner");
     const luckenwalde = published.find(
       (entry) => entry.slug === "stadtische-betriebswerke-luckenwalde"
     );
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(88);
+    expect(published).toHaveLength(89);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -278,6 +279,16 @@ describe("getSeedPublishedOperators", () => {
       sourcePageUrl: "https://www.leinenetz.de/netzbetrieb/strom/netzentgelte-strom-1",
       documentUrl:
         "https://www.leinenetz.de/_Resources/Persistent/f/b/5/0/fb5018a483982b655aa147d40749ac5d4df4c5b0/2025-12-10%2C%20endg%C3%BCltiges%20PB_STROM_LNG_2026.pdf",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
+    expect(leitungspartner).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.leitungspartner.de/fuer-partner/lieferantenrahmenvertraege/",
+      documentUrl: "https://www.leitungspartner.de/download/preisblatt-netzentgelte/",
+      priceBasis: "assumed-netto",
       compliance: expect.objectContaining({
         status: "compliant"
       })

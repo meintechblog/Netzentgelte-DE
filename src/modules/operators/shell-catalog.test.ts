@@ -113,6 +113,15 @@ describe("getSeedOperatorShells", () => {
             "https://www.leinenetz.de/_Resources/Persistent/f/b/5/0/fb5018a483982b655aa147d40749ac5d4df4c5b0/2025-12-10%2C%20endg%C3%BCltiges%20PB_STROM_LNG_2026.pdf"
         }),
         expect.objectContaining({
+          slug: "leitungspartner",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://www.leitungspartner.de/fuer-partner/lieferantenrahmenvertraege/",
+          documentUrl: "https://www.leitungspartner.de/download/preisblatt-netzentgelte/"
+        }),
+        expect.objectContaining({
           slug: "stadtische-betriebswerke-luckenwalde",
           shellStatus: "published",
           sourceStatus: "source-found",

@@ -153,16 +153,15 @@ pnpm automation:verified-operator-loop:dry-run
 pnpm automation:verified-operator-loop
 ```
 
-Die stuedliche Codex-Definition liegt unter `/Users/hulki/.codex/automations/backfill-koordinator/automation.toml`.
+Die stuedliche Codex-Definition liegt unter `/Users/hulki/.codex/automations/verified-operator-loop/automation.toml`.
 
 Pflicht-Deploy-Reihenfolge bei gruener Verifikation und echten integrierten Aenderungen:
 
 1. Git commit + push
 2. Sync auf den LXC und Neustart dort
 3. `bash scripts/public/deploy-public-static.sh`
-4. Nach dem LXC-Deploy Import-Sync ausfuehren, damit neue Eintraege sofort ueber die Dev-API nutzbar sind:
-   - `pnpm registry:import`
-   - `pnpm shells:import`
+4. Nach dem LXC-Deploy Import-Sync nur dann ausfuehren, wenn auf dem Host `DATABASE_URL` gesetzt ist. Ohne Datenbank ist das kein Fehler und wird bewusst uebersprungen:
+   - `if [ -n "$DATABASE_URL" ]; then pnpm registry:import && pnpm shells:import; fi`
 5. Live-Checks fuer:
    - `http://192.168.3.178:3000`
    - Root-HTML muss CSS unter `/_next/static/css/` referenzieren, nicht unter `/netzentgelte/_next/`

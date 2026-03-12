@@ -80,13 +80,17 @@ curl -fsS http://192.168.3.178:3000 | rg 'href="/_next/static/css/'
 curl -fsS http://192.168.3.178:3000/api/tariffs/current | rg 'timeWindows|18:00-21:00|n-ergie-netz'
 ```
 
-Nach dem Code-Deploy fuer neue Registry-/Shell-Eintraege:
+Nach dem Code-Deploy fuer neue Registry-/Shell-Eintraege, aber nur auf Hosts mit gesetztem `DATABASE_URL`:
 
 ```bash
 ssh root@192.168.3.178 '
   cd /root/netzentgelte-de &&
-  pnpm registry:import &&
-  pnpm shells:import
+  if [ -n "$DATABASE_URL" ]; then
+    pnpm registry:import &&
+    pnpm shells:import
+  else
+    echo "Skipping registry import: DATABASE_URL not set."
+  fi
 '
 ```
 

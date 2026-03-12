@@ -14,6 +14,7 @@ describe("GET /api/operators/pending", () => {
     });
     expect(data.items.length).toBeGreaterThan(20);
     expect(data.items.find((item: { slug: string }) => item.slug === "mainnetz")).toBeUndefined();
+    expect(data.items.find((item: { slug: string }) => item.slug === "mainsite-und")).toBeUndefined();
     expect(data.items.find((item: { slug: string }) => item.slug === "netze-bw")).toBeUndefined();
     expect(data.items.find((item: { slug: string }) => item.slug === "50hertz-transmission")).toBeUndefined();
     expect(data.items[0]).not.toHaveProperty("bands");

@@ -170,6 +170,16 @@ describe("getSeedOperatorShells", () => {
             "https://www.mainnetz.com/Veroeffentlichungspflichten/Netzzugang-Entgelte/20251222-Mainnetz-PreisblaetterStrom-2026-final.pdf"
         }),
         expect.objectContaining({
+          slug: "mainsite-und",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://www.mainsite.de/de/energieversorgung.html",
+          documentUrl:
+            "https://www.mainsite.de/files/mainsite-files/Netz%20der%20allgemeinen%20Versorgung/Zusammenfassung%20Preisblatt%202026%20Mainsite.pdf"
+        }),
+        expect.objectContaining({
           slug: "licht-kraft-und-wasserwerke-kitzingen",
           shellStatus: "published",
           sourceStatus: "source-found",

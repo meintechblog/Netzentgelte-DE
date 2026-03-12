@@ -6866,6 +6866,114 @@
     }
   },
   {
+    "slug": "mainsite-und",
+    "name": "Mainsite GmbH & Co.KG",
+    "regionLabel": "Obernburg",
+    "websiteUrl": "https://www.mainsite.de/de/energieversorgung.html",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "mainsite-und-14a-2026",
+        "title": "Preisblatt Netznutzung Strom der Mainsite GmbH & Co. KG, gueltig ab 01.01.2026",
+        "documentType": "pdf",
+        "priceBasis": "netto",
+        "sourcePageUrl": "https://www.mainsite.de/de/energieversorgung.html",
+        "documentUrl": "https://www.mainsite.de/files/mainsite-files/Netz%20der%20allgemeinen%20Versorgung/Zusammenfassung%20Preisblatt%202026%20Mainsite.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Die offizielle Seite Energieversorgung im ICO verlinkt das gueltige Preisblatt Netznutzung Strom 2026 direkt auf der Betreiberdomain.",
+          "Das einseitige Preisblatt nennt fuer Modul 3 netto HT 10,77 ct/kWh, ST 7,52 ct/kWh und NT 2,99 ct/kWh.",
+          "Die Zeitfenster sind fuer alle vier Quartale identisch ausgewiesen: HT 07:45-16:00, ST 04:30-07:45 und 16:00-19:45, NT 00:00-04:30 und 19:45-24:00.",
+          "Im Dokument steht bei Quartal 2 offenbar ein Datums-Typo 01.03.-30.06.; die Matrix und die durchgaengig identischen Zeitfenster ueber alle vier Quartale sind dennoch eindeutig."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "priceBasis": "netto",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "mainsite-und-14a-2026",
+      "sourcePageUrl": "https://www.mainsite.de/de/energieversorgung.html",
+      "documentUrl": "https://www.mainsite.de/files/mainsite-files/Netz%20der%20allgemeinen%20Versorgung/Zusammenfassung%20Preisblatt%202026%20Mainsite.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarifstufe",
+          "valueCtPerKwh": "2.99",
+          "priceBasis": "netto",
+          "sourceQuote": "Steuerbare Verbrauchseinrichtungen nach § 14a EnWG mit Abrechnung gemaeß Modul 3 NT-Zeit 2,99"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "7.52",
+          "priceBasis": "netto",
+          "sourceQuote": "Steuerbare Verbrauchseinrichtungen nach § 14a EnWG mit Abrechnung gemaeß Modul 3 ST-Zeit 7,52"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarifstufe",
+          "valueCtPerKwh": "10.77",
+          "priceBasis": "netto",
+          "sourceQuote": "Steuerbare Verbrauchseinrichtungen nach § 14a EnWG mit Abrechnung gemaeß Modul 3 HT-Zeit 10,77"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "mainsite-und-2026-nt-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 bis Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-04:30",
+          "sourceQuote": "Niedriglasttarifstufe (NT) 00:00 - 04:30 und 19:45 - 24:00"
+        },
+        {
+          "id": "mainsite-und-2026-st-morning",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 bis Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "04:30-07:45",
+          "sourceQuote": "Standardtarifstufe (ST) 04:30 - 07:45 und 16:00 - 19:45"
+        },
+        {
+          "id": "mainsite-und-2026-ht-day",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 bis Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "07:45-16:00",
+          "sourceQuote": "Hochlasttarifstufe (HT) 07:45 - 16:00"
+        },
+        {
+          "id": "mainsite-und-2026-st-evening",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 bis Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "16:00-19:45",
+          "sourceQuote": "Standardtarifstufe (ST) 04:30 - 07:45 und 16:00 - 19:45"
+        },
+        {
+          "id": "mainsite-und-2026-nt-late",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 bis Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "19:45-24:00",
+          "sourceQuote": "Niedriglasttarifstufe (NT) 00:00 - 04:30 und 19:45 - 24:00"
+        }
+      ]
+    }
+  },
+  {
     "slug": "mainzer-netze",
     "name": "Mainzer Netze GmbH",
     "regionLabel": "Mainz",

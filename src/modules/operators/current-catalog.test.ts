@@ -142,6 +142,7 @@ describe("getSeedPublishedOperators", () => {
     const eDisNetz = published.find((entry) => entry.slug === "e-dis-netz");
     const lewVerteilnetz = published.find((entry) => entry.slug === "lew-verteilnetz");
     const mainnetz = published.find((entry) => entry.slug === "mainnetz");
+    const mainsite = published.find((entry) => entry.slug === "mainsite-und");
     const mainzerNetze = published.find((entry) => entry.slug === "mainzer-netze");
     const nErgie = published.find((entry) => entry.slug === "n-ergie-netz");
     const schwaebischHall = published.find((entry) => entry.slug === "stadtwerke-schwaebisch-hall");
@@ -185,7 +186,7 @@ describe("getSeedPublishedOperators", () => {
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(95);
+    expect(published).toHaveLength(96);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -285,6 +286,17 @@ describe("getSeedPublishedOperators", () => {
       sourcePageUrl: "https://www.mainnetz.com/Veroeffentlichungspflichten/Netzzugang-Entgelte/",
       documentUrl:
         "https://www.mainnetz.com/Veroeffentlichungspflichten/Netzzugang-Entgelte/20251222-Mainnetz-PreisblaetterStrom-2026-final.pdf",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
+    expect(mainsite).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.mainsite.de/de/energieversorgung.html",
+      documentUrl:
+        "https://www.mainsite.de/files/mainsite-files/Netz%20der%20allgemeinen%20Versorgung/Zusammenfassung%20Preisblatt%202026%20Mainsite.pdf",
+      priceBasis: "assumed-netto",
       compliance: expect.objectContaining({
         status: "compliant"
       })

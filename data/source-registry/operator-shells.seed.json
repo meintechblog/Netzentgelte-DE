@@ -4413,17 +4413,17 @@
   {
     "slug": "mainsite-und",
     "operatorName": "Mainsite GmbH & Co.KG",
-    "websiteUrl": "http://www.mainsite.de",
+    "websiteUrl": "https://www.mainsite.de/de/energieversorgung.html",
     "regionLabel": "Obernburg",
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "http://www.mainsite.de",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://www.mainsite.de/de/energieversorgung.html",
     "notes": "VNBdigital ID WnXrC69FqcLWktYkJ",
     "deprecatedStatus": "active",
-    "documentUrl": "http://www.mainsite.de"
+    "documentUrl": "https://www.mainsite.de/files/mainsite-files/Netz%20der%20allgemeinen%20Versorgung/Zusammenfassung%20Preisblatt%202026%20Mainsite.pdf"
   },
   {
     "slug": "maintal-werke",

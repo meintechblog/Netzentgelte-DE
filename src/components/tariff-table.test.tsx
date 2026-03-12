@@ -212,6 +212,9 @@ describe("TariffTable", () => {
     render(<TariffTable rows={[violatingOperator!]} />);
 
     expect(screen.getByText("Regelstatus: Mit Verstößen")).toBeInTheDocument();
+    expect(
+      screen.queryByText("Verifiziertes Niederspannungsprodukt vorhanden")
+    ).not.toBeInTheDocument();
     const violationsPanel = screen.getByLabelText(/Albwerk GmbH & Co\. KG Regelverstöße/i);
     expect(within(violationsPanel).getByText("Abweichungen vom Regelwerk")).toBeInTheDocument();
     expect(within(violationsPanel).getAllByRole("listitem").length).toBeGreaterThan(0);
@@ -326,5 +329,59 @@ describe("TariffTable", () => {
     expect(screen.getByText("8,19 ct/kWh")).toBeInTheDocument();
     expect(screen.queryByText("Modul 1")).not.toBeInTheDocument();
     expect(screen.queryByText("Modul 2")).not.toBeInTheDocument();
+  });
+
+  test("does not render the low-voltage status block for clean verified operators without a detail panel", () => {
+    render(
+      <TariffTable
+        rows={[
+          {
+            operatorName: "Sauber Netz GmbH",
+            operatorSlug: "sauber-netz",
+            regionLabel: "Demo",
+            currentBandsSummary: "NT 2.11 ct/kWh · ST 5.22 ct/kWh · HT 8.33 ct/kWh",
+            currentBandBadges: [
+              { key: "NT", valueCtPerKwh: "2.11", priceBasis: "netto" },
+              { key: "ST", valueCtPerKwh: "5.22", priceBasis: "netto" },
+              { key: "HT", valueCtPerKwh: "8.33", priceBasis: "netto" }
+            ],
+            validFrom: "2026-01-01",
+            sourcePageUrl: "https://example.com/source",
+            documentUrl: "https://example.com/doc.pdf",
+            sourceSlug: "sauber-netz-source",
+            checkedAt: "2026-03-12",
+            reviewStatus: "verified",
+            publicationStatus: "verified",
+            statusSummary: undefined,
+            missingInformation: [],
+            hasVerifiedLowVoltageProduct: true,
+            priceBasis: "netto",
+            priceBasisLabel: "Nettobasis",
+            compliance: {
+              ruleSetId: "bdew-modul-3-v1-1",
+              status: "compliant",
+              violations: [],
+              passes: [],
+              notEvaluated: []
+            },
+            latestPageSnapshotFetchedAt: null,
+            latestPageSnapshotHash: null,
+            pageArtifactApiUrl: null,
+            latestDocumentSnapshotFetchedAt: null,
+            latestDocumentSnapshotHash: null,
+            documentArtifactApiUrl: null,
+            sourceHealthReport: null,
+            timeWindows: [],
+            quarterMatrix: [],
+            endcustomerDisplay: null
+          }
+        ]}
+      />
+    );
+
+    expect(screen.queryByText("Prüfstatus: Geprüft")).not.toBeInTheDocument();
+    expect(screen.queryByText("Sichtbarkeit: Veröffentlicht")).not.toBeInTheDocument();
+    expect(screen.queryByText("Regelstatus: Regelkonform")).not.toBeInTheDocument();
+    expect(screen.queryByLabelText("Sauber Netz GmbH Veröffentlichungsstatus")).not.toBeInTheDocument();
   });
 });

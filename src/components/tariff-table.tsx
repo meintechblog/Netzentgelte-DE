@@ -176,15 +176,7 @@ function shouldShowSourceReviewInline(row: TariffTableRow) {
 }
 
 function shouldShowLowVoltageStatusPanel(row: TariffTableRow) {
-  if (!hasVerifiedLowVoltageProduct(row)) {
-    return true;
-  }
-
-  if (!row.endcustomerDisplay) {
-    return true;
-  }
-
-  return row.compliance.status !== "compliant" || Boolean(row.statusSummary) || Boolean(row.missingInformation?.length);
+  return !hasVerifiedLowVoltageProduct(row);
 }
 
 function renderQuarterCard(

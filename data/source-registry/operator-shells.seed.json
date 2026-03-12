@@ -4582,10 +4582,10 @@
     "sourceStatus": "source-found",
     "tariffStatus": "partial",
     "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.mve-eurokom.de",
-    "notes": "VNBdigital ID CXC9Nzq7tsGtwMXMe",
+    "sourcePageUrl": "https://www.mve-eurokom.de/veroeffentlichungspflichten/",
+    "notes": "VNBdigital ID CXC9Nzq7tsGtwMXMe; official publication page links 2026_Netzentgelte.pdf, but the PDF body still labels the 2026 entgelte as vorlaeufig.",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.mve-eurokom.de"
+    "documentUrl": "https://www.mve-eurokom.de/wp-content/uploads/2026/03/2026_Netzentgelte.pdf"
   },
   {
     "slug": "mvv-netze",

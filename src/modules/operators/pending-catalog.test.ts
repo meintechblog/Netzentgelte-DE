@@ -89,16 +89,7 @@ describe("getSeedPendingOperatorCatalog", () => {
     expect(result.summary.operatorCount).toBeGreaterThan(20);
     expect(result.summary.sourceFoundCount).toBeLessThanOrEqual(result.summary.operatorCount);
     expect(result.summary.tariffReadyCount).toBeLessThanOrEqual(result.summary.operatorCount);
-    expect(result.items).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          slug: "mainnetz",
-          reviewStatus: "pending",
-          sourceStatus: "source-found",
-          tariffStatus: "partial"
-        })
-      ])
-    );
+    expect(result.items.find((entry) => entry.slug === "mainnetz")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "netze-bw")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "50hertz-transmission")).toBeUndefined();
   });
@@ -141,6 +132,7 @@ describe("getSeedPendingOperatorCatalog", () => {
     ).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "lokalwerke")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "lsw-netz-und")).toBeUndefined();
+    expect(result.items.find((entry) => entry.slug === "mainnetz")).toBeUndefined();
     expect(
       result.items.find((entry) => entry.slug === "licht-kraft-und-wasserwerke-kitzingen")
     ).toBeUndefined();

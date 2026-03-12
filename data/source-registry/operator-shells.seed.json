@@ -4403,12 +4403,12 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.mainnetz.com/startseite",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://www.mainnetz.com/Veroeffentlichungspflichten/Netzzugang-Entgelte/",
     "notes": "VNBdigital ID 7755",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.mainnetz.com/startseite"
+    "documentUrl": "https://www.mainnetz.com/Veroeffentlichungspflichten/Netzzugang-Entgelte/20251222-Mainnetz-PreisblaetterStrom-2026-final.pdf"
   },
   {
     "slug": "mainsite-und",

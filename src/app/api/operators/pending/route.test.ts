@@ -13,17 +13,7 @@ describe("GET /api/operators/pending", () => {
       tariffReadyCount: expect.any(Number)
     });
     expect(data.items.length).toBeGreaterThan(20);
-    expect(data.items).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          slug: "mainnetz",
-          name: expect.any(String),
-          sourceStatus: "source-found",
-          tariffStatus: "partial",
-          reviewStatus: "pending"
-        })
-      ])
-    );
+    expect(data.items.find((item: { slug: string }) => item.slug === "mainnetz")).toBeUndefined();
     expect(data.items.find((item: { slug: string }) => item.slug === "netze-bw")).toBeUndefined();
     expect(data.items.find((item: { slug: string }) => item.slug === "50hertz-transmission")).toBeUndefined();
     expect(data.items[0]).not.toHaveProperty("bands");

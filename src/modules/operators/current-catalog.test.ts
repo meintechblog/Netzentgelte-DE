@@ -141,6 +141,7 @@ describe("getSeedPublishedOperators", () => {
     const wesernetzBremerhaven = published.find((entry) => entry.slug === "wesernetz-bremerhaven");
     const eDisNetz = published.find((entry) => entry.slug === "e-dis-netz");
     const lewVerteilnetz = published.find((entry) => entry.slug === "lew-verteilnetz");
+    const mainnetz = published.find((entry) => entry.slug === "mainnetz");
     const mainzerNetze = published.find((entry) => entry.slug === "mainzer-netze");
     const nErgie = published.find((entry) => entry.slug === "n-ergie-netz");
     const schwaebischHall = published.find((entry) => entry.slug === "stadtwerke-schwaebisch-hall");
@@ -184,7 +185,7 @@ describe("getSeedPublishedOperators", () => {
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(94);
+    expect(published).toHaveLength(95);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -274,6 +275,16 @@ describe("getSeedPublishedOperators", () => {
       sourcePageUrl: "https://www.lsw-netz.de/bauen-wohnen/netznutzung/strom/",
       documentUrl:
         "https://www.lsw-netz.de/fileadmin/user_upload/lsw-netz/strom/netznutzung/Preisblatt_f%C3%BCr_Netznutzung_Strom_01.01.-31.12.2026_endg_20251219.pdf",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
+    expect(mainnetz).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.mainnetz.com/Veroeffentlichungspflichten/Netzzugang-Entgelte/",
+      documentUrl:
+        "https://www.mainnetz.com/Veroeffentlichungspflichten/Netzzugang-Entgelte/20251222-Mainnetz-PreisblaetterStrom-2026-final.pdf",
       compliance: expect.objectContaining({
         status: "compliant"
       })

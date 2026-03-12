@@ -146,6 +146,7 @@ describe("getSeedPublishedOperators", () => {
     const megaMonheim = published.find(
       (entry) => entry.slug === "mega-monheimer-elektrizitats-und-gasversorgung"
     );
+    const nahwerk = published.find((entry) => entry.slug === "nahwerk-energie-und");
     const mainnetz = published.find((entry) => entry.slug === "mainnetz");
     const mainsite = published.find((entry) => entry.slug === "mainsite-und");
     const mainzerNetze = published.find((entry) => entry.slug === "mainzer-netze");
@@ -191,7 +192,18 @@ describe("getSeedPublishedOperators", () => {
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(99);
+    expect(published).toHaveLength(100);
+    expect(nahwerk).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://nahwerk-energie.de/netz/",
+      documentUrl:
+        "https://nahwerk-energie.de/wp-content/uploads/2025/12/Preisblatt-NNE-2026-Nahwerke-20251212.pdf",
+      priceBasis: "assumed-netto",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
     expect(megaMonheim).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",

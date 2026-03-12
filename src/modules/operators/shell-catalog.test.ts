@@ -160,6 +160,16 @@ describe("getSeedOperatorShells", () => {
             "https://www.lsw-netz.de/fileadmin/user_upload/lsw-netz/strom/netznutzung/Preisblatt_f%C3%BCr_Netznutzung_Strom_01.01.-31.12.2026_endg_20251219.pdf"
         }),
         expect.objectContaining({
+          slug: "nahwerk-energie-und",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://nahwerk-energie.de/netz/",
+          documentUrl:
+            "https://nahwerk-energie.de/wp-content/uploads/2025/12/Preisblatt-NNE-2026-Nahwerke-20251212.pdf"
+        }),
+        expect.objectContaining({
           slug: "mega-monheimer-elektrizitats-und-gasversorgung",
           shellStatus: "published",
           sourceStatus: "source-found",

@@ -18,6 +18,9 @@ describe("GET /api/operators/pending", () => {
         (item: { slug: string }) => item.slug === "mega-monheimer-elektrizitats-und-gasversorgung"
       )
     ).toBeUndefined();
+    expect(
+      data.items.find((item: { slug: string }) => item.slug === "nahwerk-energie-und")
+    ).toBeUndefined();
     expect(data.items.find((item: { slug: string }) => item.slug === "markt-zellingen")).toBeUndefined();
     expect(data.items.find((item: { slug: string }) => item.slug === "maintal-werke")).toBeUndefined();
     expect(data.items.find((item: { slug: string }) => item.slug === "mainnetz")).toBeUndefined();

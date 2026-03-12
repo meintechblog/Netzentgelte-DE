@@ -7873,6 +7873,122 @@
     }
   },
   {
+    "slug": "nahwerk-energie-und",
+    "name": "Nahwerk Energie GmbH & Co.KG",
+    "regionLabel": "Waldfischbach-Burgalben",
+    "websiteUrl": "https://nahwerk-energie.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "nahwerk-energie-und-14a-2026",
+        "title": "Preisblatt Netznutzung Strom 2026",
+        "documentType": "pdf",
+        "priceBasis": "netto",
+        "sourcePageUrl": "https://nahwerk-energie.de/netz/",
+        "documentUrl": "https://nahwerk-energie.de/wp-content/uploads/2025/12/Preisblatt-NNE-2026-Nahwerke-20251212.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Die offizielle Netzseite verlinkt das finale Preisblatt Netznutzung Strom 2026 direkt als PDF auf der Betreiberdomain.",
+          "Das Preisblatt weist fuer Modul 3 explizit HT 9,27 ct/kWh, ST 7,78 ct/kWh und NT 3,11 ct/kWh netto aus.",
+          "Die Quartalsmatrix ist fuer Q1 und Q4 mit konkreten Zeitfenstern befuellt; die unbelegten Q2/Q3-Phasen folgen dem im Projekt bereits verwendeten Albstadtwerke-Praezedenzfall fuer Standardtarif ohne gesonderte Zeitfenster."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "priceBasis": "netto",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "nahwerk-energie-und-14a-2026",
+      "sourcePageUrl": "https://nahwerk-energie.de/netz/",
+      "documentUrl": "https://nahwerk-energie.de/wp-content/uploads/2025/12/Preisblatt-NNE-2026-Nahwerke-20251212.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedriglasttarifstufe",
+          "valueCtPerKwh": "3.11",
+          "priceBasis": "netto",
+          "sourceQuote": "Niedriglasttarifstufe 3,11"
+        },
+        {
+          "key": "ST",
+          "label": "Standardlasttarifstufe",
+          "valueCtPerKwh": "7.78",
+          "priceBasis": "netto",
+          "sourceQuote": "Standardlasttarifstufe 7,78"
+        },
+        {
+          "key": "HT",
+          "label": "Hochlasttarifstufe",
+          "valueCtPerKwh": "9.27",
+          "priceBasis": "netto",
+          "sourceQuote": "Hochlasttarifstufe 9,27"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "nahwerk-energie-und-2026-q1q4-standard-morning",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:15-09:15",
+          "sourceQuote": "06:15 - 09:15"
+        },
+        {
+          "id": "nahwerk-energie-und-2026-q1q4-high-midday",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "09:15-15:00",
+          "sourceQuote": "09:15 - 15:00"
+        },
+        {
+          "id": "nahwerk-energie-und-2026-q1q4-standard-afternoon",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "15:00-17:15",
+          "sourceQuote": "15:00 - 17:15"
+        },
+        {
+          "id": "nahwerk-energie-und-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:15-19:30",
+          "sourceQuote": "17:15 - 19:30"
+        },
+        {
+          "id": "nahwerk-energie-und-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "19:30-23:30",
+          "sourceQuote": "19:30 - 23:30"
+        },
+        {
+          "id": "nahwerk-energie-und-2026-q1q4-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "23:30-06:15",
+          "sourceQuote": "23:30 - 06:15"
+        }
+      ]
+    }
+  },
+  {
     "slug": "netze-bw",
     "name": "Netze BW GmbH",
     "regionLabel": "Baden-Württemberg",

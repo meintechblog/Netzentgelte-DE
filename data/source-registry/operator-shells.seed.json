@@ -4625,12 +4625,12 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://nahwerk-energie.de/",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://nahwerk-energie.de/netz/",
     "notes": "VNBdigital ID 7157",
     "deprecatedStatus": "active",
-    "documentUrl": "https://nahwerk-energie.de/"
+    "documentUrl": "https://nahwerk-energie.de/wp-content/uploads/2025/12/Preisblatt-NNE-2026-Nahwerke-20251212.pdf"
   },
   {
     "slug": "naturenergie-netze",

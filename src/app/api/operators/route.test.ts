@@ -16,9 +16,16 @@ describe("GET /api/operators", () => {
       complianceViolationCount: expect.any(Number),
       complianceNotEvaluatedCount: expect.any(Number)
     });
-    expect(data.items).toHaveLength(99);
+    expect(data.items).toHaveLength(100);
     expect(data.items).toEqual(
       expect.arrayContaining([
+        expect.objectContaining({
+          slug: "nahwerk-energie-und",
+          reviewStatus: "verified",
+          complianceStatus: "compliant",
+          complianceViolationCount: 0,
+          priceBasis: "assumed-netto"
+        }),
         expect.objectContaining({
           slug: "mega-monheimer-elektrizitats-und-gasversorgung",
           reviewStatus: "verified",

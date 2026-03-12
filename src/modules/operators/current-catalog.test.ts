@@ -171,13 +171,16 @@ describe("getSeedPublishedOperators", () => {
     );
     const leinenetz = published.find((entry) => entry.slug === "leinenetz");
     const leitungspartner = published.find((entry) => entry.slug === "leitungspartner");
+    const kitzingen = published.find(
+      (entry) => entry.slug === "licht-kraft-und-wasserwerke-kitzingen"
+    );
     const luckenwalde = published.find(
       (entry) => entry.slug === "stadtische-betriebswerke-luckenwalde"
     );
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(89);
+    expect(published).toHaveLength(90);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -288,6 +291,17 @@ describe("getSeedPublishedOperators", () => {
       validFrom: "2026-01-01",
       sourcePageUrl: "https://www.leitungspartner.de/fuer-partner/lieferantenrahmenvertraege/",
       documentUrl: "https://www.leitungspartner.de/download/preisblatt-netzentgelte/",
+      priceBasis: "assumed-netto",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
+    expect(kitzingen).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://netz.lkw-kitzingen.de/lieferanten",
+      documentUrl:
+        "https://netz.lkw-kitzingen.de/files/content/netz/lieferanten/202601-LKWNetz-Strom-Preisblatt-NE-Strom-2026-endgueltig_v1.pdf",
       priceBasis: "assumed-netto",
       compliance: expect.objectContaining({
         status: "compliant"

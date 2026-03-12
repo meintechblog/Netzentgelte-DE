@@ -122,6 +122,16 @@ describe("getSeedOperatorShells", () => {
           documentUrl: "https://www.leitungspartner.de/download/preisblatt-netzentgelte/"
         }),
         expect.objectContaining({
+          slug: "licht-kraft-und-wasserwerke-kitzingen",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://netz.lkw-kitzingen.de/lieferanten",
+          documentUrl:
+            "https://netz.lkw-kitzingen.de/files/content/netz/lieferanten/202601-LKWNetz-Strom-Preisblatt-NE-Strom-2026-endgueltig_v1.pdf"
+        }),
+        expect.objectContaining({
           slug: "stadtische-betriebswerke-luckenwalde",
           shellStatus: "published",
           sourceStatus: "source-found",

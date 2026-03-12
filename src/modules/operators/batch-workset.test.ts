@@ -29,25 +29,25 @@ describe("buildBackfillBatchWorkset", () => {
 
     expect(workset.items.slice(0, 3)).toEqual([
       expect.objectContaining({
-        slug: "sommerdaer-energieversorgung",
-        hostname: "sev-soemmerda.de",
+        slug: "stadtwerke-lutherstadt-eisleben",
+        hostname: "sle24.de",
         sourceStatus: "candidate"
       }),
       expect.objectContaining({
-        slug: "sew-stromversorgungs",
-        hostname: "sewerding.de",
+        slug: "stadtwerke-ostmunsterland-und",
+        hostname: "so.de",
         sourceStatus: "candidate"
       }),
       expect.objectContaining({
-        slug: "stadtwerke-frondenberg-wickede",
-        hostname: "sfw-ruhr.de",
-        sourceStatus: "candidate"
+        slug: "ssw-netz",
+        hostname: "ssw-netz.de",
+        sourceStatus: "source-found"
       })
     ]);
     expect(workset.items.at(-1)).toEqual(
       expect.objectContaining({
-        slug: "stadtwerke-bogen",
-        hostname: "stadtwerke-bogen.de",
+        slug: "stadtische-werke-borna-netz",
+        hostname: "stadtwerke-borna-netz.de",
         sourceStatus: "candidate"
       })
     );

@@ -6247,6 +6247,113 @@
     }
   },
   {
+    "slug": "licht-kraft-und-wasserwerke-kitzingen",
+    "name": "Licht-, Kraft- und Wasserwerke Kitzingen GmbH",
+    "regionLabel": "Kitzingen",
+    "websiteUrl": "https://www.lkw-kitzingen.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "licht-kraft-und-wasserwerke-kitzingen-14a-2026",
+        "title": "Preisblatt fuer den Netzzugang Strom 2026",
+        "documentType": "pdf",
+        "priceBasis": "netto",
+        "sourcePageUrl": "https://netz.lkw-kitzingen.de/lieferanten",
+        "documentUrl": "https://netz.lkw-kitzingen.de/files/content/netz/lieferanten/202601-LKWNetz-Strom-Preisblatt-NE-Strom-2026-endgueltig_v1.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Offizielle Lieferantenseite des Netzbereichs LKW Kitzingen mit direktem Download des finalen Strom-Preisblatts 2026.",
+          "Das PDF ist mit Stand 01.01.2026 veroeffentlicht und nennt fuer Modul 3 in Niederspannung netto ST 8,62 ct/kWh, HT 11,73 ct/kWh und NT 0,86 ct/kWh.",
+          "Die Quartalstabelle weist Zeitfenster nur fuer Q1 und Q4 aus; die ausgelassenen Quartale Q2 und Q3 werden deshalb in der Darstellung als verifizierte ST-Annahme abgebildet."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "priceBasis": "netto",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "licht-kraft-und-wasserwerke-kitzingen-14a-2026",
+      "sourcePageUrl": "https://netz.lkw-kitzingen.de/lieferanten",
+      "documentUrl": "https://netz.lkw-kitzingen.de/files/content/netz/lieferanten/202601-LKWNetz-Strom-Preisblatt-NE-Strom-2026-endgueltig_v1.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedriglasttarifstufe",
+          "valueCtPerKwh": "0.86",
+          "priceBasis": "netto",
+          "sourceQuote": "Niedriglasttarifstufe 0,86 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "8.62",
+          "priceBasis": "netto",
+          "sourceQuote": "Standardtarifstufe 8,62 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochlasttarifstufe",
+          "valueCtPerKwh": "11.73",
+          "priceBasis": "netto",
+          "sourceQuote": "Hochlasttarifstufe 11,73 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "licht-kraft-und-wasserwerke-kitzingen-2026-q1q4-standard-night",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-02:00",
+          "sourceQuote": "Standardtarifstufe 20:00 - 02:00 Uhr"
+        },
+        {
+          "id": "licht-kraft-und-wasserwerke-kitzingen-2026-q1q4-low-early",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "02:00-06:00",
+          "sourceQuote": "Niedriglasttarifstufe 02:00 - 06:00 Uhr"
+        },
+        {
+          "id": "licht-kraft-und-wasserwerke-kitzingen-2026-q1q4-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:00-16:30",
+          "sourceQuote": "Standardtarifstufe 06:00 - 16:30 Uhr"
+        },
+        {
+          "id": "licht-kraft-und-wasserwerke-kitzingen-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "16:30-20:00",
+          "sourceQuote": "Hochlasttarifstufe 16:30 - 20:00 Uhr"
+        },
+        {
+          "id": "licht-kraft-und-wasserwerke-kitzingen-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "20:00-24:00",
+          "sourceQuote": "Standardtarifstufe 20:00 - 02:00 Uhr"
+        }
+      ]
+    }
+  },
+  {
     "slug": "mainzer-netze",
     "name": "Mainzer Netze GmbH",
     "regionLabel": "Mainz",

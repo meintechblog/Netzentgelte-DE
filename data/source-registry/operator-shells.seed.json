@@ -4299,12 +4299,12 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.lkw-kitzingen.de/",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://netz.lkw-kitzingen.de/lieferanten",
     "notes": "VNBdigital ID 346",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.lkw-kitzingen.de/"
+    "documentUrl": "https://netz.lkw-kitzingen.de/files/content/netz/lieferanten/202601-LKWNetz-Strom-Preisblatt-NE-Strom-2026-endgueltig_v1.pdf"
   },
   {
     "slug": "licht-und-kraftwerke-helmbrechts",

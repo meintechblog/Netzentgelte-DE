@@ -140,6 +140,7 @@ describe("getSeedPendingOperatorCatalog", () => {
       result.items.find((entry) => entry.slug === "licht-und-kraftwerke-sonneberg")
     ).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "lokalwerke")).toBeUndefined();
+    expect(result.items.find((entry) => entry.slug === "lsw-netz-und")).toBeUndefined();
     expect(
       result.items.find((entry) => entry.slug === "licht-kraft-und-wasserwerke-kitzingen")
     ).toBeUndefined();

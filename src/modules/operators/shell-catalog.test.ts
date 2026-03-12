@@ -150,6 +150,16 @@ describe("getSeedOperatorShells", () => {
           documentUrl: "https://lokalwerke.de/wp-content/uploads/2025/12/Preisblatt-Netznutzung-Strom-2026.pdf"
         }),
         expect.objectContaining({
+          slug: "lsw-netz-und",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://www.lsw-netz.de/bauen-wohnen/netznutzung/strom/",
+          documentUrl:
+            "https://www.lsw-netz.de/fileadmin/user_upload/lsw-netz/strom/netznutzung/Preisblatt_f%C3%BCr_Netznutzung_Strom_01.01.-31.12.2026_endg_20251219.pdf"
+        }),
+        expect.objectContaining({
           slug: "licht-kraft-und-wasserwerke-kitzingen",
           shellStatus: "published",
           sourceStatus: "source-found",

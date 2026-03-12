@@ -6638,6 +6638,117 @@
     }
   },
   {
+    "slug": "lsw-netz-und",
+    "name": "LSW Netz GmbH & Co. KG",
+    "regionLabel": "Wolfsburg",
+    "websiteUrl": "https://www.lsw-netz.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "lsw-netz-und-14a-2026",
+        "title": "Preisblatt fuer Netznutzung Strom 01.01.-31.12.2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.lsw-netz.de/bauen-wohnen/netznutzung/strom/",
+        "documentUrl": "https://www.lsw-netz.de/fileadmin/user_upload/lsw-netz/strom/netznutzung/Preisblatt_f%C3%BCr_Netznutzung_Strom_01.01.-31.12.2026_endg_20251219.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Die offizielle Strom-Netznutzungsseite der LSW Netz verlinkt das finale Preisblatt 2026 direkt im Downloadbereich.",
+          "Auf Seite 2 nennt das Preisblatt fuer Modul 3 in Niederspannung NT 2,53 ct/kWh, HT 8,36 ct/kWh und den regulaeren Arbeitspreis ST 6,32 ct/kWh.",
+          "Die Quelle weist NT und HT ausdruecklich fuer Quartal 1 und 4 aus; fuer alle anderen Zeiten gilt der regulaere Arbeitspreis ST, womit Q2 und Q3 als ganztaegiger ST-Tarif offiziell abgedeckt sind."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "lsw-netz-und-14a-2026",
+      "sourcePageUrl": "https://www.lsw-netz.de/bauen-wohnen/netznutzung/strom/",
+      "documentUrl": "https://www.lsw-netz.de/fileadmin/user_upload/lsw-netz/strom/netznutzung/Preisblatt_f%C3%BCr_Netznutzung_Strom_01.01.-31.12.2026_endg_20251219.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedriglasttarifstufe",
+          "valueCtPerKwh": "2.53",
+          "sourceQuote": "Quartal 1 und Quartal 4: 23:00 - 05:00 2,53"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "6.32",
+          "sourceQuote": "fuer alle anderen Zeiten gilt der regulaere Arbeitspreis (ST) 6,32"
+        },
+        {
+          "key": "HT",
+          "label": "Hochlasttarifstufe",
+          "valueCtPerKwh": "8.36",
+          "sourceQuote": "Quartal 1 und Quartal 4: 17:00 - 21:00 8,36"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "lsw-netz-und-2026-q1q4-low-early",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-05:00",
+          "sourceQuote": "Quartal 1 und Quartal 4: 23:00 - 05:00"
+        },
+        {
+          "id": "lsw-netz-und-2026-q1q4-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "05:00-17:00",
+          "sourceQuote": "fuer alle anderen Zeiten gilt der regulaere Arbeitspreis (ST)"
+        },
+        {
+          "id": "lsw-netz-und-2026-q1q4-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-21:00",
+          "sourceQuote": "Quartal 1 und Quartal 4: 17:00 - 21:00"
+        },
+        {
+          "id": "lsw-netz-und-2026-q1q4-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "21:00-23:00",
+          "sourceQuote": "fuer alle anderen Zeiten gilt der regulaere Arbeitspreis (ST)"
+        },
+        {
+          "id": "lsw-netz-und-2026-q1q4-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "23:00-24:00",
+          "sourceQuote": "Quartal 1 und Quartal 4: 23:00 - 05:00"
+        },
+        {
+          "id": "lsw-netz-und-2026-q2q3-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "fuer alle anderen Zeiten gilt der regulaere Arbeitspreis (ST)"
+        }
+      ]
+    }
+  },
+  {
     "slug": "mainzer-netze",
     "name": "Mainzer Netze GmbH",
     "regionLabel": "Mainz",

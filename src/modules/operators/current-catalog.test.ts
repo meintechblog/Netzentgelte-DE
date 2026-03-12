@@ -174,6 +174,7 @@ describe("getSeedPublishedOperators", () => {
     const helmbrechts = published.find((entry) => entry.slug === "licht-und-kraftwerke-helmbrechts");
     const sonneberg = published.find((entry) => entry.slug === "licht-und-kraftwerke-sonneberg");
     const lokalwerke = published.find((entry) => entry.slug === "lokalwerke");
+    const lswNetz = published.find((entry) => entry.slug === "lsw-netz-und");
     const kitzingen = published.find(
       (entry) => entry.slug === "licht-kraft-und-wasserwerke-kitzingen"
     );
@@ -183,7 +184,7 @@ describe("getSeedPublishedOperators", () => {
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(93);
+    expect(published).toHaveLength(94);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -263,6 +264,16 @@ describe("getSeedPublishedOperators", () => {
       validFrom: "2026-01-01",
       sourcePageUrl: "https://lokalwerke.de/netz/stromnetz/netzzugang-netzentgelte/",
       documentUrl: "https://lokalwerke.de/wp-content/uploads/2025/12/Preisblatt-Netznutzung-Strom-2026.pdf",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
+    expect(lswNetz).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.lsw-netz.de/bauen-wohnen/netznutzung/strom/",
+      documentUrl:
+        "https://www.lsw-netz.de/fileadmin/user_upload/lsw-netz/strom/netznutzung/Preisblatt_f%C3%BCr_Netznutzung_Strom_01.01.-31.12.2026_endg_20251219.pdf",
       compliance: expect.objectContaining({
         status: "compliant"
       })

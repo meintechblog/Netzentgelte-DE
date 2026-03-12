@@ -20,9 +20,65 @@ describe("GET /api/tariffs/endcustomer/current", () => {
     const nhf = data.items.find(
       (item: { operatorSlug: string }) => item.operatorSlug === "nhf-netzgesellschaft-heilbronn-franken"
     );
+    const nhl = data.items.find(
+      (item: { operatorSlug: string }) => item.operatorSlug === "nhl-netzgesellschaft-heilbronner-land-und"
+    );
 
     expect(data.summary).toMatchObject({
-      operatorCount: 14
+      operatorCount: 15
+    });
+    expect(nhl).toMatchObject({
+      operatorSlug: "nhl-netzgesellschaft-heilbronner-land-und",
+      meteringPrices: expect.arrayContaining([
+        expect.objectContaining({
+          componentKey: "single_register_meter_eur_per_year",
+          valueNumeric: "8.58"
+        }),
+        expect.objectContaining({
+          componentKey: "dual_register_meter_eur_per_year",
+          valueNumeric: "16.81"
+        })
+      ]),
+      products: expect.arrayContaining([
+        expect.objectContaining({
+          moduleKey: "modul-1",
+          components: expect.arrayContaining([
+            expect.objectContaining({
+              componentKey: "base_price_eur_per_year",
+              valueNumeric: "77.00"
+            }),
+            expect.objectContaining({
+              componentKey: "net_fee_reduction_eur_per_year",
+              valueNumeric: "147.63"
+            })
+          ])
+        }),
+        expect.objectContaining({
+          moduleKey: "modul-3",
+          components: expect.arrayContaining([
+            expect.objectContaining({
+              componentKey: "standard_work_price_ct_per_kwh",
+              valueNumeric: "10.72"
+            }),
+            expect.objectContaining({
+              componentKey: "high_work_price_ct_per_kwh",
+              valueNumeric: "17.15"
+            }),
+            expect.objectContaining({
+              componentKey: "low_work_price_ct_per_kwh",
+              valueNumeric: "4.29"
+            })
+          ]),
+          timeWindows: expect.arrayContaining([
+            expect.objectContaining({
+              quarterKey: "Q3",
+              bandKey: "high",
+              startsAt: "17:00",
+              endsAt: "20:00"
+            })
+          ])
+        })
+      ])
     });
     expect(nhf).toMatchObject({
       operatorSlug: "nhf-netzgesellschaft-heilbronn-franken",

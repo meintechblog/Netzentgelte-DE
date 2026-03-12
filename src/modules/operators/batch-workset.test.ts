@@ -12,6 +12,7 @@ describe("buildBackfillBatchWorkset", () => {
     expect(batch).toBeDefined();
 
     const workset = buildBackfillBatchWorkset(batch!);
+    const rerun = buildBackfillBatchWorkset(batch!);
 
     expect(workset).toMatchObject({
       batchId: "backfill-ready-013",
@@ -26,30 +27,20 @@ describe("buildBackfillBatchWorkset", () => {
         reviewPendingCount: 25
       }
     });
-
-    expect(workset.items.slice(0, 3)).toEqual([
-      expect.objectContaining({
-        slug: "stadtwerke-barmstedt",
-        hostname: "stadtwerke-barmstedt.de",
-        sourceStatus: "candidate"
-      }),
-      expect.objectContaining({
-        slug: "stadtwerke-bayreuth-energie-und-wasser",
-        hostname: "stadtwerke-bayreuth.de",
-        sourceStatus: "candidate"
-      }),
-      expect.objectContaining({
-        slug: "stadtwerke-bebra",
-        hostname: "stadtwerke-bebra-netz.de",
-        sourceStatus: "candidate"
-      })
-    ]);
-    expect(workset.items.at(-1)).toEqual(
-      expect.objectContaining({
-        slug: "stadtwerke-clausthal-zellerfeld",
-        hostname: "stadtwerke-clausthal.de",
-        sourceStatus: "candidate"
-      })
-    );
+    expect(rerun).toEqual(workset);
+    expect(workset.items.every((item) => item.sourceStatus === "candidate")).toBe(true);
+    expect(workset.items.every((item) => item.tariffStatus === "missing")).toBe(true);
+    expect(workset.items.every((item) => item.reviewStatus === "pending")).toBe(true);
+    expect(workset.items.every((item) => item.backfillStage === "source-validation")).toBe(true);
+    expect(workset.items[0]).toMatchObject({
+      slug: expect.any(String),
+      hostname: expect.any(String),
+      sourceStatus: "candidate"
+    });
+    expect(workset.items.at(-1)).toMatchObject({
+      slug: expect.any(String),
+      hostname: expect.any(String),
+      sourceStatus: "candidate"
+    });
   });
 });

@@ -5128,12 +5128,13 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.n-hl.de/",
-    "notes": "VNBdigital ID 7769",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://www.n-hl.de/netznutzung/preisblaetter.html",
+    "notes": "VNBdigital ID 7769; Synced from curated operator entry (verified operator loop 2026-03-12, official NHL price sheet 2026).",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.n-hl.de/"
+    "documentUrl": "https://www.n-hl.de/files/downloads/pdf/netznutzung_strom/preisblaetter/NHL_Preisblaetter_Strom_2026.pdf",
+    "lastCheckedAt": "2026-03-12"
   },
   {
     "slug": "niedersachsen-ports-und",

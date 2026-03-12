@@ -86,6 +86,8 @@ const NETZE_BAD_LANGENSALZA_SOURCE =
   "https://nbl-badlangensalza.de/storage/sites/8/2025/12/endgueltiges-Preisblatt_Strom_ab-01.01.2026_Version-3_13.01.2026.pdf";
 const NHF_NETZGESELLSCHAFT_HEILBRONN_FRANKEN_SOURCE =
   "https://www.n-hf.de/files/downloads/pdf/netznutzung_strom/preisblaetter/NHF_Preisbl%C3%A4tter_Strom_2026.pdf";
+const NHL_NETZGESELLSCHAFT_HEILBRONNER_LAND_SOURCE =
+  "https://www.n-hl.de/files/downloads/pdf/netznutzung_strom/preisblaetter/NHL_Preisblaetter_Strom_2026.pdf";
 
 export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
   return [
@@ -102,7 +104,8 @@ export function getSeedEndcustomerReferences(): EndcustomerOperatorReference[] {
     getWesernetzBremerhavenEndcustomerReference(),
     getWestnetzEndcustomerReference(),
     getNetzeBadLangensalzaEndcustomerReference(),
-    getNhfNetzgesellschaftHeilbronnFrankenEndcustomerReference()
+    getNhfNetzgesellschaftHeilbronnFrankenEndcustomerReference(),
+    getNhlNetzgesellschaftHeilbronnerLandEndcustomerReference()
   ];
 }
 
@@ -844,6 +847,58 @@ export function getNhfNetzgesellschaftHeilbronnFrankenEndcustomerReference(): En
         validFrom: VALID_FROM_2026,
         sourceDocumentUrl: NHF_NETZGESELLSCHAFT_HEILBRONN_FRANKEN_SOURCE,
         components: modul3Components("8.16", "13.06", "3.26"),
+        requirements: defaultModul3Requirements(),
+        timeWindows: buildFullYearWindows([
+          ["low", ["00:00-06:00"]],
+          ["standard", ["06:00-17:00", "20:00-24:00"]],
+          ["high", ["17:00-20:00"]]
+        ])
+      }
+    ],
+    meteringPrices: meteringPrices("8.58", "16.81")
+  };
+}
+
+export function getNhlNetzgesellschaftHeilbronnerLandEndcustomerReference(): EndcustomerOperatorReference {
+  return {
+    operatorSlug: "nhl-netzgesellschaft-heilbronner-land-und",
+    operatorName: "NHL Netzgesellschaft Heilbronner Land GmbH & Co. KG",
+    sourceDocumentUrl: NHL_NETZGESELLSCHAFT_HEILBRONNER_LAND_SOURCE,
+    products: [
+      {
+        moduleKey: "modul-1",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: NHL_NETZGESELLSCHAFT_HEILBRONNER_LAND_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "77.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "10.72", unit: "ct/kWh" },
+          { componentKey: "net_fee_reduction_eur_per_year", valueNumeric: "147.63", unit: "EUR/a" }
+        ],
+        requirements: defaultModul1Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-2",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: NHL_NETZGESELLSCHAFT_HEILBRONNER_LAND_SOURCE,
+        components: [
+          { componentKey: "base_price_eur_per_year", valueNumeric: "0.00", unit: "EUR/a" },
+          { componentKey: "work_price_ct_per_kwh", valueNumeric: "4.29", unit: "ct/kWh" }
+        ],
+        requirements: defaultModul2Requirements(),
+        timeWindows: []
+      },
+      {
+        moduleKey: "modul-3",
+        networkLevel: "niederspannung",
+        meteringMode: "slp",
+        validFrom: VALID_FROM_2026,
+        sourceDocumentUrl: NHL_NETZGESELLSCHAFT_HEILBRONNER_LAND_SOURCE,
+        components: modul3Components("10.72", "17.15", "4.29"),
         requirements: defaultModul3Requirements(),
         timeWindows: buildFullYearWindows([
           ["low", ["00:00-06:00"]],

@@ -8865,6 +8865,99 @@
     }
   },
   {
+    "slug": "nhl-netzgesellschaft-heilbronner-land-und",
+    "name": "NHL Netzgesellschaft Heilbronner Land GmbH & Co. KG",
+    "regionLabel": "Heilbronn",
+    "websiteUrl": "https://www.n-hl.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "nhl-netzgesellschaft-heilbronner-land-14a-2026",
+        "title": "Preisblätter Strom 2026",
+        "documentType": "pdf",
+        "sourcePageUrl": "https://www.n-hl.de/netznutzung/preisblaetter.html",
+        "documentUrl": "https://www.n-hl.de/files/downloads/pdf/netznutzung_strom/preisblaetter/NHL_Preisblaetter_Strom_2026.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Die offizielle NHL-Preisblattseite verlinkt das finale Preisblatt Strom 2026 direkt als PDF auf der Betreiberdomain.",
+          "Preisblatt 2a nennt fuer Modul 3 netto ST 10,72 ct/kWh, HT 17,15 ct/kWh und NT 4,29 ct/kWh.",
+          "Die Tarifstufen gelten ausdruecklich in allen vier Quartalen 2026; die Uhrzeiten decken den Tag lueckenlos mit NT 00:00-06:00, ST 06:00-17:00 und 20:00-00:00 sowie HT 17:00-20:00 ab."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "nhl-netzgesellschaft-heilbronner-land-14a-2026",
+      "sourcePageUrl": "https://www.n-hl.de/netznutzung/preisblaetter.html",
+      "documentUrl": "https://www.n-hl.de/files/downloads/pdf/netznutzung_strom/preisblaetter/NHL_Preisblaetter_Strom_2026.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedrigtarif",
+          "valueCtPerKwh": "4.29",
+          "sourceQuote": "Niedrigtarif 4,29 ct/kWh"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarif",
+          "valueCtPerKwh": "10.72",
+          "sourceQuote": "Standardtarif 10,72 ct/kWh"
+        },
+        {
+          "key": "HT",
+          "label": "Hochtarif",
+          "valueCtPerKwh": "17.15",
+          "sourceQuote": "Hochtarif 17,15 ct/kWh"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "nhl-netzgesellschaft-heilbronner-land-2026-all-low-night",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-06:00",
+          "sourceQuote": "00:00 - 06:00"
+        },
+        {
+          "id": "nhl-netzgesellschaft-heilbronner-land-2026-all-standard-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "06:00-17:00",
+          "sourceQuote": "06:00 - 17:00"
+        },
+        {
+          "id": "nhl-netzgesellschaft-heilbronner-land-2026-all-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-20:00",
+          "sourceQuote": "17:00 - 20:00"
+        },
+        {
+          "id": "nhl-netzgesellschaft-heilbronner-land-2026-all-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1-Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "20:00-24:00",
+          "sourceQuote": "20:00 - 00:00"
+        }
+      ]
+    }
+  },
+  {
     "slug": "schleswig-holstein-netz",
     "name": "Schleswig-Holstein Netz GmbH",
     "regionLabel": "Schleswig-Holstein",

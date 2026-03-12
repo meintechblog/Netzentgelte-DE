@@ -172,6 +172,7 @@ describe("getSeedPublishedOperators", () => {
     const leinenetz = published.find((entry) => entry.slug === "leinenetz");
     const leitungspartner = published.find((entry) => entry.slug === "leitungspartner");
     const helmbrechts = published.find((entry) => entry.slug === "licht-und-kraftwerke-helmbrechts");
+    const sonneberg = published.find((entry) => entry.slug === "licht-und-kraftwerke-sonneberg");
     const kitzingen = published.find(
       (entry) => entry.slug === "licht-kraft-und-wasserwerke-kitzingen"
     );
@@ -181,7 +182,7 @@ describe("getSeedPublishedOperators", () => {
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(91);
+    expect(published).toHaveLength(92);
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
@@ -242,6 +243,16 @@ describe("getSeedPublishedOperators", () => {
       validFrom: "2026-01-01",
       sourcePageUrl: "https://www.luk-helmbrechts.de/netze/stromnetz/netzentgelte/",
       documentUrl: "https://www.luk-helmbrechts.de/wp-content/uploads/2025/12/s-preisblatt-nn-slp-2026.pdf",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
+    expect(sonneberg).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://likra.de/netz/strom/netzentgelte/",
+      documentUrl:
+        "https://likra.de/fileadmin/user_upload/netz/Veroeffentlichungen/2025/Preisblatt_Netznutzung_Strom_ab_01.01.2026.pdf",
       compliance: expect.objectContaining({
         status: "compliant"
       })

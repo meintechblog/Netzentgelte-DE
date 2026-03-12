@@ -131,6 +131,16 @@ describe("getSeedOperatorShells", () => {
           documentUrl: "https://www.luk-helmbrechts.de/wp-content/uploads/2025/12/s-preisblatt-nn-slp-2026.pdf"
         }),
         expect.objectContaining({
+          slug: "licht-und-kraftwerke-sonneberg",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://likra.de/netz/strom/netzentgelte/",
+          documentUrl:
+            "https://likra.de/fileadmin/user_upload/netz/Veroeffentlichungen/2025/Preisblatt_Netznutzung_Strom_ab_01.01.2026.pdf"
+        }),
+        expect.objectContaining({
           slug: "licht-kraft-und-wasserwerke-kitzingen",
           shellStatus: "published",
           sourceStatus: "source-found",

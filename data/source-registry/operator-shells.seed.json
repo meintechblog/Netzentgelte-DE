@@ -4329,12 +4329,12 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.likra.de",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://likra.de/netz/strom/netzentgelte/",
     "notes": "VNBdigital ID 929",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.likra.de"
+    "documentUrl": "https://likra.de/fileadmin/user_upload/netz/Veroeffentlichungen/2025/Preisblatt_Netznutzung_Strom_ab_01.01.2026.pdf"
   },
   {
     "slug": "lokalwerke",

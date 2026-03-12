@@ -141,6 +141,7 @@ describe("getSeedPublishedOperators", () => {
     const wesernetzBremerhaven = published.find((entry) => entry.slug === "wesernetz-bremerhaven");
     const eDisNetz = published.find((entry) => entry.slug === "e-dis-netz");
     const lewVerteilnetz = published.find((entry) => entry.slug === "lew-verteilnetz");
+    const maintalWerke = published.find((entry) => entry.slug === "maintal-werke");
     const mainnetz = published.find((entry) => entry.slug === "mainnetz");
     const mainsite = published.find((entry) => entry.slug === "mainsite-und");
     const mainzerNetze = published.find((entry) => entry.slug === "mainzer-netze");
@@ -186,7 +187,17 @@ describe("getSeedPublishedOperators", () => {
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(96);
+    expect(published).toHaveLength(97);
+    expect(maintalWerke).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.maintal-werke.de/netze/veroeffentlichungen/strom/",
+      documentUrl: "https://www.maintal-werke.de/site/assets/files/11448/preises_mwg26_endgueltig.pdf",
+      priceBasis: "assumed-netto",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
     expect(allianderHeinsberg).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",

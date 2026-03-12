@@ -29,11 +29,6 @@ describe("buildBackfillBatchWorkset", () => {
 
     expect(workset.items.slice(0, 3)).toEqual([
       expect.objectContaining({
-        slug: "stadtwerke-annweiler-am-trifels",
-        hostname: "stadtwerke-annweiler.de",
-        sourceStatus: "candidate"
-      }),
-      expect.objectContaining({
         slug: "stadtwerke-bad-nauheim",
         hostname: "stadtwerke-bad-nauheim.de",
         sourceStatus: "candidate"
@@ -42,12 +37,17 @@ describe("buildBackfillBatchWorkset", () => {
         slug: "stadtwerke-bad-reichenhall-ku",
         hostname: "stadtwerke-bad-reichenhall.de",
         sourceStatus: "candidate"
+      }),
+      expect.objectContaining({
+        slug: "stadtwerke-bad-wildbad-und",
+        hostname: "stadtwerke-bad-wildbad.de",
+        sourceStatus: "candidate"
       })
     ]);
     expect(workset.items.at(-1)).toEqual(
       expect.objectContaining({
-        slug: "stadtwerke-bad-sooden-allendorf",
-        hostname: "stadtwerke-bsa.de",
+        slug: "stadtwerke-buchen-und",
+        hostname: "stadtwerke-buchen.de",
         sourceStatus: "candidate"
       })
     );

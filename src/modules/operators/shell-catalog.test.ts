@@ -160,6 +160,15 @@ describe("getSeedOperatorShells", () => {
             "https://www.lsw-netz.de/fileadmin/user_upload/lsw-netz/strom/netznutzung/Preisblatt_f%C3%BCr_Netznutzung_Strom_01.01.-31.12.2026_endg_20251219.pdf"
         }),
         expect.objectContaining({
+          slug: "maintal-werke",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl: "https://www.maintal-werke.de/netze/veroeffentlichungen/strom/",
+          documentUrl: "https://www.maintal-werke.de/site/assets/files/11448/preises_mwg26_endgueltig.pdf"
+        }),
+        expect.objectContaining({
           slug: "mainnetz",
           shellStatus: "published",
           sourceStatus: "source-found",

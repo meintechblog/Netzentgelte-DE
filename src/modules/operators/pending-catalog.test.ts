@@ -134,6 +134,7 @@ describe("getSeedPendingOperatorCatalog", () => {
     expect(result.items.find((entry) => entry.slug === "lsw-netz-und")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "mainnetz")).toBeUndefined();
     expect(result.items.find((entry) => entry.slug === "mainsite-und")).toBeUndefined();
+    expect(result.items.find((entry) => entry.slug === "maintal-werke")).toBeUndefined();
     expect(
       result.items.find((entry) => entry.slug === "licht-kraft-und-wasserwerke-kitzingen")
     ).toBeUndefined();

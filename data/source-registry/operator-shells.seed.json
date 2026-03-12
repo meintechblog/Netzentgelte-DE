@@ -4433,12 +4433,12 @@
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "https://www.maintal-werke.de/",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://www.maintal-werke.de/netze/veroeffentlichungen/strom/",
     "notes": "VNBdigital ID 7047",
     "deprecatedStatus": "active",
-    "documentUrl": "https://www.maintal-werke.de/"
+    "documentUrl": "https://www.maintal-werke.de/site/assets/files/11448/preises_mwg26_endgueltig.pdf"
   },
   {
     "slug": "mainzer-netze",

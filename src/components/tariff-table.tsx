@@ -118,6 +118,39 @@ function getComplianceStatusClass(row: TariffTableRow) {
   return "review-pill verified";
 }
 
+function getPublicationStatusLabel(row: TariffTableRow) {
+  switch (row.publicationStatus) {
+    case "blocked":
+      return "Blockiert";
+    case "missing-data":
+      return "Unvollständig";
+    case "pending":
+      return "In Prüfung";
+    case "violation":
+      return "Mit Verstößen";
+    default:
+      return "Veröffentlicht";
+  }
+}
+
+function getPublicationStatusClass(row: TariffTableRow) {
+  switch (row.publicationStatus) {
+    case "blocked":
+    case "missing-data":
+      return "review-pill pending";
+    case "pending":
+      return "review-pill review-pill--neutral";
+    case "violation":
+      return "review-pill pending";
+    default:
+      return "review-pill verified";
+  }
+}
+
+function hasVerifiedLowVoltageProduct(row: TariffTableRow) {
+  return row.hasVerifiedLowVoltageProduct ?? row.reviewStatus === "verified";
+}
+
 function renderQuarterCard(
   row: TariffTableRow,
   quarter: TariffTableRow["quarterMatrix"][number],
@@ -239,23 +272,30 @@ export function TariffTable({ rows }: TariffTableProps) {
                       </span>
                     ))}
                   </div>
+                  {!row.currentBandBadges?.length ? (
+                    <span className="table-muted">{row.currentBandsSummary}</span>
+                  ) : null}
                   <span className="table-muted">{`Gültig ab ${row.validFrom}`}</span>
-                  <a
-                    className="source-link"
-                    href={row.sourcePageUrl}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Quellseite
-                  </a>
-                  <a
-                    className="source-link"
-                    href={row.documentUrl}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    PDF / Dokument
-                  </a>
+                  {row.sourcePageUrl ? (
+                    <a
+                      className="source-link"
+                      href={row.sourcePageUrl}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Quellseite
+                    </a>
+                  ) : null}
+                  {row.documentUrl ? (
+                    <a
+                      className="source-link"
+                      href={row.documentUrl}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      PDF / Dokument
+                    </a>
+                  ) : null}
                   <span className="table-muted">
                     {row.checkedAt ? `Zuletzt geprüft ${row.checkedAt}` : "Noch nicht geprüft"}
                   </span>
@@ -263,6 +303,9 @@ export function TariffTable({ rows }: TariffTableProps) {
                   <div className="source-review-inline">
                     <span className={`review-pill ${row.reviewStatus}`}>
                       {`Prüfstatus: ${getReviewStatusLabel(row)}`}
+                    </span>
+                    <span className={getPublicationStatusClass(row)}>
+                      {`Sichtbarkeit: ${getPublicationStatusLabel(row)}`}
                     </span>
                     <span className={getComplianceStatusClass(row)}>
                       {`Regelstatus: ${getComplianceStatusLabel(row)}`}
@@ -304,6 +347,45 @@ export function TariffTable({ rows }: TariffTableProps) {
                       </a>
                     ) : null}
                   </div>
+                  <section className="operator-compliance-panel" aria-label={`${row.operatorName} Veröffentlichungsstatus`}>
+                    <strong>Verifiziertes Niederspannungsprodukt</strong>
+                    <ul className="operator-compliance-panel__list">
+                      <li>
+                        <span className="operator-compliance-panel__title">
+                          {hasVerifiedLowVoltageProduct(row)
+                            ? "Verifiziertes Niederspannungsprodukt vorhanden"
+                            : "Verifiziertes Niederspannungsprodukt fehlt"}
+                        </span>
+                        <span>
+                          {hasVerifiedLowVoltageProduct(row)
+                            ? "Die Niederspannungsdaten sind vollständig strukturiert und freigegeben."
+                            : "Der Betreiber bleibt sichtbar, aber die Niederspannungsdaten sind noch nicht vollständig verifiziert."}
+                        </span>
+                      </li>
+                    </ul>
+                  </section>
+                  {row.missingInformation && row.missingInformation.length > 0 ? (
+                    <section className="operator-compliance-panel" aria-label={`${row.operatorName} fehlende Informationen`}>
+                      <strong>Fehlende Informationen</strong>
+                      <ul className="operator-compliance-panel__list">
+                        {row.missingInformation.map((item) => (
+                          <li key={`${row.operatorSlug}-${item}`}>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  ) : null}
+                  {row.statusSummary ? (
+                    <section className="operator-compliance-panel" aria-label={`${row.operatorName} Problemgrund`}>
+                      <strong>Problemgrund</strong>
+                      <ul className="operator-compliance-panel__list">
+                        <li>
+                          <span>{row.statusSummary}</span>
+                        </li>
+                      </ul>
+                    </section>
+                  ) : null}
                   {row.compliance.violations.length > 0 ? (
                     <section className="operator-compliance-panel" aria-label={`${row.operatorName} Regelverstöße`}>
                       <strong>Abweichungen vom Regelwerk</strong>

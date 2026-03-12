@@ -72,11 +72,22 @@ describe("buildPendingOperatorCatalog", () => {
         slug: "pending-netz",
         name: "Pending Netz GmbH",
         regionLabel: "Demo",
+        sourceSlug: "pending-netz-pending",
         reviewStatus: "pending",
         sourceStatus: "source-found",
         tariffStatus: "partial",
         websiteUrl: "https://demo.example/",
-        checkedAt: "2026-03-11"
+        sourcePageUrl: "https://demo.example/netzentgelte",
+        documentUrl: "https://demo.example/preisblatt-2026.pdf",
+        notes: "Demo shell",
+        checkedAt: "2026-03-11",
+        publicationStatus: "pending",
+        statusSummary: "Demo shell",
+        missingInformation: [
+          "Verifiziertes Niederspannungsprodukt fehlt",
+          "Modul-3-Tarifdaten unvollständig"
+        ],
+        hasVerifiedLowVoltageProduct: false
       }
     ]);
   });
@@ -104,7 +115,8 @@ describe("getSeedPendingOperatorCatalog", () => {
           slug: "ssw-netz",
           reviewStatus: "pending",
           sourceStatus: "source-found",
-          tariffStatus: "missing"
+          tariffStatus: "missing",
+          publicationStatus: "blocked"
         })
       ])
     );

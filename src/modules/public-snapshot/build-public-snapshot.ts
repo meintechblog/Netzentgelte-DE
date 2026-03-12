@@ -1,6 +1,7 @@
 import { getRegistryMapFeatures, projectGermanyMap } from "../../lib/maps/geojson";
 import {
   getComplianceRuleSetDisplay,
+  getPendingTariffRows,
   getRegistryTariffRows,
   mergeTariffRowsWithCurrentSources,
   mergeTariffRowsWithEndcustomerCatalog
@@ -29,17 +30,18 @@ export function buildPublicSnapshot(input: BuildPublicSnapshotInput): PublicSnap
   const filteredSources = input.currentSources.filter((source) =>
     publishedOperatorSlugs.has(source.operatorSlug)
   );
-  const rows = mergeTariffRowsWithCurrentSources(
+  const publishedRows = mergeTariffRowsWithCurrentSources(
     mergeTariffRowsWithEndcustomerCatalog(
       getRegistryTariffRows(input.publishedOperatorSnapshot.operators),
       input.endcustomerCatalog
     ),
     filteredSources
   );
+  const rows = [...publishedRows, ...getPendingTariffRows(input.pendingOperatorCatalog)];
 
   return parsePublicSnapshot({
     generatedAt: input.generatedAt ?? new Date().toISOString(),
-    operatorCount: input.publishedOperatorSnapshot.operators.length,
+    operatorCount: rows.length,
     operators: rows.map((row) => ({
       ...row,
       pageArtifactApiUrl: null,

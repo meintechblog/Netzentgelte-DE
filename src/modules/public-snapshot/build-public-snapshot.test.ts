@@ -18,7 +18,7 @@ import { buildPublicSnapshot } from "./build-public-snapshot";
 const PUBLIC_SNAPSHOT_BUILD_TIMEOUT_MS = 15_000;
 
 describe("buildPublicSnapshot", () => {
-  test("composes published operators, map data, sources, compliance and endcustomer data into one public payload", () => {
+  test("composes published and transparent incomplete operators into one public payload", () => {
     const publishedOperatorSnapshot = buildPublishedOperatorSnapshot(getSeedPublishedOperators());
     const pendingOperatorCatalog = getSeedPendingOperatorCatalog();
     const currentSources = getSeedCurrentSources();
@@ -46,8 +46,8 @@ describe("buildPublicSnapshot", () => {
 
     expect(snapshot).toMatchObject({
       generatedAt: "2026-03-10T18:00:00.000Z",
-      operatorCount: publishedOperatorSnapshot.operators.length,
-      operators: expectedRows,
+      operatorCount:
+        publishedOperatorSnapshot.operators.length + pendingOperatorCatalog.summary.operatorCount,
       pendingOperators: pendingOperatorCatalog,
       map: projectGermanyMap(getRegistryMapFeatures(publishedOperatorSnapshot.operators)),
       sources: currentSources.filter((source) =>
@@ -55,6 +55,18 @@ describe("buildPublicSnapshot", () => {
       ),
       compliance: getComplianceRuleSetDisplay(complianceRuleSet)
     });
+    expect(snapshot.operators).toEqual(expect.arrayContaining(expectedRows));
+    expect(snapshot.operators.length).toBeGreaterThan(expectedRows.length);
+    expect(snapshot.operators).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          operatorSlug: "ssw-netz",
+          publicationStatus: "blocked",
+          statusSummary: expect.stringMatching(/Jahresbezug|Widerspruch|Problem|blockiert|fehlt/i),
+          missingInformation: expect.arrayContaining(["Verifiziertes Niederspannungsprodukt fehlt"])
+        })
+      ])
+    );
 
     expect(snapshot.operators.some((row) => row.endcustomerDisplay?.title === "Endkunden · Niederspannung")).toBe(
       true

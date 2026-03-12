@@ -1,3 +1,4 @@
+import verifiedOperatorLoopStateJson from "../../../docs/coordination/verified-operator-loop.json";
 import { isExcludedTransmissionOperator } from "./operator-exclusions";
 import type { OperatorRegistryEntry } from "./registry";
 import type { OperatorShell } from "./shell-catalog";
@@ -58,6 +59,10 @@ export function createEmptyVerifiedOperatorLoopState(
     },
     outcomes: []
   };
+}
+
+export function getSeedVerifiedOperatorLoopState(): VerifiedOperatorLoopState {
+  return verifiedOperatorLoopStateJson as VerifiedOperatorLoopState;
 }
 
 export function applyVerifiedOperatorLoopOutcome(

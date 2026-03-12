@@ -4,6 +4,7 @@ import {
 } from "../../modules/operators/current-catalog";
 import type { ComplianceEvaluation } from "../../modules/compliance/modul-3-evaluator";
 import type { ComplianceRuleSet } from "../../modules/compliance/rule-catalog";
+import type { PendingOperatorCatalog } from "../../modules/operators/pending-catalog";
 import type { CurrentSource } from "../../modules/sources/current-sources";
 import type {
   EndcustomerTariffCatalogComponent,
@@ -53,6 +54,8 @@ export type EndcustomerDisplay = {
   searchText: string;
 };
 
+export type PublicationStatus = "verified" | "pending" | "blocked" | "violation" | "missing-data";
+
 export type TariffTableRow = {
   operatorName: string;
   operatorSlug: string;
@@ -60,11 +63,15 @@ export type TariffTableRow = {
   currentBandsSummary: string;
   currentBandBadges?: TariffBandBadge[];
   validFrom: string;
-  sourcePageUrl: string;
-  documentUrl: string;
+  sourcePageUrl?: string;
+  documentUrl?: string;
   sourceSlug: string;
   checkedAt: string | null;
   reviewStatus: "pending" | "verified";
+  publicationStatus?: PublicationStatus;
+  statusSummary?: string;
+  missingInformation?: string[];
+  hasVerifiedLowVoltageProduct?: boolean;
   priceBasis: PriceBasis;
   priceBasisLabel: string;
   compliance: ComplianceEvaluation;
@@ -114,6 +121,10 @@ export function getRegistryTariffRows(operators: PublishedOperator[]): TariffTab
     sourceSlug: entry.sourceSlug,
     checkedAt: entry.checkedAt,
     reviewStatus: entry.reviewStatus,
+    publicationStatus: entry.compliance.status === "violation" ? "violation" : "verified",
+    statusSummary: entry.compliance.violations[0]?.message ?? nullToUndefined(entry.compliance.notEvaluated[0]?.message),
+    missingInformation: [],
+    hasVerifiedLowVoltageProduct: true,
     priceBasis: entry.priceBasis,
     priceBasisLabel: getPriceBasisLabel(entry.priceBasis),
     compliance: entry.compliance,
@@ -122,6 +133,49 @@ export function getRegistryTariffRows(operators: PublishedOperator[]): TariffTab
       bands: entry.bands,
       timeWindows: entry.timeWindows
     }),
+    endcustomerDisplay: null
+  }));
+}
+
+export function getPendingTariffRows(pendingCatalog: PendingOperatorCatalog): TariffTableRow[] {
+  return pendingCatalog.items.map((entry) => ({
+    operatorName: entry.name,
+    operatorSlug: entry.slug,
+    regionLabel: entry.regionLabel,
+    currentBandsSummary:
+      entry.tariffStatus === "missing"
+        ? "Noch kein vollständiger Tarifdatensatz veröffentlicht"
+        : "Tarifdaten in Prüfung oder noch unvollständig",
+    currentBandBadges: [],
+    validFrom: "2026-01-01",
+    sourcePageUrl: entry.sourcePageUrl ?? entry.websiteUrl,
+    documentUrl: entry.documentUrl,
+    sourceSlug: entry.sourceSlug ?? `${entry.slug}-pending`,
+    checkedAt: entry.checkedAt,
+    reviewStatus: entry.reviewStatus,
+    publicationStatus: entry.publicationStatus ?? getFallbackPendingPublicationStatus(entry),
+    statusSummary: entry.statusSummary ?? getFallbackPendingStatusSummary(entry),
+    missingInformation: entry.missingInformation ?? getFallbackPendingMissingInformation(entry),
+    hasVerifiedLowVoltageProduct: entry.hasVerifiedLowVoltageProduct ?? false,
+    priceBasis: "assumed-netto",
+    priceBasisLabel: getPriceBasisLabel("assumed-netto"),
+    compliance: {
+      ruleSetId: "bdew-modul-3-v1-1",
+      status: "not-evaluable",
+      violations: [],
+      passes: [],
+      notEvaluated: [
+        {
+          ruleId: `publication-${entry.publicationStatus ?? getFallbackPendingPublicationStatus(entry)}`,
+          title: "Transparente Problemveröffentlichung",
+          severity: "high",
+          message: entry.statusSummary ?? getFallbackPendingStatusSummary(entry),
+          sourceCitation: entry.documentUrl ?? entry.sourcePageUrl ?? entry.websiteUrl ?? "Öffentliche Betreiberquelle"
+        }
+      ]
+    },
+    timeWindows: [],
+    quarterMatrix: [],
     endcustomerDisplay: null
   }));
 }
@@ -176,6 +230,50 @@ export function mergeTariffRowsWithCurrentSources(rows: TariffTableRow[], source
       sourceHealthReport: source.healthReport
     };
   });
+}
+
+function nullToUndefined(value: string | undefined) {
+  return value ?? undefined;
+}
+
+function getFallbackPendingPublicationStatus(
+  entry: Pick<PendingOperatorCatalog["items"][number], "sourceStatus" | "tariffStatus">
+): PublicationStatus {
+  if (entry.sourceStatus === "missing" || entry.tariffStatus === "missing") {
+    return "missing-data";
+  }
+
+  return "pending";
+}
+
+function getFallbackPendingStatusSummary(
+  entry: Pick<PendingOperatorCatalog["items"][number], "sourceStatus" | "tariffStatus">
+) {
+  if (entry.sourceStatus === "missing") {
+    return "Offizielle 2026-Quellseite ist noch nicht belastbar belegt.";
+  }
+
+  if (entry.tariffStatus === "missing") {
+    return "Offizielle Quelle liegt vor, aber ein vollständiger 2026-Modul-3-Tarifdatensatz fehlt noch.";
+  }
+
+  return "Offizielle 2026-Veröffentlichung wurde geprüft, ist aber noch nicht vollständig verifiziert.";
+}
+
+function getFallbackPendingMissingInformation(
+  entry: Pick<PendingOperatorCatalog["items"][number], "sourceStatus" | "tariffStatus" | "documentUrl">
+) {
+  const missing = ["Verifiziertes Niederspannungsprodukt fehlt"];
+
+  if (!entry.documentUrl) {
+    missing.push("Offizielles 2026-Dokument fehlt");
+  }
+
+  if (entry.sourceStatus === "missing" || entry.tariffStatus === "missing" || entry.tariffStatus === "partial") {
+    missing.push("Modul-3-Tarifdaten unvollständig");
+  }
+
+  return missing;
 }
 
 function buildEndcustomerDisplay(entry: EndcustomerTariffCatalogEntry | undefined): EndcustomerDisplay | null {

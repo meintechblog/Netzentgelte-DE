@@ -35,13 +35,16 @@ test("renders the page shell around a dominant germany map hero", async () => {
   expect(screen.queryByText("Modul 3")).not.toBeInTheDocument();
   expect(screen.queryByText("Messung")).not.toBeInTheDocument();
   expect(
-    screen.getByText(/Öffentlich erscheinen nur verifizierte und integritätsgeprüfte Betreiber/i)
+    screen.getByText(/Auch unvollständige oder blockierte Betreiber bleiben online sichtbar/i)
   ).toBeInTheDocument();
+  expect(screen.getAllByText(/Verifiziertes Niederspannungsprodukt/).length).toBeGreaterThan(0);
+  expect(screen.getAllByText(/Fehlende Informationen|Problemgrund/).length).toBeGreaterThan(0);
   expect(
     screen.getByRole("link", { name: "Netzbetreiber in Prüfung" })
   ).toHaveAttribute("href", "/netzbetreiber/in-pruefung");
   expect(screen.getByText("Dark mode · WCAG AA")).toBeInTheDocument();
   expect(screen.getAllByText(/Prüfstatus:/).length).toBeGreaterThan(0);
+  expect(screen.getAllByText(/Sichtbarkeit:/).length).toBeGreaterThan(0);
   expect(screen.getByRole("heading", { name: "BDEW Anwendungshilfe Modul 3 1.2" })).toBeInTheDocument();
   expect(screen.getByRole("button", { name: "Regelwerk aufklappen" })).toBeInTheDocument();
   expect(

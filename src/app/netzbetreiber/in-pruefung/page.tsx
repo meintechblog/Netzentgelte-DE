@@ -15,9 +15,9 @@ export default async function PendingOperatorsPage() {
         <span className="dashboard-eyebrow">Öffentliche Arbeitsliste · Betreiber-Funnel</span>
         <h1>Netzbetreiber in Prüfung</h1>
         <p>
-          Tarifdetails bleiben verborgen, bis die offizielle Evidenz vollständig geprüft ist.
-          Diese Übersicht zeigt nur den öffentlichen Fortschritt für Betreiber, die bereits im
-          Prüfpfad angekommen sind.
+          Diese Übersicht bündelt Betreiber mit offenem Problem- oder Prüfstatus. Die Hauptseite
+          zeigt sie inzwischen ebenfalls transparent an; hier bleibt der Funnel auf Quellen- und
+          Tariffortschritt fokussiert.
         </p>
         <div className="hero-actions">
           <a className="hero-button" href={withBasePath("/")}>
@@ -54,8 +54,8 @@ export default async function PendingOperatorsPage() {
               <span className="section-eyebrow">Minimaldarstellung</span>
               <h2 id="pending-operator-table-heading">Öffentliche Pending-Liste</h2>
               <p>
-                Die Tabelle zeigt nur Review- und Discovery-Status. Modul-3-Matrizen erscheinen
-                erst nach belastbarer Verifikation in der Hauptoberfläche.
+                Die Tabelle zeigt den kompakten Funnelstatus. Problemgründe und unvollständige
+                Tarifstände sind zusätzlich direkt in der Hauptoberfläche sichtbar.
               </p>
             </div>
           </div>

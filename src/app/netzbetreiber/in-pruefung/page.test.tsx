@@ -30,10 +30,15 @@ test("renders the public pending operator page with minimal review rows", async 
           slug: "mainnetz",
           name: "Mainnetz GmbH",
           regionLabel: "Wuerzburg",
+          sourceSlug: "mainnetz-pending",
           reviewStatus: "pending",
           sourceStatus: "source-found",
           tariffStatus: "partial",
-          checkedAt: "2026-03-11"
+          checkedAt: "2026-03-11",
+          publicationStatus: "pending",
+          statusSummary: "Quelle geprüft, Tarifdaten noch unvollständig.",
+          missingInformation: ["Verifiziertes Niederspannungsprodukt fehlt"],
+          hasVerifiedLowVoltageProduct: false
         }
       ]
     }
@@ -43,7 +48,7 @@ test("renders the public pending operator page with minimal review rows", async 
 
   expect(screen.getByRole("heading", { name: "Netzbetreiber in Prüfung" })).toBeInTheDocument();
   expect(
-    screen.getByText(/Tarifdetails bleiben verborgen, bis die offizielle Evidenz vollständig geprüft ist/i)
+    screen.getByText(/Die Hauptseite zeigt sie inzwischen ebenfalls transparent an/i)
   ).toBeInTheDocument();
   expect(screen.getByText(/Mainnetz GmbH/i)).toBeInTheDocument();
   expect(screen.queryByText(/Netze BW GmbH/i)).not.toBeInTheDocument();
@@ -70,10 +75,15 @@ test("keeps the live pending API link when no exported public snapshot exists", 
         slug: "mainnetz",
         name: "Mainnetz GmbH",
         regionLabel: "Wuerzburg",
+        sourceSlug: "mainnetz-pending",
         reviewStatus: "pending",
         sourceStatus: "source-found",
         tariffStatus: "missing",
-        checkedAt: "2026-03-11"
+        checkedAt: "2026-03-11",
+        publicationStatus: "missing-data",
+        statusSummary: "Quelle geprüft, Dokument fehlt.",
+        missingInformation: ["Offizielles 2026-Dokument fehlt"],
+        hasVerifiedLowVoltageProduct: false
       }
     ]
   });

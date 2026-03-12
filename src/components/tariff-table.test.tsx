@@ -226,4 +226,69 @@ describe("TariffTable", () => {
       within(q1Section).getByLabelText("Q1 06:00-07:00 · keine Zuordnung")
     ).toHaveClass("tariff-quarter-segment--empty");
   });
+
+  test("renders incomplete published operators with transparent missing-info and problem blocks", () => {
+    render(
+      <TariffTable
+        rows={[
+          {
+            operatorName: "Demo Netz GmbH",
+            operatorSlug: "demo-netz",
+            regionLabel: "Demo",
+            currentBandsSummary: "Noch kein vollständiger Tarifdatensatz veröffentlicht",
+            currentBandBadges: [],
+            validFrom: "2026-01-01",
+            sourcePageUrl: "https://demo.example/netz",
+            documentUrl: undefined,
+            sourceSlug: "demo-netz-pending",
+            checkedAt: "2026-03-12",
+            reviewStatus: "pending",
+            publicationStatus: "blocked",
+            statusSummary:
+              "Offizielle 2026-Veröffentlichung geprüft, aber aktuell nur vorläufige oder widersprüchliche Angaben vorhanden.",
+            missingInformation: [
+              "Verifiziertes Niederspannungsprodukt fehlt",
+              "Offizielles 2026-Dokument fehlt",
+              "Modul-3-Tarifdaten unvollständig"
+            ],
+            hasVerifiedLowVoltageProduct: false,
+            priceBasis: "assumed-netto",
+            priceBasisLabel: "Nettobasis (angenommen)",
+            compliance: {
+              ruleSetId: "bdew-modul-3-v1-1",
+              status: "not-evaluable",
+              violations: [],
+              passes: [],
+              notEvaluated: [
+                {
+                  ruleId: "missing_primary_artifact",
+                  title: "Primärquelle unvollständig",
+                  severity: "high",
+                  message: "Eine belastbare Auswertung ist noch nicht möglich.",
+                  sourceCitation: "Projektregel"
+                }
+              ]
+            },
+            latestPageSnapshotFetchedAt: null,
+            latestPageSnapshotHash: null,
+            pageArtifactApiUrl: null,
+            latestDocumentSnapshotFetchedAt: null,
+            latestDocumentSnapshotHash: null,
+            documentArtifactApiUrl: null,
+            sourceHealthReport: null,
+            timeWindows: [],
+            quarterMatrix: [],
+            endcustomerDisplay: null
+          }
+        ]}
+      />
+    );
+
+    expect(screen.getByText("Sichtbarkeit: Blockiert")).toBeInTheDocument();
+    expect(screen.getAllByText("Verifiziertes Niederspannungsprodukt fehlt").length).toBeGreaterThan(0);
+    expect(screen.getByText("Fehlende Informationen")).toBeInTheDocument();
+    expect(screen.getByText("Problemgrund")).toBeInTheDocument();
+    expect(screen.getByText(/aktuell nur vorläufige oder widersprüchliche Angaben/i)).toBeInTheDocument();
+    expect(screen.getByText("Noch kein vollständiger Tarifdatensatz veröffentlicht")).toBeInTheDocument();
+  });
 });

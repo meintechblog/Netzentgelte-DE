@@ -160,6 +160,17 @@ describe("getSeedOperatorShells", () => {
             "https://www.lsw-netz.de/fileadmin/user_upload/lsw-netz/strom/netznutzung/Preisblatt_f%C3%BCr_Netznutzung_Strom_01.01.-31.12.2026_endg_20251219.pdf"
         }),
         expect.objectContaining({
+          slug: "markt-zellingen",
+          shellStatus: "published",
+          sourceStatus: "source-found",
+          tariffStatus: "verified",
+          reviewStatus: "verified",
+          sourcePageUrl:
+            "https://www.markt-zellingen.de/seite/ze/cms1203202615184421180055/248/-/Netznutzung.html",
+          documentUrl:
+            "https://www.markt-zellingen.de/eigene_dateien/aktuell/2023/dezember/markt_zellingen_strom_preisblatt_2026_endgueltig_20251217.pdf"
+        }),
+        expect.objectContaining({
           slug: "maintal-werke",
           shellStatus: "published",
           sourceStatus: "source-found",

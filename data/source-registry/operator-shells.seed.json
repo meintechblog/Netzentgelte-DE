@@ -4458,17 +4458,17 @@
   {
     "slug": "markt-zellingen",
     "operatorName": "Markt Zellingen",
-    "websiteUrl": "http://www.markt-zellingen.de",
+    "websiteUrl": "https://www.markt-zellingen.de/",
     "regionLabel": "Zellingen",
     "shellStatus": "published",
     "coverageStatus": "hinted",
     "sourceStatus": "source-found",
-    "tariffStatus": "partial",
-    "reviewStatus": "pending",
-    "sourcePageUrl": "http://www.markt-zellingen.de",
+    "tariffStatus": "verified",
+    "reviewStatus": "verified",
+    "sourcePageUrl": "https://www.markt-zellingen.de/seite/ze/cms1203202615184421180055/248/-/Netznutzung.html",
     "notes": "VNBdigital ID 7281",
     "deprecatedStatus": "active",
-    "documentUrl": "http://www.markt-zellingen.de"
+    "documentUrl": "https://www.markt-zellingen.de/eigene_dateien/aktuell/2023/dezember/markt_zellingen_strom_preisblatt_2026_endgueltig_20251217.pdf"
   },
   {
     "slug": "markt-zellingen-versorgungsbetriebe",

@@ -7212,6 +7212,123 @@
     }
   },
   {
+    "slug": "markt-zellingen",
+    "name": "Markt Zellingen",
+    "regionLabel": "Zellingen",
+    "websiteUrl": "https://www.markt-zellingen.de/",
+    "registrySourceIds": [
+      "bnetza-mastr-netzbetreiber-overview",
+      "vnbdigital-portal"
+    ],
+    "sourceDocuments": [
+      {
+        "id": "markt-zellingen-14a-2026",
+        "title": "Netzzugangsentgelte Strom 2026",
+        "documentType": "pdf",
+        "priceBasis": "netto",
+        "sourcePageUrl": "https://www.markt-zellingen.de/seite/ze/cms1203202615184421180055/248/-/Netznutzung.html",
+        "documentUrl": "https://www.markt-zellingen.de/eigene_dateien/aktuell/2023/dezember/markt_zellingen_strom_preisblatt_2026_endgueltig_20251217.pdf",
+        "checkedAt": "2026-03-12",
+        "validFrom": "2026-01-01",
+        "reviewStatus": "verified",
+        "notes": [
+          "Die offizielle Netznutzungsseite des Markts Zellingen verlinkt ein finales 2026-Preisblatt direkt als PDF auf der Betreiberdomain.",
+          "Das Preisblatt nennt fuer Modul 3 in Niederspannung netto ST 4,51 ct/kWh, HT 7,76 ct/kWh und NT 0,45 ct/kWh.",
+          "Die Quartalsmatrix weist nur fuer Q2 und Q3 differenzierte Zeitfenster aus; entsprechend werden Q1 und Q4 projektkonform als Volltag-Standardtarif gefuehrt.",
+          "Das Zusatzblatt zu den Netzentgelten 2026 ist offiziell verlinkt, aber fuer Modul 3 fachlich nicht erforderlich."
+        ]
+      }
+    ],
+    "currentTariff": {
+      "modelKey": "14a-model-3",
+      "validFrom": "2026-01-01",
+      "priceBasis": "netto",
+      "reviewStatus": "verified",
+      "sourceDocumentId": "markt-zellingen-14a-2026",
+      "sourcePageUrl": "https://www.markt-zellingen.de/seite/ze/cms1203202615184421180055/248/-/Netznutzung.html",
+      "documentUrl": "https://www.markt-zellingen.de/eigene_dateien/aktuell/2023/dezember/markt_zellingen_strom_preisblatt_2026_endgueltig_20251217.pdf",
+      "bands": [
+        {
+          "key": "NT",
+          "label": "Niedriglasttarifstufe",
+          "valueCtPerKwh": "0.45",
+          "priceBasis": "netto",
+          "sourceQuote": "Niederspannung 4,51 7,76 0,45"
+        },
+        {
+          "key": "ST",
+          "label": "Standardtarifstufe",
+          "valueCtPerKwh": "4.51",
+          "priceBasis": "netto",
+          "sourceQuote": "Niederspannung 4,51 7,76 0,45"
+        },
+        {
+          "key": "HT",
+          "label": "Hochlasttarifstufe",
+          "valueCtPerKwh": "7.76",
+          "priceBasis": "netto",
+          "sourceQuote": "Niederspannung 4,51 7,76 0,45"
+        }
+      ],
+      "timeWindows": [
+        {
+          "id": "markt-zellingen-2026-q1q4-standard-all-day",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q1 und Q4 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-24:00",
+          "sourceQuote": "Die ausgewiesenen Tarifstufen finden zu folgenden Zeiten Anwendung: Quartal 2 und Quartal 3"
+        },
+        {
+          "id": "markt-zellingen-2026-q2q3-standard-night",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "00:00-10:00",
+          "sourceQuote": "00:00 - 10:00 Uhr"
+        },
+        {
+          "id": "markt-zellingen-2026-q2q3-low-midday",
+          "bandKey": "NT",
+          "label": "Niedrigtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "10:00-15:00",
+          "sourceQuote": "10:00 - 15:00 Uhr"
+        },
+        {
+          "id": "markt-zellingen-2026-q2q3-standard-afternoon",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "15:00-17:00",
+          "sourceQuote": "15:00 - 17:00 Uhr"
+        },
+        {
+          "id": "markt-zellingen-2026-q2q3-high-evening",
+          "bandKey": "HT",
+          "label": "Hochtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "17:00-22:00",
+          "sourceQuote": "17:00 - 22:00 Uhr"
+        },
+        {
+          "id": "markt-zellingen-2026-q2q3-standard-late",
+          "bandKey": "ST",
+          "label": "Standardtarif",
+          "seasonLabel": "Q2 und Q3 2026",
+          "dayLabel": "Alle Tage",
+          "timeRangeLabel": "22:00-24:00",
+          "sourceQuote": "22:00 - 00:00 Uhr"
+        }
+      ]
+    }
+  },
+  {
     "slug": "mitnetz-strom",
     "name": "Mitteldeutsche Netzgesellschaft Strom mbH",
     "regionLabel": "Sachsen / Sachsen-Anhalt / Brandenburg",

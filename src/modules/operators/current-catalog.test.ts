@@ -142,6 +142,7 @@ describe("getSeedPublishedOperators", () => {
     const eDisNetz = published.find((entry) => entry.slug === "e-dis-netz");
     const lewVerteilnetz = published.find((entry) => entry.slug === "lew-verteilnetz");
     const maintalWerke = published.find((entry) => entry.slug === "maintal-werke");
+    const marktZellingen = published.find((entry) => entry.slug === "markt-zellingen");
     const mainnetz = published.find((entry) => entry.slug === "mainnetz");
     const mainsite = published.find((entry) => entry.slug === "mainsite-und");
     const mainzerNetze = published.find((entry) => entry.slug === "mainzer-netze");
@@ -187,7 +188,18 @@ describe("getSeedPublishedOperators", () => {
     const muenster = published.find((entry) => entry.slug === "stadtnetze-munster");
     const tauberfranken = published.find((entry) => entry.slug === "stadtwerk-tauberfranken");
 
-    expect(published).toHaveLength(97);
+    expect(published).toHaveLength(98);
+    expect(marktZellingen).toMatchObject({
+      reviewStatus: "verified",
+      validFrom: "2026-01-01",
+      sourcePageUrl: "https://www.markt-zellingen.de/seite/ze/cms1203202615184421180055/248/-/Netznutzung.html",
+      documentUrl:
+        "https://www.markt-zellingen.de/eigene_dateien/aktuell/2023/dezember/markt_zellingen_strom_preisblatt_2026_endgueltig_20251217.pdf",
+      priceBasis: "assumed-netto",
+      compliance: expect.objectContaining({
+        status: "compliant"
+      })
+    });
     expect(maintalWerke).toMatchObject({
       reviewStatus: "verified",
       validFrom: "2026-01-01",
